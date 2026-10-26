@@ -1,0 +1,22 @@
+{
+  "art": {
+    "kind": "emoji-placeholder",
+    "note": {
+      "es": "Las ilustraciones de esta versión son emojis Unicode dibujados por la tipografía de tu sistema, por lo que se ven distintos en cada dispositivo. Más adelante se encargará arte original a artistas de los pueblos originarios.",
+      "en": "The illustrations in this version are Unicode emoji drawn by your system font, so they look different on each device. Original artwork will be commissioned from Indigenous artists in the future."
+    }
+  },
+  "names": {
+    "note": {
+      "es": "Los nombres en español e inglés fueron escritos por el equipo. Los nombres en náhuatl, maya yucateco y quechua están pendientes de revisión por hablantes nativos y no se muestran hasta entonces.",
+      "en": "Spanish and English names were written by the team. Nahuatl, Yucatec Maya, and Quechua names are pending native-speaker review and stay hidden until then."
+    }
+  },
+  "software": [
+    { "name": "React", "license": "MIT" },
+    { "name": "i18next", "license": "MIT" },
+    { "name": "pdf-lib", "license": "MIT" },
+    { "name": "zod", "license": "MIT" }
+  ],
+  "contributors": []
+}

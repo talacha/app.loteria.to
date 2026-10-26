@@ -1,9 +1,24 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv, type UserConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { aliases } from './vite.aliases.ts';
 
-export default defineConfig({
+// The Vercel Supabase integration injects NEXT_PUBLIC_SUPABASE_*; expose only the
+// public URL and anon key to the client under the VITE_ names src/net reads.
+// Setting process.env before Vite resolves env makes them part of import.meta.env.
+function mapSupabasePublicEnv(mode: string) {
+  const env = loadEnv(mode, process.cwd(), ['VITE_', 'NEXT_PUBLIC_SUPABASE_']);
+  process.env.VITE_SUPABASE_URL ||= env.VITE_SUPABASE_URL || env.NEXT_PUBLIC_SUPABASE_URL || '';
+  process.env.VITE_SUPABASE_ANON_KEY ||=
+    env.VITE_SUPABASE_ANON_KEY || env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+}
+
+export default defineConfig(({ mode }) => {
+  mapSupabasePublicEnv(mode);
+  return config;
+});
+
+const config = {
   resolve: { alias: aliases },
   plugins: [
     react(),
@@ -38,4 +53,4 @@ export default defineConfig({
     }),
   ],
   build: { sourcemap: true },
-});
+} satisfies UserConfig;

@@ -1,0 +1,1527 @@
+[
+  {
+    "n": 1,
+    "id": "jaguar",
+    "category": "animals",
+    "art": "🐆",
+    "emoji": "🐆",
+    "tags": ["cat", "spots", "forest", "night", "hunter"],
+    "names": {
+      "es": {
+        "text": "El Jaguar",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Jaguar",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "ocelotl",
+        "status": "draft",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "balam",
+        "status": "draft",
+        "source": "Yucatec Maya, unverified draft"
+      }
+    },
+    "verso": {
+      "es": "Manchas de luz entre la selva,\nel jaguar camina sin hacer ruido.",
+      "en": "Spots of light among the trees,\nthe jaguar walks without a sound."
+    },
+    "riddle": {
+      "es": "Soy gato grande de la selva y llevo la noche pintada en la piel.",
+      "en": "I am the big cat of the jungle, and I wear the night painted on my coat."
+    }
+  },
+  {
+    "n": 2,
+    "id": "colibri",
+    "category": "animals",
+    "art": "🐦",
+    "emoji": "🐦",
+    "tags": ["bird", "tiny", "flower", "wings", "fast"],
+    "names": {
+      "es": {
+        "text": "El Colibrí",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Hummingbird",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "huitzitzilin",
+        "status": "draft",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "ts'unu'un",
+        "status": "draft",
+        "source": "Yucatec Maya, unverified draft"
+      }
+    },
+    "verso": {
+      "es": "Pequeño como un suspiro,\nbebe flores y no se detiene.",
+      "en": "Small as a sigh,\nit sips from flowers and never rests."
+    },
+    "riddle": {
+      "es": "Mis alas zumban tan rápido que casi no se ven; me paro en el aire para beber néctar.",
+      "en": "My wings hum so fast you can hardly see them; I hover in the air to sip nectar."
+    },
+    "confusableWith": ["condor", "guajolote"]
+  },
+  {
+    "n": 3,
+    "id": "llama",
+    "category": "animals",
+    "art": "🦙",
+    "emoji": "🦙",
+    "tags": ["andes", "wool", "mountain", "pack", "soft"],
+    "names": {
+      "es": {
+        "text": "La Llama",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Llama",
+        "status": "approved"
+      },
+      "quz": {
+        "text": "llama",
+        "status": "draft",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "ipa": "ˈʎama"
+      }
+    },
+    "verso": {
+      "es": "Camina por la sierra alta\ncon su lana como nube.",
+      "en": "She walks the high ridges\nwith wool like a cloud."
+    },
+    "riddle": {
+      "es": "Vivo en los Andes, cargo con paciencia y mi lana abriga a todos.",
+      "en": "I live in the Andes, I carry loads with patience, and my wool keeps everyone warm."
+    }
+  },
+  {
+    "n": 4,
+    "id": "condor",
+    "category": "animals",
+    "art": "🦅",
+    "emoji": "🦅",
+    "tags": ["bird", "andes", "wings", "soar", "mountain"],
+    "names": {
+      "es": {
+        "text": "El Cóndor",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Condor",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Sus alas abren el cielo\ny el viento lo lleva alto.",
+      "en": "Its wings open up the sky\nand the wind carries it high."
+    },
+    "riddle": {
+      "es": "Soy de las aves voladoras más grandes; planeo sobre las cumbres sin aletear.",
+      "en": "I am one of the largest flying birds; I glide over the peaks without flapping."
+    },
+    "confusableWith": ["colibri", "guajolote"]
+  },
+  {
+    "n": 5,
+    "id": "mariposa",
+    "category": "animals",
+    "art": "🦋",
+    "emoji": "🦋",
+    "tags": ["insect", "wings", "migration", "color", "flower"],
+    "names": {
+      "es": {
+        "text": "La Mariposa",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Butterfly",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Viaja lejos, ligera y naranja,\ny vuelve cuando florece el campo.",
+      "en": "She travels far, light and orange,\nand returns when the fields bloom."
+    },
+    "riddle": {
+      "es": "De oruga me hice alas de colores y cruzo países volando.",
+      "en": "I was a caterpillar once; now I have colored wings and fly across countries."
+    }
+  },
+  {
+    "n": 6,
+    "id": "guajolote",
+    "category": "animals",
+    "art": "🦃",
+    "emoji": "🦃",
+    "tags": ["bird", "farm", "feathers", "fiesta", "tail"],
+    "names": {
+      "es": {
+        "text": "El Guajolote",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Turkey",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Abre su cola como abanico\ny presume con su glugluteo.",
+      "en": "It fans its tail wide\nand shows off with its gobble."
+    },
+    "riddle": {
+      "es": "Tengo plumas de gala y hago glugluglú; vengo de estas tierras.",
+      "en": "I wear fancy feathers, I go gobble-gobble, and my ancestors come from these lands."
+    },
+    "confusableWith": ["colibri", "condor"]
+  },
+  {
+    "n": 7,
+    "id": "tortuga",
+    "category": "animals",
+    "art": "🐢",
+    "emoji": "🐢",
+    "tags": ["reptile", "shell", "slow", "water", "patient"],
+    "names": {
+      "es": {
+        "text": "La Tortuga",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Turtle",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Despacito, despacito,\nllega lejos con su casa a cuestas.",
+      "en": "Slowly, slowly,\nshe goes far with her home on her back."
+    },
+    "riddle": {
+      "es": "Cargo mi casa en la espalda y avanzo sin prisa.",
+      "en": "I carry my house on my back and go without hurry."
+    }
+  },
+  {
+    "n": 8,
+    "id": "rana",
+    "category": "animals",
+    "art": "🐸",
+    "emoji": "🐸",
+    "tags": ["amphibian", "pond", "jump", "rain", "green"],
+    "names": {
+      "es": {
+        "text": "La Rana",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Frog",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Salta, salta, croac, croac,\ncanta cuando llega la lluvia.",
+      "en": "Jump, jump, ribbit, ribbit,\nshe sings when the rain arrives."
+    },
+    "riddle": {
+      "es": "Soy verde y saltarina; en el charco canto después de la tormenta.",
+      "en": "I am green and jumpy; by the puddle I sing after the storm."
+    }
+  },
+  {
+    "n": 9,
+    "id": "serpiente",
+    "category": "animals",
+    "art": "🐍",
+    "emoji": "🐍",
+    "tags": ["reptile", "scales", "slither", "ground", "long"],
+    "names": {
+      "es": {
+        "text": "La Serpiente",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Snake",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Sin patas va por el suelo,\ndeslizándose entre las piedras.",
+      "en": "With no legs she travels the ground,\nsliding between the stones."
+    },
+    "riddle": {
+      "es": "No tengo patas pero avanzo; cambio de piel cuando crezco.",
+      "en": "I have no legs but I move; I shed my skin when I grow."
+    }
+  },
+  {
+    "n": 10,
+    "id": "maiz",
+    "category": "plants_food",
+    "art": "🌽",
+    "emoji": "🌽",
+    "tags": ["corn", "crop", "tortilla", "milpa", "golden"],
+    "names": {
+      "es": {
+        "text": "El Maíz",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Maize",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "centli",
+        "status": "draft",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "ixi'im",
+        "status": "draft",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "sara",
+        "status": "draft",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+    },
+    "verso": {
+      "es": "Granitos de oro en su vaina,\ndel campo a la mesa.",
+      "en": "Little golden grains in their husk,\nfrom the field to the table."
+    },
+    "riddle": {
+      "es": "De mí se hacen tortillas y tamales; tengo barba de seda y mil granos.",
+      "en": "Tortillas and tamales are made from me; I have silky hair and a thousand kernels."
+    }
+  },
+  {
+    "n": 11,
+    "id": "nopal",
+    "category": "plants_food",
+    "art": "🌵",
+    "emoji": "🌵",
+    "tags": ["cactus", "desert", "paddle", "spines", "fruit"],
+    "names": {
+      "es": {
+        "text": "El Nopal",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Nopal",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "nopalli",
+        "status": "draft",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      }
+    },
+    "verso": {
+      "es": "Raquetas verdes con espinas,\ny tunas dulces al final.",
+      "en": "Green paddles with prickly spines,\nand sweet fruit at the end."
+    },
+    "riddle": {
+      "es": "Soy cactus de hojas anchas; con cuidado me comen, y mi fruto es la tuna.",
+      "en": "I am a cactus with wide pads; carefully, I am eaten, and my fruit is the prickly pear."
+    }
+  },
+  {
+    "n": 12,
+    "id": "frijol",
+    "category": "plants_food",
+    "art": "🌱",
+    "emoji": "🌱",
+    "tags": ["bean", "crop", "pod", "protein", "milpa", "sprout"],
+    "names": {
+      "es": {
+        "text": "El Frijol",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Bean",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "etl",
+        "status": "draft",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "bu'ul",
+        "status": "draft",
+        "source": "Yucatec Maya, unverified draft"
+      }
+    },
+    "verso": {
+      "es": "Trepa por la caña del maíz\ny llena la olla de calor.",
+      "en": "He climbs up the maize stalk\nand fills the pot with warmth."
+    },
+    "riddle": {
+      "es": "Vivo en una vaina y me cocino en la olla; con el maíz y la calabaza hago equipo.",
+      "en": "I live in a pod and cook in the pot; with maize and squash I make a team."
+    }
+  },
+  {
+    "n": 13,
+    "id": "pina",
+    "category": "plants_food",
+    "art": "🍍",
+    "emoji": "🍍",
+    "tags": ["fruit", "sweet", "tropical", "spiky", "crop"],
+    "names": {
+      "es": {
+        "text": "La Piña",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Pineapple",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Corona de hojas verdes,\ndulce corazón dorado.",
+      "en": "A crown of green leaves,\na sweet golden heart."
+    },
+    "riddle": {
+      "es": "Tengo corona de hojas y piel con picos; por dentro soy dulce y jugosa.",
+      "en": "I wear a crown of leaves and have a spiky skin; inside I am sweet and juicy."
+    }
+  },
+  {
+    "n": 14,
+    "id": "chile",
+    "category": "plants_food",
+    "art": "🌶️",
+    "emoji": "🌶️",
+    "tags": ["spicy", "pepper", "red", "salsa", "crop"],
+    "names": {
+      "es": {
+        "text": "El Chile",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Chili",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "chilli",
+        "status": "draft",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      }
+    },
+    "verso": {
+      "es": "Rojo, verde, picoso,\nhace llorar y hace sonreír.",
+      "en": "Red, green, and fiery,\nit makes you cry and makes you smile."
+    },
+    "riddle": {
+      "es": "Soy pequeño y pico; en la salsa me conoces por el calor.",
+      "en": "I am small and hot; in the salsa you know me by the heat."
+    }
+  },
+  {
+    "n": 15,
+    "id": "papa",
+    "category": "plants_food",
+    "art": "🥔",
+    "emoji": "🥔",
+    "tags": ["andes", "tuber", "underground", "crop", "harvest"],
+    "names": {
+      "es": {
+        "text": "La Papa",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Potato",
+        "status": "approved"
+      },
+      "quz": {
+        "text": "papa",
+        "status": "draft",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "ipa": "ˈpapa"
+      }
+    },
+    "verso": {
+      "es": "Crece bajo la tierra fría\ny sale en mil formas y colores.",
+      "en": "She grows beneath the cold soil\nand comes in a thousand shapes and colors."
+    },
+    "riddle": {
+      "es": "Nací en los Andes y vivo escondida bajo la tierra; hay de muchos colores.",
+      "en": "I was born in the Andes and I hide underground; I come in many colors."
+    }
+  },
+  {
+    "n": 16,
+    "id": "aguacate",
+    "category": "plants_food",
+    "art": "🥑",
+    "emoji": "🥑",
+    "tags": ["fruit", "green", "tree", "creamy", "guacamole"],
+    "names": {
+      "es": {
+        "text": "El Aguacate",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Avocado",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "ahuacatl",
+        "status": "draft",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      }
+    },
+    "verso": {
+      "es": "Verde por fuera, cremoso por dentro,\ncon un hueso grande de corazón.",
+      "en": "Green outside, creamy inside,\nwith a big pit for a heart."
+    },
+    "riddle": {
+      "es": "Mi pulpa es suave y verde y me untan en el pan; guardo un hueso grande.",
+      "en": "My flesh is soft and green and spread on bread; I keep a big pit."
+    }
+  },
+  {
+    "n": 17,
+    "id": "tomate",
+    "category": "plants_food",
+    "art": "🍅",
+    "emoji": "🍅",
+    "tags": ["fruit", "red", "salsa", "vine", "round"],
+    "names": {
+      "es": {
+        "text": "El Tomate",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Tomato",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "tomatl",
+        "status": "draft",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      }
+    },
+    "verso": {
+      "es": "Redondo, rojo y jugoso,\nmaduró al sol de la huerta.",
+      "en": "Round, red, and juicy,\nit ripened in the garden sun."
+    },
+    "riddle": {
+      "es": "Soy rojo y jugoso y pongo color a la salsa.",
+      "en": "I am red and juicy and I give color to the salsa."
+    }
+  },
+  {
+    "n": 18,
+    "id": "girasol",
+    "category": "plants_food",
+    "art": "🌻",
+    "emoji": "🌻",
+    "tags": ["flower", "yellow", "seeds", "sun", "tall"],
+    "names": {
+      "es": {
+        "text": "El Girasol",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Sunflower",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Sigue la luz todo el día\ncon su cara de oro.",
+      "en": "It follows the light all day\nwith its golden face."
+    },
+    "riddle": {
+      "es": "Mi cara dorada sigue la luz todo el día y mis pipas son un tesoro para los pájaros.",
+      "en": "My golden face follows the light all day, and my seeds are a treasure for the birds."
+    }
+  },
+  {
+    "n": 19,
+    "id": "sol",
+    "category": "sky",
+    "art": "☀️",
+    "emoji": "☀️",
+    "tags": ["star", "day", "light", "warm", "sky"],
+    "names": {
+      "es": {
+        "text": "El Sol",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Sun",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "tonatiuh",
+        "status": "draft",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "k'iin",
+        "status": "draft",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "inti",
+        "status": "draft",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+    },
+    "verso": {
+      "es": "Sale por el este despacito\ny pinta de oro la mañana.",
+      "en": "He rises slowly in the east\nand paints the morning gold."
+    },
+    "riddle": {
+      "es": "Cada día salgo y me escondo; sin mí no habría día ni calor.",
+      "en": "Every day I rise and hide; without me there would be no day and no warmth."
+    },
+    "confusableWith": ["estrella"]
+  },
+  {
+    "n": 20,
+    "id": "luna",
+    "category": "sky",
+    "art": "🌙",
+    "emoji": "🌙",
+    "tags": ["night", "sky", "crescent", "tide", "glow"],
+    "names": {
+      "es": {
+        "text": "La Luna",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Moon",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "metztli",
+        "status": "draft",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "uj",
+        "status": "draft",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "killa",
+        "status": "draft",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+    },
+    "verso": {
+      "es": "Cambia de forma cada noche\ny platea el camino.",
+      "en": "She changes shape every night\nand silvers the path."
+    },
+    "riddle": {
+      "es": "Soy redonda, luego una uña; alumbro la noche sin ser lámpara.",
+      "en": "I am round, then a fingernail; I light the night without being a lamp."
+    }
+  },
+  {
+    "n": 21,
+    "id": "estrella",
+    "category": "sky",
+    "art": "⭐",
+    "emoji": "⭐",
+    "tags": ["night", "sky", "twinkle", "light", "far"],
+    "names": {
+      "es": {
+        "text": "La Estrella",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Star",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Un puntito que titila\nen la noche, muy lejos.",
+      "en": "A tiny dot that twinkles\nin the night, very far away."
+    },
+    "riddle": {
+      "es": "Brillo de noche en el cielo oscuro y parezco un puntito, pero soy una enorme bola de fuego.",
+      "en": "I shine at night in the dark sky and look like a tiny dot, but I am an enormous ball of fire."
+    },
+    "confusableWith": ["sol"]
+  },
+  {
+    "n": 22,
+    "id": "lluvia",
+    "category": "sky",
+    "art": "🌧️",
+    "emoji": "🌧️",
+    "tags": ["water", "cloud", "drops", "storm", "crops"],
+    "names": {
+      "es": {
+        "text": "La Lluvia",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Rain",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Gota a gota cae del cielo\ny despierta la semilla.",
+      "en": "Drop by drop it falls from the sky\nand wakes the seed."
+    },
+    "riddle": {
+      "es": "Caigo en gotitas desde las nubes y hago crecer las milpas.",
+      "en": "I fall in little drops from the clouds and help the milpas grow."
+    }
+  },
+  {
+    "n": 23,
+    "id": "rayo",
+    "category": "sky",
+    "art": "⚡",
+    "emoji": "⚡",
+    "tags": ["storm", "flash", "thunder", "sky", "fast"],
+    "names": {
+      "es": {
+        "text": "El Rayo",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Lightning",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Un destello en la tormenta,\nluego el trueno responde.",
+      "en": "A flash in the storm,\nthen the thunder answers."
+    },
+    "riddle": {
+      "es": "Soy una línea de luz en la tormenta; primero me ves y luego me oyes.",
+      "en": "I am a line of light in the storm; first you see me, then you hear me."
+    }
+  },
+  {
+    "n": 24,
+    "id": "arcoiris",
+    "category": "sky",
+    "art": "🌈",
+    "emoji": "🌈",
+    "tags": ["colors", "rain", "sky", "arc", "light"],
+    "names": {
+      "es": {
+        "text": "El Arcoíris",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Rainbow",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Después de la lluvia y el sol,\nsiete colores hacen un puente.",
+      "en": "After the rain and the sun,\nseven colors make a bridge."
+    },
+    "riddle": {
+      "es": "Salgo cuando llueve y brilla el sol; tengo muchos colores en un arco.",
+      "en": "I appear when it rains and the sun shines; I have many colors in an arch."
+    }
+  },
+  {
+    "n": 25,
+    "id": "nube",
+    "category": "sky",
+    "art": "☁️",
+    "emoji": "☁️",
+    "tags": ["sky", "white", "rain", "float", "soft"],
+    "names": {
+      "es": {
+        "text": "La Nube",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Cloud",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Blanda y blanca navega\npor el mar de arriba.",
+      "en": "Soft and white she sails\nacross the sea above."
+    },
+    "riddle": {
+      "es": "Floto en el cielo como algodón y guardo agua para la lluvia.",
+      "en": "I float in the sky like cotton and keep water for the rain."
+    }
+  },
+  {
+    "n": 26,
+    "id": "viento",
+    "category": "sky",
+    "art": "💨",
+    "emoji": "💨",
+    "tags": ["air", "breeze", "leaves", "invisible", "storm"],
+    "names": {
+      "es": {
+        "text": "El Viento",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Wind",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "No se ve pero se siente,\nmueve hojas y plumas.",
+      "en": "You cannot see it but you feel it,\nit moves leaves and feathers."
+    },
+    "riddle": {
+      "es": "No tengo cuerpo pero muevo todo; sopla y me escucharás silbar.",
+      "en": "I have no body yet I move everything; listen and you will hear me whistle."
+    }
+  },
+  {
+    "n": 27,
+    "id": "cometa",
+    "category": "sky",
+    "art": "☄️",
+    "emoji": "☄️",
+    "tags": ["sky", "tail", "night", "ice", "space"],
+    "names": {
+      "es": {
+        "text": "El Cometa",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Comet",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Con su cola de luz\nvisita el cielo y se va.",
+      "en": "With its tail of light\nit visits the sky and leaves."
+    },
+    "riddle": {
+      "es": "Soy bola de hielo y polvo con larga cola brillante; vengo de lejos y no me quedo.",
+      "en": "I am a ball of ice and dust with a long glowing tail; I come from far and do not stay."
+    }
+  },
+  {
+    "n": 28,
+    "id": "montana",
+    "category": "land",
+    "art": "🏔️",
+    "emoji": "🏔️",
+    "tags": ["high", "peak", "snow", "rock", "andes"],
+    "names": {
+      "es": {
+        "text": "La Montaña",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Mountain",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "tepetl",
+        "status": "draft",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      }
+    },
+    "verso": {
+      "es": "Alta y callada, se pone\nun sombrero de nieve.",
+      "en": "Tall and quiet, she puts on\na hat of snow."
+    },
+    "riddle": {
+      "es": "Soy muy grande y muy alta; de mis laderas bajan los ríos.",
+      "en": "I am very big and very tall; rivers run down my slopes."
+    },
+    "confusableWith": ["volcan"]
+  },
+  {
+    "n": 29,
+    "id": "volcan",
+    "category": "land",
+    "art": "🌋",
+    "emoji": "🌋",
+    "tags": ["mountain", "smoke", "lava", "fire", "rock"],
+    "names": {
+      "es": {
+        "text": "El Volcán",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Volcano",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Duerme con humo en la cima\ny a veces despierta con fuerza.",
+      "en": "It sleeps with smoke on top\nand sometimes wakes up with force."
+    },
+    "riddle": {
+      "es": "Tengo un hueco en la cima y guardo fuego por dentro; a veces echo humo y ceniza.",
+      "en": "I have a hollow top and keep fire inside; sometimes I puff out smoke and ash."
+    },
+    "confusableWith": ["montana"]
+  },
+  {
+    "n": 30,
+    "id": "manantial",
+    "category": "land",
+    "art": "💧",
+    "emoji": "💧",
+    "tags": ["water", "spring", "fresh", "ground", "drink"],
+    "names": {
+      "es": {
+        "text": "El Manantial",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Spring",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Brota limpia de la tierra,\ny así nace un río.",
+      "en": "It bubbles up clean from the ground,\nand that is how a river begins."
+    },
+    "riddle": {
+      "es": "Salgo de la tierra como agua fresca y de mí nace un río.",
+      "en": "I come out of the ground as fresh water, and a river is born from me."
+    }
+  },
+  {
+    "n": 31,
+    "id": "mar",
+    "category": "land",
+    "art": "🌊",
+    "emoji": "🌊",
+    "tags": ["water", "waves", "salt", "shore", "fish"],
+    "names": {
+      "es": {
+        "text": "El Mar",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Sea",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Olas que vienen y van,\nsal y espuma en la orilla.",
+      "en": "Waves that come and go,\nsalt and foam on the shore."
+    },
+    "riddle": {
+      "es": "Soy azul, salado y muy grande; mis olas llegan hasta la arena.",
+      "en": "I am blue, salty, and very big; my waves reach the sand."
+    }
+  },
+  {
+    "n": 32,
+    "id": "desierto",
+    "category": "land",
+    "art": "🏜️",
+    "emoji": "🏜️",
+    "tags": ["sand", "dry", "cactus", "sun", "dunes"],
+    "names": {
+      "es": {
+        "text": "El Desierto",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Desert",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Mucho sol y poca agua,\npero la vida encuentra su camino.",
+      "en": "Lots of sun and little water,\nbut life finds its way."
+    },
+    "riddle": {
+      "es": "Tengo arena y poca lluvia; mis plantas guardan agua en su panza.",
+      "en": "I have sand and little rain; my plants store water in their bellies."
+    }
+  },
+  {
+    "n": 33,
+    "id": "selva",
+    "category": "land",
+    "art": "🌴",
+    "emoji": "🌴",
+    "tags": ["trees", "green", "rain", "birds", "humid"],
+    "names": {
+      "es": {
+        "text": "La Selva",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Jungle",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Verde sobre verde, cantos y sombra,\nmil vidas entre las hojas.",
+      "en": "Green on green, songs and shade,\na thousand lives among the leaves."
+    },
+    "riddle": {
+      "es": "Hay muchos árboles, lluvia y monos; mi techo es de hojas.",
+      "en": "There are many trees, rain, and monkeys; my roof is made of leaves."
+    }
+  },
+  {
+    "n": 34,
+    "id": "cristal",
+    "category": "land",
+    "art": "💎",
+    "emoji": "💎",
+    "tags": ["rock", "shiny", "mineral", "cave", "clear"],
+    "names": {
+      "es": {
+        "text": "El Cristal",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Crystal",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Duerme en la roca oscura\ny brilla cuando lo alcanza la luz.",
+      "en": "It sleeps in the dark rock\nand sparkles when light reaches it."
+    },
+    "riddle": {
+      "es": "Nazco dentro de las rocas y brillo con la luz; soy duro y transparente.",
+      "en": "I grow inside rocks and sparkle in the light; I am hard and clear."
+    }
+  },
+  {
+    "n": 35,
+    "id": "isla",
+    "category": "land",
+    "art": "🏝️",
+    "emoji": "🏝️",
+    "tags": ["sea", "sand", "palm", "shore", "small"],
+    "names": {
+      "es": {
+        "text": "La Isla",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Island",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Un pedacito de tierra\ncon agua por todos lados.",
+      "en": "A little piece of land\nwith water on every side."
+    },
+    "riddle": {
+      "es": "Estoy rodeada de agua por todos lados; algunas tienen palmeras.",
+      "en": "I am surrounded by water on all sides; some of us have palm trees."
+    }
+  },
+  {
+    "n": 36,
+    "id": "cueva",
+    "category": "land",
+    "art": "🕳️",
+    "emoji": "🕳️",
+    "tags": ["dark", "rock", "echo", "underground", "bats"],
+    "names": {
+      "es": {
+        "text": "La Cueva",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Cave",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Oscura y fresca, guarda ecos\ny murciélagos que duermen.",
+      "en": "Dark and cool, she keeps echoes\nand sleeping bats."
+    },
+    "riddle": {
+      "es": "Entra sin miedo: soy un hueco en la montaña donde el eco juega.",
+      "en": "Step in without fear: I am a hollow in the mountain where echoes play."
+    }
+  },
+  {
+    "n": 37,
+    "id": "olla",
+    "category": "handmade",
+    "art": "🏺",
+    "emoji": "🏺",
+    "tags": ["clay", "pot", "cooking", "kitchen", "pottery"],
+    "names": {
+      "es": {
+        "text": "La Olla",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Clay Pot",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "De barro y manos hecha,\nhierve el caldo con paciencia.",
+      "en": "Made of clay and hands,\nit simmers the broth with patience."
+    },
+    "riddle": {
+      "es": "Soy de barro y estoy en la lumbre; en mí se cocinan los frijoles.",
+      "en": "I am made of clay and sit by the fire; beans cook inside me."
+    }
+  },
+  {
+    "n": 38,
+    "id": "cesto",
+    "category": "handmade",
+    "art": "🧺",
+    "emoji": "🧺",
+    "tags": ["weaving", "fibers", "carry", "market", "reeds"],
+    "names": {
+      "es": {
+        "text": "El Cesto",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Basket",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Trenzado con fibras y tiempo,\nlleva el mercado en brazos.",
+      "en": "Woven from fibers and time,\nit carries the market in its arms."
+    },
+    "riddle": {
+      "es": "Estoy tejido de fibras; llevo frutas y no me rompo.",
+      "en": "I am woven from fibers; I carry fruit and do not break."
+    }
+  },
+  {
+    "n": 39,
+    "id": "tambor",
+    "category": "handmade",
+    "art": "🥁",
+    "emoji": "🥁",
+    "tags": ["music", "beat", "rhythm", "skin", "festival"],
+    "names": {
+      "es": {
+        "text": "El Tambor",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Drum",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Pum, pum, pum, late fuerte\ny el baile se pone en marcha.",
+      "en": "Boom, boom, boom, it beats strong\nand the dance gets going."
+    },
+    "riddle": {
+      "es": "Me tocan con las manos o palitos y suena pum pum.",
+      "en": "They play me with hands or sticks and I go boom boom."
+    }
+  },
+  {
+    "n": 40,
+    "id": "adobe",
+    "category": "handmade",
+    "art": "🧱",
+    "emoji": "🧱",
+    "tags": ["clay", "brick", "build", "earth", "wall"],
+    "names": {
+      "es": {
+        "text": "El Adobe",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Adobe Brick",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Barro y paja bajo el sol\nlevantan paredes firmes.",
+      "en": "Mud and straw under the sun\nraise strong walls."
+    },
+    "riddle": {
+      "es": "Me hago con barro y paja y me secan al sol; con mis iguales se levanta una pared.",
+      "en": "I am made of mud and straw and dried in the sun; with others like me a wall is built."
+    }
+  },
+  {
+    "n": 41,
+    "id": "hilo",
+    "category": "handmade",
+    "art": "🧵",
+    "emoji": "🧵",
+    "tags": ["weaving", "textile", "color", "spin", "loom"],
+    "names": {
+      "es": {
+        "text": "El Hilo",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Thread",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Del algodón y la lana\nnace el hilo, y del hilo el telar.",
+      "en": "From cotton and wool\nthe thread is born, and from the thread the loom."
+    },
+    "riddle": {
+      "es": "Soy largo y fino y paso por la aguja; con mis compañeros se hace la tela.",
+      "en": "I am long and thin and go through the needle; with my fellow threads cloth is made."
+    }
+  },
+  {
+    "n": 42,
+    "id": "canoa",
+    "category": "handmade",
+    "art": "🛶",
+    "emoji": "🛶",
+    "tags": ["boat", "river", "paddle", "wood", "lake"],
+    "names": {
+      "es": {
+        "text": "La Canoa",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Canoe",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Un tronco que se volvió barca\ny flota en el agua quieta.",
+      "en": "A trunk that became a boat\nand floats on still water."
+    },
+    "riddle": {
+      "es": "Floto sin ruedas y avanzo con remos sobre el lago.",
+      "en": "I float without wheels and move with paddles across the lake."
+    }
+  },
+  {
+    "n": 43,
+    "id": "puente",
+    "category": "handmade",
+    "art": "🌉",
+    "emoji": "🌉",
+    "tags": ["river", "cross", "rope", "path", "connect"],
+    "names": {
+      "es": {
+        "text": "El Puente",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Bridge",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Une una orilla con otra\ny nadie se queda aislado.",
+      "en": "It joins one bank to another\nand no one is left alone."
+    },
+    "riddle": {
+      "es": "Cruzo ríos y barrancas sin mojarme; las orillas se dan la mano en mí.",
+      "en": "I cross rivers and ravines without getting wet; the banks shake hands over me."
+    }
+  },
+  {
+    "n": 44,
+    "id": "vela",
+    "category": "handmade",
+    "art": "🕯️",
+    "emoji": "🕯️",
+    "tags": ["light", "wax", "flame", "wick", "night"],
+    "names": {
+      "es": {
+        "text": "La Vela",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Candle",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Una llamita pequeña\nalumbra todo el cuarto.",
+      "en": "A tiny flame\nlights up the whole room."
+    },
+    "riddle": {
+      "es": "Soy de cera, tengo un pabilo y doy luz mientras me derrito.",
+      "en": "I am made of wax, I have a wick, and I give light while I melt."
+    }
+  },
+  {
+    "n": 45,
+    "id": "martillo",
+    "category": "handmade",
+    "art": "🔨",
+    "emoji": "🔨",
+    "tags": ["tool", "build", "nail", "strike", "wood"],
+    "names": {
+      "es": {
+        "text": "El Martillo",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Hammer",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Toc, toc, toc, golpea firme\ny el clavo se hunde en la madera.",
+      "en": "Tap, tap, tap, it strikes firm\nand the nail sinks into the wood."
+    },
+    "riddle": {
+      "es": "Tengo mango y cabeza dura; golpeo clavos para armar cosas.",
+      "en": "I have a handle and a hard head; I hit nails to build things."
+    }
+  },
+  {
+    "n": 46,
+    "id": "casa",
+    "category": "places",
+    "art": "🏠",
+    "emoji": "🏠",
+    "tags": ["home", "roof", "family", "shelter", "door"],
+    "names": {
+      "es": {
+        "text": "La Casa",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The House",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Techo, puerta y ventana,\naquí siempre hay un lugar.",
+      "en": "Roof, door, and window,\nthere is always a place here."
+    },
+    "riddle": {
+      "es": "Tengo techo y paredes; adentro se duerme y se comparte.",
+      "en": "I have a roof and walls; inside we sleep and share."
+    },
+    "confusableWith": ["pueblo"]
+  },
+  {
+    "n": 47,
+    "id": "milpa",
+    "category": "places",
+    "art": "🌾",
+    "emoji": "🌾",
+    "tags": ["field", "maize", "squash", "beans", "farm"],
+    "names": {
+      "es": {
+        "text": "La Milpa",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Milpa",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Maíz, frijol y calabaza\ncrecen juntos y se ayudan.",
+      "en": "Maize, beans, and squash\ngrow together and help each other."
+    },
+    "riddle": {
+      "es": "Soy un campo donde tres cultivos crecen juntos: maíz, frijol y calabaza.",
+      "en": "I am a field where three crops grow together: maize, bean, and squash."
+    }
+  },
+  {
+    "n": 48,
+    "id": "tienda",
+    "category": "places",
+    "art": "🏪",
+    "emoji": "🏪",
+    "tags": ["shop", "food", "buy", "trade", "neighborhood"],
+    "names": {
+      "es": {
+        "text": "La Tienda",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Shop",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "En la esquina abre su puerta\ny hay de todo un poquito.",
+      "en": "On the corner it opens its door\nand has a little of everything."
+    },
+    "riddle": {
+      "es": "Estoy en la esquina del barrio y vendo pan, fruta y otras cosas.",
+      "en": "I am on the neighborhood corner and sell bread, fruit and other things."
+    }
+  },
+  {
+    "n": 49,
+    "id": "plaza",
+    "category": "places",
+    "art": "⛲",
+    "emoji": "⛲",
+    "tags": ["square", "fountain", "meeting", "town", "center"],
+    "names": {
+      "es": {
+        "text": "La Plaza",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Plaza",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "En el centro del pueblo,\nse juntan juegos y charlas.",
+      "en": "In the middle of town,\ngames and chats gather."
+    },
+    "riddle": {
+      "es": "Soy un espacio abierto al centro del pueblo; tengo una fuente y bancas.",
+      "en": "I am an open space in the middle of town; I have a fountain and benches."
+    }
+  },
+  {
+    "n": 50,
+    "id": "puerto",
+    "category": "places",
+    "art": "⚓",
+    "emoji": "⚓",
+    "tags": ["boats", "sea", "dock", "anchor", "travel"],
+    "names": {
+      "es": {
+        "text": "El Puerto",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Harbor",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Aquí descansan las barcas\ny el mar toca la puerta.",
+      "en": "Here the boats rest\nand the sea knocks at the door."
+    },
+    "riddle": {
+      "es": "Las barcas llegan a mí a descansar y se amarran con ancla y cuerda.",
+      "en": "Boats come to me to rest and tie up with anchor and rope."
+    }
+  },
+  {
+    "n": 51,
+    "id": "pueblo",
+    "category": "places",
+    "art": "🏘️",
+    "emoji": "🏘️",
+    "tags": ["community", "houses", "neighbors", "fiesta", "town"],
+    "names": {
+      "es": {
+        "text": "El Pueblo",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Village",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Casas vecinas, voces amigas,\ntodos se conocen.",
+      "en": "Neighboring houses, friendly voices,\neveryone knows each other."
+    },
+    "riddle": {
+      "es": "Somos muchas casas juntas y nos ayudamos entre vecinos.",
+      "en": "We are many houses together and neighbors help one another."
+    },
+    "confusableWith": ["casa"]
+  },
+  {
+    "n": 52,
+    "id": "escuela",
+    "category": "places",
+    "art": "🏫",
+    "emoji": "🏫",
+    "tags": ["learn", "books", "class", "friends", "play"],
+    "names": {
+      "es": {
+        "text": "La Escuela",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The School",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Se aprende y se juega,\ncada día algo nuevo.",
+      "en": "We learn and we play,\nsomething new each day."
+    },
+    "riddle": {
+      "es": "Aquí se aprende a leer y a jugar; hay timbre y recreo.",
+      "en": "Here you learn to read and to play; there is a bell and recess."
+    }
+  },
+  {
+    "n": 53,
+    "id": "observatorio",
+    "category": "places",
+    "art": "🔭",
+    "emoji": "🔭",
+    "tags": ["stars", "telescope", "sky", "night", "science"],
+    "names": {
+      "es": {
+        "text": "El Observatorio",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Observatory",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Un techo que se abre al cielo\npara contar estrellas.",
+      "en": "A roof that opens to the sky\nto count the stars."
+    },
+    "riddle": {
+      "es": "Tengo un telescopio y una cúpula; desde aquí se mira el cielo.",
+      "en": "I have a telescope and a dome; from here we watch the sky."
+    }
+  },
+  {
+    "n": 54,
+    "id": "biblioteca",
+    "category": "places",
+    "art": "📚",
+    "emoji": "📚",
+    "tags": ["books", "quiet", "stories", "read", "shelves"],
+    "names": {
+      "es": {
+        "text": "La Biblioteca",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Library",
+        "status": "approved"
+      }
+    },
+    "verso": {
+      "es": "Mil historias en fila,\nesperando una mano que las abra.",
+      "en": "A thousand stories in a row,\nwaiting for a hand to open them."
+    },
+    "riddle": {
+      "es": "Tengo estantes llenos de cuentos; se habla bajito y se llevan libros prestados.",
+      "en": "I have shelves full of stories; we speak softly and borrow books."
+    }
+  }
+]

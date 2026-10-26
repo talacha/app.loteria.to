@@ -4,6 +4,10 @@ import { spawnSync } from 'node:child_process';
 
 const target = process.argv[2];
 if (!target || !existsSync(target)) {
+  if (process.env.CI) {
+    console.error(`[fail] ${target ?? '(no script)'} not found in CI`);
+    process.exit(1);
+  }
   console.log(`[skip] ${target ?? '(no script)'} not found`);
   process.exit(0);
 }

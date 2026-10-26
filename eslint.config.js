@@ -9,6 +9,7 @@ export default tseslint.config(
   {
     ignores: [
       'dist',
+      '.agents',
       'dev-dist',
       'node_modules',
       'playwright-report',
