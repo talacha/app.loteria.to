@@ -1,0 +1,81 @@
+/* Shared design tokens. Owned by the theme (M6) agent; other areas only consume them. */
+:root {
+  --color-bg: #fff8ec;
+  --color-surface: #ffffff;
+  --color-ink: #2a1a10;
+  --color-ink-muted: #6b5546;
+  --color-accent: #b3261e; /* rojo grana */
+  --color-accent-ink: #ffffff;
+  --color-maiz: #f2b632;
+  --color-jade: #1f7a5a;
+  --color-cielo: #2c5d9e;
+  --color-bean: #4a2a1a;
+  --color-focus: #2c5d9e;
+  --color-border: #e6d7c3;
+  --color-warn-bg: #fff1c2;
+
+  --font-body: 'Noto Sans', system-ui, sans-serif;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-call: clamp(3rem, 12vw, 9rem);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius: 12px;
+  --tap: 44px;
+  --shadow: 0 2px 8px rgb(42 26 16 / 0.12);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg: #1d140e;
+    --color-surface: #2a1d14;
+    --color-ink: #f7ede0;
+    --color-ink-muted: #c9b6a3;
+    --color-border: #4a3626;
+    --color-warn-bg: #4a3a10;
+    --color-focus: #8fb6ff;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='contrast'] {
+  --color-bg: #000000;
+  --color-surface: #000000;
+  --color-ink: #ffffff;
+  --color-ink-muted: #ffffff;
+  --color-accent: #ffd400;
+  --color-accent-ink: #000000;
+  --color-border: #ffffff;
+  --color-focus: #ffd400;
+}
+
+html {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+body {
+  margin: 0;
+  background: var(--color-bg);
+}
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
