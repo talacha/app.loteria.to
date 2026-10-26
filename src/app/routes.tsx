@@ -1,0 +1,15 @@
+import HomePage from './home/HomePage';
+import HostPage from './host/HostPage';
+import JoinPage from './join/JoinPage';
+import PrintPage from './print/PrintPage';
+import DeckPage from './deck/DeckPage';
+import CreditsPage from './credits/CreditsPage';
+
+export const routes = [
+  { path: '/', element: <HomePage /> },
+  { path: '/host', element: <HostPage /> },
+  { path: '/r/:code', element: <JoinPage /> },
+  { path: '/print', element: <PrintPage /> },
+  { path: '/deck', element: <DeckPage /> },
+  { path: '/creditos', element: <CreditsPage /> },
+];

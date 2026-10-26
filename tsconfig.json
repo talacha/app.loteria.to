@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM", "DOM.Iterable", "WebWorker"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "types": ["vite/client", "vite-plugin-pwa/client", "node"],
+    "paths": {
+      "@engine": ["./src/engine/index.ts"],
+      "@engine/*": ["./src/engine/*"],
+      "@app": ["./src/app/index.ts"],
+      "@app/*": ["./src/app/*"],
+      "@net": ["./src/net/index.ts"],
+      "@net/*": ["./src/net/*"],
+      "@ai": ["./src/ai/index.ts"],
+      "@ai/*": ["./src/ai/*"],
+      "@content": ["./src/content/index.ts"],
+      "@content/*": ["./src/content/*"],
+      "@print": ["./src/print/index.ts"],
+      "@print/*": ["./src/print/*"]
+    }
+  },
+  "include": ["src", "scripts", "e2e", "*.ts"]
+}
