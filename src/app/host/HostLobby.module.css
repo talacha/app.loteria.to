@@ -5,7 +5,7 @@
   flex-direction: column;
   gap: var(--space-4);
   background: var(--night);
-  color: var(--paper);
+  color: var(--color-text);
   font-family: var(--font-ui);
   box-sizing: border-box;
 }
@@ -27,7 +27,7 @@
   align-items: center;
   gap: var(--space-3);
   margin: 0;
-  color: var(--muted-on-night);
+  color: var(--color-muted-on-night);
 }
 .roundNo {
   font-weight: 700;
@@ -76,7 +76,7 @@
   border-radius: var(--radius-sm);
   border: var(--border-thick);
   cursor: pointer;
-  color: var(--paper);
+  color: var(--color-text);
   background: var(--night-raised);
 }
 .primary {
@@ -136,12 +136,12 @@
   margin-top: 10px;
 }
 .muted {
-  color: var(--muted-on-night);
+  color: var(--color-muted-on-night);
   font-size: var(--text-sm);
 }
 .lead {
   margin: 0;
-  color: var(--muted-on-night);
+  color: var(--color-muted-on-night);
 }
 .rosterBox {
   display: flex;
@@ -174,7 +174,7 @@
 }
 .hint {
   margin: 0;
-  color: var(--muted-on-night);
+  color: var(--color-muted-on-night);
   font-size: var(--text-md);
 }
 .srOnly {
@@ -231,7 +231,7 @@
 }
 
 .page a {
-  color: var(--maiz);
+  color: var(--color-accent-text);
 }
 .page a:focus-visible,
 .page button:focus-visible,
@@ -266,7 +266,7 @@
   border: var(--border-thick);
   border-radius: var(--radius-md);
   background: var(--night-raised);
-  color: var(--paper);
+  color: var(--color-text);
   cursor: pointer;
 }
 .mode[data-checked] {

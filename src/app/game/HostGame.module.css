@@ -2,7 +2,7 @@
   min-height: 100dvh;
   box-sizing: border-box;
   background: var(--color-night);
-  color: var(--color-paper);
+  color: var(--color-text);
   font-family: var(--font-ui);
   padding: var(--space-5) var(--space-4) var(--space-6);
   display: flex;
@@ -94,7 +94,7 @@
   font-family: var(--font-display);
   font-weight: 800;
   font-size: var(--text-xl);
-  color: var(--color-maiz);
+  color: var(--color-accent-text);
 }
 .callOf {
   font-size: var(--text-lg);
@@ -136,7 +136,7 @@
   font-family: var(--font-display);
   font-weight: 800;
   font-size: var(--text-lg);
-  color: var(--color-maiz);
+  color: var(--color-accent-text);
 }
 .choices {
   display: grid;

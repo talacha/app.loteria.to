@@ -6,7 +6,7 @@
   flex-direction: column;
   gap: 16px;
   background: var(--night);
-  color: var(--paper);
+  color: var(--color-text);
   font-family: var(--font-ui);
 }
 .page h1 {
