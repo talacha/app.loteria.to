@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { cards, isAvoidedPair } from '@content';
-import { MAX_TABLA_INDEX, choicesFor, deckOrder, tabla } from '@engine';
+import { MAX_SHARED_CARDS, MAX_TABLA_INDEX, choicesFor, deckOrder, tabla } from '@engine';
 import '../i18n';
 
 vi.mock('@print/options', async (orig) => ({
@@ -68,13 +68,18 @@ const completesAt = (index: number) => {
   order.forEach((c, k) => mine.has(c) && (last = k + 1));
   return last;
 };
+const sharedCards = (a: number, b: number) => {
+  const s = new Set(tabla('TESTSEED', a, deck).cards);
+  return tabla('TESTSEED', b, deck).cards.filter((c) => s.has(c)).length;
+};
 /** Two tabla indices that complete on the same call, below 54 so the game ends early. */
 function tiedIndices(): [number, number] {
   const seen = new Map<number, number>();
   for (let i = 0; i <= MAX_TABLA_INDEX; i++) {
     const at = completesAt(i);
     const other = seen.get(at);
-    if (other !== undefined && at < 54) return [other, i];
+    if (other !== undefined && at < 54 && sharedCards(other, i) <= MAX_SHARED_CARDS)
+      return [other, i];
     if (!seen.has(at)) seen.set(at, i);
   }
   throw new Error('no tie found');

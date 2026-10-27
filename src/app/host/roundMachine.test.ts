@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { cards } from '@content';
-import { decodeTablaCode, deckOrder, tabla, tablaCode } from '@engine';
+import {
+  MAX_SHARED_CARDS,
+  decodeTablaCode,
+  deckOrder,
+  pickTablaIndex,
+  tabla,
+  tablaCode,
+} from '@engine';
 import {
   calledCards,
   currentCard,
@@ -11,7 +18,6 @@ import {
   toSaved,
   validatePaperCode,
   validateSeatClaim,
-  pickTablaIndex,
 } from './roundMachine';
 import type { RoundAction, RoundState } from './roundMachine';
 
@@ -79,12 +85,17 @@ describe('roundMachine', () => {
     expect(bad.missing).toEqual([t0.cards[0]]);
   });
 
-  it('picks unique tabla indices', () => {
-    const used = new Set<number>();
-    for (let i = 0; i < 200; i++) used.add(pickTablaIndex(used));
-    expect(used.size).toBe(200);
-    let n = 0;
-    expect(pickTablaIndex(new Set([0]), () => (n++ === 0 ? 0 : 0.5))).toBe(2048);
+  it('assigns 20 seats so no pair shares more than MAX_SHARED_CARDS cards', () => {
+    const taken: number[] = [];
+    for (let i = 0; i < 20; i++) taken.push(pickTablaIndex('SEEDSEED', taken, deck));
+    expect(new Set(taken).size).toBe(20);
+    const sets = taken.map((t) => new Set(tabla('SEEDSEED', t, deck).cards));
+    for (let a = 0; a < 20; a++) {
+      for (let b = a + 1; b < 20; b++) {
+        const shared = [...sets[a]!].filter((c) => sets[b]!.has(c)).length;
+        expect(shared).toBeLessThanOrEqual(MAX_SHARED_CARDS);
+      }
+    }
   });
 
   it('records winners once and pauses', () => {

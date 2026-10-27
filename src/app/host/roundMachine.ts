@@ -1,12 +1,4 @@
-import {
-  MAX_TABLA_INDEX,
-  checkClaim,
-  decodeTablaCode,
-  deckOrder,
-  isCardComplete,
-  seedRef,
-  tabla,
-} from '@engine';
+import { checkClaim, decodeTablaCode, deckOrder, isCardComplete, seedRef, tabla } from '@engine';
 import type { CardId, Category, Lang, PatternId, PickState } from '@engine';
 
 export type DeckCard = { id: CardId; category: Category };
@@ -228,18 +220,6 @@ export function langForCall(s: Pick<RoundState, 'settings' | 'langs'>, i: number
 export interface ClaimOutcome {
   valid: boolean;
   missing: CardId[];
-}
-
-/** Pick a random tabla index not in `used` (0..MAX_TABLA_INDEX). */
-export function pickTablaIndex(
-  used: ReadonlySet<number>,
-  rand: () => number = () => globalThis.crypto.getRandomValues(new Uint32Array(1))[0]! / 2 ** 32,
-): number {
-  if (used.size > MAX_TABLA_INDEX) throw new Error('no free tabla index');
-  for (;;) {
-    const i = Math.floor(rand() * (MAX_TABLA_INDEX + 1));
-    if (!used.has(i)) return i;
-  }
 }
 
 /**

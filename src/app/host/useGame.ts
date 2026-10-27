@@ -4,6 +4,7 @@ import type { Card } from '@content';
 import {
   ROOM_MAX_PLAYERS,
   choicesFor,
+  pickTablaIndex,
   initialPickState,
   isCardComplete,
   resolveFullCardWinners,
@@ -21,7 +22,6 @@ import {
   currentCard,
   initialRound,
   langForCall,
-  pickTablaIndex,
   roundReducer,
   toSaved,
 } from './roundMachine';
@@ -60,6 +60,7 @@ export const SCORES_DEBOUNCE_MS = 500;
 const ROUND_RESEND_MS = 10_000;
 const HELLO_COOLDOWN_MS = 2000;
 
+const randomUnit = () => globalThis.crypto.getRandomValues(new Uint32Array(1))[0]! / 2 ** 32;
 const deck = cards.map((c) => ({ id: c.id, category: c.category }));
 const ids = cards.map((c) => c.id);
 
@@ -169,8 +170,8 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     (seat: string): number => {
       const cur = stateRef.current.assignments[seat];
       if (cur !== undefined) return cur;
-      const used = new Set(Object.values(stateRef.current.assignments));
-      const index = pickTablaIndex(used);
+      const taken = Object.values(stateRef.current.assignments);
+      const index = pickTablaIndex(stateRef.current.roomSeed, taken, deck, randomUnit);
       apply({ type: 'assign', seat, index });
       return index;
     },
