@@ -1,421 +1,152 @@
-# Lotería de los Pueblos: architecture and dependencies
+# Architecture
 
-**Status:** planning. There is no application code yet, so this document describes the system as it is planned. Product scope lives in [README.md](../README.md) and [north-star.md](../north-star.md); build order and task IDs (`LT-xxx`) live in [roadmap.md](../roadmap.md) and [tasks.md](../tasks.md). Where this document and those files disagree, those files win and this one should be fixed.
+This document describes the system as it stands in v1.0, checked against the code. It replaces the older planning version and `docs/archive/PLATFORM.md`. The network contract is in [protocol.md](protocol.md) and the game rules are in [rules.md](rules.md). Anything marked _unverified_ could not be confirmed from the repo.
 
-Every decision below carries one of four labels:
+## 1. Shape of the system
 
-| Label | Meaning |
-|---|---|
-| **Decided** | Stated in the project brief (north star / README). Change only with a deliberate decision. |
-| **Planned** | Named in a task in `tasks.md`. Expected, but can still move while the task is built. |
-| **Proposed** | Suggested here to fill a gap. Not agreed; confirm or replace when the relevant task starts. |
-| **Open** | A question that needs an answer before or during the named task. |
+The app is a static **Vite + React 19 PWA** with a few **Vercel Functions** in `api/`. The browser does all the game work: shuffling the deck, deriving tablas, choosing the spelling choices, scoring, playing audio and building PDFs. The **host device** (the cantor screen) is the only authority for a room. Phones join a **Supabase Realtime** channel (broadcast + presence). There is no game server and no game database.
 
-No version numbers are pinned in this document. Versions are chosen when LT-001 scaffolds the repo and are then recorded in `package.json` and the lockfile, which become the source of truth.
-
----
-
-## 1. Shape of the system in one paragraph
-
-A single TypeScript codebase builds a static **progressive web app** (Vite + React) and a handful of **Vercel serverless functions** under `api/`. The browser does almost all the work: it shuffles the deck, derives every tabla from a seed, checks claims, plays recorded audio and prints PDFs. A **host device** (the cantor) is the authority for a round. Phones join a **Supabase Realtime broadcast channel** to receive calls and send claims; there is no game server and no game database. The serverless functions exist only for things that need a secret or durable state (AI calls, review passcode, metrics ingestion, the room host-key registry, async jobs). The platform is **Supabase** (Realtime, Postgres and Storage), **Upstash Redis** (rate limits, room keys, job idempotency) and **Upstash QStash** (async jobs and schedules); see `docs/PLATFORM.md`. There is no Neon. If the network disappears, the host keeps calling from its precached assets and paper players keep playing.
-
-## 2. Language and tooling
-
-| Area | Choice | Label | Source |
-|---|---|---|---|
-| Language | **TypeScript** with `strict` on, for both the client and `api/` functions | Decided / Planned | README tech stack, tasks conventions |
-| UI framework | **React** | Decided | north star |
-| Build tool / dev server | **Vite** (`react-ts` template) | Decided | north star, LT-001 |
-| Package manager | **pnpm** | Planned | tasks conventions |
-| Lint / format | **ESLint** + **Prettier** | Planned | LT-001 |
-| Unit and property tests | **Vitest** | Planned | LT-001, LT-011, LT-012 |
-| End-to-end tests | **Playwright** (multi-client rounds, offline test via `context.setOffline`) | Planned | LT-001, LT-032, LT-047 |
-| Accessibility checks | axe (in Playwright) | Planned | LT-004, M5 |
-| One CI entry point | `pnpm check` (lint, typecheck, unit tests, content validation, i18n check, copy lint) | Planned | LT-001, LT-003, LT-010, LT-053 |
-| CI runner | **GitHub Actions** running `pnpm check` + a Playwright smoke test | Planned | LT-001 |
-| Path aliases | `@engine`, `@app`, `@net`, `@ai`, `@content`, `@print` | Planned | LT-001 |
-| Node.js runtime | Whatever current LTS Vercel supports at scaffold time, pinned via `engines` / `.nvmrc` | Proposed | — |
-| Monorepo with Tianguis | Only if both games are built: `packages/ui`, `packages/i18n`, `packages/net` | **Open** | tasks conventions |
-
-## 3. System diagram
+During play, only one Function matters: `/api/rooms`, the room-code and host-key registry in **Upstash Redis**. The Postgres, Storage and QStash parts serve a reviewer and metrics pipeline. Their endpoints are deployed, but no current client calls them.
 
 ```mermaid
 flowchart LR
-  subgraph Room["The room (classroom, plaza, family table)"]
-    Host["Host / cantor device<br/>(laptop + projector, or tablet)<br/>PWA: engine, audio, IndexedDB"]
-    Phones["Up to 40 phones<br/>PWA: tabla, marks, claim"]
-    Paper["Paper tablas<br/>(printed PDF, 6-char check code)"]
+  subgraph Room["The room"]
+    Host["Host / cantor screen<br/>/host · engine · IndexedDB<br/>ECDSA key pair"]
+    Phones["Phones (≤ 20 seats incl. host-local)<br/>/r/CODE · PlayerBoard"]
+    Paper["Paper tablas<br/>/print PDF"]
+    Solo["Solo device<br/>/solo · CPU players"]
   end
-
-  subgraph Vercel["Vercel (Hobby)"]
-    Static["Static PWA assets<br/>(app shell, cards.json, art, audio)"]
-    Pista["/api/pista<br/>hint, Jev Choice"]
-    Cantor["/api/cantor<br/>banter, Claude"]
-    Metrics["/api/metrics<br/>anonymous counters"]
-    ReviewAuth["/api/review/*<br/>reviewer passcode, submit"]
-    Rooms["/api/rooms<br/>host key registry"]
-    Jobs["/api/jobs/*<br/>QStash webhooks"]
+  subgraph Vercel
+    Static["Static + prerendered HTML<br/>/, /deck, /creditos, /solo, /print<br/>app.html shell, SW, audio, art"]
+    MW["middleware.ts<br/>/r/* OG tags for link previews"]
+    Rooms["/api/rooms · /api/rooms/:code"]
+    Other["/api/health · /api/metrics<br/>/api/review/* · /api/jobs/*"]
   end
-
-  subgraph Supabase["Supabase"]
-    RT["Realtime broadcast channel<br/>loteria:{code} + Presence"]
-    Storage["Storage bucket audio-pending"]
-    PG["Postgres<br/>review_*, metric_*, job_runs"]
+  subgraph Supabase
+    RT["Realtime channel loteria:CODE<br/>broadcast 'msg' + presence"]
+    PG[("Postgres<br/>review_*, metric_*, job_runs")]
+    ST[("Storage bucket audio-pending")]
   end
+  Redis[("Upstash Redis<br/>room:CODE, rl:*, job:*")]
+  QStash["Upstash QStash"]
 
-  Jev["Jev API"]
-  Claude["Claude API<br/>(Anthropic)"]
-  Upstash["Upstash Redis<br/>rate limit, room keys"]
-  QStash["Upstash QStash<br/>jobs, schedules"]
-
-  Host -- "round, call, claimResult, end" --> RT
-  RT -- "fan-out" --> Phones
-  Phones -- "hello, claim, markStat" --> RT
-  RT --> Host
-  Paper -. "player shouts; host types code" .-> Host
-
-  Host --> Static
-  Phones --> Static
-  Phones -- "Pista button" --> Pista
-  Host -- "pacing" --> Pista
-  Host -- "prefetch banter" --> Cantor
-  Host --> Metrics
-  Pista --> Jev
-  Cantor --> Claude
-  Pista --> Upstash
-  Rooms --> Upstash
-  Host -- "register ECDSA public key" --> Rooms
-  Phones -- "fetch host key" --> Rooms
-  Metrics --> PG
-  ReviewAuth --> PG
-  ReviewAuth --> QStash
-  QStash --> Jobs
-  Jobs --> PG
-
-  Reviewer["Native-speaker reviewer<br/>/review route"] --> ReviewAuth
-  Reviewer -- "signed upload URL" --> Storage
+  Host <-->|signed host msgs / hello, pick| RT
+  Phones <--> RT
+  Host -->|POST code + hostKey| Rooms
+  Phones -->|GET hostKey if no #k=| Rooms
+  Rooms --> Redis
+  Other --> Redis
+  Other --> PG
+  Other --> ST
+  Other -->|publish| QStash -->|signed POST| Other
+  Phones -. link preview bots .-> MW --> Static
 ```
 
-**Offline path:** every arrow that crosses into Vercel functions, Supabase, Jev or Claude is optional at play time. With no network the host uses only its own precached `Static` copy, and paper tablas are the players. See section 6.
-
-## 4. Client architecture
-
-### 4.1 Source layout (Planned, README / tasks conventions)
-
-```
-src/
-  engine/   pure, framework-free game logic: deck, seeded RNG, tablas, codes, claims
-  app/      React UI: routes, screens, components, themes
-  net/      Supabase Realtime room client and message types
-  ai/       HintProvider / pacing providers, online + offline implementations
-  content/  cards.json, art/, credits.json, translation catalogs
-  print/    pdf-lib tabla generation (runs in a Web Worker)
-api/        Vercel functions: pista, cantor, metrics, review-auth
-scripts/    draft-versos.ts (Batches API), pull-reviews.ts
-public/
-  audio/{lang}/{n}.webm   reviewed recordings
-docs/       architecture, deck decisions, scale, Jev notes, guides
-```
-
-**Rule (Proposed):** `src/engine/` imports nothing from React, the network or the browser beyond standard JS, so it runs identically in the host, in phones, in tests and in a Node script. Everything that must agree across devices (shuffle order, tabla contents, check codes, claim results) lives there.
-
-### 4.2 Screens and routes
-
-| Route | Purpose | Task |
-|---|---|---|
-| `/` | Home: "Ser cantor", "Imprimir tablas", "Unirme a una sala" | LT-017 |
-| cantor screen | Full-screen caller, controls, keyboard shortcuts, Wake Lock | LT-014 |
-| print | Choose count, paper size, label language, large print, ink saver | LT-016 |
-| `/r/{code}` | Join a room by QR code, get a tabla | LT-031 |
-| player tabla | 4×4 grid, beans, "¡Lotería!" button, Pista | LT-032 |
-| `/deck` | All 54 cards | LT-010 |
-| `/review?lang=…` | Reviewer approval and recording tool | LT-022 |
-| `/creditos` | Credits and attributions | LT-026 |
-| `/admin` | Passcode-protected north-star dashboard | LT-063 |
-
-### 4.3 Libraries the client needs
-
-| Need | Library | Label |
-|---|---|---|
-| UI | `react`, `react-dom` | Decided |
-| PWA, service worker, precache | `vite-plugin-pwa` (Workbox under the hood) | Planned (LT-002) |
-| Translations, ICU plurals | `i18next` + an ICU plugin + React bindings | Planned (LT-003) |
-| Realtime rooms | `@supabase/supabase-js` | Decided (Supabase Realtime) |
-| Schema validation (content and API payloads) | `zod` | Planned (LT-010, LT-044) |
-| PDF tablas | `pdf-lib` (plus `@pdf-lib/fontkit` to embed Noto Sans for Latin-extended glyphs) | Decided / Proposed (fontkit) |
-| Font | Noto Sans, self-hosted | Planned (LT-004) |
-| Placeholder art | OpenMoji SVGs, CC BY-SA 4.0, attributed in `credits.json` | Planned (LT-010) |
-| Routing | `react-router` | **Proposed** |
-| App state | React context + `useReducer` for the round; no global store unless it's needed | **Proposed** |
-| IndexedDB access | `idb` (small promise wrapper) | **Proposed** |
-| QR code rendering (screen and PDF) | a small QR encoder such as `qrcode` | **Proposed** |
-| Confetti | a small canvas confetti library, honoring reduced motion | **Proposed** |
-
-Browser APIs used directly: Web Audio and `MediaRecorder` (review recordings), Media Session, Screen Wake Lock, Web Speech (Spanish and English only), Vibration, Web Workers, IndexedDB, sessionStorage.
-
-## 5. Data model
-
-### 5.1 Content (static, versioned in git)
-
-`src/content/cards.json`, validated by a zod schema in CI (LT-010):
-
-```ts
-type Lang = 'es' | 'en' | 'nah' | 'yua' | 'quz';
-type ReviewStatus = 'draft' | 'reviewed' | 'approved'; // exact set: Open, settle in LT-010/LT-024
-
-interface Card {
-  n: number;                 // 1..54
-  id: string;                // stable slug, e.g. "ajolote"
-  category: 'animals' | 'plants_food' | 'sky_land' | 'handmade' | 'places';
-  art: string;               // path under src/content/art/
-  tags: string[];            // used by the offline hint matcher
-  names: Partial<Record<Lang, {
-    text: string;
-    ipa?: string;
-    status: ReviewStatus;
-    source?: string;
-    audio?: string;          // public/audio/{lang}/{n}.webm
-  }>>;
-  verso: { es: string; en: string };
-  riddle: { es: string; en: string };
-  noteId?: string;
-}
-```
-
-Also in `content/`: `credits.json` (art, voices, reviewers) and the five translation catalogs.
-
-**Content rules enforced in code:** a call language is offered only if its names are approved, under the `VITE_HIDE_UNREVIEWED` build flag (LT-024); Indigenous-language audio never falls back to synthetic speech (LT-025); the copy lint rejects gendered human roles (LT-053).
-
-### 5.2 Derived game state (never stored on a server)
-
-Everything a claim depends on is **recomputable from small inputs**, which is what makes paper play and offline checking work:
-
-| Value | Derived from | Where |
-|---|---|---|
-| Call order for a round | `deckOrder(roomSeed, roundNo)`: mulberry32 + Fisher–Yates | `engine/rng.ts` (LT-011) |
-| A tabla | `tabla(seed, index) → CardId[16]`, at most 5 per category; `tablaSet` bounds overlap at 8 | `engine` (LT-012) |
-| Paper check code | `tablaCode(seed, index)`: 6-char Crockford base32 with checksum; `decodeTablaCode` | `engine` (LT-012) |
-| Claim result | `checkClaim(tabla, called, pattern, marks?) → {valid, completedPattern?, missing?}` | `engine` (LT-013) |
-
-**Open:** how `decodeTablaCode` returns a `seedRef` that the host can match to its own room seed (for example, a few seed bits inside the code), and how much of the 6 characters that leaves for the index and checksum. Settle in LT-012.
+## 2. Vercel surface
 
-### 5.3 Room messages (Supabase Realtime broadcast, channel `loteria:{code}`)
+**Static and prerendered.** `pnpm build` writes `dist/`. These routes are prerendered to real HTML: `/`, `/deck`, `/creditos`, `/solo`, `/print` and `404.html`. `dist/app.html` is the noindexed SPA shell. `vercel.json` rewrites `/host`, `/r/:code` and `/ui` to `/app.html` and sends `X-Robots-Tag: noindex, nofollow` on those routes. `robots.txt` disallows the same routes plus `/api/`. Cache headers: `/assets`, `/art` and `/fonts` are immutable for one year, `/og` gets 7 days plus SWR, and `/sw.js` is `no-cache`.
 
-The room code is 5 letters from an unambiguous alphabet (LT-030).
+**Middleware** (`middleware.ts`, matcher `/r/:path*`). Link-preview bots don't run JS, so for GET/HEAD the middleware fetches `/app.html`. It strips the generic title, description, OG, Twitter and canonical tags and injects invite-specific ones: title `¡Te invitaron a la Lotería! · Sala CODE`, image `/og/invite.png`, `noindex`. The response is cached with `s-maxage=3600`. If anything fails, the request passes through to the normal rewrite.
 
-| Direction | Message |
-|---|---|
-| host → all | `round{seed, roundNo, mode, pattern, callLang \| 'rotating', speed}` |
-| host → all | `call{i, cardId, lang, at}` |
-| host → all | `claimResult{seat, valid, missing?}` |
-| host → all | `end{winners}` |
-| client → host | `hello{seat, name, glyph, labelLang}` |
-| client → host | `claim{seat, tablaIndex, marks[]}` (rate limit 1 per 3 s per seat) |
-| client → host | `markStat{seat, ms}` (M4 pacing only) |
+**Functions** (`api/`, Node runtime). Every handler goes through `route()` in `api/_lib/http.ts`, which provides a method guard, same-origin only (no CORS headers; a foreign `Origin` gets 403) and `{"error":code}` bodies. A missing service answers `503 {"error":"not_configured","feature"}`.
 
-Presence tracks seats. **Marks stay on the phone**; only claims travel. The host is the only device that decides a claim. Message types live in `src/net/` and are validated with zod on receipt (Proposed).
+| Route                      | Method | Does                                                                                                                                                                         | Called by           |
+| -------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `/api/rooms`               | POST   | Takes `{code, hostKey}` and runs `SET room:CODE hostKey NX EX 14400` (4 h). Returns 201 when new and 200 when the same key is already stored (resume). A different key gets 409 `code_taken`. Limit 10/min per IP. | host (`useHostRoom`) |
+| `/api/rooms/:code`         | GET    | Returns `{hostKey}` or 404, with `no-store`. Limit 60/min per IP.                                                                                                              | host (409 check), phones without `#k=` |
+| `/api/health`              | GET    | Returns `{redis, qstash, db}`, each `ok`, `not_configured` or `error`.                                                                                                        | ops                 |
+| `/api/metrics`             | POST   | Takes up to 50 anonymous counters (`round_start`, `card_matched`, `claim`, `round_end`, `print`) and inserts them into `metric_events`. With `DNT`/`Sec-GPC` it stores nothing and returns 204. Limit 30/min per IP. | **no client yet**   |
+| `/api/review/auth`         | POST   | Checks `{lang, code}` against `REVIEW_CODE` (timing-safe) and returns a 2-hour HMAC token. Only failures count: 5 per IP and 50 globally per 10 min.                          | **no client yet**   |
+| `/api/review/submit`       | POST   | Requires a Bearer token. Inserts into `review_submissions` (idempotency key), can return a signed upload URL into `audio-pending`, and enqueues `notify-reviewers`. Limit 20 per 10 min per IP. | **no client yet**   |
+| `/api/review/uploaded`     | POST   | Checks that the upload exists in Storage, then enqueues `transcode-recording`.                                                                                                | **no client yet**   |
+| `/api/jobs/notify-reviewers` | POST | QStash only. Stub: writes a `job_runs` row.                                                                                                                                  | QStash              |
+| `/api/jobs/transcode-recording` | POST | QStash only. Sets the submission from `upload_pending` to `uploaded`. No ffmpeg runs.                                                                                     | QStash              |
+| `/api/jobs/rollup-metrics` | POST   | QStash only. Rolls `metric_events` up into `metric_daily` for complete UTC days and deletes raw rows older than 30 days. _Unverified:_ whether a QStash schedule exists.        | QStash schedule     |
+| `/api/jobs/publish-content-release` | POST | QStash only. Stub.                                                                                                                                                       | manual              |
 
-**Decided:** host messages are authenticated with ECDSA (P-256). The host generates a key pair per round, signs `round`, `call`, `claimResult` and `end`, and registers the public key (`hostKey`, base64url) with `POST /api/rooms`, which sets `room:{code}` in Redis with `NX` and a 4 h TTL (409 if the code is taken). Phones fetch it once with `GET /api/rooms/{code}` and drop unsigned or badly signed host messages. If the registry is unreachable, rooms still work unauthenticated (classroom trust).
+Every job (`api/_lib/job.ts`) does the same things. It verifies `Upstash-Signature` over the raw body and the public URL. It takes a Redis lease `job:{jti}` (`NX EX 120`, then `done` for 24 h) and writes `job_runs`. On failure it releases the lease and returns 5xx so QStash retries.
 
-### 5.4 Local persistence
+**Data actually stored.** In Redis: `room:CODE`, the `rl:*` rate-limit counters and `job:*`. In Postgres (`supabase/migrations/0001_init.sql`, RLS on with no policies, so only the service role can read or write): `review_submissions`, `metric_events`, `metric_daily` and `job_runs` are written by code. `reviewers`, `review_decisions` and `content_releases` exist, but no code touches them. In Storage: a private `audio-pending` bucket. **No player data is stored anywhere**: no names, tablas or marks.
 
-| Data | Store | Task |
-|---|---|---|
-| Host round state (seed, round number, call index, winners, settings) | IndexedDB, so a reload or handover resumes | LT-017, LT-034 |
-| Prefetched banter for the next 3 cards | IndexedDB | LT-046 |
-| A phone player's marks | sessionStorage | LT-032 |
-| Pending telemetry events (queue and flush) | IndexedDB or localStorage | LT-005 |
-| Settings (UI, call and label language; theme) | localStorage | Proposed |
+## 3. Client module map
 
-### 5.5 Server-side data (the only things stored remotely)
+Path aliases (`vite.aliases.ts`): `@engine`, `@net`, `@content`, `@print`, `@ai`, `@app`.
 
-| Data | Where | Label |
-|---|---|---|
-| Review submissions, decisions and pending recordings | Supabase Postgres (`review_submissions`, `review_decisions`, `reviewers`, `content_releases`) + Storage bucket `audio-pending`, written only by Functions with the service role | Planned (LT-022) |
-| Anonymous counters (`round_start`, `card_matched`, `claim`, `round_end`, `print`) | Received by `/api/metrics`, stored in Supabase Postgres `metric_events`, rolled up daily into `metric_daily` (raw kept 30 days) | Decided |
-| Hint and API rate-limit counters, room host keys (`room:{code}`, 4 h), job idempotency keys | Upstash Redis | Planned (LT-044) |
-| Job audit trail | Supabase Postgres `job_runs` | Decided |
+| Module        | What it is                                                                                                                                                                                                                                                                                       |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/engine`  | Pure, deterministic rules with no I/O. `deckOrder(seed, roundNo, ids)`, `tabla(seed, index, cards)` (4×4, ≤ 5 per category), `pickTablaIndex` (≤ 8 shared cards), `choicesFor(seed, roundNo, i, correct, pool, exclude)`, `scorePick` (2/1/0, ≤ 2 picks per call), `resolveFullCardWinners`, `tablaCode`/`decodeTablaCode` (6-char Crockford code with a GF(32) check), `roomCode` (5 chars, no I/L/O/0/1), `checkClaim`/`PATTERNS` (only the loadtest and `validateSeatClaim` use these), `soloCpuPick`. Room limits: `ROOM_MIN_PLAYERS = 2`, `ROOM_MAX_PLAYERS = 20`. |
+| `src/net`     | `Transport` interface. `BaseTransport` adds the send queue (≤ 100 before join), generation guards and the `Session`, which validates with zod, signs and verifies, and applies rate limits. Two transports: `LocalTransport` (`BroadcastChannel loteria:CODE` with its own presence heartbeat, 2 s beat and 6 s expiry) and `SupabaseTransport` (Realtime channel `loteria:CODE`, broadcast event `msg`, `self: false`, presence key = seat, track `{role}`). `createTransport()` uses Supabase when `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are set, otherwise Local. Host messages are signed with **ECDSA P-256** over canonical JSON. Players pin the key from the QR `#k=` or `/api/rooms`, or else use **trust-on-first-use** (TOFU). See [protocol.md](protocol.md). |
+| `src/content` | `cards.json`: 54 cards in 6 categories. Each card has an emoji `art` and names in es/en/nah/yua/quz with a review status, IPA and sources; all 270 are `approved` and all have audio. zod `schema.ts`, `callableLangs()` (`VITE_HIDE_UNREVIEWED`), `isAvoidedPair` (distractor exclusions), UI string catalogues, `credits.json`. |
+| `src/ai`      | `hint.ts`: offline tag-matcher hint provider, used by the player and solo boards. There is no online provider.                                                                                                                                                                                       |
+| `src/print`   | PDF tablas built with `pdf-lib` + fontkit in a Web Worker (`worker.ts`). Layout, seeds and options. Each tabla carries its 6-char check code.                                                                                                                                                                  |
+| `src/app`     | React Router routes (`routes.tsx`): `/` home, `/host`, `/r/:code` join → lobby → player game, `/solo`, `/print`, `/deck`, `/creditos`, `/ui` (component gallery), `*` 404. Areas: `home`, `host` (`useHostRoom`: code, keys, registry, roster, presence; `useGame`: automatic caller and scoring; `roundMachine`; `persist` in IndexedDB), `join`, `lobby` (`LobbyWaiting`: hello/retry), `player` (`playerState` reducer, `PlayerBoard`, `WinScreen`), `game` (`HostGame`, `PlayerGame` boundary), `solo` (`soloEngine`: local host + CPUs), `audio` (`speakCall`), `print`, `deck`, `credits`, `ui` (shared components), `theme` (tokens, preferences), `seo` (head/meta and the SSR entry used by prerender), `i18n.ts` (es/en UI via i18next + ICU). |
 
-No accounts, no player names, no tabla contents and no marks are stored on any server.
+**Audio.** `speakCall(card, lang)` plays the card's recorded `.m4a` (`public/audio/{lang}/{id}.m4a`). If there is no clip, es/en fall back to Web Speech and Indigenous languages return `no-audio`; they never use speech synthesis at runtime. All 270 clips in use were synthesised offline with Meta MMS-TTS (`scripts/generate-audio.py`). The host screen starts muted. Each phone plays the call in its own spoken language.
 
-## 6. Offline and paper mode
+## 4. Offline and PWA
 
-This is a must-have (100% offline single-device play) and the first thing built (M1).
+`vite-plugin-pwa` with `registerType: 'autoUpdate'` generates the service worker.
 
-1. **First online visit** installs the service worker (`vite-plugin-pwa` / Workbox), which precaches the app shell, `src/content/**`, all card art and the audio for every enabled, reviewed language. Budget: about 15 KB per recording × 54 cards × enabled languages, total under 10 MB (LT-002).
-2. **`/api/*` is `NetworkOnly`**: never cached, so a stale AI answer can't be served and the client knows immediately that it's offline.
-3. **The host alone runs the round**: shuffle, calls, audio, captions, Wake Lock. State is saved to IndexedDB after each call.
-4. **Paper tablas** are generated in the browser with `pdf-lib` in a Web Worker (LT-016), from the same seed, so no server is involved in printing either. Each printed board carries its check code and a QR code that lets a phone adopt that board later.
-5. **Checking a paper claim**: the host presses `L`, types the 6-character code, and `checkClaim` runs locally against the called set.
-6. **AI degrades quietly** (section 9). A Playwright test cuts the network mid-round and asserts no errors (LT-047).
+- **Precached:** everything in `dist` matching `js, css, html, svg, png, webp, jpg, json, webm, m4a, woff2, ttf` under 3 MB per file. That covers the app shell, the prerendered pages, all 270 audio clips, art, fonts and OG images. `public/` itself is about 4 MB. `navigateFallback` is `/index.html`; the client always mounts with `createRoot`, so any route renders offline. `/api/*` is `NetworkOnly` and is excluded from the fallback.
+- **Works offline:** `/solo` (the engine drives the cantor and CPU players on-device), `/print` (PDFs built in a worker), `/deck` and `/creditos`, and the **host** game. If the transport can't connect, the host shows "offline" but keeps calling, scoring and saving to IndexedDB. Paper players can play along. Phones need the network unless they share a browser with the host (LocalTransport).
+- **Host persistence:** IndexedDB `loteria-host` has three stores. `state` holds the saved round (settings, seed, call count, assignments, pick state and the roster with tabla indexes). `keys` holds one non-extractable ECDSA key pair per room code, so a reload keeps the same `hostKey`. `assignments` also exists.
 
-**Open:** iOS Safari's support for Opus audio in a `.webm` container has historically been incomplete. Before committing to `public/audio/{lang}/{n}.webm`, test playback on current iOS Safari and, if needed, also ship an `.m4a` (AAC) or Opus-in-CAF variant chosen at runtime. Decide in LT-022 / LT-025.
+## 5. Build pipeline
 
-## 7. Server functions (Vercel, under `api/`)
+1. `tsc -b` then `vite build`: client bundle with sourcemaps, plus the PWA manifest and service worker.
+2. `scripts/prerender.mjs`. It writes `dist/app.html` (the built shell, noindexed, without canonical or OG URL). It bundles `src/app/seo/ssr-entry.tsx` with Vite SSR and renders each public route with `react-dom/server` into the shell under jsdom. It applies per-route head tags (title, description, OG, JSON-LD) and writes `index.html` per route, `404.html` and `sitemap.xml`.
+3. `scripts/seo-check.mjs` asserts the prerendered pages are crawlable: real text, head tags and noindex rules. The build fails if it fails.
+4. Offline asset scripts, run by hand and committed: `pnpm og:render` (`design/og/og.html` → `public/og/default.png`, `invite.png`), `pnpm icons:render`, and `scripts/generate-audio.py` (MMS-TTS → AAC 40 kbps `.m4a`, RMS-normalised, which also updates `cards.json`). `scripts/export-review.ts` exports reviewer sheets.
 
-All functions are TypeScript, validate input with zod, keep keys server-side, and are optional for play.
+On Vercel the install command is `pnpm install --frozen-lockfile` and the build command is `pnpm check && pnpm build`.
 
-| Function | Does | Calls | Fallback if unavailable | Task |
-|---|---|---|---|---|
-| `/api/pista` | Picks which of a player's 16 cards matches the call (or "none"), with a confidence; also serves the host's pacing `Choice` | Jev `Choice`; Upstash rate limit 60/min per room | Offline tag matcher (hint), threshold rule (pacing). Client timeout 800 ms | LT-044, LT-045 |
-| `/api/cantor` | A fresh 2-line verse or one-sentence cultural note, Spanish or English only | Claude via `@anthropic-ai/sdk`, structured output, cached system prompt with the approved-names glossary | The bundled, reviewed verse. Any term outside the glossary is rejected | LT-046 |
-| `/api/metrics` | Accepts anonymous counter batches | Supabase Postgres | Client queue keeps events until next flush; opt-out stops them | LT-005 |
-| `/api/rooms`, `/api/rooms/{code}` | Host public-key registry for signed host messages | Upstash Redis (10/min per IP) | Rooms run unauthenticated | LT-030 |
-| `/api/review/auth`, `submit`, `uploaded` | Reviewer passcode to short-lived HMAC token; submissions; signed Storage upload URLs | Postgres, Storage (service role), Redis, QStash | Review tool unavailable; play unaffected | LT-022 |
-| `/api/jobs/*` | QStash webhooks: `transcode-recording`, `notify-reviewers`, `rollup-metrics`, `publish-content-release` | Postgres, Redis idempotency | Jobs wait or retry; play unaffected | LT-022 |
-| `/api/health` | Reports redis, qstash and db status | all | n/a | LT-001 |
+## 6. Security model
 
-Jev never receives audio: in Escucha mode the client sends the card's tags instead (LT-044). Model choice, effort and SDK usage for `/api/cantor` and the content-drafting script are specified in LT-021 and LT-046.
-
-**Open:** the Jev API client. Its package, auth scheme and `Choice` request shape are not documented in the project yet; the "Jev spike" shared with Tianguis (TG-041) should settle them and record them in `docs/jev.md`.
+- **The host is the authority.** The host alone draws cards, sends choices, assigns tablas, scores picks in arrival order and decides winners. Phones send only `hello` and `pick`. `claim` exists in the schema, but the app neither sends nor handles it.
+- **Signed host messages.** Every host-only type is signed with ECDSA P-256/SHA-256 over sorted-key JSON. Receivers drop any host-type frame that is unsigned, carries a bad signature or claims `role ≠ host`. `round` and `lobby` carry `hostKey`.
+- **Key distribution.** The best source is the QR link fragment `#k=` (the UI shows "verified" only in this case). Next is `GET /api/rooms/:code` (1.5 s timeout). Otherwise the player uses TOFU and pins the first signed `round`/`lobby` that verifies. _Known limit:_ under TOFU, whoever speaks first on the channel gets pinned. Player messages are not signed. The host only checks that `frame.from === m.seat` and that the seat is in the roster, so a channel member who learns another seat id from `lobby` could pick in that seat's name.
+- **Code reservation.** `room:CODE` is held with `NX` for 4 h and bound to one key. The host retries up to 3 new codes on 409. If registration fails, the host runs "unverified" and re-registers every 15 s and whenever the browser comes back online.
+- **Rate limits.** In the client, the receiving `Session` allows at most 2 picks per seat per call, picks ≥ 400 ms apart per seat, and claims at 1 per seat per 3 s and ≤ 20/s room-wide. The host ignores `hello` from the same seat within 2 s. In Functions: the Redis fixed windows listed in §2, keyed by IP from `x-vercel-forwarded-for` (falling back to `x-real-ip`, then the last `x-forwarded-for` hop), with IPv6 collapsed to its /64.
+- **Input hygiene.** Everything on the wire is zod-validated. Names, glyphs and pronouns reject control, format and bidi-override characters (ZWJ is allowed). Lengths: name ≤ 40, glyph ≤ 16, pronouns ≤ 30.
+- **Privacy and indexing.** There are no accounts and no cookies, and no player data is stored. `/host`, `/r/*` and `/ui` are noindexed by header, meta tag and `robots.txt`. Functions never log request data. Postgres is reachable only with the service role.
 
-**Proposed:** Edge vs Node runtime. Default to the Node runtime for all functions (the Anthropic SDK and zod work there with no caveats), and revisit only if cold starts break the 800 ms hint budget.
+## 7. Environments and env vars
 
-## 8. Deployment on Vercel Hobby
+Environments: local (`pnpm dev`, LocalTransport by default), Vercel preview and Vercel production (`app.loteria.to`). QStash cannot reach protected preview deployments.
 
-| Aspect | Plan | Label |
-|---|---|---|
-| Hosting | One Vercel project on the **Hobby** plan, static build output + `api/` functions | Decided |
-| Deploys | Git-connected: every PR gets a preview URL; `main` deploys to production | Planned (LT-001) |
-| CI | GitHub Actions runs `pnpm check` and a Playwright smoke test on every PR; preview URL + green CI is the bar | Planned (LT-001) |
-| Domain | `loteria.to` (from the repo name) | **Open**: confirm the domain is owned and point it at Vercel |
-| Headers | Service worker must be served with no long-lived cache; hashed assets cached immutably | Proposed (`vercel.json`) |
-
-**Things to watch on Hobby (verify against Vercel's current published limits when LT-001 lands; they change):**
-
-- **Non-commercial use.** Hobby is for personal, non-commercial projects. A free community and classroom game fits that; anything sponsored or paid (including a funded pilot) may need a Pro plan. **Open.**
-- **Function duration and invocations.** All four functions are short and low volume. `/api/cantor` is the longest; host-side prefetching (next 3 cards) keeps it off the critical path, so a slow response only means the bundled verse is used.
-- **Bandwidth.** Card art and audio are fetched once per device and then served from the service worker cache, so a 40-phone room costs roughly 40 × the precache size the first time. Keep the precache budget (< 10 MB) honest.
-- **Preview deployments share secrets** with production unless scoped. Scope `ANTHROPIC_API_KEY` and `JEV_API_KEY` deliberately (section 10).
-
-## 9. Supabase
-
-| Aspect | Plan | Label |
-|---|---|---|
-| Realtime | Broadcast + Presence on `loteria:{code}`; no Postgres changes subscriptions for gameplay | Decided / Planned (LT-030) |
-| Why not peer-to-peer | 40 WebRTC peers per room doesn't scale; broadcast does | Decided (north star) |
-| Scale target | 40 clients per room, p95 call fan-out < 500 ms, measured in LT-035 and written to `docs/scale.md` | Planned |
-| Free-tier budget | 200 concurrent connections and 2M messages a month (per roadmap); one 40-player round ≈ 54 + 40 messages | Planned (roadmap risk table) |
-| Postgres | Single system of record (no Neon); pooled `POSTGRES_URL` with `prepare: false`; RLS on, no anon policies; migrations in `supabase/migrations/` | Decided |
-| Storage | Private `audio-pending` bucket; reviewers upload to signed URLs issued by `/api/review/submit` | Decided |
-| Network fallback | Some school networks block WebSockets; the QR screen offers "no network? print tablas" | Planned (roadmap) |
-
-**Open:** free Supabase projects can be paused after a period of inactivity. Confirm the current policy and decide whether a scheduled keep-alive or a paid plan is needed before the classroom pilot (LT-062).
-
-**Decided:** all review and metrics writes go through Vercel Functions with the service-role key; the browser never holds database or Storage credentials beyond a one-shot signed upload URL.
-
-## 10. Environment variables and secrets
-
-Names marked Proposed are placeholders until the task that introduces them.
-
-| Variable | Exposed to browser? | Used by | Label |
-|---|---|---|---|
-| `VITE_SUPABASE_URL` | yes | Realtime client | Proposed name |
-| `VITE_SUPABASE_ANON_KEY` | yes (public by design; safety comes from RLS and channel rules) | Realtime client | Proposed name |
-| `VITE_HIDE_UNREVIEWED` | yes (build flag) | Call-language picker | Planned (LT-024) |
-| `ANTHROPIC_API_KEY` | **no** | `/api/cantor`, `scripts/draft-versos.ts` | Planned (LT-021, LT-046) |
-| `JEV_API_KEY` | **no** | `/api/pista` | Planned (LT-044) |
-| `KV_REST_API_URL`, `KV_REST_API_TOKEN` (or `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`) | **no** | Rate limits, room keys, job idempotency | Read in `api/_lib/redis.ts`; either naming accepted |
-| `QSTASH_TOKEN`, `QSTASH_CURRENT_SIGNING_KEY`, `QSTASH_NEXT_SIGNING_KEY` | **no** | Publishing and verifying jobs | Read in `api/_lib/qstash.ts` |
-| `POSTGRES_URL`, `POSTGRES_URL_NON_POOLING` | **no** | Supabase Postgres (pooled for Functions, direct for migrations) | From the Vercel Supabase integration |
-| `SUPABASE_URL` | **no** | Storage signed URLs | From the integration |
-| `REVIEW_CODE` | **no** | `/api/review/*` | Planned (LT-022) |
-| `ADMIN_CODE` | **no** | `/admin` dashboard | Proposed name (LT-063) |
-| `SUPABASE_SERVICE_ROLE_KEY` | **no** | Storage signed URLs from Functions | Decided |
-
-Rules (Proposed): anything prefixed `VITE_` is compiled into the public bundle, so no secret ever gets that prefix. Secrets live in Vercel project settings (and GitHub Actions secrets only where a script needs them), never in the repo. Commit a `.env.example` listing names with empty values.
-
-## 11. AI, and what happens without it
-
-The game is fully playable with no AI. Every AI feature sits behind an interface with an offline implementation, chosen at call time.
-
-| Feature | Online | Offline / no-AI fallback | Trigger for fallback |
-|---|---|---|---|
-| **Pista** hint | `/api/pista` → Jev `Choice` over the 16 cards + "none" | `engine`-side tag/category matcher with a threshold; below it, "Puede que no esté en tu tabla" | No network, non-2xx, or > 800 ms |
-| **Pacing** | Host asks Jev `Choice` {slower, same, faster} from the last 3 calls' `markStat` | Rule: slow down 2 s if > 30% missed; speed up 1 s if 90% marked in < 4 s; clamp 6–20 s | Same as above; host can also turn pacing off |
-| **Cantor banter** | `/api/cantor` → Claude, Spanish/English, glossary-checked, prefetched 3 ahead into IndexedDB | The bundled, reviewed verse | No network, any error, `stop_reason` not normal, or any non-glossary term. **Off by default in classrooms** |
-| **Deck content drafting** | `scripts/draft-versos.ts` → Claude Message Batches, output marked `draft` for human review | n/a (offline authoring) | Build-time only, never at play time |
-
-Hard rules (Decided): no live machine-generated Indigenous-language text; no synthetic speech for Indigenous languages; Claude only quotes reviewed card names; Jev never receives audio. Each hint is labeled with the engine that produced it (roadmap M4 exit criteria).
-
-Proposed interface shape, from LT-043:
-
-```ts
-interface HintProvider {
-  name: 'jev' | 'matcher';
-  pick(call: { cardId?: string; riddleId?: string; audioOnly: boolean },
-       myCards: string[]): Promise<{ cardId: string | null; confidence: number }>;
-}
-```
-
-## 12. Dependency summary
-
-### Runtime (shipped to browsers or functions)
-
-| Package | Where | Label |
-|---|---|---|
-| `react`, `react-dom` | client | Decided |
-| `@supabase/supabase-js` | client (and functions if server-side writes are chosen) | Decided |
-| `pdf-lib` | client (Web Worker) | Decided |
-| `i18next` + ICU plugin + React bindings | client | Planned |
-| `zod` | client + functions | Planned |
-| `@anthropic-ai/sdk` | `/api/cantor`, `scripts/` | Planned |
-| Upstash rate-limit client | `/api/pista` | Planned |
-| Jev client | `/api/pista` | **Open** |
-| `@pdf-lib/fontkit` | client | Proposed |
-| `react-router` | client | Proposed |
-| `idb` | client | Proposed |
-| QR encoder (e.g. `qrcode`) | client | Proposed |
-| Confetti library | client | Proposed |
-
-### Development and build
-
-| Package / tool | Purpose | Label |
-|---|---|---|
-| `typescript` | strict typecheck | Decided |
-| `vite`, `@vitejs/plugin-react` | build, dev server | Decided |
-| `vite-plugin-pwa` (Workbox) | service worker, precache | Planned |
-| `eslint`, `prettier` | lint, format | Planned |
-| `vitest` | unit + property tests | Planned |
-| `@playwright/test` | e2e, multi-client, offline, axe | Planned |
-| axe for Playwright | accessibility assertions | Planned |
-| `svgo` | optimize card art | Planned (LT-023) |
-| Property-testing helper (e.g. `fast-check`) | tabla determinism, overlap and code-typo properties | Proposed |
-| `tsx` or similar | run `scripts/*.ts` | Proposed |
-
-### Content and assets
-
-| Asset | License / note | Label |
-|---|---|---|
-| OpenMoji placeholder art | CC BY-SA 4.0, attributed | Planned |
-| Noto Sans | SIL Open Font License, self-hosted | Planned |
-| Native-speaker recordings | License chosen by each speaker, consent on file | Planned (LT-064) |
-| Commissioned card art | Credit and payment agreed in writing | Planned (LT-023) |
-
-### External services
-
-| Service | Used for | Required to play? |
-|---|---|---|
-| Vercel (Hobby) | Hosting, preview deploys, functions | Only for the first visit (install) |
-| Supabase | Realtime rooms; Postgres; review uploads (Storage) | Only for phone players |
-| Jev | Hint and pacing | No |
-| Anthropic (Claude) | Banter, content drafting | No |
-| Upstash Redis | Rate limiting, room host-key registry, job idempotency | No |
-| Upstash QStash | Async jobs and schedules | No |
-| GitHub Actions | CI | No |
-
-## 13. Open questions, collected
-
-| # | Question | Settle in |
-|---|---|---|
-| 1 | Monorepo shared with Tianguis, or a standalone repo? | Before LT-001 |
-| 2 | Is `loteria.to` owned, and is Hobby's non-commercial term fine for the pilot? | LT-001 / before LT-062 |
-| 3 | How does a 6-char tabla code carry a seed reference, index and checksum? | LT-012 |
-| 4 | ~~Do host messages need authenticity?~~ Decided: ECDSA-signed host messages plus the `/api/rooms` key registry | LT-030 |
-| 5 | Does iOS Safari play the planned `.webm` Opus audio, or is a second format needed? | LT-022 / LT-025 |
-| 6 | ~~Reviewer uploads: browser + RLS, or through a function?~~ Decided: through functions with the service role | LT-022 |
-| 7 | ~~Where `/api/metrics` stores counters~~ Decided: Supabase Postgres | LT-005 |
-| 8 | Jev client package, auth and `Choice` request shape | Jev spike (TG-041) / LT-044 |
-| 9 | Supabase free-tier inactivity pausing before the pilot | Before LT-062 |
-| 10 | Exact review status values (`draft` / `reviewed` / `approved`) | LT-010 / LT-024 |
-| 11 | Code license (tasks propose MIT; README says none chosen yet) | LT-064 |
+| Variable                                                                         | Where                                                         |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` (or `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, mapped in `vite.config.ts`) | client bundle: Realtime transport |
+| `VITE_HIDE_UNREVIEWED`                                                           | client: hide call languages without approved names (default on) |
+| `KV_REST_API_URL`, `KV_REST_API_TOKEN` (or `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`) | `api/_lib/redis.ts`                           |
+| `QSTASH_TOKEN`, `QSTASH_CURRENT_SIGNING_KEY`, `QSTASH_NEXT_SIGNING_KEY`, `QSTASH_URL` (optional, regional) | `api/_lib/qstash.ts`                     |
+| `POSTGRES_URL` (pooled; `prepare: false`, `max: 1`)                              | `api/_lib/db.ts`                                              |
+| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`                                      | Storage signed upload URLs                                    |
+| `REVIEW_CODE`                                                                    | `/api/review/*` and token HMAC                                |
+| `ADMIN_CODE`                                                                     | read by `env.ts`, but no route uses it yet                    |
+| `PUBLIC_ORIGIN` (optional)                                                       | canonical origin for job URLs and signature checks            |
+| `E2E_DEV`, `LOADTEST_PORT`, `LOADTEST_BASE_URL`, `CI`                            | test tooling                                                  |
+
+One-time setup: apply `supabase/migrations/0001_init.sql` (`supabase db push` or the SQL editor), then provision Upstash Redis and QStash from the Vercel Marketplace and run `vercel env pull .env.local`. The daily `rollup-metrics` schedule, if wanted, is a QStash cron on `/api/jobs/rollup-metrics`.
+
+**Degrading.** With no Supabase vars the app uses LocalTransport (same browser only). Without Redis, `/api/rooms` returns 503: the host plays on "unverified" and phones use TOFU. Postgres, QStash and Storage are not on the play path.
+
+## 8. Room capacity and timing constants
+
+These are summarised here; [protocol.md](protocol.md) has the full detail. Max 20 roster seats (the host's "Jugar también" seat counts) and min 2 to start. Speed is 6–20 s per call, with presets 14/10/7 and a default of 10. The lobby is rebroadcast 300 ms after a change and every 10 s; `round` + `lobby` every 10 s during play. A seat missing from presence for more than 4 s is dropped from the roster.
+
+## 9. Testing
+
+Status from a local run on 2026-10-27:
+
+| Layer                                         | Command                         | Status                                                                                                                                                                                                                             |
+| --------------------------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Vitest `engine` project (node): engine, content, net, ai, scripts, `tests/api` (Functions with in-memory Redis, QStash and postgres fakes) | `pnpm test`                     | **11 files, 156 tests pass**                                                                                                                                                                                                       |
+| Vitest `app` project (jsdom): `src/app`, `src/print` | `pnpm test`                     | **22 files, 406 tests pass** (562 total). fast-check property tests are in the engine.                                                                                                                                                |
+| Typecheck (app, `api/`, `tests/api`)          | `pnpm typecheck`                | pass                                                                                                                                                                                                                               |
+| ESLint                                        | `pnpm lint`                     | 0 errors, 1 warning (`react-refresh/only-export-components` in `Shell.tsx`)                                                                                                                                                       |
+| Content validation                            | `pnpm validate-content`         | pass: 54 cards, 0 draft Indigenous names                                                                                                                                                                                           |
+| Copy lint (gendered roles, money/prize words) | `pnpm copy-lint`                | pass                                                                                                                                                                                                                               |
+| Design lint (tokens only)                     | `pnpm design-lint`              | pass (not part of `check`)                                                                                                                                                                                                         |
+| Playwright e2e (phone, tablet, laptop; LocalTransport; axe) | `pnpm e2e`              | **Failing: 9 pass, 27 fail of 36.** The home, print-PDF and axe-home tests pass. Every test that goes through `createRoom()` (`e2e/helpers.ts:22`) fails, because the home page now requires a name before `/host` and the helper doesn't fill one. `e2e/offline.spec.ts` also assumes a single host can start, but the minimum is now 2. The specs are stale against the UI, and CI runs them. |
+| Load test (`loadtest/`): headless bots, headless or real app host, local or Supabase transport | `pnpm exec tsx loadtest/run.ts …` | **Broken.** `loadtest/bot.ts:99` reads `pattern` from `round` and uses claim-based winning, which the current protocol dropped, so `checkClaim` throws on the first result. `loadtest/reports/` is empty. |
