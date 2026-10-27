@@ -1,0 +1,958 @@
+{
+  "lang": "yua",
+  "variety": "Yucatec Maya (peninsular; main source from Quintana Roo/Yucatán)",
+  "orthography": "ALMY 1984: ' for glottal stop and ejectives, doubled vowels for length; tone not marked in 'text' (GN2009 marks high tone with acute, kept in 'source').",
+  "status": "DRAFT for native-speaker review. Not approved.",
+  "sources": [
+    {
+      "id": "GN2009",
+      "title": "Diccionario introductorio español-maya, maya-español",
+      "author": "Javier Abelardo Gómez Navarrete",
+      "year": 2009,
+      "url": "https://web.archive.org/web/20250130074409/https://biblio.colsan.edu.mx/arch/especi/lc_otro_005.pdf",
+      "note": "Universidad de Quintana Roo, Chetumal. Page numbers are printed page numbers (PDF page minus 1)."
+    },
+    {
+      "id": "CORDEMEX1980",
+      "title": "Diccionario Maya Cordemex: maya-español, español-maya",
+      "author": "Alfredo Barrera Vásquez et al.",
+      "year": 1980,
+      "note": "Not consulted directly (archive.org copy is lending-restricted); cited only through AMERICAE."
+    },
+    {
+      "id": "AMERICAE",
+      "title": "El cangrejo, la tierra primigenia y su sacrificio, según la versión del Popol Vuh de Ximénez",
+      "author": "Americae (journal article)",
+      "year": null,
+      "url": "https://americae.fr/en/papers/crab-primordial-earth-sacrifice-version-popol-vuh-ximenez/"
+    },
+    {
+      "id": "ZAVALA1898",
+      "title": "Vocabulario español-maya",
+      "author": "Manuel Zavala and Andrés Medina",
+      "year": 1898,
+      "url": "https://archive.org/details/vocabularioespa00zava",
+      "note": "Historical orthography; OCR text used."
+    }
+  ],
+  "cards": {
+    "perro": {
+      "text": "peek'",
+      "gloss": "dog",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 89, s.v. PERRO.- sus. Peek’",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'.",
+      "reviewQuestion": "Is peek' the everyday word children use for a dog?"
+    },
+    "pez": {
+      "text": "kay",
+      "gloss": "fish",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 90, s.v. PESCADO.- sus. Kay; also en.wiktionary 'fish' translation table (yua: kay)",
+      "note": "GN2009 has no separate 'pez' headword; kay covers live fish and fish as food.",
+      "reviewQuestion": "Does kay read as a live fish (not only cooked fish) for children?"
+    },
+    "venado": {
+      "text": "keej",
+      "gloss": "white-tailed deer",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 108, s.v. VENADO COLA BLANCA.- sus. Kéej",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Other deer terms: yuuk (brocket deer), nikte' baak / puuts'nab (antler types).",
+      "reviewQuestion": "Is keej the right generic word for the deer drawn with antlers?"
+    },
+    "mono": {
+      "text": "ma'ax",
+      "gloss": "spider monkey",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 81, s.v. MONO ARAÑA (ATELES SP).- sus. Ma’ax",
+      "note": "Howler monkey is ba'ats' (same page). Art should show a spider monkey if ma'ax is used.",
+      "reviewQuestion": "Is ma'ax understood as 'monkey' in general, or only spider monkey?"
+    },
+    "murcielago": {
+      "text": "soots'",
+      "gloss": "bat",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 82, s.v. MURCIÉLAGO.- sus. Soots’; also Maya side p. 168 SOOTS’; ZAVALA1898 'Murciélago. Zoo.'",
+      "note": "Attested in 1898 and 2009 sources. Bats can carry omen associations in some communities.",
+      "reviewQuestion": "Any negative association with soots' that makes it unsuitable for a children's card?"
+    },
+    "hormiga": {
+      "text": "siinik",
+      "gloss": "ant",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 70, s.v. HORMIGA.- sus. Síinik",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Specific ants: xuulab, saakal, saay.",
+      "reviewQuestion": "Is siinik the generic word for ant?"
+    },
+    "abeja": {
+      "text": "kaab",
+      "gloss": "bee",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 27, s.v. ABEJA (APIS MELLIFICA Y MELIPONA SSP).- sus. Ko’olel kaab, kaab, xunáan kaab, yik’el kaab",
+      "note": "COLLISION: kaab also means 'earth/land' (GN2009 p. 104 TIERRA) and honey; xunaan kaab is the native stingless bee (Melipona), which has ritual/beekeeping ceremonies.",
+      "reviewQuestion": "Should the card use kaab, ko'olel kaab or xunaan kaab? Any sacred sense to avoid with xunaan kaab?"
+    },
+    "arana": {
+      "text": "am",
+      "gloss": "spider",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 33, s.v. ARAÑA .- sus. Am, le’um",
+      "note": "Alternative le'um. Black spider: x boox le'um.",
+      "reviewQuestion": "Which is the common word for a spider: am or le'um?"
+    },
+    "caracol": {
+      "text": "uurich",
+      "gloss": "garden (land) snail",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 41, s.v. CARACOL DE LOS JARDINES.- sus. Úurich",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Sea snail/conch is jub (same page) — avoid (conch trumpet).",
+      "reviewQuestion": "Is uurich known as the common land snail word?"
+    },
+    "cangrejo": {
+      "text": "baw",
+      "gloss": "crab (also sea lizard)",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "CORDEMEX1980 p. 41 '(ix) baw', as quoted in AMERICAE note 17; ZAVALA1898 'Cangrejo' entry (OCR 'Pxbau', likely 'Ix bau')",
+      "note": "Not found in GN2009. Cordemex says (ix) baw denotes both the crab and a sea lizard; form taken from a secondary quotation, not read in the dictionary itself. Vowel length/tone unverified. A 'wech' crab species is named in La Jornada Maya (cf. weech 'armadillo').",
+      "reviewQuestion": "Is (ix) baw the word used today for crab? Long vowel or tone?"
+    },
+    "armadillo": {
+      "text": "weech",
+      "gloss": "armadillo",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 34, s.v. ARMADILLO.- sus. Weech",
+      "note": "",
+      "reviewQuestion": "Confirm weech as the everyday word."
+    },
+    "lagartija": {
+      "text": "meemech",
+      "gloss": "lizard",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 74, s.v. LAGARTIJA.- sus. Bebech, meemech.",
+      "note": "Alternative bebech; crested green lizard is tolok.",
+      "reviewQuestion": "Which is more common: meemech or bebech?"
+    },
+    "perico": {
+      "text": "t'uut'",
+      "gloss": "parrot",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 76, s.v. LORO.- sus. T’uut’, x t’uut’; Maya side p. 176 T’UUT’",
+      "note": "GN2009 'PERICO' only gives k'ili' 'perico de ojos rojos' with a falcon Latin name (likely an error), so the loro word is used.",
+      "reviewQuestion": "Is t'uut' used for parrots/parakeets in general?"
+    },
+    "raton": {
+      "text": "ch'o'",
+      "gloss": "mouse/rat",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 95, s.v. RATÓN.- sus. Ch’o’",
+      "note": "",
+      "reviewQuestion": "Confirm ch'o' for a small mouse."
+    },
+    "gallina": {
+      "text": "kaax",
+      "gloss": "hen",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 66, s.v. GALLINA.- sus. X káax, káax",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Often x kaax with feminine prefix. Near-collision with existing card selva (k'aax): differs only by the ejective k'.",
+      "reviewQuestion": "Should the card be 'x kaax'? Is it too close to k'aax (selva) when spoken by TTS?"
+    },
+    "arbol": {
+      "text": "che'",
+      "gloss": "tree/wood",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 33, s.v. ÁRBOL.- sus. Che’",
+      "note": "Also means wood/stick.",
+      "reviewQuestion": "Confirm che' reads as 'tree' alone."
+    },
+    "hoja": {
+      "text": "le'",
+      "gloss": "leaf",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 69, s.v. HOJA.- sus. Le’",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "flor": {
+      "text": "lool",
+      "gloss": "flower",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 64, s.v. FLOR.- sus. Lool, nikte’.",
+      "note": "Alternative nikte'. Existing girasol uses 'u lool k'iin', so lool is consistent.",
+      "reviewQuestion": "lool or nikte' for a generic flower?"
+    },
+    "cacahuate": {
+      "text": null,
+      "gloss": "peanut",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found (searched GN2009 Spanish-Maya and Maya-Spanish sections; web search)",
+      "note": "No entry for cacahuate/maní in GN2009 or ZAVALA1898; no other source found. Spanish loan likely in speech but not attested in a source.",
+      "reviewQuestion": "What do speakers call the peanut? Is 'cacahuate' used?"
+    },
+    "raiz": {
+      "text": "moots",
+      "gloss": "root",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 95, s.v. RAÍZ.- sus. Moots",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "calabaza": {
+      "text": "k'uum",
+      "gloss": "squash",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 40, s.v. CALABAZA (CURCUBITA PEPO C. ARGYROSPERMA).- sus. K’úum",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. COLLISION RISK: existing olla card is kuum; differs only by the ejective k'.",
+      "reviewQuestion": "Is k'uum vs kuum (olla) distinct enough when spoken?"
+    },
+    "yuca": {
+      "text": "ts'iim",
+      "gloss": "cassava",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 110, s.v. YUCA (MANIHOT ESCULENTA (CRANTZ)).- sus. Ts’íim",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'.",
+      "reviewQuestion": "Confirm."
+    },
+    "camote": {
+      "text": "iis",
+      "gloss": "sweet potato",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 41, s.v. CAMOTE ( IPOMOEA BATATAS).- sus. Iis.",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "guayaba": {
+      "text": "pichi'",
+      "gloss": "guava",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 67, s.v. GUAYABA (PSIDIUM GUAJAVA L.).- sus. Pichi’",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "algodon": {
+      "text": "jintaman",
+      "gloss": "cotton",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 30, s.v. ALGODÓN (GOSSYPIUM HIRRSUTUM L.).- sus. Jintaman, piits’; Maya side p. 134 JINTAMAN",
+      "note": "Alternative piits'. GN2009 p. 81 'mamil taman' (motas de algodón) shows a shorter stem taman.",
+      "reviewQuestion": "Which is current: jintaman, taman or piits'?"
+    },
+    "huevo": {
+      "text": "je'",
+      "gloss": "egg",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 70, s.v. HUEVO.- sus. Je’, e’el, ye’el",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "hongo": {
+      "text": "kuuxum",
+      "gloss": "mushroom",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 70, s.v. HONGO.- sus. Kuuxum, xuxum che’",
+      "note": "Tree fungus: xikin che'. Ritual mushrooms not implied.",
+      "reviewQuestion": "Is kuuxum the word for an edible cap mushroom?"
+    },
+    "platano": {
+      "text": "ja'as",
+      "gloss": "banana",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 90, s.v. PLÁTANO (MUSA PARADISÍACA L.).- sus. Ja’as",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "pasto": {
+      "text": "su'uk",
+      "gloss": "grass",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 110, s.v. ZACATE.- sus. Su’uk",
+      "note": "Generic 'hierba' is xiiw (p. 69), which also means herb/medicinal plant.",
+      "reviewQuestion": "su'uk or xiiw for a patch of grass?"
+    },
+    "papaya": {
+      "text": "puut",
+      "gloss": "papaya",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 87, s.v. PAPAYA (CARICA PAPAYA L.).- sus. Puut",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "fuego": {
+      "text": "k'aak'",
+      "gloss": "fire",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 65, s.v. FUEGO.- sus. K’áak’",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'.",
+      "reviewQuestion": "Confirm."
+    },
+    "humo": {
+      "text": "buuts'",
+      "gloss": "smoke",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 70, s.v. HUMO.- sus. Buuts’; Maya side p. 120",
+      "note": "COLLISION: existing cometa card is 'buuts' eek'' (smoking star).",
+      "reviewQuestion": "Does sharing buuts' with cometa cause confusion?"
+    },
+    "neblina": {
+      "text": "ye'eb",
+      "gloss": "fog/mist",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 83, s.v. NEBLINA.- sus. Ye’eb",
+      "note": "",
+      "reviewQuestion": "Confirm ye'eb for fog."
+    },
+    "granizo": {
+      "text": "bat",
+      "gloss": "hail",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 67, s.v. GRANIZO.- sus. Bat; Maya side p. 117 BAT",
+      "note": "Near-collision with hacha (baat, short vs long vowel).",
+      "reviewQuestion": "Is bat vs baat (axe) distinct enough when spoken?"
+    },
+    "nieve": {
+      "text": null,
+      "gloss": "snow",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found (searched GN2009 Spanish-Maya and Maya-Spanish sections; web search)",
+      "note": "No entry in GN2009; no source found. Snow is not part of the Yucatán environment.",
+      "reviewQuestion": "Is there any word in use for snow?"
+    },
+    "hielo": {
+      "text": "siis chich ja'",
+      "gloss": "ice (lit. cold hard water)",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "GN2009 p. 69, s.v. HIELO.- Sus. Síis chich ja’.",
+      "note": "Descriptive phrase as printed in the source (not coined here).",
+      "reviewQuestion": "Is this phrase used, or a Spanish loan ('hielo')?"
+    },
+    "amanecer": {
+      "text": "saastal",
+      "gloss": "dawn",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 31, s.v. AMANECER.- sus.,v.i. Sáastal, sáastaj, jáatskab k’iin, píik, píik’il.",
+      "note": "Also verb 'to dawn'. Alternative jáatskab k'iin.",
+      "reviewQuestion": "Which form works as a noun on a card?"
+    },
+    "noche": {
+      "text": "aak'ab",
+      "gloss": "night",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 83, s.v. NOCHE.- sus. Áak’ab",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'.",
+      "reviewQuestion": "Confirm."
+    },
+    "cielo": {
+      "text": "ka'an",
+      "gloss": "sky",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 43, s.v. CIELO.- sus. Ka’an.",
+      "note": "Also the cosmological 'heaven' sense; card depicts the everyday sky.",
+      "reviewQuestion": "Any religious connotation to avoid?"
+    },
+    "sombra": {
+      "text": "bo'oy",
+      "gloss": "shade/shadow",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 101, s.v. SOMBRA.- sus. Bo’oy",
+      "note": "Cast shadow of a body is woochel/oochel (same page), which also means image/soul — avoid.",
+      "reviewQuestion": "Is bo'oy right for a tree's shadow?"
+    },
+    "rocio": {
+      "text": "p'uja'",
+      "gloss": "dew",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 97, s.v. ROCÍO.- sus. P’uja’",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "remolino": {
+      "text": "moson iik'",
+      "gloss": "whirlwind",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 96, s.v. REMOLINO.- sus. Moson iik’",
+      "note": "Compound printed in source. Whirlwinds may carry supernatural associations in Yucatán.",
+      "reviewQuestion": "Any negative/spiritual association with moson iik'?"
+    },
+    "agua": {
+      "text": "ja'",
+      "gloss": "water",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 29, s.v. AGUA.- sus. Ja’",
+      "note": "Close to existing lluvia card (ja'al).",
+      "reviewQuestion": "Is ja' vs ja'al (lluvia) distinct enough?"
+    },
+    "ceniza": {
+      "text": "ta'an",
+      "gloss": "ash",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 42, s.v. CENIZA.- sus. Ta’an",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "trueno": {
+      "text": "kiilbal chaak",
+      "gloss": "thunder",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 106, s.v. TRUENO.- sus. Kíilbal cháak, péek cháak",
+      "note": "SACRED: chaak is the rain deity; compound refers to Chaak's rumbling. Fails selection criterion 4 unless reviewers accept it as everyday usage.",
+      "reviewQuestion": "Is kiilbal chaak everyday speech or too religious for a children's card?"
+    },
+    "rio": {
+      "text": "uk'um",
+      "gloss": "river",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 97, s.v. RÍO.- sus. Uk’um, bel ja’, áalkab ja’.; Maya side p. 182",
+      "note": "uk'um also = coastal marsh/estuary (p. 182). Surface rivers are rare in northern Yucatán.",
+      "reviewQuestion": "uk'um or áalkab ja' for a river?"
+    },
+    "lago": {
+      "text": "aak'al che'",
+      "gloss": "pond/lagoon (aguada)",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "GN2009 p. 74, s.v. LAGUNA.- sus. Áak’al che’; Maya side p. 115 'Aguada, laguna'",
+      "note": "No 'lago' headword. This is an aguada/lagoon, the nearest local referent; not a large lake.",
+      "reviewQuestion": "Is aak'al che' acceptable for a lake card?"
+    },
+    "piedra": {
+      "text": "tuunich",
+      "gloss": "stone",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 90, s.v. PIEDRA.- sus. Tuunich",
+      "note": "Avoid saastun (divining stone).",
+      "reviewQuestion": "Confirm."
+    },
+    "arena": {
+      "text": "sam",
+      "gloss": "sand",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 34, s.v. ARENA.- sus. Sam, u lu’umil k’áanab, sinsin.",
+      "note": "Alternative sinsin.",
+      "reviewQuestion": "sam or sinsin?"
+    },
+    "playa": {
+      "text": "jaal ja'",
+      "gloss": "beach/shore",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 90, s.v. PLAYA.- sus. Jáal ja´, chi’ja’, páay.",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Alternatives chi' ja', paay.",
+      "reviewQuestion": "Which is the usual word for a beach?"
+    },
+    "cascada": {
+      "text": null,
+      "gloss": "waterfall",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found (searched GN2009 Spanish-Maya and Maya-Spanish sections; web search)",
+      "note": "No entry in GN2009 ('cataratas' = sak t'aj is the eye disease, not a waterfall). Northern Yucatán has no waterfalls.",
+      "reviewQuestion": "Is there a word for waterfall?"
+    },
+    "charco": {
+      "text": "chulub",
+      "gloss": "puddle",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "GN2009 p. 50, s.v. CHARCO.- sus. Chulub, temanja’, ja’akakbal.",
+      "note": "Possibly related to ch'ulub ja' 'rainwater' (p. 29); spelling with/without ejective should be checked.",
+      "reviewQuestion": "chulub, ch'ulub or temanja'?"
+    },
+    "lodo": {
+      "text": "luuk'",
+      "gloss": "mud",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 76, s.v. LODO.- sus. Luuk’ .",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "barranca": {
+      "text": "k'om",
+      "gloss": "ravine/hollow",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "GN2009 p. 37, s.v. BARRANCO.- sus. K’om, k’óom; BARRANCA.- sus. Bekan",
+      "note": "Also 'hondonada'. Northern Yucatán is flat.",
+      "reviewQuestion": "k'om or bekan?"
+    },
+    "llano": {
+      "text": "taax lu'um",
+      "gloss": "flat land",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "GN2009 p. 77, s.v. LLANO.- adj. Táax, táax lu’um.",
+      "note": "Listed as adjective; chak'an 'sabana' (p. 99) may be the usual open-plain noun.",
+      "reviewQuestion": "taax lu'um or chak'an?"
+    },
+    "pantano": {
+      "text": null,
+      "gloss": "swamp",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found (searched GN2009 Spanish-Maya and Maya-Spanish sections; web search)",
+      "note": "No 'pantano' headword. Related: uk'um 'ciénaga junto al mar' (p. 43/182, collides with río) and xuuch 'pozo en suelos pantanosos' (p. 91). Not substituted.",
+      "reviewQuestion": "Is there a word for an inland swamp/marsh?"
+    },
+    "ola": {
+      "text": "kukul",
+      "gloss": "wave",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 85, s.v. OLA.- sus. Kukul; OLAS DEL MAR.- sus. Yaam",
+      "note": "Alternative yaam (sea waves, p. 189). Kukul- also starts KUKULEB 'sacrificio' (unrelated).",
+      "reviewQuestion": "kukul or yaam?"
+    },
+    "concha": {
+      "text": "xixim",
+      "gloss": "seashell",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 45, s.v. CONCHA DE MAR.- sus. Xixim",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "valle": {
+      "text": "jem",
+      "gloss": "valley",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "GN2009 p. 108, s.v. VALLE.- sus. Jem",
+      "note": "Yucatán is flat; usage uncertain.",
+      "reviewQuestion": "Is jem understood as a valley?"
+    },
+    "tierra": {
+      "text": "lu'um",
+      "gloss": "soil/earth",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 104, s.v. TIERRA.- sus. Kaab, lu’um",
+      "note": "kaab avoided (collides with abeja).",
+      "reviewQuestion": "Confirm lu'um for soil."
+    },
+    "hacha": {
+      "text": "baat",
+      "gloss": "axe",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 68, s.v. HACHA.- sus. Báat",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Near-collision with granizo (bat).",
+      "reviewQuestion": "Confirm."
+    },
+    "red": {
+      "text": "kaybal",
+      "gloss": "fishing net",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 139, s.v. KAYBAL.- sus. Red de pesca",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "cuerda": {
+      "text": "suum",
+      "gloss": "rope",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 101, s.v. SOGA.- sus. Suum",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "jicara": {
+      "text": "luuch",
+      "gloss": "gourd bowl",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 73, s.v. JÍCARA (CRESCENTIA CUJETE L).- sus. Luuch",
+      "note": "Bottle gourd is chuuj (p. 40).",
+      "reviewQuestion": "Confirm."
+    },
+    "metate": {
+      "text": "ka'",
+      "gloss": "grinding stone",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 80, s.v. METATE.- sus. Ka’",
+      "note": "Homophone risk with ka'a 'two' and x ka' (a squash, p. 40).",
+      "reviewQuestion": "Is ka' clear on its own?"
+    },
+    "comal": {
+      "text": "xamach",
+      "gloss": "griddle",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 44, s.v. COMAL.- sus. Xamach",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "escoba": {
+      "text": "miisib",
+      "gloss": "broom",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 60, s.v. ESCOBA.- sus. Míisib; Maya side p. 153",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'.",
+      "reviewQuestion": "Confirm."
+    },
+    "aguja": {
+      "text": "puuts'",
+      "gloss": "needle",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 29, s.v. AGUJA.- sus. Púuts’",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'.",
+      "reviewQuestion": "Confirm."
+    },
+    "huso": {
+      "text": null,
+      "gloss": "spindle",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found (searched GN2009 Spanish-Maya and Maya-Spanish sections; web search)",
+      "note": "No entry for huso/malacate in GN2009; no other source found.",
+      "reviewQuestion": "What is the word for a hand spindle?"
+    },
+    "banco": {
+      "text": "k'aanche'",
+      "gloss": "stool",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 37, s.v. BANQUILLO.- sus. K’áanche’, kisi che’",
+      "note": "Check for any ceremonial-stool sense.",
+      "reviewQuestion": "Is k'aanche' an ordinary household stool?"
+    },
+    "sombrero": {
+      "text": "p'ook",
+      "gloss": "hat",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 101, s.v. SOMBRERO.- sus. P’óok; Maya side p. 165",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Near-collision with reserve card pelota (p'ok).",
+      "reviewQuestion": "Confirm."
+    },
+    "morral": {
+      "text": "saabukan",
+      "gloss": "woven bag",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 82, s.v. MORRAL DE FIBRA DE HENEQUÉN.- sus. Sáabukan; BOLSA (p. 38)",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'.",
+      "reviewQuestion": "Confirm."
+    },
+    "hamaca": {
+      "text": "k'aan",
+      "gloss": "hammock",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 68, s.v. HAMACA.- sus. K’áan",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Also appears in the telaraña phrase.",
+      "reviewQuestion": "Confirm."
+    },
+    "coa": {
+      "text": "xuul",
+      "gloss": "digging stick",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 188, s.v. XÚUL.- sus. Bastón plantador; GN2009 p. 38 BASTÓN PLANTADOR",
+      "note": "Do NOT use the Yucatán Spanish 'coa' sense: GN2009 p. 44 defines coa as a curved iron weeding blade (lóobche'). xuul matches the card's digging stick.",
+      "reviewQuestion": "Confirm xuul for a planting stick."
+    },
+    "petate": {
+      "text": "poop",
+      "gloss": "sleeping mat",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 90, s.v. PETATE.- sus. Poop",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "camino": {
+      "text": "bej",
+      "gloss": "path/road",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 41, s.v. CAMINO.- sus. Bej, beel, belil",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "pozo": {
+      "text": "ch'e'en",
+      "gloss": "well",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 91, s.v. POZO.- sus. Ch’e’en",
+      "note": "Cenote is a separate word (ts'ono'ot, p. 42) — keep art as a dug well.",
+      "reviewQuestion": "Does ch'e'en also evoke cenotes or sacred water?"
+    },
+    "nido": {
+      "text": "k'u'",
+      "gloss": "nest",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 83, s.v. NIDO.- sus. K’u’; Maya side p. 146",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "colmena": {
+      "text": "u naajil kaab",
+      "gloss": "beehive (lit. house of the bees)",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "GN2009 p. 44, s.v. COLMENA.- sus. U naajil kaab.",
+      "note": "Descriptive phrase printed in source. Panal = chuujil kaab (p. 87).",
+      "reviewQuestion": "Is there a single word for a log hive (e.g. jobon)?"
+    },
+    "hormiguero": {
+      "text": null,
+      "gloss": "anthill",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found (searched GN2009 Spanish-Maya and Maya-Spanish sections; web search)",
+      "note": "No entry in GN2009 (only 'oso hormiguero'); no source found.",
+      "reviewQuestion": "What is the word for an anthill?"
+    },
+    "telarana": {
+      "text": "mak maktaj k'aan",
+      "gloss": "spider web",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "GN2009 p. 103, s.v. TELARAÑA.- sus. Mak maktaj k’áan.",
+      "note": "Descriptive phrase printed in source.",
+      "reviewQuestion": "Is this phrase used?"
+    },
+    "patio": {
+      "text": "taankab",
+      "gloss": "yard",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 88, s.v. PATIO.- sus. Táankab",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "huerto": {
+      "text": "paak'al",
+      "gloss": "planted plot",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "GN2009 p. 161, s.v. PÁAK’AL.- sus. Heredad donde hay cosas plantadas, plantío; ZAVALA1898 'Huerta. Pakal.'",
+      "note": "Also verb 'to sow'. Jardín is paak'alnikte' (p. 161).",
+      "reviewQuestion": "Is paak'al the word for a home garden?"
+    },
+    "cerca": {
+      "text": "koot",
+      "gloss": "dry-stone wall (albarrada)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 141, s.v. KOOT.- sus. Albarrada, barda de piedras sin mezcla",
+      "note": "Yucatán fences are dry-stone walls; art should match. Milpa fence: nok ch'aak (p. 43).",
+      "reviewQuestion": "Is koot right for the fence card?"
+    },
+    "puerta": {
+      "text": "joonaj",
+      "gloss": "door",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 92, s.v. PUERTA.- sus. Joonaj, jool naaj",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "techo": {
+      "text": null,
+      "gloss": "roof",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found (searched GN2009 Spanish-Maya and Maya-Spanish sections; web search)",
+      "note": "No entry for techo in GN2009; no source found.",
+      "reviewQuestion": "What is the word for a thatched roof?"
+    },
+    "escalera": {
+      "text": "eeb",
+      "gloss": "ladder/stairs",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 60, s.v. ESCALERA.- sus. Eeb",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "troje": {
+      "text": "ch'iil",
+      "gloss": "granary",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 106, s.v. TROJE DE MAÍZ.- sus. Ch’iil, kumche’",
+      "note": "Alternative kumche'.",
+      "reviewQuestion": "ch'iil or kumche'?"
+    },
+    "cocina": {
+      "text": "k'ooben",
+      "gloss": "kitchen",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 146, s.v. K’ÓOBEN.- sus. Cocina, fogón; COCINA p. 44",
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Also means hearth (fogón); hearth stones may have ritual sense.",
+      "reviewQuestion": "Any ritual sense for k'ooben?"
+    },
+    "corral": {
+      "text": "pak' tuunil wakax",
+      "gloss": "corral (lit. stone wall for cattle)",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "GN2009 p. 47, s.v. CORRAL.- sus. Pak’ tuunil wakax",
+      "note": "Descriptive phrase printed in source; wakax is a Spanish-derived word for cattle.",
+      "reviewQuestion": "Is there a shorter word in use?"
+    },
+    "gusano": {
+      "text": "nook'ol",
+      "gloss": "worm",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 67, s.v. GUSANO.- sus. Nook’ol, x nook’ol",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "zorro": {
+      "text": "ch'omak",
+      "gloss": "fox",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 110, s.v. ZORRA.- sus. Ch’omak, ch’amak",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "pato": {
+      "text": "kuuts ja'",
+      "gloss": "duck",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 88, s.v. PATO.- sus. Kúuts ja’",
+      "note": "Compound printed in source (kuuts = turkey).",
+      "reviewQuestion": "Confirm."
+    },
+    "luciernaga": {
+      "text": "kookay",
+      "gloss": "firefly",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 76, s.v. LUCIÉRNAGA.- sus. Kóokay",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "cantaro": {
+      "text": "p'uul",
+      "gloss": "water jar",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 41, s.v. CÁNTARO.- sus. P’úul",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "pelota": {
+      "text": "p'ok",
+      "gloss": "ball",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "GN2009 p. 89, s.v. PELOTA.- sus. P’ok, wóolis báaxal.",
+      "note": "p'okta p'ok = pre-Hispanic ballgame (p. 165), which had ritual meaning. Near-collision with sombrero (p'ook).",
+      "reviewQuestion": "Is p'ok an everyday word for a ball?"
+    },
+    "collar": {
+      "text": null,
+      "gloss": "bead necklace",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found (searched GN2009 Spanish-Maya and Maya-Spanish sections; web search)",
+      "note": "No entry in GN2009; no source found.",
+      "reviewQuestion": "What is the word for a bead necklace?"
+    },
+    "cuchara": {
+      "text": "k'ab kum",
+      "gloss": "spoon",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "GN2009 p. 49, s.v. CUCHARA.- sus. K’ab kum",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "remo": {
+      "text": "u baabil cheem",
+      "gloss": "paddle (lit. canoe's paddle)",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "GN2009 p. 96, s.v. REMO.- sus. U báabil cheem",
+      "note": "Descriptive phrase printed in source.",
+      "reviewQuestion": "Is there a single word?"
+    },
+    "sal": {
+      "text": "ta'ab",
+      "gloss": "salt",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 99, s.v. SAL.- sus. Ta’ab",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "semilla": {
+      "text": "neek'",
+      "gloss": "seed",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 100, s.v. SEMILLA.- sus. Neek’",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    },
+    "lena": {
+      "text": "si'",
+      "gloss": "firewood",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "GN2009 p. 75, s.v. LEÑA.- sus. Si’",
+      "note": "",
+      "reviewQuestion": "Confirm."
+    }
+  }
+}
