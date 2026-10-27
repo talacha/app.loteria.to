@@ -1,6 +1,7 @@
 {
   "cta": "Play solo (against the computer)",
   "title": "Play solo",
+  "gridHelp": "For boards up to 8×8, choose Spanish or English as the spoken language. Other available voices use a smaller deck.",
   "intro": "You against the computer, offline. The automatic cantor calls and everyone picks the spelling.",
   "opponents": "Opponents",
   "opponentsN": "{n, plural, one {# computer} other {# computers}}",

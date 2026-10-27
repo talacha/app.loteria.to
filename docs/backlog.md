@@ -15,6 +15,8 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Updated after the 2026
 
 ## Completed
 
+- **2026-10-27 · Solo boards through 8×8:** made the Spanish/English voice requirement explicit beside the board-size selector and added coverage for larger boards. The 144-card pool supports 64 unique squares; 54-card language pools retain their capacity limits.
+
 - **2026-10-27 · Language settings during gameplay:** synchronized in-game and header preferences, added direct solo-game access to UI and spoken-language settings, and corrected the playing host's voice selection to follow the active deck's language coverage. Language changes preserve the round, board and score; unavailable translations remain disabled for the current deck.
 
 - **2026-10-27 · Public SEO/GEO and crawler guidance:** updated factual summaries for all five public routes, linked deck cards to stable fragments, excluded private and API paths across crawler groups without changing the existing AI crawler allow policy, and documented the implementation in [seo.md](seo.md) and [decision 0025](decisions/0025-public-search-and-ai-discovery.md). No follow-up backlog item remains open.

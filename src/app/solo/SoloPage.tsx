@@ -228,7 +228,13 @@ export default function SoloPage() {
 
       <fieldset className={styles.group}>
         <legend>{t('solo.grid')}</legend>
-        <div className={styles.chips} role="radiogroup" aria-label={t('solo.grid')}>
+        <p id="solo-grid-help">{t('solo.gridHelp')}</p>
+        <div
+          className={styles.chips}
+          role="radiogroup"
+          aria-label={t('solo.grid')}
+          aria-describedby="solo-grid-help"
+        >
           {Array.from({ length: MAX_GRID - MIN_GRID + 1 }, (_, k) => MIN_GRID + k).map((g) => {
             const ok = availablePool.length >= minDeckFor(g, cpus + 1);
             return (

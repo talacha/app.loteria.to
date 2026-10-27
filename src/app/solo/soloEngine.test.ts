@@ -159,16 +159,20 @@ function playOutFrom(s0: SoloState): SoloState {
 }
 
 describe('solo grid sizes and the only end of a game', () => {
-  it.each([3, 4, 5])('deals %i x %i cartones and ends only on a full card', (g) => {
+  it.each([3, 4, 5, 6, 7, 8])('deals grid %i and ends only on a full card', (g) => {
     const s0 = createSolo({
       seed: `grid-${g}`,
-      cpus: 2,
+      cpus: 3,
       difficulty: 'normal',
       speedSec: 8,
       pool,
       grid: g,
     });
-    for (const seat of s0.seats) expect(s0.tablas[seat]!.cards).toHaveLength(g * g);
+    expect(s0.seats).toHaveLength(4);
+    for (const seat of s0.seats) {
+      expect(s0.tablas[seat]!.cards).toHaveLength(g * g);
+      expect(new Set(s0.tablas[seat]!.cards).size).toBe(g * g);
+    }
     expect(remainingSquares(s0, HUMAN)).toBe(g * g);
     let s = s0;
     for (let guard = 0; guard < s.order.length * 30 && !s.ended; guard++) {

@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-import { getCard } from '@content';
+import { cardsAvailableIn, getCard } from '@content';
 import i18n from '../i18n';
 import SoloPage from './SoloPage';
 
@@ -46,7 +46,7 @@ const boardState = () =>
 const choose = (group: string, language: string) =>
   fireEvent.click(
     within(screen.getByRole('radiogroup', { name: group })).getByRole('radio', {
-      name: new RegExp(`^${language}`),
+      name: (name) => name.startsWith(language),
     }),
   );
 
@@ -124,4 +124,53 @@ describe('SoloPage language preferences', () => {
     );
     expect(boardState()).toEqual(before);
   });
+});
+
+describe('SoloPage large boards', () => {
+  it.each(['es', 'en'] as const)('starts a 64-square board with three CPUs in %s', (lang) => {
+    localStorage.setItem('loteria:profile', JSON.stringify({ spokenLang: lang }));
+    mount();
+    choose(i18n.t('solo.opponents'), '3');
+    const size = within(screen.getByRole('radiogroup', { name: i18n.t('solo.grid') })).getByRole(
+      'radio',
+      { name: '8×8' },
+    );
+    expect(size.getAttribute('aria-disabled')).toBe('false');
+    fireEvent.click(size);
+    expect(size.getAttribute('aria-checked')).toBe('true');
+    fireEvent.click(screen.getByRole('button', { name: 'Empezar' }));
+    const board = screen.getByRole('list', { name: i18n.t('solo.board') });
+    expect(board.children).toHaveLength(64);
+    expect(board.getAttribute('data-grid')).toBe('8');
+    expect(screen.getByText('Carta 1 de 144')).toBeTruthy();
+    const standings = screen.getByRole('table', { name: 'Tabla de puntos' });
+    expect(within(standings).getAllByRole('row')).toHaveLength(5);
+    expect(standings.textContent).toContain('0/64');
+    expect(speak).toHaveBeenLastCalledWith(expect.anything(), lang);
+  });
+
+  it.each(['nah', 'yua', 'quz'] as const)(
+    'constrains a requested 8×8 to the %s covered pool',
+    (lang) => {
+      localStorage.setItem('loteria:profile', JSON.stringify({ spokenLang: 'es' }));
+      mount();
+      choose(i18n.t('solo.grid'), '8×8');
+      choose(i18n.t('solo.spoken'), i18n.t(`lang.${lang}`));
+      const sizes = within(screen.getByRole('radiogroup', { name: i18n.t('solo.grid') }));
+      const eight = sizes.getByRole('radio', { name: /^8×8/ });
+      expect(eight.getAttribute('aria-disabled')).toBe('true');
+      fireEvent.click(eight);
+      expect(eight.getAttribute('aria-checked')).toBe('false');
+      expect(sizes.getByRole('radio', { name: '5×5' }).getAttribute('aria-checked')).toBe('true');
+      fireEvent.click(screen.getByRole('button', { name: 'Empezar' }));
+      const board = screen.getByRole('list', { name: i18n.t('solo.board') });
+      expect(board.children).toHaveLength(25);
+      expect(board.getAttribute('data-grid')).toBe('5');
+      expect(screen.getByText('Carta 1 de 54')).toBeTruthy();
+      const covered = new Set(cardsAvailableIn([lang]).map((card) => `/cards/${card.id}.webp`));
+      for (const image of board.querySelectorAll('img'))
+        expect(covered.has(image.getAttribute('src')!)).toBe(true);
+      expect(speak).toHaveBeenLastCalledWith(expect.anything(), lang);
+    },
+  );
 });

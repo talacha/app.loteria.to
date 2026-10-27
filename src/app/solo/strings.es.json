@@ -1,6 +1,7 @@
 {
   "cta": "Jugar solo (contra la computadora)",
   "title": "Jugar solo",
+  "gridHelp": "Para jugar hasta 8×8, elige español o inglés como idioma de la voz. Las otras voces disponibles usan una baraja más pequeña.",
   "intro": "Tú contra la computadora, sin conexión. El cantor automático canta y todos eligen cómo se escribe.",
   "opponents": "Contrincantes",
   "opponentsN": "{n, plural, one {# computadora} other {# computadoras}}",

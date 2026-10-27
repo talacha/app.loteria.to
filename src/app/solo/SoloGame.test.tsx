@@ -54,9 +54,13 @@ describe('SoloGame', () => {
     expect(onLeave).toHaveBeenCalledTimes(1);
   });
 
-  it('renders a g x g board and counts squares out of g*g', () => {
-    mount(vi.fn(), 5);
-    expect(screen.getByRole('list', { name: 'Tu tabla' }).children).toHaveLength(25);
-    expect(screen.getByRole('table', { name: 'Tabla de puntos' }).textContent).toContain('0/25');
+  it.each([5, 6, 7, 8])('renders grid %i and counts every square', (grid) => {
+    mount(vi.fn(), grid);
+    const board = screen.getByRole('list', { name: 'Tu tabla' });
+    expect(board.children).toHaveLength(grid * grid);
+    expect(board.getAttribute('data-grid')).toBe(String(grid));
+    expect(screen.getByRole('table', { name: 'Tabla de puntos' }).textContent).toContain(
+      `0/${grid * grid}`,
+    );
   });
 });
