@@ -28,3 +28,4 @@ Lightweight ADRs for Lotería de los Pueblos. One file per decision: `NNNN-short
 | [0023](0023-expanded-catalog-and-language-coverage.md) | 144-card catalog and language-safe room decks | Accepted |
 | [0024](0024-painted-paper-brand.md) | Painted ribbon identity and rugged paper background | Accepted |
 | [0025](0025-public-search-and-ai-discovery.md) | Public search and AI discovery | Accepted |
+| [0026](0026-cabecar-ngabere-expansion.md) | Cabécar and Ngäbere spoken-language expansion | Accepted |

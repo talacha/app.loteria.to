@@ -49,12 +49,12 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Updated after the 2026
 
 The owner authorized static asset production and the 144-card expansion on 2026-10-27, superseding the earlier hold. New language publication still requires source verification, community review and recordings.
 
-### FEAT-001 · Add Bribri (`bzd`) and Cabécar (`cjp`) — P1
+### FEAT-001 · Add Cabécar (`cjp`) and Ngäbere (`gym`) — P1
 
-- **Why:** Pillar 2: adding a language should be a content change. Two Costa Rican Chibchan languages.
-- **Evidence:** drafts at `src/content/drafts/{bzd,cjp}.json`; `facebook/mms-tts-cjp` exists for Cabécar; there is no MMS model for Bribri. `Lang` union in `src/content/types.ts`; `LANG_COLORS` in `src/content/index.ts`.
-- **Scope notes:** Bribri has no MMS voice, so its audio needs native recordings or a text-only call; copy, SEO and OG images that say "cinco idiomas" change to seven.
-- **Accept when:** Bribri audio is resolved and a decision record written; drafts have a source per word; adding the languages touches only content, audio, i18n labels and one token per language colour; all rules in §2 hold for 7 languages.
+- **Selection:** owner confirmed this pair on 2026-10-27; see [decision 0026](decisions/0026-cabecar-ngabere-expansion.md). This supersedes the earlier Bribri/Cabécar pairing.
+- **TTS ready:** dedicated Meta MMS checkpoints exist for both; model revisions are pinned in `scripts/audio/engines.json`. Both loaded successfully in the local audio runtime. Ngäbere's pinned ASR adapter is also available.
+- **Content pending:** Cabécar's 47 imported words remain drafts; Ngäbere needs sourced vocabulary and community review. See [readiness and sources](language-expansion-cjp-gym.md).
+- **Accept when:** reviewed words and pronunciation cover a valid shared deck, clips pass audio checks, language selectors and printing work, offline assets stay in budget, and public claims describe actual playable coverage. Do not enable draft names or change five-language claims before then.
 
 ### FEAT-002 · Optional gloss in the app language after the reveal — P2
 
@@ -74,11 +74,9 @@ The owner authorized static asset production and the 144-card expansion on 2026-
 - **Evidence:** `/print` (`src/app/print/`), rules §12.
 - **Accept when:** a separate flow pairs `/print` cartones (with check codes) with a display-only cantor screen and a "check a cartón" action; it never mixes with an online room.
 
-### FEAT-007 · More languages: Ngäbere (replacement voiced Chibchan language) and Mekatelyu — P2
+### FEAT-007 · Future Bribri and Mekatelyu support — P2
 
-**Why:** Bribri has no Meta MMS-TTS voice and needs native recordings. Checked against Meta's official MMS-TTS list (2026-10-27): voiced — Cabécar `cjp`, Ngäbere/Guaymí `gym`, Téribe/Térraba `tfr`, Buglere/Bocotá `sab`, Jamaican Patois `jam` (closest voice for Limón Creole / Mekatelyu); not voiced — Bribri `bzd`, Malecu `gut`, Boruca `brn`, Rama `rma`.
-**Recommendation:** add **Ngäbere** (`gym`) as the voiced Chibchan language (largest community, Costa Rica and Panama, published dictionaries) and **Mekatelyu** using the `jam` voice, labelled as Jamaican-trained pronunciation with Cassidy/JLU spelling (no single Limón standard). Keep **Bribri** text-only until native recordings exist (its word research is the most complete).
-**Acceptance:** sourced drafts for all cards (same honesty rules and isolated review as the other languages), MMS clips via the audio router, language colours and labels added to tokens and LanguageSettings, `playable` enabled only after review.
+The owner selected Cabécar and Ngäbere for the next expansion (FEAT-001). Retain Bribri and Mekatelyu as future work. Meta's MMS catalog has no Bribri (`bzd`) checkpoint. The `jam` checkpoint is specifically Jamaican English Creole; it does not establish a native Limón/Mekatelyu voice. Revisit only with sourced vocabulary, suitable recordings or validated synthesis, and community review. Do not relabel Jamaican synthesis as verified Mekatelyu pronunciation.
 
 ## Tech debt
 

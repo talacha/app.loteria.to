@@ -6,8 +6,8 @@ Every card name is voiced in each language from **static clips**. Nothing is syn
 
 1. **Router** (`scripts/audio/engines.json`, `engines.py`): one engine per language.
    - es, en: Kokoro-82M (`hexgrad/Kokoro-82M`, Apache-2.0) via the `kokoro` package. Voices evaluated per clip: es `ef_dora`, `em_alex`, `em_santa`; en `af_heart`, `am_michael`, `af_bella`.
-   - nah (`mms-tts-nhe`), yua, quz, cjp: Meta MMS-TTS via Transformers (CC-BY-NC 4.0).
-   - bzd (Bribri): `needs-recording`. No open TTS exists; clips must be native recordings.
+   - nah (`mms-tts-nhe`), yua, quz, cjp, gym: Meta MMS-TTS via Transformers (CC-BY-NC 4.0). Cabécar (`cjp`) and Ngäbere (`gym`) are configured for content preparation, not enabled as playable languages. See the [expansion readiness report](language-expansion-cjp-gym.md).
+   - bzd (Bribri): `needs-recording`. No Bribri checkpoint appears in Meta's MMS-TTS catalog; this pipeline requires native recordings.
    - Model revisions are pinned commit shas in `engines.json` and recorded in the manifest. `HF_HOME` is respected (local cache), `HF_TOKEN` is used for gated repos, `HF_HUB_OFFLINE=1` works once models are cached.
 2. **Candidates**: K (default 6) per card x language. The first uses engine defaults; the rest are a deterministic sample of the grid. MMS varies seed, `noise_scale` (0.333/0.5/0.667), `noise_scale_duration` (0.6/0.8), `speaking_rate` (0.9/1.0/1.1). Kokoro varies voice and speed. For es/en, text variants: as-is and without the leading article (recorded in `params.variant`).
 3. **Scoring**: `--score asr` (default) transcribes each candidate with `facebook/mms-1b-all` (language adapter) and computes CER against the spoken text (lowercase, diacritics and punctuation stripped, characters the ASR cannot emit removed). Signal score: -16 LUFS +-2 (BS.1770), peak <= -1 dBFS and no clipping, duration 0.3-2.5 s, not silent, silence trimmed. Composite = 0.7 x (1 - CER) + 0.3 x signal. `--score signal` skips ASR (no 4 GB download). The best candidate wins; ties go to the default parameters. Only the winner is kept.

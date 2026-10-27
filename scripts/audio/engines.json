@@ -45,6 +45,12 @@
       "revision": "328480db5753278668953a7ed400c265fb469b8f",
       "asr": "cjp"
     },
+    "gym": {
+      "engine": "mms",
+      "model": "facebook/mms-tts-gym",
+      "revision": "57eb0c7c2757e75b9a006e19de7aa76f2ec935a6",
+      "asr": "gym"
+    },
     "bzd": {
       "engine": "needs-recording",
       "reason": "No open TTS model exists for Bribri (bzd): not in Meta MMS-TTS, none other found. Needs native recordings in public/audio/recordings/bzd/."

@@ -1,0 +1,1344 @@
+{
+  "lang": "gym",
+  "variety": "Costa Rican Ngäbere as documented by Bárbara Lininger Ross (1982). These historical dictionary forms are not claimed to match every modern community or the MMS voice variety.",
+  "orthography": "Printed practical-orthography column of Lininger Ross (1982), transcribed directly from visually inspected page images; NFC. No automatic conversion from phonological transcription and no invented loans. Modern spelling and TTS compatibility require review.",
+  "status": "research-draft",
+  "review": {
+    "communityReviewed": false,
+    "audioReviewed": false,
+    "approvedForPlay": false
+  },
+  "sources": [
+    {
+      "id": "lininger1982",
+      "title": "II. El alfabeto práctico ngäbere y las listas ilustrativas",
+      "author": "Bárbara Lininger Ross",
+      "year": 1982,
+      "url": "https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896",
+      "doi": "https://doi.org/10.15517/rfl.v8i1-2.16454",
+      "note": "Revista de Filología y Lingüística 8(1-2), 137–154. Dictionary section starts on printed p.141. Directly inspected rendered pages cited below; printed page = PDF page + 136. Portal citation text sometimes says 2006; the scanned issue is dated 1982. Source access and transcription are not community approval."
+    }
+  ],
+  "cards": {
+    "jaguar": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card jaguar in the chosen community, and where is it documented?"
+    },
+    "colibri": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card colibri in the chosen community, and where is it documented?"
+    },
+    "llama": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card llama in the chosen community, and where is it documented?"
+    },
+    "condor": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card condor in the chosen community, and where is it documented?"
+    },
+    "mariposa": {
+      "text": "manlan",
+      "gloss": "butterfly",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.148, B. El Diccionario Provisional, Spanish headword mariposa; practical-orthography column; PDF page 12: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=12",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured mariposa in your community? Please confirm the referent and pronunciation."
+    },
+    "guajolote": {
+      "text": "babícho",
+      "gloss": "turkey",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.145, B. El Diccionario Provisional, Spanish headword chompipe (pavo); practical-orthography column; PDF page 9: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=9",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved. Also a shorter form is listed elsewhere in the source; this entry preserves the explicitly identified chompipe form.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured guajolote in your community? Please confirm the referent and pronunciation."
+    },
+    "tortuga": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card tortuga in the chosen community, and where is it documented?"
+    },
+    "rana": {
+      "text": "gwreta",
+      "gloss": "frog",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.151, B. El Diccionario Provisional, Spanish headword rana; practical-orthography column; PDF page 15: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=15",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured rana in your community? Please confirm the referent and pronunciation."
+    },
+    "serpiente": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card serpiente in the chosen community, and where is it documented?"
+    },
+    "maiz": {
+      "text": "i",
+      "gloss": "maize",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.148, B. El Diccionario Provisional, Spanish headword maíz; practical-orthography column; PDF page 12: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=12",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved. One-letter word: check short-clip intelligibility before publication.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured maiz in your community? Please confirm the referent and pronunciation."
+    },
+    "nopal": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card nopal in the chosen community, and where is it documented?"
+    },
+    "frijol": {
+      "text": "muma",
+      "gloss": "beans",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.146, B. El Diccionario Provisional, Spanish headword frijoles; practical-orthography column; PDF page 10: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=10",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved. Confirm that the plural dictionary gloss is natural for a single illustrated bean card.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured frijol in your community? Please confirm the referent and pronunciation."
+    },
+    "pina": {
+      "text": "nwa",
+      "gloss": "pineapple",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.150, B. El Diccionario Provisional, Spanish headword piña; practical-orthography column; PDF page 14: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=14",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured pina in your community? Please confirm the referent and pronunciation."
+    },
+    "chile": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card chile in the chosen community, and where is it documented?"
+    },
+    "papa": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card papa in the chosen community, and where is it documented?"
+    },
+    "aguacate": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card aguacate in the chosen community, and where is it documented?"
+    },
+    "tomate": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card tomate in the chosen community, and where is it documented?"
+    },
+    "girasol": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card girasol in the chosen community, and where is it documented?"
+    },
+    "sol": {
+      "text": "nwana",
+      "gloss": "sun",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.152, B. El Diccionario Provisional, Spanish headword sol; practical-orthography column; PDF page 16: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=16",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured sol in your community? Please confirm the referent and pronunciation."
+    },
+    "luna": {
+      "text": "sü",
+      "gloss": "moon",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.148, B. El Diccionario Provisional, Spanish headword luna; practical-orthography column; PDF page 12: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=12",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved. The source also lists this form for month.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured luna in your community? Please confirm the referent and pronunciation."
+    },
+    "estrella": {
+      "text": "muke",
+      "gloss": "star",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.146, B. El Diccionario Provisional, Spanish headword estrella; practical-orthography column; PDF page 10: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=10",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured estrella in your community? Please confirm the referent and pronunciation."
+    },
+    "lluvia": {
+      "text": "kälu",
+      "gloss": "rain",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.148, B. El Diccionario Provisional, Spanish headword lluvia; practical-orthography column; PDF page 12: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=12",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved. The source lists another alternative; this is the first practical-orthography form printed.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured lluvia in your community? Please confirm the referent and pronunciation."
+    },
+    "rayo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card rayo in the chosen community, and where is it documented?"
+    },
+    "arcoiris": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card arcoiris in the chosen community, and where is it documented?"
+    },
+    "nube": {
+      "text": "muta",
+      "gloss": "cloud",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.149, B. El Diccionario Provisional, Spanish headword nube; practical-orthography column; PDF page 13: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=13",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured nube in your community? Please confirm the referent and pronunciation."
+    },
+    "viento": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card viento in the chosen community, and where is it documented?"
+    },
+    "cometa": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card cometa in the chosen community, and where is it documented?"
+    },
+    "montana": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card montana in the chosen community, and where is it documented?"
+    },
+    "volcan": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card volcan in the chosen community, and where is it documented?"
+    },
+    "manantial": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card manantial in the chosen community, and where is it documented?"
+    },
+    "mar": {
+      "text": "mren",
+      "gloss": "sea",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.148, B. El Diccionario Provisional, Spanish headword mar; practical-orthography column; PDF page 12: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=12",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved. The source cross-references salt with the same word. Do not add a separate salt card with this spelling in the same deck.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured mar in your community? Please confirm the referent and pronunciation."
+    },
+    "desierto": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card desierto in the chosen community, and where is it documented?"
+    },
+    "selva": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card selva in the chosen community, and where is it documented?"
+    },
+    "cristal": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card cristal in the chosen community, and where is it documented?"
+    },
+    "isla": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card isla in the chosen community, and where is it documented?"
+    },
+    "cueva": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card cueva in the chosen community, and where is it documented?"
+    },
+    "olla": {
+      "text": "ukwén",
+      "gloss": "cooking pot",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.149, B. El Diccionario Provisional, Spanish headword olla; practical-orthography column; PDF page 13: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=13",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved. Confirm material and everyday use against the illustrated clay pot.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured olla in your community? Please confirm the referent and pronunciation."
+    },
+    "cesto": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card cesto in the chosen community, and where is it documented?"
+    },
+    "tambor": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card tambor in the chosen community, and where is it documented?"
+    },
+    "adobe": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card adobe in the chosen community, and where is it documented?"
+    },
+    "hilo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card hilo in the chosen community, and where is it documented?"
+    },
+    "canoa": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card canoa in the chosen community, and where is it documented?"
+    },
+    "puente": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card puente in the chosen community, and where is it documented?"
+    },
+    "vela": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card vela in the chosen community, and where is it documented?"
+    },
+    "martillo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card martillo in the chosen community, and where is it documented?"
+    },
+    "casa": {
+      "text": "ju",
+      "gloss": "house",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.144, B. El Diccionario Provisional, Spanish headword casa; practical-orthography column; PDF page 8: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=8",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved. The source lists another house form separately; reviewer should select the locally appropriate term.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured casa in your community? Please confirm the referent and pronunciation."
+    },
+    "milpa": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card milpa in the chosen community, and where is it documented?"
+    },
+    "tienda": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card tienda in the chosen community, and where is it documented?"
+    },
+    "plaza": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card plaza in the chosen community, and where is it documented?"
+    },
+    "puerto": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card puerto in the chosen community, and where is it documented?"
+    },
+    "pueblo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card pueblo in the chosen community, and where is it documented?"
+    },
+    "escuela": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card escuela in the chosen community, and where is it documented?"
+    },
+    "observatorio": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card observatorio in the chosen community, and where is it documented?"
+    },
+    "biblioteca": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card biblioteca in the chosen community, and where is it documented?"
+    },
+    "perro": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card perro in the chosen community, and where is it documented?"
+    },
+    "pez": {
+      "text": "gwa",
+      "gloss": "fish",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.150, B. El Diccionario Provisional, Spanish headword pez; practical-orthography column; PDF page 14: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=14",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured pez in your community? Please confirm the referent and pronunciation."
+    },
+    "venado": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card venado in the chosen community, and where is it documented?"
+    },
+    "mono": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card mono in the chosen community, and where is it documented?"
+    },
+    "murcielago": {
+      "text": "nibta",
+      "gloss": "bat",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.149, B. El Diccionario Provisional, Spanish headword murciélago; practical-orthography column; PDF page 13: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=13",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured murcielago in your community? Please confirm the referent and pronunciation."
+    },
+    "hormiga": {
+      "text": "ngáñan",
+      "gloss": "ant",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.147, B. El Diccionario Provisional, Spanish headword hormiga; practical-orthography column; PDF page 11: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=11",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured hormiga in your community? Please confirm the referent and pronunciation."
+    },
+    "abeja": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card abeja in the chosen community, and where is it documented?"
+    },
+    "arana": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card arana in the chosen community, and where is it documented?"
+    },
+    "caracol": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card caracol in the chosen community, and where is it documented?"
+    },
+    "cangrejo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card cangrejo in the chosen community, and where is it documented?"
+    },
+    "armadillo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card armadillo in the chosen community, and where is it documented?"
+    },
+    "lagartija": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card lagartija in the chosen community, and where is it documented?"
+    },
+    "perico": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card perico in the chosen community, and where is it documented?"
+    },
+    "raton": {
+      "text": "tukwe",
+      "gloss": "mouse; rat",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.151, B. El Diccionario Provisional, Spanish headword rata, ratón; practical-orthography column; PDF page 15: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=15",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved. The source covers both rat and mouse; verify the illustration is understood.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured raton in your community? Please confirm the referent and pronunciation."
+    },
+    "gallina": {
+      "text": "kwi",
+      "gloss": "hen",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.146, B. El Diccionario Provisional, Spanish headword gallina; practical-orthography column; PDF page 10: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=10",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured gallina in your community? Please confirm the referent and pronunciation."
+    },
+    "arbol": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card arbol in the chosen community, and where is it documented?"
+    },
+    "hoja": {
+      "text": "kä",
+      "gloss": "leaf of a tree",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.147, B. El Diccionario Provisional, Spanish headword hoja (de árbol); practical-orthography column; PDF page 11: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=11",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved. Preserve the diaeresis; a plain a is not the spelling printed here.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured hoja in your community? Please confirm the referent and pronunciation."
+    },
+    "flor": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card flor in the chosen community, and where is it documented?"
+    },
+    "cacahuate": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card cacahuate in the chosen community, and where is it documented?"
+    },
+    "raiz": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card raiz in the chosen community, and where is it documented?"
+    },
+    "calabaza": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card calabaza in the chosen community, and where is it documented?"
+    },
+    "yuca": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card yuca in the chosen community, and where is it documented?"
+    },
+    "camote": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card camote in the chosen community, and where is it documented?"
+    },
+    "guayaba": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card guayaba in the chosen community, and where is it documented?"
+    },
+    "algodon": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card algodon in the chosen community, and where is it documented?"
+    },
+    "huevo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card huevo in the chosen community, and where is it documented?"
+    },
+    "hongo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card hongo in the chosen community, and where is it documented?"
+    },
+    "platano": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card platano in the chosen community, and where is it documented?"
+    },
+    "pasto": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card pasto in the chosen community, and where is it documented?"
+    },
+    "papaya": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card papaya in the chosen community, and where is it documented?"
+    },
+    "fuego": {
+      "text": "ñukwä",
+      "gloss": "fire",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.146, B. El Diccionario Provisional, Spanish headword fuego; practical-orthography column; PDF page 10: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=10",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved. Preserve final ä; OCR incorrectly suggests an acute-accented vowel.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured fuego in your community? Please confirm the referent and pronunciation."
+    },
+    "humo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card humo in the chosen community, and where is it documented?"
+    },
+    "neblina": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card neblina in the chosen community, and where is it documented?"
+    },
+    "granizo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card granizo in the chosen community, and where is it documented?"
+    },
+    "nieve": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card nieve in the chosen community, and where is it documented?"
+    },
+    "hielo": {
+      "text": "ñúngätä",
+      "gloss": "ice",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.147, B. El Diccionario Provisional, Spanish headword hielo; practical-orthography column; PDF page 11: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=11",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured hielo in your community? Please confirm the referent and pronunciation."
+    },
+    "amanecer": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card amanecer in the chosen community, and where is it documented?"
+    },
+    "noche": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card noche in the chosen community, and where is it documented?"
+    },
+    "cielo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card cielo in the chosen community, and where is it documented?"
+    },
+    "sombra": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card sombra in the chosen community, and where is it documented?"
+    },
+    "rocio": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card rocio in the chosen community, and where is it documented?"
+    },
+    "remolino": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card remolino in the chosen community, and where is it documented?"
+    },
+    "agua": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card agua in the chosen community, and where is it documented?"
+    },
+    "ceniza": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card ceniza in the chosen community, and where is it documented?"
+    },
+    "trueno": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card trueno in the chosen community, and where is it documented?"
+    },
+    "rio": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card rio in the chosen community, and where is it documented?"
+    },
+    "lago": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card lago in the chosen community, and where is it documented?"
+    },
+    "piedra": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card piedra in the chosen community, and where is it documented?"
+    },
+    "arena": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card arena in the chosen community, and where is it documented?"
+    },
+    "playa": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card playa in the chosen community, and where is it documented?"
+    },
+    "cascada": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card cascada in the chosen community, and where is it documented?"
+    },
+    "charco": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card charco in the chosen community, and where is it documented?"
+    },
+    "lodo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card lodo in the chosen community, and where is it documented?"
+    },
+    "barranca": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card barranca in the chosen community, and where is it documented?"
+    },
+    "llano": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card llano in the chosen community, and where is it documented?"
+    },
+    "pantano": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card pantano in the chosen community, and where is it documented?"
+    },
+    "ola": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card ola in the chosen community, and where is it documented?"
+    },
+    "concha": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card concha in the chosen community, and where is it documented?"
+    },
+    "valle": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card valle in the chosen community, and where is it documented?"
+    },
+    "tierra": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card tierra in the chosen community, and where is it documented?"
+    },
+    "hacha": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card hacha in the chosen community, and where is it documented?"
+    },
+    "red": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card red in the chosen community, and where is it documented?"
+    },
+    "cuerda": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card cuerda in the chosen community, and where is it documented?"
+    },
+    "jicara": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card jicara in the chosen community, and where is it documented?"
+    },
+    "metate": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card metate in the chosen community, and where is it documented?"
+    },
+    "comal": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card comal in the chosen community, and where is it documented?"
+    },
+    "escoba": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card escoba in the chosen community, and where is it documented?"
+    },
+    "aguja": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card aguja in the chosen community, and where is it documented?"
+    },
+    "huso": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card huso in the chosen community, and where is it documented?"
+    },
+    "banco": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card banco in the chosen community, and where is it documented?"
+    },
+    "sombrero": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card sombrero in the chosen community, and where is it documented?"
+    },
+    "morral": {
+      "text": "kra",
+      "gloss": "carrying bag",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.148, B. El Diccionario Provisional, Spanish headword mochila (ver bolsa); practical-orthography column; PDF page 12: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=12",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved. The older source uses a general bag/backpack sense; community review must confirm the pictured morral.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured morral in your community? Please confirm the referent and pronunciation."
+    },
+    "hamaca": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card hamaca in the chosen community, and where is it documented?"
+    },
+    "coa": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card coa in the chosen community, and where is it documented?"
+    },
+    "petate": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card petate in the chosen community, and where is it documented?"
+    },
+    "camino": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card camino in the chosen community, and where is it documented?"
+    },
+    "pozo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card pozo in the chosen community, and where is it documented?"
+    },
+    "nido": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card nido in the chosen community, and where is it documented?"
+    },
+    "colmena": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card colmena in the chosen community, and where is it documented?"
+    },
+    "hormiguero": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card hormiguero in the chosen community, and where is it documented?"
+    },
+    "telarana": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card telarana in the chosen community, and where is it documented?"
+    },
+    "patio": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card patio in the chosen community, and where is it documented?"
+    },
+    "huerto": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card huerto in the chosen community, and where is it documented?"
+    },
+    "cerca": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card cerca in the chosen community, and where is it documented?"
+    },
+    "puerta": {
+      "text": "juke",
+      "gloss": "door",
+      "kind": "attested",
+      "confidence": "medium",
+      "status": "draft",
+      "source": "lininger1982 p.151, B. El Diccionario Provisional, Spanish headword puerta; practical-orthography column; PDF page 15: https://archivo.revistas.ucr.ac.cr/index.php/filyling/article/download/16454/15968/32896#page=15",
+      "note": "Printed dictionary spelling visually checked on 2026-10-27. Not community reviewed; modern orthography, local usage, referent and synthetic pronunciation remain unapproved.",
+      "reviewQuestion": "Is this recorded term and spelling used today for the pictured puerta in your community? Please confirm the referent and pronunciation."
+    },
+    "techo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card techo in the chosen community, and where is it documented?"
+    },
+    "escalera": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card escalera in the chosen community, and where is it documented?"
+    },
+    "troje": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card troje in the chosen community, and where is it documented?"
+    },
+    "cocina": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card cocina in the chosen community, and where is it documented?"
+    },
+    "corral": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "No source entry verified for this card in this audit.",
+      "note": "Unresolved research item; this does not mean the language lacks a word. Do not substitute Spanish or invent a descriptive phrase.",
+      "reviewQuestion": "What attested everyday term matches card corral in the chosen community, and where is it documented?"
+    }
+  }
+}
