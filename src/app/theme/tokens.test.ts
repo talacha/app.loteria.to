@@ -2,27 +2,59 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const css = readFileSync('src/app/theme/tokens.css', 'utf8');
+const json = JSON.parse(readFileSync('design/tokens.json', 'utf8')) as Record<string, unknown>;
 
 function block(selector: string): Record<string, string> {
   const start = css.indexOf(selector);
   if (start < 0) throw new Error(`missing ${selector}`);
   const open = css.indexOf('{', start);
-  const close = css.indexOf('}', open);
+  const close = css.indexOf('\n}', open);
   const out: Record<string, string> = {};
   for (const m of css.slice(open + 1, close).matchAll(/--([\w-]+):\s*([^;]+);/g)) {
-    out[m[1] as string] = (m[2] as string).trim().toLowerCase();
+    out[m[1] as string] = (m[2] as string).trim();
   }
   return out;
 }
 
-function resolve(vars: Record<string, string>): Record<string, string> {
-  const get = (k: string, depth = 0): string => {
-    const v = vars[k] ?? '';
-    const m = /^var\(--([\w-]+)\)$/.exec(v);
-    return m && depth < 8 ? get(m[1] as string, depth + 1) : v;
-  };
-  return Object.fromEntries(Object.keys(vars).map((k) => [k, get(k)]));
+/** Replace every var(--x) by its value, recursively. */
+function resolve(vars: Record<string, string>, value: string, depth = 0): string {
+  if (depth > 10) return value;
+  return value.replace(/var\(--([\w-]+)\)/g, (_, k: string) =>
+    vars[k] === undefined ? `var(--${k})` : resolve(vars, vars[k] as string, depth + 1),
+  );
 }
+const norm = (s: string) => s.replace(/\s+/g, ' ').trim().toLowerCase();
+
+const base = block(':root {');
+const contrast = { ...base, ...block(":root[data-theme='contrast']") };
+
+// Flatten design/tokens.json into [cssName, resolved value].
+const flat: Record<string, string> = {};
+for (const [group, items] of Object.entries(json)) {
+  if (group.startsWith('$')) continue;
+  for (const [name, def] of Object.entries(items as Record<string, { $value: string }>)) {
+    flat[`${group}-${name}`] = def.$value;
+  }
+}
+const jsonVars = Object.fromEntries(
+  Object.entries(flat).map(([k, v]) => [k.replace(/^color-/, 'color-'), v]),
+);
+function jsonResolve(v: string, depth = 0): string {
+  if (depth > 10) return v;
+  return v.replace(/\{(\w+)\.([\w-]+)\}/g, (_, g: string, n: string) =>
+    jsonResolve(jsonVars[`${g}-${n}`] ?? '', depth + 1),
+  );
+}
+
+describe('tokens.css matches design/tokens.json', () => {
+  it('has tokens to check', () => {
+    expect(Object.keys(flat).length).toBeGreaterThan(60);
+  });
+  it.each(Object.keys(flat))('--%s', (name) => {
+    expect(base[name], `--${name} missing from tokens.css`).toBeDefined();
+    expect(norm(resolve(base, base[name] as string))).toBe(norm(jsonResolve(flat[name] as string)));
+  });
+});
 
 function lum(hex: string): number {
   const c = [1, 3, 5].map((i) => {
@@ -35,93 +67,39 @@ function ratio(a: string, b: string): number {
   const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x) as [number, number];
   return (hi + 0.05) / (lo + 0.05);
 }
+const hex = (vars: Record<string, string>, k: string) => resolve(vars, `var(--${k})`);
 
-const base = block(':root {');
-const themes: Record<string, Record<string, string>> = {
-  night: resolve(base),
-  contrast: resolve({ ...base, ...block(":root[data-theme='contrast']") }),
-};
-
-// [foreground, background, minimum ratio]
+// [foreground, background, minimum ratio] from DESIGN.md §3 and §8 (large display text >= 3).
 const PAIRS: [string, string, number][] = [
-  ['paper', 'night', 4.5],
-  ['paper', 'night-raised', 4.5],
-  ['muted-night', 'night', 4.5],
-  ['muted-night', 'night-raised', 4.5],
-  ['ink', 'paper', 4.5],
-  ['muted-paper', 'paper', 4.5],
-  ['ink', 'maiz', 4.5],
-  ['ink', 'review', 4.5],
-  ['maiz', 'night', 4.5],
-  ['maiz', 'night-raised', 4.5],
-  ['color-ink', 'color-bg', 4.5],
-  ['color-ink', 'color-surface', 4.5],
-  ['color-ink-muted', 'color-bg', 4.5],
-  ['color-ink-muted', 'color-surface', 4.5],
-  ['color-ink', 'color-warn-bg', 4.5],
-  ['color-accent-ink', 'color-accent', 4.5],
-  ['color-accent', 'color-bg', 4.5],
-  ['color-jade', 'color-surface', 4.5],
-  ['color-cielo', 'color-surface', 4.5],
-  ['color-focus', 'color-bg', 3],
-  ['color-focus', 'color-surface', 3],
-  ['line-night', 'night', 1],
+  ['color-paper', 'color-night', 4.5],
+  ['color-paper', 'color-night-raised', 4.5],
+  ['color-muted-on-night', 'color-night', 4.5],
+  ['color-muted-on-night', 'color-night-raised', 4.5],
+  ['color-ink', 'color-paper', 4.5],
+  ['color-ink', 'color-white', 4.5],
+  ['color-muted-on-paper', 'color-paper', 4.5],
+  ['color-ink', 'color-maiz', 4.5],
+  ['color-ink', 'color-maiz-soft', 4.5],
+  ['color-ink', 'color-jade-soft', 4.5],
+  ['color-maiz', 'color-night', 4.5],
+  ['color-maiz', 'color-night-raised', 4.5],
+  ['color-paper', 'color-maya', 4.5],
+  ['color-paper', 'color-quechua', 4.5],
+  ['color-paper', 'color-cielo', 4.5],
+  ['color-ink', 'color-jade', 4.5],
+  ['color-ink', 'color-rosa', 3],
+  ['color-paper', 'color-rosa', 3],
+  ['color-night-dash', 'color-night', 3],
+  ['color-maiz', 'color-night', 3],
+  ['color-ink', 'color-disabled-on-night', 1],
 ];
 
 describe('token contrast', () => {
-  for (const [name, t] of Object.entries(themes)) {
+  for (const [name, t] of Object.entries({ night: base, contrast })) {
     for (const [fg, bg, min] of PAIRS) {
       it(`${name}: ${fg} on ${bg} >= ${min}`, () => {
-        expect(t[fg], fg).toBeTruthy();
-        expect(t[bg], bg).toBeTruthy();
-        expect(ratio(t[fg] as string, t[bg] as string)).toBeGreaterThanOrEqual(min);
+        expect(ratio(hex(t, fg), hex(t, bg))).toBeGreaterThanOrEqual(min);
       });
     }
   }
-});
-
-const SHARED_NAMES = [
-  'night',
-  'night-raised',
-  'night-line',
-  'ink',
-  'paper',
-  'card-white',
-  'shadow-color',
-  'shadow-hard',
-  'muted-on-night',
-  'muted-on-paper',
-  'maiz',
-  'rosa',
-  'jade',
-  'cielo',
-  'lang-maya',
-  'lang-quechua',
-  'chile',
-  'review',
-  'bean',
-  'lang-nah',
-  'lang-yua',
-  'lang-quz',
-  'lang-es',
-  'lang-en',
-  'font-display',
-  'font-ui',
-  'border-thick',
-  'border-thin',
-  'radius-sm',
-  'radius-md',
-  'radius-lg',
-  'radius-pill',
-  'press-offset',
-];
-
-describe('shared token names', () => {
-  it.each(SHARED_NAMES)('defines --%s', (name) => {
-    expect(base[name], name).toBeTruthy();
-  });
-  it('keeps the design colours', () => {
-    expect(base['lang-maya']).toBe('#7a4bd6');
-    expect(base['shadow-hard']).toBe('0 5px 0 var(--shadow-color)');
-  });
 });

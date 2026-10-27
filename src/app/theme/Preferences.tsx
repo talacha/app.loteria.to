@@ -15,7 +15,7 @@ export function LanguageSwitch() {
         <button
           key={l}
           type="button"
-          className={styles.btn}
+          className={styles.toggle}
           lang={l}
           aria-pressed={current === l}
           onClick={() => setUiLang(l)}
@@ -36,7 +36,7 @@ export function ThemeSwitch() {
         <button
           key={v}
           type="button"
-          className={styles.btn}
+          className={styles.toggle}
           aria-pressed={theme === v}
           onClick={() => {
             setTheme(v);

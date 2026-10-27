@@ -1,4 +1,7 @@
-/* Shared design tokens ("Feria de noche", docs/DESIGN.md). Owned by the theme agent. */
+/*
+ * Design tokens for "Feria de noche". GENERATED FROM design/tokens.json (edit that file first);
+ * tokens.test.ts fails if the two drift. See docs/DESIGN.md.
+ */
 @font-face {
   font-family: 'Atkinson Hyperlegible';
   font-style: normal;
@@ -69,121 +72,179 @@
 }
 
 :root {
-  /* Feria de noche */
-  --night: #1e2142;
-  --night-raised: #2a2e58;
-  --ink: #16182f;
-  --paper: #fff6e5;
-  --shadow-ink: #0c0d1e;
-  --muted-night: #c9c3e6;
-  --muted-paper: #4a4766;
-  --line-night: #45497f;
-  --maiz: #ffc233;
-  --rosa: #e5177e;
-  --jade: #0e9f7e;
-  --cielo: #2f6fe4;
-  --chile: #e2412b;
-  --review: #ffe08a;
-  --bean: #6b2f23;
-  --card-white: #ffffff;
+  /* color */
+  --color-night: #1e2142;
+  --color-night-raised: #2a2e58;
+  --color-night-line: #45497f;
+  --color-night-dash: #6e6aa6;
+  --color-ink: #16182f;
+  --color-paper: #fff6e5;
+  --color-white: #ffffff;
+  --color-shadow: #0c0d1e;
+  --color-muted-on-night: #c9c3e6;
+  --color-muted-on-paper: #4a4766;
+  --color-maiz: #ffc233;
+  --color-maiz-soft: #ffe08a;
+  --color-rosa: #e5177e;
+  --color-jade: #0e9f7e;
+  --color-jade-soft: #c9f2e4;
+  --color-cielo: #2a64d6;
+  --color-maya: #7a4bd6;
+  --color-quechua: #c2410c;
+  --color-chile: #e2412b;
+  --color-bean: #6b2f23;
+  --color-bean-dark: #4a1f16;
+  --color-bean-light: #8a4a3a;
+  --color-disabled-on-night: #3a3e6a;
 
-  /* Names shared with the host and player screens (aliases of the tokens above). */
-  --night-line: var(--line-night);
-  --shadow-color: var(--shadow-ink);
-  --shadow-hard: 0 5px 0 var(--shadow-color);
-  --muted-on-night: var(--muted-night);
-  --muted-on-paper: var(--muted-paper);
-  --lang-maya: #7a4bd6;
-  --lang-quechua: #c2410c;
-  --lang-nah: var(--jade);
-  --lang-yua: var(--lang-maya);
-  --lang-quz: var(--lang-quechua);
-  --lang-es: var(--rosa);
-  --lang-en: var(--cielo);
-  --border-thick: 3px solid var(--ink);
-  --border-thin: 2px solid var(--ink);
-  --radius-sm: 12px;
-  --radius-md: 16px;
-  --radius-lg: 22px;
-  --radius-pill: 999px;
-  --press-offset: translateY(3px);
+  /* lang */
+  --lang-nah: var(--color-jade);
+  --lang-yua: var(--color-maya);
+  --lang-quz: var(--color-quechua);
+  --lang-es: var(--color-rosa);
+  --lang-en: var(--color-cielo);
 
-  --font-ui: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  /* font */
   --font-display: 'Bricolage Grotesque', 'Atkinson Hyperlegible', system-ui, sans-serif;
-  --hard-shadow: 0 5px 0 var(--shadow-ink);
-  --hard-shadow-sm: 0 4px 0 var(--shadow-ink);
-  --border-w: 3px;
+  --font-ui: 'Atkinson Hyperlegible', system-ui, sans-serif;
 
-  /* Legacy tokens (other screens), remapped onto the night ground. */
-  --color-bg: var(--night);
-  --color-surface: var(--night-raised);
-  --color-ink: var(--paper);
-  --color-ink-muted: var(--muted-night);
-  --color-accent: var(--maiz);
-  --color-accent-ink: var(--ink);
-  --color-maiz: var(--maiz);
-  --color-jade: #34d3ae;
-  --color-cielo: #8fb6ff;
-  --color-bean: var(--bean);
-  --color-focus: var(--maiz);
-  --color-border: var(--line-night);
-  --color-warn-bg: #4a4020;
+  /* text */
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-md: 15px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 30px;
+  --text-3xl: 36px;
+  --text-word: 38px;
+  --text-code: 40px;
+  --text-hero: 64px;
 
-  --font-body: var(--font-ui);
-  --text-sm: 0.875rem;
-  --text-md: 1rem;
-  --text-lg: 1.25rem;
-  --text-xl: 1.75rem;
-  --text-2xl: 2.5rem;
-  --text-call: clamp(3rem, 12vw, 9rem);
-
+  /* space */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
+  --space-5: 20px;
   --space-6: 24px;
   --space-8: 32px;
-  --radius: 16px;
-  --tap: 44px;
-  --shadow: var(--hard-shadow);
+
+  /* radius */
+  --radius-xs: 10px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* border */
+  --border-thick: 3px solid var(--color-ink);
+  --border-thin: 2px solid var(--color-ink);
+  --border-dashed: 2px dashed var(--color-night-dash);
+
+  /* shadow */
+  --shadow-hard: 0 5px 0 var(--color-shadow);
+  --shadow-hard-sm: 0 4px 0 var(--color-shadow);
+  --shadow-hard-lg: 0 6px 0 var(--color-shadow);
+
+  /* size */
+  --size-tap: 44px;
+  --size-button: 60px;
+  --size-choice: 96px;
+  --size-phone: 390px;
+  --size-tablet: 768px;
+  --size-laptop: 1280px;
+
+  /* motion */
+  --motion-press: translateY(3px);
+  --motion-lift: translateY(-2px);
+
+  --border-w: 3px;
+  --text-call: clamp(3rem, 12vw, 9rem);
   color-scheme: dark;
+
+  /*
+   * DEPRECATED aliases. Kept only until every screen uses the names above.
+   * Where a legacy name collided with a new one (--color-ink, --color-jade, --color-cielo,
+   * --radius-lg, --text-*), the NEW meaning wins.
+   */
+  --night: var(--color-night);
+  --night-raised: var(--color-night-raised);
+  --night-line: var(--color-night-line);
+  --ink: var(--color-ink);
+  --paper: var(--color-paper);
+  --card-white: var(--color-white);
+  --shadow-color: var(--color-shadow);
+  --muted-on-night: var(--color-muted-on-night);
+  --muted-on-paper: var(--color-muted-on-paper);
+  --muted-night: var(--color-muted-on-night);
+  --muted-paper: var(--color-muted-on-paper);
+  --line-night: var(--color-night-line);
+  --shadow-ink: var(--color-shadow);
+  --maiz: var(--color-maiz);
+  --rosa: var(--color-rosa);
+  --jade: var(--color-jade);
+  --cielo: var(--color-cielo);
+  --chile: var(--color-chile);
+  --review: var(--color-maiz-soft);
+  --bean: var(--color-bean);
+  --lang-maya: var(--color-maya);
+  --lang-quechua: var(--color-quechua);
+  --press-offset: var(--motion-press);
+  --hard-shadow: var(--shadow-hard);
+  --hard-shadow-sm: var(--shadow-hard-sm);
+  --radius: var(--radius-sm);
+  --tap: var(--size-tap);
+  --shadow: var(--shadow-hard);
+  --font-body: var(--font-ui);
+  --color-bg: var(--color-night);
+  --color-surface: var(--color-night-raised);
+  --color-ink-muted: var(--color-muted-on-night);
+  --color-accent: var(--color-maiz);
+  --color-accent-ink: var(--color-ink);
+  --color-focus: var(--color-maiz);
+  --color-border: var(--color-night-line);
+  --color-warn-bg: var(--color-maiz-soft);
+  --color-card-white: var(--color-white);
 }
 
 /* High contrast: pure black and white, yellow accents. */
 :root[data-theme='contrast'] {
-  --night: #000000;
-  --night-raised: #000000;
-  --paper: #ffffff;
-  --ink: #000000;
-  --muted-night: #ffffff;
-  --muted-paper: #000000;
-  --line-night: #ffffff;
-  --shadow-ink: #ffffff;
-  --color-warn-bg: #000000;
-  --color-jade: #ffffff;
-  --color-cielo: #ffffff;
+  --color-night: #000000;
+  --color-night-raised: #000000;
+  --color-night-line: #ffffff;
+  --color-night-dash: #ffffff;
+  --color-paper: #ffffff;
+  --color-ink: #000000;
+  --color-shadow: #ffffff;
+  --color-muted-on-night: #ffffff;
+  --color-muted-on-paper: #000000;
+  --color-jade-soft: #ffffff;
+  --color-disabled-on-night: #000000;
 }
 
 html {
   font-family: var(--font-ui);
-  background: var(--night);
-  color: var(--paper);
+  background: var(--color-night);
+  color: var(--color-paper);
 }
 body {
   margin: 0;
-  background: var(--night);
-  color: var(--paper);
+  background: var(--color-night);
+  color: var(--color-paper);
   font-family: var(--font-ui);
+  font-size: var(--text-base);
 }
 h1,
 h2,
 h3 {
   font-family: var(--font-display);
   font-weight: 800;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 :focus-visible {
-  outline: 3px solid var(--color-focus);
+  outline: 3px solid var(--color-maiz);
   outline-offset: 2px;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -212,10 +273,10 @@ h3 {
   top: -100px;
   z-index: 100;
   padding: var(--space-3) var(--space-4);
-  background: var(--paper);
-  color: var(--ink);
-  border: var(--border-w) solid var(--ink);
-  border-radius: var(--radius);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
 }
 .skip-link:focus {
   top: var(--space-2);

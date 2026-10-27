@@ -17,7 +17,8 @@
     "e2e": "playwright test",
     "validate-content": "node scripts/run-optional.mjs scripts/validate-content.ts",
     "copy-lint": "node scripts/run-optional.mjs scripts/copy-lint.ts",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm validate-content && pnpm copy-lint"
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm validate-content && pnpm copy-lint",
+    "design-lint": "tsx scripts/design-lint.ts"
   },
   "dependencies": {
     "@pdf-lib/fontkit": "^1.1.1",

@@ -1,5 +1,27 @@
 {
   "label": "Tema",
   "auto": "Automático",
-  "contrast": "Alto contraste"
+  "contrast": "Alto contraste",
+  "kit": {
+    "review": {
+      "word": "palabra en revisión",
+      "words": "Palabras en revisión por hablantes",
+      "ai": "voz generada por IA · puede tener errores"
+    },
+    "caller": "El cantor canta",
+    "listening": "Escucha…",
+    "replay": "Repetir la carta",
+    "room": "Sala",
+    "roomCode": "Código de sala {code}",
+    "you": "Tú",
+    "paperBoard": "tabla de papel",
+    "marked": "Marcada",
+    "correct": "Correcta",
+    "wrong": "Incorrecta",
+    "joinAt": "Únete en app.loteria.to",
+    "history": "Ya cantadas",
+    "progress": "Progreso",
+    "loading": "Cargando…",
+    "tabla": "Tu tabla"
+  }
 }

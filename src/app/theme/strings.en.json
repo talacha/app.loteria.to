@@ -1,5 +1,27 @@
 {
   "label": "Theme",
   "auto": "Automatic",
-  "contrast": "High contrast"
+  "contrast": "High contrast",
+  "kit": {
+    "review": {
+      "word": "word under review",
+      "words": "Words under review by speakers",
+      "ai": "AI-generated voice · may contain errors"
+    },
+    "caller": "The cantor calls",
+    "listening": "Listen…",
+    "replay": "Repeat the card",
+    "room": "Room",
+    "roomCode": "Room code {code}",
+    "you": "You",
+    "paperBoard": "paper board",
+    "marked": "Marked",
+    "correct": "Correct",
+    "wrong": "Wrong",
+    "joinAt": "Join at app.loteria.to",
+    "history": "Already called",
+    "progress": "Progress",
+    "loading": "Loading…",
+    "tabla": "Your board"
+  }
 }
