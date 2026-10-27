@@ -94,13 +94,13 @@ describe('host lobby', () => {
     expect(lobbies()).toHaveLength(1);
     expect(lobbies()[0]).toMatchObject({ status: 'waiting', hostKey: 'KEY' });
     expect((lobbies()[0]!.players as unknown[]).length).toBe(1);
-    expect(screen.getByText('Ana')).toBeTruthy();
+    expect(screen.queryAllByText('Ana').length).toBeGreaterThan(0);
 
     await act(async () => void presence.forEach((p) => p([])));
-    await tick(5000);
-    expect(screen.queryByText('Ana')).toBeTruthy(); // grace period
-    await tick(7000);
-    expect(screen.queryByText('Ana')).toBeNull();
+    await tick(2000);
+    expect(screen.queryAllByText('Ana').length).toBeGreaterThan(0); // grace period
+    await tick(3000);
+    expect(screen.queryAllByText('Ana')).toHaveLength(0);
     await tick(400);
     const last = lobbies()[lobbies().length - 1]!;
     expect((last.players as unknown[]).length).toBe(0);
@@ -152,6 +152,56 @@ describe('host lobby', () => {
     await mount();
     expect(screen.getByText(/papel/)).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Empezar' })).toHaveProperty('disabled', false);
+  });
+});
+
+describe('roster control', () => {
+  it('limits hellos per seat, removes and ignores banned seats, caps at 60', async () => {
+    await mount();
+    await emit(hello('s1', 'Ana'));
+    await emit(hello('s1', 'Otra')); // within 2 s: ignored
+    expect(screen.queryAllByText('Ana').length).toBeGreaterThan(0);
+    expect(screen.queryAllByText('Otra')).toHaveLength(0);
+    document.querySelectorAll('details').forEach((d) => (d.open = true));
+    fireEvent.click(screen.getByRole('button', { name: 'Quitar a Ana' }));
+    expect(screen.queryAllByText('Ana')).toHaveLength(0);
+    await tick(3000);
+    await emit(hello('s1', 'Ana'));
+    expect(screen.queryAllByText('Ana')).toHaveLength(0); // banned for the session
+
+    for (let i = 0; i < 60; i++) await emit(hello(`p${i}`, `N${i}`));
+    sent.length = 0;
+    await emit(hello('extra', 'Extra'));
+    expect(screen.queryAllByText('Extra')).toHaveLength(0);
+    const l = lobbies();
+    expect(l).toHaveLength(1);
+    expect((l[0]!.players as unknown[]).length).toBe(60);
+  });
+
+  it('persists the roster and restores it on resume', async () => {
+    await mount();
+    await emit(hello('s1', 'Ana'));
+    await tick(400);
+    expect(store.round?.roster?.map((p) => p.name)).toEqual(['Ana']);
+    cleanup();
+    sent.length = 0;
+    await mount();
+    fireEvent.click(screen.getByRole('button', { name: 'Reanudar partida' }));
+    await flush();
+    await flush();
+    expect(screen.queryAllByText('Ana').length).toBeGreaterThan(0);
+    await tick(400);
+    expect(lobbies().some((m) => (m.players as unknown[]).length === 1)).toBe(true);
+    await tick(5000); // never came back
+    expect(screen.queryAllByText('Ana')).toHaveLength(0);
+  });
+
+  it('has exactly one main landmark with id=main', async () => {
+    await mount();
+    expect(document.querySelectorAll('main#main')).toHaveLength(1);
+    fireEvent.click(screen.getByRole('button', { name: 'Empezar' }));
+    await flush();
+    expect(document.querySelectorAll('main#main')).toHaveLength(1);
   });
 });
 

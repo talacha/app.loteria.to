@@ -242,7 +242,7 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
     .join(', ');
 
   return (
-    <section className={styles.root} style={{ fontSize: `${TEXT_SCALES[scaleIdx]}%` }}>
+    <main id="main" className={styles.root} style={{ fontSize: `${TEXT_SCALES[scaleIdx]}%` }}>
       <div className={styles.content} inert={modalOpen}>
         <header className={styles.bar}>
           <span className={styles.who}>
@@ -443,6 +443,6 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
           </button>
         </Modal>
       )}
-    </section>
+    </main>
   );
 }

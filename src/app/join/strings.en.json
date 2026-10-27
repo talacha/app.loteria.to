@@ -2,7 +2,7 @@
   "pronounsPlaceholder": "for example, she, he, they",
   "connecting": "Joining the room…",
   "paperLink": "I have a paper board",
-  "paperExplain": "If you play with a printed board, you do not need to join here. When you think you completed the pattern, tell the cantor the 6-character code on your board: they check it on their screen.",
+  "paperExplain": "If you play with a printed board, you do not need to join here. When you think you completed the pattern, tell whoever is calling the 6-character code on your board: they check it on their screen.",
   "paperClose": "Got it",
   "codeInvalidRoom": "This link does not have a valid room code.",
   "joinFailed": "We could not join the room. Please try again.",

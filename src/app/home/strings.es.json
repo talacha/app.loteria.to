@@ -1,10 +1,11 @@
 {
+  "hostCta": "Cantar las cartas",
   "tagline": "El bingo de imágenes con el que todos crecimos, cantado en cinco idiomas. Una sala entera juega desde un solo código QR, y no hace falta ningún teléfono.",
   "actions": "Empezar",
   "joinLabel": "Código de la sala",
   "joinInvalid": "El código tiene 5 letras o números (sin I, L, O, 0 ni 1).",
   "joinSubmit": "Unirme a una sala",
-  "joinHelp": "Escribe el código de 5 caracteres que ves en la pantalla del cantor.",
+  "joinHelp": "Escribe el código de 5 caracteres que ves en la pantalla de quien canta.",
   "languagesTitle": "Cinco idiomas",
   "languagesIntro": "Las cartas se cantan en estos idiomas. Los nombres en lenguas originarias solo se cantan cuando hablantes nativos los revisan.",
   "pendingBadge": "pendiente de revisión",
@@ -15,7 +16,7 @@
   "steps": {
     "one": {
       "title": "Se abre la sala",
-      "body": "El cantor crea una sala y comparte el código o el QR. También puede imprimir tablas."
+      "body": "Quien canta crea una sala y comparte el código o el QR. También puede imprimir tablas."
     },
     "two": {
       "title": "Se canta una carta",
@@ -23,12 +24,12 @@
     },
     "three": {
       "title": "Se completa una figura",
-      "body": "Quien completa la figura dice ¡Lotería! y el cantor revisa la tabla, en pantalla o en papel."
+      "body": "Quien completa la figura dice ¡Lotería! y quien canta revisa la tabla, en pantalla o en papel."
     }
   },
   "inclusionTitle": "Hecha para incluir a todas las personas",
   "inclusion": {
-    "paper": "Se puede jugar solo con papel: el cantor usa una pantalla y no hace falta ningún teléfono.",
+    "paper": "Se puede jugar solo con papel: quien canta usa una pantalla y no hace falta ningún teléfono.",
     "access": "Letra ajustable, alto contraste, modo Escucha y teclado completo.",
     "private": "Sin cuentas. Tu nombre y tus marcas se quedan en tu dispositivo.",
     "offline": "Funciona sin conexión después de la primera visita."

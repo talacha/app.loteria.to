@@ -35,9 +35,16 @@ describe('copy-lint matcher', () => {
   });
   it('allows cantor and neutral copy', () => {
     expect(
-      findHits('El cantor canta; quien juega usa frijoles. Beans, not better bets? '),
+      findHits('Quien canta; quien juega usa frijoles. Beans, not better bets? '),
     ).toHaveLength(1);
-    expect(findHits('El cantor y la cantora revisan la tabla')).toEqual([]);
+    expect(findHits('La cantora y quien canta revisan la tabla')).toEqual([]);
+    expect(words('Pregunta al cantor y al  Cantor del cantor')).toEqual([
+      'al cantor',
+      'al  cantor',
+      'del cantor',
+    ]);
+    expect(findHits('The cantor calls', 'en')).toEqual([]);
+    expect(findHits('Ser cantor', 'es')).toEqual([]);
     expect(findHits('Se juega con frijoles. Las infancias y las personas mayores.')).toEqual([]);
   });
   it('is Unicode aware at word boundaries', () => {

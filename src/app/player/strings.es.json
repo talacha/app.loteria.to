@@ -1,7 +1,7 @@
 {
   "connecting": "Conectando…",
   "connected": "Conectado",
-  "waitingRound": "Esperando a que el cantor empiece la ronda…",
+  "waitingRound": "Esperando a que quien canta empiece la ronda…",
   "listening": "Escucha…",
   "listeningHint": "Escucha la carta y busca en tu tabla.",
   "cardsCalled": "{count, plural, =0 {Aún no se canta ninguna carta} one {# carta cantada} other {# cartas cantadas}}",
@@ -18,7 +18,8 @@
   "youCalled": "¡Cantaste Lotería! Felicidades.",
   "unverifiedBadge": "Sala sin verificar",
   "paperTitle": "Tabla de papel",
-  "sentWaiting": "Enviado. Esperando al cantor…",
+  "sentWaiting": "Enviado. Esperando a quien canta…",
   "preparing": "Preparando tu tabla…",
-  "claimNoReply": "No llegó respuesta. Intenta otra vez."
+  "claimNoReply": "No llegó respuesta. Intenta otra vez.",
+  "claimSent": "Enviado. Esperando a quien canta…"
 }

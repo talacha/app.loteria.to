@@ -84,7 +84,7 @@ export default function HostGame(props: GameProps) {
   const callName = card && lang ? cardName(card, lang) : null;
 
   return (
-    <main className={styles.page}>
+    <main id="main" className={styles.page}>
       <header className={styles.header}>
         <h1>{t('host.title')}</h1>
         <p className={styles.status}>
@@ -99,7 +99,9 @@ export default function HostGame(props: GameProps) {
       {connection === 'unverified' || connection === 'offline' ? (
         <p className={styles.notice} role="status">
           {connection === 'offline' ? t('host.offlineOk') : t('host.unverifiedRoom')}{' '}
-          <Link to={`/print?seed=${state.roomSeed}`}>{t('host.printLink')}</Link>
+          <Link className={styles.printLink} to={`/print?seed=${state.roomSeed}`}>
+            {t('host.printLink')}
+          </Link>
         </p>
       ) : null}
 

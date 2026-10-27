@@ -10,8 +10,11 @@
   "roomCodeSpoken": "Código de sala: {letters}",
   "copy": "Copiar código",
   "copied": "Código copiado",
-  "waiting": "Esperando a que el cantor empiece…",
+  "waiting": "Esperando a que quien canta empiece…",
   "title": "Sala de espera",
   "verified": "Sala verificada",
-  "unverified": "Sala sin verificar"
+  "unverified": "Sala sin verificar",
+  "noHost": "No encontramos a quien creó la sala. Revisa el código.",
+  "toHome": "Volver al inicio",
+  "full": "La sala está llena."
 }

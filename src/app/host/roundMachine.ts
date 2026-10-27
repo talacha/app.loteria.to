@@ -89,6 +89,16 @@ export interface SavedRound {
   langs: Lang[];
   phase: Phase;
   assignments?: Record<string, number>;
+  /** Roster at save time (seat -> player + assigned board). */
+  roster?: SavedPlayer[];
+}
+
+export interface SavedPlayer {
+  seat: string;
+  name: string;
+  glyph: string;
+  pronouns?: string;
+  tablaIndex?: number;
 }
 
 export function roundReducer(s: RoundState, a: RoundAction): RoundState {

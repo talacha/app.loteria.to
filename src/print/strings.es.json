@@ -1,11 +1,11 @@
 {
-  "sheetTitle": "Hoja del cantor",
+  "sheetTitle": "Hoja de quien canta",
   "seedLabel": "Semilla de impresión",
-  "seedHelp": "Anota este código. El cantor lo escribe al abrir la sala para poder revisar estas tablas.",
+  "seedHelp": "Anota este código. Quien canta lo escribe al abrir la sala para poder revisar estas tablas.",
   "boards": "Tablas impresas: {n} (con código de revisión de 6 caracteres)",
   "steps": [
     "Reparte las tablas y frijoles para marcar las cartas.",
-    "En la app, elige Ser cantor y escribe esta semilla de impresión.",
+    "En la app, elige Cantar las cartas y escribe esta semilla de impresión.",
     "Canta las cartas. Quien complete una figura dice: ¡Lotería!",
     "Para revisar una tabla de papel, pulsa L y escribe el código de 6 caracteres de su pie."
   ],

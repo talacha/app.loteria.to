@@ -21,9 +21,14 @@ export default function Roster({ players, selfSeat, max }: RosterProps) {
   const { t } = useTranslation();
   const [prev, setPrev] = useState(players);
   const [announce, setAnnounce] = useState('');
+  const [seeded, setSeeded] = useState(players.length > 0);
 
   // Derive the live announcement while rendering (no effect needed).
-  if (prev !== players) {
+  if (prev !== players && !seeded) {
+    // The first non-empty roster is the baseline, not news.
+    setPrev(players);
+    if (players.length > 0) setSeeded(true);
+  } else if (prev !== players) {
     const before = new Map(prev.map((p) => [p.seat, p]));
     const after = new Map(players.map((p) => [p.seat, p]));
     const msgs: string[] = [];

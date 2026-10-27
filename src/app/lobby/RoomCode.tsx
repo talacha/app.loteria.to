@@ -27,10 +27,10 @@ export default function RoomCode({ code }: RoomCodeProps) {
   return (
     <div className={styles.wrap}>
       <p className={styles.label}>{t('lobby.roomCode')}</p>
-      <p
-        className={styles.code}
-        aria-label={t('lobby.roomCodeSpoken', { letters: code.split('').join(', ') })}
-      >
+      <p className={styles.code}>
+        <span className={styles.sr}>
+          {t('lobby.roomCodeSpoken', { letters: code.split('').join(', ') })}
+        </span>
         <span aria-hidden="true">{groupCode(code)}</span>
       </p>
       <button type="button" className={styles.copy} onClick={() => void copy()}>

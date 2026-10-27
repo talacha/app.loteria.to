@@ -1,6 +1,6 @@
 {
   "resumeTitle": "Reanudar partida",
-  "resumeBody": "Hay una ronda a medias en este dispositivo (sala {code}, {count} cartas cantadas).",
+  "resumeBody": "Hay una ronda a medias en este dispositivo (sala {code}, {count, plural, one {# carta cantada} other {# cartas cantadas}}).",
   "resumeYes": "Reanudar partida",
   "resumeNo": "Empezar de nuevo",
   "printSeed": "Usar tablas impresas",
@@ -50,6 +50,11 @@
     "linkCopied": "Enlace copiado",
     "share": "Compartir",
     "settings": "Ajustes de la partida",
-    "zeroHint": "Aún no hay nadie. Puedes empezar igual para jugar con tablas de papel."
-  }
+    "zeroHint": "Aún no hay nadie. Puedes empezar igual para jugar con tablas de papel.",
+    "manage": "Quitar a alguien",
+    "remove": "Quitar",
+    "removeNamed": "Quitar a {name}"
+  },
+  "title": "Sala de canto",
+  "resumeLobbyBody": "Hay una sala abierta en este dispositivo (sala {code})."
 }

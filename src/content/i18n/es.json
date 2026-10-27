@@ -38,7 +38,7 @@
     "beansNote": "Se juega con frijoles: marca cada carta con un frijol."
   },
   "host": {
-    "title": "Sala del cantor",
+    "title": "Cantar las cartas",
     "roomCode": "Código de sala",
     "shareLink": "Enlace para unirse",
     "scanQr": "Escanea para unirte",
@@ -120,7 +120,7 @@
     "textSizeLarge": "Grande",
     "highContrast": "Alto contraste",
     "claim": "¡Lotería!",
-    "claimSent": "Enviado. Esperando al cantor…",
+    "claimSent": "Enviado. Esperando a quien canta…",
     "claimWait": "Espera un momento antes de intentar otra vez.",
     "roundEnded": "La ronda terminó. ¡Gracias por jugar!",
     "roundEndedWith": "{names} completó la figura. ¡Felicidades!",
@@ -141,9 +141,9 @@
     "generating": "Creando tus tablas…",
     "download": "Descargar PDF",
     "checkCode": "Código de revisión: {code}",
-    "checkCodeHelp": "Cada tabla tiene un código para que el cantor la revise.",
+    "checkCodeHelp": "Cada tabla tiene un código para que quien canta la revise.",
     "noPhoneTitle": "Sin teléfonos, sin problema",
-    "noPhoneBody": "Imprime las tablas, reparte frijoles y deja que el cantor use la pantalla. Para revisar una tabla de papel, el cantor escribe su código de 6 caracteres.",
+    "noPhoneBody": "Imprime las tablas, reparte frijoles y deja que quien canta use la pantalla. Para revisar una tabla de papel, quien canta escribe su código de 6 caracteres.",
     "pageOf": "Página {n} de {total}"
   },
   "deck": {
@@ -183,7 +183,7 @@
   "errors": {
     "generic": "Algo no salió como esperábamos. Inténtalo de nuevo.",
     "offline": "No hay conexión. Puedes seguir jugando con papel.",
-    "roomFull": "La sala está llena. Pide al cantor que haga otra.",
+    "roomFull": "La sala está llena. Pide a quien canta que haga otra.",
     "roomClosed": "La sala ya se cerró.",
     "notFound": "No encontramos esta página.",
     "storage": "No pudimos guardar el progreso en este dispositivo.",

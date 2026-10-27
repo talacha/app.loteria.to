@@ -82,8 +82,8 @@ afterEach(async () => {
 describe('LobbyWaiting', () => {
   it('shows the code, waiting text and the roster from lobby messages', async () => {
     await mount();
-    expect(screen.getByText(/Esperando a que el cantor empiece/)).toBeTruthy();
-    expect(screen.getByLabelText(/Código de sala: A, B, C, D, E/)).toBeTruthy();
+    expect(screen.getByText(/Esperando a que quien canta empiece/)).toBeTruthy();
+    expect(screen.getByText(/Código de sala: A, B, C, D, E/)).toBeTruthy();
     host.send({
       t: 'lobby',
       status: 'waiting',
@@ -112,7 +112,7 @@ describe('LobbyWaiting', () => {
     await flush();
     host.send({ t: 'assign', seat: player!.seat, tablaIndex: 4, roundNo: 1 });
     await flush();
-    expect(screen.queryByText(/Esperando a que el cantor empiece/)).toBeNull();
+    expect(screen.queryByText(/Esperando a que quien canta empiece/)).toBeNull();
     expect(screen.getByRole('button', { name: '¡Lotería!' })).toBeTruthy();
   });
 
@@ -140,5 +140,23 @@ describe('LobbyWaiting', () => {
     await mount();
     cleanup();
     expect(leaves).toBeGreaterThanOrEqual(1);
+  });
+
+  it('re-sends hello (rate limited) when a lobby arrives without me', async () => {
+    await mount();
+    expect(received.filter((m) => m.t === 'hello')).toHaveLength(1);
+    host.send({ t: 'lobby', status: 'waiting', players: [] });
+    await flush();
+    expect(received.filter((m) => m.t === 'hello')).toHaveLength(1);
+    await flush(3100);
+    host.send({ t: 'lobby', status: 'waiting', players: [] });
+    await flush();
+    expect(received.filter((m) => m.t === 'hello').length).toBeGreaterThanOrEqual(2);
+  }, 10000);
+
+  it('has a single #main and an accessible room code', async () => {
+    await mount();
+    expect(document.querySelectorAll('#main')).toHaveLength(1);
+    expect(document.querySelector('[aria-label]:not(button):not(ul)')).toBeNull();
   });
 });

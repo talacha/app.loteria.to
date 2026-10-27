@@ -21,8 +21,12 @@ const REGISTER_TIMEOUT_MS = 1500;
 const REREGISTER_MS = 15_000;
 export const LOBBY_DEBOUNCE_MS = 300;
 export const LOBBY_RESEND_MS = 10_000;
-export const LEAVE_GRACE_MS = 10_000;
-const MAX_PLAYERS = 60;
+// Transports report presence as a seat list only (an explicit leave and an expiry look the same),
+// so a short grace plus a fast sweep keeps leavers from lingering.
+export const LEAVE_GRACE_MS = 4000;
+const SWEEP_MS = 500;
+const HELLO_LIMIT_MS = 2000;
+export const MAX_PLAYERS = 60;
 
 async function timedFetch(url: string, init?: RequestInit): Promise<Response> {
   const ctl = new AbortController();
@@ -98,18 +102,37 @@ export function useHostRoom() {
   const presenceRef = useRef<Set<string> | null>(null);
   const missingRef = useRef<Map<string, number>>(new Map());
   const phaseRef = useRef<HostPhase>('boot');
+  const roundRef = useRef(1);
+  const bannedRef = useRef<Set<string>>(new Set());
+  const lastHelloRef = useRef<Map<string, number>>(new Map());
 
   useEffect(() => {
     phaseRef.current = phase;
   }, [phase]);
+  useEffect(() => {
+    roundRef.current = roundNo;
+  }, [roundNo]);
 
   const updateRoster = useCallback((next: RosterPlayer[]) => {
     rosterRef.current = next;
     setRoster(next);
   }, []);
 
+  const sendLobbyNow = useCallback(() => {
+    // Only used for the "room full" case while in the lobby; the game sends its own.
+    if (phaseRef.current !== 'lobby') return;
+    transportRef.current?.send(
+      lobbyMessage('waiting', rosterRef.current, undefined, hostKeyRef.current),
+    );
+  }, []);
+
   const onHello = useCallback(
     (m: Extract<Msg, { t: 'hello' }>) => {
+      if (bannedRef.current.has(m.seat)) return;
+      const now = Date.now();
+      const last = lastHelloRef.current.get(m.seat);
+      if (last !== undefined && now - last < HELLO_LIMIT_MS) return;
+      lastHelloRef.current.set(m.seat, now);
       missingRef.current.delete(m.seat);
       const p: RosterPlayer = {
         seat: m.seat,
@@ -119,14 +142,34 @@ export function useHostRoom() {
       };
       const cur = rosterRef.current;
       const i = cur.findIndex((x) => x.seat === m.seat);
-      if (i === -1) updateRoster([...cur, p].slice(0, MAX_PLAYERS));
-      else if (
+      if (i === -1) {
+        if (cur.length >= MAX_PLAYERS) {
+          sendLobbyNow();
+          return;
+        }
+        updateRoster([...cur, p]);
+      } else if (
         cur[i]!.name !== p.name ||
         cur[i]!.glyph !== p.glyph ||
         cur[i]!.pronouns !== p.pronouns
       ) {
         updateRoster(cur.map((x, j) => (j === i ? p : x)));
       }
+    },
+    [updateRoster, sendLobbyNow],
+  );
+
+  const isMember = useCallback(
+    (seat: string) => rosterRef.current.some((p) => p.seat === seat),
+    [],
+  );
+  const getRoster = useCallback(() => rosterRef.current, []);
+
+  const removePlayer = useCallback(
+    (seat: string) => {
+      bannedRef.current.add(seat);
+      missingRef.current.delete(seat);
+      updateRoster(rosterRef.current.filter((p) => p.seat !== seat));
     },
     [updateRoster],
   );
@@ -150,7 +193,7 @@ export function useHostRoom() {
       const drop = new Set(gone.map(([s]) => s));
       for (const s of drop) missingRef.current.delete(s);
       updateRoster(rosterRef.current.filter((p) => !drop.has(p.seat)));
-    }, 1000);
+    }, SWEEP_MS);
     return () => clearInterval(t);
   }, [updateRoster]);
 
@@ -292,8 +335,9 @@ export function useHostRoom() {
       langs: callableLangs(),
       phase: 'setup',
       assignments: {},
+      roster,
     });
-  }, [inLobby, code, seed, roundNo, settings]);
+  }, [inLobby, code, seed, roundNo, settings, roster]);
 
   const configure = useCallback((patch: Partial<Settings>) => {
     setSettings((s) => {
@@ -329,6 +373,16 @@ export function useHostRoom() {
     setSeed(saved.roomSeed);
     setRoundNo(saved.roundNo);
     setSettings({ ...DEFAULT_SETTINGS, ...saved.settings });
+    const restored: RosterPlayer[] = (saved.roster ?? []).map((p) => ({
+      seat: p.seat,
+      name: p.name,
+      glyph: p.glyph,
+      ...(p.pronouns ? { pronouns: p.pronouns } : {}),
+    }));
+    updateRoster(restored);
+    // Seats that never come back are dropped once the grace period passes.
+    const now = Date.now();
+    for (const p of restored) missingRef.current.set(p.seat, now);
     if (saved.phase === 'setup') {
       setPhase('lobby');
     } else {
@@ -337,7 +391,7 @@ export function useHostRoom() {
     }
     setSaved(null);
     void connect(saved.code, false);
-  }, [saved, connect]);
+  }, [saved, connect, updateRoster]);
 
   const discard = useCallback(() => {
     void clearRound();
@@ -364,6 +418,9 @@ export function useHostRoom() {
     connection,
     roster,
     joinUrl,
+    isMember,
+    getRoster,
+    removePlayer,
     configure,
     setPrintSeed,
     randomSeed,

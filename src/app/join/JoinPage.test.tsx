@@ -40,4 +40,20 @@ describe('JoinPage', () => {
     fireEvent.click(screen.getByRole('button', { name: /tabla de papel/i }));
     expect(screen.getByText(/6 letras/i)).toBeTruthy();
   });
+  it('rejoins directly from a saved session', () => {
+    sessionStorage.setItem(
+      'loteria:session:ABCDE',
+      JSON.stringify({
+        profile: { name: 'Ana', glyph: '🐆', labelLang: 'es' },
+        hostKeyFromQr: false,
+      }),
+    );
+    renderAt('/r/ABCDE');
+    expect(screen.getByText(/Sala de espera/)).toBeTruthy();
+    sessionStorage.clear();
+  });
+  it('has exactly one #main', () => {
+    renderAt('/r/ABCDE');
+    expect(document.querySelectorAll('#main')).toHaveLength(1);
+  });
 });

@@ -9,6 +9,7 @@ import RoomCode from '../lobby/RoomCode';
 import styles from './HostLobby.module.css';
 import { MAX_SPEED, MIN_SPEED, SPEED_PRESETS } from './roundMachine';
 import type { CallLang } from './roundMachine';
+import { MAX_PLAYERS } from './useHostRoom';
 import type { HostRoom } from './useHostRoom';
 import { callableLangs } from '@content';
 
@@ -67,7 +68,7 @@ export default function HostLobby({ room }: { room: HostRoom }) {
   };
 
   return (
-    <main className={styles.page}>
+    <main id="main" className={styles.page}>
       <header className={styles.header}>
         <h1>{t('host.title')}</h1>
         <p className={styles.status}>
@@ -80,7 +81,9 @@ export default function HostLobby({ room }: { room: HostRoom }) {
       {room.connection === 'unverified' || room.connection === 'offline' ? (
         <p className={styles.notice} role="status">
           {room.connection === 'offline' ? t('host.offlineOk') : t('host.unverifiedRoom')}{' '}
-          <Link to={`/print?seed=${room.seed}`}>{t('host.printLink')}</Link>
+          <Link className={styles.printLink} to={`/print?seed=${room.seed}`}>
+            {t('host.printLink')}
+          </Link>
         </p>
       ) : null}
 
@@ -94,7 +97,6 @@ export default function HostLobby({ room }: { room: HostRoom }) {
           ) : (
             <div className={styles.qr} aria-hidden="true" />
           )}
-          <RoomCode code={room.code} />
           <div className={styles.row}>
             <button type="button" className={styles.btn} onClick={() => void copy()}>
               {copied ? t('host.lobby.linkCopied') : t('host.lobby.copyLink')}
@@ -105,6 +107,7 @@ export default function HostLobby({ room }: { room: HostRoom }) {
               </button>
             ) : null}
           </div>
+          <RoomCode code={room.code} />
           <p className={styles.srOnly} role="status">
             {copied ? t('host.lobby.linkCopied') : ''}
           </p>
@@ -112,7 +115,29 @@ export default function HostLobby({ room }: { room: HostRoom }) {
         </section>
 
         <div className={styles.side}>
-          <Roster players={room.roster} max={60} />
+          <Roster players={room.roster} max={MAX_PLAYERS} />
+          {room.roster.length > 0 ? (
+            <details className={styles.settings}>
+              <summary>{t('host.lobby.manage')}</summary>
+              <ul className={styles.manage}>
+                {room.roster.map((p) => (
+                  <li key={p.seat}>
+                    <span>
+                      {p.glyph} {p.name}
+                    </span>
+                    <button
+                      type="button"
+                      className={styles.btn}
+                      onClick={() => room.removePlayer(p.seat)}
+                      aria-label={t('host.lobby.removeNamed', { name: p.name })}
+                    >
+                      {t('host.lobby.remove')}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ) : null}
 
           <details className={styles.settings}>
             <summary>{t('host.lobby.settings')}</summary>
@@ -230,7 +255,9 @@ export default function HostLobby({ room }: { room: HostRoom }) {
               </form>
               <p className={styles.muted}>{t('host.seedCurrent', { seed: room.seed })}</p>
               <p>
-                <Link to={`/print?seed=${room.seed}`}>{t('host.printLink')}</Link>
+                <Link className={styles.printLink} to={`/print?seed=${room.seed}`}>
+                  {t('host.printLink')}
+                </Link>
               </p>
             </div>
           </details>

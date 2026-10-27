@@ -10,7 +10,7 @@ export default function HostPage() {
 
   if (room.phase === 'boot') {
     return (
-      <main className={styles.page}>
+      <main id="main" className={styles.page}>
         <h1>{t('host.title')}</h1>
       </main>
     );
@@ -18,11 +18,15 @@ export default function HostPage() {
 
   if (room.phase === 'prompt' && room.saved) {
     return (
-      <main className={styles.page}>
+      <main id="main" className={styles.page}>
         <h1>{t('host.title')}</h1>
         <section className={styles.panel} aria-labelledby="resume-h">
           <h2 id="resume-h">{t('host.resumeTitle')}</h2>
-          <p>{t('host.resumeBody', { code: room.saved.code, count: room.saved.calledCount })}</p>
+          <p>
+            {room.saved.phase === 'setup'
+              ? t('host.resumeLobbyBody', { code: room.saved.code })
+              : t('host.resumeBody', { code: room.saved.code, count: room.saved.calledCount })}
+          </p>
           <div className={styles.row}>
             <button type="button" className={styles.primary} onClick={room.resume}>
               {t('host.resumeYes')}
@@ -48,6 +52,8 @@ export default function HostPage() {
           settings: room.settings,
           saved: room.gameSaved,
           connection: room.connection,
+          isMember: room.isMember,
+          getRoster: room.getRoster,
         }}
         roster={room.roster}
         onNewRound={room.backToLobby}

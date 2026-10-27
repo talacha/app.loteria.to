@@ -10,8 +10,11 @@
   "roomCodeSpoken": "Room code: {letters}",
   "copy": "Copy code",
   "copied": "Code copied",
-  "waiting": "Waiting for the cantor to start…",
+  "waiting": "Waiting for the caller to start…",
   "title": "Waiting room",
   "verified": "Verified room",
-  "unverified": "Unverified room"
+  "unverified": "Unverified room",
+  "noHost": "We could not find whoever created the room. Check the code.",
+  "toHome": "Back to home",
+  "full": "The room is full."
 }

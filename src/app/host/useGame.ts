@@ -29,6 +29,9 @@ export interface GameRoom {
   settings?: Settings;
   /** Present when resuming a round in progress. */
   saved?: SavedRound | null;
+  /** Membership/roster accessors from the room (flood control, removals). */
+  isMember?: (seat: string) => boolean;
+  getRoster?: () => RosterPlayer[];
   connection?: 'connecting' | 'online' | 'offline' | 'unverified';
 }
 
@@ -100,10 +103,14 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     }
   }, []);
 
-  const players = useCallback(
-    (): RosterPlayer[] => [...knownRef.current.values()].filter((p) => !!p.name),
-    [],
-  );
+  const roomRef = useRef(room);
+  useEffect(() => {
+    roomRef.current = room;
+  });
+  const players = useCallback((): RosterPlayer[] => {
+    const get = roomRef.current.getRoster;
+    return get ? get() : [...knownRef.current.values()];
+  }, []);
 
   const sendLobby = useCallback(() => {
     send(lobbyMessage('started', players(), stateRef.current.roundNo, hostKeyRef.current));
@@ -150,8 +157,8 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
   );
 
   const assignAll = useCallback(() => {
-    for (const seat of knownRef.current.keys()) sendAssign(seat);
-  }, [sendAssign]);
+    for (const p of players()) sendAssign(p.seat);
+  }, [sendAssign, players]);
 
   const announce = useCallback(
     (s: RoundState, speak = true) => {
@@ -183,6 +190,10 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
           glyph: m.glyph,
           ...(m.pronouns ? { pronouns: m.pronouns } : {}),
         };
+        if (roomRef.current.isMember && !roomRef.current.isMember(m.seat)) {
+          sendLobby(); // flood control: removed or room full
+          return;
+        }
         knownRef.current.set(m.seat, p);
         setNames((n) => ({ ...n, [m.seat]: `${m.glyph} ${m.name}` }));
         const now = Date.now();
@@ -247,8 +258,17 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
   useEffect(() => () => stopAudio(), []);
 
   useEffect(() => {
-    void saveRound(toSaved(state));
-  }, [state]);
+    const list = roomRef.current.getRoster?.() ?? roster;
+    void saveRound({
+      ...toSaved(state),
+      roster: list.map((p) => ({
+        ...p,
+        ...(state.assignments[p.seat] !== undefined
+          ? { tablaIndex: state.assignments[p.seat] }
+          : {}),
+      })),
+    });
+  }, [state, roster]);
 
   // Re-send round (and lobby) every 10 s so late joiners sync.
   const live = state.phase === 'running' || state.phase === 'paused';

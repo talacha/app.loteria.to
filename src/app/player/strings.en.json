@@ -1,7 +1,7 @@
 {
   "connecting": "Connecting…",
   "connected": "Connected",
-  "waitingRound": "Waiting for the cantor to start the round…",
+  "waitingRound": "Waiting for the caller to start the round…",
   "listening": "Listen…",
   "listeningHint": "Listen to the card and look for it on your board.",
   "cardsCalled": "{count, plural, =0 {No cards called yet} one {# card called} other {# cards called}}",
@@ -18,7 +18,8 @@
   "youCalled": "You called Lotería! Congratulations.",
   "unverifiedBadge": "Unverified room",
   "paperTitle": "Paper board",
-  "sentWaiting": "Sent. Waiting for the cantor…",
+  "sentWaiting": "Sent. Waiting for the caller…",
   "preparing": "Preparing your board…",
-  "claimNoReply": "No reply arrived. Please try again."
+  "claimNoReply": "No reply arrived. Please try again.",
+  "claimSent": "Sent. Waiting for the caller…"
 }

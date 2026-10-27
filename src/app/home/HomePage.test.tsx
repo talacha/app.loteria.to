@@ -38,7 +38,9 @@ describe('HomePage', () => {
     expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Lotería de los Pueblos');
     expect(screen.getByText('El Sol')).toBeTruthy();
     expect(screen.getAllByText('pendiente de revisión').length).toBeGreaterThanOrEqual(1);
-    expect(screen.getByRole('link', { name: 'Ser cantor' }).getAttribute('href')).toBe('/host');
+    expect(screen.getByRole('link', { name: 'Cantar las cartas' }).getAttribute('href')).toBe(
+      '/host',
+    );
     expect(screen.getByRole('link', { name: 'Imprimir tablas' }).getAttribute('href')).toBe(
       '/print',
     );

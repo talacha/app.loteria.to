@@ -31,4 +31,9 @@ describe('Roster', () => {
     rerender(<Roster players={[ana]} selfSeat="a" />);
     expect(screen.getByText('Bo salió de la sala')).toBeTruthy();
   });
+  it('does not announce the initial roster, even when it arrives after mount', () => {
+    const { rerender } = render(<Roster players={[]} selfSeat="a" />);
+    rerender(<Roster players={[ana, bo]} selfSeat="a" />);
+    expect(screen.queryByText(/entró a la sala/)).toBeNull();
+  });
 });

@@ -21,6 +21,9 @@ export interface LobbyWaitingProps {
 
 const HELLO_RETRY_MS = 3000;
 const HELLO_MAX_RETRIES = 3;
+const NO_HOST_MS = 12000;
+const FULL_MS = 6000;
+const MAX_PLAYERS = 60;
 
 interface Live {
   transport: Transport;
@@ -42,12 +45,17 @@ export default function LobbyWaiting({
   const [lost, setLost] = useState(false);
   const [roster, setRoster] = useState<RosterPlayer[]>([]);
   const [playing, setPlaying] = useState(false);
+  const [noHost, setNoHost] = useState(false);
+  const [full, setFull] = useState(false);
   const { name, glyph, pronouns, labelLang } = profile;
 
   useEffect(() => {
     let alive = true;
     let tr: Transport | null = null;
     let retry: ReturnType<typeof setTimeout> | undefined;
+    let noHostTimer: ReturnType<typeof setTimeout> | undefined;
+    let fullTimer: ReturnType<typeof setTimeout> | undefined;
+    let assignWatch: ReturnType<typeof setInterval> | undefined;
     // Deferred so React StrictMode's mount/cleanup/mount pass joins only once.
     const start = setTimeout(() => {
       const seatId = getSeat(code, 'player');
@@ -55,20 +63,64 @@ export default function LobbyWaiting({
       tr = mine;
       let hostKnowsMe = false;
       let roundSeen = false;
+      let lobbySeen = false;
+      let lastHello = 0;
+      let assignedRound = -1;
+      let currentRound = -1;
+      const hello = () => {
+        lastHello = Date.now();
+        mine.send({
+          t: 'hello',
+          seat: mine.seat,
+          name,
+          glyph,
+          pronouns: pronouns || undefined,
+          labelLang,
+        });
+      };
+      /** Re-announce myself, at most once per HELLO_RETRY_MS. */
+      const rehello = () => {
+        if (Date.now() - lastHello >= HELLO_RETRY_MS) hello();
+      };
       mine.onMessage((m) => {
         if (!alive) return;
         switch (m.t) {
-          case 'lobby':
+          case 'lobby': {
+            lobbySeen = true;
+            clearTimeout(noHostTimer);
+            setNoHost(false);
             setRoster(m.players);
-            if (m.players.some((p) => p.seat === mine.seat)) hostKnowsMe = true;
+            const inRoom = m.players.some((p) => p.seat === mine.seat);
+            hostKnowsMe = inRoom;
+            if (inRoom) {
+              clearTimeout(fullTimer);
+              fullTimer = undefined;
+              setFull(false);
+            } else {
+              // e.g. the host reloaded and lost its roster.
+              rehello();
+              if (m.players.length >= MAX_PLAYERS && !fullTimer)
+                fullTimer = setTimeout(() => {
+                  if (alive && !hostKnowsMe) setFull(true);
+                }, FULL_MS);
+            }
             if (m.status === 'started') setPlaying(true);
             break;
+          }
           case 'round':
             roundSeen = true;
+            currentRound = m.roundNo;
             setPlaying(true);
             log.push(m);
+            if (!assignWatch)
+              assignWatch = setInterval(() => {
+                if (assignedRound !== currentRound) rehello();
+              }, HELLO_RETRY_MS);
             break;
           case 'assign':
+            if (m.seat === mine.seat) assignedRound = m.roundNo;
+            log.push(m);
+            break;
           case 'call':
           case 'claimResult':
           case 'end':
@@ -79,15 +131,6 @@ export default function LobbyWaiting({
         }
       });
       mine.onError?.(() => alive && setLost(true));
-      const hello = () =>
-        mine.send({
-          t: 'hello',
-          seat: mine.seat,
-          name,
-          glyph,
-          pronouns: pronouns || undefined,
-          labelLang,
-        });
       mine
         .join(code, 'player', hostKey ? { hostKey } : undefined)
         .then(() => {
@@ -98,6 +141,9 @@ export default function LobbyWaiting({
             verified: hostKeyFromQr && mine.isHostVerified(),
           });
           hello();
+          noHostTimer = setTimeout(() => {
+            if (alive && !lobbySeen) setNoHost(true);
+          }, NO_HOST_MS);
           let tries = 0;
           const again = () => {
             if (!alive || roundSeen || hostKnowsMe || tries >= HELLO_MAX_RETRIES) return;
@@ -113,6 +159,9 @@ export default function LobbyWaiting({
       alive = false;
       clearTimeout(start);
       clearTimeout(retry);
+      clearTimeout(noHostTimer);
+      clearTimeout(fullTimer);
+      clearInterval(assignWatch);
       if (tr) void tr.leave();
     };
   }, [code, hostKey, hostKeyFromQr, transportFactory, name, glyph, pronouns, labelLang, log]);
@@ -142,7 +191,7 @@ export default function LobbyWaiting({
   }
 
   return (
-    <div className={styles.page}>
+    <main id="main" className={styles.page}>
       <h1 className={styles.title}>{t('lobby.title')}</h1>
       <RoomCode code={code} />
       <p
@@ -160,11 +209,30 @@ export default function LobbyWaiting({
         )}
       </p>
       {live && !live.verified && <p className={styles.notice}>{t('host.unverifiedRoom')}</p>}
+      {noHost && (
+        <p className={styles.notice} role="alert">
+          {t('lobby.noHost')}{' '}
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              leave();
+            }}
+          >
+            {t('lobby.toHome')}
+          </a>
+        </p>
+      )}
+      {full && (
+        <p className={styles.notice} role="alert">
+          {t('lobby.full')}
+        </p>
+      )}
       <p className={styles.waiting}>{t('lobby.waiting')}</p>
       <Roster players={roster} selfSeat={live?.seat} />
       <button type="button" className={styles.leave} onClick={leave}>
         {t('player.leave')}
       </button>
-    </div>
+    </main>
   );
 }

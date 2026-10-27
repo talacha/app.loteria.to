@@ -49,6 +49,12 @@ export const RULES: Rule[] = [
     ],
   },
   {
+    id: 'gendered-cantor-es',
+    lang: 'es',
+    message: 'gendered "el/al/del cantor" as a person (say "quien canta")',
+    words: ['el cantor', 'al cantor', 'del cantor'],
+  },
+  {
     id: 'gendered-pronoun-en',
     lang: 'en',
     message: 'gendered pronoun used generically (use "they" or rephrase)',
@@ -95,9 +101,7 @@ export const RULES: Rule[] = [
  * exact forms listed in RULES are matched.
  */
 export const ALLOWLIST = [
-  'cantor',
   'cantora',
-  'cantores',
   'obra maestra',
   'obras maestras',
   'ficha técnica',
@@ -118,7 +122,7 @@ const compiled = RULES.map((r) => ({
   re: new RegExp(
     `${B}(${[...r.words]
       .sort((a, b) => b.length - a.length)
-      .map(escape)
+      .map((w) => escape(w).replace(/ /g, '\\s+'))
       .join('|')})${E}`,
     'giu',
   ),

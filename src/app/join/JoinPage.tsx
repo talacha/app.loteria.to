@@ -38,15 +38,69 @@ async function fetchHostKey(code: string): Promise<string | undefined> {
   }
 }
 
-function loadSaved(): { name: string; glyph: string } {
+type Joined = { profile: PlayerProfile; hostKey?: string; fromQr: boolean };
+const sessionKey = (code: string) => `loteria:session:${code}`;
+
+function loadSession(code: string): Joined | null {
+  try {
+    const v = JSON.parse(sessionStorage.getItem(sessionKey(code)) ?? 'null') as {
+      profile?: Partial<PlayerProfile>;
+      hostKey?: unknown;
+      hostKeyFromQr?: unknown;
+    } | null;
+    const p = v?.profile;
+    if (!p || typeof p.name !== 'string' || !isValidName(p.name) || typeof p.glyph !== 'string')
+      return null;
+    const lang = p.labelLang;
+    if (lang !== 'es' && lang !== 'en' && !callableLangs().includes(lang as Lang)) return null;
+    return {
+      profile: {
+        name: p.name,
+        glyph: p.glyph,
+        pronouns: typeof p.pronouns === 'string' && p.pronouns ? p.pronouns : undefined,
+        labelLang: lang as Lang,
+      },
+      hostKey: typeof v?.hostKey === 'string' ? v.hostKey : undefined,
+      fromQr: v?.hostKeyFromQr === true,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function saveSession(code: string, j: Joined): void {
+  try {
+    sessionStorage.setItem(
+      sessionKey(code),
+      JSON.stringify({ profile: j.profile, hostKey: j.hostKey, hostKeyFromQr: j.fromQr }),
+    );
+  } catch {
+    /* ignore */
+  }
+}
+
+function clearSession(code: string): void {
+  try {
+    sessionStorage.removeItem(sessionKey(code));
+  } catch {
+    /* ignore */
+  }
+}
+
+function loadSaved(): { name: string; glyph: string; labelLang: Lang } {
   try {
     const v = JSON.parse(localStorage.getItem(STORE_KEY) ?? '{}') as Record<string, unknown>;
+    const lang = v.labelLang;
     return {
       name: typeof v.name === 'string' ? v.name.slice(0, 40) : '',
       glyph: typeof v.glyph === 'string' && GLYPHS.includes(v.glyph) ? v.glyph : GLYPHS[0]!,
+      labelLang:
+        lang === 'en' || (typeof lang === 'string' && callableLangs().includes(lang as Lang))
+          ? (lang as Lang)
+          : 'es',
     };
   } catch {
-    return { name: '', glyph: GLYPHS[0]! };
+    return { name: '', glyph: GLYPHS[0]!, labelLang: 'es' };
   }
 }
 
@@ -61,14 +115,10 @@ export default function JoinPage() {
   const [name, setName] = useState(saved.name);
   const [glyph, setGlyph] = useState(saved.glyph);
   const [pronouns, setPronouns] = useState('');
-  const [labelLang, setLabelLang] = useState<Lang>('es');
+  const [labelLang, setLabelLang] = useState<Lang>(saved.labelLang);
   const [error, setError] = useState(false);
   const [paperOpen, setPaperOpen] = useState(false);
-  const [joined, setJoined] = useState<{
-    profile: PlayerProfile;
-    hostKey?: string;
-    fromQr: boolean;
-  } | null>(null);
+  const [joined, setJoined] = useState<Joined | null>(() => (validCode ? loadSession(code) : null));
   const hostKeyP = useRef<Promise<string | undefined> | null>(null);
   const fromQr = useRef(false);
   const nameRef = useRef<HTMLInputElement>(null);
@@ -104,21 +154,23 @@ export default function JoinPage() {
     setPronounsError(false);
     setBusy(true);
     try {
-      localStorage.setItem(STORE_KEY, JSON.stringify({ name: clean, glyph }));
+      localStorage.setItem(STORE_KEY, JSON.stringify({ name: clean, glyph, labelLang }));
     } catch {
       /* ignore */
     }
     const hostKey = await (hostKeyP.current ?? Promise.resolve(undefined));
-    setJoined({
+    const next: Joined = {
       profile: { name: clean, glyph, pronouns: cleanPronouns || undefined, labelLang },
       hostKey,
       fromQr: fromQr.current,
-    });
+    };
+    saveSession(code, next);
+    setJoined(next);
   }
 
   if (!validCode) {
     return (
-      <main className={styles.page}>
+      <main id="main" className={styles.page}>
         <h1>{t('join.title')}</h1>
         <p role="alert">{t('join.codeInvalidRoom')}</p>
         <form
@@ -154,20 +206,21 @@ export default function JoinPage() {
 
   if (joined) {
     return (
-      <main>
-        <LobbyWaiting
-          code={code}
-          profile={joined.profile}
-          hostKey={joined.hostKey}
-          hostKeyFromQr={joined.fromQr}
-          onLeave={() => void navigate('/')}
-        />
-      </main>
+      <LobbyWaiting
+        code={code}
+        profile={joined.profile}
+        hostKey={joined.hostKey}
+        hostKeyFromQr={joined.fromQr}
+        onLeave={() => {
+          clearSession(code);
+          void navigate('/');
+        }}
+      />
     );
   }
 
   return (
-    <main className={styles.page}>
+    <main id="main" className={styles.page}>
       <h1>{t('join.title')}</h1>
       <p className={styles.code}>
         {t('join.codeLabel')}: <strong>{code}</strong>

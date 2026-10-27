@@ -20,7 +20,7 @@ describe('PrintPage', () => {
       </MemoryRouter>,
     );
     expect(screen.getByText('ABCD2345')).toBeTruthy();
-    expect(screen.getByText(/Anota este código para el cantor/)).toBeTruthy();
+    expect(screen.getByText(/Anota este código para quien canta/)).toBeTruthy();
   });
   it('creates an 8-char seed when none is given and can renew it', async () => {
     render(

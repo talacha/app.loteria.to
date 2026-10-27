@@ -1,6 +1,6 @@
 {
   "resumeTitle": "Resume game",
-  "resumeBody": "A round is in progress on this device (room {code}, {count} cards called).",
+  "resumeBody": "A round is in progress on this device (room {code}, {count, plural, one {# card called} other {# cards called}}).",
   "resumeYes": "Resume game",
   "resumeNo": "Start over",
   "printSeed": "Use printed boards",
@@ -50,6 +50,10 @@
     "linkCopied": "Link copied",
     "share": "Share",
     "settings": "Game settings",
-    "zeroHint": "Nobody has joined yet. You can still start for paper play."
-  }
+    "zeroHint": "Nobody has joined yet. You can still start for paper play.",
+    "manage": "Remove someone",
+    "remove": "Remove",
+    "removeNamed": "Remove {name}"
+  },
+  "resumeLobbyBody": "A room is open on this device (room {code})."
 }
