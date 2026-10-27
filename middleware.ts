@@ -4,7 +4,14 @@
 
 export const config = { matcher: '/r/:path*' };
 
-import { SITE, SITE_NAME, routeSeo } from './src/app/seo/meta.ts';
+// Keep this deployment entry self-contained: Vercel does not package imported app TS here.
+// inviteMiddleware.test.ts checks these values against the shared client metadata.
+const SITE = 'https://app.loteria.to';
+const SITE_NAME = 'Lotería de los Pueblos';
+const INVITE_DESCRIPTION =
+  'Únete a una sala de Lotería de los Pueblos desde tu teléfono y elige el idioma de las llamadas. Juega con familia y amistades, sin crear una cuenta.';
+const INVITE_IMAGE = 'https://app.loteria.to/og/invite.png?v=2';
+const INVITE_IMAGE_ALT = 'Invitación a una sala de Lotería de los Pueblos.';
 
 const CODE_RE = /^[A-HJ-NP-Z2-9]{5}$/;
 
@@ -17,28 +24,27 @@ function esc(s: string): string {
 }
 
 function inviteHead(code: string | null): string {
-  const seo = routeSeo(code ? `/r/${code}` : '/r/invalid', 'es');
-  const title = seo.title ?? SITE_NAME;
+  const title = code ? `¡Te invitaron a la Lotería! · Sala ${code}` : '¡Te invitaron a la Lotería!';
   const tags = [
     `<title>${esc(title)}</title>`,
-    `<meta name="description" content="${esc(seo.description)}" />`,
+    `<meta name="description" content="${esc(INVITE_DESCRIPTION)}" />`,
     `<meta name="robots" content="noindex,nofollow" />`,
     `<meta property="og:type" content="website" />`,
-    `<meta property="og:site_name" content="Lotería de los Pueblos" />`,
+    `<meta property="og:site_name" content="${SITE_NAME}" />`,
     `<meta property="og:locale" content="es_MX" />`,
     ...(code ? [`<meta property="og:url" content="${SITE}/r/${code}" />`] : []),
     `<meta property="og:title" content="${esc(title)}" />`,
-    `<meta property="og:description" content="${esc(seo.description)}" />`,
-    `<meta property="og:image" content="${seo.image}" />`,
+    `<meta property="og:description" content="${esc(INVITE_DESCRIPTION)}" />`,
+    `<meta property="og:image" content="${INVITE_IMAGE}" />`,
     `<meta property="og:image:type" content="image/png" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="${esc(seo.imageAlt)}" />`,
+    `<meta property="og:image:alt" content="${esc(INVITE_IMAGE_ALT)}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${esc(title)}" />`,
-    `<meta name="twitter:description" content="${esc(seo.description)}" />`,
-    `<meta name="twitter:image" content="${seo.image}" />`,
-    `<meta name="twitter:image:alt" content="${esc(seo.imageAlt)}" />`,
+    `<meta name="twitter:description" content="${esc(INVITE_DESCRIPTION)}" />`,
+    `<meta name="twitter:image" content="${INVITE_IMAGE}" />`,
+    `<meta name="twitter:image:alt" content="${esc(INVITE_IMAGE_ALT)}" />`,
   ];
   return tags.join('\n    ');
 }
