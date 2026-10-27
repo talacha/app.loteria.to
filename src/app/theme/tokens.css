@@ -1,4 +1,43 @@
 /* Shared design tokens. Owned by the theme (M6) agent; other areas only consume them. */
+
+/* "Feria de noche" tokens (docs/DESIGN.md, Claude Design canvas). New UI uses these;
+   the --color-* set below is legacy and is migrated screen by screen. */
+:root {
+  --night: #1e2142;
+  --night-raised: #2a2e58;
+  --night-line: #45497f;
+  --ink: #16182f;
+  --paper: #fff6e5;
+  --card-white: #ffffff;
+  --shadow-color: #0c0d1e;
+  --shadow-hard: 0 5px 0 var(--shadow-color);
+  --muted-on-night: #c9c3e6;
+  --muted-on-paper: #4a4766;
+  --maiz: #ffc233;
+  --rosa: #e5177e;
+  --jade: #0e9f7e;
+  --cielo: #2f6fe4;
+  --lang-maya: #7a4bd6;
+  --lang-quechua: #c2410c;
+  --chile: #e2412b;
+  --review: #ffe08a;
+  --bean: #6b2f23;
+  --lang-nah: var(--jade);
+  --lang-yua: var(--lang-maya);
+  --lang-quz: var(--lang-quechua);
+  --lang-es: var(--rosa);
+  --lang-en: var(--cielo);
+  --font-display: 'Bricolage Grotesque', 'Noto Sans', system-ui, sans-serif;
+  --font-ui: 'Atkinson Hyperlegible', 'Noto Sans', system-ui, sans-serif;
+  --border-thick: 3px solid var(--ink);
+  --border-thin: 2px solid var(--ink);
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --press-offset: translateY(3px);
+}
+
 :root {
   --color-bg: #fff8ec;
   --color-surface: #ffffff;
