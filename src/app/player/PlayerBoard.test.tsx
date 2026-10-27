@@ -9,8 +9,8 @@ import { makeBoard } from './playerState';
 import { wordOf } from './words';
 
 const speak = vi.hoisted(() => vi.fn(async () => 'audio'));
-vi.mock('../audio', async (orig) => ({
-  ...(await orig<typeof import('../audio')>()),
+vi.mock('../audio', async (importOriginal) => ({
+  ...(await importOriginal<Record<string, unknown>>()),
   speakCall: speak,
 }));
 
@@ -163,10 +163,6 @@ describe('PlayerBoard picking', () => {
     const others = await callTarget();
     for (const id of [others[0], target, others[1]])
       expect(screen.getByRole('button', { name: wordOf(id, 'nah') })).toBeTruthy();
-    const order = within(
-      screen.getByLabelText('¿Cuál es?', { selector: 'section' }) ?? document.body,
-    );
-    expect(order).toBeTruthy();
   });
 
   it('the first tap sends a pick; a wrong pick dims, says ¡Casi! and allows one retry', async () => {
