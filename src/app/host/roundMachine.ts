@@ -1,5 +1,5 @@
 import { MAX_TABLA_INDEX, checkClaim, decodeTablaCode, deckOrder, seedRef, tabla } from '@engine';
-import type { CardId, Category, Lang, PatternId } from '@engine';
+import type { CardId, Category, Lang, PatternId, PickState } from '@engine';
 
 export type DeckCard = { id: CardId; category: Category };
 
@@ -75,6 +75,7 @@ export type RoundAction =
   | { type: 'togglePause' }
   | { type: 'assign'; seat: string; index: number }
   | { type: 'win'; seat: string }
+  | { type: 'finish'; winners: string[] }
   | { type: 'end' }
   | { type: 'newRound' }
   | { type: 'restore'; saved: SavedRound; ids: CardId[] };
@@ -91,6 +92,8 @@ export interface SavedRound {
   assignments?: Record<string, number>;
   /** Roster at save time (seat -> player + assigned board). */
   roster?: SavedPlayer[];
+  /** Points and crossed-out cards per seat (pick scoring). */
+  pick?: PickState;
 }
 
 export interface SavedPlayer {
@@ -139,6 +142,10 @@ export function roundReducer(s: RoundState, a: RoundAction): RoundState {
       if (s.phase !== 'running' && s.phase !== 'paused') return s;
       if (s.winners.includes(a.seat)) return s;
       return { ...s, winners: [...s.winners, a.seat], phase: 'paused' };
+    }
+    case 'finish': {
+      if (s.phase !== 'running' && s.phase !== 'paused') return s;
+      return { ...s, winners: [...new Set(a.winners)], phase: 'ended' };
     }
     case 'assign': {
       if (s.assignments[a.seat] === a.index) return s;

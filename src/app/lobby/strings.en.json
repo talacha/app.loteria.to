@@ -16,5 +16,43 @@
   "unverified": "Unverified room",
   "noHost": "We could not find whoever created the room. Check the code.",
   "toHome": "Back to home",
-  "full": "The room is full."
+  "full": "The room is full.",
+  "pickLangTitle": "Which language should we call in?",
+  "pickLangLead": "Whoever is calling will say each card in your language. You can change it any time.",
+  "pickLangGroup": "Game language",
+  "step": "Step {n} of 2",
+  "inReview": "Words under review by speakers",
+  "listenMode": "Listen mode: sound only, no written word",
+  "cta": "Play in {lang}",
+  "noCosts": "No accounts, no money. Just little beans.",
+  "youPlay": "You will play in {lang}",
+  "reviewShort": "in review",
+  "leave": "Leave the room",
+  "room": "Room",
+  "waitingTitle": "Waiting for the caller…",
+  "waitingLead": "The game starts when the caller taps “Start”.",
+  "invite": "Anyone else want to play? Scan the caller's QR code or type {code} at loteria.to",
+  "me": "You · {name}",
+  "langs": {
+    "nah": {
+      "name": "Nahuatl",
+      "native": "Náhuatl"
+    },
+    "yua": {
+      "name": "Yucatec Maya",
+      "native": "Maya yucateco"
+    },
+    "quz": {
+      "name": "Quechua",
+      "native": "Cusco-Collao"
+    },
+    "es": {
+      "name": "Spanish",
+      "native": "Español"
+    },
+    "en": {
+      "name": "English",
+      "native": "English"
+    }
+  }
 }

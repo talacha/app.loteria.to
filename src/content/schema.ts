@@ -12,6 +12,14 @@ export const cardNameSchema = z.strictObject({
   status: nameStatusSchema,
   audio: text.optional(),
   source: text.optional(),
+  kind: z.enum(['attested', 'loanword', 'descriptive', 'neologism']).optional(),
+  confidence: z.enum(['high', 'medium', 'low']).optional(),
+  gloss: text.optional(),
+  note: text.optional(),
+  reviewQuestion: text.optional(),
+  sensitivity: text.optional(),
+  avoidWith: z.array(z.string()).optional(),
+  headword: text.optional(),
 });
 
 const namesSchema = z
@@ -35,7 +43,17 @@ const namesSchema = z
         }
         continue;
       }
-      if (!n) continue;
+      if (!n) {
+        ctx.addIssue({ code: 'custom', path: [lang], message: `${lang} name missing` });
+        continue;
+      }
+      if (n.confidence !== 'high' && !n.reviewQuestion) {
+        ctx.addIssue({
+          code: 'custom',
+          path: [lang, 'reviewQuestion'],
+          message: 'non-high confidence needs reviewQuestion',
+        });
+      }
       if (!n.source)
         ctx.addIssue({ code: 'custom', path: [lang, 'source'], message: 'source required' });
       if (n.status !== 'draft' && !(n.audio && n.source)) {
@@ -96,6 +114,24 @@ export const cardsSchema = z
     });
     const byId = new Map(cards.map((c) => [c.id, c]));
     cards.forEach((c, i) => {
+      for (const lang of LANGS) {
+        for (const o of c.names[lang]?.avoidWith ?? []) {
+          const other = byId.get(o);
+          if (!other || o === c.id) {
+            ctx.addIssue({
+              code: 'custom',
+              path: [i, 'names', lang, 'avoidWith'],
+              message: `unknown or self id ${o}`,
+            });
+          } else if (!other.names[lang]?.avoidWith?.includes(c.id)) {
+            ctx.addIssue({
+              code: 'custom',
+              path: [i, 'names', lang, 'avoidWith'],
+              message: `${c.id} <-> ${o} avoidWith is not symmetric in ${lang}`,
+            });
+          }
+        }
+      }
       for (const o of c.confusableWith ?? []) {
         const other = byId.get(o);
         if (!other || o === c.id) {

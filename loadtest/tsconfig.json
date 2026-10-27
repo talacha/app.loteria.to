@@ -1,0 +1,6 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": { "noEmit": true, "noUnusedLocals": false, "types": ["node"] },
+  "include": ["./*.ts", "../src/net/**/*.ts", "../src/engine/**/*.ts"],
+  "exclude": ["../src/**/*.test.ts"]
+}

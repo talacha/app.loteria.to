@@ -6,6 +6,7 @@ import type { PlayerProfile } from '../player/PlayerBoard';
 import Roster, { type RosterPlayer } from './Roster';
 import RoomCode from './RoomCode';
 import { MessageLog } from './messageLog';
+import { langInReview } from './langInfo';
 import styles from './LobbyWaiting.module.css';
 
 export interface LobbyWaitingProps {
@@ -122,6 +123,8 @@ export default function LobbyWaiting({
             log.push(m);
             break;
           case 'call':
+          case 'pickResult':
+          case 'scores':
           case 'claimResult':
           case 'end':
             log.push(m);
@@ -180,59 +183,82 @@ export default function LobbyWaiting({
           roster={roster}
           profile={profile}
           log={log}
+          onLeave={leave}
         />
-        <div className={styles.leaveRow}>
-          <button type="button" className={styles.leave} onClick={leave}>
-            {t('player.leave')}
-          </button>
-        </div>
       </>
     );
   }
 
+  const langName = t(`lobby.langs.${labelLang}.name`);
+  const review = langInReview(labelLang);
+
   return (
     <main id="main" className={styles.page}>
-      <h1 className={styles.title}>{t('lobby.title')}</h1>
-      <RoomCode code={code} />
-      <p
-        className={styles.status}
-        role="status"
-        data-state={live ? (lost ? 'lost' : 'ok') : 'wait'}
-      >
-        <span aria-hidden="true">{lost ? '▲' : live ? '●' : '○'}</span>{' '}
-        {lost ? t('player.connectionLost') : live ? t('player.connected') : t('player.connecting')}
-        {live && (
-          <>
-            {' · '}
-            {live.verified ? t('lobby.verified') : t('lobby.unverified')}
-          </>
-        )}
-      </p>
-      {live && !live.verified && <p className={styles.notice}>{t('host.unverifiedRoom')}</p>}
-      {noHost && (
-        <p className={styles.notice} role="alert">
-          {t('lobby.noHost')}{' '}
-          <a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              leave();
-            }}
+      <div className={styles.inner}>
+        <div className={styles.topRow}>
+          <button type="button" className={styles.back} onClick={leave}>
+            <span aria-hidden="true">‹</span> {t('lobby.leave')}
+          </button>
+          <span
+            className={styles.pill}
+            role="status"
+            data-state={lost ? 'lost' : live ? 'ok' : 'wait'}
           >
-            {t('lobby.toHome')}
-          </a>
-        </p>
-      )}
-      {full && (
-        <p className={styles.notice} role="alert">
-          {t('lobby.full')}
-        </p>
-      )}
-      <p className={styles.waiting}>{t('lobby.waiting')}</p>
-      <Roster players={roster} selfSeat={live?.seat} />
-      <button type="button" className={styles.leave} onClick={leave}>
-        {t('player.leave')}
-      </button>
+            <span aria-hidden="true">{lost ? '▲' : live ? '●' : '○'}</span>{' '}
+            {lost
+              ? t('player.connectionLost')
+              : live
+                ? t('player.connected')
+                : t('player.connecting')}
+            {live && (
+              <>
+                {' · '}
+                {live.verified ? t('lobby.verified') : t('lobby.unverified')}
+              </>
+            )}
+          </span>
+        </div>
+
+        <div className={styles.codeCard}>
+          <RoomCode code={code} />
+          <div className={styles.youPlay}>
+            <span>
+              {t('lobby.youPlay', { lang: langName })}
+            </span>
+            {review && <span className={styles.review}>{t('lobby.reviewShort')}</span>}
+          </div>
+        </div>
+
+        {live && !live.verified && <p className={styles.notice}>{t('host.unverifiedRoom')}</p>}
+        {noHost && (
+          <p className={styles.notice} role="alert">
+            {t('lobby.noHost')}{' '}
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                leave();
+              }}
+            >
+              {t('lobby.toHome')}
+            </a>
+          </p>
+        )}
+        {full && (
+          <p className={styles.notice} role="alert">
+            {t('lobby.full')}
+          </p>
+        )}
+
+        <div className={styles.head}>
+          <h1 className={styles.title}>{t('lobby.waitingTitle')}</h1>
+          <p className={styles.lead}>{t('lobby.waitingLead')}</p>
+        </div>
+
+        <Roster players={roster} selfSeat={live?.seat} />
+
+        <p className={styles.invite}>{t('lobby.invite', { code })}</p>
+      </div>
     </main>
   );
 }

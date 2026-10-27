@@ -1,5 +1,4 @@
 {
-  "hostCta": "Cantar las cartas",
   "tagline": "El bingo de imágenes con el que todos crecimos, cantado en cinco idiomas. Una sala entera juega desde un solo código QR, y no hace falta ningún teléfono.",
   "actions": "Empezar",
   "joinLabel": "Código de la sala",
@@ -43,5 +42,24 @@
   "devTitle": "En desarrollo",
   "devNotice": "Esta es una versión temprana. Las ilustraciones son emojis provisionales y los nombres en náhuatl, maya y quechua esperan la revisión de hablantes nativos. Nunca mostramos como correcta una palabra que nadie ha revisado.",
   "privacyLine": "Sin cuentas ni cookies de seguimiento. Lo que escribes no sale de tu dispositivo.",
-  "creditsLink": "Créditos y licencias"
+  "creditsLink": "Créditos y licencias",
+  "nameTitle": "¿Cómo te llamas?",
+  "nameLabel": "Tu nombre en la sala",
+  "nameHint": "Solo lo ven quienes están en tu sala. No se guarda en ningún servidor.",
+  "nameRequired": "Escribe tu nombre para crear una sala.",
+  "glyphLegend": "Elige tu dibujo",
+  "glyphGroup": "Tu dibujo",
+  "createCta": "Crear una sala",
+  "createHint": "Tú cantas: los demás se unen con tu código",
+  "or": "o",
+  "joinTitle": "Unirme a una sala",
+  "enter": "Entrar",
+  "codePlaceholder": "K7MPQ",
+  "scanCta": "Escanear el código QR",
+  "scanHelp": "Abre la cámara de tu teléfono y apunta al QR de la sala: te traerá directo aquí.",
+  "footerLine": "Sin cuentas, sin dinero. Solo frijolitos.",
+  "moreTitle": "Sobre el juego",
+  "logoAlt": "",
+  "printLink": "Imprimir tablas",
+  "deckLink": "Cartas"
 }

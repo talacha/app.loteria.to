@@ -6,7 +6,14 @@ import type { Msg } from './messages.ts';
 import type { JoinOptions, Role } from './transport.ts';
 
 const claim = (seat: string): Msg => ({ t: 'claim', seat, roundNo: 1, tablaIndex: 1, marks: [] });
-const call: Msg = { t: 'call', i: 0, cardId: 'gallo', lang: 'es', at: 1 };
+const call: Msg = {
+  t: 'call',
+  i: 0,
+  cardId: 'gallo',
+  choices: ['gallo', 'luna', 'sol'],
+  lang: 'es',
+  at: 1,
+};
 const round: Msg = {
   t: 'round',
   seed: 's',
@@ -309,5 +316,50 @@ describe('v2 additions', () => {
     b.send(lobby);
     await flush();
     expect(got.map((m) => m.t)).toEqual(['lobby', 'round']);
+  });
+
+  it('drops a forged pickResult and rate limits picks', async () => {
+    const host = await make('C7', 'host');
+    const player = await make('C7', 'player');
+    const gotP = collect(player);
+    const gotH = collect(host);
+    host.send(round);
+    host.send({ t: 'pickResult', roundNo: 1, i: 0, seat: 'a', correct: true, first: true });
+    await flush();
+    raw('C7').postMessage({
+      k: 'msg',
+      frame: {
+        role: 'host',
+        from: 'h',
+        m: { t: 'pickResult', roundNo: 1, i: 1, seat: 'a', correct: true, first: true },
+        sig: 'AAAA',
+      },
+    });
+    await flush();
+    expect(gotP.filter((m) => m.t === 'pickResult')).toHaveLength(1);
+
+    const pick = (i: number): Msg => ({
+      t: 'pick',
+      seat: seatOf(player),
+      roundNo: 1,
+      i,
+      cardId: 'x',
+    });
+    player.send(pick(0));
+    player.send(pick(0)); // within 400 ms: dropped
+    await flush();
+    expect(gotH.filter((m) => m.t === 'pick')).toHaveLength(1);
+    vi.useFakeTimers({ toFake: ['Date'] });
+    for (let k = 1; k <= 5; k++) {
+      vi.setSystemTime(Date.now() + 500);
+      player.send(pick(0));
+      await flush();
+    }
+    expect(gotH.filter((m) => m.t === 'pick')).toHaveLength(4); // cap of 4 per (round, i)
+    // spoofed seat dropped
+    vi.setSystemTime(Date.now() + 500);
+    player.send({ t: 'pick', seat: 'someone-else', roundNo: 1, i: 2, cardId: 'x' });
+    await flush();
+    expect(gotH.filter((m) => m.t === 'pick')).toHaveLength(4);
   });
 });

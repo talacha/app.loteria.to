@@ -1,18 +1,22 @@
 .roster {
-  color: var(--color-ink);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--paper);
+  font-family: var(--font-ui);
 }
 .count {
-  margin: 0 0 var(--space-3);
-  font-size: var(--text-lg);
+  margin: 0;
+  font-size: 1em;
+  font-weight: 700;
 }
 .max,
-.empty,
-.pronouns {
-  color: var(--color-ink-muted);
+.empty {
+  color: var(--muted-on-night);
 }
 .max {
-  font-size: var(--text-sm);
   font-weight: 400;
+  font-size: 0.875em;
 }
 .live {
   position: absolute;
@@ -28,24 +32,34 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-2);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
 }
 .item {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  min-height: var(--tap);
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius);
+  gap: 10px;
+  padding: 10px;
+  min-height: 44px;
+  border-radius: var(--radius-md);
+  border: var(--border-thick);
+  background: var(--paper);
+  color: var(--ink);
 }
 .item[data-self='true'] {
-  border-color: var(--color-jade);
+  background: var(--maiz);
 }
 .glyph {
-  font-size: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background: var(--card-white);
+  border: var(--border-thin);
+  font-size: 1.5rem;
   line-height: 1;
 }
 .who {
@@ -55,18 +69,19 @@
 }
 .name {
   font-weight: 700;
-  overflow-wrap: anywhere;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.you {
-  font-weight: 400;
-  color: var(--color-ink-muted);
-}
+.you,
 .pronouns {
-  font-size: var(--text-sm);
+  font-size: 0.75em;
+  font-weight: 400;
+  color: var(--muted-on-paper);
 }
 @media (min-width: 768px) {
   .list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 @media (min-width: 1280px) {

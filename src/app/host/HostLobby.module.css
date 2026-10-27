@@ -1,12 +1,12 @@
 .page {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: var(--space-4);
-  padding-bottom: 0;
+  min-height: 100dvh;
+  padding: 24px max(16px, calc((100% - 72rem) / 2)) 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  color: var(--color-ink);
+  background: var(--night);
+  color: var(--paper);
+  font-family: var(--font-ui);
   box-sizing: border-box;
 }
 .header {
@@ -18,6 +18,8 @@
 }
 .header h1 {
   margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
   font-size: var(--text-xl);
 }
 .status {
@@ -25,7 +27,7 @@
   align-items: center;
   gap: var(--space-3);
   margin: 0;
-  color: var(--color-ink-muted);
+  color: var(--muted-on-night);
 }
 .roundNo {
   font-weight: 700;
@@ -34,21 +36,23 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 2px solid var(--color-ink);
-  background: var(--color-surface);
+  border: var(--border-thin);
+  background: var(--paper);
 }
 .online {
-  background: var(--color-jade);
+  background: var(--jade);
 }
 .offline {
-  background: var(--color-accent);
+  background: var(--chile);
 }
 .unverified {
-  background: var(--color-maiz);
+  background: var(--maiz);
 }
 .notice {
-  background: var(--color-warn-bg);
-  border-radius: var(--radius);
+  background: var(--review);
+  color: var(--ink);
+  border: var(--border-thin);
+  border-radius: var(--radius-sm);
   padding: var(--space-3);
   margin: 0;
 }
@@ -70,15 +74,17 @@
   aspect-ratio: 1;
   height: auto;
   background: #fff;
-  border-radius: var(--radius);
-  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  border: var(--border-thick);
+  padding: 0;
+  box-shadow: 0 6px 0 var(--shadow-color);
 }
 .url {
   margin: 0;
   max-width: 100%;
   overflow-wrap: anywhere;
   font-size: var(--text-sm);
-  color: var(--color-ink-muted);
+  color: var(--muted-on-night);
   text-align: center;
 }
 .side {
@@ -99,21 +105,21 @@
   padding: 0 var(--space-4);
   font: inherit;
   font-weight: 600;
-  border-radius: var(--radius);
-  border: 2px solid var(--color-ink);
+  border-radius: 14px;
+  border: var(--border-thick);
   cursor: pointer;
-  color: var(--color-ink);
-  background: var(--color-surface);
+  color: var(--paper);
+  background: var(--night-raised);
 }
 .primary {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-accent-ink);
+  background: var(--maiz);
+  color: var(--ink);
+  box-shadow: var(--shadow-hard);
 }
 .settings {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  background: var(--night-raised);
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
 }
 .settings summary {
   min-height: var(--tap);
@@ -138,10 +144,10 @@
   min-height: var(--tap);
   padding: 0 var(--space-3);
   font: inherit;
-  color: var(--color-ink);
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius);
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
   width: 100%;
   box-sizing: border-box;
 }
@@ -162,7 +168,7 @@
   margin-top: 10px;
 }
 .muted {
-  color: var(--color-ink-muted);
+  color: var(--muted-on-night);
   font-size: var(--text-sm);
 }
 .startBar {
@@ -172,24 +178,26 @@
   flex-direction: column;
   gap: var(--space-2);
   padding: var(--space-3) 0 calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
-  background: var(--color-bg);
-  border-top: 1px solid var(--color-border);
+  background: var(--night);
+  border-top: var(--border-thin);
 }
 .hint {
   margin: 0;
-  color: var(--color-ink-muted);
+  color: var(--muted-on-night);
   font-size: var(--text-sm);
   text-align: center;
 }
 .start {
   min-height: 56px;
   font: inherit;
+  font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 800;
-  border-radius: var(--radius);
-  border: 2px solid var(--color-accent);
-  background: var(--color-accent);
-  color: var(--color-accent-ink);
+  border-radius: var(--radius-md);
+  border: var(--border-thick);
+  background: var(--maiz);
+  color: var(--ink);
+  box-shadow: var(--shadow-hard);
   cursor: pointer;
 }
 .srOnly {
@@ -240,4 +248,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.page a {
+  color: var(--maiz);
 }

@@ -1,6 +1,8 @@
 import { generateHostKeys, signMsg, verifyMsg, type HostKeys } from './crypto.ts';
 import { HOST_ONLY, parseMsg, type Msg } from './messages.ts';
 import {
+  PICK_INTERVAL_MS,
+  MAX_PICKS_PER_CALL,
   CLAIM_INTERVAL_MS,
   MAX_CLAIMS_PER_SEC,
   getSeat,
@@ -24,6 +26,8 @@ export class Session {
   private pinned: string | null = null;
   private lastClaim = new Map<string, number>();
   private recent: number[] = [];
+  private lastPick = new Map<string, { n: number; t: number }>();
+  private lastPickAt = new Map<string, number>();
   private chain: Promise<unknown> = Promise.resolve();
 
   constructor(private readonly now: () => number = () => Date.now()) {}
@@ -35,6 +39,8 @@ export class Session {
     this.pinned = role === 'player' ? (opts?.hostKey ?? null) : null;
     this.verified = role === 'player' && !!opts?.hostKey;
     this.lastClaim.clear();
+    this.lastPick.clear();
+    this.lastPickAt.clear();
     this.recent = [];
   }
 
@@ -86,7 +92,25 @@ export class Session {
     if (this.role !== 'host' || f.role !== 'player') return null;
     if (!('seat' in m) || m.seat !== f.from) return null;
     if (m.t === 'claim' && !this.allowClaim(f.from)) return null;
+    if (m.t === 'pick' && !this.allowPick(f.from, m.roundNo, m.i)) return null;
     return m;
+  }
+
+  private allowPick(from: string, roundNo: number, i: number): boolean {
+    const t = this.now();
+    for (const [k, v] of this.lastPick) if (t - v.t >= 60_000) this.lastPick.delete(k);
+    const last = this.lastPickAt.get(from);
+    if (last !== undefined && t - last < PICK_INTERVAL_MS) return false;
+    const key = `${from}:${roundNo}:${i}`;
+    const n = this.lastPick.get(key)?.n ?? 0;
+    if (n >= MAX_PICKS_PER_CALL) return false;
+    this.lastPick.set(key, { n: n + 1, t });
+    this.lastPickAt.set(from, t);
+    if (this.lastPickAt.size > 500) {
+      for (const [k, v] of this.lastPickAt)
+        if (t - v >= PICK_INTERVAL_MS) this.lastPickAt.delete(k);
+    }
+    return true;
   }
 
   private allowClaim(from: string): boolean {

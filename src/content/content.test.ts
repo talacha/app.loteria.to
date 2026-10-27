@@ -1,5 +1,13 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { cards, callableLangs, cardName, getCard, LANG_LABELS } from './index.ts';
+import {
+  cards,
+  callableLangs,
+  cardName,
+  getCard,
+  isAvoidedPair,
+  LANG_COLORS,
+  LANG_LABELS,
+} from './index.ts';
 import { CATEGORIES, INDIGENOUS_LANGS, LANGS } from './types.ts';
 import es from './i18n/es.json';
 import en from './i18n/en.json';
@@ -60,12 +68,9 @@ describe('languages', () => {
   it('only es and en are callable when unreviewed is hidden', () => {
     expect(callableLangs({ hideUnreviewed: true })).toEqual(['es', 'en']);
   });
-  it('requires a name on every card for a lang when not hiding', () => {
+  it('offers all five langs when not hiding, since every card has a name', () => {
     const langs = callableLangs({ hideUnreviewed: false });
-    expect(langs).toEqual(['es', 'en']);
-    for (const l of INDIGENOUS_LANGS) {
-      expect(cards.every((c) => c.names[l])).toBe(false);
-    }
+    expect(langs).toEqual([...LANGS]);
   });
   afterEach(() => vi.unstubAllEnvs());
   it('reads VITE_HIDE_UNREVIEWED from the env', () => {
@@ -97,6 +102,34 @@ describe('confusableWith', () => {
   });
 });
 
+describe('coverage and avoid pairs', () => {
+  it('every card has a draft name in every Indigenous lang', () => {
+    for (const c of cards)
+      for (const l of INDIGENOUS_LANGS) {
+        expect(c.names[l]?.status).toBe('draft');
+        if (c.names[l]?.confidence !== 'high') expect(c.names[l]?.reviewQuestion).toBeTruthy();
+      }
+  });
+  it('isAvoidedPair uses confusableWith and per-lang avoidWith', () => {
+    expect(isAvoidedPair('sol', 'estrella')).toBe(true);
+    expect(isAvoidedPair('estrella', 'sol', ['es'])).toBe(true);
+    expect(isAvoidedPair('sol', 'sol')).toBe(false);
+    expect(isAvoidedPair('sol', 'nope')).toBe(false);
+    let found = false;
+    for (const c of cards)
+      for (const l of INDIGENOUS_LANGS)
+        for (const o of c.names[l]?.avoidWith ?? []) {
+          found = true;
+          expect(isAvoidedPair(c.id, o, [l])).toBe(true);
+          expect(isAvoidedPair(o, c.id, [l])).toBe(true);
+        }
+    expect(found).toBe(true);
+  });
+  it('maps every lang to a css var', () => {
+    for (const l of LANGS) expect(LANG_COLORS[l]).toBe(`var(--lang-${l})`);
+  });
+});
+
 describe('schema', () => {
   it('rejects unknown fields and bad art', async () => {
     const { cardSchema } = await import('./schema.ts');
@@ -105,6 +138,25 @@ describe('schema', () => {
     expect(cardSchema.safeParse({ ...base, art: '👍🏽' }).success).toBe(false);
     expect(cardSchema.safeParse({ ...base, art: 'ab' }).success).toBe(false);
     expect(cardSchema.safeParse(base).success).toBe(true);
+  });
+  it('rejects bad Indigenous entries', async () => {
+    const { cardsSchema } = await import('./schema.ts');
+    const mk = (f: (c: (typeof cards)[number]) => void) => {
+      const cs = structuredClone(cards);
+      f(cs[0]!);
+      return cardsSchema.safeParse(cs).success;
+    };
+    expect(mk(() => {})).toBe(true);
+    expect(mk((c) => (c.names.nah!.status = 'approved'))).toBe(false);
+    expect(mk((c) => delete c.names.quz)).toBe(false);
+    expect(mk((c) => (c.names.yua!.avoidWith = ['nope']))).toBe(false);
+    expect(mk((c) => (c.names.yua!.avoidWith = ['sol']))).toBe(false);
+    expect(
+      mk((c) => {
+        c.names.nah!.confidence = 'low';
+        delete c.names.nah!.reviewQuestion;
+      }),
+    ).toBe(false);
   });
 });
 
