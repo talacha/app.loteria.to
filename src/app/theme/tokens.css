@@ -76,7 +76,7 @@
   --color-night: #1e2142;
   --color-night-raised: #2a2e58;
   --color-night-line: #45497f;
-  --color-night-dash: #6e6aa6;
+  --color-night-dash: #8581bd;
   --color-ink: #16182f;
   --color-paper: #fff6e5;
   --color-white: #ffffff;
@@ -85,7 +85,7 @@
   --color-muted-on-paper: #4a4766;
   --color-maiz: #ffc233;
   --color-maiz-soft: #ffe08a;
-  --color-rosa: #e5177e;
+  --color-rosa: #d0126b;
   --color-jade: #0e9f7e;
   --color-jade-soft: #c9f2e4;
   --color-cielo: #2a64d6;
@@ -95,6 +95,8 @@
   --color-bean: #6b2f23;
   --color-bean-dark: #4a1f16;
   --color-bean-light: #8a4a3a;
+  --color-text: var(--color-paper);
+  --color-accent-text: var(--color-maiz);
   --color-disabled-on-night: #3a3e6a;
 
   /* lang */
@@ -204,9 +206,36 @@
   --color-accent: var(--color-maiz);
   --color-accent-ink: var(--color-ink);
   --color-focus: var(--color-maiz);
-  --color-border: var(--color-night-line);
+  --color-border: var(--color-night-dash);
   --color-warn-bg: var(--color-maiz-soft);
   --color-card-white: var(--color-white);
+}
+
+/* Light: cream ground, white panels, ink text. */
+:root[data-theme='light'] {
+  --color-night: #f6e9cc;
+  --color-night-raised: #ffffff;
+  --color-night-line: #cdbf9e;
+  --color-night-dash: #6e6aa6;
+  --color-shadow: #16182f;
+  --color-muted-on-night: #4a4766;
+  --color-text: #16182f;
+  --color-accent-text: #8a5a00;
+  --color-disabled-on-night: #ddd3ba;
+}
+/* Auto follows the OS: light when it asks for light (dark otherwise). */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --color-night: #f6e9cc;
+    --color-night-raised: #ffffff;
+    --color-night-line: #cdbf9e;
+    --color-night-dash: #6e6aa6;
+    --color-shadow: #16182f;
+    --color-muted-on-night: #4a4766;
+    --color-text: #16182f;
+    --color-accent-text: #8a5a00;
+    --color-disabled-on-night: #ddd3ba;
+  }
 }
 
 /* High contrast: pure black and white, yellow accents. */
@@ -220,6 +249,8 @@
   --color-shadow: #ffffff;
   --color-muted-on-night: #ffffff;
   --color-muted-on-paper: #000000;
+  --color-text: #ffffff;
+  --color-accent-text: #ffc233;
   --color-jade-soft: #ffffff;
   --color-disabled-on-night: #000000;
 }
@@ -227,12 +258,12 @@
 html {
   font-family: var(--font-ui);
   background: var(--color-night);
-  color: var(--color-paper);
+  color: var(--color-text);
 }
 body {
   margin: 0;
   background: var(--color-night);
-  color: var(--color-paper);
+  color: var(--color-text);
   font-family: var(--font-ui);
   font-size: var(--text-base);
 }
@@ -246,6 +277,13 @@ h3 {
 :focus-visible {
   outline: 3px solid var(--color-maiz);
   outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--color-ink);
+}
+/* Inputs are paper surfaces */
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-muted-on-paper);
+  opacity: 1;
 }
 @media (prefers-reduced-motion: reduce) {
   *,

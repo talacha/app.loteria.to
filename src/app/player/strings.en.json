@@ -50,8 +50,5 @@
   "winWords": "Words you learned",
   "anotherRound": "Another round",
   "anotherRoundHint": "The organiser starts the next round and your board changes by itself.",
-  "backToRoom": "Back to the room",
-  "printBoard": "Print my board",
-  "printWords": "Include the words in my language",
-  "printError": "Could not create the PDF. Try again."
+  "backToRoom": "Back to the room"
 }

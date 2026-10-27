@@ -50,8 +50,5 @@
   "winWords": "Palabras que aprendiste",
   "anotherRound": "Otra ronda",
   "anotherRoundHint": "Quien organiza empieza la siguiente ronda y tu tabla cambia sola.",
-  "backToRoom": "Volver a la sala",
-  "printBoard": "Imprimir mi cartón",
-  "printWords": "Incluir las palabras en mi idioma",
-  "printError": "No se pudo crear el PDF. Intenta de nuevo."
+  "backToRoom": "Volver a la sala"
 }

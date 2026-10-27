@@ -355,18 +355,3 @@ describe('PlayerBoard win', () => {
     expect(screen.getByText(/completó la tabla/)).toBeTruthy();
   });
 });
-
-describe('PlayerBoard print', () => {
-  it('offers "Imprimir mi cartón" with the words toggle off by default', async () => {
-    await mount();
-    await start();
-    expect(screen.getByRole('button', { name: 'Imprimir mi cartón' })).toBeTruthy();
-    const toggle = screen.getByRole('checkbox', {
-      name: /Incluir las palabras/,
-    }) as HTMLInputElement;
-    expect(toggle.checked).toBe(false);
-    fireEvent.click(screen.getByRole('button', { name: 'Ajustes' }));
-    const dialog = screen.getByRole('dialog', { name: 'Ajustes' });
-    expect(within(dialog).getByRole('button', { name: 'Imprimir mi cartón' })).toBeTruthy();
-  });
-});

@@ -18,7 +18,6 @@ import {
 } from '../ui';
 import WinScreen from './WinScreen';
 import SettingsSheet from './SettingsSheet';
-import PrintBoardButton from './PrintBoardButton';
 import UiLangSwitch from './UiLangSwitch';
 import { patchLocalProfile } from './profile';
 import { emojiOf, wordOf } from './words';
@@ -457,16 +456,6 @@ export default function PlayerBoard({
           </>
         )}
 
-        {round && state.assign && board.length > 0 ? (
-          <PrintBoardButton
-            seed={round.roomSeed}
-            tablaIndex={state.assign.tablaIndex}
-            name={name}
-            code={code}
-            spokenLang={spokenLang}
-          />
-        ) : null}
-
         <Button variant="link" onClick={() => setSheet(true)} aria-haspopup="dialog">
           {t('player.settings')}
         </Button>
@@ -474,16 +463,6 @@ export default function PlayerBoard({
 
       {sheet && (
         <SettingsSheet
-          print={
-            round && state.assign && board.length > 0
-              ? {
-                  seed: round.roomSeed,
-                  tablaIndex: state.assign.tablaIndex,
-                  name,
-                  code,
-                }
-              : undefined
-          }
           spokenLang={spokenLang}
           onSpokenLang={changeSpoken}
           muted={muted}

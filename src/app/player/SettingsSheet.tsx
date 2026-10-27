@@ -4,14 +4,11 @@ import { LANGS, type Lang } from '@content';
 import { Button, LanguageCard } from '../ui';
 import { sampleWord } from '../lobby/langInfo';
 import UiLangSwitch from './UiLangSwitch';
-import PrintBoardButton from './PrintBoardButton';
 import styles from './PlayerBoard.module.css';
 
 const ORDER: Lang[] = ['nah', 'yua', 'quz', 'es', 'en'];
 
 export interface SettingsSheetProps {
-  /** My assigned tabla; absent until the host assigns one. */
-  print?: { seed: string; tablaIndex: number; name: string; code: string };
   spokenLang: Lang;
   onSpokenLang: (l: Lang) => void;
   muted: boolean;
@@ -92,8 +89,6 @@ export default function SettingsSheet(p: SettingsSheetProps) {
             {t('player.highContrast')}
           </button>
         </div>
-
-        {p.print ? <PrintBoardButton {...p.print} spokenLang={p.spokenLang} /> : null}
 
         <Button autoFocus onClick={p.onClose}>
           {t('player.settingsClose')}

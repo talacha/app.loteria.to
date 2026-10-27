@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { afterEach, describe, it, expect, vi } from 'vitest';
 import { act, cleanup, render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router';
@@ -38,10 +39,16 @@ describe('JoinPage', () => {
     renderAt('/r/abcde');
     expect(screen.getByText('ABCDE')).toBeTruthy();
   });
-  it('explains paper boards', () => {
+  it('has no paper-board link (players print their own cartón)', () => {
     renderAt('/r/ABCDE');
-    fireEvent.click(screen.getByRole('button', { name: /tabla de papel/i }));
-    expect(screen.getByText(/6 letras/i)).toBeTruthy();
+    expect(screen.queryByRole('button', { name: /tabla de papel/i })).toBeNull();
+  });
+  it('styles text for the night background (contrast guard)', () => {
+    const css = readFileSync('src/app/join/JoinPage.module.css', 'utf8');
+    expect(css).toMatch(/\.page \{[^}]*color: var\(--color-paper\)/);
+    expect(css).toMatch(/\.field select \{[^}]*color: var\(--color-paper\)/);
+    expect(css).toMatch(/::placeholder \{[^}]*--color-muted-on-night/);
+    expect(css).toMatch(/\.glyph \{[^}]*--color-night-dash/);
   });
   it('rejoins directly from a saved session', () => {
     sessionStorage.setItem(
