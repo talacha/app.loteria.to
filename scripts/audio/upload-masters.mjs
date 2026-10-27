@@ -23,7 +23,12 @@ if (r.status === 404 || r.status === 400) {
   r = await fetch(`${url}/storage/v1/bucket`, {
     method: 'POST',
     headers: { ...h, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ id: BUCKET, name: BUCKET, public: false, allowed_mime_types: ['audio/wav', 'audio/x-wav'] }),
+    body: JSON.stringify({
+      id: BUCKET,
+      name: BUCKET,
+      public: false,
+      allowed_mime_types: ['audio/wav', 'audio/x-wav'],
+    }),
   });
   if (!r.ok) await fail('create bucket', r);
   console.log(`created private bucket ${BUCKET}`);
@@ -36,7 +41,8 @@ else if ((await r.json()).public) {
 const files = [];
 for (const lang of readdirSync('audio-masters')) {
   const d = join('audio-masters', lang);
-  if (statSync(d).isDirectory()) for (const f of readdirSync(d)) if (f.endsWith('.wav')) files.push(`${lang}/${f}`);
+  if (statSync(d).isDirectory())
+    for (const f of readdirSync(d)) if (f.endsWith('.wav')) files.push(`${lang}/${f}`);
 }
 let ok = 0;
 for (const f of files) {
@@ -58,4 +64,6 @@ for (const lang of new Set(files.map((f) => f.split('/')[0]))) {
   });
   if (l.ok) stored += (await l.json()).filter((o) => o.name.endsWith('.wav')).length;
 }
-console.log(`uploaded ${ok}/${files.length} masters; ${stored} objects now in private bucket ${BUCKET}`);
+console.log(
+  `uploaded ${ok}/${files.length} masters; ${stored} objects now in private bucket ${BUCKET}`,
+);

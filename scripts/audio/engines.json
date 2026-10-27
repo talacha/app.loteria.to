@@ -10,11 +10,7 @@
       "model": "hexgrad/Kokoro-82M",
       "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
       "lang_code": "e",
-      "voices": [
-        "ef_dora",
-        "em_alex",
-        "em_santa"
-      ],
+      "voices": ["ef_dora", "em_alex", "em_santa"],
       "asr": "spa"
     },
     "en": {
@@ -22,11 +18,7 @@
       "model": "hexgrad/Kokoro-82M",
       "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
       "lang_code": "a",
-      "voices": [
-        "af_heart",
-        "am_michael",
-        "af_bella"
-      ],
+      "voices": ["af_heart", "am_michael", "af_bella"],
       "asr": "eng"
     },
     "nah": {
@@ -50,7 +42,7 @@
     "cjp": {
       "engine": "mms",
       "model": "facebook/mms-tts-cjp",
-      "revision": null,
+      "revision": "328480db5753278668953a7ed400c265fb469b8f",
       "asr": "cjp"
     },
     "bzd": {

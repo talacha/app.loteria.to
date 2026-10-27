@@ -22,7 +22,19 @@
     "history": "Already called",
     "progress": "Progress",
     "loading": "Loading…",
-    "tabla": "Your board"
+    "tabla": "Your board",
+    "leaderboard": {
+      "title": "Points table",
+      "rank": "Rank",
+      "player": "Player",
+      "points": "Points",
+      "squares": "Squares",
+      "squaresOf": "{n} of {total} squares",
+      "you": "You"
+    },
+    "gear": {
+      "label": "Language settings"
+    }
   },
   "dark": "Dark",
   "light": "Light",

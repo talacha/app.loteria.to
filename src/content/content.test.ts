@@ -8,7 +8,7 @@ import {
   LANG_COLORS,
   LANG_LABELS,
 } from './index.ts';
-import { CATEGORIES, INDIGENOUS_LANGS, LANGS } from './types.ts';
+import { CATEGORIES, INDIGENOUS_LANGS, LANGS, LANG_PLAYABLE } from './types.ts';
 import es from './i18n/es.json';
 import en from './i18n/en.json';
 
@@ -55,9 +55,29 @@ describe('deck', () => {
       expect(c.riddle.en.length).toBeGreaterThan(0);
     }
   });
-  it('has an audio file path for every name in all five languages', () => {
+  it('has a hashed audio path and clip metadata for every name in all five languages', () => {
     for (const c of cards)
-      for (const l of LANGS) expect(c.names[l]?.audio).toBe(`/audio/${l}/${c.id}.m4a`);
+      for (const l of LANGS) {
+        const n = c.names[l];
+        expect(n?.audio).toMatch(new RegExp(`^/audio/${l}/${c.id}\\.[0-9a-f]{8}\\.m4a$`));
+        expect(n?.clip?.file).toBe(n?.audio);
+        expect(n?.clip?.sha256).toMatch(/^[0-9a-f]{64}$/);
+        expect(n?.audio).toContain((n?.clip?.sha256 ?? '').slice(0, 8));
+      }
+  });
+  it('lists cjp and bzd explicitly, never playable yet, with a reason when silent', () => {
+    expect(LANG_PLAYABLE.cjp).toBe(false);
+    expect(LANG_PLAYABLE.bzd).toBe(false);
+    for (const c of cards)
+      for (const l of ['cjp', 'bzd'] as const) {
+        const n = c.names[l];
+        expect(n).toBeDefined();
+        if (n!.text === null)
+          expect(n).toMatchObject({ status: 'missing', audio: null, audioReason: 'missing-word' });
+        else if (l === 'bzd')
+          expect(n).toMatchObject({ audio: null, audioReason: 'needs-recording' });
+        else expect(n!.clip?.engine).toBe('mms');
+      }
   });
   it('requires a source for every Indigenous name', () => {
     for (const c of cards)

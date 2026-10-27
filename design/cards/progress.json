@@ -1,0 +1,194 @@
+{
+ "sol": {
+  "status": "pilot-cropped",
+  "nodeId": "",
+  "bytes": 102970,
+  "regen": 0
+ },
+ "jaguar": {
+  "status": "pilot-cropped",
+  "nodeId": "",
+  "bytes": 112778,
+  "regen": 0
+ },
+ "colibri": {
+  "status": "pilot-cropped",
+  "nodeId": "",
+  "bytes": 54340,
+  "regen": 0
+ },
+ "llama": {
+  "status": "done",
+  "nodeId": "4:2",
+  "bytes": 107238,
+  "regen": 0
+ },
+ "condor": {
+  "status": "done",
+  "nodeId": "5:2",
+  "bytes": 72390,
+  "regen": 0
+ },
+ "mariposa": {
+  "status": "done",
+  "nodeId": "6:2",
+  "bytes": 57100,
+  "regen": 0
+ },
+ "guajolote": {
+  "status": "done",
+  "nodeId": "7:2",
+  "bytes": 101048,
+  "regen": 0
+ },
+ "tortuga": {
+  "status": "done",
+  "nodeId": "8:2",
+  "bytes": 46070,
+  "regen": 0
+ },
+ "rana": {
+  "status": "done",
+  "nodeId": "9:2",
+  "bytes": 70592,
+  "regen": 0
+ },
+ "serpiente": {
+  "status": "done",
+  "nodeId": "10:2",
+  "bytes": 76924,
+  "regen": 0
+ },
+ "perro": {
+  "status": "done",
+  "nodeId": "11:2",
+  "bytes": 62666,
+  "regen": 0
+ },
+ "pez": {
+  "status": "done",
+  "nodeId": "12:2",
+  "bytes": 58714,
+  "regen": 0
+ },
+ "venado": {
+  "status": "done",
+  "nodeId": "13:2",
+  "bytes": 68890,
+  "regen": 0
+ },
+ "mono": {
+  "status": "done",
+  "nodeId": "14:2",
+  "bytes": 41170,
+  "regen": 0
+ },
+ "murcielago": {
+  "status": "done",
+  "nodeId": "15:2",
+  "bytes": 67886,
+  "regen": 0
+ },
+ "hormiga": {
+  "status": "done",
+  "nodeId": "16:2",
+  "bytes": 57738,
+  "regen": 0
+ },
+ "abeja": {
+  "status": "done",
+  "nodeId": "17:2",
+  "bytes": 74370,
+  "regen": 0
+ },
+ "arana": {
+  "status": "done",
+  "nodeId": "18:2",
+  "bytes": 67490,
+  "regen": 0
+ },
+ "caracol": {
+  "status": "done",
+  "nodeId": "19:2",
+  "bytes": 77056,
+  "regen": 0
+ },
+ "cangrejo": {
+  "status": "done",
+  "nodeId": "20:2",
+  "bytes": 31608,
+  "regen": 0
+ },
+ "armadillo": {
+  "status": "done",
+  "nodeId": "21:2",
+  "bytes": 65938,
+  "regen": 0
+ },
+ "lagartija": {
+  "status": "done",
+  "nodeId": "22:2",
+  "bytes": 58834,
+  "regen": 0
+ },
+ "perico": {
+  "status": "done",
+  "nodeId": "23:2",
+  "bytes": 62906,
+  "regen": 0
+ },
+ "raton": {
+  "status": "done",
+  "nodeId": "24:2",
+  "bytes": 92706,
+  "regen": 0
+ },
+ "gallina": {
+  "status": "done",
+  "nodeId": "25:2",
+  "bytes": 120676,
+  "regen": 0
+ },
+ "arbol": {
+  "status": "done",
+  "nodeId": "26:2",
+  "bytes": 81648,
+  "regen": 0
+ },
+ "hoja": {
+  "status": "done",
+  "nodeId": "27:2",
+  "bytes": 59280,
+  "regen": 0
+ },
+ "flor": {
+  "status": "done",
+  "nodeId": "28:2",
+  "bytes": 60144,
+  "regen": 0
+ },
+ "cacahuate": {
+  "status": "done",
+  "nodeId": "29:2",
+  "bytes": 94906,
+  "regen": 0
+ },
+ "raiz": {
+  "status": "done",
+  "nodeId": "30:2",
+  "bytes": 71512,
+  "regen": 0
+ },
+ "calabaza": {
+  "status": "done",
+  "nodeId": "31:2",
+  "bytes": 45516,
+  "regen": 0
+ },
+ "yuca": {
+  "status": "done",
+  "nodeId": "32:2",
+  "bytes": 81046,
+  "regen": 0
+ }
+}

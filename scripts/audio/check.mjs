@@ -9,7 +9,10 @@ const cards = JSON.parse(readFileSync('src/content/cards.json', 'utf8'));
 const manifest = JSON.parse(readFileSync('public/audio/manifest.json', 'utf8'));
 const engines = JSON.parse(readFileSync('scripts/audio/engines.json', 'utf8')).languages;
 
-const sha = (file) => createHash('sha256').update(readFileSync(`public${file}`)).digest('hex');
+const sha = (file) =>
+  createHash('sha256')
+    .update(readFileSync(`public${file}`))
+    .digest('hex');
 const byFile = new Map(Object.values(manifest.clips).map((v) => [v.file, v]));
 const problems = [];
 let clips = 0;
@@ -30,7 +33,8 @@ for (const c of cards) {
       continue;
     }
     if (n.text === null) {
-      if (n.audio !== null || n.audioReason !== 'missing-word') problems.push(`${who}: missing word must have audio null, audioReason missing-word`);
+      if (n.audio !== null || n.audioReason !== 'missing-word')
+        problems.push(`${who}: missing word must have audio null, audioReason missing-word`);
       continue;
     }
     if (!n.audio) {
@@ -49,11 +53,16 @@ for (const c of cards) {
     clips++;
   }
 }
-for (const v of Object.values(manifest.clips)) verify(v.file, v.sha256, `manifest ${v.lang}/${v.id}`);
+for (const v of Object.values(manifest.clips))
+  verify(v.file, v.sha256, `manifest ${v.lang}/${v.id}`);
 
 if (problems.length) {
   console.error(problems.join('\n'));
-  console.error(`[audio:check] FAIL (${problems.length}). Run pnpm audio:generate and commit public/audio.`);
+  console.error(
+    `[audio:check] FAIL (${problems.length}). Run pnpm audio:generate and commit public/audio.`,
+  );
   process.exit(1);
 }
-console.log(`[audio:check] ok: ${clips} clips verified (sha256), ${waiting} awaiting native recordings`);
+console.log(
+  `[audio:check] ok: ${clips} clips verified (sha256), ${waiting} awaiting native recordings`,
+);

@@ -208,7 +208,7 @@ export default function SoloGame({
 
       <Panel as="section" className={styles.scores} aria-labelledby="solo-pts">
         <h2 id="solo-pts" className={styles.h2}>
-          {t('ui.leaderboard.title')}
+          {t('theme.kit.leaderboard.title')}
         </h2>
         <Leaderboard entries={standings} selfSeat={HUMAN} total={s.tablas[HUMAN]?.cards.length} />
       </Panel>

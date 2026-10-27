@@ -60,7 +60,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.56r 'michin. pescado'; karttunen1983 (1992 repr.) p.146",
       "note": "Plain generic noun.",
-      "reviewQuestion": "¿'Michin' es la palabra común para pez/pescado?"
+      "reviewQuestion": "¿'Michin' es la palabra común para pez/pescado?",
+      "avoidWith": ["murcielago", "raton"]
     },
     "venado": {
       "text": "mazatl",
@@ -69,7 +70,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.50r 'mazatl. venado'; karttunen1983 (1992 repr.) p.142",
       "note": "Early colonial texts also used it for 'horse'; Also a tonalpohualli day sign; the everyday animal/thing noun is meant.",
-      "reviewQuestion": "¿'Mazatl' se entiende como venado (no caballo)?"
+      "reviewQuestion": "¿'Mazatl' se entiende como venado (no caballo)?",
+      "avoidWith": ["red"]
     },
     "mono": {
       "text": "ozomatli",
@@ -78,7 +80,8 @@
       "confidence": "high",
       "source": "molina1571 pt.1 (Sp-Nah) via gdn pk 128043 'oçumatli: mona animal conocido'; ond s.v. ozomatli",
       "note": "Also a tonalpohualli day sign; the everyday animal/thing noun is meant.",
-      "reviewQuestion": "¿'Ozomatli' es la palabra común para mono?"
+      "reviewQuestion": "¿'Ozomatli' es la palabra común para mono?",
+      "avoidWith": ["cuchara"]
     },
     "murcielago": {
       "text": "quimichpatlan",
@@ -87,7 +90,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.90r 'quimichpatlan. murcielago'",
       "note": "Chosen over tzinacan (Molina f.152r 'murciélago que muerde'), which is also linked to the bat deity/place names. Shares the root quimich- with raton (quimichin): spelling-choice confusion risk.",
-      "reviewQuestion": "¿Usan 'quimichpatlan' o 'tzinacan' para el murciélago? ¿Alguna asociación negativa?"
+      "reviewQuestion": "¿Usan 'quimichpatlan' o 'tzinacan' para el murciélago? ¿Alguna asociación negativa?",
+      "avoidWith": ["pez", "raton"]
     },
     "hormiga": {
       "text": "azcatl",
@@ -96,7 +100,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.10r 'azcatl. hormiga'; karttunen1983 (1992 repr.) p.17",
       "note": "Root shared with hormiguero (azcaxalli); distinct strings.",
-      "reviewQuestion": "¿'Azcatl' es la palabra común para hormiga?"
+      "reviewQuestion": "¿'Azcatl' es la palabra común para hormiga?",
+      "avoidWith": ["charco", "collar", "hormiguero"]
     },
     "abeja": {
       "text": "pipiyolin",
@@ -114,7 +119,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.148r 'tocatl. araña generalmente'; karttunen1983 (1992 repr.) p.242",
       "note": "Root shared with telarana (tocatzahualli).",
-      "reviewQuestion": "¿'Tocatl' es la palabra común para araña?"
+      "reviewQuestion": "¿'Tocatl' es la palabra común para araña?",
+      "avoidWith": ["telarana"]
     },
     "caracol": {
       "text": "cilin",
@@ -123,7 +129,8 @@
       "confidence": "low",
       "source": "molina1571 pt.2 (Nah-Sp) f.22r 'cilin. caracol chiquito'",
       "note": "No clear Classical word for a LAND snail found. tecciztli (Molina f.92r) is the conch trumpet (excluded by card rules); cuechtli = long spiral shell (f.25v); Molina pt.1 also lists 'vilacatochi: caracol' (gdn pk 144601), unverified. Needs reviewer.",
-      "reviewQuestion": "¿Cómo se dice el caracol de tierra (el que sale con la lluvia) en su variante?"
+      "reviewQuestion": "¿Cómo se dice el caracol de tierra (el que sale con la lluvia) en su variante?",
+      "avoidWith": ["estrella"]
     },
     "cangrejo": {
       "text": "tecuicitli",
@@ -168,7 +175,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.90r 'quimichin. raton'; karttunen1983 (1992 repr.) p.211",
       "note": "Also used as diminutive 'small'.",
-      "reviewQuestion": "¿'Quimichin' es la palabra común para ratón?"
+      "reviewQuestion": "¿'Quimichin' es la palabra común para ratón?",
+      "avoidWith": ["murcielago", "pez"]
     },
     "gallina": {
       "text": "cuanaca",
@@ -186,7 +194,8 @@
       "confidence": "high",
       "source": "molina1571 pt.1 (Sp-Nah) via gdn pk 129385 'quauitl: arbol generalmente, palo o madero'; ond s.v. cuahuitl",
       "note": "Also 'wood/stick'; reserve 'lena' uses tlatlatilcuahuitl to avoid a collision.",
-      "reviewQuestion": "¿'Cuahuitl' es árbol en su variante?"
+      "reviewQuestion": "¿'Cuahuitl' es árbol en su variante?",
+      "avoidWith": ["hacha", "lena"]
     },
     "hoja": {
       "text": "izhuatl",
@@ -195,7 +204,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.49v 'izuatl. hoja'; karttunen1983 (1992 repr.) p.123",
       "note": "Karttunen notes it is usually possessed; also used for maize husk/tamale leaf. xihuitl ('grass, herb, year, turquoise') avoided.",
-      "reviewQuestion": "¿Una hoja de árbol suelta se dice 'izhuatl'?"
+      "reviewQuestion": "¿Una hoja de árbol suelta se dice 'izhuatl'?",
+      "avoidWith": ["sal"]
     },
     "flor": {
       "text": "xochitl",
@@ -210,9 +220,9 @@
       "text": "tlalcacahuatl",
       "gloss": "peanut (lit. 'earth cacao')",
       "kind": "attested",
-      "confidence": "high",
+      "confidence": "medium",
       "source": "karttunen1983 (1992 repr.) p.273 TLĀLCACAHUA-TL 'cacahuate' (T,Z); gdn modern entries 'tlalcacahua' (Mecayapan), 'tälkakauat' ",
-      "note": "Attested in modern varieties cited by Karttunen, not in Molina.",
+      "note": "Attested in modern varieties cited by Karttunen, not in Molina. review: attested only in modern varieties (T, Z), not Classical; confidence lowered from high to medium.",
       "reviewQuestion": "¿'Tlalcacahuatl' para cacahuate?"
     },
     "raiz": {
@@ -229,9 +239,10 @@
       "gloss": "squash",
       "kind": "attested",
       "confidence": "high",
-      "source": "molina1571 pt.2 (Nah-Sp) f.3v 'ayotli. calabaza'; karttunen1983 (1992 repr.) p.16",
-      "note": "COLLISION RISK: differs by one letter from tortuga 'ayotl' (turtle) in this orthography (ayohtli vs ayotl with saltillo/length). Strong spelling-choice confusion.",
-      "reviewQuestion": "¿Se distingue bien 'ayotli' (calabaza) de 'ayotl' (tortuga) al oírlo?"
+      "source": "molina1571 pt.2 (Nah-Sp) s.v. 'ayotli. calabaza' (folio not verified); karttunen1983 (1992 repr.) p.16",
+      "note": "COLLISION RISK: differs by one letter from tortuga 'ayotl' (turtle) in this orthography (ayohtli vs ayotl with saltillo/length). Strong spelling-choice confusion. review: source folio 'f.3v' removed for the same alphabetical reason; folio unverified. Look-alike lists added (tortuga, camote).",
+      "reviewQuestion": "¿Se distingue bien 'ayotli' (calabaza) de 'ayotl' (tortuga) al oírlo?",
+      "avoidWith": ["camote", "tortuga"]
     },
     "yuca": {
       "text": "cuauhcamotli",
@@ -240,7 +251,8 @@
       "confidence": "medium",
       "source": "karttunen1983 (1992 repr.) p.71 CUAUHCAMOH-TLI 'yuca' (T,Z); gdn 'cuajcamoj: yuca' (Mecayapan)",
       "note": "Modern-variety attestation only.",
-      "reviewQuestion": "¿'Cuauhcamotli' para la yuca?"
+      "reviewQuestion": "¿'Cuauhcamotli' para la yuca?",
+      "avoidWith": ["camote"]
     },
     "camote": {
       "text": "camotli",
@@ -249,7 +261,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.12r 'camotli. batata, rayz comestible'; karttunen1983 (1992 repr.) p.24",
       "note": "Root shared with yuca (cuauhcamotli).",
-      "reviewQuestion": "¿'Camotli' para camote?"
+      "reviewQuestion": "¿'Camotli' para camote?",
+      "avoidWith": ["calabaza", "yuca"]
     },
     "guayaba": {
       "text": "xalxocotl",
@@ -285,7 +298,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.62v 'nanacatl. hongo'; karttunen1983 (1992 repr.) p.159",
       "note": "SACRED DOUBLE: teonanacatl = ritual mushrooms. Plain nanacatl is the everyday edible mushroom; art must show a plain edible cap.",
-      "reviewQuestion": "¿'Nanacatl' se usa para hongos comestibles sin connotación ritual?"
+      "reviewQuestion": "¿'Nanacatl' se usa para hongos comestibles sin connotación ritual?",
+      "avoidWith": ["huso"]
     },
     "platano": {
       "text": "plátano",
@@ -312,7 +326,8 @@
       "confidence": "low",
       "source": "gdn, Mecayapan dictionary entry 'papaya: papaya' (pk 26526); 'ocotena: papaya de monte' (pk 26477)",
       "note": "No Classical word found in Molina/Karttunen/ONDict. Only a modern Isthmus Nahuat (Mecayapan) loan; different variety.",
-      "reviewQuestion": "¿Hay palabra náhuatl para papaya, o se dice 'papaya'?"
+      "reviewQuestion": "¿Hay palabra náhuatl para papaya, o se dice 'papaya'?",
+      "avoidWith": ["mariposa", "papa"]
     },
     "fuego": {
       "text": "tletl",
@@ -321,7 +336,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.147v 'tletl. fuego'; karttunen1983 (1992 repr.) p.308",
       "note": "Also 'fever'.",
-      "reviewQuestion": "¿'Tletl' para fuego?"
+      "reviewQuestion": "¿'Tletl' para fuego?",
+      "avoidWith": ["agua", "frijol", "hielo", "piedra"]
     },
     "humo": {
       "text": "poctli",
@@ -330,16 +346,18 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.83r 'poctli. humo'; karttunen1983 (1992 repr.) p.200",
       "note": "Root of popoca in existing 'citlalin popoca' (cometa) and 'popocani tepetl' (volcan).",
-      "reviewQuestion": "¿'Poctli' para humo?"
+      "reviewQuestion": "¿'Poctli' para humo?",
+      "avoidWith": ["cometa", "escoba", "volcan"]
     },
     "neblina": {
       "text": "ayahuitl",
       "gloss": "fog, mist",
       "kind": "attested",
       "confidence": "high",
-      "source": "molina1571 pt.2 (Nah-Sp) f.3r 'ayauitl. niebla, neblina'; karttunen1983 (1992 repr.) p.16",
-      "note": "Root of existing arcoiris 'ayauhcozamalotl'.",
-      "reviewQuestion": "¿'Ayahuitl' para neblina?"
+      "source": "molina1571 pt.2 (Nah-Sp) s.v. 'ayauitl. niebla, neblina' (folio not verified); karttunen1983 (1992 repr.) p.16",
+      "note": "Root of existing arcoiris 'ayauhcozamalotl'. review: source folio 'f.3r' removed: alphabetically ay- cannot sit at f.3 (ac- region); folio unverified.",
+      "reviewQuestion": "¿'Ayahuitl' para neblina?",
+      "avoidWith": ["nieve"]
     },
     "granizo": {
       "text": "tecihuitl",
@@ -348,7 +366,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.92v 'teciuitl. granizo'; karttunen1983 (1992 repr.) p.216",
       "note": "",
-      "reviewQuestion": "¿'Tecihuitl' para granizo?"
+      "reviewQuestion": "¿'Tecihuitl' para granizo?",
+      "avoidWith": ["nieve"]
     },
     "nieve": {
       "text": "cepayahuitl",
@@ -357,7 +376,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.18r 'cepayauitl. nieue'; karttunen1983 (1992 repr.); Sahagún Primeros Memoriales p.157",
       "note": "",
-      "reviewQuestion": "¿'Cepayahuitl' para nieve?"
+      "reviewQuestion": "¿'Cepayahuitl' para nieve?",
+      "avoidWith": ["granizo", "hielo", "neblina"]
     },
     "hielo": {
       "text": "cetl",
@@ -366,7 +386,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.18v 'cetl. yelo, o carambano'; karttunen1983 (1992 repr.) p.33",
       "note": "Also 'frost'.",
-      "reviewQuestion": "¿'Cetl' para hielo?"
+      "reviewQuestion": "¿'Cetl' para hielo?",
+      "avoidWith": ["agua", "frijol", "fuego", "maiz", "nieve", "piedra", "sombra"]
     },
     "amanecer": {
       "text": "tlahuizcalli",
@@ -384,7 +405,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.39v/41v 'yoalli/youalli. noche'",
       "note": "Yohualli ehecatl is a deity epithet (Sahagún); the plain noun is everyday.",
-      "reviewQuestion": "¿'Yohualli' para la noche?"
+      "reviewQuestion": "¿'Yohualli' para la noche?",
+      "avoidWith": ["patio", "sombra"]
     },
     "cielo": {
       "text": "ilhuicatl",
@@ -393,7 +415,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.37v 'Ilhuicatl. cielo'; ond s.v. ilhuicatl",
       "note": "Cosmological 'heaven' sense; existing mar is 'ilhuicaatl' (sky-water): spelling-choice confusion risk.",
-      "reviewQuestion": "¿'Ilhuicatl' para el cielo? ¿Se confunde con 'ilhuicaatl' (mar)?"
+      "reviewQuestion": "¿'Ilhuicatl' para el cielo? ¿Se confunde con 'ilhuicaatl' (mar)?",
+      "avoidWith": ["mar"]
     },
     "sombra": {
       "text": "cehualli",
@@ -402,7 +425,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.18v 'ceualli. sombra de alguna cosa'; karttunen1983 (1992 repr.) p.28",
       "note": "Alternative ecahuilli (K p.75, Z).",
-      "reviewQuestion": "¿'Cehualli' o 'ecahuilli' para sombra?"
+      "reviewQuestion": "¿'Cehualli' o 'ecahuilli' para sombra?",
+      "avoidWith": ["hielo", "noche", "patio", "sombrero"]
     },
     "rocio": {
       "text": "ahuachtli",
@@ -411,7 +435,8 @@
       "confidence": "high",
       "source": "molina1571 pt.1 (Sp-Nah) via gdn pk 109213 'auachtli: rocio'; karttunen1983 (1992 repr.) p.5",
       "note": "",
-      "reviewQuestion": "¿'Ahuachtli' para rocío?"
+      "reviewQuestion": "¿'Ahuachtli' para rocío?",
+      "avoidWith": ["aguacate", "remo"]
     },
     "remolino": {
       "text": "ecamalacotl",
@@ -420,7 +445,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.28r 'ecamalacotl. remolino de viento'; karttunen1983 (1992 repr.) p.75",
       "note": "Contains ehecatl (viento card; also deity name).",
-      "reviewQuestion": "¿'Ecamalacotl' para remolino de viento?"
+      "reviewQuestion": "¿'Ecamalacotl' para remolino de viento?",
+      "avoidWith": ["escalera", "viento"]
     },
     "agua": {
       "text": "atl",
@@ -429,7 +455,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.8r 'Atl. agua'; karttunen1983 (1992 repr.)",
       "note": "Also a tonalpohualli day sign; the everyday animal/thing noun is meant. Very short; root of many cards (atoyatl, atezcatl...).",
-      "reviewQuestion": "¿'Atl' para agua?"
+      "reviewQuestion": "¿'Atl' para agua?",
+      "avoidWith": ["frijol", "fuego", "hielo", "piedra"]
     },
     "ceniza": {
       "text": "nextli",
@@ -447,7 +474,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.139v 'tlatlatziniliztli. trueno de rayo'; karttunen1983 (1992 repr.) p.299",
       "note": "Nominalization of tlatlatzini 'to thunder'; long word.",
-      "reviewQuestion": "¿'Tlatlatziniliztli' para trueno, o usan otra palabra?"
+      "reviewQuestion": "¿'Tlatlatziniliztli' para trueno, o usan otra palabra?",
+      "avoidWith": ["martillo", "rayo"]
     },
     "rio": {
       "text": "atoyatl",
@@ -462,10 +490,11 @@
       "text": "huey atezcatl",
       "gloss": "lake (lit. 'great water-mirror')",
       "kind": "attested",
-      "confidence": "medium",
+      "confidence": "low",
       "source": "molina1571 pt.1 (Sp-Nah) via gdn pk 144414 'vey atezcatl: lago de agua' / 144415 'laguna'",
-      "note": "Two words. COLLISION: contains charco 'atezcatl'. Alternative amanalli (Molina f.4v 'alberca o estanque'; K p.10 'lake').",
-      "reviewQuestion": "¿Para lago dicen 'huey atezcatl', 'amanalli' u otra?"
+      "note": "Two words. COLLISION: contains charco 'atezcatl'. Alternative amanalli (Molina f.4v 'alberca o estanque'; K p.10 'lake'). review: lago and charco would share the string atezcatl (lago only adds huey), so the two cards are not distinguishable by spelling; downgraded to low.",
+      "reviewQuestion": "¿Para lago dicen 'huey atezcatl' o 'amanalli'? ¿Distinguen 'atezcatl' (charco) de 'lago' por tamaño?",
+      "avoidWith": ["charco", "concha"]
     },
     "piedra": {
       "text": "tetl",
@@ -474,7 +503,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.107v 'tetl. piedra, generalmente'; karttunen1983 (1992 repr.)",
       "note": "Plain noun; also 'egg' in compounds.",
-      "reviewQuestion": "¿'Tetl' para piedra?"
+      "reviewQuestion": "¿'Tetl' para piedra?",
+      "avoidWith": ["agua", "frijol", "fuego", "hielo", "montana"]
     },
     "arena": {
       "text": "xalli",
@@ -483,7 +513,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.158v 'xalli. arena'; karttunen1983 (1992 repr.) p.321",
       "note": "",
-      "reviewQuestion": "¿'Xalli' para arena?"
+      "reviewQuestion": "¿'Xalli' para arena?",
+      "avoidWith": ["canoa", "casa", "hormiguero", "jicara", "tierra"]
     },
     "playa": {
       "text": "atentli",
@@ -510,7 +541,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.7v 'atezcatl. charco de agua'; karttunen1983 (1992 repr.) p.13",
       "note": "See lago collision. Alternative 'atl momana' (Molina pt.1 'charco').",
-      "reviewQuestion": "¿'Atezcatl' para charco?"
+      "reviewQuestion": "¿'Atezcatl' para charco?",
+      "avoidWith": ["concha", "hormiga", "lago"]
     },
     "lodo": {
       "text": "zoquitl",
@@ -519,7 +551,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.25r 'zoquitl. barro, o lodo'; karttunen1983 (1992 repr.)",
       "note": "Formulaic for 'body' in Christian testaments; plain sense is everyday.",
-      "reviewQuestion": "¿'Zoquitl' para lodo?"
+      "reviewQuestion": "¿'Zoquitl' para lodo?",
+      "avoidWith": ["pantano"]
     },
     "barranca": {
       "text": "atlauhtli",
@@ -528,7 +561,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.8v 'atlauhtli. barranca grande'; karttunen1983 (1992 repr.) p.14",
       "note": "",
-      "reviewQuestion": "¿'Atlauhtli' para barranca?"
+      "reviewQuestion": "¿'Atlauhtli' para barranca?",
+      "avoidWith": ["llano"]
     },
     "llano": {
       "text": "ixtlahuatl",
@@ -537,7 +571,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.48v 'ixtlauatl. vega o tierra llana, zauana'; karttunen1983 (1992 repr.) p.121",
       "note": "",
-      "reviewQuestion": "¿'Ixtlahuatl' para llano?"
+      "reviewQuestion": "¿'Ixtlahuatl' para llano?",
+      "avoidWith": ["barranca"]
     },
     "pantano": {
       "text": "zoquiatl",
@@ -546,7 +581,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.25r 'zoquiatl. cieno'; karttunen1983 (1992 repr.) p.349 'marsh, pool'",
       "note": "Molina gloss is 'silt/mire'; Karttunen gives 'marsh'. Shares root with lodo (zoquitl).",
-      "reviewQuestion": "¿'Zoquiatl' para pantano/ciénaga?"
+      "reviewQuestion": "¿'Zoquiatl' para pantano/ciénaga?",
+      "avoidWith": ["lodo"]
     },
     "ola": {
       "text": "acueyotl",
@@ -555,7 +591,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.3r 'acueyotl. ola. vel. onda de agua'",
       "note": "Alternatives atetepeyotl 'ola grande', amimilli (Molina pt.1).",
-      "reviewQuestion": "¿'Acueyotl' para ola?"
+      "reviewQuestion": "¿'Acueyotl' para ola?",
+      "avoidWith": ["rana"]
     },
     "concha": {
       "text": "atzcalli",
@@ -564,7 +601,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.9r 'atzcalli. ostia dela mar'",
       "note": "Bivalve/clam shell; not the conch trumpet (tecciztli).",
-      "reviewQuestion": "¿'Atzcalli' para concha?"
+      "reviewQuestion": "¿'Atzcalli' para concha?",
+      "avoidWith": ["canoa", "charco", "lago"]
     },
     "valle": {
       "text": "tepetzalan",
@@ -573,7 +611,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.102v 'tepetzalan. quebrada de monte, o entre sierras'; molina1571 pt.1 (Sp-Nah) via gdn pk 132681 'valle'",
       "note": "Locative form; also tepeitic (Molina pt.1 'valle').",
-      "reviewQuestion": "¿'Tepetzalan' para valle?"
+      "reviewQuestion": "¿'Tepetzalan' para valle?",
+      "avoidWith": ["montana", "pueblo"]
     },
     "tierra": {
       "text": "tlalli",
@@ -582,7 +621,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.124r 'tlalli. tierra, o heredad'; karttunen1983 (1992 repr.)",
       "note": "Plain soil sense; not the deity (Tlaltecuhtli).",
-      "reviewQuestion": "¿'Tlalli' para tierra (suelo)?"
+      "reviewQuestion": "¿'Tlalli' para tierra (suelo)?",
+      "avoidWith": ["arena", "desierto"]
     },
     "hacha": {
       "text": "cuauhtlateconi",
@@ -591,7 +631,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.1 (Sp-Nah) via gdn pk 128670 'q[ua]uhtlateconi: hacha para cortar leña'",
       "note": "Instrument noun. tepoztli (Molina f.104v 'cobre o hierro') also used for axes but means 'metal'. Also tlaximaltepoztli 'hacha para labrar madera'.",
-      "reviewQuestion": "¿Para hacha dicen 'cuauhtlateconi', 'tepoztli' u otra?"
+      "reviewQuestion": "¿Para hacha dicen 'cuauhtlateconi', 'tepoztli' u otra?",
+      "avoidWith": ["arbol"]
     },
     "red": {
       "text": "matlatl",
@@ -600,7 +641,8 @@
       "confidence": "high",
       "source": "karttunen1983 (1992 repr.) p.139 MĀTL(A)-TL 'red generalmente (M)'; molina1571 pt.1 (Sp-Nah) via gdn pk 114186 'michmatlatl: red para peces'",
       "note": "michmatlatl = fishing net specifically.",
-      "reviewQuestion": "¿'Matlatl' o 'michmatlatl' para la red de pescar?"
+      "reviewQuestion": "¿'Matlatl' o 'michmatlatl' para la red de pescar?",
+      "avoidWith": ["metate", "petate", "venado"]
     },
     "cuerda": {
       "text": "mecatl",
@@ -609,7 +651,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.55r 'mecatl. cordel, o soga'; karttunen1983 (1992 repr.)",
       "note": "Also 'lash' and (possessed) 'concubine'; source of Spanish mecate.",
-      "reviewQuestion": "¿'Mecatl' para cuerda?"
+      "reviewQuestion": "¿'Mecatl' para cuerda?",
+      "avoidWith": ["metate"]
     },
     "jicara": {
       "text": "xicalli",
@@ -618,7 +661,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.158v 'xicalli. vaso de calabaza'; karttunen1983 (1992 repr.) p.323",
       "note": "",
-      "reviewQuestion": "¿'Xicalli' para jícara?"
+      "reviewQuestion": "¿'Xicalli' para jícara?",
+      "avoidWith": ["arena"]
     },
     "metate": {
       "text": "metlatl",
@@ -627,7 +671,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.55v 'metlatl. piedra donde muelen el mayz'; karttunen1983 (1992 repr.) p.143",
       "note": "",
-      "reviewQuestion": "¿'Metlatl' para metate?"
+      "reviewQuestion": "¿'Metlatl' para metate?",
+      "avoidWith": ["cuerda", "petate", "red"]
     },
     "comal": {
       "text": "comalli",
@@ -636,7 +681,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.24r 'Comalli. comal'; karttunen1983 (1992 repr.) p.41",
       "note": "",
-      "reviewQuestion": "¿'Comalli' para comal?"
+      "reviewQuestion": "¿'Comalli' para comal?",
+      "avoidWith": ["casa", "nopal", "pozo"]
     },
     "escoba": {
       "text": "popotl",
@@ -645,7 +691,8 @@
       "confidence": "high",
       "source": "molina1571 pt.1 (Sp-Nah) via gdn pk 128565 'popotl: escoba para barrer'; karttunen1983 (1992 repr.) p.203",
       "note": "Alternatives ochpahuaztli, tlachpanoni (Molina pt.1).",
-      "reviewQuestion": "¿'Popotl' para escoba?"
+      "reviewQuestion": "¿'Popotl' para escoba?",
+      "avoidWith": ["humo"]
     },
     "aguja": {
       "text": "tlatzomaloni",
@@ -654,7 +701,8 @@
       "confidence": "high",
       "source": "molina1571 pt.1 (Sp-Nah) via gdn pk 141506 'tlatzomaloni: aguja para coser'; karttunen1983 (1992 repr.) TLAHTZOMALŌNI 'aguja' (Z)",
       "note": "Alt. huitzmallotl (Molina pt.1).",
-      "reviewQuestion": "¿'Tlatzomaloni' para aguja?"
+      "reviewQuestion": "¿'Tlatzomaloni' para aguja?",
+      "avoidWith": ["martillo"]
     },
     "huso": {
       "text": "malacatl",
@@ -663,7 +711,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.51v 'malacatl. huso'; karttunen1983 (1992 repr.) p.134",
       "note": "Gendered (women's work) association in sources; object drawn alone.",
-      "reviewQuestion": "¿'Malacatl' para huso?"
+      "reviewQuestion": "¿'Malacatl' para huso?",
+      "avoidWith": ["hongo"]
     },
     "banco": {
       "text": "icpalli",
@@ -672,7 +721,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.33v 'icpalli. assentadero'; karttunen1983 (1992 repr.)",
       "note": "SENSITIVITY: icpalli is also the seat of authority/throne and metaphor for rulership. Check plain-stool reading.",
-      "reviewQuestion": "¿'Icpalli' se entiende como banquito común o como trono?"
+      "reviewQuestion": "¿'Icpalli' se entiende como banquito común o como trono?",
+      "avoidWith": ["luciernaga"]
     },
     "sombrero": {
       "text": "necuacehualhuiloni",
@@ -681,7 +731,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.69r 'nequaceualhuiloni. sombrero'",
       "note": "Long colonial term; Molina pt.1 also lists 'sombrero' as a loan.",
-      "reviewQuestion": "¿Cómo dicen sombrero: 'necuacehualhuiloni', 'sombrero' u otra?"
+      "reviewQuestion": "¿Cómo dicen sombrero: 'necuacehualhuiloni', 'sombrero' u otra?",
+      "avoidWith": ["sombra"]
     },
     "morral": {
       "text": "xiquipilli",
@@ -708,7 +759,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.157v 'uictli. coa'; Lockhart 2001 p.218",
       "note": "Near-homograph of reserve remo 'ahuictli'.",
-      "reviewQuestion": "¿'Huictli' para coa?"
+      "reviewQuestion": "¿'Huictli' para coa?",
+      "avoidWith": ["remo"]
     },
     "petate": {
       "text": "petlatl",
@@ -717,7 +769,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.81r 'petlatl. estera'; karttunen1983 (1992 repr.) p.192",
       "note": "In 'in petlatl in icpalli' (mat and seat) = authority; plain noun is everyday.",
-      "reviewQuestion": "¿'Petlatl' para petate?"
+      "reviewQuestion": "¿'Petlatl' para petate?",
+      "avoidWith": ["metate", "red"]
     },
     "camino": {
       "text": "otli",
@@ -735,7 +788,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.8r 'atlacomulli. pozo'",
       "note": "Not a cenote.",
-      "reviewQuestion": "¿'Atlacomolli' para pozo?"
+      "reviewQuestion": "¿'Atlacomolli' para pozo?",
+      "avoidWith": ["comal", "olla"]
     },
     "nido": {
       "text": "tapazolli",
@@ -744,7 +798,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.90v 'tapazolli. nido de paxaros'; karttunen1983 (1992 repr.) p.214",
       "note": "",
-      "reviewQuestion": "¿'Tapazolli' para nido?"
+      "reviewQuestion": "¿'Tapazolli' para nido?",
+      "avoidWith": ["pelota"]
     },
     "colmena": {
       "text": "cuauhnecomitl",
@@ -753,7 +808,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.86v 'quauhnecomitl. colmena'",
       "note": "Also 'honey jar'. Alt. mimiahuatl 'round hive in trees' (Molina pt.1).",
-      "reviewQuestion": "¿'Cuauhnecomitl' para colmena?"
+      "reviewQuestion": "¿'Cuauhnecomitl' para colmena?",
+      "avoidWith": ["olla"]
     },
     "hormiguero": {
       "text": "azcaxalli",
@@ -762,7 +818,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.10r 'azcaxalli. hormiguero'",
       "note": "Shares root with hormiga.",
-      "reviewQuestion": "¿'Azcaxalli' para hormiguero?"
+      "reviewQuestion": "¿'Azcaxalli' para hormiguero?",
+      "avoidWith": ["arena", "hormiga"]
     },
     "telarana": {
       "text": "tocatzahualli",
@@ -771,7 +828,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.1 (Sp-Nah) via gdn pk 142871 'tocatzaualli: telaraña'",
       "note": "Shares root with arana.",
-      "reviewQuestion": "¿'Tocatzahualli' para telaraña?"
+      "reviewQuestion": "¿'Tocatzahualli' para telaraña?",
+      "avoidWith": ["arana"]
     },
     "patio": {
       "text": "ithualli",
@@ -780,7 +838,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.42v 'ithualli. patio'; karttunen1983 (1992 repr.)",
       "note": "Also churchyard in colonial texts.",
-      "reviewQuestion": "¿'Ithualli' para patio?"
+      "reviewQuestion": "¿'Ithualli' para patio?",
+      "avoidWith": ["noche", "sombra"]
     },
     "huerto": {
       "text": "quilmilli",
@@ -789,7 +848,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.89v 'quilmilli. huerta de ortaliza'",
       "note": "Contains milli (milpa card): confusion pair.",
-      "reviewQuestion": "¿'Quilmilli' para huerto?"
+      "reviewQuestion": "¿'Quilmilli' para huerto?",
+      "avoidWith": ["milpa"]
     },
     "cerca": {
       "text": "chinamitl",
@@ -798,7 +858,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.1 (Sp-Nah) via gdn pk 111557 'chinamitl: seto'; Lockhart 2001 p.214",
       "note": "Also city subunit and chinampa. tepancalli (corral) avoided for collision.",
-      "reviewQuestion": "¿'Chinamitl' para cerca?"
+      "reviewQuestion": "¿'Chinamitl' para cerca?",
+      "avoidWith": ["corral"]
     },
     "puerta": {
       "text": "quiahuatl",
@@ -807,7 +868,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.89v 'quiauatl. puerta o entrada'",
       "note": "NEAR-HOMOGRAPH of lluvia 'quiahuitl'. Spelling-choice risk.",
-      "reviewQuestion": "¿'Quiahuatl' se distingue bien de 'quiahuitl' (lluvia)?"
+      "reviewQuestion": "¿'Quiahuatl' se distingue bien de 'quiahuitl' (lluvia)?",
+      "avoidWith": ["lluvia"]
     },
     "techo": {
       "text": "calcuaitl",
@@ -816,7 +878,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.11v 'calquaitl. techo de casa'",
       "note": "Contains calli (casa).",
-      "reviewQuestion": "¿'Calcuaitl' para techo?"
+      "reviewQuestion": "¿'Calcuaitl' para techo?",
+      "avoidWith": ["casa"]
     },
     "escalera": {
       "text": "ecahuaztli",
@@ -825,7 +888,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.28r 'ecauaztli. escalera de palo para alcanzar algo'",
       "note": "Fits the notched-log ladder. tlamamatlatl = stone steps.",
-      "reviewQuestion": "¿'Ecahuaztli' para escalera de palo?"
+      "reviewQuestion": "¿'Ecahuaztli' para escalera de palo?",
+      "avoidWith": ["remolino"]
     },
     "troje": {
       "text": "cuezcomatl",
@@ -852,7 +916,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.101v 'tepancalli. corral'; karttunen1983 (1992 repr.)",
       "note": "Also 'cerca de casa' (Molina pt.1): overlaps with cerca.",
-      "reviewQuestion": "¿'Tepancalli' para corral?"
+      "reviewQuestion": "¿'Tepancalli' para corral?",
+      "avoidWith": ["casa", "cerca"]
     },
     "gusano": {
       "text": "ocuilin",
@@ -867,10 +932,11 @@
       "text": "oztohua",
       "gloss": "fox",
       "kind": "attested",
-      "confidence": "medium",
+      "confidence": "low",
       "source": "molina1571 pt.1 (Sp-Nah) via gdn pk 128038 'oztoua: raposa'",
-      "note": "RESERVE card. coyotl ('zorra' in Molina) is the coyote: avoided.",
-      "reviewQuestion": "¿'Oztohua' para zorro?"
+      "note": "RESERVE card. coyotl ('zorra' in Molina) is the coyote: avoided. review: oztohua is morphologically 'cave-owner' and the pt.1 gloss 'raposa' is not cross-checked in pt.2/Karttunen; downgraded to low. Near-homograph of oztotl (cueva).",
+      "reviewQuestion": "¿'Oztohua' se usa para el zorro (animal), o es 'el que tiene cueva'? ¿Qué palabra usan para zorro/zorra?",
+      "avoidWith": ["cueva"]
     },
     "pato": {
       "text": "canauhtli",
@@ -885,10 +951,11 @@
       "text": "icpitl",
       "gloss": "firefly",
       "kind": "attested",
-      "confidence": "high",
+      "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.33v 'icpitl. luciernaga'",
-      "note": "RESERVE card. Alt. copitl (f.24v).",
-      "reviewQuestion": "¿'Icpitl' o 'copitl' para luciérnaga?"
+      "note": "RESERVE card. Alt. copitl (f.24v). review: icpitl is one letter from hilo 'icpatl' and near banco 'icpalli'; headword not cross-checked, so downgraded to medium.",
+      "reviewQuestion": "¿'Icpitl' o 'copitl' para luciérnaga? (cuidado: confunde con 'icpatl' hilo)",
+      "avoidWith": ["banco", "hilo"]
     },
     "cantaro": {
       "text": "tzotzocolli",
@@ -906,7 +973,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.1 (Sp-Nah) via gdn pk 129832 'tapayolli: pelota como quiera'",
       "note": "RESERVE card. olli (rubber ballgame ball) avoided: ritual ballgame association.",
-      "reviewQuestion": "¿'Tapayolli' para pelota?"
+      "reviewQuestion": "¿'Tapayolli' para pelota?",
+      "avoidWith": ["nido"]
     },
     "collar": {
       "text": "cozcatl",
@@ -915,7 +983,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.27v 'cuzcatl. joya... cuenta'; karttunen1983 (1992 repr.) 'collar' (Z)",
       "note": "RESERVE card. Also rosary bead.",
-      "reviewQuestion": "¿'Cozcatl' para collar?"
+      "reviewQuestion": "¿'Cozcatl' para collar?",
+      "avoidWith": ["hormiga"]
     },
     "cuchara": {
       "text": "xomatli",
@@ -924,7 +993,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.161r 'xomatli. cuchara de barro'",
       "note": "RESERVE card. cuauhxomatli = wooden spoon.",
-      "reviewQuestion": "¿'Xomatli' para cuchara?"
+      "reviewQuestion": "¿'Xomatli' para cuchara?",
+      "avoidWith": ["mono", "tomate"]
     },
     "remo": {
       "text": "ahuictli",
@@ -933,7 +1003,8 @@
       "confidence": "medium",
       "source": "molina1571 pt.2 (Nah-Sp) f.9v 'auictli. remo'",
       "note": "RESERVE card. Near-homograph of coa 'huictli'.",
-      "reviewQuestion": "¿'Ahuictli' para remo?"
+      "reviewQuestion": "¿'Ahuictli' para remo?",
+      "avoidWith": ["coa", "rocio"]
     },
     "sal": {
       "text": "iztatl",
@@ -942,7 +1013,8 @@
       "confidence": "high",
       "source": "molina1571 pt.2 (Nah-Sp) f.49v 'iztatl. sal'; karttunen1983 (1992 repr.) p.124",
       "note": "RESERVE card. ",
-      "reviewQuestion": "¿'Iztatl' para sal?"
+      "reviewQuestion": "¿'Iztatl' para sal?",
+      "avoidWith": ["hoja"]
     },
     "semilla": {
       "text": "xinachtli",
@@ -957,10 +1029,11 @@
       "text": "tlatlatilcuahuitl",
       "gloss": "firewood",
       "kind": "attested",
-      "confidence": "medium",
+      "confidence": "low",
       "source": "molina1571 pt.2 (Nah-Sp) f.139r 'tlatlatilquauitl. leña'",
-      "note": "RESERVE card. cuahuitl alone also = leña but is arbol.",
-      "reviewQuestion": "¿Para leña dicen 'cuahuitl' o 'tlatlatilcuahuitl'?"
+      "note": "RESERVE card. cuahuitl alone also = leña but is arbol. review: tlecuahuitl (tle- 'fire' + cuahuitl) is the commonly cited word for firewood; tlatlatilcuahuitl may be a less usual Molina form. Not changed, downgraded to low.",
+      "reviewQuestion": "¿Para leña dicen 'tlecuahuitl', 'tlatlatilcuahuitl' o simplemente 'cuahuitl'?",
+      "avoidWith": ["arbol"]
     }
   }
 }

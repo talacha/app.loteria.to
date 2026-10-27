@@ -52,7 +52,8 @@
       "confidence": "high",
       "source": "GN2009 p. 90, s.v. PESCADO.- sus. Kay; also en.wiktionary 'fish' translation table (yua: kay)",
       "note": "GN2009 has no separate 'pez' headword; kay covers live fish and fish as food.",
-      "reviewQuestion": "Does kay read as a live fish (not only cooked fish) for children?"
+      "reviewQuestion": "Does kay read as a live fish (not only cooked fish) for children?",
+      "avoidWith": ["red"]
     },
     "venado": {
       "text": "keej",
@@ -123,7 +124,7 @@
       "kind": "attested",
       "confidence": "low",
       "source": "CORDEMEX1980 p. 41 '(ix) baw', as quoted in AMERICAE note 17; ZAVALA1898 'Cangrejo' entry (OCR 'Pxbau', likely 'Ix bau')",
-      "note": "Not found in GN2009. Cordemex says (ix) baw denotes both the crab and a sea lizard; form taken from a secondary quotation, not read in the dictionary itself. Vowel length/tone unverified. A 'wech' crab species is named in La Jornada Maya (cf. weech 'armadillo').",
+      "note": "Not found in GN2009. Cordemex says (ix) baw denotes both the crab and a sea lizard; form taken from a secondary quotation, not read in the dictionary itself. Vowel length/tone unverified. A 'wech' crab species is named in La Jornada Maya (cf. weech 'armadillo'). review: kind attested only through a secondary quotation (AMERICAE quoting Cordemex), not seen in a dictionary; treat as unverified.",
       "reviewQuestion": "Is (ix) baw the word used today for crab? Long vowel or tone?"
     },
     "armadillo": {
@@ -142,7 +143,8 @@
       "confidence": "medium",
       "source": "GN2009 p. 74, s.v. LAGARTIJA.- sus. Bebech, meemech.",
       "note": "Alternative bebech; crested green lizard is tolok.",
-      "reviewQuestion": "Which is more common: meemech or bebech?"
+      "reviewQuestion": "Which is more common: meemech or bebech?",
+      "avoidWith": ["mariposa"]
     },
     "perico": {
       "text": "t'uut'",
@@ -160,7 +162,8 @@
       "confidence": "high",
       "source": "GN2009 p. 95, s.v. RATÓN.- sus. Ch’o’",
       "note": "",
-      "reviewQuestion": "Confirm ch'o' for a small mouse."
+      "reviewQuestion": "Confirm ch'o' for a small mouse.",
+      "avoidWith": ["zorro"]
     },
     "gallina": {
       "text": "kaax",
@@ -168,8 +171,9 @@
       "kind": "attested",
       "confidence": "medium",
       "source": "GN2009 p. 66, s.v. GALLINA.- sus. X káax, káax",
-      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Often x kaax with feminine prefix. Near-collision with existing card selva (k'aax): differs only by the ejective k'.",
-      "reviewQuestion": "Should the card be 'x kaax'? Is it too close to k'aax (selva) when spoken by TTS?"
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Often x kaax with feminine prefix. Near-collision with existing card selva (k'aax): differs only by the ejective k'. review: kaax vs existing k'aax (selva): differ only by the ejective.",
+      "reviewQuestion": "Should the card be 'x kaax'? Is it too close to k'aax (selva) when spoken by TTS?",
+      "avoidWith": ["selva", "fuego"]
     },
     "arbol": {
       "text": "che'",
@@ -222,8 +226,9 @@
       "kind": "attested",
       "confidence": "high",
       "source": "GN2009 p. 40, s.v. CALABAZA (CURCUBITA PEPO C. ARGYROSPERMA).- sus. K’úum",
-      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. COLLISION RISK: existing olla card is kuum; differs only by the ejective k'.",
-      "reviewQuestion": "Is k'uum vs kuum (olla) distinct enough when spoken?"
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. COLLISION RISK: existing olla card is kuum; differs only by the ejective k'. review: k'uum vs existing kuum (olla): differ only by the ejective.",
+      "reviewQuestion": "Is k'uum vs kuum (olla) distinct enough when spoken?",
+      "avoidWith": ["olla"]
     },
     "yuca": {
       "text": "ts'iim",
@@ -241,7 +246,8 @@
       "confidence": "high",
       "source": "GN2009 p. 41, s.v. CAMOTE ( IPOMOEA BATATAS).- sus. Iis.",
       "note": "",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["chile"]
     },
     "guayaba": {
       "text": "pichi'",
@@ -286,7 +292,8 @@
       "confidence": "high",
       "source": "GN2009 p. 90, s.v. PLÁTANO (MUSA PARADISÍACA L.).- sus. Ja’as",
       "note": "",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["agua"]
     },
     "pasto": {
       "text": "su'uk",
@@ -304,7 +311,8 @@
       "confidence": "high",
       "source": "GN2009 p. 87, s.v. PAPAYA (CARICA PAPAYA L.).- sus. Puut",
       "note": "",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["aguja", "cantaro"]
     },
     "fuego": {
       "text": "k'aak'",
@@ -313,7 +321,8 @@
       "confidence": "high",
       "source": "GN2009 p. 65, s.v. FUEGO.- sus. K’áak’",
       "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'.",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["gallina", "selva", "mar", "volcan"]
     },
     "humo": {
       "text": "buuts'",
@@ -321,8 +330,9 @@
       "kind": "attested",
       "confidence": "high",
       "source": "GN2009 p. 70, s.v. HUMO.- sus. Buuts’; Maya side p. 120",
-      "note": "COLLISION: existing cometa card is 'buuts' eek'' (smoking star).",
-      "reviewQuestion": "Does sharing buuts' with cometa cause confusion?"
+      "note": "COLLISION: existing cometa card is 'buuts' eek'' (smoking star). review: buuts' is also the first word of existing cometa buuts' eek'.",
+      "reviewQuestion": "Does sharing buuts' with cometa cause confusion?",
+      "avoidWith": ["cometa", "aguja"]
     },
     "neblina": {
       "text": "ye'eb",
@@ -339,8 +349,9 @@
       "kind": "attested",
       "confidence": "medium",
       "source": "GN2009 p. 67, s.v. GRANIZO.- sus. Bat; Maya side p. 117 BAT",
-      "note": "Near-collision with hacha (baat, short vs long vowel).",
-      "reviewQuestion": "Is bat vs baat (axe) distinct enough when spoken?"
+      "note": "Near-collision with hacha (baat, short vs long vowel). review: bat vs baat (hacha) differ only in vowel length and the source marks no length for bat; verify the vowel.",
+      "reviewQuestion": "Is hail bat or baat? If baat it is identical to hacha and must be dropped.",
+      "avoidWith": ["hacha"]
     },
     "nieve": {
       "text": null,
@@ -357,7 +368,7 @@
       "kind": "descriptive",
       "confidence": "low",
       "source": "GN2009 p. 69, s.v. HIELO.- Sus. Síis chich ja’.",
-      "note": "Descriptive phrase as printed in the source (not coined here).",
+      "note": "Descriptive phrase as printed in the source (not coined here). review: descriptive phrase, not a lexical word; keep low.",
       "reviewQuestion": "Is this phrase used, or a Spanish loan ('hielo')?"
     },
     "amanecer": {
@@ -375,8 +386,9 @@
       "kind": "attested",
       "confidence": "high",
       "source": "GN2009 p. 83, s.v. NOCHE.- sus. Áak’ab",
-      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'.",
-      "reviewQuestion": "Confirm."
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. review: near-duplicate with existing aak (tortuga) and aaktun (cueva) by the aak- stem.",
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["tortuga", "cueva"]
     },
     "cielo": {
       "text": "ka'an",
@@ -385,7 +397,8 @@
       "confidence": "high",
       "source": "GN2009 p. 43, s.v. CIELO.- sus. Ka’an.",
       "note": "Also the cosmological 'heaven' sense; card depicts the everyday sky.",
-      "reviewQuestion": "Any religious connotation to avoid?"
+      "reviewQuestion": "Any religious connotation to avoid?",
+      "avoidWith": ["serpiente", "metate", "hamaca"]
     },
     "sombra": {
       "text": "bo'oy",
@@ -411,8 +424,9 @@
       "kind": "attested",
       "confidence": "medium",
       "source": "GN2009 p. 96, s.v. REMOLINO.- sus. Moson iik’",
-      "note": "Compound printed in source. Whirlwinds may carry supernatural associations in Yucatán.",
-      "reviewQuestion": "Any negative/spiritual association with moson iik'?"
+      "note": "Compound printed in source. Whirlwinds may carry supernatural associations in Yucatán. review: contains iik' = existing viento card word.",
+      "reviewQuestion": "Any negative/spiritual association with moson iik'?",
+      "avoidWith": ["viento"]
     },
     "agua": {
       "text": "ja'",
@@ -421,7 +435,8 @@
       "confidence": "high",
       "source": "GN2009 p. 29, s.v. AGUA.- sus. Ja’",
       "note": "Close to existing lluvia card (ja'al).",
-      "reviewQuestion": "Is ja' vs ja'al (lluvia) distinct enough?"
+      "reviewQuestion": "Is ja' vs ja'al (lluvia) distinct enough?",
+      "avoidWith": ["lluvia", "platano"]
     },
     "ceniza": {
       "text": "ta'an",
@@ -430,25 +445,27 @@
       "confidence": "high",
       "source": "GN2009 p. 42, s.v. CENIZA.- sus. Ta’an",
       "note": "",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["sal"]
     },
     "trueno": {
       "text": "kiilbal chaak",
       "gloss": "thunder",
       "kind": "attested",
-      "confidence": "medium",
+      "confidence": "low",
       "source": "GN2009 p. 106, s.v. TRUENO.- sus. Kíilbal cháak, péek cháak",
-      "note": "SACRED: chaak is the rain deity; compound refers to Chaak's rumbling. Fails selection criterion 4 unless reviewers accept it as everyday usage.",
-      "reviewQuestion": "Is kiilbal chaak everyday speech or too religious for a children's card?"
+      "note": "SACRED: chaak is the rain deity; compound refers to Chaak's rumbling. Fails selection criterion 4 unless reviewers accept it as everyday usage. review: kept as printed in GN2009. Chaak is also the everyday word for rain/thunder, but it is the rain deity name; judged acceptable provisionally for a children's game only if the community reviewer approves; otherwise switch to missing. Lowered confidence.",
+      "reviewQuestion": "Is kiilbal chaak (or peek chaak) acceptable on a children's card, given that Chaak is the rain god? Is there a neutral everyday word for thunder?"
     },
     "rio": {
       "text": "uk'um",
       "gloss": "river",
       "kind": "attested",
-      "confidence": "medium",
+      "confidence": "low",
       "source": "GN2009 p. 97, s.v. RÍO.- sus. Uk’um, bel ja’, áalkab ja’.; Maya side p. 182",
-      "note": "uk'um also = coastal marsh/estuary (p. 182). Surface rivers are rare in northern Yucatán.",
-      "reviewQuestion": "uk'um or áalkab ja' for a river?"
+      "note": "uk'um also = coastal marsh/estuary (p. 182). Surface rivers are rare in northern Yucatán. review: uk'um is also coastal marsh/estuary, so it overlaps the (missing) pantano and is doubtful for an inland river; lowered confidence.",
+      "reviewQuestion": "Do speakers call a river uk'um, or is it only marsh/estuary? Is there a better word (e.g. ja' bel)?",
+      "avoidWith": ["pantano"]
     },
     "lago": {
       "text": "aak'al che'",
@@ -511,7 +528,8 @@
       "confidence": "high",
       "source": "GN2009 p. 76, s.v. LODO.- sus. Luuk’ .",
       "note": "",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["jicara"]
     },
     "barranca": {
       "text": "k'om",
@@ -538,7 +556,8 @@
       "confidence": "low",
       "source": "none found (searched GN2009 Spanish-Maya and Maya-Spanish sections; web search)",
       "note": "No 'pantano' headword. Related: uk'um 'ciénaga junto al mar' (p. 43/182, collides with río) and xuuch 'pozo en suelos pantanosos' (p. 91). Not substituted.",
-      "reviewQuestion": "Is there a word for an inland swamp/marsh?"
+      "reviewQuestion": "Is there a word for an inland swamp/marsh?",
+      "avoidWith": ["rio"]
     },
     "ola": {
       "text": "kukul",
@@ -583,7 +602,8 @@
       "confidence": "high",
       "source": "GN2009 p. 68, s.v. HACHA.- sus. Báat",
       "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Near-collision with granizo (bat).",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["granizo"]
     },
     "red": {
       "text": "kaybal",
@@ -592,7 +612,8 @@
       "confidence": "medium",
       "source": "GN2009 p. 139, s.v. KAYBAL.- sus. Red de pesca",
       "note": "",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["pez"]
     },
     "cuerda": {
       "text": "suum",
@@ -610,7 +631,8 @@
       "confidence": "high",
       "source": "GN2009 p. 73, s.v. JÍCARA (CRESCENTIA CUJETE L).- sus. Luuch",
       "note": "Bottle gourd is chuuj (p. 40).",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["lodo"]
     },
     "metate": {
       "text": "ka'",
@@ -619,7 +641,8 @@
       "confidence": "medium",
       "source": "GN2009 p. 80, s.v. METATE.- sus. Ka’",
       "note": "Homophone risk with ka'a 'two' and x ka' (a squash, p. 40).",
-      "reviewQuestion": "Is ka' clear on its own?"
+      "reviewQuestion": "Is ka' clear on its own?",
+      "avoidWith": ["cielo"]
     },
     "comal": {
       "text": "xamach",
@@ -646,7 +669,8 @@
       "confidence": "high",
       "source": "GN2009 p. 29, s.v. AGUJA.- sus. Púuts’",
       "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'.",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["humo", "papaya"]
     },
     "huso": {
       "text": null,
@@ -664,7 +688,8 @@
       "confidence": "medium",
       "source": "GN2009 p. 37, s.v. BANQUILLO.- sus. K’áanche’, kisi che’",
       "note": "Check for any ceremonial-stool sense.",
-      "reviewQuestion": "Is k'aanche' an ordinary household stool?"
+      "reviewQuestion": "Is k'aanche' an ordinary household stool?",
+      "avoidWith": ["hamaca"]
     },
     "sombrero": {
       "text": "p'ook",
@@ -673,7 +698,8 @@
       "confidence": "high",
       "source": "GN2009 p. 101, s.v. SOMBRERO.- sus. P’óok; Maya side p. 165",
       "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Near-collision with reserve card pelota (p'ok).",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["pelota"]
     },
     "morral": {
       "text": "saabukan",
@@ -690,8 +716,9 @@
       "kind": "attested",
       "confidence": "high",
       "source": "GN2009 p. 68, s.v. HAMACA.- sus. K’áan",
-      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Also appears in the telaraña phrase.",
-      "reviewQuestion": "Confirm."
+      "note": "Tone accents of the source are dropped in 'text' per the deck convention; source spelling given in 'source'. Also appears in the telaraña phrase. review: k'aan also in banco k'aanche' and telarana; close to existing kaan (serpiente), ka'an (cielo).",
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["serpiente", "banco", "telarana", "cielo"]
     },
     "coa": {
       "text": "xuul",
@@ -736,7 +763,8 @@
       "confidence": "high",
       "source": "GN2009 p. 83, s.v. NIDO.- sus. K’u’; Maya side p. 146",
       "note": "",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["hilo"]
     },
     "colmena": {
       "text": "u naajil kaab",
@@ -744,8 +772,8 @@
       "kind": "descriptive",
       "confidence": "low",
       "source": "GN2009 p. 44, s.v. COLMENA.- sus. U naajil kaab.",
-      "note": "Descriptive phrase printed in source. Panal = chuujil kaab (p. 87).",
-      "reviewQuestion": "Is there a single word for a log hive (e.g. jobon)?"
+      "note": "Descriptive phrase printed in source. Panal = chuujil kaab (p. 87). review: phrase carries possessive u- (\"its house of bees\"); a bare naajil kaab may be the citation form.",
+      "reviewQuestion": "Is u naajil kaab natural as a card label, or should it be a different word/phrase for a hive?"
     },
     "hormiguero": {
       "text": null,
@@ -763,7 +791,8 @@
       "confidence": "low",
       "source": "GN2009 p. 103, s.v. TELARAÑA.- sus. Mak maktaj k’áan.",
       "note": "Descriptive phrase printed in source.",
-      "reviewQuestion": "Is this phrase used?"
+      "reviewQuestion": "Is this phrase used?",
+      "avoidWith": ["hamaca"]
     },
     "patio": {
       "text": "taankab",
@@ -789,8 +818,9 @@
       "kind": "attested",
       "confidence": "medium",
       "source": "GN2009 p. 141, s.v. KOOT.- sus. Albarrada, barda de piedras sin mezcla",
-      "note": "Yucatán fences are dry-stone walls; art should match. Milpa fence: nok ch'aak (p. 43).",
-      "reviewQuestion": "Is koot right for the fence card?"
+      "note": "Yucatán fences are dry-stone walls; art should match. Milpa fence: nok ch'aak (p. 43). review: koot vs existing kool (milpa) and cocina k'ooben: near.",
+      "reviewQuestion": "Is koot right for the fence card?",
+      "avoidWith": ["milpa"]
     },
     "puerta": {
       "text": "joonaj",
@@ -862,7 +892,8 @@
       "confidence": "medium",
       "source": "GN2009 p. 110, s.v. ZORRA.- sus. Ch’omak, ch’amak",
       "note": "",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["raton"]
     },
     "pato": {
       "text": "kuuts ja'",
@@ -889,7 +920,8 @@
       "confidence": "high",
       "source": "GN2009 p. 41, s.v. CÁNTARO.- sus. P’úul",
       "note": "",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["papaya"]
     },
     "pelota": {
       "text": "p'ok",
@@ -898,7 +930,8 @@
       "confidence": "low",
       "source": "GN2009 p. 89, s.v. PELOTA.- sus. P’ok, wóolis báaxal.",
       "note": "p'okta p'ok = pre-Hispanic ballgame (p. 165), which had ritual meaning. Near-collision with sombrero (p'ook).",
-      "reviewQuestion": "Is p'ok an everyday word for a ball?"
+      "reviewQuestion": "Is p'ok an everyday word for a ball?",
+      "avoidWith": ["sombrero"]
     },
     "collar": {
       "text": null,
@@ -916,7 +949,8 @@
       "confidence": "medium",
       "source": "GN2009 p. 49, s.v. CUCHARA.- sus. K’ab kum",
       "note": "",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["olla"]
     },
     "remo": {
       "text": "u baabil cheem",
@@ -924,7 +958,7 @@
       "kind": "descriptive",
       "confidence": "low",
       "source": "GN2009 p. 96, s.v. REMO.- sus. U báabil cheem",
-      "note": "Descriptive phrase printed in source.",
+      "note": "Descriptive phrase printed in source. review: phrase carries possessive u-; cheem here is spelled with long vowel, while the existing canoa card uses chem. Orthography clash in the deck: one of them should be fixed (cheem is the ALMY spelling).",
       "reviewQuestion": "Is there a single word?"
     },
     "sal": {
@@ -934,7 +968,8 @@
       "confidence": "high",
       "source": "GN2009 p. 99, s.v. SAL.- sus. Ta’ab",
       "note": "",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["ceniza"]
     },
     "semilla": {
       "text": "neek'",
@@ -943,7 +978,8 @@
       "confidence": "high",
       "source": "GN2009 p. 100, s.v. SEMILLA.- sus. Neek’",
       "note": "",
-      "reviewQuestion": "Confirm."
+      "reviewQuestion": "Confirm.",
+      "avoidWith": ["estrella"]
     },
     "lena": {
       "text": "si'",

@@ -25,7 +25,7 @@ export default function Leaderboard({
 }: LeaderboardProps) {
   const { t } = useTranslation();
   const rows = rankEntries(entries);
-  const caption = label ?? t('ui.leaderboard.title');
+  const caption = label ?? t('theme.kit.leaderboard.title');
   return (
     <div
       className={[styles.wrap, scroll ? styles.scroll : '', className].filter(Boolean).join(' ')}
@@ -37,13 +37,13 @@ export default function Leaderboard({
         <caption className="sr-only">{caption}</caption>
         <thead>
           <tr>
-            <th scope="col">{t('ui.leaderboard.rank')}</th>
-            <th scope="col">{t('ui.leaderboard.player')}</th>
+            <th scope="col">{t('theme.kit.leaderboard.rank')}</th>
+            <th scope="col">{t('theme.kit.leaderboard.player')}</th>
             <th scope="col" className={styles.num}>
-              {t('ui.leaderboard.points')}
+              {t('theme.kit.leaderboard.points')}
             </th>
             <th scope="col" className={styles.num}>
-              {t('ui.leaderboard.squares')}
+              {t('theme.kit.leaderboard.squares')}
             </th>
           </tr>
         </thead>
@@ -65,13 +65,13 @@ export default function Leaderboard({
                 ) : null}
                 <span className={styles.name}>{r.name}</span>
                 {r.seat === selfSeat ? (
-                  <span className={styles.you}>{t('ui.leaderboard.you')}</span>
+                  <span className={styles.you}>{t('theme.kit.leaderboard.you')}</span>
                 ) : null}
               </td>
               <td className={styles.num}>{r.points}</td>
               <td
                 className={styles.num}
-                aria-label={t('ui.leaderboard.squaresOf', { n: r.crossed, total })}
+                aria-label={t('theme.kit.leaderboard.squaresOf', { n: r.crossed, total })}
               >
                 {r.crossed}/{total}
               </td>

@@ -1,0 +1,3 @@
+#!/bin/zsh
+# usage: batch.sh id:uuid:node ...
+for a in "$@"; do IFS=: read id u n <<<"$a"; python3 /Users/robcr/Projects/app.loteria.to/design/cards/process.py $id "https://www.figma.com/api/mcp/asset/$u.png" "$n:2" ; done

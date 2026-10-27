@@ -236,7 +236,7 @@ export default function PlayerBoard({
   const standings: LeaderboardEntry[] = (() => {
     const mine: LeaderboardEntry = {
       seat: transport.seat,
-      name: name || t('ui.leaderboard.you'),
+      name: name || t('theme.kit.leaderboard.you'),
       glyph: profile.glyph || undefined,
       points,
       crossed: state.crossed.length,

@@ -22,7 +22,19 @@
     "history": "Ya cantadas",
     "progress": "Progreso",
     "loading": "Cargando…",
-    "tabla": "Tu tabla"
+    "tabla": "Tu tabla",
+    "leaderboard": {
+      "title": "Tabla de puntos",
+      "rank": "Lugar",
+      "player": "Persona",
+      "points": "Puntos",
+      "squares": "Casillas",
+      "squaresOf": "{n} de {total} casillas",
+      "you": "Tú"
+    },
+    "gear": {
+      "label": "Ajustes de idioma"
+    }
   },
   "dark": "Oscuro",
   "light": "Claro",
