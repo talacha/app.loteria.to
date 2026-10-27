@@ -3,6 +3,14 @@
 **Status:** v1 build spec. Companion to [ARCHITECTURE.md](ARCHITECTURE.md), which wins on stack questions.
 **One line:** The picture bingo everyone grew up with, called in five languages. A whole classroom, plaza or family table joins from one QR code, and no phone is required to play.
 
+## 0. Product pillars (owner direction, 2026-10-26)
+
+Every feature should serve at least one of these; when they conflict, earlier wins.
+
+1. **Learn new languages by playing.** Matching a heard word to one of three pictures is active listening. Escucha mode teaches by ear; the caller screen shows the same card in every room language; each round ends with "Palabras de tu línea".
+2. **Inclusion, and easy to add more languages.** Five languages at launch (Náhuatl, Maya yucateco, Quechua Cusco-Collao, Español, English); each player picks their own in the same room. A new language is a content change (drafts file → native-speaker review sheet → recordings), not a code change. Honest review status on every Indigenous word. Phones, shared tablets and paper boards all play; no accounts; works offline.
+3. **Friends and family game time.** One QR code gathers the room in under 30 seconds; the automatic caller lets everyone play; every correct pick earns the bean and being first only breaks ties; wrong picks get a gentle "¡Casi!"; no money, prizes or betting — just beans.
+
 ## 1. Goals and non-goals
 
 **Goals**
