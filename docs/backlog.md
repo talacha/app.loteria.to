@@ -149,6 +149,12 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 **Plan:** illustrations only (no text) generated with Figma `generate_image` (gemini-3.1-flash-image, 1024×1536 request → ~848×1264), **full-bleed background to every edge** (the pilot images include a painted paper margin — crop or regenerate), original artwork only (no copying of existing commercial decks, no trademarks); converted to WebP 600×900 (2× for cards up to 300 CSS px); card frame, number and localized name composed in code by a `CardFace` component in `src/app/ui` (falls back to `public/art/*.svg`); isolated review for look-alikes and off-brief images.
 **Acceptance:** every card in the deck has `public/cards/<id>.webp`; boards, the call panel, the cantor screen and the win screen use `CardFace`; total card art ≤ 6 MB; design-lint and contrast checks pass; names render in the player's spoken language.
 
+### FEAT-007 · More languages: Ngäbere (replacement voiced Chibchan language) and Mekatelyu — P2
+
+**Why:** Bribri has no Meta MMS-TTS voice and needs native recordings. Checked against Meta's official MMS-TTS list (2026-10-27): voiced — Cabécar `cjp`, Ngäbere/Guaymí `gym`, Téribe/Térraba `tfr`, Buglere/Bocotá `sab`, Jamaican Patois `jam` (closest voice for Limón Creole / Mekatelyu); not voiced — Bribri `bzd`, Malecu `gut`, Boruca `brn`, Rama `rma`.
+**Recommendation:** add **Ngäbere** (`gym`) as the voiced Chibchan language (largest community, Costa Rica and Panama, published dictionaries) and **Mekatelyu** using the `jam` voice, labelled as Jamaican-trained pronunciation with Cassidy/JLU spelling (no single Limón standard). Keep **Bribri** text-only until native recordings exist (its word research is the most complete).
+**Acceptance:** sourced drafts for all cards (same honesty rules and isolated review as the other languages), MMS clips via the audio router, language colours and labels added to tokens and LanguageSettings, `playable` enabled only after review.
+
 ## Tech debt
 
 ### DEBT-001 · Fix the react-refresh lint warning in `Shell.tsx` — P2
