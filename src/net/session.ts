@@ -1,5 +1,5 @@
 import { generateHostKeys, signMsg, verifyMsg, type HostKeys } from './crypto.ts';
-import { HOST_ONLY, msgHostKey, parseMsg, type Msg } from './messages.ts';
+import { HOST_ONLY, parseMsg, type Msg } from './messages.ts';
 import {
   CLAIM_INTERVAL_MS,
   MAX_CLAIMS_PER_SEC,
@@ -28,9 +28,9 @@ export class Session {
 
   constructor(private readonly now: () => number = () => Date.now()) {}
 
-  async start(code: string, role: Role, seat?: string, opts?: JoinOptions): Promise<void> {
+  async start(code: string, role: Role, opts?: JoinOptions, fixedSeat?: string): Promise<void> {
     this.role = role;
-    this.seat = seat ?? getSeat(code, role);
+    this.seat = fixedSeat ?? getSeat(code, role);
     this.keys = role === 'host' ? await generateHostKeys(opts?.keyPair) : null;
     this.pinned = role === 'player' ? (opts?.hostKey ?? null) : null;
     this.verified = role === 'player' && !!opts?.hostKey;
@@ -49,7 +49,7 @@ export class Session {
     if (!m) throw new Error('invalid message');
     if (HOST_ONLY.has(m.t)) {
       if (!this.keys) throw new Error('only the host may send ' + m.t);
-      if (m.t === 'round' || m.t === 'lobby') m = { ...m, hostKey: this.keys.pub } as Msg;
+      if (m.t === 'round' || m.t === 'lobby') m = { ...m, hostKey: this.keys.pub };
       return { role: this.role, from: this.seat, m, sig: await signMsg(this.keys.priv, m) };
     }
     return { role: this.role, from: this.seat, m };
@@ -74,9 +74,8 @@ export class Session {
       if (this.role === 'host' || f.role !== 'host' || typeof f.sig !== 'string') return null;
       let key = this.pinned;
       if (!key) {
-        const hk = msgHostKey(m);
-        if (!hk) return null;
-        key = hk;
+        if ((m.t !== 'round' && m.t !== 'lobby') || !m.hostKey) return null;
+        key = m.hostKey;
       }
       if (!(await verifyMsg(key, f.sig, m))) return null;
       this.pinned = key;

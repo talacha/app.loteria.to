@@ -166,7 +166,7 @@ type ReviewStatus = 'draft' | 'reviewed' | 'approved'; // exact set: Open, settl
 interface Card {
   n: number;                 // 1..54
   id: string;                // stable slug, e.g. "ajolote"
-  category: 'animals' | 'plants_food' | 'sky' | 'land' | 'handmade' | 'places'; // 6, per PRD §4
+  category: 'animals' | 'plants_food' | 'sky_land' | 'handmade' | 'places';
   art: string;               // path under src/content/art/
   tags: string[];            // used by the offline hint matcher
   names: Partial<Record<Lang, {

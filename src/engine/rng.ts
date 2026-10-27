@@ -1,16 +1,10 @@
-/** FNV-1a 32-bit. */
-export function hash32(s: string): number {
+/** FNV-1a style 32-bit string hash with a final avalanche. */
+export function hashString(s: string): number {
   let h = 0x811c9dc5;
   for (let i = 0; i < s.length; i++) {
     h ^= s.charCodeAt(i);
     h = Math.imul(h, 0x01000193);
   }
-  return h >>> 0;
-}
-
-/** hash32 followed by an avalanche step (used where low bits matter, e.g. seedRef). */
-export function hashString(s: string): number {
-  let h = hash32(s);
   h ^= h >>> 16;
   h = Math.imul(h, 0x85ebca6b);
   h ^= h >>> 13;
@@ -30,19 +24,17 @@ export function mulberry32(seed: number): () => number {
   };
 }
 
-/** rng(s) = mulberry32(hash32(s)). */
-export function rng(s: string): () => number {
-  return mulberry32(hash32(s));
+export function rngFromString(s: string): () => number {
+  return mulberry32(hashString(s));
 }
 
-/** Fisher-Yates on a copy. */
-export function shuffle<T>(arr: readonly T[], r: () => number): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(r() * (i + 1));
-    const x = a[i] as T;
-    a[i] = a[j] as T;
-    a[j] = x;
+/** In-place Fisher-Yates. */
+export function shuffle<T>(arr: T[], rng: () => number): T[] {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    const a = arr[i] as T;
+    arr[i] = arr[j] as T;
+    arr[j] = a;
   }
-  return a;
+  return arr;
 }

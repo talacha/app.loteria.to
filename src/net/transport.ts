@@ -11,7 +11,7 @@ export interface JoinOptions {
 }
 
 export interface Transport {
-  join(code: string, role: Role, seat?: string, opts?: JoinOptions): Promise<void>;
+  join(code: string, role: Role, opts?: JoinOptions): Promise<void>;
   send(m: Msg): void;
   onMessage(cb: (m: Msg) => void): () => void;
   /** Player seats only (the host is never listed). */

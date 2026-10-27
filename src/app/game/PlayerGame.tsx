@@ -7,24 +7,16 @@ export interface PlayerGameProps {
   transport: Transport;
   room: { code: string; seat: string; hostVerified: boolean };
   roster: RosterPlayer[];
-  /** This player's own profile (call language, display). */
+  /** This player's own profile (label language, display). */
   profile?: PlayerProfile;
   /** Messages received in the lobby, replayed on mount. */
   log?: MessageLog;
-  onLeave?: () => void;
 }
 
 const DEFAULT_PROFILE: PlayerProfile = { name: '', glyph: '', labelLang: 'es' };
 
 /** Game boundary for the player: everything round-specific lives behind this component. */
-export default function PlayerGame({
-  transport,
-  room,
-  roster,
-  profile,
-  log,
-  onLeave,
-}: PlayerGameProps) {
+export default function PlayerGame({ transport, room, roster, profile, log }: PlayerGameProps) {
   return (
     <PlayerBoard
       transport={transport}
@@ -32,7 +24,6 @@ export default function PlayerGame({
       roster={roster}
       profile={profile ?? DEFAULT_PROFILE}
       log={log}
-      onLeave={onLeave}
     />
   );
 }

@@ -29,10 +29,10 @@ export abstract class BaseTransport implements Transport {
   protected abstract disconnect(): Promise<void>;
   protected abstract rawSend(frame: Frame): Promise<void> | void;
 
-  async join(code: string, role: Role, seat?: string, opts?: JoinOptions): Promise<void> {
+  async join(code: string, role: Role, opts?: JoinOptions): Promise<void> {
     await this.leave();
     const gen = this.gen;
-    await this.session.start(code, role, seat ?? this.fixedSeat, opts);
+    await this.session.start(code, role, opts, this.fixedSeat);
     if (gen !== this.gen) return;
     try {
       await this.connect(code, gen);

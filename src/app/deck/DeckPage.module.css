@@ -8,8 +8,8 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: var(--space-3);
 }
 .card {
   display: flex;
@@ -17,28 +17,20 @@
   align-items: center;
   gap: var(--space-1);
   padding: var(--space-3);
-  background: var(--paper);
-  color: var(--ink);
-  border: var(--border-thick);
-  border-radius: 20px;
-  box-shadow: var(--shadow-hard);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
   text-align: center;
   height: 100%;
   box-sizing: border-box;
 }
 .num {
   font-size: var(--text-sm);
-  color: var(--muted-on-paper);
-}
-.art,
-.emoji {
-  width: 96px;
-  height: 96px;
-  object-fit: contain;
+  color: var(--color-ink-muted);
 }
 .emoji {
-  font-size: 3.5rem;
-  line-height: 96px;
+  font-size: 3rem;
+  line-height: 1.1;
 }
 .names {
   margin: 0;
@@ -49,12 +41,7 @@
   gap: 2px;
 }
 .primary {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.125rem;
-}
-.secondary {
-  color: var(--muted-on-paper);
+  font-weight: 700;
 }
 .native {
   display: flex;

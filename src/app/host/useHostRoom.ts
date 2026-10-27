@@ -3,7 +3,6 @@ import { callableLangs } from '@content';
 import { roomCode } from '@engine';
 import { createTransport, generateHostKeyPair, getSeat } from '@net';
 import type { Msg, Transport } from '@net';
-import type { Lang } from '@engine';
 import { newSeed, normalizePrintSeed } from '@print/options';
 import { clearRound, loadKeyPair, loadRound, saveKeyPair, saveRound } from './persist';
 import { DEFAULT_SETTINGS, clampSpeed } from './roundMachine';
@@ -94,7 +93,6 @@ export function useHostRoom() {
   const [hostKey, setHostKey] = useState<string | null>(null);
   const [connection, setConnection] = useState<Connection>('connecting');
   const [roster, setRoster] = useState<RosterPlayer[]>([]);
-  const [labels, setLabels] = useState<Record<string, Lang>>({});
 
   const transportRef = useRef<Transport | null>(null);
   const hostKeyRef = useRef<string | null>(null);
@@ -136,7 +134,6 @@ export function useHostRoom() {
       if (last !== undefined && now - last < HELLO_LIMIT_MS) return;
       lastHelloRef.current.set(m.seat, now);
       missingRef.current.delete(m.seat);
-      setLabels((l) => (l[m.seat] === m.labelLang ? l : { ...l, [m.seat]: m.labelLang }));
       const p: RosterPlayer = {
         seat: m.seat,
         name: m.name,
@@ -403,16 +400,6 @@ export function useHostRoom() {
     void connect(codeRef.current, true);
   }, [connect]);
 
-  /** Languages of the people in the room (label language chosen on join). */
-  const langs = useMemo(() => {
-    const out: Lang[] = [];
-    for (const p of roster) {
-      const l = labels[p.seat];
-      if (l && !out.includes(l)) out.push(l);
-    }
-    return out;
-  }, [roster, labels]);
-
   const joinUrl = useMemo(() => {
     const base = `${window.location.origin}/r/${code}`;
     return hostKey ? `${base}#k=${hostKey}` : base;
@@ -431,7 +418,6 @@ export function useHostRoom() {
     connection,
     roster,
     joinUrl,
-    langs,
     isMember,
     getRoster,
     removePlayer,

@@ -56,24 +56,5 @@
     "removeNamed": "Quitar a {name}"
   },
   "title": "Sala de canto",
-  "resumeLobbyBody": "Hay una sala abierta en este dispositivo (sala {code}).",
-  "game": {
-    "cardNo": "Carta {n}",
-    "ofTotal": "de {total} · ¿cuál es en tu tabla?",
-    "wordsLabel": "Carta cantada en los idiomas de la sala",
-    "review": "palabra en revisión",
-    "pictureLater": "La imagen se muestra al terminar el canto",
-    "time": "Tiempo",
-    "seconds": "{s} s",
-    "auto": "Canto automático",
-    "pickers": "{x} de {y} ya eligieron",
-    "phones": "{count, plural, one {# teléfono} other {# teléfonos}}",
-    "points": "Puntos",
-    "tiebreak": "solo para desempatar",
-    "firstPlus": "Primera respuesta correcta: +{n}",
-    "history": "Ya cantadas",
-    "joinAt": "Únete en app.loteria.to",
-    "paperName": "Tabla de papel {n}",
-    "shortcuts": "Atajos: Espacio o P pausa, R repetir, L revisar papel"
-  }
+  "resumeLobbyBody": "Hay una sala abierta en este dispositivo (sala {code})."
 }

@@ -1,65 +1,47 @@
 .wrap {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 18px 18px 16px;
-  background: var(--paper);
-  color: var(--ink);
-  border: var(--border-thick);
-  border-radius: 24px;
-  box-shadow: 0 6px 0 var(--shadow-color);
-  font-family: var(--font-ui);
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-ink);
 }
 .label {
   margin: 0;
-  font-size: 0.875em;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted-on-paper);
+  color: var(--color-ink-muted);
+  font-size: var(--text-sm);
 }
 .code {
   margin: 0;
-}
-.tiles {
-  display: flex;
-  gap: 6px;
-}
-.tile {
-  flex: 1;
-  text-align: center;
-  font-family: var(--font-display);
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   font-weight: 800;
-  font-size: 2.5em;
-  background: var(--maiz);
-  border: var(--border-thick);
-  border-radius: var(--radius-sm);
-  padding: 4px 0;
+  letter-spacing: 0.12em;
+  font-size: clamp(2.25rem, 14vw, 4rem);
+  line-height: 1.1;
 }
 .copy {
-  align-self: flex-start;
-  min-height: 44px;
-  min-width: 44px;
-  padding: 0 16px;
+  min-height: var(--tap);
+  min-width: var(--tap);
+  padding: 0 var(--space-4);
   font: inherit;
-  font-weight: 700;
-  color: var(--ink);
-  background: var(--card-white);
-  border: var(--border-thin);
-  border-radius: var(--radius-pill);
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
   cursor: pointer;
 }
 .sr {
   position: absolute;
   width: 1px;
   height: 1px;
-  margin: -1px;
   overflow: hidden;
   clip-path: inset(50%);
-  white-space: nowrap;
 }
 @media (min-width: 1280px) {
-  .tile {
-    font-size: 4em;
+  .code {
+    font-size: 5rem;
   }
 }

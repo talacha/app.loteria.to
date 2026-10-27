@@ -104,8 +104,6 @@ export const ALLOWLIST = [
   'cantora',
   'obra maestra',
   'obras maestras',
-  'sin dinero',
-  'no money',
   'ficha técnica',
   'fichas técnicas',
 ];

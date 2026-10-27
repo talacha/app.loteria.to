@@ -1,16 +1,18 @@
 import esUi from './i18n/es.json';
 import enUi from './i18n/en.json';
 import cardsJson from './cards.json';
-import { deckFileSchema, type Card, type CardName } from './schema.ts';
+import { cardsSchema, type Card } from './schema.ts';
 import type { CardId, Lang } from './types.ts';
 import { INDIGENOUS_LANGS, LANGS } from './types.ts';
 
 export type { CardId, Category, Lang } from './types.ts';
-export type { Card, CardName } from './schema.ts';
 export { CATEGORIES, LANGS } from './types.ts';
 
-/** From cards.json, validated at load, sorted by n. */
-export const cards: Card[] = deckFileSchema.parse(cardsJson).cards.sort((a, b) => a.n - b.n);
+export type { Card } from './schema.ts';
+export type NameStatus = 'draft' | 'reviewed' | 'approved';
+
+/** Validated at module load; throws on malformed content. */
+export const cards: Card[] = cardsSchema.parse(cardsJson);
 
 const byId = new Map<CardId, Card>(cards.map((c) => [c.id, c]));
 
@@ -18,32 +20,21 @@ export function getCard(id: CardId): Card | undefined {
   return byId.get(id);
 }
 
-export function cardById(id: CardId): Card {
-  const c = byId.get(id);
-  if (!c) throw new Error(`unknown card id: ${id}`);
-  return c;
-}
-
-const isIndigenous = (lang: Lang) => (INDIGENOUS_LANGS as readonly Lang[]).includes(lang);
-
 function defaultHideUnreviewed(): boolean {
   // Keep the literal `import.meta.env` so Vite/Vitest can substitute it; undefined under plain Node.
   const env = import.meta.env as unknown as { VITE_HIDE_UNREVIEWED?: string } | undefined;
   return env?.VITE_HIDE_UNREVIEWED !== 'false';
 }
 
-/** Reglas D1: a word shows only if it carries a source (nah/yua/quz). */
-function visibleName(card: Card, lang: Lang, hide: boolean): CardName | null {
-  const n = card.names[lang];
-  if (!n) return null;
-  if (isIndigenous(lang) && hide && !n.source) return null;
-  return n;
-}
-
-/** Every card needs a visible name in the language (reglas R-03 / D4). */
+/**
+ * A lang is callable when every card has an approved name. With hideUnreviewed=false
+ * (dev/review builds) a lang is also callable when every card has a name of any status.
+ */
 export function callableLangs(opts?: { hideUnreviewed?: boolean }): Lang[] {
   const hide = opts?.hideUnreviewed ?? defaultHideUnreviewed();
-  return LANGS.filter((lang) => cards.every((c) => visibleName(c, lang, hide) !== null));
+  return LANGS.filter((lang) =>
+    cards.every((c) => (hide ? c.names[lang]?.status === 'approved' : c.names[lang] !== undefined)),
+  );
 }
 
 export function cardName(
@@ -51,35 +42,16 @@ export function cardName(
   lang: Lang,
   opts?: { hideUnreviewed?: boolean },
 ): { text: string; status: string } | null {
-  const n = visibleName(card, lang, opts?.hideUnreviewed ?? defaultHideUnreviewed());
-  return n ? { text: n.text, status: n.status } : null;
-}
-
-/**
- * The AI/dictionary label (reglas D1) must accompany any displayed or played nah/yua/quz
- * word that has not been approved by a native speaker.
- */
-export function nameLabel(card: Card, lang: Lang): 'dictionary-ai-voice' | null {
   const n = card.names[lang];
-  return isIndigenous(lang) && n?.source && n.status !== 'approved' ? 'dictionary-ai-voice' : null;
+  if (!n) return null;
+  const hide = opts?.hideUnreviewed ?? defaultHideUnreviewed();
+  if (hide && (INDIGENOUS_LANGS as readonly Lang[]).includes(lang) && n.status === 'draft')
+    return null;
+  return { text: n.text, status: n.status };
 }
 
-export function cardLabel(c: Card, lang: Lang): { text: string; aiVoice: boolean; weak: boolean } {
-  const n = c.names[lang];
-  return { text: n.text, aiVoice: isIndigenous(lang), weak: n.confidence === 'weak' };
-}
-
-/** Labels shown in the UI, from the ui catalog (`lang` section). */
-export const LANG_LABEL: Record<Lang, string> = esUi.lang;
-export const LANG_LABELS: Record<Lang, string> = LANG_LABEL;
-
-export const LANG_COLORS: Record<Lang, string> = {
-  es: 'var(--lang-es)',
-  en: 'var(--lang-en)',
-  nah: 'var(--lang-nah)',
-  yua: 'var(--lang-yua)',
-  quz: 'var(--lang-quz)',
-};
+/** Derived from the ui catalog (`lang` section). */
+export const LANG_LABELS: Record<Lang, string> = esUi.lang;
 
 /** UI string catalogs for i18next, namespace 'ui'. */
 export const uiCatalogs = { es: esUi, en: enUi } as const;

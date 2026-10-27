@@ -3,14 +3,6 @@
 **Status:** v1 build spec. Companion to [ARCHITECTURE.md](ARCHITECTURE.md), which wins on stack questions.
 **One line:** The picture bingo everyone grew up with, called in five languages. A whole classroom, plaza or family table joins from one QR code, and no phone is required to play.
 
-## 0. Product pillars (owner direction, 2026-10-26)
-
-Every feature should serve at least one of these; when they conflict, earlier wins.
-
-1. **Learn new languages by playing.** Matching a heard word to one of three pictures is active listening. Escucha mode teaches by ear; the caller screen shows the same card in every room language; each round ends with "Palabras de tu línea".
-2. **Inclusion, and easy to add more languages.** Five languages at launch (Náhuatl, Maya yucateco, Quechua Cusco-Collao, Español, English); each player picks their own in the same room. A new language is a content change (drafts file → native-speaker review sheet → recordings), not a code change. Honest review status on every Indigenous word. Phones, shared tablets and **printed paper boards** all play in the same round — print mode is a first-class inclusion feature for players without a phone, classrooms and low-connectivity places; no accounts; works offline.
-3. **Friends and family game time.** One QR code gathers the room in under 30 seconds; **el cantor is always the app’s automatic voice, never a person**, so everyone in the room plays (the organiser who creates the room only taps Empezar); every correct pick earns the bean and being first only breaks ties; wrong picks get a gentle "¡Casi!"; no money, prizes or betting — just beans.
-
 ## 1. Goals and non-goals
 
 **Goals**
@@ -20,7 +12,7 @@ Every feature should serve at least one of these; when they conflict, earlier wi
 4. Calls in five languages: Nahuatl (`nah`), Maya (`yua`), Quechua (`quz`), Español (`es`), English (`en`), or a rotating language per card.
 5. Honest about language: no Indigenous-language word or recording is shown as authoritative unless its status is `approved`.
 
-**Non-goals (v1):** money, prizes, betting, accounts, chat, leaderboards across rounds, AI-generated Indigenous text, live (in-browser) synthetic speech for Indigenous languages, native apps. **Exception accepted by Rob (reglas.md D1, 2026-10-26):** for the contest, pre-recorded Meta MMS-TTS clips of dictionary-sourced words may be played if every such call shows "Palabra de diccionario · voz generada por IA · puede tener errores". MMS is CC-BY-NC 4.0: non-commercial use only.
+**Non-goals (v1):** money, prizes, betting, accounts, chat, leaderboards across rounds, AI-generated Indigenous text, synthetic speech for Indigenous languages, native apps.
 
 ## 2. Users
 - **Classroom / community centre:** one screen calls, kids play on paper or phones.
@@ -39,7 +31,7 @@ Every feature should serve at least one of these; when they conflict, earlier wi
 - Settings: call language (one of 5, or *rotating*), speed (6–20 s, presets: Calmado / Normal / Rápido), pattern (line, four corners, center square, full board), Escucha mode (audio/word only), captions on/off.
 - Controls: start, pause/resume, next, repeat, end round; keyboard (Space, N, R, L = check paper code, P = pause).
 - Shuffle = `deckOrder(roomSeed, roundNo)`; no card repeats in a round. Screen Wake Lock while running. State saved to IndexedDB after each call so reload resumes.
-- Audio: play recorded clip if present; Spanish/English may fall back to Web Speech; **Indigenous languages never use live synthetic speech**: play a native recording, or (reglas D1) a pre-recorded MMS clip with its AI-voice label; otherwise caption only with "sin grabación todavía".
+- Audio: play recorded clip if present; Spanish/English may fall back to Web Speech; **Indigenous languages never use synthetic speech** (show caption only, with a "no recording yet" note).
 - Claim handling: phone claims arrive over the channel; host validates with `checkClaim`; result broadcast. Paper claims: press `L`, type 6-char code, host validates locally.
 
 ### 3.3 Player (phone / tablet)
@@ -71,7 +63,7 @@ Every feature should serve at least one of these; when they conflict, earlier wi
 AI hints (`HintProvider` with offline tag matcher only), Claude banter, reviewer tool (`/review`), `/admin`, metrics. Provide the interfaces and the offline matcher; leave online providers unimplemented.
 
 ### 3.10 Current focus: session setup and lobby (owner direction, 2026-10-26)
-The build priority is the multiplayer scaffold, not round rules. Turn-by-turn play is specified in `docs/reglas.md` (owner decision 2026-10-26: César's rules and deck).
+The build priority is the multiplayer scaffold, not round rules. Turn-by-turn play is specified in `docs/rules.md` (automatic caller, three-choice picks, first-correct points as tie-breakers).
 - **Mobile first, works on tablet and laptop.** Every screen is designed at 360 px first, then 768 px (tablet) and 1280 px (laptop). The host can be a phone as well as a projector.
 - **Create:** Home → "Crear sala" → room code, signed host key, lobby.
 - **Share:** QR code, copyable link `/r/{CODE}#k={hostKey}`, Web Share API where available, and the code in large type for typing at `/` → "Unirme".

@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { MAX_TABLA_INDEX, PATTERN_IDS } from '@engine';
-import type { Msg as EngineMsg, PatternId, RoundFields } from '@engine';
+import { MAX_TABLA_INDEX } from '@engine';
+import type { CardId, Lang, PatternId } from '@engine';
 
 const lang = z.enum(['es', 'en', 'nah', 'yua', 'quz']);
-const pattern = z.enum(PATTERN_IDS as [PatternId, ...PatternId[]]);
+const pattern = z.enum(['line', 'corners', 'center', 'full']);
 const cardId = z.string().min(1).max(64);
 const seat = z.string().min(1).max(64);
 // Rejects control, format and bidi-override characters (except ZWJ).
@@ -30,20 +30,24 @@ const glyph = z.string().min(1).max(16).regex(SAFE_TEXT);
 const pronouns = z.string().max(30).regex(SAFE_TEXT).optional();
 const lobbyPlayer = z.object({ seat, name, glyph, pronouns });
 
-const roundFields = {
-  seed: z.string().min(1).max(128),
-  roundNo,
-  mode: z.enum(['normal', 'escucha']),
-  pattern,
-  callLang: z.union([lang, z.literal('rotating')]),
-  speedSec: z.number().finite().min(3).max(60),
-  /** Transport extension (TOFU): the host's signing key. Never carries deckSecret. */
-  hostKey: z.string().min(1).max(128).optional(),
-};
-const tablaIndex = z.number().int().min(0).max(MAX_TABLA_INDEX);
-
 export const msgSchema = z.discriminatedUnion('t', [
-  z.object({ t: z.literal('round'), ...roundFields }),
+  z.object({
+    t: z.literal('round'),
+    seed: z.string().min(1).max(128),
+    roundNo,
+    mode: z.enum(['normal', 'escucha']),
+    pattern,
+    callLang: z.union([lang, z.literal('rotating')]),
+    speedSec: z.number().finite().min(3).max(60),
+    hostKey: z.string().min(1).max(128).optional(),
+    called: cardList.default([]),
+  }),
+  z.object({
+    t: z.literal('assign'),
+    seat,
+    tablaIndex: z.number().int().min(0).max(MAX_TABLA_INDEX),
+    roundNo,
+  }),
   z.object({
     t: z.literal('call'),
     i: z.number().int().min(0).max(1000),
@@ -54,30 +58,15 @@ export const msgSchema = z.discriminatedUnion('t', [
   z.object({
     t: z.literal('claimResult'),
     seat,
+    roundNo,
     valid: z.boolean(),
     missing: cardList.optional(),
   }),
   z.object({
     t: z.literal('end'),
+    roundNo,
     winners: z.array(seat).max(54).refine(unique, 'duplicate entries'),
   }),
-  z.object({
-    t: z.literal('welcome'),
-    seat,
-    tablaIndex,
-    round: z.object(roundFields).nullable(),
-    called: cardList,
-  }),
-  z.object({
-    t: z.literal('hello'),
-    seat,
-    name,
-    glyph,
-    pronouns,
-    labelLang: lang,
-  }),
-  z.object({ t: z.literal('claim'), seat, tablaIndex, marks: cardList }),
-  // App-level extension: pre-game lobby broadcast.
   z.object({
     t: z.literal('lobby'),
     status: z.enum(['waiting', 'started']),
@@ -88,39 +77,56 @@ export const msgSchema = z.discriminatedUnion('t', [
     roundNo: roundNo.optional(),
     hostKey: z.string().min(1).max(128).optional(),
   }),
+  z.object({
+    t: z.literal('hello'),
+    seat,
+    name: z.string().trim().min(1).max(40).regex(SAFE_TEXT),
+    glyph: z.string().min(1).max(16).regex(SAFE_TEXT),
+    pronouns: z.string().max(30).regex(SAFE_TEXT).optional(),
+    labelLang: lang,
+  }),
+  z.object({
+    t: z.literal('claim'),
+    seat,
+    roundNo,
+    tablaIndex: z.number().int().min(0).max(MAX_TABLA_INDEX),
+    marks: cardList,
+  }),
 ]);
 
-export type { RoundFields };
-
-/** Engine wire types plus the app-level `lobby` extension. Schemas also accept an optional
- * transport-level `hostKey` on round/welcome.round/lobby (TOFU). */
 export type Msg =
-  | EngineMsg
+  | {
+      t: 'round';
+      seed: string;
+      roundNo: number;
+      mode: 'normal' | 'escucha';
+      pattern: PatternId;
+      callLang: Lang | 'rotating';
+      speedSec: number;
+      hostKey?: string;
+      called?: CardId[];
+    }
   | {
       t: 'lobby';
       status: 'waiting' | 'started';
       players: { seat: string; name: string; glyph: string; pronouns?: string }[];
       roundNo?: number;
       hostKey?: string;
-    };
+    }
+  | { t: 'assign'; seat: string; tablaIndex: number; roundNo: number }
+  | { t: 'call'; i: number; cardId: CardId; lang: Lang; at: number }
+  | { t: 'claimResult'; seat: string; roundNo: number; valid: boolean; missing?: CardId[] }
+  | { t: 'end'; roundNo: number; winners: string[] }
+  | { t: 'hello'; seat: string; name: string; glyph: string; pronouns?: string; labelLang: Lang }
+  | { t: 'claim'; seat: string; roundNo: number; tablaIndex: number; marks: CardId[] };
 
-// Type-level check: schema output is assignable to Msg and every Msg is accepted as schema input.
-type Assert<T extends true> = T;
-export type _SchemaMatchesOut = Assert<z.output<typeof msgSchema> extends Msg ? true : false>;
-export type _SchemaMatchesIn = Assert<Msg extends z.input<typeof msgSchema> ? true : false>;
-
-/** Transport-level host key carried by round and lobby messages. */
-export function msgHostKey(m: Msg): string | undefined {
-  return (m.t === 'round' || m.t === 'lobby') && 'hostKey' in m ? m.hostKey : undefined;
-}
-
-export type HostOnlyType = 'round' | 'call' | 'claimResult' | 'end' | 'welcome' | 'lobby';
+export type HostOnlyType = 'round' | 'call' | 'claimResult' | 'end' | 'assign' | 'lobby';
 export const HOST_ONLY: ReadonlySet<Msg['t']> = new Set<HostOnlyType>([
   'round',
   'call',
   'claimResult',
   'end',
-  'welcome',
+  'assign',
   'lobby',
 ]);
 

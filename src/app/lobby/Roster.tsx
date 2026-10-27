@@ -61,14 +61,9 @@ export default function Roster({ players, selfSeat, max }: RosterProps) {
               <span className={styles.who}>
                 <span className={styles.name}>
                   {p.name}
+                  {p.seat === selfSeat && <span className={styles.you}> {t('lobby.you')}</span>}
                 </span>
-                {(p.pronouns || p.seat === selfSeat) && (
-                  <small className={styles.pronouns}>
-                    {p.seat === selfSeat && <span className={styles.you}>{t('lobby.you')}</span>}
-                    {p.seat === selfSeat && p.pronouns ? ' · ' : ''}
-                    {p.pronouns}
-                  </small>
-                )}
+                {p.pronouns && <small className={styles.pronouns}>{p.pronouns}</small>}
               </span>
             </li>
           ))}

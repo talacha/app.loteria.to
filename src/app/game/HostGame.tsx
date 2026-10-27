@@ -1,16 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
-import { LANG_COLORS, cardName, getCard } from '@content';
+import { cardName, getCard } from '@content';
 import type { Lang } from '@engine';
 import { isMuted, onMutedChange, setMuted } from '../audio';
-import CardArt from '../host/CardArt';
-import { MAX_SPEED, MIN_SPEED, SPEED_PRESETS } from '../host/roundMachine';
+import styles from '../host/HostPage.module.css';
 import { useGame } from '../host/useGame';
 import type { Game, GameProps } from '../host/useGame';
 import { useModal } from '../host/useModal';
-import { useQr } from '../host/useQr';
-import styles from './HostGame.module.css';
 
 function useMuted(): boolean {
   const [m, setM] = useState(isMuted());
@@ -18,56 +15,39 @@ function useMuted(): boolean {
   return m;
 }
 
-function speedLabelKey(sec: number): 'calm' | 'normal' | 'fast' | null {
-  for (const k of ['calm', 'normal', 'fast'] as const) if (SPEED_PRESETS[k] === sec) return k;
-  return null;
-}
-
 /**
- * Game boundary (docs/rules.md): the automatic caller screen. The device that creates the
- * room runs it and holds no tabla. Props: { transport, room, roster } plus onNewRound.
+ * Game boundary (docs/rules.md will replace this): the cantor's round screen.
+ * Props: { transport, room, roster } plus an optional onNewRound callback.
  */
 export default function HostGame(props: GameProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const h = useGame(props);
   const { state } = h;
   const { room, roster } = props;
   const muted = useMuted();
-  const qr = useQr(room.joinUrl ?? '', 360);
   const [paperOpen, setPaperOpen] = useState(false);
-  const [speedOpen, setSpeedOpen] = useState(false);
-  const [now, setNow] = useState(() => Date.now());
   const closePaper = () => {
     setPaperOpen(false);
     h.clearPaper();
   };
+  const uiLang = i18n.language === 'en' ? 'en' : 'es';
+  const lc = (l: string) => t(`lang.${l}`);
   const nameOf = (id: string) => {
     const c = getCard(id);
     return c ? (cardName(c, 'es')?.text ?? c.id) : id;
   };
-  const who = (seat: string) => {
-    if (seat.startsWith('paper:')) return t('host.game.paperName', { n: seat.slice(6) });
-    const p = roster.find((r) => r.seat === seat);
-    return p ? `${p.glyph} ${p.name}` : (h.names[seat] ?? t('host.unknownPlayer'));
-  };
+  const who = (seat: string) =>
+    h.names[seat] ??
+    (() => {
+      const p = roster.find((r) => r.seat === seat);
+      return p ? `${p.glyph} ${p.name}` : t('host.unknownPlayer');
+    })();
 
   const live = state.phase === 'running' || state.phase === 'paused';
   const ended = state.phase === 'ended';
-  const running = state.phase === 'running';
+  const justWon = state.phase === 'paused' && state.winners.length > 0 && h.celebrating;
+  const modalOpen = justWon || paperOpen;
   const connection = room.connection ?? 'online';
-  const speedKey = speedLabelKey(state.settings.speedSec);
-  const speedText = `${speedKey ? t(`host.speeds.${speedKey}`) : t('host.speed')} · ${t('host.game.seconds', { s: state.settings.speedSec })}`;
-
-  // Countdown ticker (UI only; the caller timer lives in useGame).
-  useEffect(() => {
-    if (!running) return;
-    const id = setInterval(() => setNow(Date.now()), 250);
-    return () => clearInterval(id);
-  }, [running]);
-  const elapsed = running ? Math.max(0, now - h.windowStart) : 0;
-  const total = state.settings.speedSec * 1000;
-  const remainingSec = Math.max(0, Math.ceil((total - elapsed) / 1000));
-  const pct = running ? Math.max(0, Math.min(100, 100 - (elapsed / total) * 100)) : 100;
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -92,6 +72,7 @@ export default function HostGame(props: GameProps) {
         e.preventDefault();
         h.togglePause();
       } else if (k === 'p') h.togglePause();
+      else if (k === 'n') h.next();
       else if (k === 'r') h.repeat();
     };
     window.addEventListener('keydown', onKey);
@@ -99,83 +80,26 @@ export default function HostGame(props: GameProps) {
   });
 
   const card = h.current;
-  // Word cards: one per language in the room, plus the language being spoken.
-  const wordLangs: Lang[] = [];
-  for (const l of [...(room.langs ?? []), ...(h.currentLang ? [h.currentLang] : [])]) {
-    if (!wordLangs.includes(l)) wordLangs.push(l);
-  }
-  const revealed = ended ? h.called : h.called.slice(0, -1);
-  const top = Object.entries(h.points)
-    .filter(([, v]) => v > 0)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5);
+  const lang: Lang | undefined = h.currentLang;
+  const callName = card && lang ? cardName(card, lang) : null;
 
   return (
     <main id="main" className={styles.page}>
       <header className={styles.header}>
-        <div className={styles.brand}>
-          <img className={styles.logo} src="/favicon.svg" alt="" width={44} height={44} />
-          <span className={styles.brandName}>
-            {t('app.name', { defaultValue: 'Lotería de los Pueblos' })}
-          </span>
-        </div>
-        <div className={styles.controls}>
-          {live ? (
-            <button type="button" className={styles.ctl} onClick={h.togglePause}>
-              {running ? t('host.pause') : t('host.resume')}
-            </button>
-          ) : null}
-          <button
-            type="button"
-            className={styles.ctl}
-            aria-expanded={speedOpen}
-            aria-controls="speed-panel"
-            onClick={() => setSpeedOpen((o) => !o)}
-          >
-            {speedText}
-          </button>
-          <span className={styles.pill}>
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <circle cx="12" cy="12" r="6" />
-            </svg>
-            {t('host.game.auto')}
-          </span>
-        </div>
-        {speedOpen ? (
-          <div id="speed-panel" className={styles.speedPanel}>
-            <div className={styles.row}>
-              {(['calm', 'normal', 'fast'] as const).map((k) => (
-                <button
-                  key={k}
-                  type="button"
-                  className={styles.ctl}
-                  aria-pressed={state.settings.speedSec === SPEED_PRESETS[k]}
-                  onClick={() => h.setSpeed(SPEED_PRESETS[k])}
-                >
-                  {t(`host.speeds.${k}`)} · {t('host.game.seconds', { s: SPEED_PRESETS[k] })}
-                </button>
-              ))}
-            </div>
-            <label className={styles.sliderLabel}>
-              <span>{t('host.speedSlider')}</span>
-              <input
-                type="range"
-                className={styles.range}
-                min={MIN_SPEED}
-                max={MAX_SPEED}
-                value={state.settings.speedSec}
-                aria-valuetext={t('host.speedSeconds', { seconds: state.settings.speedSec })}
-                onChange={(e) => h.setSpeed(Number(e.target.value))}
-              />
-            </label>
-          </div>
-        ) : null}
+        <h1>{t('host.title')}</h1>
+        <p className={styles.status}>
+          <span className={styles.roundNo}>{t('host.round', { n: state.roundNo })}</span>
+          <span className={styles.roundNo}>{room.code}</span>
+          <span className={`${styles.dot} ${styles[connection]}`} aria-hidden="true" />
+          <span>{t(`host.connection.${connection}`)}</span>
+          <span>{t('host.players', { count: roster.length })}</span>
+        </p>
       </header>
 
       {connection === 'unverified' || connection === 'offline' ? (
         <p className={styles.notice} role="status">
           {connection === 'offline' ? t('host.offlineOk') : t('host.unverifiedRoom')}{' '}
-          <Link className={styles.link} to={`/print?seed=${state.roomSeed}`}>
+          <Link className={styles.printLink} to={`/print?seed=${state.roomSeed}`}>
             {t('host.printLink')}
           </Link>
         </p>
@@ -186,30 +110,39 @@ export default function HostGame(props: GameProps) {
         {h.announcement.text ? t('a11y.called', { card: h.announcement.text }) : ''}
       </div>
 
-      <div inert={paperOpen || undefined} className={styles.layout}>
-        <section className={styles.main} aria-labelledby="cur-h">
-          <h2 id="cur-h" className={styles.callTitle}>
-            <span className={styles.callNo}>{t('host.game.cardNo', { n: state.calledCount })}</span>
-            <span className={styles.callOf}>
-              {t('host.game.ofTotal', { total: state.order.length || 54 })}
-            </span>
+      <div inert={modalOpen || undefined} className={styles.content}>
+        <section className={styles.stage} aria-labelledby="cur-h">
+          <h2 id="cur-h" className={styles.srOnly}>
+            {t('host.currentCard')}
           </h2>
+          {card ? (
+            <div className={styles.card}>
+              <div className={styles.art} aria-hidden="true">
+                {card.art}
+              </div>
+              {state.settings.captions || h.noAudio ? (
+                <p className={styles.name}>
+                  {callName?.text ?? nameOf(card.id)}
+                  {lang ? <span className={styles.langTag}> ({lc(lang)})</span> : null}
+                </p>
+              ) : null}
+              {h.noAudio ? <p className={styles.notice}>{t('host.noRecordingYet')}</p> : null}
+              <p className={styles.verso}>{card.verso[uiLang]}</p>
+            </div>
+          ) : null}
+          <p className={styles.muted}>{t('host.called', { count: h.called.length })}</p>
+          {state.phase === 'paused' && !justWon ? <p role="status">{t('host.paused')}</p> : null}
 
           {ended ? (
-            <div className={styles.endPanel}>
-              <p className={styles.endTitle}>
-                {state.winners.length ? t('host.celebrate') : t('host.ended')}
-              </p>
+            <div className={styles.panel}>
+              <p>{t('host.ended')}</p>
+              <h3>{t('host.winners')}</h3>
               {state.winners.length ? (
-                <>
-                  <p>{t(`patternComplete.${state.settings.pattern}`)}</p>
-                  <h3>{t('host.winners')}</h3>
-                  <ul className={styles.winners}>
-                    {state.winners.map((s) => (
-                      <li key={s}>{who(s)}</li>
-                    ))}
-                  </ul>
-                </>
+                <ul>
+                  {state.winners.map((s) => (
+                    <li key={s}>{who(s)}</li>
+                  ))}
+                </ul>
               ) : (
                 <p>{t('host.noWinners')}</p>
               )}
@@ -217,132 +150,80 @@ export default function HostGame(props: GameProps) {
                 {t('host.newRound')}
               </button>
             </div>
-          ) : card ? (
-            <>
-              <ul className={styles.words} aria-label={t('host.game.wordsLabel')}>
-                {wordLangs.map((l) => {
-                  const n = cardName(card, l);
-                  if (!n) return null;
-                  return (
-                    <li key={l} className={styles.word}>
-                      <span className={styles.langPill} style={{ background: LANG_COLORS[l] }}>
-                        {t(`lang.${l}`)}
-                      </span>
-                      <span className={styles.wordText}>{n.text}</span>
-                      {n.status !== 'approved' ? (
-                        <span className={styles.review}>{t('host.game.review')}</span>
-                      ) : (
-                        <span className={styles.sub}>{t('host.game.pictureLater')}</span>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-              {h.noAudio ? <p className={styles.notice}>{t('host.noRecordingYet')}</p> : null}
-              <div className={styles.timer}>
-                <span className={styles.timerLabel}>{t('host.game.time')}</span>
-                <span className={styles.bar} aria-hidden="true">
-                  <span className={styles.barFill} style={{ width: `${pct}%` }} />
-                </span>
-                <span className={styles.timerNum} role="timer" aria-live="off">
-                  {running ? t('host.game.seconds', { s: remainingSec }) : t('host.paused')}
-                </span>
-              </div>
-            </>
-          ) : null}
-
-          {!ended ? (
+          ) : (
             <div className={styles.row}>
-              <button type="button" className={styles.ctl} onClick={h.repeat}>
+              <button type="button" className={styles.primary} onClick={h.togglePause}>
+                {state.phase === 'running' ? t('host.pause') : t('host.resume')}
+              </button>
+              <button type="button" className={styles.btn} onClick={h.next}>
+                {t('host.nextCard')}
+              </button>
+              <button type="button" className={styles.btn} onClick={h.repeat}>
                 {t('host.repeat')}
               </button>
-              <button type="button" className={styles.ctl} onClick={() => setPaperOpen(true)}>
+              <button type="button" className={styles.btn} onClick={() => setPaperOpen(true)}>
                 {t('host.checkPaper')}
               </button>
-              <button type="button" className={styles.ctl} onClick={h.endRound}>
+              <button type="button" className={styles.btn} onClick={h.endRound}>
                 {t('host.endRound')}
               </button>
-              <button
-                type="button"
-                className={styles.ctl}
-                aria-pressed={muted}
-                onClick={() => setMuted(!muted)}
-              >
-                {muted ? t('host.unmute') : t('host.mute')}
-              </button>
             </div>
-          ) : null}
-          <p className={`${styles.sub} ${styles.hint}`}>{t('host.game.shortcuts')}</p>
+          )}
+          <p className={`${styles.muted} ${styles.hint}`}>{t('host.shortcuts')}</p>
 
-          {h.claimNote ? (
+          {h.claimNote && !justWon ? (
             <p role="status" className={styles.notice}>
               {h.claimNote.valid
                 ? t('host.claimNoteValid', { name: who(h.claimNote.seat) })
                 : t('host.claimNoteInvalid', { name: who(h.claimNote.seat) })}
             </p>
           ) : null}
+
           {h.paper && !paperOpen ? <PaperResult h={h} nameOf={nameOf} /> : null}
-        </section>
 
-        <aside className={styles.side}>
-          <div className={styles.qrCard}>
-            {qr ? (
-              <img className={styles.qr} src={qr} alt={t('host.scanQr')} width={168} height={168} />
-            ) : null}
-            <span className={styles.sub}>{t('host.game.joinAt')}</span>
-            <span className={styles.code} aria-label={room.code.split('').join(' ')}>
-              {room.code}
-            </span>
-          </div>
-          <div className={styles.panel}>
-            <span className={styles.panelTitle}>
-              {t('host.game.pickers', { x: h.pickedCount, y: h.eligibleCount })}
-            </span>
-            <span className={styles.bar} aria-hidden="true">
-              <span
-                className={styles.barJade}
-                style={{
-                  width: `${h.eligibleCount ? (h.pickedCount / h.eligibleCount) * 100 : 0}%`,
-                }}
-              />
-            </span>
-            <span className={styles.sub}>{t('host.game.phones', { count: roster.length })}</span>
-          </div>
-          <section className={styles.panel} aria-labelledby="pts">
-            <div className={styles.panelHead}>
-              <h2 id="pts" className={styles.panelH}>
-                {t('host.game.points')}
-              </h2>
-              <span className={styles.sub}>{t('host.game.tiebreak')}</span>
-            </div>
-            {top.length ? (
-              <ol className={styles.points}>
-                {top.map(([seat, v]) => (
-                  <li key={seat}>
-                    <span>{who(seat)}</span>
-                    <strong>{v}</strong>
-                  </li>
-                ))}
-              </ol>
-            ) : null}
-            <span className={styles.sub}>{t('host.game.firstPlus', { n: 2 })}</span>
-          </section>
-        </aside>
-
-        <footer className={styles.history}>
-          <span className={styles.histLabel}>{t('host.game.history')}</span>
-          <ol className={styles.strip} aria-label={t('host.history')}>
-            {[...revealed].reverse().map((id) => {
+          <h3>{t('host.history')}</h3>
+          <ol className={styles.history} aria-label={t('host.history')} reversed>
+            {[...h.called].reverse().map((id) => {
               const c = getCard(id);
               return (
-                <li key={id} className={styles.chip}>
-                  {c ? <CardArt card={c} alt={nameOf(id)} className={styles.chipArt} /> : null}
+                <li key={id} className={styles.chip} title={nameOf(id)}>
+                  <span aria-hidden="true">{c?.art}</span>
+                  <span className={styles.chipName}>{nameOf(id)}</span>
                 </li>
               );
             })}
           </ol>
-        </footer>
+        </section>
+
+        <div className={styles.row}>
+          <button
+            type="button"
+            className={styles.btn}
+            aria-pressed={muted}
+            onClick={() => setMuted(!muted)}
+          >
+            {muted ? t('host.unmute') : t('host.mute')}
+            <span className={styles.srOnly}>{muted ? ` (${t('a11y.muted')})` : ''}</span>
+          </button>
+          <Link className={styles.btn} to={`/print?seed=${state.roomSeed}`}>
+            {t('host.printLink')}
+          </Link>
+        </div>
       </div>
+
+      {justWon ? (
+        <Celebration
+          title={t('host.celebrate')}
+          body={t('host.celebrateBody', {
+            name: who(state.winners[state.winners.length - 1] ?? ''),
+          })}
+          pattern={t(`patternComplete.${state.settings.pattern}`)}
+          onContinue={h.resumeCalling}
+          onEnd={h.endRound}
+          continueLabel={t('host.continue')}
+          endLabel={t('host.endRound')}
+        />
+      ) : null}
 
       {paperOpen ? (
         <PaperDialog
@@ -353,6 +234,46 @@ export default function HostGame(props: GameProps) {
         />
       ) : null}
     </main>
+  );
+}
+
+function Celebration(props: {
+  title: string;
+  body: string;
+  pattern: string;
+  continueLabel: string;
+  endLabel: string;
+  onContinue: () => void;
+  onEnd: () => void;
+}) {
+  const ref = useRef<HTMLButtonElement>(null);
+  const box = useModal(props.onContinue);
+  useEffect(() => ref.current?.focus(), []);
+  return (
+    <div className={styles.overlay}>
+      <div
+        ref={box}
+        className={styles.celebrate}
+        role="alertdialog"
+        aria-modal="true"
+        aria-label={props.title}
+      >
+        <p className={styles.burst} aria-hidden="true">
+          🎉
+        </p>
+        <h2>{props.title}</h2>
+        <p>{props.body}</p>
+        <p>{props.pattern}</p>
+        <div className={styles.row}>
+          <button ref={ref} type="button" className={styles.primary} onClick={props.onContinue}>
+            {props.continueLabel}
+          </button>
+          <button type="button" className={styles.btn} onClick={props.onEnd}>
+            {props.endLabel}
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -373,7 +294,9 @@ function PaperResult({ h, nameOf }: { h: Game; nameOf: (id: string) => string })
           </p>
           <ul aria-label={t('host.paperMissingList')}>
             {p.missing.map((id) => (
-              <li key={id}>{nameOf(id)}</li>
+              <li key={id}>
+                {getCard(id)?.art} {nameOf(id)}
+              </li>
             ))}
           </ul>
         </>
@@ -425,7 +348,7 @@ function PaperDialog(props: {
             <button type="submit" className={styles.primary}>
               {t('host.check')}
             </button>
-            <button type="button" className={styles.ctl} onClick={props.onClose}>
+            <button type="button" className={styles.btn} onClick={props.onClose}>
               {t('host.close')}
             </button>
           </div>

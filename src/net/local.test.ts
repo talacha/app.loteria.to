@@ -5,14 +5,8 @@ import { getSeat } from './transport.ts';
 import type { Msg } from './messages.ts';
 import type { JoinOptions, Role } from './transport.ts';
 
-const claim = (seat: string): Msg => ({ t: 'claim', seat, tablaIndex: 1, marks: [] });
-const call: Msg = {
-  t: 'call',
-  i: 0,
-  cardId: 'gallo',
-  lang: 'es',
-  at: 1,
-};
+const claim = (seat: string): Msg => ({ t: 'claim', seat, roundNo: 1, tablaIndex: 1, marks: [] });
+const call: Msg = { t: 'call', i: 0, cardId: 'gallo', lang: 'es', at: 1 };
 const round: Msg = {
   t: 'round',
   seed: 's',
@@ -30,7 +24,7 @@ let raws: BroadcastChannel[] = [];
 let n = 0;
 async function make(code: string, role: Role, opts?: JoinOptions) {
   const t = new LocalTransport(`seat${n++}`);
-  await t.join(code, role, undefined, opts);
+  await t.join(code, role, opts);
   open.push(t);
   return t;
 }
@@ -221,27 +215,26 @@ describe('LocalTransport', () => {
 });
 
 describe('v2 additions', () => {
-  it('verifies signed welcome and drops a forged one', async () => {
+  it('verifies signed assign and drops a forged one', async () => {
     const host = await make('C1', 'host');
     const player = await make('C1', 'player');
     const got = collect(player);
     host.send(round);
-    const w: Msg = { t: 'welcome', seat: 'x', tablaIndex: 7, round: null, called: ['a'] };
-    host.send(w);
+    host.send({ t: 'assign', seat: 'x', tablaIndex: 7, roundNo: 1 });
     await flush();
-    raw('C1').postMessage({
+    const r = raw('C1');
+    r.postMessage({
       k: 'msg',
-      frame: { role: 'host', from: 'h', m: { ...w, tablaIndex: 8 }, sig: 'AAAA' },
+      frame: {
+        role: 'host',
+        from: 'h',
+        m: { t: 'assign', seat: 'x', tablaIndex: 8, roundNo: 1 },
+        sig: 'AAAA',
+      },
     });
     await flush();
-    expect(got.filter((m) => m.t === 'welcome')).toEqual([w]);
-  });
-
-  it('join takes the seat as third argument', async () => {
-    const p = new LocalTransport();
-    open.push(p);
-    await p.join('C2b', 'player', 'given-seat');
-    expect(p.seat).toBe('given-seat');
+    const assigns = got.filter((m) => m.t === 'assign');
+    expect(assigns).toEqual([{ t: 'assign', seat: 'x', tablaIndex: 7, roundNo: 1 }]);
   });
 
   it('uses an injected seat as from and exposes it', async () => {
@@ -279,8 +272,8 @@ describe('v2 additions', () => {
     const a = new LocalTransport();
     const b = new LocalTransport();
     open.push(a, b);
-    await a.join('C3', 'host', undefined, { keyPair: kp });
-    await b.join('C4', 'host', undefined, { keyPair: kp });
+    await a.join('C3', 'host', { keyPair: kp });
+    await b.join('C4', 'host', { keyPair: kp });
     expect(await a.hostPublicKey()).toBe(await b.hostPublicKey());
   });
 

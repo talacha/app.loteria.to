@@ -1,12 +1,12 @@
 .page {
-  min-height: 100dvh;
-  padding: 24px max(16px, calc((100% - 72rem) / 2)) 0;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space-4);
+  padding-bottom: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  background: var(--night);
-  color: var(--paper);
-  font-family: var(--font-ui);
+  color: var(--color-ink);
   box-sizing: border-box;
 }
 .header {
@@ -18,8 +18,6 @@
 }
 .header h1 {
   margin: 0;
-  font-family: var(--font-display);
-  font-weight: 800;
   font-size: var(--text-xl);
 }
 .status {
@@ -27,7 +25,7 @@
   align-items: center;
   gap: var(--space-3);
   margin: 0;
-  color: var(--muted-on-night);
+  color: var(--color-ink-muted);
 }
 .roundNo {
   font-weight: 700;
@@ -36,23 +34,21 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: var(--border-thin);
-  background: var(--paper);
+  border: 2px solid var(--color-ink);
+  background: var(--color-surface);
 }
 .online {
-  background: var(--jade);
+  background: var(--color-jade);
 }
 .offline {
-  background: var(--chile);
+  background: var(--color-accent);
 }
 .unverified {
-  background: var(--maiz);
+  background: var(--color-maiz);
 }
 .notice {
-  background: var(--review);
-  color: var(--ink);
-  border: var(--border-thin);
-  border-radius: var(--radius-sm);
+  background: var(--color-warn-bg);
+  border-radius: var(--radius);
   padding: var(--space-3);
   margin: 0;
 }
@@ -74,17 +70,15 @@
   aspect-ratio: 1;
   height: auto;
   background: #fff;
-  border-radius: var(--radius-md);
-  border: var(--border-thick);
-  padding: 0;
-  box-shadow: 0 6px 0 var(--shadow-color);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
 }
 .url {
   margin: 0;
   max-width: 100%;
   overflow-wrap: anywhere;
   font-size: var(--text-sm);
-  color: var(--muted-on-night);
+  color: var(--color-ink-muted);
   text-align: center;
 }
 .side {
@@ -105,21 +99,21 @@
   padding: 0 var(--space-4);
   font: inherit;
   font-weight: 600;
-  border-radius: 14px;
-  border: var(--border-thick);
+  border-radius: var(--radius);
+  border: 2px solid var(--color-ink);
   cursor: pointer;
-  color: var(--paper);
-  background: var(--night-raised);
+  color: var(--color-ink);
+  background: var(--color-surface);
 }
 .primary {
-  background: var(--maiz);
-  color: var(--ink);
-  box-shadow: var(--shadow-hard);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 .settings {
-  background: var(--night-raised);
-  border: var(--border-thick);
-  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
 }
 .settings summary {
   min-height: var(--tap);
@@ -144,10 +138,10 @@
   min-height: var(--tap);
   padding: 0 var(--space-3);
   font: inherit;
-  color: var(--ink);
-  background: var(--paper);
-  border: var(--border-thick);
-  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
   width: 100%;
   box-sizing: border-box;
 }
@@ -168,7 +162,7 @@
   margin-top: 10px;
 }
 .muted {
-  color: var(--muted-on-night);
+  color: var(--color-ink-muted);
   font-size: var(--text-sm);
 }
 .startBar {
@@ -178,26 +172,24 @@
   flex-direction: column;
   gap: var(--space-2);
   padding: var(--space-3) 0 calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
-  background: var(--night);
-  border-top: var(--border-thin);
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
 }
 .hint {
   margin: 0;
-  color: var(--muted-on-night);
+  color: var(--color-ink-muted);
   font-size: var(--text-sm);
   text-align: center;
 }
 .start {
   min-height: 56px;
   font: inherit;
-  font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 800;
-  border-radius: var(--radius-md);
-  border: var(--border-thick);
-  background: var(--maiz);
-  color: var(--ink);
-  box-shadow: var(--shadow-hard);
+  border-radius: var(--radius);
+  border: 2px solid var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
   cursor: pointer;
 }
 .srOnly {
@@ -248,8 +240,4 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.page a {
-  color: var(--maiz);
 }

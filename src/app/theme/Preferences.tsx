@@ -4,7 +4,7 @@ import styles from './page.module.css';
 import { getTheme, setTheme, setUiLang, type ThemePref, type UiLang } from './prefs';
 
 const UI_LANGS: UiLang[] = ['es', 'en'];
-const THEMES: ThemePref[] = ['auto', 'contrast'];
+const THEMES: ThemePref[] = ['auto', 'light', 'contrast'];
 
 export function LanguageSwitch() {
   const { t, i18n } = useTranslation();

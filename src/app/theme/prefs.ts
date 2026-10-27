@@ -1,6 +1,6 @@
 import i18n from 'i18next';
 
-export type ThemePref = 'auto' | 'contrast';
+export type ThemePref = 'auto' | 'light' | 'contrast';
 export type UiLang = 'es' | 'en';
 
 const THEME_KEY = 'loteria.theme';
@@ -23,7 +23,7 @@ function write(key: string, value: string): void {
 
 export function getTheme(): ThemePref {
   const v = read(THEME_KEY);
-  return v === 'contrast' ? v : 'auto';
+  return v === 'contrast' || v === 'light' ? v : 'auto';
 }
 
 export function setTheme(theme: ThemePref): void {

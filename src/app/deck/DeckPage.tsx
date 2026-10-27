@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { CATEGORIES, cards, callableLangs, cardName, type Category, type Lang } from '@content';
-import CardArt from '../theme/CardArt';
 import page from '../theme/page.module.css';
 import styles from './DeckPage.module.css';
 
@@ -54,17 +53,14 @@ export default function DeckPage() {
           return (
             <li key={card.id} className={styles.card}>
               <span className={styles.num}>{t('deck.cardNumber', { n: card.n })}</span>
-              <CardArt
-                id={card.id}
-                emoji={card.art}
-                className={styles.art}
-                emojiClassName={styles.emoji}
-              />
+              <span className={styles.emoji} aria-hidden="true">
+                {card.art}
+              </span>
               <ul className={styles.names}>
                 <li className={styles.primary} lang="es">
                   {es?.text}
                 </li>
-                <li className={styles.secondary} lang="en">
+                <li className={page.muted} lang="en">
                   {en?.text}
                 </li>
               </ul>
