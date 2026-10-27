@@ -48,13 +48,16 @@ export const msgSchema = z.discriminatedUnion('t', [
     tablaIndex: z.number().int().min(0).max(MAX_TABLA_INDEX),
     roundNo,
   }),
-  z.object({
-    t: z.literal('call'),
-    i: z.number().int().min(0).max(1000),
-    cardId,
-    lang,
-    at: z.number().int().min(0),
-  }),
+  z
+    .object({
+      t: z.literal('call'),
+      i: z.number().int().min(0).max(1000),
+      cardId,
+      choices: z.tuple([cardId, cardId, cardId]),
+      lang,
+      at: z.number().int().min(0),
+    })
+    .refine((c) => new Set(c.choices).size === 3 && c.choices.includes(c.cardId), 'bad choices'),
   z.object({
     t: z.literal('claimResult'),
     seat,
@@ -66,6 +69,28 @@ export const msgSchema = z.discriminatedUnion('t', [
     t: z.literal('end'),
     roundNo,
     winners: z.array(seat).max(54).refine(unique, 'duplicate entries'),
+  }),
+  z.object({
+    t: z.literal('pick'),
+    seat,
+    roundNo,
+    i: z.number().int().min(0).max(1000),
+    cardId,
+  }),
+  z.object({
+    t: z.literal('pickResult'),
+    roundNo,
+    i: z.number().int().min(0).max(1000),
+    seat,
+    correct: z.boolean(),
+    first: z.boolean(),
+  }),
+  z.object({
+    t: z.literal('scores'),
+    roundNo,
+    points: z
+      .record(seat, z.number().int().min(0).max(200))
+      .refine((r) => Object.keys(r).length <= 60, 'too many entries'),
   }),
   z.object({
     t: z.literal('lobby'),
@@ -114,13 +139,24 @@ export type Msg =
       hostKey?: string;
     }
   | { t: 'assign'; seat: string; tablaIndex: number; roundNo: number }
-  | { t: 'call'; i: number; cardId: CardId; lang: Lang; at: number }
+  | {
+      t: 'call';
+      i: number;
+      cardId: CardId;
+      choices: [CardId, CardId, CardId];
+      lang: Lang;
+      at: number;
+    }
+  | { t: 'pick'; seat: string; roundNo: number; i: number; cardId: CardId }
+  | { t: 'pickResult'; roundNo: number; i: number; seat: string; correct: boolean; first: boolean }
+  | { t: 'scores'; roundNo: number; points: Record<string, number> }
   | { t: 'claimResult'; seat: string; roundNo: number; valid: boolean; missing?: CardId[] }
   | { t: 'end'; roundNo: number; winners: string[] }
   | { t: 'hello'; seat: string; name: string; glyph: string; pronouns?: string; labelLang: Lang }
   | { t: 'claim'; seat: string; roundNo: number; tablaIndex: number; marks: CardId[] };
 
-export type HostOnlyType = 'round' | 'call' | 'claimResult' | 'end' | 'assign' | 'lobby';
+export type HostOnlyType =
+  'round' | 'call' | 'claimResult' | 'end' | 'assign' | 'lobby' | 'pickResult' | 'scores';
 export const HOST_ONLY: ReadonlySet<Msg['t']> = new Set<HostOnlyType>([
   'round',
   'call',
@@ -128,6 +164,8 @@ export const HOST_ONLY: ReadonlySet<Msg['t']> = new Set<HostOnlyType>([
   'end',
   'assign',
   'lobby',
+  'pickResult',
+  'scores',
 ]);
 
 export function parseMsg(input: unknown): Msg | null {

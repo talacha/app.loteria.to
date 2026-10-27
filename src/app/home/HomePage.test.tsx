@@ -35,19 +35,33 @@ describe('HomePage', () => {
   it('shows title, nine sample cards, pending badges and three actions', async () => {
     await i18n.changeLanguage('es');
     setup();
-    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Lotería de los Pueblos');
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('¿Cómo te llamas?');
+    expect(screen.getByText('Lotería de los Pueblos')).toBeTruthy();
     expect(screen.getByText('El Sol')).toBeTruthy();
     expect(screen.getAllByText('pendiente de revisión').length).toBeGreaterThanOrEqual(1);
-    expect(screen.getByRole('link', { name: 'Cantar las cartas' }).getAttribute('href')).toBe(
-      '/host',
-    );
+    expect(screen.getByRole('button', { name: /Crear una sala/ })).toBeTruthy();
+    expect(screen.getByText('Sin cuentas, sin dinero. Solo frijolitos.')).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Imprimir tablas' }).getAttribute('href')).toBe(
       '/print',
     );
   });
+  it('requires a name to create a room, then saves the profile and goes to /host', () => {
+    localStorage.clear();
+    setup();
+    fireEvent.click(screen.getByRole('button', { name: /Crear una sala/ }));
+    expect(screen.getByRole('alert').textContent).toMatch(/nombre/);
+    fireEvent.change(screen.getByLabelText('Tu nombre en la sala'), { target: { value: 'Itzel' } });
+    fireEvent.click(screen.getByRole('radio', { name: /Rana/i }));
+    fireEvent.click(screen.getByRole('button', { name: /Crear una sala/ }));
+    expect(screen.getByTestId('loc').textContent).toBe('/host');
+    expect(JSON.parse(localStorage.getItem('loteria:profile') ?? '{}')).toMatchObject({
+      name: 'Itzel',
+      glyph: '🐸',
+    });
+  });
   it('rejects bad codes and routes good ones uppercase', () => {
     setup();
-    const input = screen.getByLabelText('Código de la sala') as HTMLInputElement;
+    const input = screen.getByLabelText('Unirme a una sala') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'k7m0q' } });
     fireEvent.submit(input.closest('form') as HTMLFormElement);
     expect(screen.getByRole('alert')).toBeTruthy();

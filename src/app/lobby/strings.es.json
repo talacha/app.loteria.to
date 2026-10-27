@@ -16,5 +16,43 @@
   "unverified": "Sala sin verificar",
   "noHost": "No encontramos a quien creó la sala. Revisa el código.",
   "toHome": "Volver al inicio",
-  "full": "La sala está llena."
+  "full": "La sala está llena.",
+  "pickLangTitle": "¿En qué idioma te cantamos?",
+  "pickLangLead": "Quien canta dirá cada carta en tu idioma. Puedes cambiarlo en cualquier momento.",
+  "pickLangGroup": "Idioma del juego",
+  "step": "Paso {n} de 2",
+  "inReview": "Palabras en revisión por hablantes",
+  "listenMode": "Modo escucha: solo el sonido, sin la palabra escrita",
+  "cta": "Jugar en {lang}",
+  "noCosts": "Sin cuentas, sin dinero. Solo frijolitos.",
+  "youPlay": "Jugarás en {lang}",
+  "reviewShort": "en revisión",
+  "leave": "Salir de la sala",
+  "room": "Sala",
+  "waitingTitle": "Esperando a quien canta…",
+  "waitingLead": "La partida empieza cuando quien canta toque «Empezar».",
+  "invite": "¿Alguien más quiere jugar? Que escanee el código QR de quien canta o escriba {code} en loteria.to",
+  "me": "Tú · {name}",
+  "langs": {
+    "nah": {
+      "name": "Náhuatl",
+      "native": "Nahuatl"
+    },
+    "yua": {
+      "name": "Maya yucateco",
+      "native": "Yucatec Maya"
+    },
+    "quz": {
+      "name": "Quechua",
+      "native": "Cusco-Collao"
+    },
+    "es": {
+      "name": "Español",
+      "native": "Spanish"
+    },
+    "en": {
+      "name": "English",
+      "native": "Inglés"
+    }
+  }
 }

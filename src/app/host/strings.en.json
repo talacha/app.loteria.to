@@ -55,5 +55,24 @@
     "remove": "Remove",
     "removeNamed": "Remove {name}"
   },
-  "resumeLobbyBody": "A room is open on this device (room {code})."
+  "resumeLobbyBody": "A room is open on this device (room {code}).",
+  "game": {
+    "cardNo": "Card {n}",
+    "ofTotal": "of {total} · which one is on your board?",
+    "wordsLabel": "Called card in the languages of the room",
+    "review": "word under review",
+    "pictureLater": "The picture shows when the call ends",
+    "time": "Time",
+    "seconds": "{s} s",
+    "auto": "Automatic calling",
+    "pickers": "{x} of {y} have picked",
+    "phones": "{count, plural, one {# phone} other {# phones}}",
+    "points": "Points",
+    "tiebreak": "tie-breaker only",
+    "firstPlus": "First correct answer: +{n}",
+    "history": "Already called",
+    "joinAt": "Join at app.loteria.to",
+    "paperName": "Paper board {n}",
+    "shortcuts": "Shortcuts: Space or P pause, R repeat, L check paper"
+  }
 }

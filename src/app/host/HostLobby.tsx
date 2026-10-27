@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
-import QRCode from 'qrcode';
 import type { PatternId } from '@engine';
 import Roster from '../lobby/Roster';
 import RoomCode from '../lobby/RoomCode';
@@ -11,28 +10,10 @@ import { MAX_SPEED, MIN_SPEED, SPEED_PRESETS } from './roundMachine';
 import type { CallLang } from './roundMachine';
 import { MAX_PLAYERS } from './useHostRoom';
 import type { HostRoom } from './useHostRoom';
+import { useQr } from './useQr';
 import { callableLangs } from '@content';
 
 const PATTERNS: PatternId[] = ['line', 'corners', 'center', 'full'];
-
-function useQr(text: string): string {
-  const [url, setUrl] = useState('');
-  useEffect(() => {
-    let alive = true;
-    QRCode.toDataURL(text, {
-      margin: 4,
-      width: 640,
-      errorCorrectionLevel: 'M',
-      color: { dark: '#000000', light: '#ffffff' },
-    })
-      .then((u) => alive && setUrl(u))
-      .catch(() => alive && setUrl(''));
-    return () => {
-      alive = false;
-    };
-  }, [text]);
-  return url;
-}
 
 export default function HostLobby({ room }: { room: HostRoom }) {
   const { t } = useTranslation();

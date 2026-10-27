@@ -7,6 +7,7 @@
  },
  "cards": [
   {
+<<<<<<< Updated upstream
    "n": 1,
    "id": "cangrejo",
    "category": "animals",
@@ -15,6 +16,58 @@
     "es": {
      "text": "el cangrejo",
      "status": "approved"
+=======
+    "n": 1,
+    "id": "jaguar",
+    "category": "animals",
+    "art": "🐆",
+    "emoji": "🐆",
+    "tags": ["cat", "spots", "forest", "night", "hunter"],
+    "names": {
+      "es": {
+        "text": "El Jaguar",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Jaguar",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "ocelotl",
+        "status": "draft",
+        "ipa": "/oˈselot͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "jaguar",
+        "note": "Kept existing draft. Molina 1571 'ocelotl: tigre'; Karttunen 1983 ocēlōtl. Also a day sign of the tonalpohualli, but the everyday animal noun; not a deity name.",
+        "headword": "Molina 1571 s.v. ocelotl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "baalam",
+        "status": "draft",
+        "ipa": "baːlam",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "jaguar",
+        "note": "Changed from existing draft 'balam' (colonial/Classic spelling) to show the long vowel of modern Yucatec, written báalam with tone in Bricker et al. 1998 and Bastarrachea et al. Diccionario básico. Alternative: chak mo'ol (also cited for jaguar/puma; regional). Association: balamo'ob are also guardian spirits of milpa and village in traditional belief; the animal sense is ordinary everyday usage, but reviewers should confirm it reads as the animal for children.",
+        "sensitivity": "ritual-association",
+        "headword": "báalam (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "uturunku",
+        "status": "draft",
+        "ipa": "utuˈɾuŋku",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "jaguar",
+        "note": "Uturunku is the jaguar (Panthera onca), source of Peruvian Spanish 'otorongo'. NOT 'puma', which is the cougar (Puma concolor) and would be a different animal; do not substitute. Jaguars are lowland (Amazonian) animals, so highland children may know the word mainly from stories; the uturunku is a prominent Inca/Andean symbolic animal (also in 'uturunku achachi' legends), but the plain noun is everyday vocabulary. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "sensitivity": "ritual-association",
+        "headword": "uturunku (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the crab",
@@ -48,6 +101,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 2,
    "id": "tortuga",
    "category": "animals",
@@ -56,6 +110,56 @@
     "es": {
      "text": "la tortuga",
      "status": "approved"
+=======
+    "n": 2,
+    "id": "colibri",
+    "category": "animals",
+    "art": "🐦",
+    "emoji": "🐦",
+    "tags": ["bird", "tiny", "flower", "wings", "fast"],
+    "names": {
+      "es": {
+        "text": "El Colibrí",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Hummingbird",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "huitzitzilin",
+        "status": "draft",
+        "ipa": "/wit͡siˈt͡silin/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "hummingbird",
+        "note": "Kept existing draft. Molina 'huitzitzilin: pájaro pequeño de pluma rica'; Karttunen huitzitzilin. Root of the deity name Huitzilopochtli, but the bird noun itself is ordinary.",
+        "headword": "Molina 1571 s.v. huitzitzilin; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "ts'unu'un",
+        "status": "draft",
+        "ipa": "tsʼunuʔun",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "hummingbird",
+        "note": "Kept existing draft. Widely documented (Bricker et al. 1998; Diccionario básico; Cordemex). Tone/length marking varies across sources (ts'unu'un vs ts'úunu'un).",
+        "headword": "ts'unu'un (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "q'inti",
+        "status": "draft",
+        "ipa": "ˈqʼenti",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "hummingbird",
+        "note": "Common word for hummingbird; AMLQ spells it 'q'enti' (with e allophone written). Pronounced with e near q. Name also appears in place names (Q'intiq…). Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "q'enti (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the turtle",
@@ -69,6 +173,7 @@
      "audio": "/audio/nah/tortuga.m4a",
      "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss turtle (distinct from ayohtli = squash); Wiktionary nhe ayotl = turtle"
     },
+<<<<<<< Updated upstream
     "yua": {
      "text": "áak",
      "status": "draft",
@@ -76,6 +181,59 @@
      "confidence": "sourced",
      "audio": "/audio/yua/tortuga.m4a",
      "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+=======
+    "confusableWith": ["condor", "guajolote"]
+  },
+  {
+    "n": 3,
+    "id": "llama",
+    "category": "animals",
+    "art": "🦙",
+    "emoji": "🦙",
+    "tags": ["andes", "wool", "mountain", "pack", "soft"],
+    "names": {
+      "es": {
+        "text": "La Llama",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Llama",
+        "status": "approved"
+      },
+      "quz": {
+        "text": "llama",
+        "status": "draft",
+        "ipa": "ˈʎama",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "llama",
+        "note": "Kept existing draft. Native Quechua word (source of the Spanish). Alternatives: 'qarwa' (llama, esp. pale/yellowish in some sources), 'llamas' plural is -kuna: 'llamakuna'. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "llama (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      },
+      "nah": {
+        "text": "llama",
+        "status": "draft",
+        "ipa": "/ˈʎama/ ~ /ˈjama/",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "llama (Spanish loan, ultimately from Quechua)",
+        "note": "Spanish word, not traditional Nahuatl. Llamas are Andean; no native referent. ichcatl (cotton; post-contact \"sheep\") would mislead.",
+        "reviewQuestion": "¿Se dice \"llama\" tal cual en náhuatl, o hay otra palabra que usen para este animal?",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "llama",
+        "status": "draft",
+        "ipa": "ʎama ~ jama",
+        "kind": "loanword",
+        "confidence": "medium",
+        "gloss": "llama (Spanish loan)",
+        "note": "Spanish loanword. The llama is Andean and not native to the peninsula; no traditional Yucatec word is expected. Medium only because it is clearly a loan; Spanish spelling kept per loan policy; pronunciation may be [jama]. Do not invent a native term. Alternative to review: keep Spanish spelling as a marked loan.",
+        "reviewQuestion": "For the Andean llama, do you use a Maya word or just say 'llama'? How do you pronounce it?",
+        "source": "Yucatec Maya, unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "quz": {
      "text": "charapa",
@@ -88,6 +246,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 3,
    "id": "mariposa",
    "category": "animals",
@@ -96,6 +255,57 @@
     "es": {
      "text": "la mariposa",
      "status": "approved"
+=======
+    "n": 4,
+    "id": "condor",
+    "category": "animals",
+    "art": "🦅",
+    "emoji": "🦅",
+    "tags": ["bird", "andes", "wings", "soar", "mountain"],
+    "names": {
+      "es": {
+        "text": "El Cóndor",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Condor",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "cóndor",
+        "status": "draft",
+        "ipa": "/ˈkondor/",
+        "kind": "loanword",
+        "confidence": "medium",
+        "gloss": "condor (Spanish loan)",
+        "note": "Spanish word, not traditional Nahuatl. The Andean condor has no Classical name. A descriptive phrase huey tzopilotl (huey \"great\" + tzopilotl \"vulture\", Molina s.v. tzopilotl) was considered but would be coined for this deck, not traditional, so it is offered only as an alternative. cozcacuauhtli (king vulture) is a different bird and a day sign; avoided.",
+        "reviewQuestion": "¿Cómo se dice \"cóndor\" en su variante: se usa la palabra española, o se diría algo como \"huey tzopilotl\"?",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "cóndor",
+        "status": "draft",
+        "ipa": "kondor",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "condor (Spanish loan)",
+        "note": "Spanish loan (cóndor), kept in Spanish spelling per loan policy. Andean bird, not native to the region. Alternative descriptive: nojoch ch'oom 'big vulture' (nojoch 'big' + ch'oom 'vulture/zopilote', both attested), which is transparent but not an established name.",
+        "reviewQuestion": "Do you have any word for the condor, or would you say 'cóndor' (or something like nojoch ch'oom, 'big vulture')?",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "kuntur",
+        "status": "draft",
+        "ipa": "ˈkuntuɾ",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "condor",
+        "note": "Source of Spanish 'cóndor'. The condor is symbolically important (national emblem, ritual dances), but kuntur is the plain animal noun. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "sensitivity": "ritual-association",
+        "headword": "kuntur (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the butterfly",
@@ -109,6 +319,7 @@
      "audio": "/audio/nah/mariposa.m4a",
      "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss butterfly"
     },
+<<<<<<< Updated upstream
     "yua": {
      "text": "péepem",
      "status": "draft",
@@ -116,6 +327,60 @@
      "confidence": "sourced",
      "audio": "/audio/yua/mariposa.m4a",
      "note": "variante péepen (ES-Maya de UADY lista ambas) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+=======
+    "confusableWith": ["colibri", "guajolote"]
+  },
+  {
+    "n": 5,
+    "id": "mariposa",
+    "category": "animals",
+    "art": "🦋",
+    "emoji": "🦋",
+    "tags": ["insect", "wings", "migration", "color", "flower"],
+    "names": {
+      "es": {
+        "text": "La Mariposa",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Butterfly",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "papalotl",
+        "status": "draft",
+        "ipa": "/paˈpalot͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "butterfly",
+        "note": "Molina 'papalotl: mariposa'; Karttunen pāpālōtl. Widely kept in modern varieties (papalotl/papalot). Source of Mexican Spanish papalote (kite). papalotl sounds close to papa; avoidWith set.",
+        "headword": "Molina 1571 s.v. papalotl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["papa"]
+      },
+      "yua": {
+        "text": "peepem",
+        "status": "draft",
+        "ipa": "peːpem",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "butterfly",
+        "note": "Standard word, written péepem with tone (Bricker et al. 1998; Diccionario básico). Also used for moths.",
+        "headword": "péepem (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "pillpintu",
+        "status": "draft",
+        "ipa": "piʎˈpintu",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "butterfly",
+        "note": "Standard Cusco word for butterfly; variant 'pilpintu'. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976); Hornberger & Hornberger, Diccionario tri-lingüe Quechua of Cusco (1983).",
+        "headword": "pillpintu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "quz": {
      "text": "pillpintu",
@@ -128,6 +393,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 4,
    "id": "abeja",
    "category": "animals",
@@ -136,6 +402,57 @@
     "es": {
      "text": "la abeja",
      "status": "approved"
+=======
+    "n": 6,
+    "id": "guajolote",
+    "category": "animals",
+    "art": "🦃",
+    "emoji": "🦃",
+    "tags": ["bird", "farm", "feathers", "fiesta", "tail"],
+    "names": {
+      "es": {
+        "text": "El Guajolote",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Turkey",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "huexolotl",
+        "status": "draft",
+        "ipa": "/weˈʃolot͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "male turkey, tom",
+        "note": "Molina 'huexolotl: gallo de la tierra'; source of Spanish guajolote. totolin is the generic/hen term and an alternative; the card shows a displaying male, so huexolotl fits.",
+        "headword": "Molina 1571 s.v. huexolotl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "uulum",
+        "status": "draft",
+        "ipa": "uːlum",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "domestic turkey",
+        "note": "úulum = domestic turkey (Bricker et al. 1998; Cordemex ulum). The wild ocellated turkey of the peninsula is kuuts, a different bird; the card shows the gobbling domestic turkey. Association: turkeys are offered in some traditional ceremonies; the word itself is everyday.",
+        "sensitivity": "ritual-association",
+        "headword": "úulum (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "pawu",
+        "status": "draft",
+        "ipa": "ˈpawu",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "turkey (< Spanish 'pavo')",
+        "note": "Turkey is a Mesoamerican domesticate with no native Andean name I can confirm. 'pawu' is a Spanish loan ('pavo') adapted to Quechua phonology; speakers may simply say 'pavo'. Do not confuse with native Andean birds (e.g. 'pawa' / guan, uncertain). Needs native-speaker check of what is actually said.",
+        "reviewQuestion": "What do you call a turkey (the farmyard bird, Spanish 'pavo') when speaking Quechua — 'pawu', 'pavo', or another word?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the bee",
@@ -149,6 +466,7 @@
      "audio": "/audio/nah/abeja.m4a",
      "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss bee; Wiktionary nhe also lists zayoltzi (bee, unreferenced)"
     },
+<<<<<<< Updated upstream
     "yua": {
      "text": "kaab",
      "status": "draft",
@@ -156,6 +474,61 @@
      "confidence": "sourced",
      "audio": "/audio/yua/abeja.m4a",
      "note": "homónimo: kaab = abeja, miel y tierra/mundo (UADY lista las tres). Alternativa ES-Maya: yik’el kaab | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+=======
+    "confusableWith": ["colibri", "condor"]
+  },
+  {
+    "n": 7,
+    "id": "tortuga",
+    "category": "animals",
+    "art": "🐢",
+    "emoji": "🐢",
+    "tags": ["reptile", "shell", "slow", "water", "patient"],
+    "names": {
+      "es": {
+        "text": "La Tortuga",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Turtle",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "ayotl",
+        "status": "draft",
+        "ipa": "/ˈajot͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "turtle, tortoise",
+        "note": "Molina 'ayotl: tortuga'; Karttunen āyōtl. RISK: without length marks it looks like ayohtli/ayotli 'squash'; reviewer may want a disambiguating spelling or diacritics.",
+        "headword": "Molina 1571 s.v. ayotl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "aak",
+        "status": "draft",
+        "ipa": "aːk",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "turtle",
+        "note": "áak 'turtle' (Cordemex; Bricker et al. 1998). Risk: near-homophones on this deck (aaktun cave, p'aak tomato) and elsewhere (ak' 'vine'); reviewers should confirm vowel length and the plain vs ejective k. Species names exist for sea vs land turtles; this is the general term. IPA ?.",
+        "reviewQuestion": "How do you say 'turtle': áak, aak, or ak? Is the vowel long? Could a child confuse it with áaktun (cave) or p'aak (tomato) when called aloud?",
+        "headword": "áak (Cordemex ac) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["cueva", "tomate"]
+      },
+      "quz": {
+        "text": "turtuga",
+        "status": "draft",
+        "ipa": "tuɾˈtuɡa",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "turtle (< Spanish 'tortuga')",
+        "note": "Reviewer accepted: changed from 'charapa', which is a Peruvian-Amazon regional (probably not Quechua) word for the river turtle Podocnemis that I cannot defend as highland Cusco Quechua. Adapted Spanish loan per loan policy; speakers may say 'tortuga' unadapted.",
+        "reviewQuestion": "Is there a Quechua word you use for a turtle or tortoise, or do you say 'tortuga'? If the loan, how would you spell it?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "quz": {
      "text": "wanquyru",
@@ -168,6 +541,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 5,
    "id": "venado",
    "category": "animals",
@@ -176,6 +550,57 @@
     "es": {
      "text": "el venado",
      "status": "approved"
+=======
+    "n": 8,
+    "id": "rana",
+    "category": "animals",
+    "art": "🐸",
+    "emoji": "🐸",
+    "tags": ["amphibian", "pond", "jump", "rain", "green"],
+    "names": {
+      "es": {
+        "text": "La Rana",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Frog",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "cueyatl",
+        "status": "draft",
+        "ipa": "/ˈkʷejat͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "frog",
+        "note": "Molina 'cueyatl: rana'; Karttunen cuēyatl. Modern forms vary (kueyatl, kuiyatl).",
+        "headword": "Molina 1571 s.v. cueyatl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "much",
+        "status": "draft",
+        "ipa": "mutʃ",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "toad, frog",
+        "note": "much is the common word for toad, used loosely for frogs (Diccionario básico; Bricker); it may not cover the green frog of the card, hence low. wo' (uo), a rain-singing frog, is avoided as the card word because wo' frogs are part of the Ch'a' Cháak rain ceremony, where children imitate their calls.",
+        "reviewQuestion": "Is 'much' only a toad, or also a green frog like this picture? What do you call a green frog? Is wo' fine for children or tied to the rain ceremony?",
+        "headword": "much (Diccionario básico) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "k'ayra",
+        "status": "draft",
+        "ipa": "ˈkʼajɾa",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "frog",
+        "note": "Standard Cusco word for frog. Contrast 'hamp'atu' = toad; picture should be a frog. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "k'ayra (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the deer",
@@ -208,6 +633,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 6,
    "id": "aguila",
    "category": "animals",
@@ -216,6 +642,60 @@
     "es": {
      "text": "el águila",
      "status": "approved"
+=======
+    "n": 9,
+    "id": "serpiente",
+    "category": "animals",
+    "art": "🐍",
+    "emoji": "🐍",
+    "tags": ["reptile", "scales", "slither", "ground", "long"],
+    "names": {
+      "es": {
+        "text": "La Serpiente",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Snake",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "coatl",
+        "status": "draft",
+        "ipa": "/ˈkoat͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "snake, serpent",
+        "note": "Molina 'coatl: culebra'; Karttunen cōātl. Ordinary noun; it is part of Quetzalcoatl and a day sign, but standing alone it is just 'snake'.",
+        "headword": "Molina 1571 s.v. coatl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "kaan",
+        "status": "draft",
+        "ipa": "kaːn",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "snake",
+        "note": "kàan/káan 'snake' (Bricker et al. 1998). Do not confuse with ka'an 'sky' (glottal stop) or kaan 'four' in some spellings. Association: the feathered serpent K'uk'ulkan; the plain word is everyday.",
+        "sensitivity": "ritual-association",
+        "headword": "kàan (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["pueblo"]
+      },
+      "quz": {
+        "text": "mach'aqway",
+        "status": "draft",
+        "ipa": "maˈtʃʼaqwaj",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "snake",
+        "note": "Ordinary word for snake (variant spelling mach'aqway / machaqway). Deliberately NOT 'amaru', which is the mythic/great serpent with strong religious and political associations. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976). Reviewer flag accepted: the ejective is uncertain — sources vary between 'mach'aqway' and 'machaqway'. Shares 'mach'a-' with mach'ay (cueva), so avoidWith.",
+        "reviewQuestion": "Do you pronounce the word for snake with a popped (ejective) ch' — 'mach'aqway' — or plain 'machaqway'?",
+        "headword": "mach'aqway (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "avoidWith": ["cueva"]
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the eagle",
@@ -248,6 +728,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 7,
    "id": "rana",
    "category": "animals",
@@ -256,6 +737,57 @@
     "es": {
      "text": "la rana",
      "status": "approved"
+=======
+    "n": 10,
+    "id": "maiz",
+    "category": "plants_food",
+    "art": "🌽",
+    "emoji": "🌽",
+    "tags": ["corn", "crop", "tortilla", "milpa", "golden"],
+    "names": {
+      "es": {
+        "text": "El Maíz",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Maize",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "centli",
+        "status": "draft",
+        "ipa": "/ˈsent͡ɬi/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "dried ear of maize; maize",
+        "note": "Kept existing draft. Molina 'centli: maçorca de maíz seca'. Alternatives: tlaolli (shelled kernels), elotl (green ear), cintli (variant spelling). Root of Centeotl, but the noun itself is everyday.",
+        "headword": "Molina 1571 s.v. centli; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "ixi'im",
+        "status": "draft",
+        "ipa": "iʃiʔim",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "maize (grain)",
+        "note": "Kept existing draft. Standard word for maize grain (all major dictionaries). Related: nal 'ear of corn (fresh)'. Maize carries deep cultural and ritual weight, but ixi'im is the ordinary noun.",
+        "sensitivity": "ritual-association",
+        "headword": "ixi'im (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "sara",
+        "status": "draft",
+        "ipa": "ˈsaɾa",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "maize",
+        "note": "Kept existing draft. Standard word for maize (plant and grain); 'choclo' (fresh ear) is 'chuqllu'. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "sara (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the frog",
@@ -288,6 +820,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 8,
    "id": "perro",
    "category": "animals",
@@ -296,6 +829,57 @@
     "es": {
      "text": "el perro",
      "status": "approved"
+=======
+    "n": 11,
+    "id": "nopal",
+    "category": "plants_food",
+    "art": "🌵",
+    "emoji": "🌵",
+    "tags": ["cactus", "desert", "paddle", "spines", "fruit"],
+    "names": {
+      "es": {
+        "text": "El Nopal",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Nopal",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "nopalli",
+        "status": "draft",
+        "ipa": "/noˈpalli/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "prickly-pear cactus pad",
+        "note": "Kept existing draft. Molina 'nopalli: tunal, árbol'. Source of Spanish nopal. Fruit is nochtli (tuna).",
+        "headword": "Molina 1571 s.v. nopalli; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "pak'am",
+        "status": "draft",
+        "ipa": "pakʼam",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "nopal / prickly-pear cactus",
+        "note": "pak'am (also pak'an) 'nopal, tuna' in Cordemex and Diccionario básico. Final m vs n varies by source; reviewers should confirm. Opuntia occurs on the peninsula but is less culturally central than in central Mexico. IPA ?.",
+        "reviewQuestion": "How do you say 'nopal': pak'am or pak'an? Is it used for the plant, the fruit (tuna), or both?",
+        "headword": "pak'am (Cordemex pakam) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "tuna",
+        "status": "draft",
+        "ipa": "ˈtuna",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "prickly-pear fruit (Opuntia); the plant is uncertain",
+        "note": "Nopal is a Mexican term not used in Peru. In the Andes the Opuntia plant and fruit are called 'tuna', a word that entered via Spanish (originally Taíno), so it is labelled loanword. I do not know a confirmed native Quechua term; reviewers should check. Note the card art (nopal pads) may read as 'tuna' to Andean children. Reviewer point accepted: 'tuna' primarily names the fruit, not the pad/plant shown on the card.",
+        "reviewQuestion": "The card shows a prickly-pear cactus plant with flat pads. Does 'tuna' name the plant or only the fruit? Is there another word for the plant (e.g. 'waraqu' or similar)?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the dog",
@@ -328,6 +912,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 9,
    "id": "serpiente",
    "category": "animals",
@@ -336,6 +921,56 @@
     "es": {
      "text": "la serpiente",
      "status": "approved"
+=======
+    "n": 12,
+    "id": "frijol",
+    "category": "plants_food",
+    "art": "🌱",
+    "emoji": "🌱",
+    "tags": ["bean", "crop", "pod", "protein", "milpa", "sprout"],
+    "names": {
+      "es": {
+        "text": "El Frijol",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Bean",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "etl",
+        "status": "draft",
+        "ipa": "/ˈet͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "bean",
+        "note": "Kept existing draft. Molina 'etl: frisol'; Karttunen ētl. Very short for a caller; reviewer may prefer a modern form (e.g. et, yetl in some varieties).",
+        "headword": "Molina 1571 s.v. etl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "bu'ul",
+        "status": "draft",
+        "ipa": "buʔul",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "bean",
+        "note": "Kept existing draft. Standard word (all major dictionaries). Specific varieties have their own names (e.g. ib 'lima bean').",
+        "headword": "bu'ul (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "purutu",
+        "status": "draft",
+        "ipa": "puˈɾutu",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "bean",
+        "note": "Native word for bean, source of Southern Cone Spanish 'poroto'. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "purutu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the snake",
@@ -368,6 +1003,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 10,
    "id": "pez",
    "category": "animals",
@@ -376,6 +1012,56 @@
     "es": {
      "text": "el pez",
      "status": "approved"
+=======
+    "n": 13,
+    "id": "pina",
+    "category": "plants_food",
+    "art": "🍍",
+    "emoji": "🍍",
+    "tags": ["fruit", "sweet", "tropical", "spiky", "crop"],
+    "names": {
+      "es": {
+        "text": "La Piña",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Pineapple",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "piña",
+        "status": "draft",
+        "ipa": "/ˈpiɲa/",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "pineapple (Spanish loan)",
+        "note": "Spanish word, not traditional Nahuatl. I have a recollection of \"matzatli\" being given for pineapple, but I cannot name a dictionary or page for it, so it is unverified and not used.",
+        "reviewQuestion": "¿Cómo se dice \"piña\" en su variante? ¿Conoce la palabra \"matzatli\" para la piña?",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "piña",
+        "status": "draft",
+        "ipa": "piɲa",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "pineapple (Spanish loan)",
+        "note": "Spanish loanword. I could not confirm a native Yucatec name for pineapple from sources I trust; rather than guess, this is left as a marked loan. Colonial dictionaries may record a native term; a reviewer should check Cordemex. Spanish spelling kept per loan policy.",
+        "reviewQuestion": "Is there a Maya word for pineapple, or do people just say 'piña'?",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "piña",
+        "status": "draft",
+        "ipa": "ˈpiɲa",
+        "kind": "loanword",
+        "confidence": "medium",
+        "gloss": "pineapple (< Spanish)",
+        "note": "Pineapple is a lowland fruit; speakers generally use Spanish 'piña'. Colonial sources record 'achupalla' for pineapple/bromeliads, but today achupalla refers mainly to wild Puya bromeliads, so it would confuse. Labelled loanword.",
+        "reviewQuestion": "For pineapple, do Quechua speakers say 'piña', or is 'achupalla' or another word used?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the fish",
@@ -408,6 +1094,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 11,
    "id": "buho",
    "category": "animals",
@@ -416,6 +1103,57 @@
     "es": {
      "text": "el búho",
      "status": "approved"
+=======
+    "n": 14,
+    "id": "chile",
+    "category": "plants_food",
+    "art": "🌶️",
+    "emoji": "🌶️",
+    "tags": ["spicy", "pepper", "red", "salsa", "crop"],
+    "names": {
+      "es": {
+        "text": "El Chile",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Chili",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "chilli",
+        "status": "draft",
+        "ipa": "/ˈt͡ʃilli/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "chili pepper",
+        "note": "Kept existing draft. Molina 'chilli: axí'; Karttunen chīlli.",
+        "headword": "Molina 1571 s.v. chilli; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "iik",
+        "status": "draft",
+        "ipa": "iːk",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "chili pepper",
+        "note": "ìik/iik 'chile' (Bricker et al. 1998; Diccionario básico), as in x-ma'ax iik. Minimal pair with iik' 'wind' (ejective k') on the viento card; callers must pronounce the ejective clearly, and reviewers may want to flag this pair for children.",
+        "headword": "ìik (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["viento", "estrella"]
+      },
+      "quz": {
+        "text": "uchu",
+        "status": "draft",
+        "ipa": "ˈutʃu",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "chili pepper",
+        "note": "Native generic word for Capsicum pepper (also 'hot spice'); the large rocoto is 'ruqut'u'. Domestic Andean Capsicum predates contact, so this is a genuine native word, not a Mesoamerican borrowing. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976). Spelling of rocoto varies: 'ruqutu' vs 'ruqut'u'.",
+        "headword": "uchu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the owl",
@@ -448,6 +1186,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 12,
    "id": "murcielago",
    "category": "animals",
@@ -456,6 +1195,58 @@
     "es": {
      "text": "el murciélago",
      "status": "approved"
+=======
+    "n": 15,
+    "id": "papa",
+    "category": "plants_food",
+    "art": "🥔",
+    "emoji": "🥔",
+    "tags": ["andes", "tuber", "underground", "crop", "harvest"],
+    "names": {
+      "es": {
+        "text": "La Papa",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Potato",
+        "status": "approved"
+      },
+      "quz": {
+        "text": "papa",
+        "status": "draft",
+        "ipa": "ˈpapa",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "potato",
+        "note": "Kept existing draft. Native Quechua word (source of Spanish 'papa'). Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "papa (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "avoidWith": ["lluvia"]
+      },
+      "nah": {
+        "text": "papa",
+        "status": "draft",
+        "ipa": "/ˈpapa/",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "potato (Spanish loan, from Quechua)",
+        "note": "Spanish word, not traditional Nahuatl. Potato is Andean and post-contact in Mexico. Do NOT use camohtli (sweet potato, camote).",
+        "reviewQuestion": "¿Se dice \"papa\" en náhuatl en su comunidad, o hay una palabra propia para la papa (no el camote)?",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["mariposa"]
+      },
+      "yua": {
+        "text": "papa",
+        "status": "draft",
+        "ipa": "papa",
+        "kind": "loanword",
+        "confidence": "medium",
+        "gloss": "potato (Spanish loan)",
+        "note": "Spanish loanword. Potato is Andean; no traditional Yucatec name expected. Do not substitute iis, which is sweet potato (camote), a different plant.",
+        "reviewQuestion": "Do people say 'papa' for potato in Maya, or another word?",
+        "source": "Yucatec Maya, unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the bat",
@@ -488,6 +1279,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 13,
    "id": "arana",
    "category": "animals",
@@ -496,6 +1288,58 @@
     "es": {
      "text": "la araña",
      "status": "approved"
+=======
+    "n": 16,
+    "id": "aguacate",
+    "category": "plants_food",
+    "art": "🥑",
+    "emoji": "🥑",
+    "tags": ["fruit", "green", "tree", "creamy", "guacamole"],
+    "names": {
+      "es": {
+        "text": "El Aguacate",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Avocado",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "ahuacatl",
+        "status": "draft",
+        "ipa": "/aˈwakat͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "avocado",
+        "note": "Kept existing draft. Molina 'ahuacatl: fruta que llaman aguacate'; Karttunen āhuacatl. Note: also slang for testicle in Classical sources; harmless here but reviewer should be aware.",
+        "sensitivity": "taboo-risk",
+        "headword": "Molina 1571 s.v. ahuacatl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "oon",
+        "status": "draft",
+        "ipa": "oːn",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "avocado",
+        "note": "óon 'avocado' (Bricker et al. 1998; Cordemex on). Short, may need a clear call.",
+        "headword": "óon (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "palta",
+        "status": "draft",
+        "ipa": "ˈpalta",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "avocado",
+        "note": "Andean word for avocado, source of Peruvian Spanish 'palta' (traditionally linked to the Palta people of southern Ecuador). Used by Quechua speakers but may be perceived as Spanish; origin debated. Do not confuse with 'p'alta' (flat), ejective. Mesoamerican origin of the fruit: Nahuatl 'ahuacatl' is unrelated.",
+        "reviewQuestion": "Is 'palta' felt as a Quechua word or as Spanish? Is there any other word for avocado?",
+        "headword": "palta (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the spider",
@@ -528,6 +1372,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 14,
    "id": "raton",
    "category": "animals",
@@ -536,6 +1381,57 @@
     "es": {
      "text": "el ratón",
      "status": "approved"
+=======
+    "n": 17,
+    "id": "tomate",
+    "category": "plants_food",
+    "art": "🍅",
+    "emoji": "🍅",
+    "tags": ["fruit", "red", "salsa", "vine", "round"],
+    "names": {
+      "es": {
+        "text": "El Tomate",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Tomato",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "xitomatl",
+        "status": "draft",
+        "ipa": "/ʃiˈtomat͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "red tomato",
+        "note": "CHANGED from existing draft tomatl. In central Mexico tomatl is mainly the green husk tomato (tomatillo); the red tomato on this card ('rojo y jugoso') is xitomatl (Molina/Karttunen; source of Mexican Spanish jitomate). If the reviewer wants the generic term, revert to tomatl.",
+        "headword": "Molina 1571 s.v. xitomatl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "p'aak",
+        "status": "draft",
+        "ipa": "pʼaːk",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "tomato",
+        "note": "p'aak 'tomato' (Bricker et al. 1998; Diccionario básico). Native word.",
+        "headword": "p'aak (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["tortuga"]
+      },
+      "quz": {
+        "text": "tumati",
+        "status": "draft",
+        "ipa": "tuˈmati",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "tomato (< Spanish 'tomate')",
+        "note": "Reviewer accepted: adapted loan 'tumati' (trivocalic). Tomato word is Nahuatl via Spanish; no native Quechua term known to me.",
+        "reviewQuestion": "For tomato, do speakers say 'tumati', 'tomate', or another word? Which spelling would you use?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the mouse",
@@ -568,6 +1464,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 15,
    "id": "hormiga",
    "category": "animals",
@@ -576,6 +1473,57 @@
     "es": {
      "text": "la hormiga",
      "status": "approved"
+=======
+    "n": 18,
+    "id": "girasol",
+    "category": "plants_food",
+    "art": "🌻",
+    "emoji": "🌻",
+    "tags": ["flower", "yellow", "seeds", "sun", "tall"],
+    "names": {
+      "es": {
+        "text": "El Girasol",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Sunflower",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "chimalxochitl",
+        "status": "draft",
+        "ipa": "/t͡ʃimalˈʃot͡ʃit͡ɬ/",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "shield flower",
+        "note": "chimalli \"shield\" + xochitl \"flower\". Commonly cited for sunflower in early colonial botanical sources (Hernández); chimalacatl \"shield reed\" is another cited form. I have not checked the primary entry myself. Fallback: loanword \"girasol\".",
+        "reviewQuestion": "¿Cómo se dice \"girasol\" en su variante: chimalxochitl, chimalacatl u otra?",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "u lool k'iin",
+        "status": "draft",
+        "ipa": "u loːl kʼiːn",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "its-flower (of the) sun, 'sun's flower'",
+        "note": "Built from attested roots: u (3rd person possessive) + lool 'flower' + k'iin 'sun'. Not an established name. Sunflower is not a traditional peninsular crop; speakers most likely say girasol (Spanish loan), which is a safe alternative. The possessive phrase order should be checked by a speaker. IPA ?.",
+        "reviewQuestion": "What do you call a sunflower? Would 'u lool k'iin' sound natural, strange, or wrong?",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["sol"]
+      },
+      "quz": {
+        "text": "hirasul",
+        "status": "draft",
+        "ipa": "hiˈɾasul",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "sunflower (< Spanish 'girasol')",
+        "note": "Reviewer accepted: adapted loan, no /x/ or o (g→h, o→u), penultimate stress. Sunflower is a North American crop. A coined native phrase like 'inti qhawaq' (inti 'sun' + qhawa- 'look' + -q agentive) is NOT used: invented, and sun-cult flavoured.",
+        "reviewQuestion": "For sunflower, do speakers say 'hirasul', 'girasol', or a Quechua phrase? Which spelling would you use?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the ant",
@@ -608,6 +1556,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 16,
    "id": "pajaro",
    "category": "animals",
@@ -616,6 +1565,61 @@
     "es": {
      "text": "el pájaro",
      "status": "approved"
+=======
+    "n": 19,
+    "id": "sol",
+    "category": "sky",
+    "art": "☀️",
+    "emoji": "☀️",
+    "tags": ["star", "day", "light", "warm", "sky"],
+    "names": {
+      "es": {
+        "text": "El Sol",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Sun",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "tonatiuh",
+        "status": "draft",
+        "ipa": "/toˈnatiw/",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "sun (lit. 'one who goes along giving warmth/light')",
+        "note": "Kept existing draft. Molina 'tonatiuh: el sol' is the ordinary Classical noun for the sun. CAUTION: identical to the deity name Tonatiuh. No separate profane noun exists in Classical; tonalli means sun's heat/day but also 'soul, day sign' (more ritual-loaded). Modern varieties use tonati, tonaltzin, etc. Reviewer must decide whether this is acceptable for the card.",
+        "reviewQuestion": "\"Tonatiuh\" también es nombre de una deidad. ¿Le parece bien usarlo como la palabra común para \"sol\" en un juego para niños, o prefiere otra (tonati, tonaltzin…)?",
+        "sensitivity": "ritual-association",
+        "headword": "Molina 1571 s.v. tonatiuh; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "k'iin",
+        "status": "draft",
+        "ipa": "kʼiːn",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "sun; day",
+        "note": "Kept existing draft. k'iin = sun, day, time (all major dictionaries). Association: K'inich, solar deity; the plain noun is everyday. Respectful address forms (e.g. Yuum K'iin) avoided.",
+        "sensitivity": "ritual-association",
+        "headword": "k'iin (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["girasol"]
+      },
+      "quz": {
+        "text": "inti",
+        "status": "draft",
+        "ipa": "ˈinti",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "sun",
+        "note": "Kept existing draft. Everyday word for the sun; also the name of the Inca sun deity (Inti). Card shows the celestial body, which is the ordinary sense. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "sensitivity": "ritual-association",
+        "headword": "inti (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the bird",
@@ -629,6 +1633,7 @@
      "audio": "/audio/nah/pajaro.m4a",
      "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss bird; Wiktionary nhe tototl (bird)"
     },
+<<<<<<< Updated upstream
     "yua": {
      "text": "ch'íich'",
      "status": "draft",
@@ -636,6 +1641,62 @@
      "confidence": "sourced",
      "audio": "/audio/yua/pajaro.m4a",
      "note": "UADY: 'pájaro, ave pequeña' (ES-Maya: ave/pájaro = ch’íich’). Mismo grafema ch’íich’ en UADY es también verbo 'espulgar' (homónimo) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+=======
+    "confusableWith": ["estrella"]
+  },
+  {
+    "n": 20,
+    "id": "luna",
+    "category": "sky",
+    "art": "🌙",
+    "emoji": "🌙",
+    "tags": ["night", "sky", "crescent", "tide", "glow"],
+    "names": {
+      "es": {
+        "text": "La Luna",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Moon",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "metztli",
+        "status": "draft",
+        "ipa": "/ˈmet͡st͡ɬi/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "moon; month",
+        "note": "Kept existing draft. Molina 'metztli: luna o mes'. Also the name of a lunar deity in some sources, but primarily the ordinary noun. Sounds close to mixtli (nube); avoidWith set.",
+        "sensitivity": "ritual-association",
+        "headword": "Molina 1571 s.v. metztli; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["nube"]
+      },
+      "yua": {
+        "text": "uj",
+        "status": "draft",
+        "ipa": "uh",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "moon; month",
+        "note": "Kept existing draft. uj = moon, month (all major dictionaries). Some speakers use respectful/ritual address forms for the moon; those are avoided here.",
+        "headword": "uj (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "killa",
+        "status": "draft",
+        "ipa": "ˈkiʎa",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "moon",
+        "note": "Kept existing draft. Moon; also means 'month'. Mama Killa is the moon deity, but 'killa' alone is the everyday noun. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "sensitivity": "ritual-association",
+        "headword": "killa (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "quz": {
      "text": "pisqu",
@@ -648,6 +1709,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 17,
    "id": "lagartija",
    "category": "animals",
@@ -656,6 +1718,60 @@
     "es": {
      "text": "la lagartija",
      "status": "approved"
+=======
+    "n": 21,
+    "id": "estrella",
+    "category": "sky",
+    "art": "⭐",
+    "emoji": "⭐",
+    "tags": ["night", "sky", "twinkle", "light", "far"],
+    "names": {
+      "es": {
+        "text": "La Estrella",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Star",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "citlalin",
+        "status": "draft",
+        "ipa": "/siˈt͡ɬalin/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "star",
+        "note": "Molina 'citlalin: estrella'; Karttunen citlalin. Modern forms: sitlalin, sitlali.",
+        "headword": "Molina 1571 s.v. citlalin; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["cometa", "observatorio"]
+      },
+      "yua": {
+        "text": "eek'",
+        "status": "draft",
+        "ipa": "eːkʼ",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "star",
+        "note": "éek' 'star' (Bricker et al. 1998; Diccionario básico). Do not confuse with ek' 'black, dark' in some colonial spellings.",
+        "headword": "éek' (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["chile", "viento", "cometa"]
+      },
+      "quz": {
+        "text": "quyllur",
+        "status": "draft",
+        "ipa": "ˈqojʎuɾ",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "star",
+        "note": "Standard word for star (AMLQ 'qoyllur'); o allophone before/after q. Also in the pilgrimage name Qoyllur Rit'i; the noun itself is ordinary. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "sensitivity": "ritual-association",
+        "headword": "qoyllur (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "avoidWith": ["cometa", "observatorio"]
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the lizard",
@@ -669,6 +1785,7 @@
      "audio": "/audio/nah/lagartija.m4a",
      "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss lizard; Wiktionary nhe topitzi ((small) lizard)"
     },
+<<<<<<< Updated upstream
     "yua": {
      "text": "meerech",
      "status": "draft",
@@ -676,6 +1793,60 @@
      "confidence": "sourced",
      "audio": "/audio/yua/lagartija.m4a",
      "note": "UADY: meerech 'lagartija'; meemech 'variedad de lagartija' (ES-Maya lista ambas). juuj = iguana | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+=======
+    "confusableWith": ["sol"]
+  },
+  {
+    "n": 22,
+    "id": "lluvia",
+    "category": "sky",
+    "art": "🌧️",
+    "emoji": "🌧️",
+    "tags": ["water", "cloud", "drops", "storm", "crops"],
+    "names": {
+      "es": {
+        "text": "La Lluvia",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Rain",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "quiahuitl",
+        "status": "draft",
+        "ipa": "/kiˈjawit͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "rain",
+        "note": "Molina 'quiahuitl: lluvia'; Karttunen quiyahuitl (also spelled quiyahuitl). Also a day sign; ordinary noun.",
+        "headword": "Molina 1571 s.v. quiahuitl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "ja'al",
+        "status": "draft",
+        "ipa": "haʔal",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "rain (ja' 'water')",
+        "note": "Changed from ja'ajal (reviewer flagged it unverified; it may be the verb 'to rain'). ja'al is offered as the noun 'rain', derived from ja' 'water'; IPA ? and form unverified. Deliberately avoided: cháak, which can mean rain in everyday speech but is also the name of the rain deity (Ch'a' Cháak ceremony); if speakers say cháak for rain the owner must decide whether that is acceptable.",
+        "reviewQuestion": "What is the everyday word for 'rain' (the noun): ja'al, ja'ajal, cháak, or something else? Is cháak acceptable for children, or only for the rain deity?",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "para",
+        "status": "draft",
+        "ipa": "ˈpaɾa",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "rain",
+        "note": "Rain (noun; verb 'para-' to rain). Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "para (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "avoidWith": ["papa"]
+      }
+>>>>>>> Stashed changes
     },
     "quz": {
      "text": "qaraywa",
@@ -688,6 +1859,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 18,
    "id": "maiz",
    "category": "plants_food",
@@ -696,6 +1868,60 @@
     "es": {
      "text": "el maíz",
      "status": "approved"
+=======
+    "n": 23,
+    "id": "rayo",
+    "category": "sky",
+    "art": "⚡",
+    "emoji": "⚡",
+    "tags": ["storm", "flash", "thunder", "sky", "fast"],
+    "names": {
+      "es": {
+        "text": "El Rayo",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Lightning",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "tlapetlanilli",
+        "status": "draft",
+        "ipa": "/t͡ɬapet͡ɬaˈnilli/",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "lightning flash, something that flashed",
+        "note": "petlani \"to flash, shine\" with tla- and the -lli patient nominal: tlapetlanilli \"something flashed\". I believe Molina has related forms (tlapetlaniliztli) for relámpago but I have not verified this exact form. Coined for this deck, not traditional.",
+        "reviewQuestion": "¿Cómo se dice \"rayo\" o \"relámpago\" en su variante?",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "lelem",
+        "status": "draft",
+        "ipa": "lelem",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "lightning flash",
+        "note": "lelem 'lightning, flash' as I recall it from Cordemex (cf. lemba' 'to shine'); kept as attested only on that recollection, with low confidence: I cannot confirm it is the everyday modern word. IPA ?. Association: lightning is tied to the Chaako'ob (rain deities) and their axes; avoid any form naming them.",
+        "reviewQuestion": "What do you call a lightning flash in everyday speech? Is 'lelem' right, and is the word connected to the Chaako'ob in a way that should stay off a children's game?",
+        "sensitivity": "ritual-association",
+        "headword": "lelem (Cordemex) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "illapa",
+        "status": "draft",
+        "ipa": "iˈʎapa",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "lightning (bolt)",
+        "note": "Common word for lightning/thunderbolt; also the name of the Inca thunder/weather deity (Illapa) and colloquially 'gun'. Kept because it is the ordinary noun (like inti, killa), but flagged for reviewers. Alternative: 'q'aqya' (thunder / thunderbolt). Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976). Reviewer spells the alternative 'qhaqya' (aspirate); I had 'q'aqya' (ejective) — needs checking.",
+        "reviewQuestion": "For a lightning bolt, would a child say 'illapa' or 'qhaqya'/'q'aqya'? Is 'illapa' too tied to the old deity or to 'gun' for a children's game?",
+        "sensitivity": "ritual-association",
+        "headword": "illapa (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the corn",
@@ -728,6 +1954,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 19,
    "id": "chile",
    "category": "plants_food",
@@ -736,6 +1963,60 @@
     "es": {
      "text": "el chile",
      "status": "approved"
+=======
+    "n": 24,
+    "id": "arcoiris",
+    "category": "sky",
+    "art": "🌈",
+    "emoji": "🌈",
+    "tags": ["colors", "rain", "sky", "arc", "light"],
+    "names": {
+      "es": {
+        "text": "El Arcoíris",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Rainbow",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "ayauhcozamalotl",
+        "status": "draft",
+        "ipa": "/ajawkosaˈmalot͡ɬ/",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "rainbow (ayahuitl \"mist\" + cozamalotl; literal sense of the second element uncertain)",
+        "note": "Molina 'ayauhcoçamalotl: arco del cielo'; ayahuitl 'mist' + cozamalotl. Long for a caller; modern varieties often shorten or use other forms. Literal gloss of cozamalotl is debated.",
+        "reviewQuestion": "¿Cómo se dice \"arcoíris\" en su variante? ¿Se usa \"ayauhcozamalotl\" o una forma más corta?",
+        "headword": "Molina 1571 s.v. ayauhcoçamalotl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "cheel",
+        "status": "draft",
+        "ipa": "tʃeːl",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "rainbow",
+        "note": "PROVISIONAL. chéel 'rainbow' as recalled from Cordemex/Bricker; I am not sure of the form or that it is in everyday use, so confidence is low. Taboo risk: in some communities the rainbow is considered dangerous (said to come out of cenotes, cause illness, not to be pointed at), and it is linked in scholarship with Ix Chel. A speaker must confirm it is acceptable on a children's card.",
+        "reviewQuestion": "What do you call a rainbow? Is 'chéel' right? Is the rainbow considered dangerous or unlucky, and would it be OK on a children's card?",
+        "sensitivity": "taboo-risk",
+        "headword": "chéel (Cordemex chel) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "k'uychi",
+        "status": "draft",
+        "ipa": "ˈkʼujtʃi",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "rainbow",
+        "note": "Standard word for rainbow. Folk belief: rainbows can cause illness (pregnant women and children are told not to point at it); reviewers may want to note this for children's use. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "sensitivity": "taboo-risk",
+        "headword": "k'uychi (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the chili",
@@ -768,6 +2049,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 20,
    "id": "flor",
    "category": "plants_food",
@@ -776,6 +2058,57 @@
     "es": {
      "text": "la flor",
      "status": "approved"
+=======
+    "n": 25,
+    "id": "nube",
+    "category": "sky",
+    "art": "☁️",
+    "emoji": "☁️",
+    "tags": ["sky", "white", "rain", "float", "soft"],
+    "names": {
+      "es": {
+        "text": "La Nube",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Cloud",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "mixtli",
+        "status": "draft",
+        "ipa": "/ˈmiʃt͡ɬi/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cloud",
+        "note": "Molina 'mixtli: nube'; Karttunen mixtli.",
+        "headword": "Molina 1571 s.v. mixtli; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["luna"]
+      },
+      "yua": {
+        "text": "muuyal",
+        "status": "draft",
+        "ipa": "muːjal",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cloud",
+        "note": "múuyal 'cloud' (Bricker et al. 1998; Diccionario básico).",
+        "headword": "múuyal (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "phuyu",
+        "status": "draft",
+        "ipa": "ˈpʰuju",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cloud",
+        "note": "Standard word for cloud (also mist). Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "phuyu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the flower",
@@ -808,6 +2141,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 21,
    "id": "hongo",
    "category": "plants_food",
@@ -816,6 +2150,60 @@
     "es": {
      "text": "el hongo",
      "status": "approved"
+=======
+    "n": 26,
+    "id": "viento",
+    "category": "sky",
+    "art": "💨",
+    "emoji": "💨",
+    "tags": ["air", "breeze", "leaves", "invisible", "storm"],
+    "names": {
+      "es": {
+        "text": "El Viento",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Wind",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "ehecatl",
+        "status": "draft",
+        "ipa": "/eˈʔekat͡ɬ/ ~ /eˈhekat͡ɬ/",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "wind",
+        "note": "Molina 'ehecatl: viento'; Karttunen ehēcatl. CAUTION: same form as the wind deity Ehecatl and a day sign; it is the ordinary noun but reviewer should judge, as with tonatiuh. Modern forms: ejekatl, ajakatl.",
+        "reviewQuestion": "\"Ehecatl\" también es nombre de una deidad. ¿Le parece bien como palabra común para \"viento\" en un juego para niños, o prefiere otra forma?",
+        "sensitivity": "ritual-association",
+        "headword": "Molina 1571 s.v. ehecatl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "iik'",
+        "status": "draft",
+        "ipa": "iːkʼ",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "wind, air, breath",
+        "note": "iik' 'wind, breath' (all major dictionaries). Also means spirit/breath and is a day name in the calendar; the everyday sense is wind. Minimal pair with iik 'chile' (plain k) on the chile card.",
+        "headword": "iik' (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["chile", "estrella"]
+      },
+      "quz": {
+        "text": "wayra",
+        "status": "draft",
+        "ipa": "ˈwajɾa",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "wind",
+        "note": "Standard word for wind. Note 'wayra' also figures in folk illness concepts ('mal viento'), but the noun is everyday. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "sensitivity": "taboo-risk",
+        "headword": "wayra (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the mushroom",
@@ -849,6 +2237,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 22,
    "id": "aguacate",
    "category": "plants_food",
@@ -857,6 +2246,59 @@
     "es": {
      "text": "el aguacate",
      "status": "approved"
+=======
+    "n": 27,
+    "id": "cometa",
+    "category": "sky",
+    "art": "☄️",
+    "emoji": "☄️",
+    "tags": ["sky", "tail", "night", "ice", "space"],
+    "names": {
+      "es": {
+        "text": "El Cometa",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Comet",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "citlalin popoca",
+        "status": "draft",
+        "ipa": "/siˈt͡ɬalin poˈpoka/",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "the star smokes (smoking star)",
+        "note": "citlalin \"star\" + popoca \"it smokes\": a clause, \"the star smokes\". I recall Molina giving this for cometa but cannot confirm the entry, so treated as descriptive. Until verified, treat as coined for this deck, not traditional. Shares citlalin with estrella, so the two must not be offered together.",
+        "reviewQuestion": "¿Cómo se dice \"cometa\" (estrella con cola) en su variante? ¿Se usa \"citlalin popoca\"?",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["estrella", "observatorio"]
+      },
+      "yua": {
+        "text": "buuts' eek'",
+        "status": "draft",
+        "ipa": "buːtsʼ eːkʼ",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "smoke star",
+        "note": "búuts' 'smoke' (long vowel, as in Bricker et al. 1998) + éek' 'star'. Earlier draft wrote short buts'. I believe colonial dictionaries record budz ek for comet, which would make it attested, but I have not verified it, so it is descriptive, low. Alternative: Spanish loan cometa.",
+        "reviewQuestion": "Is there a Maya word for a comet? Would 'búuts' éek'' (smoke star) be understood, or do people say 'cometa'?",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["estrella"]
+      },
+      "quz": {
+        "text": "chupayuq quyllur",
+        "status": "draft",
+        "ipa": "tʃuˈpajoq ˈqojʎuɾ",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "star that has a tail",
+        "note": "Descriptive phrase: chupa 'tail' + -yuq 'possessor' + quyllur 'star'. I could not confirm a traditional single word for comet; colonial lexicons may record one, which reviewers should prefer if found. Could also simply be Spanish 'cometa'.",
+        "reviewQuestion": "Is there a Quechua word for a comet? Would 'chupayuq quyllur' ('star with a tail') be understood, or would speakers just say 'cometa'?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "avoidWith": ["estrella", "observatorio"]
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the avocado",
@@ -889,6 +2331,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 23,
    "id": "semilla",
    "category": "plants_food",
@@ -897,6 +2340,61 @@
     "es": {
      "text": "la semilla",
      "status": "approved"
+=======
+    "n": 28,
+    "id": "montana",
+    "category": "land",
+    "art": "🏔️",
+    "emoji": "🏔️",
+    "tags": ["high", "peak", "snow", "rock", "andes"],
+    "names": {
+      "es": {
+        "text": "La Montaña",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Mountain",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "tepetl",
+        "status": "draft",
+        "ipa": "/ˈtepet͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "mountain, hill",
+        "note": "Kept existing draft. Molina 'tepetl: monte o sierra'. Shares tepetl with volcan and pueblo (altepetl); avoidWith set.",
+        "headword": "Molina 1571 s.v. tepetl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["pueblo", "volcan"]
+      },
+      "yua": {
+        "text": "wits",
+        "status": "draft",
+        "ipa": "wits",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "hill, mountain",
+        "note": "wits (colonial witz) 'hill, mountain' (Cordemex; Bricker). The peninsula is flat; locally the word mostly names hills. Alternative: puuk 'range of hills' (the Puuc). Snowy peaks in the verse have no local referent.",
+        "reviewQuestion": "Is 'wits' the word for a big mountain, or only for a hill? Would you use puuk?",
+        "headword": "wits (Cordemex witz) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["volcan"]
+      },
+      "quz": {
+        "text": "urqu",
+        "status": "draft",
+        "ipa": "ˈoɾqo",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "mountain, hill",
+        "note": "Plain word for mountain/hill (AMLQ 'orqo'). Deliberately NOT 'apu', which denotes a sacred mountain lord/spirit and is a ritual term. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976). Note: 'urqu' also means 'male' (of animals, e.g. urqu llama), so it can be heard that way out of context.",
+        "sensitivity": "ritual-association",
+        "headword": "orqo (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "avoidWith": ["volcan"]
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the seed",
@@ -910,6 +2408,7 @@
      "audio": "/audio/nah/semilla.m4a",
      "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss 1. seed 2. breeding farm animal; Wiktionary nhe iyol = seed"
     },
+<<<<<<< Updated upstream
     "yua": {
      "text": "neek'",
      "status": "draft",
@@ -925,10 +2424,138 @@
      "confidence": "sourced",
      "audio": "/audio/quz/semilla.m4a",
      "note": "Minedu entry 'Muhu ... Semilla, semen'; runasimi Qusqu: muhu, muqu."
+=======
+    "confusableWith": ["volcan"]
+  },
+  {
+    "n": 29,
+    "id": "volcan",
+    "category": "land",
+    "art": "🌋",
+    "emoji": "🌋",
+    "tags": ["mountain", "smoke", "lava", "fire", "rock"],
+    "names": {
+      "es": {
+        "text": "El Volcán",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Volcano",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "popocani tepetl",
+        "status": "draft",
+        "ipa": "/popoˈkani ˈtepet͡ɬ/",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "smoking mountain",
+        "note": "popoca \"to smoke\" (intransitive verb) + -ni (customary agentive on present stem) gives popocani \"one that smokes\", used here as a modifier before tepetl \"mountain\". Classical would more naturally compound verb stem + noun as popocatepetl, but that is the proper name of one volcano, so avoided. Coined for this deck, not traditional.",
+        "reviewQuestion": "¿Hay una palabra general para \"volcán\" en su variante? ¿Se entiende \"popocani tepetl\" o suena raro?",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["montana", "pueblo"]
+      },
+      "yua": {
+        "text": "k'aak'il wits",
+        "status": "draft",
+        "ipa": "kʼaːkʼil wits",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "fire mountain (fire-POSS hill)",
+        "note": "Built from k'aak' 'fire' + -il (relational suffix) + wits 'hill/mountain'. There are no volcanoes on the peninsula and no traditional word is expected; Spanish volcán is the likely everyday form and a safe alternative. Modifier construction needs a speaker's check (k'aak' wits vs k'aak'il wits). IPA ?.",
+        "reviewQuestion": "How would you say 'volcano'? Would 'k'aak'il wits' (fire mountain) make sense, or do people just say 'volcán'?",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["montana", "mar"]
+      },
+      "quz": {
+        "text": "nina urqu",
+        "status": "draft",
+        "ipa": "ˈnina ˈoɾqo",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "fire mountain",
+        "note": "Descriptive compound: nina 'fire' + urqu 'mountain'. No well-attested Cusco word for volcano known to me (Cusco has no active volcanoes); speakers likely say Spanish 'volcán'. Specific volcanoes (Misti, Sabancaya) are apu-type sacred peaks, so avoid naming one. Reviewers may prefer the loan. Shares 'urqu' with montana (avoidWith); 'urqu' also means 'male'.",
+        "reviewQuestion": "Is 'nina urqu' ('fire mountain') understood as volcano, or do speakers say 'volcán'/'wulkan'? Does 'urqu' risk being heard as 'male' here?",
+        "sensitivity": "ritual-association",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "avoidWith": ["montana"]
+      }
+    },
+    "verso": {
+      "es": "Duerme con humo en la cima\ny a veces despierta con fuerza.",
+      "en": "It sleeps with smoke on top\nand sometimes wakes up with force."
+    },
+    "riddle": {
+      "es": "Tengo un hueco en la cima y guardo fuego por dentro; a veces echo humo y ceniza.",
+      "en": "I have a hollow top and keep fire inside; sometimes I puff out smoke and ash."
+    },
+    "confusableWith": ["montana"]
+  },
+  {
+    "n": 30,
+    "id": "manantial",
+    "category": "land",
+    "art": "💧",
+    "emoji": "💧",
+    "tags": ["water", "spring", "fresh", "ground", "drink"],
+    "names": {
+      "es": {
+        "text": "El Manantial",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Spring",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "ameyalli",
+        "status": "draft",
+        "ipa": "/ameˈjalli/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "spring, source of water",
+        "note": "Molina 'ameyalli: fuente o manantial'; from atl 'water' + meya 'to flow'.",
+        "headword": "Molina 1571 s.v. ameyalli; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "sayab",
+        "status": "draft",
+        "ipa": "sajab",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "spring, water source",
+        "note": "sayab 'manantial, ojo de agua' (Cordemex). Its everyday modern use is uncertain. Alternative culturally central water source: ts'ono'ot 'cenote', but that is a sinkhole, a different referent, and cenotes have strong ritual associations; not used. Lowered to low: I recall sayab from Cordemex but not its modern currency.",
+        "reviewQuestion": "What do you call a spring where water comes out of the ground? Is 'sayab' a word you know or use?",
+        "headword": "sayab (Cordemex) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "pukyu",
+        "status": "draft",
+        "ipa": "ˈpukju",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "spring (of water)",
+        "note": "Standard word for spring/well (Spanish 'puquio' derives from it). Springs are often places of offerings and are believed to have spirits; the noun itself is ordinary. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "sensitivity": "ritual-association",
+        "headword": "pukyu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+    },
+    "verso": {
+      "es": "Brota limpia de la tierra,\ny así nace un río.",
+      "en": "It bubbles up clean from the ground,\nand that is how a river begins."
+    },
+    "riddle": {
+      "es": "Salgo de la tierra como agua fresca y de mí nace un río.",
+      "en": "I come out of the ground as fresh water, and a river is born from me."
+>>>>>>> Stashed changes
     }
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 24,
    "id": "hoja",
    "category": "plants_food",
@@ -937,6 +2564,60 @@
     "es": {
      "text": "la hoja",
      "status": "approved"
+=======
+    "n": 31,
+    "id": "mar",
+    "category": "land",
+    "art": "🌊",
+    "emoji": "🌊",
+    "tags": ["water", "waves", "salt", "shore", "fish"],
+    "names": {
+      "es": {
+        "text": "El Mar",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Sea",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "ilhuicaatl",
+        "status": "draft",
+        "ipa": "/ilwiˈkaat͡ɬ/",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "sea (lit. sky-water)",
+        "note": "Molina 'ilhuicaatl: la mar'; ilhuicatl 'sky' + atl 'water'. Alternatives: hueyatl ('great water'), teoatl (has teo- 'divine' element, avoided). Modern speakers may just say hueyatl or loan 'mar'.",
+        "reviewQuestion": "¿Cómo se dice \"mar\" en su variante: ilhuicaatl, hueyatl, \"mar\" u otra?",
+        "headword": "Molina 1571 s.v. ilhuicaatl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "k'aak'nab",
+        "status": "draft",
+        "ipa": "kʼaːkʼnab",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "sea",
+        "note": "k'áak'nab 'sea' (Bricker et al. 1998; Diccionario básico).",
+        "headword": "k'áak'nab (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["volcan"]
+      },
+      "quz": {
+        "text": "lamar qucha",
+        "status": "draft",
+        "ipa": "laˈmaɾ ˈqotʃa",
+        "kind": "loanword",
+        "confidence": "medium",
+        "gloss": "sea (< Spanish 'la mar' + qucha 'lake')",
+        "note": "Commonly used Cusco term for the sea: a hybrid of Spanish 'la mar' and Quechua qucha 'lake, body of water'. Alternative 'mama qucha' ('mother lake') is the colonial term but also names the sea deity Mamaqucha, so avoided as card word. Plain 'qucha' = lake, too broad. Source: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005) (lists lamar qocha).",
+        "reviewQuestion": "Do you say 'lamar qucha' for the sea? Is 'mama qucha' better or too religious for a children's game?",
+        "sensitivity": "ritual-association",
+        "headword": "lamar qocha (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the leaf",
@@ -969,6 +2650,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 25,
    "id": "arbol",
    "category": "plants_food",
@@ -977,6 +2659,56 @@
     "es": {
      "text": "el árbol",
      "status": "approved"
+=======
+    "n": 32,
+    "id": "desierto",
+    "category": "land",
+    "art": "🏜️",
+    "emoji": "🏜️",
+    "tags": ["sand", "dry", "cactus", "sun", "dunes"],
+    "names": {
+      "es": {
+        "text": "El Desierto",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Desert",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "huacqui tlalli",
+        "status": "draft",
+        "ipa": "/ˈwakki ˈt͡ɬalli/",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "dried-up land",
+        "note": "huaqui \"to dry out\" (preterit agentive huacqui \"dried\") + tlalli \"land\": \"dried-up land\". Coined for this deck, not traditional. Attested ixtlahuatl means open plain/savanna, not quite desert.",
+        "reviewQuestion": "¿Cómo se dice \"desierto\" (tierra seca con poca lluvia) en su variante?",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "tikin lu'um",
+        "status": "draft",
+        "ipa": "tikin luʔum",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "dry land",
+        "note": "tikin 'dry' + lu'um 'earth, land', both attested. No deserts on the peninsula; not an established term. Spanish desierto is a likely everyday alternative. IPA ?.",
+        "reviewQuestion": "How would you say 'desert'? Would 'tikin lu'um' (dry land) make sense, or do people say 'desierto'?",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "ch'aki pampa",
+        "status": "draft",
+        "ipa": "ˈtʃʼaki ˈpampa",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "dry plain",
+        "note": "Descriptive: ch'aki 'dry' + pampa 'plain, open flat land'. Alternative attested 'purun' / 'purun pampa' (wild, uninhabited, uncultivated land) — closer to colonial 'despoblado' than to a sandy desert. No desert in Cusco; reviewers decide.",
+        "reviewQuestion": "How would you name a sandy desert: 'ch'aki pampa', 'purun', 'purun pampa', or the Spanish word?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the tree",
@@ -1009,6 +2741,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 26,
    "id": "frijol",
    "category": "plants_food",
@@ -1017,6 +2750,58 @@
     "es": {
      "text": "el frijol",
      "status": "approved"
+=======
+    "n": 33,
+    "id": "selva",
+    "category": "land",
+    "art": "🌴",
+    "emoji": "🌴",
+    "tags": ["trees", "green", "rain", "birds", "humid"],
+    "names": {
+      "es": {
+        "text": "La Selva",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Jungle",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "cuauhtla",
+        "status": "draft",
+        "ipa": "/ˈkʷawt͡ɬa/",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "forest, place of many trees",
+        "note": "Molina 'quauhtla: arboleda o montaña de árboles'; cuahuitl 'tree' + -tla (abundance). Means forest generally, not specifically tropical jungle. Modern varieties: kuoujtla, kuatitla.",
+        "reviewQuestion": "¿Cuauhtla sirve para \"selva\" (bosque tropical con mucha lluvia) o solo para \"bosque\"?",
+        "headword": "Molina 1571 s.v. quauhtla; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["puente"]
+      },
+      "yua": {
+        "text": "k'aax",
+        "status": "draft",
+        "ipa": "kʼaːʃ",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "forest, bush, monte",
+        "note": "k'áax 'forest, wild land, monte' (all major dictionaries). Covers scrub forest broadly, not only tall jungle. The verse's monkeys fit (ma'ax 'spider monkey').",
+        "headword": "k'áax (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "sach'a sach'a",
+        "status": "draft",
+        "ipa": "ˈsatʃʼa ˈsatʃʼa",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "forest (lit. tree-tree, many trees)",
+        "note": "Reviewer accepted: reduplicated sach'a 'tree, bush' + sach'a ('many trees' → thicket, forest); treated as descriptive, not a dictionary word for rainforest. Alternatives: 'yunka' (warm lowland zone), 'anti' (eastern lowlands; historical, as in Antisuyu).",
+        "reviewQuestion": "For the tropical rainforest (many trees, rain, monkeys), would you say 'sach'a sach'a', 'yunka', 'anti', or another word?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the bean",
@@ -1049,6 +2834,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 27,
    "id": "sol",
    "category": "sky",
@@ -1057,6 +2843,58 @@
     "es": {
      "text": "el sol",
      "status": "approved"
+=======
+    "n": 34,
+    "id": "cristal",
+    "category": "land",
+    "art": "💎",
+    "emoji": "💎",
+    "tags": ["rock", "shiny", "mineral", "cave", "clear"],
+    "names": {
+      "es": {
+        "text": "El Cristal",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Crystal",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "tehuilotl",
+        "status": "draft",
+        "ipa": "/teˈwilot͡ɬ/",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "rock crystal, clear quartz",
+        "note": "Molina 'tehuilotl: cristal'; Sahagún Book 11 describes it among stones. Confident in the word, less in spelling (te- 'stone' + huilotl?).",
+        "reviewQuestion": "¿Conoce \"tehuilotl\" para el cristal de roca? ¿Cómo lo dicen?",
+        "headword": "Molina 1571 s.v. tehuilotl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "cristal",
+        "status": "draft",
+        "ipa": "kristal",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "crystal (Spanish loan)",
+        "note": "Spanish loan, kept in Spanish spelling per loan policy. Deliberately avoided: sáastun 'clear stone', the divining crystal used by the j-meen (traditional ritual specialist), a sacred object. Also avoided sáasil tuunich 'clear stone' for being too close to it.",
+        "reviewQuestion": "Do you say 'cristal' for a rock crystal? Is there a Maya word that is NOT the sáastun of the j-meen?",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "qispi",
+        "status": "draft",
+        "ipa": "ˈqespi",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "crystal, glass; transparent",
+        "note": "Qispi means crystal/glass/transparent stone (AMLQ 'qespi'); homophonous with qispi 'free, saved' (qispi- 'to escape, be saved'), which can be ambiguous. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "reviewQuestion": "Does 'qispi' mean a rock crystal to you? Could children confuse it with 'qispi' meaning 'free/saved'?",
+        "headword": "qespi (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the sun",
@@ -1089,6 +2927,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 28,
    "id": "luna",
    "category": "sky",
@@ -1097,6 +2936,58 @@
     "es": {
      "text": "la luna",
      "status": "approved"
+=======
+    "n": 35,
+    "id": "isla",
+    "category": "land",
+    "art": "🏝️",
+    "emoji": "🏝️",
+    "tags": ["sea", "sand", "palm", "shore", "small"],
+    "names": {
+      "es": {
+        "text": "La Isla",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Island",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "isla",
+        "status": "draft",
+        "ipa": "/ˈisla/",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "island (Spanish loan)",
+        "note": "Spanish word, not traditional Nahuatl. Replaced the earlier draft anepantla tlalli, which reviewer judged ungrammatical (adverbial anepantla juxtaposed to a noun without a proper construction). I know no reliable single Classical noun for island.",
+        "reviewQuestion": "¿Cómo se dice \"isla\" (tierra rodeada de agua) en náhuatl en su variante?",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "peten",
+        "status": "draft",
+        "ipa": "peten",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "island",
+        "note": "peten 'island' (Cordemex; source of the place name Petén). Well attested historically; reviewers should confirm current everyday use versus Spanish isla.",
+        "reviewQuestion": "Do people today say 'peten' for an island, or mostly 'isla'?",
+        "headword": "peten (Cordemex) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "wat'a",
+        "status": "draft",
+        "ipa": "ˈwatʼa",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "island",
+        "note": "Word for island used especially around Lake Titicaca (Puno/Collao); AMLQ lists wat'a 'isla'. Less familiar to speakers far from lakes. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005).",
+        "reviewQuestion": "Is 'wat'a' the word you use for an island, or is it only known around Lake Titicaca?",
+        "headword": "wat'a (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the moon",
@@ -1129,6 +3020,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 29,
    "id": "estrella",
    "category": "sky",
@@ -1137,6 +3029,61 @@
     "es": {
      "text": "la estrella",
      "status": "approved"
+=======
+    "n": 36,
+    "id": "cueva",
+    "category": "land",
+    "art": "🕳️",
+    "emoji": "🕳️",
+    "tags": ["dark", "rock", "echo", "underground", "bats"],
+    "names": {
+      "es": {
+        "text": "La Cueva",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Cave",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "oztotl",
+        "status": "draft",
+        "ipa": "/ˈostot͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cave",
+        "note": "Molina 'oztotl: cueva'; Karttunen oztōtl. Caves have ritual significance in Mesoamerica but the noun is ordinary.",
+        "headword": "Molina 1571 s.v. oztotl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "aaktun",
+        "status": "draft",
+        "ipa": "aːktun",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cave",
+        "note": "áaktun (colonial actun) 'cave' (Bricker et al. 1998; Cordemex). Association: caves are traditional offering places and entrances to the underworld in belief; the noun itself is everyday (common in place names).",
+        "sensitivity": "ritual-association",
+        "headword": "áaktun (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["tortuga"]
+      },
+      "quz": {
+        "text": "mach'ay",
+        "status": "draft",
+        "ipa": "ˈmatʃʼaj",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cave, rock shelter",
+        "note": "Standard word for cave/rock shelter (also 'machay' in place names). Caves can be associated with ancestors/spirits (and chinkana tunnels), but mach'ay is the ordinary noun. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "reviewQuestion": "Do you pronounce the word for cave with an ejective, 'mach'ay'?",
+        "sensitivity": "ritual-association",
+        "headword": "mach'ay (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "avoidWith": ["serpiente"]
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the star",
@@ -1169,6 +3116,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 30,
    "id": "nube",
    "category": "sky",
@@ -1177,6 +3125,57 @@
     "es": {
      "text": "la nube",
      "status": "approved"
+=======
+    "n": 37,
+    "id": "olla",
+    "category": "handmade",
+    "art": "🏺",
+    "emoji": "🏺",
+    "tags": ["clay", "pot", "cooking", "kitchen", "pottery"],
+    "names": {
+      "es": {
+        "text": "La Olla",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Clay Pot",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "comitl",
+        "status": "draft",
+        "ipa": "/ˈkomit͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "clay cooking pot",
+        "note": "Molina 'comitl: olla'; Karttunen comitl. Related comalli (griddle).",
+        "headword": "Molina 1571 s.v. comitl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "kuum",
+        "status": "draft",
+        "ipa": "kuːm",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "cooking pot",
+        "note": "kum/kuum 'olla' (Cordemex; Diccionario básico). Vowel length uncertain across sources. Related: p'uul 'water jar (cántaro)', a different vessel. IPA ?.",
+        "reviewQuestion": "What do you call a clay cooking pot: kum or kuum? Is it different from p'uul?",
+        "headword": "kum (Cordemex) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "manka",
+        "status": "draft",
+        "ipa": "ˈmaŋka",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cooking pot",
+        "note": "Standard word for (clay) cooking pot. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "manka (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the cloud",
@@ -1209,6 +3208,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 31,
    "id": "lluvia",
    "category": "sky",
@@ -1217,6 +3217,58 @@
     "es": {
      "text": "la lluvia",
      "status": "approved"
+=======
+    "n": 38,
+    "id": "cesto",
+    "category": "handmade",
+    "art": "🧺",
+    "emoji": "🧺",
+    "tags": ["weaving", "fibers", "carry", "market", "reeds"],
+    "names": {
+      "es": {
+        "text": "El Cesto",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Basket",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "chiquihuitl",
+        "status": "draft",
+        "ipa": "/t͡ʃiˈkiwit͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "basket",
+        "note": "Molina 'chiquihuitl: cesto o canasta'; source of Mexican Spanish chiquihuite. Alternative petlacalli is a lidded reed box, not a basket.",
+        "headword": "Molina 1571 s.v. chiquihuitl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "xuuxak",
+        "status": "draft",
+        "ipa": "ʃuːʃak",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "basket",
+        "note": "Kept xúuxak over xak: my recollection is that xúuxak is the modern basket word and xak the colonial form (Cordemex xac), but I am not sure; low. Length ?. IPA ?.",
+        "reviewQuestion": "What do you call a woven basket: xúuxak, xak, or something else? Is the vowel long?",
+        "headword": "xúuxak (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "isanka",
+        "status": "draft",
+        "ipa": "iˈsaŋka",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "basket",
+        "note": "Word for a woven basket (cane/reed) in Cusco dictionaries. Regional alternatives exist (e.g. 'chiwi', 'wayunka' uncertain); reviewers should pick the local everyday word. Sources: Cusihuamán, Diccionario Quechua Cuzco–Collao (1976); Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005).",
+        "reviewQuestion": "What do you call a woven basket for carrying fruit: 'isanka', 'chiwi', or another word?",
+        "headword": "isanka (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the rain",
@@ -1250,6 +3302,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 32,
    "id": "arcoiris",
    "category": "sky",
@@ -1258,6 +3311,60 @@
     "es": {
      "text": "el arcoíris",
      "status": "approved"
+=======
+    "n": 39,
+    "id": "tambor",
+    "category": "handmade",
+    "art": "🥁",
+    "emoji": "🥁",
+    "tags": ["music", "beat", "rhythm", "skin", "festival"],
+    "names": {
+      "es": {
+        "text": "El Tambor",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Drum",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "huehuetl",
+        "status": "draft",
+        "ipa": "/ˈwewet͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "upright drum",
+        "note": "Molina 'huehuetl: atabal'. The drum used in ceremonial dance, but the instrument noun is ordinary. Alternative teponaztli is the slit drum. Homophone in unmarked spelling with huehue 'old man' is a mild risk.",
+        "headword": "Molina 1571 s.v. huehuetl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["martillo"]
+      },
+      "yua": {
+        "text": "tunk'ul",
+        "status": "draft",
+        "ipa": "tunkʼul",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "slit drum / drum",
+        "note": "tunkul / tunk'ul (colonial spelling tunkul) is the hollow-log slit drum (cf. Nahuatl teponaztli). Uncertain: plain vs ejective k, and whether it fits a hand drum. The skin drum is pax/paax in some sources, but paax now commonly means 'music'. Association: used in traditional ceremonies and dances. IPA ?.",
+        "reviewQuestion": "What do you call a drum like this one (hit with hands or sticks)? Is 'tunkul' / 'tunk'ul' that drum, or only the hollow log drum? Is it tied to ceremonies?",
+        "sensitivity": "ritual-association",
+        "headword": "tunkul (Cordemex) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "wankar",
+        "status": "draft",
+        "ipa": "ˈwaŋkaɾ",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "drum",
+        "note": "Wankar / wankara = drum (Spanish 'huancar'); attested in colonial and modern dictionaries. Today 'tinya' names the small hand drum, 'wankar' a larger drum; either may be expected. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976). 'tinya' may be the better everyday word for a small hand drum.",
+        "reviewQuestion": "For a drum played with hands or sticks, which word do children know: 'wankar', 'tinya', or another?",
+        "headword": "wankar (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the rainbow",
@@ -1290,6 +3397,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 33,
    "id": "viento",
    "category": "sky",
@@ -1298,6 +3406,57 @@
     "es": {
      "text": "el viento",
      "status": "approved"
+=======
+    "n": 40,
+    "id": "adobe",
+    "category": "handmade",
+    "art": "🧱",
+    "emoji": "🧱",
+    "tags": ["clay", "brick", "build", "earth", "wall"],
+    "names": {
+      "es": {
+        "text": "El Adobe",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Adobe Brick",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "xamitl",
+        "status": "draft",
+        "ipa": "/ˈʃamit͡ɬ/",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "adobe brick",
+        "note": "Molina 'xamitl: adobe'. I am fairly but not fully sure of this entry; check against Molina directly.",
+        "reviewQuestion": "¿Cómo se dice \"adobe\" (ladrillo de barro y paja) en su variante? ¿Se usa \"xamitl\"?",
+        "headword": "Molina 1571 s.v. xamitl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "adobe",
+        "status": "draft",
+        "ipa": "adobe",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "adobe brick (Spanish loan)",
+        "note": "Spanish loan. Adobe is not a traditional peninsular building material (houses are stone, bajareque/wattle-and-daub, and palm thatch), so no native term is expected. Descriptive alternative for review: luk' tuunich 'mud stone' (luk' 'mud' + tuunich 'stone'), not established.",
+        "reviewQuestion": "Is there a Maya word for a mud brick, or do people say 'adobe'?",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "tika",
+        "status": "draft",
+        "ipa": "ˈtika",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "adobe brick",
+        "note": "Tika = sun-dried adobe brick (verb 'tikay' to make adobes). Not to be confused with t'ika 'flower' (ejective) — reviewers must check pronunciation/orthography carefully. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "tika (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the wind",
@@ -1330,6 +3489,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 34,
    "id": "noche",
    "category": "sky",
@@ -1338,6 +3498,57 @@
     "es": {
      "text": "la noche",
      "status": "approved"
+=======
+    "n": 41,
+    "id": "hilo",
+    "category": "handmade",
+    "art": "🧵",
+    "emoji": "🧵",
+    "tags": ["weaving", "textile", "color", "spin", "loom"],
+    "names": {
+      "es": {
+        "text": "El Hilo",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Thread",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "icpatl",
+        "status": "draft",
+        "ipa": "/ˈikpat͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "thread, yarn",
+        "note": "Molina 'icpatl: hilo'; Karttunen icpatl.",
+        "headword": "Molina 1571 s.v. icpatl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "k'u'uch",
+        "status": "draft",
+        "ipa": "kʼuʔutʃ",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "spun thread (cotton)",
+        "note": "k'u'uch 'thread, spun cotton' (Bricker et al. 1998; Cordemex). Related: piits' 'cotton' (raw). Glottal placement needs confirmation. Lowered to low: form and glottal placement unverified. IPA ?.",
+        "reviewQuestion": "What do you call cotton thread: k'u'uch, k'uuch, or something else?",
+        "headword": "k'u'uch (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "q'aytu",
+        "status": "draft",
+        "ipa": "ˈqʼajtu",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "thread, yarn",
+        "note": "Standard word for spun thread/yarn. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "q'aytu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the night",
@@ -1370,6 +3581,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 35,
    "id": "cielo",
    "category": "sky",
@@ -1378,6 +3590,59 @@
     "es": {
      "text": "el cielo",
      "status": "approved"
+=======
+    "n": 42,
+    "id": "canoa",
+    "category": "handmade",
+    "art": "🛶",
+    "emoji": "🛶",
+    "tags": ["boat", "river", "paddle", "wood", "lake"],
+    "names": {
+      "es": {
+        "text": "La Canoa",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Canoe",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "acalli",
+        "status": "draft",
+        "ipa": "/aˈkalli/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "canoe, boat (lit. water-house)",
+        "note": "Molina 'acalli: barca, navío o canoa'; atl 'water' + calli 'house'.",
+        "headword": "Molina 1571 s.v. acalli; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["biblioteca", "casa", "puerto"]
+      },
+      "yua": {
+        "text": "chem",
+        "status": "draft",
+        "ipa": "tʃem",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "canoe",
+        "note": "chem 'canoe, boat' (Cordemex; Bricker). Well attested historically; reviewers should confirm everyday use (some speakers may say barco or kanoa for boats).",
+        "reviewQuestion": "Do people still say 'chem' for a canoe or small boat?",
+        "headword": "chem (Cordemex) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "wampu",
+        "status": "draft",
+        "ipa": "ˈwampu",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "boat, raft",
+        "note": "Wampu = boat/raft in colonial and modern dictionaries; canoe-specific terms are Amazonian. On Lake Titicaca reed boats are 'balsa' (Spanish) or 'tuytu'(uncertain). Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "reviewQuestion": "For a small boat paddled on a lake, would you say 'wampu', 'balsa', 'tuytu', or another word?",
+        "headword": "wampu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the sky",
@@ -1410,6 +3675,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 36,
    "id": "montana",
    "category": "land",
@@ -1418,6 +3684,59 @@
     "es": {
      "text": "el cerro",
      "status": "approved"
+=======
+    "n": 43,
+    "id": "puente",
+    "category": "handmade",
+    "art": "🌉",
+    "emoji": "🌉",
+    "tags": ["river", "cross", "rope", "path", "connect"],
+    "names": {
+      "es": {
+        "text": "El Puente",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Bridge",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "cuauhpantli",
+        "status": "draft",
+        "ipa": "/kʷawˈpant͡ɬi/",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "wooden bridge (lit. wood-row/beam)",
+        "note": "Molina 'quauhpantli: puente de madera'; cuahuitl 'wood' + pantli 'row, flag'. Strictly a wooden footbridge; a modern road bridge may be called by loan 'puente'.",
+        "reviewQuestion": "¿Cómo se dice \"puente\" en su variante? ¿Se usa \"cuauhpantli\" también para puentes que no son de madera?",
+        "headword": "Molina 1571 s.v. quauhpantli; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["selva"]
+      },
+      "yua": {
+        "text": "puente",
+        "status": "draft",
+        "ipa": "puente",
+        "kind": "loanword",
+        "confidence": "medium",
+        "gloss": "bridge (Spanish loan)",
+        "note": "Spanish loan, likely the everyday form in a region with few rivers. I could not confirm a native everyday word. Colonial dictionaries may record a term (to check in Cordemex). Do not invent one.",
+        "reviewQuestion": "Is there a Maya word for a bridge, or do people say 'puente'?",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["puerto"]
+      },
+      "quz": {
+        "text": "chaka",
+        "status": "draft",
+        "ipa": "ˈtʃaka",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "bridge",
+        "note": "Standard word for bridge (as in Q'iswachaka, the woven grass bridge). Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "chaka (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the mountain",
@@ -1450,6 +3769,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 37,
    "id": "piedra",
    "category": "land",
@@ -1458,6 +3778,57 @@
     "es": {
      "text": "la piedra",
      "status": "approved"
+=======
+    "n": 44,
+    "id": "vela",
+    "category": "handmade",
+    "art": "🕯️",
+    "emoji": "🕯️",
+    "tags": ["light", "wax", "flame", "wick", "night"],
+    "names": {
+      "es": {
+        "text": "La Vela",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Candle",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "xicocuitlaocotl",
+        "status": "draft",
+        "ipa": "/ʃikokʷit͡ɬaˈokot͡ɬ/",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "wax torch (wax + pine torch)",
+        "note": "xicocuitlatl \"beeswax\" + ocotl \"pine torch\": \"wax torch\". Coined for this deck, not traditional. I believe a similar form may occur in colonial texts but cannot cite it. Colonial Nahuatl also borrowed \"candela\"; modern speakers often say \"vela\".",
+        "reviewQuestion": "¿Cómo se dice \"vela\" (de cera) en su variante?",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "kib",
+        "status": "draft",
+        "ipa": "kib",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "candle; wax",
+        "note": "kib 'wax, candle' (all major dictionaries). Association: candles are central to offerings (e.g. Janal Pixan, Day of the Dead) but the word is everyday.",
+        "sensitivity": "ritual-association",
+        "headword": "kib (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "wila",
+        "status": "draft",
+        "ipa": "ˈwila",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "candle (< Spanish 'vela')",
+        "note": "Spanish 'vela' adapted to Quechua phonology; candles are post-contact. Speakers may also just say 'vela'. Note 'wila' resembles Aymara 'wila' (red/blood). Candles are central in offerings; fine as a household object.",
+        "reviewQuestion": "For a wax candle, do you say 'wila', 'vela', or something else? Which spelling would you use?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the stone",
@@ -1490,6 +3861,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 38,
    "id": "agua",
    "category": "land",
@@ -1498,6 +3870,57 @@
     "es": {
      "text": "el agua",
      "status": "approved"
+=======
+    "n": 45,
+    "id": "martillo",
+    "category": "handmade",
+    "art": "🔨",
+    "emoji": "🔨",
+    "tags": ["tool", "build", "nail", "strike", "wood"],
+    "names": {
+      "es": {
+        "text": "El Martillo",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Hammer",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "tlatzotzonaloni",
+        "status": "draft",
+        "ipa": "/t͡ɬat͡sot͡sonaˈloni/",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "instrument for pounding/hammering",
+        "note": "tla- + tzotzona \"to beat, hammer\" + -loni (instrumental): \"thing for pounding\". Coined for this deck, not traditional. tzotzona also means to play a drum, so it clashes with tambor. Alternatives: tepoztlatzotzonaloni (metal pounder), loanword \"martillo\".",
+        "reviewQuestion": "¿Cómo se dice \"martillo\" en su variante: \"martillo\" o una palabra náhuatl?",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["tambor"]
+      },
+      "yua": {
+        "text": "martillo",
+        "status": "draft",
+        "ipa": "martiʎo ~ martijo",
+        "kind": "loanword",
+        "confidence": "medium",
+        "gloss": "hammer (Spanish loan)",
+        "note": "Spanish loan, kept in Spanish spelling per loan policy (earlier draft respelling 'martiyo' removed as unsourced). Related native verb: baj 'to hammer, nail in' (Bricker), but I do not know a native tool noun.",
+        "reviewQuestion": "Is there a Maya word for a hammer, or do people say 'martillo'?",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "martillu",
+        "status": "draft",
+        "ipa": "maɾˈtiʎu",
+        "kind": "loanword",
+        "confidence": "medium",
+        "gloss": "hammer (< Spanish 'martillo')",
+        "note": "Spanish loan; the metal claw hammer is post-contact. I do not know a reliable native term for hammer (hammerstones existed, but I cannot confirm the word), so no native form is proposed.",
+        "reviewQuestion": "For a hammer, do you say 'martillu' or 'martillo', and is there any native word?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the water",
@@ -1530,6 +3953,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 39,
    "id": "fuego",
    "category": "land",
@@ -1538,6 +3962,59 @@
     "es": {
      "text": "el fuego",
      "status": "approved"
+=======
+    "n": 46,
+    "id": "casa",
+    "category": "places",
+    "art": "🏠",
+    "emoji": "🏠",
+    "tags": ["home", "roof", "family", "shelter", "door"],
+    "names": {
+      "es": {
+        "text": "La Casa",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The House",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "calli",
+        "status": "draft",
+        "ipa": "/ˈkalli/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "house",
+        "note": "Molina 'calli: casa'. Also a day sign; ordinary noun. Modern: kali, kalli.",
+        "headword": "Molina 1571 s.v. calli; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["biblioteca", "canoa", "puerto"]
+      },
+      "yua": {
+        "text": "naaj",
+        "status": "draft",
+        "ipa": "naːh",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "house",
+        "note": "naj/naaj 'house' (all major dictionaries; length varies by source). Alternative: otoch 'home', usually possessed (in wotoch 'my home').",
+        "headword": "naj (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["pueblo"]
+      },
+      "quz": {
+        "text": "wasi",
+        "status": "draft",
+        "ipa": "ˈwasi",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "house",
+        "note": "Standard word for house/home. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "wasi (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "avoidWith": ["escuela", "observatorio", "biblioteca"]
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the fire",
@@ -1551,6 +4028,7 @@
      "audio": "/audio/nah/fuego.m4a",
      "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss fire (not tletl, which is classical-only in this dictionary)"
     },
+<<<<<<< Updated upstream
     "yua": {
      "text": "k'áak'",
      "status": "draft",
@@ -1558,6 +4036,61 @@
      "confidence": "sourced",
      "audio": "/audio/yua/fuego.m4a",
      "note": "UADY: 'fuego, lumbre, fogón, hoguera' | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+=======
+    "confusableWith": ["pueblo"]
+  },
+  {
+    "n": 47,
+    "id": "milpa",
+    "category": "places",
+    "art": "🌾",
+    "emoji": "🌾",
+    "tags": ["field", "maize", "squash", "beans", "farm"],
+    "names": {
+      "es": {
+        "text": "La Milpa",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Milpa",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "milli",
+        "status": "draft",
+        "ipa": "/ˈmilli/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cultivated field, maize field",
+        "note": "Molina 'milli: heredad'; Spanish milpa from milpan 'in the field'. Modern speakers may use milpa itself.",
+        "headword": "Molina 1571 s.v. milli; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "kool",
+        "status": "draft",
+        "ipa": "koːl",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "milpa, cornfield",
+        "note": "kool 'milpa' (all major dictionaries). Spanish milpa is not from Maya (it is from Nahuatl). Association: milpa ceremonies (e.g. jaanli kool) exist but kool itself is ordinary.",
+        "sensitivity": "ritual-association",
+        "headword": "kool (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "chakra",
+        "status": "draft",
+        "ipa": "ˈtʃakɾa",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "cultivated field",
+        "note": "Reviewer suggestion partly accepted: changed from 'sara chakra' to plain 'chakra' so it does not repeat 'sara' (maiz card). Kind kept as attested, not descriptive: chakra is a single dictionary word (source of Spanish 'chacra'), used here as an approximate equivalent — Andean chakra is any field, not specifically Mesoamerican maize–bean–squash intercropping.",
+        "reviewQuestion": "Is 'chakra' a good name for a field where maize, beans and squash grow together, or would you add something (e.g. 'sara chakra')?",
+        "headword": "chakra (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "quz": {
      "text": "nina",
@@ -1570,6 +4103,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 40,
    "id": "mar",
    "category": "land",
@@ -1578,6 +4112,57 @@
     "es": {
      "text": "el mar",
      "status": "approved"
+=======
+    "n": 48,
+    "id": "tienda",
+    "category": "places",
+    "art": "🏪",
+    "emoji": "🏪",
+    "tags": ["shop", "food", "buy", "trade", "neighborhood"],
+    "names": {
+      "es": {
+        "text": "La Tienda",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Shop",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "tlanamacoyan",
+        "status": "draft",
+        "ipa": "/t͡ɬanamaˈkojan/",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "place where things are sold",
+        "note": "tla- + namaca \"to sell\" + -oyan \"place\": \"place where things are sold\". Regular morphology, but not verified as attested or in use. Coined for this deck, not traditional. Alternative: loanword \"tienda\".",
+        "reviewQuestion": "¿Cómo se dice \"tienda\" (la de la esquina) en su variante?",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["escuela", "observatorio", "puerto"]
+      },
+      "yua": {
+        "text": "kuuchil koonol",
+        "status": "draft",
+        "ipa": "kuːtʃil koːnol",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "place (of) selling",
+        "note": "kúuchil 'place' + koonol 'selling' (kon 'to sell'), both attested. Transparent phrase, not confirmed as the usual word; many speakers likely say tienda (Spanish loan), a safe alternative. IPA ?.",
+        "reviewQuestion": "What do you call the corner shop: 'tienda', 'kúuchil koonol', or something else?",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "tinda",
+        "status": "draft",
+        "ipa": "ˈtinda",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "shop (< Spanish 'tienda')",
+        "note": "Reviewer accepted: changed from 'qhatu', which means market/market stall (Spanish 'cato'), not a neighbourhood shop. Adapted loan per loan policy (ie→i). 'qhatu' remains an option if reviewers prefer a native word with a broader meaning.",
+        "reviewQuestion": "For a small neighbourhood shop, would you say 'tinda', 'tienda', or 'qhatu'? Is 'qhatu' only a market?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the sea",
@@ -1610,6 +4195,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 41,
    "id": "arena",
    "category": "land",
@@ -1618,6 +4204,58 @@
     "es": {
      "text": "la arena",
      "status": "approved"
+=======
+    "n": 49,
+    "id": "plaza",
+    "category": "places",
+    "art": "⛲",
+    "emoji": "⛲",
+    "tags": ["square", "fountain", "meeting", "town", "center"],
+    "names": {
+      "es": {
+        "text": "La Plaza",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Plaza",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "tianquiztli",
+        "status": "draft",
+        "ipa": "/tiaŋˈkist͡ɬi/",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "marketplace, market square",
+        "note": "tianquiztli is a market, not a town square; the card shows a square with a fountain and benches, so the meaning does not fit well. Alternatives: ithualli (courtyard, patio), loanword \"plaza\".",
+        "reviewQuestion": "Para la plaza del centro del pueblo (no el mercado), ¿qué palabra usan: tianquiztli, ithualli, \"plaza\" u otra?",
+        "headword": "Molina 1571 s.v. tianquiztli (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft"
+      },
+      "yua": {
+        "text": "k'iiwik",
+        "status": "draft",
+        "ipa": "kʼiːwik",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "town square, market plaza",
+        "note": "k'íiwik (colonial kiuic) 'plaza, market' (Cordemex; Bricker). Vowel length and ejective need confirmation. IPA ?.",
+        "reviewQuestion": "What do you call the town square: k'íiwik, or 'plaza'? Long vowel?",
+        "headword": "k'íiwik (Cordemex kiuic) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "plasa",
+        "status": "draft",
+        "ipa": "ˈplasa",
+        "kind": "loanword",
+        "confidence": "medium",
+        "gloss": "town square (< Spanish 'plaza')",
+        "note": "Spanish loan in common use. Native 'pampa' (open flat ground) was used for Inca plazas (Hawk'aypata, Kusipata), but pampa alone means 'plain', so the loan is clearer.",
+        "reviewQuestion": "For the town square, do you say 'plasa', 'plaza', or 'pampa'? Would you spell it with an initial cluster ('plasa') or another way?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the sand",
@@ -1650,6 +4288,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 42,
    "id": "casa",
    "category": "places",
@@ -1658,6 +4297,58 @@
     "es": {
      "text": "la casa",
      "status": "approved"
+=======
+    "n": 50,
+    "id": "puerto",
+    "category": "places",
+    "art": "⚓",
+    "emoji": "⚓",
+    "tags": ["boats", "sea", "dock", "anchor", "travel"],
+    "names": {
+      "es": {
+        "text": "El Puerto",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Harbor",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "acaltecoyan",
+        "status": "draft",
+        "ipa": "/akalteˈkojan/",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "place where canoes are laid up/moored",
+        "note": "acalli \"canoe\" + teca \"to lay down\" + -oyan \"place\": \"place where canoes are laid up\". I suspected a similar Molina entry but cannot confirm. Coined for this deck, not traditional. Alternative: loanword \"puerto\".",
+        "reviewQuestion": "¿Cómo se dice \"puerto\" (donde llegan y se amarran las barcas) en su variante?",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["biblioteca", "canoa", "casa", "escuela", "observatorio", "tienda"]
+      },
+      "yua": {
+        "text": "puerto",
+        "status": "draft",
+        "ipa": "puerto",
+        "kind": "loanword",
+        "confidence": "medium",
+        "gloss": "harbor (Spanish loan)",
+        "note": "Spanish loan, likely the everyday form (cf. place names Puerto Progreso, Puerto Morelos). Descriptive alternative for review: u kúuchil chem 'place of the canoes' (kúuchil 'place' + chem 'canoe'), not established.",
+        "reviewQuestion": "Is there a Maya word for a harbour, or do people say 'puerto'?",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["puente"]
+      },
+      "quz": {
+        "text": "pwirtu",
+        "status": "draft",
+        "ipa": "ˈpwiɾtu",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "harbor (< Spanish 'puerto')",
+        "note": "Reviewer accepted: spelling decision 'pwirtu' (ue→wi, o→u). Risk: in Andean Spanish 'puerto' also means a mountain pass, so the loan may be heard as 'pass'. Cusco is inland; no traditional word known. Invented 'wampu samana' not used.",
+        "reviewQuestion": "For a harbour where boats tie up, would you say 'pwirtu', 'puerto', or another word? Would 'puerto' make you think of a mountain pass instead?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the house",
@@ -1690,6 +4381,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 43,
    "id": "camino",
    "category": "places",
@@ -1698,6 +4390,58 @@
     "es": {
      "text": "el camino",
      "status": "approved"
+=======
+    "n": 51,
+    "id": "pueblo",
+    "category": "places",
+    "art": "🏘️",
+    "emoji": "🏘️",
+    "tags": ["community", "houses", "neighbors", "fiesta", "town"],
+    "names": {
+      "es": {
+        "text": "El Pueblo",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Village",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "altepetl",
+        "status": "draft",
+        "ipa": "/alˈtepet͡ɬ/",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "town, polity (lit. water-mountain)",
+        "note": "Molina 'altepetl: pueblo'; atl 'water' + tepetl 'mountain'. Historically a city-state/polity; for a small village calpolli (neighbourhood) is an alternative. Widely used today for 'pueblo'.",
+        "headword": "Molina 1571 s.v. altepetl; cf. Karttunen 1983 (from memory; page not checked)",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["montana", "volcan"]
+      },
+      "yua": {
+        "text": "kaaj",
+        "status": "draft",
+        "ipa": "kaːh",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "town, village, community",
+        "note": "kaaj/kaj 'town, community' (all major dictionaries; Restall's work on the colonial cah). Length varies by source.",
+        "headword": "kaaj (Bricker et al. 1998) (from memory; page not verified)",
+        "source": "Yucatec Maya, unverified draft",
+        "avoidWith": ["casa", "serpiente"]
+      },
+      "quz": {
+        "text": "llaqta",
+        "status": "draft",
+        "ipa": "ˈʎaqta",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "town, village, people",
+        "note": "Standard word for town/village/settlement (AMLQ 'llaqta'). Also means 'country/people'. Smaller hamlet: 'ayllu' (kin community, socially loaded) — avoided. Sources: Academia Mayor de la Lengua Quechua, Diccionario Quechua–Español–Quechua (2005); Cusihuamán, Diccionario Quechua Cuzco–Collao (1976).",
+        "headword": "llaqta (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft"
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the road",
@@ -1711,6 +4455,7 @@
      "audio": "/audio/nah/camino.m4a",
      "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss road, path"
     },
+<<<<<<< Updated upstream
     "yua": {
      "text": "bej",
      "status": "draft",
@@ -1718,6 +4463,61 @@
      "confidence": "sourced",
      "audio": "/audio/yua/camino.m4a",
      "note": "UADY: bej 'camino, sendero'; también beel | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+=======
+    "confusableWith": ["casa"]
+  },
+  {
+    "n": 52,
+    "id": "escuela",
+    "category": "places",
+    "art": "🏫",
+    "emoji": "🏫",
+    "tags": ["learn", "books", "class", "friends", "play"],
+    "names": {
+      "es": {
+        "text": "La Escuela",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The School",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "tlamachtiloyan",
+        "status": "draft",
+        "ipa": "/t͡ɬamat͡ʃtiˈlojan/",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "place where people are taught",
+        "note": "tla- + machtia \"to teach\" + -lo- (impersonal) + -yan \"place\": \"place where people are taught\". I believe forms like this are used in bilingual education but cannot cite a source, so not labelled neologism. Coined for this deck, not traditional. Avoided calmecac/telpochcalli (pre-contact institutions with ritual roles).",
+        "reviewQuestion": "¿Cómo se dice \"escuela\" en su variante: tlamachtiloyan, tlamachtilcalli, \"escuela\" u otra?",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["observatorio", "puerto", "tienda"]
+      },
+      "yua": {
+        "text": "escuela",
+        "status": "draft",
+        "ipa": "eskwela",
+        "kind": "loanword",
+        "confidence": "medium",
+        "gloss": "school (Spanish loan)",
+        "note": "Changed from descriptive naajil xook. I believe speakers mostly say escuela, and naajil xook is too close to naaj (casa) for a three-choice call. Alternative for review: naajil xook 'house of reading/study' (naaj 'house' + -il + xook 'read, study'), which I believe appears in bilingual-education materials but cannot cite.",
+        "reviewQuestion": "Do people say 'escuela' in Maya, or 'najil xook' / another phrase?",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "yachay wasi",
+        "status": "draft",
+        "ipa": "jaˈtʃaj ˈwasi",
+        "kind": "descriptive",
+        "confidence": "medium",
+        "gloss": "house of learning",
+        "note": "Descriptive compound: yacha- 'know, learn' + -y nominalizer + wasi 'house'. Widely used in Peruvian bilingual education (Ministerio de Educación EIB materials) and historically for the Inca 'yachaywasi'. Everyday speech often uses Spanish loan 'iskuyla'.",
+        "reviewQuestion": "For school, do children say 'yachay wasi' or 'iskuyla'?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "avoidWith": ["casa", "observatorio", "biblioteca"]
+      }
+>>>>>>> Stashed changes
     },
     "quz": {
      "text": "ñan",
@@ -1730,6 +4530,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 44,
    "id": "pueblo",
    "category": "places",
@@ -1738,6 +4539,58 @@
     "es": {
      "text": "el pueblo",
      "status": "approved"
+=======
+    "n": 53,
+    "id": "observatorio",
+    "category": "places",
+    "art": "🔭",
+    "emoji": "🔭",
+    "tags": ["stars", "telescope", "sky", "night", "science"],
+    "names": {
+      "es": {
+        "text": "El Observatorio",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Observatory",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "citlaltlachialoyan",
+        "status": "draft",
+        "ipa": "/sit͡ɬalt͡ɬat͡ʃiaˈlojan/",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "place where one looks at the stars",
+        "note": "citlal(in) \"star\" + tlachia \"to look\" + -lo- + -yan \"place\": \"place where stars are looked at\"; compare tlachialoni \"lookout\". Coined for this deck, not traditional. Long; loanword \"observatorio\" is an alternative.",
+        "reviewQuestion": "¿Cómo se diría \"observatorio\" (lugar para mirar las estrellas) en su variante?",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["cometa", "escuela", "estrella", "puerto", "tienda"]
+      },
+      "yua": {
+        "text": "observatorio",
+        "status": "draft",
+        "ipa": "obserbatorjo",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "observatory (Spanish loan)",
+        "note": "Spanish loan; modern institution with no traditional word. Kept as loan (not a naajil- phrase, to avoid clashing with naaj on casa). Descriptive alternative for review: naajil u cha'anta'al eek'o'ob 'house where the stars are watched' (cha'an 'to watch', eek' 'star', -o'ob plural), grammar unverified. Note El Caracol at Chichén Itzá is popularly called an observatory, but that name is Spanish.",
+        "reviewQuestion": "Do people say 'observatorio', or is there a Maya way to say 'a place to watch the stars'?",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "quyllur qhawana wasi",
+        "status": "draft",
+        "ipa": "ˈqojʎuɾ qʰaˈwana ˈwasi",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "house for watching stars",
+        "note": "Descriptive: quyllur 'star' + qhawa- 'look, watch' + -na 'instrument/place' + wasi 'house'. Invented for this card, not attested; no institutional neologism known to me. Speakers would likely say 'observatorio'.",
+        "reviewQuestion": "Would 'quyllur qhawana wasi' ('house for watching stars') be understood as an observatory, or would speakers say 'observatorio'?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "avoidWith": ["casa", "escuela", "biblioteca", "estrella", "cometa"]
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the town",
@@ -1770,6 +4623,7 @@
    }
   },
   {
+<<<<<<< Updated upstream
    "n": 45,
    "id": "mercado",
    "category": "places",
@@ -1778,6 +4632,58 @@
     "es": {
      "text": "el mercado",
      "status": "approved"
+=======
+    "n": 54,
+    "id": "biblioteca",
+    "category": "places",
+    "art": "📚",
+    "emoji": "📚",
+    "tags": ["books", "quiet", "stories", "read", "shelves"],
+    "names": {
+      "es": {
+        "text": "La Biblioteca",
+        "status": "approved"
+      },
+      "en": {
+        "text": "The Library",
+        "status": "approved"
+      },
+      "nah": {
+        "text": "amoxcalli",
+        "status": "draft",
+        "ipa": "/amoʃˈkalli/",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "book house",
+        "note": "amoxtli \"book, codex\" + calli \"house\": \"book house\". Transparent compound; I cannot cite traditional or institutional use for \"library\". Coined for this deck, not traditional. Alternative: amoxpialoyan \"place where books are kept\".",
+        "reviewQuestion": "¿Cómo se dice \"biblioteca\" en su variante? ¿Se entiende \"amoxcalli\"?",
+        "source": "Classical/Central Nahuatl, unverified draft",
+        "avoidWith": ["canoa", "casa", "puerto"]
+      },
+      "yua": {
+        "text": "biblioteca",
+        "status": "draft",
+        "ipa": "biblioteka",
+        "kind": "loanword",
+        "confidence": "medium",
+        "gloss": "library (Spanish loan)",
+        "note": "Changed from descriptive naajil ju'un. Modern institution; Spanish biblioteca is the likely everyday form, and the naajil- phrase clashed with naaj (casa). Alternative for review: naajil ju'un 'house of paper/books' (naaj + -il + ju'un 'paper, book'), not established, no institutional source.",
+        "reviewQuestion": "Do people say 'biblioteca', or a phrase like 'najil ju'un'?",
+        "source": "Yucatec Maya, unverified draft"
+      },
+      "quz": {
+        "text": "liwru wasi",
+        "status": "draft",
+        "ipa": "ˈliwɾu ˈwasi",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "book house",
+        "note": "Descriptive with a Spanish loan root: liwru (< 'libro') + wasi 'house'. Some EIB/AMLQ neologism lists use other forms (e.g. 'maytu wasi' or 'qillqa wasi'), which I cannot verify; reviewers should replace with any established institutional term. Loan root spelling uncertain: 'liwru' vs 'libru'.",
+        "reviewQuestion": "For a library, is there an established Quechua term (e.g. from schools or the Academia)? If 'liwru wasi', do you spell it 'liwru' or 'libru'?",
+        "source": "Southern Quechua (Cusco-Collao), unverified draft",
+        "avoidWith": ["casa", "escuela", "observatorio"]
+      }
+>>>>>>> Stashed changes
     },
     "en": {
      "text": "the market",

@@ -16,7 +16,10 @@ describe('parseMsg', () => {
         called: [],
       },
       { t: 'assign', seat: 'a', tablaIndex: 5, roundNo: 1 },
-      { t: 'call', i: 0, cardId: 'gallo', lang: 'nah', at: 1 },
+      { t: 'call', i: 0, cardId: 'gallo', choices: ['gallo', 'luna', 'sol'], lang: 'nah', at: 1 },
+      { t: 'pick', seat: 'a', roundNo: 1, i: 0, cardId: 'x' },
+      { t: 'pickResult', roundNo: 1, i: 0, seat: 'a', correct: true, first: false },
+      { t: 'scores', roundNo: 1, points: { a: 3, b: 0 } },
       { t: 'claimResult', seat: 'a', roundNo: 1, valid: false, missing: ['x'] },
       { t: 'end', roundNo: 1, winners: ['a'] },
       { t: 'hello', seat: 'a', name: 'Ana', glyph: '*', labelLang: 'es' },
@@ -27,10 +30,18 @@ describe('parseMsg', () => {
   it('rejects malformed input', () => {
     expect(parseMsg(null)).toBeNull();
     expect(parseMsg({ t: 'nope' })).toBeNull();
-    expect(parseMsg({ t: 'call', i: -1, cardId: 'x', lang: 'es', at: 1 })).toBeNull();
-    expect(parseMsg({ t: 'call', i: 1001, cardId: 'x', lang: 'es', at: 1 })).toBeNull();
-    expect(parseMsg({ t: 'call', i: 0, cardId: 'x', lang: 'es', at: 1.5 })).toBeNull();
-    expect(parseMsg({ t: 'call', i: 0, cardId: 'x', lang: 'fr', at: 1 })).toBeNull();
+    expect(
+      parseMsg({ t: 'call', i: -1, cardId: 'x', choices: ['x', 'y', 'z'], lang: 'es', at: 1 }),
+    ).toBeNull();
+    expect(
+      parseMsg({ t: 'call', i: 1001, cardId: 'x', choices: ['x', 'y', 'z'], lang: 'es', at: 1 }),
+    ).toBeNull();
+    expect(
+      parseMsg({ t: 'call', i: 0, cardId: 'x', choices: ['x', 'y', 'z'], lang: 'es', at: 1.5 }),
+    ).toBeNull();
+    expect(
+      parseMsg({ t: 'call', i: 0, cardId: 'x', choices: ['x', 'y', 'z'], lang: 'fr', at: 1 }),
+    ).toBeNull();
     expect(parseMsg({ t: 'claim', seat: 'a', tablaIndex: 1 })).toBeNull();
     expect(
       parseMsg({ t: 'claim', seat: 'a', roundNo: 1, tablaIndex: 99999, marks: [] }),
@@ -53,6 +64,19 @@ describe('parseMsg', () => {
     expect(parseMsg({ ...lobby(0), players: [p(1), p(1)] })).toBeNull();
     expect(parseMsg({ ...lobby(0), players: [{ ...p(1), name: 'a\u202Eb' }] })).toBeNull();
     expect(parseMsg({ ...lobby(0), status: 'bogus' })).toBeNull();
+  });
+  it('validates choices, pick, pickResult, scores', () => {
+    const call = { t: 'call', i: 0, cardId: 'x', lang: 'es', at: 1 };
+    expect(parseMsg(call)).toBeNull();
+    expect(parseMsg({ ...call, choices: ['y', 'z', 'w'] })).toBeNull(); // missing cardId
+    expect(parseMsg({ ...call, choices: ['x', 'x', 'z'] })).toBeNull(); // not distinct
+    expect(parseMsg({ ...call, choices: ['x', 'z'] })).toBeNull();
+    expect(parseMsg({ t: 'pick', seat: 'a', roundNo: 1, i: 0 })).toBeNull();
+    expect(parseMsg({ t: 'pickResult', roundNo: 1, i: 0, seat: 'a', correct: true })).toBeNull();
+    expect(parseMsg({ t: 'scores', roundNo: 1, points: { a: 201 } })).toBeNull();
+    expect(parseMsg({ t: 'scores', roundNo: 1, points: { a: 1.5 } })).toBeNull();
+    const many = Object.fromEntries(Array.from({ length: 61 }, (_, i) => ['s' + i, 1]));
+    expect(parseMsg({ t: 'scores', roundNo: 1, points: many })).toBeNull();
   });
   it('requires roundNo and defaults called', () => {
     expect(parseMsg({ t: 'end', winners: [] })).toBeNull();

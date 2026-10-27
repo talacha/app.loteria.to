@@ -57,3 +57,22 @@ export const LANG_LABELS: Record<Lang, string> = esUi.lang;
 export const uiCatalogs = { es: esUi, en: enUi } as const;
 export const UI_NAMESPACE = 'ui';
 export { default as credits } from './credits.json';
+
+/** True if any of `langs` (default all) lists the pair in avoidWith, or confusableWith lists it. */
+export function isAvoidedPair(a: CardId, b: CardId, langs: readonly Lang[] = LANGS): boolean {
+  const ca = byId.get(a);
+  const cb = byId.get(b);
+  if (!ca || !cb || a === b) return false;
+  if (ca.confusableWith?.includes(b) || cb.confusableWith?.includes(a)) return true;
+  return langs.some(
+    (l) => ca.names[l]?.avoidWith?.includes(b) || cb.names[l]?.avoidWith?.includes(a),
+  );
+}
+
+export const LANG_COLORS: Record<Lang, string> = {
+  es: 'var(--lang-es)',
+  en: 'var(--lang-en)',
+  nah: 'var(--lang-nah)',
+  yua: 'var(--lang-yua)',
+  quz: 'var(--lang-quz)',
+};
