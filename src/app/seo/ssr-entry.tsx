@@ -4,7 +4,8 @@
 import { renderToString } from 'react-dom/server';
 import { createStaticHandler, createStaticRouter, StaticRouterProvider } from 'react-router';
 import i18n from '../i18n';
-import Shell, { titleKey } from '../Shell';
+import Shell from '../Shell';
+import { titleKey } from '../titleKey';
 import { routes } from '../routes';
 import { FAQ_KEYS } from './meta';
 

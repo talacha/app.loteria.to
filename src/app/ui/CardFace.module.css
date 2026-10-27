@@ -1,0 +1,134 @@
+.face {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  container-type: inline-size;
+  color: var(--color-ink);
+}
+.frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  background: var(--color-paper);
+}
+
+/* Printed card: 2:3, paper border, thin ink frame. */
+.face[data-size='card'],
+.face[data-size='hero'] {
+  aspect-ratio: 2 / 3;
+  padding: 3cqw;
+  background: var(--color-paper);
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-hard-sm);
+}
+.face[data-size='card'] .frame,
+.face[data-size='hero'] .frame {
+  border: var(--border-thin);
+}
+.face[data-size='hero'] {
+  padding: 3cqw;
+}
+.face[data-size='hero'] .frame {
+  border-width: var(--border-w);
+}
+
+/* Bare picture, cropped to its box. */
+.face[data-size='cell'] {
+  height: 100%;
+}
+.face[data-size='cell'] .frame {
+  border-radius: inherit;
+  background: transparent;
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.icon {
+  width: 62%;
+  height: auto;
+  max-height: 62%;
+  object-fit: contain;
+}
+.face[data-size='cell'] .icon {
+  width: 100%;
+  max-height: 100%;
+  max-width: 56px;
+  aspect-ratio: 1;
+}
+.face[data-size='cell'][data-art='true'] .frame {
+  aspect-ratio: 1;
+}
+.emoji {
+  font-size: 30cqw;
+  line-height: 1;
+}
+
+.num {
+  position: absolute;
+  top: 3cqw;
+  left: 4cqw;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 11cqw;
+  line-height: 1;
+  color: var(--color-ink);
+  text-shadow: 0 0 6px var(--color-paper);
+}
+.name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 3cqw 2cqw 3.5cqw;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 8.5cqw;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--color-ink);
+  background: linear-gradient(to top, var(--color-paper), transparent);
+}
+.face[data-art='false'] .name {
+  background: none;
+}
+
+/* States */
+.face[data-state='crossed'] .art,
+.face[data-state='crossed'] .icon,
+.face[data-state='crossed'] .emoji {
+  opacity: 0.55;
+}
+.face[data-state='dimmed'] {
+  opacity: 0.4;
+}
+.face[data-state='winning'] {
+  outline: 3px solid var(--color-maiz);
+  outline-offset: 2px;
+}
+.bean {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  width: 22%;
+  max-width: 22px;
+  min-width: 14px;
+  aspect-ratio: 22 / 15;
+  border-radius: 50%;
+  background: var(--color-bean);
+  border: var(--border-thin);
+  box-shadow: inset 0 -3px 0 var(--color-bean-dark);
+}

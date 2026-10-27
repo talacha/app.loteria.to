@@ -2,7 +2,8 @@ import { cleanup, fireEvent, render, screen, within } from '@testing-library/rea
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { afterEach, describe, expect, it } from 'vitest';
 import i18n from './i18n';
-import Shell, { titleKey } from './Shell';
+import Shell from './Shell';
+import { titleKey } from './titleKey';
 
 afterEach(cleanup);
 

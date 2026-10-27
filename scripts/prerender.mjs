@@ -11,6 +11,14 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { aliases } from '../vite.aliases.ts';
 
+// Node 26 exposes a global localStorage that warns on access without --localstorage-file; the app's
+// storage reads are try/catch-guarded, so SSR just sees it as unavailable.
+Object.defineProperty(globalThis, 'localStorage', {
+  value: undefined,
+  configurable: true,
+  writable: true,
+});
+
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist');
 const ssrOut = join(root, 'node_modules/.cache/prerender-ssr');

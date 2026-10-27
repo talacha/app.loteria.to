@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/prerender.mjs && node scripts/audio/check.mjs && node scripts/seo-check.mjs",
+    "build": "node scripts/cards-index.mjs && tsc -b && vite build && node scripts/prerender.mjs && node scripts/audio/check.mjs && node scripts/seo-check.mjs",
     "preview": "vite preview",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
@@ -18,6 +18,7 @@
     "validate-content": "node scripts/run-optional.mjs scripts/validate-content.ts",
     "copy-lint": "node scripts/run-optional.mjs scripts/copy-lint.ts",
     "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm validate-content && pnpm copy-lint",
+    "cards:index": "node scripts/cards-index.mjs",
     "design-lint": "tsx scripts/design-lint.ts",
     "og:render": "node scripts/render-og.mjs",
     "seo:check": "node scripts/seo-check.mjs",
