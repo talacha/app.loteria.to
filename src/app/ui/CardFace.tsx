@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { getCard } from '@content';
-import { cardArtEntry, cardArtUrl } from './cardArt';
+import { cardArtEntry, cardArtUrl } from './cardArtIndex';
 import styles from './CardFace.module.css';
 
 export type CardFaceSize = 'cell' | 'card' | 'hero';
@@ -23,6 +23,8 @@ export default function CardFace({
   priority = false,
   lang,
   className,
+  emoji,
+  emojiClassName,
 }: {
   cardId: string;
   /** Localized name, shown in capitals; also the alt text when it is not shown as text. */
@@ -36,16 +38,18 @@ export default function CardFace({
   priority?: boolean;
   lang?: string;
   className?: string;
+  emoji?: string;
+  emojiClassName?: string;
 }) {
   const url = cardArtUrl(cardId);
   const entry = cardArtEntry(cardId);
-  const [artFailed, setArtFailed] = useState(false);
-  const [iconFailed, setIconFailed] = useState(false);
-  const withArt = !!url && !artFailed;
+  const [failedArt, setFailedArt] = useState<string | null>(null);
+  const [failedIcon, setFailedIcon] = useState<string | null>(null);
+  const withArt = !!url && failedArt !== cardId;
   const cell = size === 'cell';
   const nameShown = !cell && showName && !!name;
   const framed = !cell;
-  const emoji = getCard(cardId)?.art ?? '';
+  const fallbackEmoji = emoji ?? getCard(cardId)?.art ?? '';
 
   const picture = withArt ? (
     <img
@@ -57,13 +61,17 @@ export default function CardFace({
       alt={nameShown ? '' : (name ?? '')}
       loading={loading}
       decoding="async"
-      // eslint-disable-next-line react/no-unknown-property
-      {...(priority ? { fetchpriority: 'high' } : {})}
-      onError={() => setArtFailed(true)}
+      fetchPriority={priority ? 'high' : undefined}
+      onError={() => setFailedArt(cardId)}
     />
-  ) : iconFailed ? (
-    <span className={styles.emoji} aria-hidden="true">
-      {emoji}
+  ) : failedIcon === cardId ? (
+    <span
+      className={emojiClassName ?? styles.emoji}
+      role={nameShown || !name ? undefined : 'img'}
+      aria-label={nameShown ? undefined : name}
+      aria-hidden={nameShown || !name ? true : undefined}
+    >
+      {fallbackEmoji}
     </span>
   ) : (
     <img
@@ -72,7 +80,7 @@ export default function CardFace({
       alt={nameShown ? '' : (name ?? '')}
       loading={loading}
       decoding="async"
-      onError={() => setIconFailed(true)}
+      onError={() => setFailedIcon(cardId)}
     />
   );
 

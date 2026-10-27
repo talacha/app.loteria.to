@@ -15,3 +15,4 @@ jobs:
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm e2e
+      - run: pnpm test:replay-storage

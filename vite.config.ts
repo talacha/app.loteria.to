@@ -2,6 +2,7 @@ import { defineConfig, loadEnv, type UserConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { aliases } from './vite.aliases.ts';
+import tokens from './design/tokens.json' with { type: 'json' };
 
 // The Vercel Supabase integration injects NEXT_PUBLIC_SUPABASE_*; expose only the
 // public URL and anon key to the client under the VITE_ names src/net reads.
@@ -29,12 +30,12 @@ const config = {
         name: 'Lotería de los Pueblos',
         short_name: 'Lotería',
         description:
-          'La lotería de imágenes, cantada en náhuatl, maya yucateco, quechua, español e inglés. Juega con teléfonos o con papel.',
+          'Lotería de imágenes para jugar en familia. Las voces cantan las cartas en cinco idiomas. Gratis, sin cuentas.',
         lang: 'es',
         start_url: '/',
         display: 'standalone',
-        background_color: '#fff8ec',
-        theme_color: '#b3261e',
+        background_color: tokens.color.night.$value,
+        theme_color: tokens.color.maiz.$value,
         icons: [
           { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
           { src: 'icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },

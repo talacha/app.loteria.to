@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { mergeProfile, readRawProfile } from '../ui/profile';
+import { watchThemeColor } from './themeColor';
 
 export type ThemePref = 'auto' | 'dark' | 'light' | 'contrast';
 export const THEMES: ThemePref[] = ['auto', 'dark', 'light', 'contrast'];
@@ -34,6 +35,7 @@ export function applyTheme(theme: ThemePref): void {
   if (typeof document === 'undefined') return;
   if (theme === 'auto') delete document.documentElement.dataset.theme;
   else document.documentElement.dataset.theme = theme;
+  watchThemeColor(document);
 }
 
 export function setTheme(theme: ThemePref): void {

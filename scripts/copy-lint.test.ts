@@ -33,6 +33,23 @@ describe('copy-lint matcher', () => {
       'prize',
     ]);
   });
+  it('flags bingo as a whole word regardless of case in Spanish and English copy', () => {
+    for (const lang of ['es', 'en'] as const) {
+      expect(findHits('BINGO', lang).map((h) => h.word.toLowerCase())).toEqual(['bingo']);
+      expect(findHits('Play bingo with family', lang).map((h) => h.word.toLowerCase())).toEqual([
+        'bingo',
+      ]);
+      expect(findHits('bingos and megabingo', lang)).toEqual([]);
+    }
+  });
+  it('does not let former home-copy exceptions hide banned role and winning words', () => {
+    expect(words('Todos los jugadores reciben un cartón')).toContain('jugadores');
+    expect(words('El primero en acertar gana')).toContain('gana');
+    expect(words('Varios ganadores, el que tenga más puntos gana').sort()).toEqual([
+      'gana',
+      'ganadores',
+    ]);
+  });
   it('allows cantor and neutral copy', () => {
     expect(
       findHits('Quien canta; quien juega usa frijoles. Beans, not better bets? '),

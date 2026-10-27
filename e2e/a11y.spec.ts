@@ -22,7 +22,7 @@ test('axe: home', async ({ page }) => {
 test('axe: host lobby', async ({ context }) => {
   const host = await newPage(context);
   await createRoom(host);
-  await expect(host.getByRole('img', { name: /escanea|scan/i })).toBeVisible();
+  await expect(host.getByRole('img', { name: /\/r\/[A-Z0-9]{5}#k=/ })).toBeVisible();
   await expectNoSeriousViolations(host, 'host lobby');
 });
 

@@ -100,8 +100,10 @@ describe('badges and surfaces', () => {
   it('CardArt falls back to the emoji when the image fails', () => {
     const { container } = render(<CardArt id="sol" emoji="☀️" />);
     const img = container.querySelector('img') as HTMLImageElement;
-    expect(img.getAttribute('src')).toBe('/art/sol.svg');
+    expect(img.getAttribute('src')).toBe('/cards/sol.webp');
     fireEvent.error(img);
+    expect(container.querySelector('img')?.getAttribute('src')).toBe('/art/sol.svg');
+    fireEvent.error(container.querySelector('img')!);
     expect(container.textContent).toBe('☀️');
   });
 });

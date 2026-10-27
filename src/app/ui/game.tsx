@@ -373,7 +373,17 @@ function QrSvg({ value }: { value: string }) {
 }
 
 /** QR + code on a paper card. */
-export function QrCard({ url, code, caption }: { url: string; code: string; caption?: string }) {
+export function QrCard({
+  url,
+  code,
+  caption,
+  showCode = true,
+}: {
+  url: string;
+  code: string;
+  caption?: string;
+  showCode?: boolean;
+}) {
   const { t } = useTranslation();
   return (
     <PaperCard size="lg" className={styles.qr}>
@@ -381,7 +391,7 @@ export function QrCard({ url, code, caption }: { url: string; code: string; capt
         <QrSvg value={url} />
       </div>
       <span className={styles.qrCaption}>{caption ?? t('theme.kit.joinAt')}</span>
-      <span className={styles.qrCode}>{code}</span>
+      {showCode ? <span className={styles.qrCode}>{code}</span> : null}
     </PaperCard>
   );
 }

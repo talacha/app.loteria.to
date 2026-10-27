@@ -14,3 +14,7 @@ graphify-out
 *.tsbuildinfo
 .env*
 audio-masters/
+
+# Local Supabase CLI cache and editor backup files
+supabase/.temp/
+*-E

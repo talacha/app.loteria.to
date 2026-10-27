@@ -20,7 +20,7 @@ export default function UiLangSwitch() {
           className={styles.opt}
           aria-pressed={current === l}
           lang={l}
-          aria-label={t(l === 'es' ? 'player.uiLangEs' : 'player.uiLangEn')}
+          aria-label={`${l.toUpperCase()} · ${t(l === 'es' ? 'player.uiLangEs' : 'player.uiLangEn')}`}
           onClick={() => set(l)}
         >
           {l.toUpperCase()}

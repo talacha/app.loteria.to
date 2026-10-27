@@ -91,7 +91,7 @@ describe('host protocol v2 (LocalTransport)', () => {
     p.t.send(hello(p.seat));
     await wait(() => expect(p.got.some((m) => m.t === 'assign')).toBe(true));
     await new Promise((r) => setTimeout(r, 300));
-    expect(p.got.map((m) => m.t)).toEqual(['round', 'lobby', 'assign', 'call']);
+    expect(p.got.map((m) => m.t)).toEqual(['round', 'lobby', 'assign', 'scores', 'call']);
     expect(p.got.find((m) => m.t === 'round')).toBeTruthy();
     // second hello inside 2 s is ignored
     const before = p.got.length;

@@ -24,3 +24,4 @@ Lightweight ADRs for Lotería de los Pueblos. One file per decision: `NNNN-short
 | [0019](0019-first-pick-is-arrival-order.md) | First correct pick is decided by arrival order at the host | Accepted |
 | [0020](0020-nahuatl-variant-and-voice.md) | Náhuatl: Classical/Central spellings, Huasteca (`nhe`) voice | Accepted |
 | [0021](0021-no-hide-picture-practice-mode.md) | No "hide the picture" practice mode in v1.0 | Accepted |
+| [0022](0022-durable-signed-frame-sequences.md) | Durable signed host-frame sequences and explicit legacy recovery | Accepted |

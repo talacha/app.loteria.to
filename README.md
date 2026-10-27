@@ -44,7 +44,7 @@ vercel env pull .env.local
 - Vercel project **talachadev/app.loteria.to**, framework Vite, Node 24.x, output `dist/`.
 - The build is gated. `vercel.json` sets `buildCommand: "pnpm check && pnpm build"`, so a lint, type, test, content or copy failure stops the deploy. `seo:check` runs inside `build`.
 - GitHub Actions (`.github/workflows/ci.yml`) runs `pnpm check`, `pnpm build` and `pnpm e2e` on every push to `main` and on every PR.
-- Production flow: verify locally (`pnpm check && pnpm build`), commit and push to `main`, then deploy to production (`vercel deploy --prod`, or the Git integration if it is connected). _Unverified:_ this repo does not show whether Git auto-deploy is enabled.
+- Production flow: commit the intended changes, verify the clean checkout (`pnpm verify:release`), and push to `main`, then deploy to production (`vercel deploy --prod`, or the Git integration if it is connected). Git auto-deploy was confirmed by the 2026-10-27 deployment logs.
 - Rollback: run `vercel promote <previous-deployment-url>` (or `vercel rollback`) to put the last good deployment back on `app.loteria.to` without rebuilding.
 - One-time platform setup (Supabase migration, Upstash Redis/QStash) is in [docs/ARCHITECTURE.md §7](docs/ARCHITECTURE.md#7-environments-and-env-vars).
 
@@ -62,7 +62,7 @@ vercel env pull .env.local
 
 ## Credits and licences
 
-- **Voices:** every card name in all five languages is synthesised with **Meta MMS-TTS** (`facebook/mms-tts-spa`, `-eng`, `-nhe`, `-yua`, `-quz`) under **CC-BY-NC 4.0**, which allows non-commercial use with attribution. The `/creditos` page credits it.
+- **Voices:** Spanish and English use **Kokoro-82M** (Apache-2.0); Náhuatl, Maya yucateco and Quechua use **Meta MMS-TTS** (`facebook/mms-tts-nhe`, `-yua`, `-quz`, CC-BY-NC 4.0). The `/creditos` page credits both. See [audio pipeline](docs/audio.md).
 - **Fonts:** Bricolage Grotesque, Atkinson Hyperlegible and Noto Sans (used for PDF tablas) are all under the **SIL Open Font License 1.1**. See `public/fonts/LICENSES.md`.
-- **Art:** 16 cards have an SVG in `public/art/`. The other 38 cards use their Unicode emoji, drawn by the system font, as a placeholder (`src/content/credits.json` calls the art "emoji-placeholder"). The repo does not record where the SVGs came from or under what licence. Original artwork from Indigenous artists is planned.
-- **Names:** the team wrote the Spanish and English names. The Náhuatl, Maya yucateco and Quechua names come from the dictionaries and grammars cited on each card in `src/content/cards.json`.
+- **Art:** 32 generated illustrations are indexed from `public/cards/`. The shared card renderer falls back to SVGs in `public/art/`, then Unicode emoji. Full-deck art and clear reuse licences remain backlog work.
+- **Names:** the team wrote the Spanish and English names. The Náhuatl, Maya yucateco and Quechua names include draft dictionary and grammar references in `src/content/cards.json` that still require verification and native-speaker review.

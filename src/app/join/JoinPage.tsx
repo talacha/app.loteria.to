@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { isValidName, sanitizeName } from '@net';
+import { NAME_MAX, isValidName, sanitizeName } from '@net';
 import type { Lang } from '@engine';
 import i18n from 'i18next';
 import type { PlayerProfile } from '../player/PlayerBoard';
@@ -265,7 +265,7 @@ export default function JoinPage() {
             ref={nameRef}
             value={name}
             onChange={(e) => setName(e.target.value)}
-            maxLength={40}
+            maxLength={NAME_MAX}
             autoComplete="nickname"
             placeholder={t('join.namePlaceholder')}
             aria-invalid={error}

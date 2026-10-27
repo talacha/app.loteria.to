@@ -69,9 +69,14 @@ export abstract class BaseTransport implements Transport {
   /** Called by subclasses for each inbound frame from the wire. */
   protected deliver(frame: unknown, gen: number): void {
     if (gen !== this.gen) return;
-    void this.session.decode(frame).then((m) => {
-      if (m && gen === this.gen) for (const cb of [...this.msgCbs]) cb(m);
-    });
+    void this.session
+      .decode(frame)
+      .then((m) => {
+        if (m && gen === this.gen) for (const cb of [...this.msgCbs]) cb(m);
+      })
+      .catch((error: unknown) => {
+        if (gen === this.gen) this.emitError(error);
+      });
   }
 
   protected emitPresence(seats: string[]): void {

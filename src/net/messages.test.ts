@@ -2,6 +2,13 @@ import { describe, expect, it } from 'vitest';
 import { HOST_ONLY, isValidName, parseMsg, sanitizeName } from './messages.ts';
 
 describe('parseMsg', () => {
+  it('limits names to 24 characters on the wire and in form validation', () => {
+    const hello = { t: 'hello', seat: 'a', glyph: '*', labelLang: 'es' };
+    expect(isValidName('a'.repeat(24))).toBe(true);
+    expect(isValidName('a'.repeat(25))).toBe(false);
+    expect(parseMsg({ ...hello, name: 'a'.repeat(24) })).not.toBeNull();
+    expect(parseMsg({ ...hello, name: 'a'.repeat(25) })).toBeNull();
+  });
   it('accepts every variant', () => {
     const ok = [
       {
@@ -44,6 +51,20 @@ describe('parseMsg', () => {
     ).toBeNull();
     expect(parseMsg({ t: 'end', roundNo: 1, winners: ['a', 'a'], reason: 'full-card' })).toBeNull();
   });
+  it('accepts optional closed call history on assign and rejects duplicates or oversized history', () => {
+    const assign = { t: 'assign', seat: 'a', tablaIndex: 5, roundNo: 1 };
+    expect(parseMsg({ ...assign, closed: ['sol', 'luna'] })).toEqual({
+      ...assign,
+      closed: ['sol', 'luna'],
+    });
+    expect(parseMsg({ ...assign, closed: [] })).not.toBeNull();
+    expect(parseMsg({ ...assign, closed: ['sol', 'sol'] })).toBeNull();
+    expect(parseMsg({ ...assign, closed: [''] })).toBeNull();
+    expect(
+      parseMsg({ ...assign, closed: Array.from({ length: 55 }, (_, i) => `c${i}`) }),
+    ).toBeNull();
+  });
+
   it('validates lobby', () => {
     const p = (i: number) => ({ seat: 's' + i, name: 'N' + i, glyph: '*' });
     const lobby = (n: number) => ({

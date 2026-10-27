@@ -4,6 +4,8 @@ import type { CardId, Lang } from '@engine';
 import { getCard } from '@content';
 import type { Msg, Transport } from '@net';
 import type { MessageLog } from '../lobby/messageLog';
+import ConnectionRecovery from '../lobby/ConnectionRecovery';
+import { connectionRecoveryKey, type ConnectionRecoveryKey } from '../lobby/recoveryReason';
 import { isMuted, onMutedChange, setMuted, speakCall } from '../audio';
 import {
   Button,
@@ -43,6 +45,7 @@ export interface PlayerBoardProps {
   profile: PlayerProfile;
   /** Lobby message buffer; when absent the board listens to the transport directly. */
   log?: MessageLog;
+  recovery?: ConnectionRecoveryKey | null;
   onLeave?: () => void;
   /** "Volver a la sala" from the win screen; falls back to just closing the win screen. */
   onBackToLobby?: () => void;
@@ -56,12 +59,15 @@ export default function PlayerBoard({
   roster,
   profile,
   log,
+  recovery: inheritedRecovery,
   onBackToLobby,
 }: PlayerBoardProps) {
   const { t } = useTranslation();
   const { code } = room;
   const [state, dispatch] = useReducer(playerReducer, initialPlayerState);
   const [lost, setLost] = useState(false);
+  const [localRecovery, setLocalRecovery] = useState<ConnectionRecoveryKey | null>(null);
+  const recovery = inheritedRecovery ?? localRecovery;
   const [tick, setTick] = useState(() => Date.now());
   const [spokenLang, setSpokenLang] = useState<Lang>(profile.spokenLang);
   const [sheet, setSheet] = useState(false);
@@ -105,7 +111,12 @@ export default function PlayerBoard({
           break;
         case 'assign':
           if (m.seat === transport.seat)
-            dispatch({ type: 'assign', tablaIndex: m.tablaIndex, roundNo: m.roundNo });
+            dispatch({
+              type: 'assign',
+              tablaIndex: m.tablaIndex,
+              roundNo: m.roundNo,
+              closed: m.closed,
+            });
           break;
         case 'call':
           dispatch({
@@ -140,7 +151,11 @@ export default function PlayerBoard({
           break;
       }
     };
-    const offErr = transport.onError?.(() => setLost(true));
+    const offErr = transport.onError?.((error) => {
+      setLost(true);
+      const key = connectionRecoveryKey(error);
+      if (key) setLocalRecovery(key);
+    });
     let off: () => void;
     if (log) {
       let next = 0;
@@ -267,22 +282,25 @@ export default function PlayerBoard({
     const names: Record<string, string> = { [transport.seat]: name };
     for (const r of roster ?? []) if (r.name) names[r.seat] = r.name;
     return (
-      <WinScreen
-        board={board}
-        crossed={state.crossed}
-        winners={state.ended.winners}
-        wonByMe={state.ended.wonByMe}
-        names={names}
-        points={{ ...state.points, [transport.seat]: points }}
-        standings={standings}
-        selfSeat={transport.seat}
-        spokenLang={spokenLang}
-        onAnother={() => dispatch({ type: 'dismissEnded' })}
-        onBack={() => {
-          dispatch({ type: 'dismissEnded' });
-          onBackToLobby?.();
-        }}
-      />
+      <>
+        {recovery ? <ConnectionRecovery recovery={recovery} /> : null}
+        <WinScreen
+          board={board}
+          crossed={state.crossed}
+          winners={state.ended.winners}
+          wonByMe={state.ended.wonByMe}
+          names={names}
+          points={{ ...state.points, [transport.seat]: points }}
+          standings={standings}
+          selfSeat={transport.seat}
+          spokenLang={spokenLang}
+          onAnother={() => dispatch({ type: 'dismissEnded' })}
+          onBack={() => {
+            dispatch({ type: 'dismissEnded' });
+            onBackToLobby?.();
+          }}
+        />
+      </>
     );
   }
 
@@ -343,6 +361,8 @@ export default function PlayerBoard({
           ) : null}
           {!room.hostVerified ? <> · {t('player.unverifiedBadge')}</> : null}
         </p>
+
+        {recovery ? <ConnectionRecovery recovery={recovery} /> : null}
 
         {!round ? (
           <p className={styles.waiting}>{t('player.waitingRound')}</p>

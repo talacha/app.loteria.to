@@ -57,19 +57,20 @@ export const RULES: Rule[] = [
   {
     id: 'winning-es',
     lang: 'es',
-    message: 'winning framing (say "completar la figura")',
+    message: 'winning framing (say "completaste")',
     words: ['gana', 'ganar', 'ganó', 'ganen', 'ganan', 'ganaron', 'gane'],
   },
   {
     id: 'winning-en',
     lang: 'en',
-    message: 'winning framing (say "complete the pattern")',
+    message: 'winning framing (say "board complete")',
     words: ['win', 'wins', 'won', 'winner', 'winners', 'winning'],
   },
   {
     id: 'framing',
     message: 'prize / betting / money framing (play with beans, not chips)',
     words: [
+      'bingo',
       'premio',
       'premios',
       'prize',
@@ -102,10 +103,6 @@ export const ALLOWLIST = [
   'no money',
   'ficha técnica',
   'fichas técnicas',
-  // Rules copy on the home page (src/app/home/strings.es.json).
-  'Todos los jugadores reciben',
-  'El primero en acertar gana',
-  'varios ganadores, el que tenga más puntos gana',
 ];
 
 export interface Hit {

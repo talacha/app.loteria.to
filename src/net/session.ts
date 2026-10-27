@@ -1,5 +1,6 @@
 import { generateHostKeys, signMsg, verifyMsg, type HostKeys } from './crypto.ts';
 import { HOST_ONLY, parseMsg, type Msg } from './messages.ts';
+import { SequenceStorageError, sequenceStore, type SequenceStore } from './sequence.ts';
 import {
   PICK_INTERVAL_MS,
   MAX_PICKS_PER_CALL,
@@ -15,6 +16,17 @@ export interface Frame {
   from: string;
   m: unknown;
   sig?: string;
+  v?: number;
+  seq?: number;
+}
+
+export class ProtocolVersionError extends Error {
+  constructor() {
+    super(
+      'Incompatible room protocol. Refresh the organiser and every player to the latest version.',
+    );
+    this.name = 'ProtocolVersionError';
+  }
 }
 
 /** Shared protocol state: seat, host keys, signing, receive-side policy. */
@@ -29,8 +41,12 @@ export class Session {
   private lastPick = new Map<string, { n: number; t: number }>();
   private lastPickAt = new Map<string, number>();
   private chain: Promise<unknown> = Promise.resolve();
+  private outgoing: Promise<unknown> = Promise.resolve();
 
-  constructor(private readonly now: () => number = () => Date.now()) {}
+  constructor(
+    private readonly now: () => number = () => Date.now(),
+    private readonly sequences: SequenceStore = sequenceStore(),
+  ) {}
 
   async start(code: string, role: Role, opts?: JoinOptions, fixedSeat?: string): Promise<void> {
     this.role = role;
@@ -50,21 +66,40 @@ export class Session {
   }
 
   /** Validate and sign an outgoing message. Throws on invalid input. */
-  async encode(input: Msg): Promise<Frame> {
+  encode(input: Msg): Promise<Frame> {
+    const run = this.outgoing.then(() => this.encodeNext(input));
+    this.outgoing = run.catch(() => undefined);
+    return run;
+  }
+
+  private async encodeNext(input: Msg): Promise<Frame> {
     let m = parseMsg(input);
     if (!m) throw new Error('invalid message');
     if (HOST_ONLY.has(m.t)) {
       if (!this.keys) throw new Error('only the host may send ' + m.t);
       if (m.t === 'round' || m.t === 'lobby') m = { ...m, hostKey: this.keys.pub };
-      return { role: this.role, from: this.seat, m, sig: await signMsg(this.keys.priv, m) };
+      const seq = await this.sequences.next('tx:' + this.keys.pub);
+      const envelope = { v: 2, seq, m };
+      return {
+        role: this.role,
+        from: this.seat,
+        ...envelope,
+        sig: await signMsg(this.keys.priv, envelope),
+      };
     }
     return { role: this.role, from: this.seat, m };
   }
 
   /** Apply receive policy. Calls are serialised so async verification keeps order. */
   decode(frame: unknown): Promise<Msg | null> {
-    const run = this.chain.then(() => this.check(frame)).catch(() => null);
-    this.chain = run;
+    const run = this.chain
+      .then(() => this.check(frame))
+      .catch((error: unknown) => {
+        if (error instanceof ProtocolVersionError || error instanceof SequenceStorageError)
+          throw error;
+        return null;
+      });
+    this.chain = run.catch(() => undefined);
     return run;
   }
 
@@ -83,7 +118,20 @@ export class Session {
         if ((m.t !== 'round' && m.t !== 'lobby') || !m.hostKey) return null;
         key = m.hostKey;
       }
-      if (!(await verifyMsg(key, f.sig, m))) return null;
+      if (f.v !== 2) {
+        // Only an authenticated old host can raise a compatibility error. Forgery stays silent.
+        const authenticated = await verifyMsg(
+          key,
+          f.sig,
+          f.v === undefined ? m : { v: f.v, seq: f.seq, m },
+        );
+        if (authenticated) throw new ProtocolVersionError();
+        return null;
+      }
+      if (!Number.isSafeInteger(f.seq) || (f.seq as number) < 1) return null;
+      if (!(await verifyMsg(key, f.sig, { v: 2, seq: f.seq, m }))) return null;
+      // Write before delivery so a reload cannot accept a frame already shown to this seat.
+      if (!(await this.sequences.accept(`rx:${key}:${this.seat}`, f.seq as number))) return null;
       this.pinned = key;
       return m;
     }

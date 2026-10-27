@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#b3261e" />
+    <meta name="theme-color" content="#1E2142" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#FFC233" media="(prefers-color-scheme: light)" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link
@@ -63,8 +64,14 @@
     <div id="root"></div>
     <script>
       try {
-        var t = localStorage.getItem('loteria:theme');
-        if (t && t !== 'auto') document.documentElement.dataset.theme = t;
+        var t = localStorage.getItem('loteria:theme') || localStorage.getItem('loteria.theme');
+        if (t === 'dark' || t === 'light' || t === 'contrast') {
+          document.documentElement.dataset.theme = t;
+          var c = t === 'light' ? '#FFC233' : t === 'contrast' ? '#000000' : '#1E2142';
+          document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
+            meta.content = c;
+          });
+        }
         // A prerendered page only paints for its own route (the service worker may serve another).
         var r = document.getElementById('root');
         var p = location.pathname.replace(/\/+$/, '') || '/';

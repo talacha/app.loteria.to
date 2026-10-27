@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { generateHostKeyPair } from './crypto.ts';
+import { generateHostKeyPair, generateHostKeys, signMsg } from './crypto.ts';
 import { LocalTransport } from './local.ts';
 import { getSeat } from './transport.ts';
 import type { Msg } from './messages.ts';
@@ -99,6 +99,24 @@ describe('LocalTransport', () => {
       frame: { role: 'host', from: 'x', m: { ...round, hostKey: 'bogus' }, sig: 'AAAA' },
     });
     await flush();
+    expect(got).toEqual([]);
+  });
+
+  it('reports an authenticated legacy host through onError with refresh guidance', async () => {
+    const keys = await generateHostKeys();
+    const player = await make('LEGACY', 'player', { hostKey: keys.pub });
+    const got = collect(player);
+    const errors: unknown[] = [];
+    player.onError((error) => errors.push(error));
+    raw('LEGACY').postMessage({
+      k: 'msg',
+      frame: { role: 'host', from: 'old-host', m: call, sig: await signMsg(keys.priv, call) },
+    });
+    await vi.waitFor(() => expect(errors).toHaveLength(1));
+    expect(errors[0]).toMatchObject({
+      name: 'ProtocolVersionError',
+      message: expect.stringMatching(/Refresh/),
+    });
     expect(got).toEqual([]);
   });
 

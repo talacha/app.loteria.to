@@ -1,13 +1,13 @@
 {
-  "tagline": "El bingo de imágenes con el que todos crecimos, cantado en cinco idiomas. Una sala entera juega desde un solo código QR, y no hace falta ningún teléfono.",
+  "tagline": "La lotería de imágenes con la que todos crecimos, cantada en cinco idiomas.",
   "actions": "Empezar",
   "joinLabel": "Código de la sala",
   "joinInvalid": "El código tiene 5 letras o números (sin I, L, O, 0 ni 1).",
   "joinSubmit": "Unirme a una sala",
   "joinHelp": "Escribe el código de 5 caracteres que ves en la pantalla de quien canta.",
   "languagesTitle": "Cinco idiomas",
-  "languagesIntro": "Las cartas se cantan en estos idiomas. Los nombres en lenguas originarias solo se cantan cuando hablantes nativos los revisan.",
-  "pendingBadge": "pendiente de revisión",
+  "languagesIntro": "Cada persona elige el idioma de las llamadas. Consulta la procedencia de los nombres y las voces en los créditos.",
+  "pendingBadge": "sin audio",
   "readyBadge": "listo para cantar",
   "sampleTitle": "Una muestra de la baraja",
   "sampleAll": "Ver las 54 cartas",
@@ -15,37 +15,37 @@
   "steps": {
     "one": {
       "title": "Se abre la sala",
-      "body": "Todos los jugadores reciben 1 cartón de 4 columnas × 4 filas."
+      "body": "Cada persona recibe un cartón del tamaño elegido para la sala."
     },
     "two": {
       "title": "Se canta una carta",
-      "body": "Cada carta sale una sola vez, con su nombre en el idioma elegido, y todas las personas deben elegir la forma escrita correcta. El primero en acertar gana 2× puntos (sirven para desempate). Todos los que aciertan reciben un punto; quien no acierte no recibe puntos, pero todos los que tengan la figura en su cartón logran tacharla y aparece la forma escrita correcta."
+      "body": "Cada carta sale una sola vez. Elige su escritura entre tres opciones en tu idioma. Quien acierta primero suma 2 puntos; los demás aciertos suman 1. Al cerrar la llamada, la carta se tacha automáticamente en los cartones que la tienen y aparece su nombre."
     },
     "three": {
       "title": "Se completa un cartón",
-      "body": "Quien completa su cartón dice ¡Lotería! Si hay varios ganadores, el que tenga más puntos gana."
+      "body": "La sala detecta cuándo se completa un cartón. Si varias personas completan, desempatan los puntos."
     }
   },
   "inclusionTitle": "Hecha para incluir a todas las personas",
   "inclusion": {
-    "paper": "Se puede jugar solo con papel: quien canta usa una pantalla y no hace falta ningún teléfono.",
-    "access": "Letra ajustable, alto contraste, modo Escucha y teclado completo.",
-    "private": "Sin cuentas. Tu nombre y tus marcas se quedan en tu dispositivo.",
-    "offline": "Funciona sin conexión después de la primera visita."
+    "paper": "Las tablas para papel se descargan por separado en «Imprimir tablas».",
+    "access": "Letra ajustable, alto contraste y controles de teclado.",
+    "private": "Sin cuentas. Tu nombre se comparte con quienes están en tu sala.",
+    "offline": "El modo solo y las tablas para imprimir funcionan sin conexión después de la primera visita."
   },
   "audienceTitle": "Para quién es",
   "audience": {
-    "classroom": "Aulas y centros comunitarios: una pantalla canta y cada persona juega en papel o en su teléfono.",
+    "classroom": "Aulas y centros comunitarios: una pantalla canta y cada persona juega desde su teléfono.",
     "family": "Familias con varios idiomas: abuelas y abuelos cantan en su lengua mientras las infancias buscan los dibujos.",
-    "heritage": "Quien aprende una lengua heredada: el modo Escucha canta solo la palabra, para aprender de oído."
+    "heritage": "Quien aprende una lengua heredada: escucha cada palabra y elige cómo se escribe."
   },
   "devTitle": "En desarrollo",
-  "devNotice": "Esta es una versión temprana. Las ilustraciones son emojis provisionales y los nombres en náhuatl, maya y quechua esperan la revisión de hablantes nativos. Nunca mostramos como correcta una palabra que nadie ha revisado.",
-  "privacyLine": "Sin cuentas ni cookies de seguimiento. Lo que escribes no sale de tu dispositivo.",
+  "devNotice": "Esta versión combina ilustraciones y emojis. Los nombres en lenguas originarias incluyen borradores cuya referencia aún debe verificarse; las voces son sintéticas. Consulta los créditos.",
+  "privacyLine": "Sin cuentas ni cookies de seguimiento. Tu nombre y tus respuestas se comparten dentro de la sala.",
   "creditsLink": "Créditos y licencias",
   "nameTitle": "¿Cómo te llamas?",
   "nameLabel": "Tu nombre en la sala",
-  "nameHint": "Solo lo ven quienes están en tu sala. No se guarda en ningún servidor.",
+  "nameHint": "Solo lo ven quienes están en tu sala.",
   "nameRequired": "Escribe tu nombre para crear una sala.",
   "glyphLegend": "Elige tu dibujo",
   "glyphGroup": "Tu dibujo",
@@ -63,13 +63,13 @@
   "printLink": "Imprimir tablas",
   "deckLink": "Cartas",
   "h1": "Lotería de los Pueblos — la lotería cantada en náhuatl, maya, quechua, español e inglés",
-  "lede": "Una lotería de imágenes para jugar en familia o en el aula: una voz canta cada carta y tú eliges cómo se escribe. Se juega desde el teléfono con un código QR, o con papel y frijoles. Es gratis y no necesita cuentas.",
+  "lede": "Una lotería de imágenes para jugar en familia o en el aula: una voz canta cada carta y tú eliges cómo se escribe. Entra desde tu teléfono con el código QR. Es gratis y no necesita cuentas.",
   "faq": {
     "title": "Preguntas frecuentes",
     "items": {
       "how": {
         "q": "¿Cómo se juega?",
-        "a": "Una persona crea la sala y las demás entran con el código o el QR. Cada persona recibe un cartón de 4 × 4 con dibujos. Una voz canta una carta a la vez; cada quien elige la escritura correcta entre tres opciones y tacha la figura si la tiene. Quien completa su cartón dice ¡Lotería!"
+        "a": "Cada persona recibe un cartón del tamaño elegido para la sala. Cada carta sale una sola vez. Elige su escritura entre tres opciones en tu idioma. Quien acierta primero suma 2 puntos; los demás aciertos suman 1. Al cerrar la llamada, la carta se tacha automáticamente en los cartones que la tienen y aparece su nombre. La sala detecta cuándo se completa un cartón. Si varias personas completan, desempatan los puntos."
       },
       "langs": {
         "q": "¿Qué idiomas tiene?",
@@ -77,7 +77,7 @@
       },
       "free": {
         "q": "¿Es gratis?",
-        "a": "Sí. Es gratis, sin cuentas y sin anuncios. Tu nombre y tus marcas se quedan en tu dispositivo. Las voces sintéticas usan Meta MMS-TTS (licencia CC BY-NC 4.0), por eso el uso es no comercial."
+        "a": "Sí. Sin cuentas ni anuncios. Las voces en español e inglés usan Kokoro-82M; las voces en lenguas originarias usan Meta MMS-TTS (CC BY-NC 4.0), para uso no comercial."
       },
       "who": {
         "q": "¿Para quién es?",

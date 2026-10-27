@@ -1,4 +1,7 @@
 {
+  "roomRefreshRequired": "Every screen in the room needs the same version. Reload all screens, including the organiser’s, to continue.",
+  "browserStorageRequired": "Browser storage is needed to continue. Enable browser storage and reload this screen.",
+  "refreshScreen": "Reload this screen",
   "connecting": "Connecting…",
   "connected": "Connected",
   "waitingRound": "Waiting for the organiser to start the round…",

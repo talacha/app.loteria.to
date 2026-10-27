@@ -1,20 +1,44 @@
 /**
  * Load-test CLI. Usage:
- *   pnpm exec tsx loadtest/run.ts --players 40 --transport local --host headless
+ *   pnpm exec tsx loadtest/run.ts --players 20 --rooms 3 --transport local --host headless
  * Flags: --players N --rooms R --transport supabase|local --mode normal|race --calls K
- *        --host headless|app --pattern line|corners|center|full --tick ms --delay min,max
+ *        --host headless|app --tick ms --delay min,max
  *        --wrong 0..1 --max-loss pct --timeout sec --no-adversary
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { checkClaim, initialPickState, resolveWinners, scorePick, tabla } from '@engine';
-import type { PatternId } from '@engine';
+import {
+  ROOM_MAX_PLAYERS,
+  crossedAfterCall,
+  initialPickState,
+  isCardComplete,
+  resolveFullCardWinners,
+  scorePick,
+  tabla,
+} from '@engine';
 import { generateHostKeys, signMsg } from '../src/net/crypto.ts';
 import { Bot } from './bot.ts';
 import { Wire, cardPool, loadEnv, sleep, stats, supabaseCreds } from './common.ts';
 import { HeadlessHost } from './host-headless.ts';
 import { makeTransport, type Net } from './transports.ts';
 
+if (process.argv.includes('--help')) {
+  console.log(`Usage: pnpm tsx loadtest/run.ts [options]
+  --players N        players per room, 2..20 (default 20)
+  --rooms R          concurrent rooms (default 3)
+  --transport KIND   local or supabase (default local)
+  --host KIND        headless or app (default headless; app requires supabase)
+  --mode MODE        normal or race (default normal)
+  --calls K          maximum calls, 1..54 (default 54; truncation fails if no full card)
+  --tick MS          accelerated headless call window (default local 1500, supabase 3000)
+  --delay MIN,MAX    pick delay in ms (default derived from tick)
+  --wrong RATE       wrong-first-pick probability, 0..1 (default 0.1)
+  --max-loss PCT     allowed call delivery loss (default 0)
+  --timeout SEC      room timeout (default calls*tick + 40 seconds)
+  --no-adversary     skip forged-frame and signed-frame replay probes
+Reports use the real transports/signatures. Headless timing is accelerated; it is not a browser/UI or Supabase quota certification.`);
+  process.exit(0);
+}
 loadEnv();
 
 function arg(name: string, def?: string): string | undefined {
@@ -24,13 +48,12 @@ function arg(name: string, def?: string): string | undefined {
 const flag = (n: string) => process.argv.includes('--' + n);
 
 const cfg = {
-  players: Number(arg('players', '40')),
-  rooms: Number(arg('rooms', '1')),
+  players: Number(arg('players', '20')),
+  rooms: Number(arg('rooms', '3')),
   transport: arg('transport', 'local') as 'local' | 'supabase',
   mode: arg('mode', 'normal') as 'normal' | 'race',
   calls: Number(arg('calls', '54')),
   host: arg('host', 'headless') as 'headless' | 'app',
-  pattern: arg('pattern', 'line') as PatternId,
   tick: Number(arg('tick', arg('transport', 'local') === 'supabase' ? '3000' : '1500')),
   delay: (arg('delay', '') || '').split(',').map(Number),
   wrong: Number(arg('wrong', '0.1')),
@@ -42,6 +65,29 @@ const [dMin, dMax] =
   cfg.delay.length === 2 && cfg.delay.every(Number.isFinite)
     ? (cfg.delay as [number, number])
     : [Math.min(300, cfg.tick * 0.2), Math.min(2500, cfg.tick * 0.6)];
+
+const invalid = (message: string): never => {
+  console.error(message + ' (see --help)');
+  process.exit(2);
+};
+if (!Number.isInteger(cfg.players) || cfg.players < 2 || cfg.players > ROOM_MAX_PLAYERS)
+  invalid('players must be an integer from 2 to ' + ROOM_MAX_PLAYERS);
+if (!Number.isInteger(cfg.rooms) || cfg.rooms < 1) invalid('rooms must be a positive integer');
+if (!['local', 'supabase'].includes(cfg.transport)) invalid('unknown transport');
+if (!['headless', 'app'].includes(cfg.host)) invalid('unknown host');
+if (!['normal', 'race'].includes(cfg.mode)) invalid('unknown mode');
+if (cfg.host === 'app' && cfg.transport !== 'supabase')
+  invalid('app host requires supabase: Node and browser BroadcastChannels do not share a process');
+if (!Number.isInteger(cfg.calls) || cfg.calls < 1 || cfg.calls > 54) invalid('calls must be 1..54');
+if (!Number.isFinite(cfg.tick) || cfg.tick <= 0) invalid('tick must be positive');
+if (!Number.isFinite(cfg.wrong) || cfg.wrong < 0 || cfg.wrong > 1) invalid('wrong must be 0..1');
+if (!Number.isFinite(cfg.maxLoss) || cfg.maxLoss < 0 || cfg.maxLoss > 100)
+  invalid('max-loss must be 0..100');
+if (!Number.isFinite(cfg.timeout) || cfg.timeout < 0) invalid('timeout must be nonnegative');
+if (arg('delay') && (cfg.delay.length !== 2 || cfg.delay.some((n) => !Number.isFinite(n))))
+  invalid('delay must be MIN,MAX');
+if (dMin < 0 || dMax < dMin || dMax >= cfg.tick) invalid('delay must fit within the call window');
+if (flag('pattern')) invalid('patterns were removed; rounds finish on a full card');
 
 const net: Net = { kind: cfg.transport };
 if (cfg.transport === 'supabase') {
@@ -79,13 +125,14 @@ let picksSent = 0;
 let picksAnswered = 0;
 let latePicks = 0;
 const errors: string[] = [];
-let replayAccepted: boolean | null = null;
-const claimOutcomes: {
+let replayAccepted = 0;
+let replayChecks = 0;
+const roundOutcomes: {
   room: string;
   winners: string[];
   expected: string[];
-  claims: number;
-  valid: number;
+  closedCalls: number;
+  completedSeats: string[];
 }[] = [];
 let firstDupMsgs = 0;
 let callsWithCorrect = 0;
@@ -99,42 +146,40 @@ async function adversary(
 ) {
   const tx = makeTransport(net, 'attacker', new Wire(), true);
   await tx.join(code, 'player', { hostKey });
-  while (host.calls.length < 2 && !host.endMsg) await sleep(100);
+  while (host.calls.length < Math.min(2, cfg.calls) && !host.endMsg) await sleep(100);
   const att = await generateHostKeys();
-  const sign = (m: unknown) => signMsg(att.priv, m);
+  const sign = (envelope: unknown) => signMsg(att.priv, envelope);
   const forgedCall = {
     t: 'call',
     i: 900,
     cardId: pool[0]!.id,
     choices: [pool[0]!.id, pool[1]!.id, pool[2]!.id],
-    lang: 'es',
     at: Date.now(),
   };
-  const forgedEnd = { t: 'end', roundNo: 777, winners: ['attacker'] };
+  const forgedEnd = { t: 'end', roundNo: 777, winners: ['attacker'], reason: 'full-card' };
   const forgedPR = {
     t: 'pickResult',
     roundNo: 777,
     i: 0,
     seat: bots[0]!.seat,
     correct: true,
+    points: 2,
     first: true,
   };
   const forgedRound = {
     t: 'round',
     seed: 'x',
     roundNo: 777,
-    mode: 'normal',
-    pattern: 'line',
-    callLang: 'es',
     speedSec: 3,
     hostKey: att.pub,
   };
   const inj: unknown[] = [];
   for (const m of [forgedCall, forgedEnd, forgedPR, forgedRound]) {
-    inj.push({ role: 'host', from: 'host', m }); // unsigned
-    inj.push({ role: 'host', from: 'host', m, sig: 'AAAA' }); // garbage sig
-    inj.push({ role: 'host', from: 'host', m, sig: await sign(m) }); // signed by attacker key (not pinned)
-    inj.push({ role: 'player', from: 'attacker', m, sig: await sign(m) }); // host-only type from player role
+    const envelope = { v: 2, seq: 1_000_000, m };
+    inj.push({ role: 'host', from: 'host', ...envelope }); // unsigned
+    inj.push({ role: 'host', from: 'host', ...envelope, sig: 'AAAA' }); // garbage sig
+    inj.push({ role: 'host', from: 'host', ...envelope, sig: await sign(envelope) }); // wrong key
+    inj.push({ role: 'player', from: 'attacker', ...envelope, sig: await sign(envelope) }); // wrong role
   }
   // Spoofed pick: claims to be another seat.
   inj.push({
@@ -158,8 +203,12 @@ async function adversary(
     await tx.inject(legit);
     await sleep(1500);
     const after = bots.reduce((a, b) => a + b.dupCalls, 0);
-    replayAccepted = after > before; // dedupe by i counts it as a delivered duplicate
-  }
+    replayChecks++;
+    const accepted = after - before;
+    replayAccepted += accepted;
+    if (accepted)
+      violate(room, 'signed-replay-accepted', `${accepted} players accepted the replay`);
+  } else violate(room, 'replay-probe', 'no signed host call captured');
   await tx.leave();
   notes.push(`[${room}] adversary injected ${inj.length} forged frames + 1 replay`);
 }
@@ -189,7 +238,6 @@ async function runRoom(n: number): Promise<void> {
       code,
       tx: htx,
       pool,
-      pattern: cfg.pattern,
       tickMs: cfg.tick,
       maxCalls: cfg.calls,
     });
@@ -270,9 +318,18 @@ function collect(bots: Bot[]) {
 function checkBotsOnly(room: string, bots: Bot[]) {
   collect(bots);
   callsExpected += Math.max(...bots.map((b) => b.calls.size)) * bots.length;
-  for (const b of bots)
-    if (b.crossedWithoutResult || b.crossed.some((c) => !b.confirmed.has(c)))
-      violate(room, 'cross-without-result', b.seat);
+  for (const b of bots) {
+    if (!b.assigned || !b.tbl) violate(room, 'assignment', b.seat);
+    if (!b.end) violate(room, 'end-loss', b.seat);
+    const expected = b.tbl
+      ? crossedAfterCall(
+          b.tbl,
+          [...b.closed].flatMap((i) => b.calls.get(i)?.cardId ?? []),
+        )
+      : [];
+    if (expected.slice().sort().join() !== b.crossed.slice().sort().join())
+      violate(room, 'crossed-vs-closed', b.seat);
+  }
   const ends = new Set(bots.filter((b) => b.end).map((b) => [...b.end!.winners].sort().join(',')));
   if (ends.size > 1) violate(room, 'winners-agree', [...ends].join(' | '));
 }
@@ -313,15 +370,19 @@ function check(room: string, host: HeadlessHost, bots: Bot[]) {
     }
   }
 
-  // I2: no cross without correct pickResult; crossed sets equal host's
+  // I2: every called card crosses on close, regardless of picks.
   for (const b of bots) {
-    if (b.crossedWithoutResult || b.crossed.some((x) => !b.confirmed.has(x)))
-      violate(room, 'cross-without-result', b.seat);
-    const h = new Set(host.state.crossed[b.seat] ?? []);
-    const mine = new Set(b.crossed);
-    const lostResults = host.results.filter((r) => r.seat === b.seat && r.correct).length;
-    if ((h.size !== mine.size || [...h].some((x) => !mine.has(x))) && lostResults >= 0)
-      violate(room, 'crossed-vs-host', `${b.seat} host=${h.size} bot=${mine.size}`);
+    if (!b.assigned || !b.tbl) violate(room, 'assignment', b.seat);
+    const idx = host.players.get(b.seat);
+    const expected =
+      idx === undefined ? [] : crossedAfterCall(tabla(host.seed, idx, pool), host.closed);
+    if (expected.slice().sort().join() !== b.crossed.slice().sort().join())
+      violate(room, 'crossed-vs-host', `${b.seat} host=${expected.length} bot=${b.crossed.length}`);
+    if (b.closed.size !== host.closed.length)
+      violate(room, 'close-loss', `${b.seat}: ${b.closed.size}/${host.closed.length}`);
+    if ((b.crossedCounts[b.seat] ?? -1) !== expected.length) violate(room, 'crossed-score', b.seat);
+    if ((b.scores[b.seat] ?? 0) !== (host.state.points[b.seat] ?? 0))
+      violate(room, 'points-observed', b.seat);
   }
 
   // I4: independent replay of points + winners
@@ -333,35 +394,37 @@ function check(room: string, host: HeadlessHost, bots: Bot[]) {
   const hostPts = JSON.stringify(Object.entries(host.state.points).sort());
   if (hostPts !== JSON.stringify(Object.entries(st.points).sort()))
     violate(room, 'points-replay', 'host points != replay');
-  const calledAll = host.calls.map((c) => c.cardId);
-  const valid = host.claimLog.filter((c) => c.valid);
-  const wins = [...new Set(valid.map((c) => c.atCall))].sort((a, b) => a - b)[0];
-  if (wins !== undefined) {
-    const cand = valid.filter((c) => c.atCall === wins || c.atCall <= wins).map((c) => c.seat);
-    const claimants = [...new Set(cand)].filter((s) => {
-      const idx = host.players.get(s)!;
-      return checkClaim(tabla(host.seed, idx, pool), calledAll, cfg.pattern, st.crossed[s] ?? [])
-        .valid;
-    });
-    const exp = resolveWinners(
-      claimants.map((seat) => ({ seat, points: st.points[seat] ?? 0 })),
-    ).sort();
-    const got = [...(host.endMsg?.winners ?? [])].sort();
-    if (exp.join() !== got.join()) violate(room, 'winners', `expected ${exp} got ${got}`);
-  } else if (host.endMsg && host.endMsg.winners.length)
-    violate(room, 'winners', 'winners without valid claim');
+  const completed = [...host.players]
+    .filter(([, idx]) => {
+      const board = tabla(host.seed, idx, pool);
+      return isCardComplete(board, crossedAfterCall(board, host.closed));
+    })
+    .map(([seat]) => seat);
+  const exp = resolveFullCardWinners(completed, st.points).sort();
+  const winners = [...(host.endMsg?.winners ?? [])].sort();
+  if (!host.endMsg) violate(room, 'missing-end', 'no full-card end before call limit or timeout');
+  if (!completed.length) violate(room, 'full-card', 'no completed tabla');
+  if (exp.join() !== winners.join()) violate(room, 'winners', `expected ${exp} got ${winners}`);
+  // The host must stop on the first completion, not a later call.
+  if (
+    [...host.players].some(([, idx]) => {
+      const board = tabla(host.seed, idx, pool);
+      return isCardComplete(board, crossedAfterCall(board, host.closed.slice(0, -1)));
+    })
+  )
+    violate(room, 'first-completion', 'a tabla was already complete before the final call');
   const got = (host.endMsg?.winners ?? []).slice().sort().join();
   const withEnd = bots.filter((b) => b.end);
   for (const b of withEnd)
     if ([...b.end!.winners].sort().join() !== got) violate(room, 'winners-observed', b.seat);
   if (host.endMsg && withEnd.length < bots.length)
     violate(room, 'end-loss', `${bots.length - withEnd.length} bots never saw end`);
-  claimOutcomes.push({
+  roundOutcomes.push({
     room,
     winners: host.endMsg?.winners ?? [],
     expected: host.expectedWinners,
-    claims: host.claimLog.length,
-    valid: valid.length,
+    closedCalls: host.closed.length,
+    completedSeats: completed,
   });
 
   // I5: adversary
@@ -403,7 +466,7 @@ const report = {
     callsWithCorrectPick: callsWithCorrect,
     callsWithRepeatedFirstTrue: firstDupMsgs,
   },
-  claims: claimOutcomes,
+  rounds: roundOutcomes,
   wire: {
     txFrames: wire.tx,
     rxFrames: wire.rx,
@@ -413,16 +476,22 @@ const report = {
     peakRxPerSec: peak(wire.rxSec),
     peakTxPlusRxPerSec: Math.max(
       0,
-      ...[...wire.txSec.keys()].map((s) => (wire.txSec.get(s) ?? 0) + (wire.rxSec.get(s) ?? 0)),
+      ...[...new Set([...wire.txSec.keys(), ...wire.rxSec.keys()])].map(
+        (s) => (wire.txSec.get(s) ?? 0) + (wire.rxSec.get(s) ?? 0),
+      ),
     ),
     assumption:
       'Supabase Free Realtime (assumed, verify in dashboard): 200 concurrent peers, 100 msgs/s, 2M msgs/month, 256KB payload; inbound+outbound both count as messages.',
   },
   errors: [...new Set(errors)].slice(0, 20),
   errorCount: errors.length,
-  findings: { replayOfSignedFrameAccepted: replayAccepted, notes },
+  findings: {
+    replayOfSignedFrameAccepted: replayAccepted,
+    replayChecksPerformed: replayChecks,
+    notes,
+  },
   violations,
-  pass: violations.length === 0,
+  pass: violations.length === 0 && errors.length === 0,
 };
 
 const dir = fileURLToPath(new URL('./reports/', import.meta.url));
@@ -444,8 +513,10 @@ console.log(
 console.log(
   `wire: tx ${wire.tx}, rx ${wire.rx}, peak tx/s ${report.wire.peakTxPerSec}, peak rx/s ${report.wire.peakRxPerSec}, peak tx+rx/s ${report.wire.peakTxPlusRxPerSec} (free tier assumed 100 msg/s)`,
 );
-for (const c of claimOutcomes)
-  console.log(`claims ${c.room}: ${c.claims} (${c.valid} valid), winners=[${c.winners.join(',')}]`);
+for (const c of roundOutcomes)
+  console.log(
+    `round ${c.room}: ${c.closedCalls} calls closed, ${c.completedSeats.length} completed, winners=[${c.winners.join(',')}]`,
+  );
 console.log(
   `errors: ${errors.length}${errors.length ? ' e.g. ' + report.errors[0] : ''}; signed-frame replay accepted: ${replayAccepted}`,
 );
@@ -459,4 +530,4 @@ console.log(
     : 'invariants: PASS',
 );
 console.log('report: ' + file);
-process.exit(violations.length ? 1 : 0);
+process.exit(report.pass ? 0 : 1);

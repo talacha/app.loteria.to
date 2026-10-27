@@ -23,7 +23,7 @@ export type Feedback = null | { kind: 'ok'; points: 1 | 2; first: boolean } | { 
 export interface PlayerState {
   round: RoundInfo | null;
   /** Assigned by the host; only used when its roundNo matches the round. */
-  assign: { tablaIndex: number; roundNo: number } | null;
+  assign: { tablaIndex: number; roundNo: number; closed?: CardId[] } | null;
   /** 16 card ids, row-major; empty until round and assign are both known. */
   board: CardId[];
   /** Card drawn at each call index, for messages that arrive late. */
@@ -53,7 +53,7 @@ export interface PlayerState {
 
 export type PlayerAction =
   | { type: 'round'; round: RoundInfo }
-  | { type: 'assign'; tablaIndex: number; roundNo: number }
+  | { type: 'assign'; tablaIndex: number; roundNo: number; closed?: CardId[] }
   | { type: 'call'; cardId: CardId; choices: [CardId, CardId, CardId]; i: number; now: number }
   | { type: 'pick'; cardId: CardId }
   | {
@@ -99,11 +99,23 @@ export function makeBoard(seed: string, tablaIndex: number, grid = 4): CardId[] 
 
 const add = (list: CardId[], id: CardId) => (list.includes(id) ? list : [...list, id]);
 
-/** Build the board once round and assignment agree. */
+/** Build the board and restore closed calls once round and assignment agree. */
 function withBoard(s: PlayerState): PlayerState {
   if (!s.round || !s.assign || s.assign.roundNo !== s.round.roundNo) return s;
-  if (s.board.length > 0) return s;
-  return { ...s, board: makeBoard(s.round.roomSeed, s.assign.tablaIndex, s.round.gridSize) };
+  const board =
+    s.board.length > 0
+      ? s.board
+      : makeBoard(s.round.roomSeed, s.assign.tablaIndex, s.round.gridSize);
+  const revealed = [...new Set([...s.revealed, ...(s.assign.closed ?? [])])];
+  const currentClosed = s.currentClosed || !!(s.current && revealed.includes(s.current.cardId));
+  return {
+    ...s,
+    board,
+    revealed,
+    crossed: board.filter((id) => revealed.includes(id)),
+    currentClosed,
+    pickPending: currentClosed ? false : s.pickPending,
+  };
 }
 
 /** Close the call at index i: reveal its word and cross it off if it is on my tabla. */
@@ -140,23 +152,25 @@ export function playerReducer(s: PlayerState, a: PlayerAction): PlayerState {
       if (s.round && s.round.roundNo !== a.roundNo) return s;
       const same =
         s.assign && s.assign.roundNo === a.roundNo && s.assign.tablaIndex === a.tablaIndex;
-      if (same) return s;
-      // A changed index for the same round invalidates the board.
+      // Merge snapshots: a delayed resend must not erase calls already closed locally.
+      const closed = [...new Set([...(same ? (s.assign?.closed ?? []) : []), ...(a.closed ?? [])])];
       return withBoard({
         ...s,
-        assign: { tablaIndex: a.tablaIndex, roundNo: a.roundNo },
-        board: [],
+        assign: { tablaIndex: a.tablaIndex, roundNo: a.roundNo, closed },
+        board: same ? s.board : [],
       });
     }
     case 'call': {
       if (!s.round) return s;
+      // Hello/repeat broadcasts resend the current call to everyone. Keep its progress.
+      if (s.current && a.i <= s.current.i) return s;
       // A new call implicitly closes the previous one (in case callClosed was missed).
       const prev = s.current && !s.currentClosed ? close(s, s.current.cardId, true) : s;
       return {
         ...prev,
         callsByIndex: { ...prev.callsByIndex, [a.i]: a.cardId },
         current: { cardId: a.cardId, choices: a.choices, i: a.i, receivedAt: a.now },
-        currentClosed: false,
+        currentClosed: prev.revealed.includes(a.cardId),
         wrong: [],
         pickPending: false,
         solved: false,

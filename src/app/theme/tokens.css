@@ -123,6 +123,7 @@
   --text-word: 38px;
   --text-code: 40px;
   --text-hero: 64px;
+  --text-call: clamp(3rem, 12vw, 9rem);
 
   /* space */
   --space-1: 4px;
@@ -142,6 +143,7 @@
   --radius-pill: 999px;
 
   /* border */
+  --border-w: 3px;
   --border-thick: 3px solid var(--color-ink);
   --border-thin: 2px solid var(--color-ink);
   --border-dashed: 2px dashed var(--color-night-dash);
@@ -163,8 +165,6 @@
   --motion-press: translateY(3px);
   --motion-lift: translateY(-2px);
 
-  --border-w: 3px;
-  --text-call: clamp(3rem, 12vw, 9rem);
   color-scheme: dark;
 
   /*

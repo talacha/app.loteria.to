@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import CardFace from './CardFace';
 import styles from './ui.module.css';
 
-/** Card picture: /art/<id>.svg, falling back to the card's emoji (card.art) if the file is missing. */
+/** Shared picture adapter: printed illustration, SVG, then the card emoji. */
 export default function CardArt({
   id,
   emoji,
@@ -13,21 +13,15 @@ export default function CardArt({
   className?: string;
   emojiClassName?: string;
 }) {
-  const [failed, setFailed] = useState(false);
-  if (failed) {
-    return (
-      <span className={emojiClassName ?? styles.artEmoji} aria-hidden="true">
-        {emoji}
-      </span>
-    );
-  }
   return (
-    <img
+    <CardFace
+      key={id}
+      cardId={id}
+      size="cell"
+      showName={false}
+      emoji={emoji}
       className={className ?? styles.art}
-      src={`/art/${id}.svg`}
-      alt=""
-      loading="lazy"
-      onError={() => setFailed(true)}
+      emojiClassName={emojiClassName ?? styles.artEmoji}
     />
   );
 }

@@ -2,6 +2,7 @@ import type { Transport } from '@net';
 import PlayerBoard, { type PlayerProfile } from '../player/PlayerBoard';
 import type { RosterPlayer } from '../lobby/Roster';
 import type { MessageLog } from '../lobby/messageLog';
+import type { ConnectionRecoveryKey } from '../lobby/recoveryReason';
 
 export interface PlayerGameProps {
   transport: Transport;
@@ -11,6 +12,7 @@ export interface PlayerGameProps {
   profile?: PlayerProfile;
   /** Messages received in the lobby, replayed on mount. */
   log?: MessageLog;
+  recovery?: ConnectionRecoveryKey | null;
   onLeave?: () => void;
   onBackToLobby?: () => void;
 }
@@ -24,6 +26,7 @@ export default function PlayerGame({
   roster,
   profile,
   log,
+  recovery,
   onLeave,
   onBackToLobby,
 }: PlayerGameProps) {
@@ -34,6 +37,7 @@ export default function PlayerGame({
       roster={roster}
       profile={profile ?? DEFAULT_PROFILE}
       log={log}
+      recovery={recovery}
       onLeave={onLeave}
       onBackToLobby={onBackToLobby}
     />

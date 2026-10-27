@@ -3,10 +3,20 @@ import HostGame from '../game/HostGame';
 import styles from './HostPage.module.css';
 import HostLobby from './HostLobby';
 import { useHostRoom } from './useHostRoom';
+import ConnectionRecovery from '../lobby/ConnectionRecovery';
 
 export default function HostPage() {
   const { t } = useTranslation();
   const room = useHostRoom();
+
+  if (room.recovery) {
+    return (
+      <main id="main" className={styles.page}>
+        <h1>{t('host.title')}</h1>
+        <ConnectionRecovery recovery={room.recovery} />
+      </main>
+    );
+  }
 
   if (room.phase === 'boot') {
     return (

@@ -2,6 +2,8 @@ import { z } from 'zod';
 import { MAX_TABLA_INDEX, ROOM_MAX_PLAYERS } from '@engine';
 import type { CardId, Lang } from '@engine';
 
+export const NAME_MAX = 24;
+
 const lang = z.enum(['es', 'en', 'nah', 'yua', 'quz']);
 const cardId = z.string().min(1).max(64);
 const seat = z.string().min(1).max(64);
@@ -17,14 +19,14 @@ export function sanitizeName(s: string): string {
 
 export function isValidName(s: string): boolean {
   const t = s.trim();
-  return t.length >= 1 && t.length <= 40 && SAFE_TEXT.test(t);
+  return t.length >= 1 && t.length <= NAME_MAX && SAFE_TEXT.test(t);
 }
 
 const unique = (a: string[]) => new Set(a).size === a.length;
 const roundNo = z.number().int().min(0).max(10000);
 const cardList = z.array(cardId).max(54).refine(unique, 'duplicate entries');
 
-const name = z.string().trim().min(1).max(40).regex(SAFE_TEXT);
+const name = z.string().trim().min(1).max(NAME_MAX).regex(SAFE_TEXT);
 const glyph = z.string().min(1).max(16).regex(SAFE_TEXT);
 const pronouns = z.string().max(30).regex(SAFE_TEXT).optional();
 const lobbyPlayer = z.object({ seat, name, glyph, pronouns });
@@ -44,6 +46,8 @@ export const msgSchema = z.discriminatedUnion('t', [
     seat,
     tablaIndex: z.number().int().min(0).max(MAX_TABLA_INDEX),
     roundNo,
+    /** Calls whose windows have closed; absent on older hosts. */
+    closed: cardList.optional(),
   }),
   z
     .object({
@@ -104,7 +108,7 @@ export const msgSchema = z.discriminatedUnion('t', [
   z.object({
     t: z.literal('hello'),
     seat,
-    name: z.string().trim().min(1).max(40).regex(SAFE_TEXT),
+    name: z.string().trim().min(1).max(NAME_MAX).regex(SAFE_TEXT),
     glyph: z.string().min(1).max(16).regex(SAFE_TEXT),
     pronouns: z.string().max(30).regex(SAFE_TEXT).optional(),
     labelLang: lang,
@@ -135,7 +139,7 @@ export type Msg =
       hostKey?: string;
       defaults?: { spokenLang: Lang; uiLang: 'es' | 'en' };
     }
-  | { t: 'assign'; seat: string; tablaIndex: number; roundNo: number }
+  | { t: 'assign'; seat: string; tablaIndex: number; roundNo: number; closed?: CardId[] }
   | {
       t: 'call';
       i: number;

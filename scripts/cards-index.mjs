@@ -8,10 +8,15 @@ import { fileURLToPath } from 'node:url';
 
 /** Width and height of a WebP buffer (VP8, VP8L or VP8X), or null if it is not a WebP. */
 export function webpSize(buf) {
-  if (buf.length < 30 || buf.toString('ascii', 0, 4) !== 'RIFF' || buf.toString('ascii', 8, 12) !== 'WEBP')
+  if (
+    buf.length < 30 ||
+    buf.toString('ascii', 0, 4) !== 'RIFF' ||
+    buf.toString('ascii', 8, 12) !== 'WEBP'
+  )
     return null;
   const kind = buf.toString('ascii', 12, 16);
-  if (kind === 'VP8X') return { width: 1 + buf.readUIntLE(24, 3), height: 1 + buf.readUIntLE(27, 3) };
+  if (kind === 'VP8X')
+    return { width: 1 + buf.readUIntLE(24, 3), height: 1 + buf.readUIntLE(27, 3) };
   if (kind === 'VP8L') {
     const b = buf.readUInt32LE(21);
     return { width: (b & 0x3fff) + 1, height: ((b >> 14) & 0x3fff) + 1 };
@@ -40,7 +45,8 @@ export function buildIndex(dir) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const dir = process.argv[2] ?? fileURLToPath(new URL('../public/cards/', import.meta.url));
-  const out = process.argv[3] ?? fileURLToPath(new URL('../src/content/card-art.json', import.meta.url));
+  const out =
+    process.argv[3] ?? fileURLToPath(new URL('../src/content/card-art.json', import.meta.url));
   const index = buildIndex(dir);
   writeFileSync(out, JSON.stringify(index, null, 2) + '\n');
   console.log(`cards-index: ${index.length} illustrated cards -> ${out}`);

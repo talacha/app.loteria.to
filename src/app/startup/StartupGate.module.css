@@ -1,0 +1,44 @@
+.message {
+  box-sizing: border-box;
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+}
+
+.message h1,
+.message p {
+  max-width: var(--size-tablet);
+  margin: 0;
+}
+
+.message h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  line-height: 1.2;
+}
+
+.message button {
+  min-height: var(--size-tap);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-thin);
+  border-radius: var(--radius-md);
+  color: var(--color-ink);
+  background: transparent;
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.message button:focus-visible {
+  outline: var(--border-w) solid var(--color-focus);
+  outline-offset: var(--space-1);
+}

@@ -174,6 +174,55 @@ describe('automatic caller', () => {
     expect(replay.choices).toEqual(c.choices);
   });
 
+  it('restores closed call history and scores for late and reloaded phones', async () => {
+    await started(['a', 'b']);
+    const originalIndex = indexOf('a');
+    await pick('a');
+    await tick(10_000);
+    await tick(10_000);
+    const order = deckOrder('TESTSEED', 1, ids);
+    const current = lastCall();
+    sent.length = 0;
+    await emit(hello('late'));
+    expect(sent.find((m) => m.t === 'assign' && m.seat === 'late')).toMatchObject({
+      roundNo: 1,
+      closed: order.slice(0, 2),
+    });
+    expect(lastCall()).toMatchObject({ i: current.i, cardId: current.cardId });
+    expect(sent.find((m) => m.t === 'scores')).toMatchObject({ points: { a: 2 } });
+    sent.length = 0;
+    await emit(hello('a'));
+    expect(sent.find((m) => m.t === 'assign' && m.seat === 'a')).toMatchObject({
+      tablaIndex: originalIndex,
+      closed: order.slice(0, 2),
+    });
+    expect(sent.find((m) => m.t === 'scores')).toMatchObject({ points: { a: 2 } });
+  });
+
+  it('includes closed call history and points when a saved host round resumes', async () => {
+    await started(['a', 'b']);
+    await pick('a');
+    await tick(10_000);
+    await tick(10_000);
+    const originalIndex = indexOf('a');
+    cleanup();
+    handlers.clear();
+    sent.length = 0;
+    render(
+      <MemoryRouter>
+        <HostPage />
+      </MemoryRouter>,
+    );
+    await flush();
+    fireEvent.click(screen.getByRole('button', { name: 'Reanudar partida' }));
+    await flush();
+    expect(sent.find((m) => m.t === 'assign' && m.seat === 'a')).toMatchObject({
+      tablaIndex: originalIndex,
+      closed: deckOrder('TESTSEED', 1, ids).slice(0, 2),
+    });
+    expect(sent.find((m) => m.t === 'scores')).toMatchObject({ points: { a: 2 } });
+  });
+
   it('scores 2 for the first correct pick, 1 for later ones, 0 for wrong (arrival order)', async () => {
     await started(['a', 'b', 'c']);
     const call = lastCall() as unknown as { choices: string[]; cardId: string };

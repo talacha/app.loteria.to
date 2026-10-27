@@ -1,4 +1,7 @@
 {
+  "roomRefreshRequired": "Las pantallas de la sala necesitan la misma versión. Recarga todas las pantallas, incluida la de quien organiza, para seguir.",
+  "browserStorageRequired": "El navegador necesita almacenamiento para seguir. Habilita el almacenamiento del navegador y recarga esta pantalla.",
+  "refreshScreen": "Recargar esta pantalla",
   "connecting": "Conectando…",
   "connected": "Conectado",
   "waitingRound": "Esperando a que quien organiza empiece la ronda…",

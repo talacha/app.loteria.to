@@ -118,7 +118,7 @@ export default function HostLobby({ room }: { room: HostRoom }) {
           <h2 id="share-h" className={styles.srOnly}>
             {t('host.scanQr')}
           </h2>
-          <QrCard url={room.joinUrl} code={room.code} />
+          <QrCard url={room.joinUrl} code={room.code} showCode={false} />
           <PaperCard>
             <RoomCodeTiles code={room.code} label={t('host.lobby.roomLabel')} />
           </PaperCard>

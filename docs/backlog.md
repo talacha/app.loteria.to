@@ -1,6 +1,6 @@
 # Backlog
 
-Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked against the code on 2026-10-27; items already fixed were dropped. Game rules: [rules.md](rules.md). Decisions: [decisions/](decisions/README.md).
+Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Updated after the 2026-10-27 maintenance pass; completed and superseded items were removed. See [maintenance evidence](maintenance-2026-10-27.md). Game rules: [rules.md](rules.md). Decisions: [decisions/](decisions/README.md).
 
 **Priority:** P0 = broken or blocks shipping safely; P1 = next up, visible to players or a rule/claim we don't meet; P2 = when convenient.
 **IDs** are stable; don't reuse them. Close an item by deleting it in the commit that fixes it.
@@ -9,41 +9,11 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 
 | Section | P0 | P1 | P2 | Total |
 | --- | --- | --- | --- | --- |
-| Bugs | 1 | 9 | 5 | 15 |
-| Feature requests | 0 | 1 | 4 | 5 |
-| Tech debt | 1 | 4 | 12 | 17 |
+| Bugs | 0 | 1 | 3 | 4 |
+| Feature requests | 0 | 2 | 5 | 7 |
+| Tech debt | 1 | 2 | 5 | 8 |
 
 ## Bugs
-
-### BUG-001 · e2e suite fails: `createRoom` never enters a name, and tests wait for a "Siguiente carta" button that no longer exists — P0
-
-- **Why:** CI runs `pnpm e2e`; 27 of 36 tests fail (every flow test: lobby, a11y on host/join/player, offline, on all three device projects), so multiplayer flows are unguarded.
-- **Evidence:** `e2e/helpers.ts:24-26` clicks `a[href="/host"]` with an empty name; `src/app/home/HomePage.tsx:55-61` cancels navigation and shows "Escribe tu nombre". `e2e/helpers.ts:10` (`RX.next`) is used at `e2e/lobby.spec.ts:53` and `e2e/offline.spec.ts:8`, but rules §5.1 removed manual "next" (`src/app/host/caller.test.tsx:139` asserts it is absent). `RX.hostCta` ("ser cantor") is also stale.
-- **Accept when:** `createRoom` fills `#home-name`, picks the host mode and lands on `/host`; lobby/offline specs assert the automatic cantor (e.g. a call appears within `speedSec`) instead of a next button; `pnpm e2e` passes on phone, tablet and laptop.
-
-### BUG-002 · Copy lint does not ban "bingo" — P1
-
-- **Why:** Rules §9.5 bans "bingo"; the lint that enforces §9.5 doesn't know the word, which is how BUG-004 shipped.
-- **Evidence:** `scripts/copy-lint.ts:72-89` (`framing` rule) has no `bingo`.
-- **Accept when:** `bingo` (whole word, case-insensitive, es and en) is in the banned list; a fixture in `scripts/copy-lint.test.ts` fails on it; `pnpm check` fails while BUG-004 copy is present.
-
-### BUG-003 · Copy-lint allowlist exempts words the rules forbid — P1
-
-- **Why:** Rules §9.5 and the no-gendered-roles rule say screens never use "ganar"; the allowlist lets "El primero en acertar gana", "Todos los jugadores reciben" and "varios ganadores, el que tenga más puntos gana" through. English says "takes the round".
-- **Evidence:** `scripts/copy-lint.ts:105-107`; `src/app/home/strings.es.json` `steps.one.body`, `steps.two.body`, `steps.three.body`; `strings.en.json` `steps.three.body`.
-- **Accept when:** the three allowlist entries are removed and the home steps say e.g. "Cada persona recibe…", "Quien acierta primero suma 2 puntos…", "Si varias personas completan, desempatan los puntos"; `pnpm copy-lint` passes with no allowlist entries for banned words.
-
-### BUG-004 · Home, SEO and manifest copy describe the v0 product: "bingo", paper in the same round, "no phone needed", Escucha mode, "pending review" — P1
-
-- **Why:** First thing visitors and search engines read; it promises features that don't exist and contradicts decisions 0007 and 0009.
-- **Evidence:** `src/app/home/strings.es.json` / `.en.json`: `tagline` ("El bingo de imágenes… no hace falta ningún teléfono"), `lede` ("o con papel y frijoles"), `inclusion.paper`, `inclusion.access` ("modo Escucha"), `audience.classroom` ("en papel"), `audience.heritage` ("modo Escucha"), `faq.items.who.a` ("imprimir cartones"), `languagesIntro` + `pendingBadge` + `devNotice` ("esperan la revisión de hablantes nativos", "emojis provisionales"); rendered at `HomePage.tsx:231-326`. `vite.config.ts:32` manifest description "Juega con teléfonos o con papel". `src/app/seo/meta.ts` description for `/` (check alongside).
-- **Accept when:** `grep -rni bingo src public index.html` is empty; tagline reads "La lotería de imágenes con la que todos crecimos, cantada en cinco idiomas." / "The picture lotería everyone grew up with, called in five languages."; home mentions paper only as a link to the classroom mode; no "Escucha" or "pendiente de revisión"; the dev notice matches DEBT-014's outcome; prerendered `/` and `llms.txt` agree.
-
-### BUG-005 · Credits claim dictionary sources "cited on each card" — P1
-
-- **Why:** Constraint "honesty about Indigenous words". Every Indigenous `source` in `cards.json` says "…, unverified draft"; the credits state the opposite.
-- **Evidence:** `src/content/credits.json:11-12`; `src/content/cards.json` `names.{nah,yua,quz}.source` (162 × "unverified draft").
-- **Accept when:** credits describe the current provenance truthfully (drafts from named references, pending verification) until DEBT-014 lands; a content test fails if credits claim citations while any `source` contains "unverified".
 
 ### BUG-006 · MMS clips for "El Cóndor" and "La Piña" mispronounce ó / ñ — P1
 
@@ -51,29 +21,11 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 - **Evidence:** `public/audio/es/condor.m4a`, `public/audio/es/pina.m4a` (listening test); generator `scripts/generate-audio.py`.
 - **Accept when:** both clips are regenerated (e.g. with respelled input text) and approved by a Spanish speaker; the generator records any respelling per card so future regenerations keep it; sweep the other 52 es clips and all en clips for the same issue.
 
-### BUG-007 · "Terminar ronda" sends `end{reason:'full-card'}` — P1
-
-- **Why:** Rules §1.4 lets the organiser end early, but the wire says a full cartón happened; players may see a ¡Lotería! screen with no completed cartón.
-- **Evidence:** `src/app/host/useGame.ts:518-521`; `src/net/messages.ts:59,147` allow only `'full-card'`.
-- **Accept when:** `reason: 'full-card' | 'ended'` in the schema and [protocol.md](protocol.md); `endRound` sends `'ended'` with `winners: []`; players see a neutral "La ronda terminó" screen with "Otra ronda"; unit test in `caller.test.tsx` covers it.
-
-### BUG-008 · Room code shown twice on the host lobby — P1
-
-- **Why:** Two large codes compete for attention on the projector; players ask which one to type.
-- **Evidence:** `src/app/host/HostLobby.tsx:111` (`QrCard` renders `code`, `src/app/ui/game.tsx:377`) and `HostLobby.tsx:113` (`RoomCodeTiles` "SALA").
-- **Accept when:** the code appears once at display size (keep the SALA tiles, drop the code under the QR, or the reverse); axe and a 390 px screenshot show no duplicate.
-
 ### BUG-009 · `nube` art shows rain streaks — P2
 
 - **Why:** "La Nube" should read as a cloud; streaks read as rain and confuse the picture-to-word link.
 - **Evidence:** `public/art/nube.svg` (source `design/look-and-feel/art/nube.svg`).
 - **Accept when:** streaks removed in both copies; card reviewed in light, dark and high-contrast.
-
-### BUG-010 · `/solo` layout-shift fix is unmeasured — P2
-
-- **Why:** A CLS fix was applied without a measurement; Core Web Vitals affect the prerendered public page.
-- **Evidence:** `src/app/solo/SoloPage.tsx`, `SoloPage.module.css`.
-- **Accept when:** Lighthouse (mobile) or a `PerformanceObserver` e2e check shows CLS < 0.1 on `/solo` cold load and when starting a game.
 
 ### BUG-011 · Wrong-choice tile and speed slider not verified in a browser — P2
 
@@ -87,29 +39,9 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 - **Evidence:** `src/app/host/useHostRoom.ts:48-61, 213-256` (`'failed'` path proceeds).
 - **Accept when:** on `'failed'` the host either retries with backoff and shows a notice, or the host key in the link fragment is enough to keep two rooms with the same code apart (phones ignore frames signed by another key); test covers both.
 
-### BUG-013 · Late joiners and reloaded phones don't get previously called cards crossed (rules §1.5–1.6) — P1
-
-- **Why:** Rules say a late joiner gets a cartón with every called card crossed, and a reload restores crossed squares. The phone only crosses cards for which it receives `callClosed`, so a late or reloaded phone can never complete its cartón.
-- **Evidence:** `src/app/player/playerState.ts:178-182` (`callClosed` is the only path that crosses); `round` / `assign` carry no called list (protocol.md).
-- **Accept when:** the host sends the closed call list (e.g. `closed: CardId[]` or a count into the seeded order) in `assign` and on resume; the player reducer crosses them on receipt; unit test for late join and reload mid-round; protocol.md updated.
-
-### BUG-014 · Player names allow 40 characters; rules say 1–24 (rules §1.2) — P2
-
-- **Evidence:** `src/net/messages.ts:20` (`t.length <= 40`); `src/app/home/profile.ts:4` (`NAME_MAX = 40`).
-- **Accept when:** one shared `NAME_MAX = 24` used by the schema, home and join inputs; schema test rejects 25 characters.
-
-### BUG-015 · Loadtest crashes after the rules v2 protocol change — P1
-
-- **Why:** The loadtest is our only concurrency and quota evidence (DEBT-002, DEBT-003).
-- **Evidence:** `loadtest/bot.ts:99` reads `m.pattern` from `round`, which no longer has patterns; the bot still models v1 claims.
-- **Accept when:** bots follow protocol.md (assign → tabla, pick within the call window, callClosed, end); `pnpm tsx loadtest/run.ts` with 20 players × 3 rooms exits 0 and writes a report.
-
-### BUG-016 · Invalid card data blanks the whole app — P1
-
-**Why:** `src/content/index.ts` parses `cards.json` with zod at import time; any schema mismatch throws a `ZodError` before React renders, so the page is blank with no message (seen locally on 2026-10-27 during the audio inventory migration).
-**Acceptance:** a content parse failure renders a friendly error screen (es/en) with a retry, and is reported to the console with the failing paths; `pnpm check` keeps failing on invalid content so it never ships; schema changes land together with the data migration (never stricter than the data).
-
 ## Feature requests
+
+Expansion and new languages are on hold by owner instruction (2026-10-27). Existing-game maintenance is the current scope.
 
 ### FEAT-001 · Add Bribri (`bzd`) and Cabécar (`cjp`) — P1
 
@@ -145,7 +77,7 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 ### FEAT-006 · Card art revamp: vintage printed-lotería style, 2× resolution — P1
 
 **Why:** the flat SVG icons read as UI icons, not lotería cards; the printed style (solid mottled colour per card, painterly illustration, number top-left, name in capitals, paper grain) is the look players expect.
-**Status:** pilot done for `sol`, `jaguar`, `colibri` (`public/cards/*.webp`, preview `design/cards/pilot-preview@2x.png`, Figma file "Lotería de los Pueblos — Card art"). On hold until the 144-card list (`docs/deck-expansion.md`) is final, then generate all cards in one pass.
+**Status:** 32 illustrations are indexed; the shared picture component now uses CardFace across the existing game with SVG/emoji fallbacks. Full art production remains on hold until the 144-card list (`deck-expansion.md`) is final. Framed numbered/name compositions and full-deck coverage are not yet complete.
 **Plan:** illustrations only (no text) generated with Figma `generate_image` (gemini-3.1-flash-image, 1024×1536 request → ~848×1264), **full-bleed background to every edge** (the pilot images include a painted paper margin — crop or regenerate), original artwork only (no copying of existing commercial decks, no trademarks); converted to WebP 600×900 (2× for cards up to 300 CSS px); card frame, number and localized name composed in code by a `CardFace` component in `src/app/ui` (falls back to `public/art/*.svg`); isolated review for look-alikes and off-brief images.
 **Acceptance:** every card in the deck has `public/cards/<id>.webp`; boards, the call panel, the cantor screen and the win screen use `CardFace`; total card art ≤ 6 MB; design-lint and contrast checks pass; names render in the player's spoken language.
 
@@ -157,69 +89,22 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 
 ## Tech debt
 
-### DEBT-001 · Fix the react-refresh lint warning in `Shell.tsx` — P2
-
-- **Evidence:** `src/app/Shell.tsx:11` exports `titleKey` from a component file (`react-refresh/only-export-components`).
-- **Accept when:** `titleKey` moves to its own module (e.g. `src/app/titles.ts`); `pnpm lint` shows 0 warnings.
-
-### DEBT-002 · Signed host frames have no nonce; replays are accepted — P1
-
-- **Why:** Anyone on a room channel can re-broadcast a captured signed frame (e.g. an old `pickResult` or `end`) within the round.
-- **Evidence:** `src/net/crypto.ts` signs canonical JSON only; `loadtest/run.ts:424` reports `replayOfSignedFrameAccepted`.
-- **Accept when:** host frames carry a monotonically increasing `seq` (per room key) inside the signature; phones drop `seq <= last`; loadtest reports `replayOfSignedFrameAccepted: 0`; protocol.md updated.
-
 ### DEBT-003 · O(n²) pick fan-out against the Supabase Free Realtime quota — P1
 
 - **Why:** Every `pick` produces a `pickResult` and a `scores` broadcast to every phone; with 20 players a call costs ~n² deliveries, and loadtest peaks approach the assumed 100 msg/s limit.
 - **Evidence:** protocol.md (`pickResult`/`scores` to all); `loadtest/run.ts:407-420` (`peakTxPlusRxPerSec`, quota assumption).
 - **Accept when:** results go only to the picking seat (or are batched once per call at `callClosed`), and `scores` is sent once per call; a 20-player loadtest stays under 50 % of the quota; quota numbers confirmed in the Supabase dashboard.
 
-### DEBT-004 · 93 orphan clips in `public/audio` (0.43 MB precached) — P2
+### DEBT-004 · 93 retained former-deck clips in `public/audio` (0.43 MB precached) — P2
 
 - **Evidence:** 85 clips each in `public/audio/{nah,yua,quz}` vs 54 cards; 93 files (429,536 bytes) are not referenced by `cards.json` (decision 0006). Workbox glob `vite.config.ts:52` precaches them.
-- **Accept when:** orphans deleted (they stay in git history) or moved out of `public/`; `scripts/validate-content.ts` fails on unreferenced clips.
-
-### DEBT-005 · Stray sed backup files — P2 · ✅ Fixed 2026-10-27 (files deleted)
-
-- **Evidence:** `src/app/deck/DeckPage.module.css-E`, `src/app/home/HomePage.module.css-E` are tracked.
-- **Accept when:** deleted; `*-E` added to `.gitignore`.
-
-### DEBT-006 · e2e is not part of the deploy gate — P2
-
-- **Why:** BUG-001 went unnoticed because only CI runs Playwright and nothing blocks a deploy on it.
-- **Evidence:** `vercel.json` `buildCommand`; `.github/workflows/ci.yml`.
-- **Accept when:** branch protection requires the CI job, or the clean-worktree verification includes `pnpm e2e` (decision 0014 updated).
-
-### DEBT-007 · High-contrast theme values only in `tokens.css`, not in `design/tokens.json` — P2
-
-- **Evidence:** `src/app/theme/tokens.css` (contrast block); `src/app/theme/tokens.test.ts` parity test does not cover the contrast theme.
-- **Accept when:** contrast values live in `design/tokens.json` and the parity test covers every theme.
-
-### DEBT-008 · `--border-w` and `--text-call` missing from `design/tokens.json` — P2
-
-- **Evidence:** defined in `src/app/theme/tokens.css` only.
-- **Accept when:** both are tokens in `design/tokens.json` and covered by the parity test.
+- **Audit 2026-10-27:** 93 files are absent from active cards, drafts and manifest; 25 of their 31 IDs recur in the held expansion. Decision 0006 explicitly retains them. They were not deleted during existing-game maintenance.
+- **Accept when:** reconcile retention with decision 0006, move archival clips out of `public/` or remove them, and make validation reject unreferenced public clips.
 
 ### DEBT-009 · Deprecated legacy alias block still in `tokens.css` — P2
 
 - **Evidence:** legacy alias section in `src/app/theme/tokens.css`.
 - **Accept when:** remaining uses migrated to current tokens; block deleted; `pnpm design-lint` rejects the old names.
-
-### DEBT-010 · `index.html` `theme-color` `#b3261e` is not a token — P2
-
-- **Evidence:** `index.html` meta `theme-color`; `vite.config.ts:36-37` manifest colours.
-- **Accept when:** theme-color follows the active theme (night / maíz tokens, one `<meta media>` per scheme) and the manifest uses the same values.
-
-### DEBT-011 · Docs and agent guidance point at moved files — P1 · ✅ Fixed 2026-10-27 (CLAUDE.md rewritten)
-
-- **Why:** Agents follow `CLAUDE.md`; dead pointers send them to missing docs.
-- **Evidence:** `CLAUDE.md` and `docs/ARCHITECTURE.md` were rewritten against the code.
-- **Accept when:** `CLAUDE.md` points to PRD, rules, protocol, decisions/ and backlog; no doc links to a missing path (add a link check to `pnpm check`).
-
-### DEBT-012 · Stale lint messages and test helpers from rules v1 — P2
-
-- **Evidence:** `scripts/copy-lint.ts:63,69` suggest "completar la figura" / "complete the pattern" (figures are not in v1.0); `e2e/helpers.ts:5-11` regexes for v1 copy.
-- **Accept when:** messages suggest "completaste" / "¡Lotería!"; helper regexes match current strings.
 
 ### DEBT-013 · `claim` message is defined but never sent — P2
 
@@ -242,7 +127,7 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 ### DEBT-016 · Náhuatl credits and label do not name the voice variant — P2
 
 - **Why:** Decision 0020: spellings are Classical/Central, the voice is Huasteca (`nhe`).
-- **Evidence:** `cards.json` `names.nah.source`; `scripts/generate-audio.py:20`; `src/content/credits.json`.
+- **Evidence:** credits now explain Classical/Central spelling and Huasteca (`nhe`) synthesis. The language picker label still needs a concise variant disclosure.
 - **Accept when:** credits and the language label state both the spelling variant and the voice model.
 
 ### DEBT-017 · Content licence and code licence — P1

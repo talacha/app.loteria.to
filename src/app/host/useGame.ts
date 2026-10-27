@@ -230,6 +230,12 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
         seat,
         tablaIndex: ensureAssigned(seat),
         roundNo: stateRef.current.roundNo,
+        closed: stateRef.current.order.slice(
+          0,
+          stateRef.current.phase === 'ended'
+            ? stateRef.current.calledCount
+            : Math.max(0, stateRef.current.calledCount - 1),
+        ),
       });
     },
     [ensureAssigned, send],
@@ -411,10 +417,11 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
         sendLobby();
         sendAssign(m.seat);
         const s = stateRef.current;
+        sendScores(s.phase === 'ended' ? s.calledCount : Math.max(0, s.calledCount - 1));
         if (s.phase === 'running' || s.phase === 'paused') announce(s, false);
       } else if (m.t === 'pick') handlePick(m);
     },
-    [announce, handlePick, players, sendAssign, sendLobby, sendRound],
+    [announce, handlePick, players, sendAssign, sendLobby, sendRound, sendScores],
   );
 
   // Subscribe to the room channel; bootstrap every new transport (lobby, round, assigns, call).
@@ -427,6 +434,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       sendRound();
       assignAll();
       const s = stateRef.current;
+      sendScores(s.phase === 'ended' ? s.calledCount : Math.max(0, s.calledCount - 1));
       if (s.calledCount > 0 && s.phase === 'running') {
         const speak = !spokenRef.current;
         spokenRef.current = true;
@@ -434,7 +442,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       }
     }
     return off;
-  }, [transport, handleMessage, sendLobby, sendRound, assignAll, announce]);
+  }, [transport, handleMessage, sendLobby, sendRound, assignAll, announce, sendScores]);
 
   // Fresh start without a transport yet: still speak the first call locally.
   useEffect(() => {

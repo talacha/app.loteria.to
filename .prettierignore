@@ -11,3 +11,4 @@ design/
 .vercel/
 vercel.json
 public/audio/manifest.json
+loadtest/reports/

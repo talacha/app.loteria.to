@@ -8,6 +8,7 @@ import { readRawProfile, storedProfile } from '../ui/profile';
 import type { Msg, Transport } from '@net';
 import type { Lang } from '@engine';
 import { newSeed, normalizePrintSeed } from '@print/options';
+import { connectionRecoveryKey, type ConnectionRecoveryKey } from '../lobby/recoveryReason';
 import { clearRound, loadKeyPair, loadRound, saveKeyPair, saveRound } from './persist';
 import { DEFAULT_SETTINGS, clampSpeed } from './roundMachine';
 import type { SavedRound, Settings } from './roundMachine';
@@ -119,6 +120,7 @@ export function useHostRoom() {
   const [transport, setTransport] = useState<Transport | null>(null);
   const [hostKey, setHostKey] = useState<string | null>(null);
   const [connection, setConnection] = useState<Connection>('connecting');
+  const [recovery, setRecovery] = useState<ConnectionRecoveryKey | null>(null);
   const [roster, setRoster] = useState<RosterPlayer[]>([]);
   const [labels, setLabels] = useState<Record<string, Lang>>({});
 
@@ -252,8 +254,12 @@ export function useHostRoom() {
         }
         try {
           await tr.join(c, 'host', keyPair ? { keyPair } : undefined);
-        } catch {
-          if (!stale()) setConnection('offline');
+        } catch (error) {
+          if (!stale()) {
+            setConnection('offline');
+            const key = connectionRecoveryKey(error);
+            if (key) setRecovery(key);
+          }
           return;
         }
         if (stale()) {
@@ -266,7 +272,12 @@ export function useHostRoom() {
           if (m.t === 'hello') onHello(m);
         });
         tr.onPresence(onPresence);
-        tr.onError?.(() => setConnection('offline'));
+        tr.onError?.((error) => {
+          if (stale()) return;
+          setConnection('offline');
+          const key = connectionRecoveryKey(error);
+          if (key) setRecovery(key);
+        });
         const key = await Promise.resolve(tr.hostPublicKey?.()).then(
           (k) => k ?? '',
           () => '',
@@ -495,6 +506,7 @@ export function useHostRoom() {
     transport,
     hostKey,
     connection,
+    recovery,
     roster,
     local,
     canStart: roster.length >= ROOM_MIN_PLAYERS,

@@ -1,7 +1,8 @@
 /** Shared with the join flow: localStorage 'loteria:profile' = {name, glyph, pronouns?, labelLang?}. */
 import { PROFILE_KEY, mergeProfile } from '../ui/profile';
 export { PROFILE_KEY };
-export const NAME_MAX = 40;
+import { NAME_MAX } from '@net/messages';
+export { NAME_MAX };
 
 export interface StoredProfile {
   name: string;

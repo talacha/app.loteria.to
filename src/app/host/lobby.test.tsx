@@ -123,7 +123,7 @@ describe('host lobby', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Empezar' }));
     await flush();
     const order = sent.map((m) => m.t);
-    expect(order.slice(0, 5)).toEqual(['lobby', 'round', 'assign', 'assign', 'call']);
+    expect(order.slice(0, 6)).toEqual(['lobby', 'round', 'assign', 'assign', 'scores', 'call']);
     expect(sent[0]).toMatchObject({ status: 'started', roundNo: 1, hostKey: 'KEY' });
   });
 
@@ -135,7 +135,7 @@ describe('host lobby', () => {
     await flush();
     sent.length = 0;
     await emit(hello('late', 'Cris'));
-    expect(sent.map((m) => m.t)).toEqual(['round', 'lobby', 'assign', 'call']);
+    expect(sent.map((m) => m.t)).toEqual(['round', 'lobby', 'assign', 'scores', 'call']);
     const lobby = sent[1]!;
     expect(lobby).toMatchObject({ status: 'started' });
     expect((lobby.players as { seat: string }[]).map((p) => p.seat)).toEqual(['s1', 's2', 'late']);

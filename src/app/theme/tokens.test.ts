@@ -38,25 +38,26 @@ const autoLight = {
 
 // Flatten design/tokens.json into [cssName, resolved value].
 const flat: Record<string, string> = {};
-const lightJson: Record<string, string> = {};
-for (const [name, def] of Object.entries(
-  (json.theme as { light: Record<string, { $value: string }> }).light,
-)) {
-  if (!name.startsWith('$')) lightJson['color-' + name] = def.$value;
-}
+const themeJson = Object.fromEntries(
+  Object.entries(json.theme as Record<string, Record<string, { $value: string }>>)
+    .filter(([name]) => !name.startsWith('$'))
+    .map(([name, overrides]) => [
+      name,
+      Object.fromEntries(
+        Object.entries(overrides).map(([key, def]) => [`color-${key}`, def.$value]),
+      ),
+    ]),
+);
 for (const [group, items] of Object.entries(json)) {
   if (group.startsWith('$') || group === 'theme') continue;
   for (const [name, def] of Object.entries(items as Record<string, { $value: string }>)) {
     flat[`${group}-${name}`] = def.$value;
   }
 }
-const jsonVars = Object.fromEntries(
-  Object.entries(flat).map(([k, v]) => [k.replace(/^color-/, 'color-'), v]),
-);
-function jsonResolve(v: string, depth = 0): string {
+function jsonResolve(v: string, vars = flat, depth = 0): string {
   if (depth > 10) return v;
   return v.replace(/\{(\w+)\.([\w-]+)\}/g, (_, g: string, n: string) =>
-    jsonResolve(jsonVars[`${g}-${n}`] ?? '', depth + 1),
+    jsonResolve(vars[`${g}-${n}`] ?? '', vars, depth + 1),
   );
 }
 
@@ -70,10 +71,30 @@ describe('tokens.css matches design/tokens.json', () => {
   });
 });
 
-describe('light theme matches design/tokens.json theme.light', () => {
-  it.each(Object.keys(lightJson))('--%s', (name) => {
-    expect(norm(light[name] as string)).toBe(norm(lightJson[name] as string));
-    expect(norm(autoLight[name] as string)).toBe(norm(lightJson[name] as string));
+for (const [theme, overrides] of Object.entries(themeJson)) {
+  const cssOverrides = block(`:root[data-theme='${theme}']`);
+  const cssVars = { ...base, ...cssOverrides };
+  const jsonVars = { ...flat, ...overrides };
+  describe(`${theme} theme matches design/tokens.json`, () => {
+    it('records every CSS override in the JSON source of truth', () => {
+      expect(Object.keys(cssOverrides).sort()).toEqual(Object.keys(overrides).sort());
+    });
+    it.each(Object.keys(flat))('--%s including references to overridden colours', (name) => {
+      expect(norm(resolve(cssVars, cssVars[name] as string))).toBe(
+        norm(jsonResolve(jsonVars[name] as string, jsonVars)),
+      );
+    });
+  });
+}
+
+describe('automatic themes match explicit themes', () => {
+  it('uses the dark base for an explicit dark preference', () => {
+    expect(css).not.toContain(":root[data-theme='dark'] {");
+  });
+  it.each(Object.keys(flat))('auto-light --%s', (name) => {
+    expect(norm(resolve(autoLight, autoLight[name] as string))).toBe(
+      norm(resolve(light, light[name] as string)),
+    );
   });
 });
 

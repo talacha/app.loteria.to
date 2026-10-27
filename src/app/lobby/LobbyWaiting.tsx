@@ -10,6 +10,8 @@ import Roster, { type RosterPlayer } from './Roster';
 import UiLangSwitch from '../player/UiLangSwitch';
 import { Button, Panel, PaperCard, Pill, RoomCodeTiles } from '../ui';
 import { MessageLog } from './messageLog';
+import ConnectionRecovery from './ConnectionRecovery';
+import { connectionRecoveryKey, type ConnectionRecoveryKey } from './recoveryReason';
 import styles from './LobbyWaiting.module.css';
 
 export interface LobbyWaitingProps {
@@ -48,6 +50,7 @@ export default function LobbyWaiting({
   const [log] = useState(() => new MessageLog());
   const [live, setLive] = useState<Live | null>(null);
   const [lost, setLost] = useState(false);
+  const [recovery, setRecovery] = useState<ConnectionRecoveryKey | null>(null);
   const [roster, setRoster] = useState<RosterPlayer[]>([]);
   const [playing, setPlaying] = useState(false);
   const [noHost, setNoHost] = useState(false);
@@ -151,7 +154,17 @@ export default function LobbyWaiting({
             break;
         }
       });
-      mine.onError?.(() => alive && setLost(true));
+      const handleError = (error: unknown) => {
+        if (!alive) return;
+        setLost(true);
+        const key = connectionRecoveryKey(error);
+        if (key) {
+          setRecovery(key);
+          clearTimeout(noHostTimer);
+          setNoHost(false);
+        }
+      };
+      mine.onError?.(handleError);
       mine
         .join(code, 'player', hostKey ? { hostKey } : undefined)
         .then(() => {
@@ -174,7 +187,7 @@ export default function LobbyWaiting({
           };
           retry = setTimeout(again, HELLO_RETRY_MS);
         })
-        .catch(() => alive && setLost(true));
+        .catch(handleError);
     }, 0);
     return () => {
       alive = false;
@@ -200,6 +213,7 @@ export default function LobbyWaiting({
           roster={roster}
           profile={roomSpoken ? { ...profile, spokenLang: roomSpoken } : profile}
           log={log}
+          recovery={recovery}
           onLeave={leave}
           onBackToLobby={() => setPlaying(false)}
         />
@@ -235,6 +249,8 @@ export default function LobbyWaiting({
             </span>
           </span>
         </div>
+
+        {recovery ? <ConnectionRecovery recovery={recovery} /> : null}
 
         <div className={styles.cols}>
           <div className={styles.col}>

@@ -2,9 +2,11 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import '../i18n';
+import i18n from '../i18n';
 
 const sent: { t: string; [k: string]: unknown }[] = [];
 const handlers = new Set<(m: unknown) => void>();
+const errorHandlers = new Set<(error: unknown) => void>();
 vi.mock('@net', () => ({
   createTransport: () => ({
     join: async () => undefined,
@@ -14,6 +16,10 @@ vi.mock('@net', () => ({
       return () => handlers.delete(cb);
     },
     onPresence: () => () => undefined,
+    onError: (callback: (error: unknown) => void) => {
+      errorHandlers.add(callback);
+      return () => errorHandlers.delete(callback);
+    },
     leave: async () => undefined,
     hostPublicKey: async () => 'KEY',
     isHostVerified: () => true,
@@ -40,10 +46,12 @@ beforeEach(() => {
   vi.useFakeTimers();
   vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('offline')));
 });
-afterEach(() => {
+afterEach(async () => {
   cleanup();
   sent.length = 0;
   handlers.clear();
+  errorHandlers.clear();
+  await i18n.changeLanguage('es');
   vi.useRealTimers();
   vi.unstubAllGlobals();
 });
@@ -75,6 +83,23 @@ async function started() {
 }
 
 describe('HostPage', () => {
+  it.each([
+    ['SequenceStorageError', 'es', /Habilita el almacenamiento del navegador/],
+    ['SequenceStorageError', 'en', /Enable browser storage/],
+    ['ProtocolVersionError', 'es', /Recarga todas las pantallas/],
+    ['ProtocolVersionError', 'en', /Reload all screens/],
+  ] as const)('explains %s recovery in %s on the host', async (name, lang, wording) => {
+    await i18n.changeLanguage(lang);
+    await mountHost();
+    act(() => {
+      for (const callback of errorHandlers) callback({ name });
+    });
+    expect(screen.getByRole('alert').textContent).toMatch(wording);
+    expect(
+      screen.getByRole('button', { name: /Recargar esta pantalla|Reload this screen/ }),
+    ).toBeTruthy();
+  });
+
   it('starts offline-tolerantly and sends round + first call', async () => {
     await started();
     expect(calls()).toHaveLength(1);

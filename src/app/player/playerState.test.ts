@@ -33,6 +33,47 @@ describe('playerReducer', () => {
     const s = r(init, { type: 'round', round });
     expect(r(s, { type: 'assign', tablaIndex: 5, roundNo: 2 }).board).toEqual([]);
   });
+  it('restores closed cards for a late joiner in either round/assign order', () => {
+    const assign = { type: 'assign', tablaIndex: 5, roundNo: 1, closed: [a, off] } as const;
+    for (const s of [
+      r(r(init, { type: 'round', round }), { ...assign, closed: [...assign.closed] }),
+      r(r(init, { ...assign, closed: [...assign.closed] }), { type: 'round', round }),
+    ]) {
+      expect(s.board).toEqual(board);
+      expect(s.crossed).toEqual([a]);
+      expect(s.revealed).toEqual([a, off]);
+      expect(s.myPoints).toBe(0);
+      expect(r(s, call(b, 2)).crossed).toEqual([a]);
+    }
+  });
+
+  it('restores a reloaded phone without crossing the open call or losing newer history', () => {
+    let s = r(init, { type: 'round', round });
+    s = r(s, { type: 'assign', tablaIndex: 5, roundNo: 1, closed: [a, off] });
+    s = r(s, { type: 'scores', roundNo: 1, points: { me: 7 } });
+    s = r(s, call(b, 2));
+    expect(s.crossed).toEqual([a]);
+    expect(s.currentClosed).toBe(false);
+    expect(s.points.me).toBe(7);
+    s = r(s, { type: 'callClosed', roundNo: 1, i: 2 });
+    s = r(s, { type: 'assign', tablaIndex: 5, roundNo: 1, closed: [a] });
+    expect(new Set(s.crossed)).toEqual(new Set([a, b]));
+    expect(r(s, call(b, 2))).toBe(s);
+  });
+
+  it('applies a newer snapshot to an existing assignment and closes its current call', () => {
+    let s = r(started(), call(a, 0));
+    s = r(s, { type: 'assign', tablaIndex: 5, roundNo: 1, closed: [a] });
+    expect(s.crossed).toEqual([a]);
+    expect(s.currentClosed).toBe(true);
+  });
+
+  it('crosses closed calls received before the board was assigned', () => {
+    let s = r(r(init, { type: 'round', round }), call(a, 0));
+    s = r(s, { type: 'callClosed', roundNo: 1, i: 0 });
+    expect(r(s, { type: 'assign', tablaIndex: 5, roundNo: 1 }).crossed).toEqual([a]);
+  });
+
   it('a new round resets crosses, reveals and points', () => {
     let s = r(started(), call(a, 0));
     s = r(s, { type: 'callClosed', roundNo: 1, i: 0 });

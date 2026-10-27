@@ -1,6 +1,6 @@
 # Lotería de los Pueblos
 
-> Lotería de los Pueblos (https://app.loteria.to) is a free, no-account web game: the picture lotería called aloud in five languages (Nahuatl, Yucatec Maya, Cusco-Collao Quechua, Spanish and English). One person opens a room, everyone else joins from their phone with a QR code or a 5-character code, and a synthetic voice calls the 54 illustrated cards. Players can also play solo against the computer or print paper boards. Non-commercial; audio is generated with Meta MMS-TTS (CC BY-NC 4.0).
+> Lotería de los Pueblos (https://app.loteria.to) is a free, no-account web game: the picture lotería called aloud in five languages (Nahuatl, Yucatec Maya, Cusco-Collao Quechua, Spanish and English). Indigenous-language names are drafts based on dictionary and grammar references that remain unverified and have not been confirmed by native-speaker review. One person opens a room, everyone else joins from their phone with a QR code or a 5-character code, and a synthetic voice calls the 54 illustrated cards. Spanish and English audio was generated with Kokoro-82M (Apache-2.0); Nahuatl, Yucatec Maya and Quechua audio uses Meta MMS-TTS (CC BY-NC 4.0, non-commercial use with attribution). Players can also play solo against the computer or print paper boards.
 
 ## Pages
 

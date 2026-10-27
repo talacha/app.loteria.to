@@ -2,14 +2,14 @@
   "art": {
     "kind": "emoji-placeholder",
     "note": {
-      "es": "Las ilustraciones de esta versión son emojis Unicode dibujados por la tipografía de tu sistema, por lo que se ven distintos en cada dispositivo. Más adelante se encargará arte original a artistas de los pueblos originarios.",
-      "en": "The illustrations in this version are Unicode emoji drawn by your system font, so they look different on each device. Original artwork will be commissioned from Indigenous artists in the future."
+      "es": "Esta versión combina ilustraciones generadas, iconos SVG y emojis Unicode. Los emojis pueden verse distintos según el dispositivo.",
+      "en": "This version combines generated illustrations, SVG icons and Unicode emoji. Emoji may look different across devices."
     }
   },
   "names": {
     "note": {
-      "es": "Los nombres en español e inglés fueron escritos por el equipo. Los nombres en náhuatl, maya yucateco y quechua provienen de diccionarios y gramáticas citados en cada ficha. Las voces en español e inglés se generaron con Kokoro-82M (licencia Apache-2.0); las voces en náhuatl, maya yucateco y quechua, con Meta MMS-TTS (licencia CC-BY-NC 4.0, uso no comercial con atribución).",
-      "en": "Spanish and English names were written by the team. Nahuatl, Yucatec Maya, and Quechua names come from dictionaries and grammars cited on each card. Spanish and English voices were generated with Kokoro-82M (Apache-2.0); Nahuatl, Yucatec Maya, and Quechua voices with Meta MMS-TTS (CC-BY-NC 4.0, non-commercial use with attribution)."
+      "es": "Los nombres en español e inglés fueron escritos por el equipo. Los nombres en náhuatl, maya yucateco y quechua incluyen borradores basados en referencias de diccionarios y gramáticas aún sin verificar. No constituyen una revisión por hablantes nativos. La escritura náhuatl es clásica/central; la voz sintética es huasteca (nhe). Las voces en español e inglés se generaron con Kokoro-82M (licencia Apache-2.0); las voces en náhuatl, maya yucateco y quechua, con Meta MMS-TTS (licencia CC-BY-NC 4.0, uso no comercial con atribución).",
+      "en": "Spanish and English names were written by the team. Nahuatl, Yucatec Maya, and Quechua names include drafts based on dictionary and grammar references that remain unverified. They have not been confirmed by native-speaker review. Nahuatl spelling is Classical/Central; its synthetic voice is Huasteca (nhe). Spanish and English voices were generated with Kokoro-82M (Apache-2.0); Nahuatl, Yucatec Maya, and Quechua voices with Meta MMS-TTS (CC-BY-NC 4.0, non-commercial use with attribution)."
     }
   },
   "software": [

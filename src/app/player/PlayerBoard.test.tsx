@@ -101,6 +101,18 @@ describe('PlayerBoard board', () => {
     expect(within(tabla()).getAllByRole('listitem')).toHaveLength(16);
   });
 
+  it('restores crossed squares and points from a rejoin snapshot without past call messages', async () => {
+    await mount();
+    host.send(round());
+    host.send({ t: 'assign', seat: player.seat, tablaIndex: 7, roundNo: 1, closed: [target] });
+    host.send({ t: 'scores', roundNo: 1, points: { [player.seat]: 7 } });
+    await callTarget(3, board[3]!);
+    expect(tabla().querySelectorAll('[data-marked="true"]')).toHaveLength(1);
+    expect(within(tabla()).getByText(wordOf(target, 'nah'))).toBeTruthy();
+    expect(within(tabla()).queryByText(wordOf(board[3]!, 'nah'))).toBeNull();
+    expect(screen.getByTestId('points').textContent).toBe('7 puntos');
+  });
+
   it('shows icons only (no words) until a card has been called and closed', async () => {
     await mount();
     await start();
@@ -318,7 +330,7 @@ describe('PlayerBoard crossing and settings', () => {
     await start();
     await callTarget();
     await act(async () => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'English' })[0]!);
+      fireEvent.click(screen.getAllByRole('button', { name: /English/ })[0]!);
     });
     expect(screen.getByText('Your board')).toBeTruthy();
     expect(screen.getByRole('button', { name: wordOf(target, 'nah') })).toBeTruthy();

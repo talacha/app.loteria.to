@@ -3,7 +3,7 @@ import { RX, createRoom, fillJoinForm, newPage, noHorizontalOverflow } from './h
 
 const roster = (p: Page) =>
   p.getByRole('list', { name: /personas en la sala|people in the room/i });
-const inGame = (p: Page) => p.getByRole('button', { name: /¡?Lotería!?/ });
+const inGame = (p: Page) => p.getByRole('list', { name: /tu tabla|your board/i });
 
 test('host + 2 players lobby, leave, start, late joiner', async ({ context }, info) => {
   test.setTimeout(60_000);
@@ -23,8 +23,8 @@ test('host + 2 players lobby, leave, start, late joiner', async ({ context }, in
   const b = await newPage(context);
   await b.goto('/');
   await noHorizontalOverflow(b, 'home');
-  await b.getByLabel(/código de la sala|room code/i).fill(code);
-  await b.getByRole('button', { name: /unirme a una sala|join a room/i }).click();
+  await b.locator('#join-code').fill(code);
+  await b.getByRole('button', { name: /^(entrar|go)$/i }).click();
   await expect(b).toHaveURL(new RegExp(`/r/${code}`));
   await fillJoinForm(b, 'Beto');
   await expect(b.getByText(RX.waiting)).toBeVisible();
@@ -50,7 +50,7 @@ test('host + 2 players lobby, leave, start, late joiner', async ({ context }, in
   await expect(roster(host).getByRole('listitem')).toHaveCount(2);
 
   await host.getByRole('button', { name: RX.start }).click();
-  await expect(host.getByRole('button', { name: RX.next })).toBeVisible();
+  await expect(host.locator('#cur-h')).toContainText(/1/);
   await noHorizontalOverflow(host, 'host game');
   for (const p of [a, b]) {
     await expect(inGame(p)).toBeVisible();

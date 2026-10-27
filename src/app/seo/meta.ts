@@ -28,8 +28,8 @@ export const HOME_TITLE = {
 } as const;
 
 const HOME_DESC = {
-  es: 'La lotería de imágenes, cantada en náhuatl, maya yucateco, quechua, español e inglés. Juega en familia desde tu teléfono con un código QR. Gratis, sin cuentas.',
-  en: 'The picture lotería, called in Nahuatl, Yucatec Maya, Quechua, Spanish and English. Play with family from your phone with a QR code. Free, no accounts.',
+  es: 'Lotería de imágenes para jugar en familia desde tu teléfono. Las voces sintéticas cantan en cinco idiomas; los borradores de nombres en lenguas originarias aún no se verifican. Gratis, sin cuentas.',
+  en: 'Picture lotería to play with family from your phone. Synthetic voices call cards in five languages; Indigenous-language name drafts remain unverified. Free, no accounts.',
 } as const;
 
 const DESC: Record<string, Record<SeoLang, string>> = {
