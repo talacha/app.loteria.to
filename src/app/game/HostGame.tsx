@@ -1,12 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import { cardName, getCard } from '@content';
 import { isMuted, onMutedChange, setMuted } from '../audio';
 import { MAX_SPEED, MIN_SPEED, SPEED_PRESETS } from '../host/roundMachine';
 import { useGame } from '../host/useGame';
-import { useModal } from '../host/useModal';
-import type { Game, GameProps } from '../host/useGame';
+import type { GameProps } from '../host/useGame';
 import { Button, CardArt, HistoryStrip, Panel, PaperCard, Pill, ProgressBar, QrCard } from '../ui';
 import styles from './HostGame.module.css';
 
@@ -41,11 +40,6 @@ export default function HostGame(props: GameProps) {
   const { room, roster } = props;
   useHostSilent();
   const muted = useMuted();
-  const [paperOpen, setPaperOpen] = useState(false);
-  const closePaper = () => {
-    setPaperOpen(false);
-    h.clearPaper();
-  };
   const [speedOpen, setSpeedOpen] = useState(false);
   const [now, setNow] = useState(() => Date.now());
   const nameOf = (id: string) => {
@@ -53,7 +47,6 @@ export default function HostGame(props: GameProps) {
     return c ? (cardName(c, 'es')?.text ?? c.id) : id;
   };
   const who = (seat: string) => {
-    if (seat.startsWith('paper:')) return t('host.game.paperName', { n: seat.slice(6) });
     const p = roster.find((r) => r.seat === seat);
     return p ? `${p.glyph} ${p.name}` : (h.names[seat] ?? t('host.unknownPlayer'));
   };
@@ -83,16 +76,7 @@ export default function HostGame(props: GameProps) {
       const tag = el?.tagName;
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
       if (el?.isContentEditable || el?.closest?.('[contenteditable="true"]')) return;
-      if (el?.closest?.('[role="dialog"],[role="alertdialog"]')) return;
-      if (document.querySelector('[role="dialog"],[role="alertdialog"]')) return;
       const k = e.key.toLowerCase();
-      if (k === 'l') {
-        if (live || ended) {
-          e.preventDefault();
-          setPaperOpen(true);
-        }
-        return;
-      }
       if (!live) return;
       if (e.key === ' ') {
         if (tag === 'BUTTON' || tag === 'A') return;
@@ -187,7 +171,7 @@ export default function HostGame(props: GameProps) {
         {h.announcement.text ? t('a11y.called', { card: h.announcement.text }) : ''}
       </div>
 
-      <div inert={paperOpen || undefined} className={styles.layout}>
+      <div className={styles.layout}>
         <section className={styles.main} aria-labelledby="cur-h">
           <h2 id="cur-h" className={styles.callTitle}>
             <span className={styles.callNo}>{t('host.game.cardNo', { n: state.calledCount })}</span>
@@ -242,9 +226,6 @@ export default function HostGame(props: GameProps) {
               <Button variant="secondary" fit onClick={h.repeat}>
                 {t('host.repeat')}
               </Button>
-              <Button variant="secondary" fit onClick={() => setPaperOpen(true)}>
-                {t('host.checkPaper')}
-              </Button>
               <Button variant="secondary" fit onClick={h.endRound}>
                 {t('host.endRound')}
               </Button>
@@ -254,7 +235,6 @@ export default function HostGame(props: GameProps) {
             </div>
           ) : null}
           <p className={`${styles.sub} ${styles.hint}`}>{t('host.game.shortcuts')}</p>
-          {h.paper && !paperOpen ? <PaperResult h={h} nameOf={nameOf} /> : null}
         </section>
 
         <aside className={styles.side}>
@@ -295,89 +275,6 @@ export default function HostGame(props: GameProps) {
           <HistoryStrip items={history} title={t('host.game.history')} />
         </footer>
       </div>
-      {paperOpen ? (
-        <PaperDialog onClose={closePaper} onCheck={(c) => h.checkPaper(c)} h={h} nameOf={nameOf} />
-      ) : null}
     </main>
-  );
-}
-
-function PaperResult({ h, nameOf }: { h: Game; nameOf: (id: string) => string }) {
-  const { t } = useTranslation();
-  const p = h.paper;
-  if (!p) return null;
-  return (
-    <div role="status" className={styles.notice}>
-      {p.kind === 'invalid' ? <p>{t('host.paperCodeInvalid')}</p> : null}
-      {p.kind === 'otherGame' ? <p>{t('host.otherGame')}</p> : null}
-      {p.kind === 'valid' ? <p>{t('host.paperValid', { index: p.index + 1 })}</p> : null}
-      {p.kind === 'almost' ? (
-        <>
-          <p>
-            {t('host.almost')} {t('host.paperAlmost', { index: p.index + 1 })}{' '}
-            {t('host.paperCodeMissing', { count: p.missing.length })}
-          </p>
-          <ul aria-label={t('host.paperMissingList')}>
-            {p.missing.map((id) => (
-              <li key={id}>{nameOf(id)}</li>
-            ))}
-          </ul>
-        </>
-      ) : null}
-    </div>
-  );
-}
-
-function PaperDialog(props: {
-  onClose: () => void;
-  onCheck: (code: string) => void;
-  h: Game;
-  nameOf: (id: string) => string;
-}) {
-  const { t } = useTranslation();
-  const [code, setCode] = useState('');
-  const input = useRef<HTMLInputElement>(null);
-  const box = useModal(props.onClose);
-  useEffect(() => input.current?.focus(), []);
-  return (
-    <div className={styles.overlay}>
-      <div
-        ref={box}
-        className={styles.dialog}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="paper-h"
-      >
-        <h2 id="paper-h">{t('host.checkPaper')}</h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            props.onCheck(code);
-          }}
-        >
-          <label className={styles.field}>
-            {t('host.paperCodePrompt')}
-            <input
-              ref={input}
-              className={styles.input}
-              value={code}
-              maxLength={10}
-              autoComplete="off"
-              autoCapitalize="characters"
-              onChange={(e) => setCode(e.target.value)}
-            />
-          </label>
-          <div className={styles.row}>
-            <Button type="submit" variant="primary" fit>
-              {t('host.check')}
-            </Button>
-            <Button variant="secondary" fit onClick={props.onClose}>
-              {t('host.close')}
-            </Button>
-          </div>
-        </form>
-        <PaperResult h={props.h} nameOf={props.nameOf} />
-      </div>
-    </div>
   );
 }

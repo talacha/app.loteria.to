@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { callableLangs, cards, getCard, isAvoidedPair } from '@content';
 import type { Card } from '@content';
 import {
@@ -24,9 +24,8 @@ import {
   pickTablaIndex,
   roundReducer,
   toSaved,
-  validatePaperCode,
 } from './roundMachine';
-import type { PaperOutcome, RoundAction, RoundState, SavedRound, Settings } from './roundMachine';
+import type { RoundAction, RoundState, SavedRound, Settings } from './roundMachine';
 import { lobbyMessage } from './useHostRoom';
 import type { RosterPlayer } from './useHostRoom';
 
@@ -89,8 +88,6 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
   const [names, setNames] = useState<Record<string, string>>({});
   const [noAudio, setNoAudio] = useState(false);
   const [announcement, setAnnouncement] = useState({ text: '', seq: 0 });
-  const [paperCode, setPaperCode] = useState<string | null>(null);
-  const paperRef = useRef<Set<string>>(new Set());
   const [pickedSeats, setPickedSeats] = useState<string[]>([]);
   const [eligible, setEligible] = useState<string[]>([]);
   const [windowStart, setWindowStart] = useState(() => Date.now());
@@ -274,8 +271,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     const s = stateRef.current;
     const i = s.calledCount - 1;
     send({ t: 'callClosed', roundNo: s.roundNo, i });
-    const done = [...completedSeats(s), ...paperRef.current];
-    paperRef.current = new Set();
+    const done = completedSeats(s);
     if (done.length === 0) return false;
     finishRound(resolveFullCardWinners(done, pickRef.current.points));
     return true;
@@ -497,20 +493,6 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     onNewRound?.(stateRef.current.roundNo + 1);
   }, [onNewRound]);
 
-  /** Paper board: a valid full card counts as a winner for the current call (0 points). */
-  const checkPaper = useCallback((code: string) => {
-    setPaperCode(code);
-    const s = stateRef.current;
-    const out = validatePaperCode(s, deck, code);
-    if (out.kind === 'valid' && (s.phase === 'running' || s.phase === 'paused')) {
-      paperRef.current.add(`paper:${out.index + 1}`);
-    }
-  }, []);
-  const paper: PaperOutcome | null = useMemo(
-    () => (paperCode === null ? null : validatePaperCode(state, deck, paperCode)),
-    [paperCode, state],
-  );
-
   const current: Card | undefined = (() => {
     const id = currentCard(state);
     return id ? getCard(id) : undefined;
@@ -527,9 +509,6 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     current,
     currentLang,
     called,
-    paper,
-    checkPaper,
-    clearPaper: () => setPaperCode(null),
     points: pickState.points,
     pickedCount: pickedSeats.filter((s) => eligible.includes(s)).length,
     eligibleCount: eligible.length,

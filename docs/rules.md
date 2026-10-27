@@ -54,7 +54,11 @@
 3. A wrong pick dims that choice and shows a gentle "¡Casi!"; one more try is allowed within the call window (a correct second try still earns 1 point if not first). **[Assumption]**
 4. Practice feedback: a correct pick shows "¡Eso!". After the second wrong try, the correct choice is highlighted and the card goes on the player's "para repasar" list. (R-39, adapted)
 
-## 6. Crossing off
+## 6. Printed cartones
+
+Each player can print **their own assigned cartón** ("Imprimir mi cartón") — the 16 pictures, their name and the room code, optionally with words in their spoken language. Printouts are a copy of the player's phone board; the organiser does not check paper codes (owner, 2026-10-26).
+
+## 6b. Crossing off
 
 1. **Everyone who has the called card on their tabla crosses it off — whether they guessed right, wrong, or not at all.** **[Assumption]** for "not at all": crossed at the end of the call window.
 2. Crossed squares show a bean and reveal their word.

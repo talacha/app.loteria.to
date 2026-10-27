@@ -7,6 +7,7 @@ describe('router shell', () => {
       '/',
       '/host',
       '/r/:code',
+      '/solo',
       '/print',
       '/deck',
       '/creditos',
