@@ -1,0 +1,215 @@
+.game {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  box-sizing: border-box;
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.headInfo,
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.count {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-lg);
+  letter-spacing: -0.02em;
+}
+.speeds {
+  display: flex;
+  gap: var(--space-1);
+}
+.speed {
+  min-height: var(--size-tap);
+  min-width: var(--size-tap);
+  padding: 0 var(--space-3);
+  font: inherit;
+  font-weight: 700;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: var(--border-thin);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+.speed[aria-pressed='true'] {
+  background: var(--color-maiz);
+}
+.rivals {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--space-2);
+}
+.rival {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  min-width: 0;
+}
+.avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: var(--size-tap);
+  height: var(--size-tap);
+  background: var(--color-white);
+  border: var(--border-thin);
+  border-radius: var(--radius-sm);
+}
+.avatarArt {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.rivalText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.rivalName {
+  font-weight: 700;
+  font-size: var(--text-base);
+}
+.rivalMeta {
+  font-size: var(--text-sm);
+}
+.callPanel {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-4);
+}
+.callCard {
+  display: grid;
+  place-items: center;
+  width: 9rem;
+  aspect-ratio: 1;
+  padding: var(--space-2);
+  box-sizing: border-box;
+}
+.callArt {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.callSide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+.replay {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  color: var(--color-ink);
+  background: var(--color-maiz);
+  border: var(--border-thick);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-hard);
+  cursor: pointer;
+}
+.points {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-xl);
+}
+.timer {
+  grid-column: 1 / -1;
+}
+.choices {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+.choice {
+  min-height: var(--size-choice);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-2xl);
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-hard);
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.choice[data-state='correct'] {
+  background: var(--color-jade-soft);
+  box-shadow: 0 0 0 4px var(--color-jade);
+}
+.choice[data-state='wrong'],
+.choice:disabled {
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.choice[data-state='wrong'] {
+  opacity: 0.45;
+  transform: var(--motion-press);
+}
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-xl);
+  letter-spacing: -0.02em;
+}
+.mine {
+  margin: 0;
+  color: var(--color-muted-on-night);
+}
+@media (min-width: 768px) {
+  .game {
+    padding: var(--space-6);
+  }
+  .choices {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .callCard {
+    width: 12rem;
+  }
+}
+@media (min-width: 1280px) {
+  .game {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 24rem;
+    align-items: start;
+  }
+  .head,
+  .rivals {
+    grid-column: 1 / -1;
+  }
+  .board {
+    grid-column: 2;
+    grid-row: 3 / span 3;
+  }
+}

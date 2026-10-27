@@ -1,8 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-import { cards } from '@content';
-import { tabla } from '@engine';
 import { LocalTransport } from '@net';
 import type { Msg } from '@net';
 import '../i18n';
@@ -29,7 +27,6 @@ vi.mock('./persist', () => ({
 
 import HostPage from './HostPage';
 
-const deck = cards.map((c) => ({ id: c.id, category: c.category }));
 const players: LocalTransport[] = [];
 let n = 0;
 
@@ -70,10 +67,21 @@ async function host() {
     </MemoryRouter>,
   );
   await screen.findByText('Sala sin verificar', undefined, { timeout: 4000 });
-  fireEvent.click(await screen.findByRole('button', { name: 'Empezar' }));
   await wait(() => expect(store.round).toBeTruthy());
+  const code = store.round!.code;
+  // Empezar needs at least 2 players.
+  for (let k = 0; k < 2; k++) {
+    const q = await player(code);
+    q.t.send(hello(q.seat));
+    q.got.length = 0;
+  }
+  await wait(() =>
+    expect(screen.getByRole('button', { name: 'Empezar' })).toHaveProperty('disabled', false),
+  );
+  fireEvent.click(screen.getByRole('button', { name: 'Empezar' }));
+  await wait(() => expect(store.round?.phase).not.toBe('setup'));
   await new Promise((r) => setTimeout(r, 300));
-  return store.round!.code;
+  return code;
 }
 
 describe('host protocol v2 (LocalTransport)', () => {
@@ -105,35 +113,20 @@ describe('host protocol v2 (LocalTransport)', () => {
     expect(new Set(idx).size).toBe(40);
   }, 20000);
 
-  it('rejects claims for another index or a stale round', async () => {
-    vi.useFakeTimers({ toFake: ['Date'], now: Date.now() });
+  it('ignores picks for another round or a closed call, and answers a current pick', async () => {
     const code = await host();
     const p = await player(code);
     p.t.send(hello(p.seat));
-    await wait(() => expect(p.got.some((m) => m.t === 'assign')).toBe(true));
-    const assign = p.got.find((m) => m.t === 'assign') as Extract<Msg, { t: 'assign' }>;
-    const seed = (p.got.find((m) => m.t === 'round') as Extract<Msg, { t: 'round' }>).seed;
-    const marks = tabla(seed, assign.tablaIndex, deck).cards;
-    const results = () =>
-      p.got.filter((m): m is Extract<Msg, { t: 'claimResult' }> => m.t === 'claimResult');
-    p.t.send({
-      t: 'claim',
-      seat: p.seat,
-      roundNo: 1,
-      tablaIndex: (assign.tablaIndex + 1) % 4096,
-      marks,
-    });
+    await wait(() => expect(p.got.some((m) => m.t === 'call')).toBe(true));
+    const call = p.got.find((m) => m.t === 'call') as Extract<Msg, { t: 'call' }>;
+    const results = () => p.got.filter((m) => m.t === 'pickResult');
+    p.t.send({ t: 'pick', seat: p.seat, roundNo: 7, i: call.i, cardId: call.cardId });
+    p.t.send({ t: 'pick', seat: p.seat, roundNo: 1, i: call.i + 5, cardId: call.cardId });
+    await new Promise((r) => setTimeout(r, 300));
+    expect(results()).toHaveLength(0);
+    p.t.send({ t: 'pick', seat: p.seat, roundNo: 1, i: call.i, cardId: call.cardId });
     await wait(() => expect(results()).toHaveLength(1));
-    expect(results()[0]!.valid).toBe(false);
-    vi.setSystemTime(Date.now() + 3500);
-    p.t.send({ t: 'claim', seat: p.seat, roundNo: 7, tablaIndex: assign.tablaIndex, marks });
-    await wait(() => expect(results()).toHaveLength(2));
-    expect(results()[1]!.valid).toBe(false);
-    vi.setSystemTime(Date.now() + 3500);
-    // Marks are never trusted: the host's crossed-out set is empty, so this is not a win either.
-    p.t.send({ t: 'claim', seat: p.seat, roundNo: 1, tablaIndex: assign.tablaIndex, marks });
-    await wait(() => expect(results()).toHaveLength(3));
-    expect(results()[2]!.valid).toBe(false);
+    expect(results()[0]).toMatchObject({ correct: true, points: 2, first: true });
   }, 20000);
 
   it('resume reuses the same host key', async () => {

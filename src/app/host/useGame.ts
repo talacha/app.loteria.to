@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { callableLangs, cards, getCard, isAvoidedPair } from '@content';
 import type { Card } from '@content';
 import {

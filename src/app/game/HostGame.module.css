@@ -100,24 +100,27 @@
   font-size: var(--text-lg);
   color: var(--color-muted-on-night);
 }
-.words {
-  list-style: none;
+.picture {
   margin: 0;
-  padding: 0 0 var(--space-3);
+  align-self: center;
+  width: min(100%, 26rem);
+  aspect-ratio: 1;
   display: flex;
-  gap: var(--space-4);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-hard);
+  font-size: 8rem;
 }
-.wordItem {
-  flex: 0 0 82%;
-  scroll-snap-align: start;
-  display: flex;
-  min-width: 0;
-}
-.wordItem > * {
-  flex: 1;
-  min-width: 0;
+.pictureArt {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .sub {
   font-size: var(--text-sm);
@@ -200,44 +203,6 @@
   padding-left: 1.2em;
   font-size: var(--text-xl);
 }
-.overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-4);
-  background: color-mix(in srgb, var(--color-night) 80%, transparent);
-}
-.dialog {
-  width: 100%;
-  max-width: 32rem;
-  max-height: 90dvh;
-  overflow: auto;
-  box-sizing: border-box;
-  padding: var(--space-6);
-  border-radius: var(--radius-xl);
-  background: var(--color-paper);
-  color: var(--color-ink);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-hard);
-}
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
-}
-.input {
-  min-height: var(--size-tap);
-  padding: 0 var(--space-3);
-  font: inherit;
-  border: var(--border-thick);
-  border-radius: var(--radius-xs);
-  background: var(--color-white);
-  color: var(--color-ink);
-}
 .srOnly {
   position: absolute;
   width: 1px;
@@ -254,9 +219,6 @@
   .page {
     padding: var(--space-6);
   }
-  .wordItem {
-    flex-basis: 46%;
-  }
   .side {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -269,12 +231,6 @@
     grid-template-columns: minmax(0, 1fr) 340px;
     grid-template-rows: minmax(0, 1fr) auto;
     gap: var(--space-6);
-  }
-  .words {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    overflow: visible;
-    gap: var(--space-5);
   }
   .side {
     grid-template-columns: minmax(0, 1fr);

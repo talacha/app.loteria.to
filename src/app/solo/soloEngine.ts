@@ -95,7 +95,13 @@ export function remainingSquares(s: SoloState, seat: string): number {
   return 16 - (s.crossed[seat]?.length ?? 0);
 }
 
-function cpuPlan(s: SoloState, i: number, seat: string, cardId: CardId, choices: CardId[]): CpuPlan {
+function cpuPlan(
+  s: SoloState,
+  i: number,
+  seat: string,
+  cardId: CardId,
+  choices: CardId[],
+): CpuPlan {
   const spec = DIFFICULTY[s.cfg.difficulty];
   const rng = mulberry32(hashString(`solo|${s.cfg.seed}|${i}|${seat}`));
   const decision = soloCpuPick({ accuracy: spec.accuracy, rng });
@@ -105,7 +111,12 @@ function cpuPlan(s: SoloState, i: number, seat: string, cardId: CardId, choices:
   const atMs = Math.round(Math.min(reaction, windowMs * WINDOW_USE));
   const wrongs = choices.filter((c) => c !== cardId);
   const wrong = wrongs[Math.floor(rng() * wrongs.length)] ?? cardId;
-  return { correct: decision.correct, atMs, cardId: decision.correct ? cardId : wrong, done: false };
+  return {
+    correct: decision.correct,
+    atMs,
+    cardId: decision.correct ? cardId : wrong,
+    done: false,
+  };
 }
 
 export function createSolo(cfg: SoloConfig): SoloState {
@@ -121,7 +132,11 @@ export function createSolo(cfg: SoloConfig): SoloState {
     cfg: { ...cfg, cpus },
     seats,
     tablas,
-    order: deckOrder(cfg.seed, 1, cfg.pool.map((c) => c.id)),
+    order: deckOrder(
+      cfg.seed,
+      1,
+      cfg.pool.map((c) => c.id),
+    ),
     called: [],
     crossed,
     pick: initialPickState(),
@@ -149,7 +164,11 @@ export function beginCall(s: SoloState): SoloState {
   };
 }
 
-function applyPick(s: SoloState, seat: string, cardId: CardId): { s: SoloState; points: 0 | 1 | 2 } {
+function applyPick(
+  s: SoloState,
+  seat: string,
+  cardId: CardId,
+): { s: SoloState; points: 0 | 1 | 2 } {
   const call = s.call;
   if (!call) return { s, points: 0 };
   const { state, result } = scorePick(
@@ -182,7 +201,9 @@ export function closeCall(s: SoloState): SoloState {
   const called = [...s.called, call.cardId];
   const crossed: Record<string, CardId[]> = {};
   for (const seat of s.seats) crossed[seat] = crossedAfterCall(s.tablas[seat] as Tabla, called);
-  const completed = s.seats.filter((seat) => isCardComplete(s.tablas[seat] as Tabla, crossed[seat] ?? []));
+  const completed = s.seats.filter((seat) =>
+    isCardComplete(s.tablas[seat] as Tabla, crossed[seat] ?? []),
+  );
   const base: SoloState = {
     ...s,
     called,
@@ -191,7 +212,10 @@ export function closeCall(s: SoloState): SoloState {
     lastClosed: { i: call.i, cardId: call.cardId, humanPoints: call.humanPoints },
   };
   if (completed.length > 0) {
-    return { ...base, ended: { winners: resolveFullCardWinners(completed, s.pick.points), completedOn: call.i } };
+    return {
+      ...base,
+      ended: { winners: resolveFullCardWinners(completed, s.pick.points), completedOn: call.i },
+    };
   }
   return beginCall(base);
 }
@@ -208,7 +232,7 @@ export function tick(s: SoloState, dtMs: number): SoloState {
     left -= step;
     // Fire CPU picks due by `elapsed`, earliest first (arrival order decides "first").
     const due = Object.entries(call.plans)
-      .filter(([, p]) => !p.done && p.atMs <= elapsed)
+      .filter(([, p]) => !p.done && (p.atMs <= elapsed || elapsed >= windowMs))
       .sort((a, b) => a[1].atMs - b[1].atMs || (a[0] < b[0] ? -1 : 1));
     let next: SoloState = { ...cur, call: { ...call, elapsedMs: elapsed } };
     for (const [seat, plan] of due) {

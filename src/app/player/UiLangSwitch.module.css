@@ -1,0 +1,22 @@
+.switch {
+  display: inline-flex;
+  border: var(--border-thin);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.opt {
+  min-width: var(--size-tap);
+  min-height: var(--size-tap);
+  padding: 0 var(--space-2);
+  font: inherit;
+  font-weight: 800;
+  font-size: var(--text-sm);
+  color: var(--color-paper);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.opt[aria-pressed='true'] {
+  color: var(--color-ink);
+  background: var(--color-maiz);
+}

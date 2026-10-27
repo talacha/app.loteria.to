@@ -16,17 +16,14 @@
   "unverified": "Unverified room",
   "noHost": "We could not find whoever created the room. Check the code.",
   "toHome": "Back to home",
-  "full": "The room is full.",
-  "pickLangTitle": "Which language should we call in?",
-  "pickLangLead": "Whoever is calling will say each card in your language. You can change it any time.",
-  "pickLangGroup": "Game language",
+  "full": "This room is full.",
+  "pickLangTitle": "Which language do you want to play in?",
+  "pickLangLead": "This is the language of the voice and your words. You can change it any time. The menus have their own language up top.",
+  "pickLangGroup": "Voice and word language",
   "step": "Step {n} of 2",
-  "inReview": "Words under review by speakers",
-  "listenMode": "Listen mode: sound only, no written word",
   "cta": "Play in {lang}",
-  "noCosts": "No accounts, no money. Just little beans.",
-  "youPlay": "You’ll play in {lang}",
-  "reviewShort": "in review",
+  "noCosts": "No accounts, no money. Just beans.",
+  "youPlay": "You will play in {lang}",
   "leave": "Leave the room",
   "room": "Room",
   "waitingTitle": "Almost ready…",
@@ -55,5 +52,8 @@
       "native": "English"
     }
   },
-  "back": "Back"
+  "back": "Back",
+  "fullTitle": "This room is full",
+  "fullLead": "There are already 20 players. You can create a new room.",
+  "createRoom": "Create a new room"
 }

@@ -2,8 +2,13 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { cards, isAvoidedPair } from '@content';
-import { choicesFor, tabla } from '@engine';
+import { MAX_TABLA_INDEX, choicesFor, deckOrder, tabla } from '@engine';
 import '../i18n';
+
+vi.mock('@print/options', async (orig) => ({
+  ...(await orig<typeof import('@print/options')>()),
+  newSeed: () => 'TESTSEED',
+}));
 import type { SavedRound } from './roundMachine';
 
 type Sent = { t: string; [k: string]: unknown };
@@ -52,10 +57,40 @@ const lastCall = () => calls()[calls().length - 1] as Sent & { i: number; cardId
 const seedOf = () => sent.find((m) => m.t === 'round')!.seed as string;
 const indexOf = (seat: string) =>
   sent.filter((m) => m.t === 'assign' && m.seat === seat).map((m) => m.tablaIndex as number)[0]!;
-const holds = (seat: string, cardId: string) =>
-  tabla(seedOf(), indexOf(seat), deck).cards.includes(cardId);
 const pick = (seat: string, cardId = lastCall().cardId) =>
   emit({ t: 'pick', seat, roundNo: 1, i: lastCall().i, cardId });
+const ids = cards.map((c) => c.id);
+/** Number of calls (1-based) after which every card of this tabla has been called. */
+const completesAt = (index: number) => {
+  const order = deckOrder('TESTSEED', 1, ids);
+  const mine = new Set(tabla('TESTSEED', index, deck).cards);
+  let last = 0;
+  order.forEach((c, k) => mine.has(c) && (last = k + 1));
+  return last;
+};
+/** Two tabla indices that complete on the same call, below 54 so the game ends early. */
+function tiedIndices(): [number, number] {
+  const seen = new Map<number, number>();
+  for (let i = 0; i <= MAX_TABLA_INDEX; i++) {
+    const at = completesAt(i);
+    const other = seen.get(at);
+    if (other !== undefined && at < 54) return [other, i];
+    if (!seen.has(at)) seen.set(at, i);
+  }
+  throw new Error('no tie found');
+}
+/** Make the host hand out these tabla indices, in order. */
+function assignIndices(list: number[]) {
+  const q = [...list];
+  const real = globalThis.crypto.getRandomValues.bind(globalThis.crypto);
+  vi.spyOn(globalThis.crypto, 'getRandomValues').mockImplementation(((a: Uint32Array) => {
+    if (a instanceof Uint32Array && a.length === 1 && q.length) {
+      a[0] = Math.ceil(((q.shift()! + 0.5) / (MAX_TABLA_INDEX + 1)) * 2 ** 32);
+      return a;
+    }
+    return real(a);
+  }) as typeof crypto.getRandomValues);
+}
 const results = (seat?: string) =>
   sent.filter((m) => m.t === 'pickResult' && (!seat || m.seat === seat));
 
@@ -84,11 +119,12 @@ afterEach(() => {
   store.round = null;
   vi.useRealTimers();
   vi.unstubAllGlobals();
+  vi.restoreAllMocks();
 });
 
 describe('automatic caller', () => {
   it('advances every speedSec with no manual next, pauses and resumes', async () => {
-    await started([]);
+    await started(['a', 'b']);
     expect(screen.queryByRole('button', { name: /siguiente/i })).toBeNull();
     expect(calls()).toHaveLength(1);
     await tick(10_000);
@@ -101,18 +137,17 @@ describe('automatic caller', () => {
     expect(calls()).toHaveLength(3);
   });
 
-  it('sends call{i, cardId, lang, at, choices} with deterministic choices', async () => {
-    await started(['a']);
+  it('sends call{roundNo-less i, cardId, choices, at} with deterministic choices and no lang', async () => {
+    await started(['a', 'b']);
     await tick(10_000);
     const c = lastCall() as unknown as {
       i: number;
       cardId: string;
       choices: string[];
-      lang: string;
       at: number;
     };
     expect(c.i).toBe(1);
-    expect(typeof c.lang).toBe('string');
+    expect(c).not.toHaveProperty('lang');
     expect(typeof c.at).toBe('number');
     expect(new Set(c.choices).size).toBe(3);
     expect(c.choices).toContain(c.cardId);
@@ -128,54 +163,100 @@ describe('automatic caller', () => {
     expect(replay.choices).toEqual(c.choices);
   });
 
-  it('scores only the first correct pick; later ones cross out for 0', async () => {
-    await started(['a', 'b']);
-    let n = 0;
-    while (!(holds('a', lastCall().cardId) && holds('b', lastCall().cardId)) && n++ < 53) {
-      await tick(10_000);
-    }
-    expect(holds('a', lastCall().cardId) && holds('b', lastCall().cardId)).toBe(true);
-    const other = tabla(seedOf(), indexOf('b'), deck).cards.find((c) => c !== lastCall().cardId)!;
-    await pick('b', other); // wrong picture: correct=false, may retry
-    expect(results('b').pop()).toMatchObject({ correct: false, first: false });
-    await pick('a');
-    await pick('b');
-    expect(results('a').pop()).toMatchObject({ correct: true, first: true });
-    expect(results('b').pop()).toMatchObject({ correct: true, first: false });
+  it('scores 2 for the first correct pick, 1 for later ones, 0 for wrong (arrival order)', async () => {
+    await started(['a', 'b', 'c']);
+    const call = lastCall() as unknown as { choices: string[]; cardId: string };
+    const wrong = call.choices.find((x) => x !== call.cardId)!;
+    await pick('b', wrong); // wrong: 0 points, one more try allowed
+    expect(results('b').pop()).toMatchObject({ correct: false, points: 0, first: false });
+    await pick('a'); // arrives first
+    await pick('b'); // second try, correct, not first
+    await pick('c');
+    expect(results('a').pop()).toMatchObject({ correct: true, points: 2, first: true });
+    expect(results('b').pop()).toMatchObject({ correct: true, points: 1, first: false });
+    expect(results('c').pop()).toMatchObject({ correct: true, points: 1, first: false });
     await tick(600);
     const scores = sent.filter((m) => m.t === 'scores').pop()!;
-    expect(scores.points).toEqual({ a: 2, b: 0 });
+    expect(scores.points).toEqual({ a: 2, b: 1, c: 1 });
+    // Picks do not depend on having the card on the tabla, and are counted for "x de y".
+    expect(screen.getByText('3 de 3 ya eligieron')).toBeTruthy();
   });
 
-  it('validates claims against the host crossed-out set; same-call ties go by points', async () => {
+  it('allows at most 2 picks per call per seat', async () => {
     await started(['a', 'b']);
-    // Settings default pattern is a line. Everyone claims early with nothing crossed: invalid.
-    await emit({ t: 'claim', seat: 'a', roundNo: 1, tablaIndex: indexOf('a'), marks: [] });
-    expect(sent.filter((m) => m.t === 'claimResult').pop()).toMatchObject({
-      seat: 'a',
-      valid: false,
-    });
-    // Both seats cross every card they hold, a always first. After 54 calls every pattern is met.
-    for (let k = 0; k < 54; k++) {
-      const id = lastCall().cardId;
-      if (holds('a', id)) await pick('a');
-      if (holds('b', id)) await pick('b');
-      if (k < 53) await tick(10_000);
+    const call = lastCall() as unknown as { choices: string[]; cardId: string };
+    const [w1, w2] = call.choices.filter((x) => x !== call.cardId);
+    await pick('a', w1);
+    await pick('a', w2);
+    await pick('a'); // third pick: scores nothing
+    expect(results('a').pop()).toMatchObject({ correct: false, points: 0 });
+    await tick(600);
+    expect(sent.filter((m) => m.t === 'scores').pop()?.points ?? {}).not.toHaveProperty('a');
+  });
+
+  it('sends callClosed at the end of each window, before the next call', async () => {
+    await started(['a', 'b']);
+    sent.length = 0;
+    await tick(10_000);
+    const kinds = sent.filter((m) => m.t === 'callClosed' || m.t === 'call');
+    expect(kinds.map((m) => m.t)).toEqual(['callClosed', 'call']);
+    expect(kinds[0]).toMatchObject({ roundNo: 1, i: 0 });
+    // A pick for the closed call is ignored and gets no reply.
+    await emit({ t: 'pick', seat: 'a', roundNo: 1, i: 0, cardId: 'x' });
+    expect(results('a')).toHaveLength(0);
+  });
+
+  it('the first full tabla after callClosed wins with end{reason: full-card}', async () => {
+    const [x, y] = tiedIndices();
+    // A different pair: y (later) vs a strictly earlier tabla.
+    const early = Array.from({ length: MAX_TABLA_INDEX + 1 }, (_, i) => i).find(
+      (i) => completesAt(i) < completesAt(x),
+    )!;
+    assignIndices([early, y]);
+    await started(['a', 'b']);
+    expect(indexOf('a')).toBe(early);
+    for (let k = 0; k < completesAt(early) - 1; k++) await tick(10_000);
+    expect(sent.some((m) => m.t === 'end')).toBe(false);
+    await tick(10_000); // window of the completing call closes
+    const end = sent.find((m) => m.t === 'end') as Sent;
+    expect(end).toMatchObject({ roundNo: 1, winners: ['a'], reason: 'full-card' });
+    expect(sent.findIndex((m) => m.t === 'callClosed' && m.i === completesAt(early) - 1)).toBeLessThan(
+      sent.indexOf(end),
+    );
+    const n = calls().length;
+    await tick(60_000);
+    expect(calls()).toHaveLength(n);
+  });
+
+  it('same-call completions: more points win', async () => {
+    const [x, y] = tiedIndices();
+    assignIndices([x, y]);
+    await started(['a', 'b']);
+    const at = completesAt(x);
+    for (let k = 0; k < at; k++) {
+      await pick('b'); // b is first every call...
+      await pick('a'); // ...a second
+      if (k < at - 1) await tick(10_000);
     }
-    const claim = (seat: string) =>
-      emit({ t: 'claim', seat, roundNo: 1, tablaIndex: indexOf(seat), marks: [] });
-    await claim('b');
-    await claim('a');
-    expect(sent.filter((m) => m.t === 'claimResult' && m.valid)).toHaveLength(2);
-    expect(sent.some((m) => m.t === 'end')).toBe(false); // still inside the grace window
-    await tick(2000);
+    await pick('a'); // no-op (already scored)
+    await tick(10_000);
+    const end = sent.find((m) => m.t === 'end') as Sent;
+    expect(end.winners).toEqual(['b']);
+    expect(end.reason).toBe('full-card');
+  });
+
+  it('same-call completions with equal points share the win', async () => {
+    const [x, y] = tiedIndices();
+    assignIndices([x, y]);
+    await started(['a', 'b']);
+    const at = completesAt(x);
+    for (let k = 0; k < at; k++) await tick(10_000);
     const end = sent.find((m) => m.t === 'end') as Sent & { winners: string[] };
-    // a holds the first-pick points on every shared card, so a outscores b (or shares if equal).
-    expect(end.winners).toContain('a');
+    expect([...end.winners].sort()).toEqual(['a', 'b']);
   });
 
   it('end stops the caller', async () => {
-    await started([]);
+    await started(['a', 'b']);
     fireEvent.click(screen.getByRole('button', { name: 'Terminar ronda' }));
     await flush();
     expect(sent.some((m) => m.t === 'end')).toBe(true);

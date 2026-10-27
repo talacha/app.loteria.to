@@ -146,6 +146,10 @@ export default function HomePage() {
               <span>{t('home.createHint')}</span>
             </Button>
 
+            <Button to="/solo" variant="secondary">
+              {t('solo.cta')}
+            </Button>
+
             <div className={styles.divider} aria-hidden="true">
               {t('home.or')}
             </div>

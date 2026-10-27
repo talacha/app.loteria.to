@@ -1,29 +1,25 @@
-import { PATTERNS, tabla, type CardId, type Lang, type PatternId } from '@engine';
+import { tabla, type CardId } from '@engine';
 import { cards } from '@content';
-import { CLAIM_INTERVAL_MS } from '@net';
-
-/** Host rate limit plus a margin for network jitter. */
-export const CLAIM_COOLDOWN_MS = CLAIM_INTERVAL_MS + 750;
-/** After this long without a claimResult the "waiting" state is dropped. */
-export const CLAIM_REPLY_TIMEOUT_MS = 5000;
 
 export interface RoundInfo {
   roomSeed: string;
   roundNo: number;
-  pattern: PatternId;
-  mode: 'normal' | 'escucha';
-  callLang: Lang | 'rotating';
   speedSec: number;
 }
 
 export interface CurrentCall {
   cardId: CardId;
+  /** Same three cards, same order, for every player. Rendered in my spoken language. */
   choices: [CardId, CardId, CardId];
-  lang: Lang;
   i: number;
   /** Local receive time (device clocks are never compared). */
   receivedAt: number;
 }
+
+export type Feedback =
+  | null
+  | { kind: 'ok'; points: 1 | 2; first: boolean }
+  | { kind: 'casi' };
 
 export interface PlayerState {
   round: RoundInfo | null;
@@ -31,52 +27,37 @@ export interface PlayerState {
   assign: { tablaIndex: number; roundNo: number } | null;
   /** 16 card ids, row-major; empty until round and assign are both known. */
   board: CardId[];
-  calledSoFar: CardId[];
-  /** Card drawn at each call index, for results that arrive late. */
+  /** Card drawn at each call index, for messages that arrive late. */
   callsByIndex: Record<number, CardId>;
   current: CurrentCall | null;
-  currentExpired: boolean;
-  /** Wrong choices already tried for the current call. */
+  /** True once the host closed the current call window. */
+  currentClosed: boolean;
+  /** Wrong choices already tried for the current call (max 2 picks per call). */
   wrong: CardId[];
+  /** Picks sent for the current call that the host has not answered yet. */
   pickPending: boolean;
-  /** Feedback for the current call. */
-  feedback: null | { kind: 'ok'; first: boolean } | { kind: 'casi' };
-  /** Cards crossed out (frijolito), earned by correct picks or auto-mark. */
+  /** I already got the current call right. */
+  solved: boolean;
+  feedback: Feedback;
+  /** Cards whose call has closed: their word is revealed on the board. */
+  revealed: CardId[];
+  /** Cards crossed off (frijolito): called cards that are on my tabla. */
   crossed: CardId[];
-  /** Persisted crossed cards waiting for the board to exist. */
-  pendingCrossed: CardId[];
+  /** Points from the host's scores message, per seat. */
   points: Record<string, number>;
-  autoMark: boolean;
-  listenOnly: boolean;
-  /** Epoch ms until which the claim button stays disabled. */
-  claimUntil: number;
-  claimPending: boolean;
-  claimNoReply: boolean;
-  claimResult: { valid: boolean; missing: CardId[] } | null;
+  /** Points earned from my own pickResults, used until `scores` arrives. */
+  myPoints: number;
   ended: { winners: string[]; wonByMe: boolean; dismissed: boolean } | null;
 }
 
 export type PlayerAction =
-  | { type: 'round'; round: RoundInfo; called?: CardId[]; crossed?: CardId[] }
+  | { type: 'round'; round: RoundInfo }
   | { type: 'assign'; tablaIndex: number; roundNo: number }
-  | {
-      type: 'call';
-      cardId: CardId;
-      choices: [CardId, CardId, CardId];
-      lang: Lang;
-      i: number;
-      now: number;
-    }
+  | { type: 'call'; cardId: CardId; choices: [CardId, CardId, CardId]; i: number; now: number }
   | { type: 'pick'; cardId: CardId }
-  | { type: 'pickResult'; roundNo: number; i: number; correct: boolean; first: boolean }
-  | { type: 'expire'; i: number }
+  | { type: 'pickResult'; roundNo: number; i: number; correct: boolean; points: number; first: boolean }
+  | { type: 'callClosed'; roundNo: number; i: number }
   | { type: 'scores'; roundNo: number; points: Record<string, number> }
-  | { type: 'setAutoMark'; on: boolean }
-  | { type: 'setListenOnly'; on: boolean }
-  | { type: 'claim'; now: number }
-  | { type: 'claimTimeout' }
-  | { type: 'claimResult'; roundNo: number; valid: boolean; missing?: CardId[] }
-  | { type: 'dismissResult' }
   | { type: 'dismissEnded' }
   | { type: 'end'; roundNo: number; winners: string[]; seat: string };
 
@@ -84,22 +65,17 @@ export const initialPlayerState: PlayerState = {
   round: null,
   assign: null,
   board: [],
-  calledSoFar: [],
   callsByIndex: {},
   current: null,
-  currentExpired: false,
+  currentClosed: false,
   wrong: [],
   pickPending: false,
+  solved: false,
   feedback: null,
+  revealed: [],
   crossed: [],
-  pendingCrossed: [],
   points: {},
-  autoMark: false,
-  listenOnly: false,
-  claimUntil: 0,
-  claimPending: false,
-  claimNoReply: false,
-  claimResult: null,
+  myPoints: 0,
   ended: null,
 };
 
@@ -107,38 +83,29 @@ export function makeBoard(seed: string, tablaIndex: number): CardId[] {
   return tabla(seed, tablaIndex, cards).cards;
 }
 
-/** The first set of the round's pattern that is fully crossed out, as board indices. */
-export function completedSet(s: Pick<PlayerState, 'round' | 'board' | 'crossed'>): number[] | null {
-  if (!s.round || s.board.length !== 16) return null;
-  for (const set of PATTERNS[s.round.pattern]) {
-    if (set.every((idx) => s.crossed.includes(s.board[idx] as CardId))) return set;
-  }
-  return null;
-}
-
-export function canClaim(s: PlayerState, now: number): boolean {
-  return completedSet(s) !== null && s.ended === null && now >= s.claimUntil;
-}
-
-const uniq = (a: CardId[]) => [...new Set(a)];
-
-/** Past calls (not the one still open) that the auto-mark aid crosses out. */
-function autoMarked(s: PlayerState): PlayerState {
-  if (!s.autoMark || s.board.length === 0) return s;
-  const open = s.current && !s.currentExpired ? s.current.cardId : null;
-  const add = s.calledSoFar.filter(
-    (id) => id !== open && s.board.includes(id) && !s.crossed.includes(id),
-  );
-  return add.length ? { ...s, crossed: [...s.crossed, ...add] } : s;
-}
+const add = (list: CardId[], id: CardId) => (list.includes(id) ? list : [...list, id]);
 
 /** Build the board once round and assignment agree. */
 function withBoard(s: PlayerState): PlayerState {
   if (!s.round || !s.assign || s.assign.roundNo !== s.round.roundNo) return s;
   if (s.board.length > 0) return s;
-  const board = makeBoard(s.round.roomSeed, s.assign.tablaIndex);
-  const crossed = uniq([...s.pendingCrossed, ...s.crossed]).filter((id) => board.includes(id));
-  return autoMarked({ ...s, board, crossed, pendingCrossed: [] });
+  return { ...s, board: makeBoard(s.round.roomSeed, s.assign.tablaIndex) };
+}
+
+/** Close the call at index i: reveal its word and cross it off if it is on my tabla. */
+function close(s: PlayerState, cardId: CardId, isCurrent: boolean): PlayerState {
+  return {
+    ...s,
+    revealed: add(s.revealed, cardId),
+    crossed: s.board.includes(cardId) ? add(s.crossed, cardId) : s.crossed,
+    currentClosed: isCurrent ? true : s.currentClosed,
+    pickPending: isCurrent ? false : s.pickPending,
+  };
+}
+
+/** True when all 16 squares are crossed. */
+export function fullCard(s: Pick<PlayerState, 'board' | 'crossed'>): boolean {
+  return s.board.length === 16 && s.board.every((id) => s.crossed.includes(id));
 }
 
 export function playerReducer(s: PlayerState, a: PlayerAction): PlayerState {
@@ -146,30 +113,11 @@ export function playerReducer(s: PlayerState, a: PlayerAction): PlayerState {
     case 'round': {
       const same =
         s.round && s.round.roundNo === a.round.roundNo && s.round.roomSeed === a.round.roomSeed;
-      const called = a.called ?? [];
-      if (same) {
-        const merged = uniq([...called, ...s.calledSoFar]);
-        return withBoard(autoMarked({ ...s, round: a.round, calledSoFar: merged }));
-      }
+      if (same) return withBoard({ ...s, round: a.round });
       return withBoard({
-        ...s,
+        ...initialPlayerState,
+        assign: s.assign && s.assign.roundNo === a.round.roundNo ? s.assign : null,
         round: a.round,
-        board: [],
-        calledSoFar: uniq(called),
-        callsByIndex: {},
-        current: null,
-        currentExpired: false,
-        wrong: [],
-        pickPending: false,
-        feedback: null,
-        crossed: [],
-        pendingCrossed: a.crossed ?? [],
-        points: {},
-        claimUntil: 0,
-        claimPending: false,
-        claimNoReply: false,
-        claimResult: null,
-        ended: null,
       });
     }
     case 'assign': {
@@ -186,76 +134,52 @@ export function playerReducer(s: PlayerState, a: PlayerAction): PlayerState {
     }
     case 'call': {
       if (!s.round) return s;
-      // A new call closes the previous window for the auto-mark aid.
-      const closed = autoMarked({ ...s, currentExpired: true });
-      const calledSoFar = closed.calledSoFar.includes(a.cardId)
-        ? closed.calledSoFar
-        : [...closed.calledSoFar, a.cardId];
+      // A new call implicitly closes the previous one (in case callClosed was missed).
+      const prev = s.current && !s.currentClosed ? close(s, s.current.cardId, true) : s;
       return {
-        ...closed,
-        calledSoFar,
-        callsByIndex: { ...closed.callsByIndex, [a.i]: a.cardId },
-        current: {
-          cardId: a.cardId,
-          choices: a.choices,
-          lang: a.lang,
-          i: a.i,
-          receivedAt: a.now,
-        },
-        currentExpired: false,
+        ...prev,
+        callsByIndex: { ...prev.callsByIndex, [a.i]: a.cardId },
+        current: { cardId: a.cardId, choices: a.choices, i: a.i, receivedAt: a.now },
+        currentClosed: false,
         wrong: [],
         pickPending: false,
+        solved: false,
         feedback: null,
       };
     }
     case 'pick': {
       const c = s.current;
-      if (!c || s.currentExpired || s.crossed.includes(c.cardId)) return s;
-      if (!s.board.includes(c.cardId)) return s;
+      if (!c || s.currentClosed || s.solved || s.pickPending) return s;
+      if (s.wrong.length + 1 > 2) return s;
+      // A wrong tap is judged by the host; locally dim it right away (the host's
+      // pickResult is what confirms). The right card stays pending until answered.
       if (a.cardId === c.cardId) return { ...s, pickPending: true };
       if (s.wrong.includes(a.cardId)) return s;
       return { ...s, wrong: [...s.wrong, a.cardId], feedback: { kind: 'casi' } };
     }
     case 'pickResult': {
       if (!s.round || a.roundNo !== s.round.roundNo) return s;
-      const cardId = s.callsByIndex[a.i];
       const isCurrent = s.current?.i === a.i;
-      if (!a.correct) return isCurrent ? { ...s, pickPending: false } : s;
-      if (!cardId || !s.board.includes(cardId)) return s;
+      if (!isCurrent) return s;
+      if (!a.correct) return { ...s, pickPending: false, feedback: { kind: 'casi' } };
+      const points: 1 | 2 = a.points === 2 ? 2 : 1;
       return {
         ...s,
-        crossed: s.crossed.includes(cardId) ? s.crossed : [...s.crossed, cardId],
-        pickPending: isCurrent ? false : s.pickPending,
-        feedback: isCurrent ? { kind: 'ok', first: a.first } : s.feedback,
+        pickPending: false,
+        solved: true,
+        myPoints: s.myPoints + points,
+        feedback: { kind: 'ok', points, first: a.first },
       };
     }
-    case 'expire': {
-      if (!s.current || s.current.i !== a.i || s.currentExpired) return s;
-      return autoMarked({ ...s, currentExpired: true, pickPending: false });
+    case 'callClosed': {
+      if (!s.round || a.roundNo !== s.round.roundNo) return s;
+      const cardId = s.callsByIndex[a.i];
+      if (!cardId) return s;
+      return close(s, cardId, s.current?.i === a.i);
     }
     case 'scores':
       if (!s.round || a.roundNo !== s.round.roundNo) return s;
       return { ...s, points: a.points };
-    case 'setAutoMark':
-      return a.on ? autoMarked({ ...s, autoMark: true }) : { ...s, autoMark: false };
-    case 'setListenOnly':
-      return { ...s, listenOnly: a.on };
-    case 'claim':
-      return canClaim(s, a.now)
-        ? { ...s, claimUntil: a.now + CLAIM_COOLDOWN_MS, claimPending: true, claimNoReply: false }
-        : s;
-    case 'claimTimeout':
-      return s.claimPending ? { ...s, claimPending: false, claimNoReply: true } : s;
-    case 'claimResult':
-      if (!s.round || a.roundNo !== s.round.roundNo) return s;
-      return {
-        ...s,
-        claimPending: false,
-        claimNoReply: false,
-        claimResult: { valid: a.valid, missing: a.missing ?? [] },
-      };
-    case 'dismissResult':
-      return { ...s, claimResult: null };
     case 'dismissEnded':
       return s.ended ? { ...s, ended: { ...s.ended, dismissed: true } } : s;
     case 'end':

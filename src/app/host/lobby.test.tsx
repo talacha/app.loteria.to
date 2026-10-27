@@ -117,25 +117,39 @@ describe('host lobby', () => {
   it('Empezar sends lobby(started), round, assign, then the first call', async () => {
     await mount();
     await emit(hello('s1'));
+    await emit(hello('s2', 'Bea'));
     await tick(400);
     sent.length = 0;
     fireEvent.click(screen.getByRole('button', { name: 'Empezar' }));
     await flush();
     const order = sent.map((m) => m.t);
-    expect(order.slice(0, 4)).toEqual(['lobby', 'round', 'assign', 'call']);
+    expect(order.slice(0, 5)).toEqual(['lobby', 'round', 'assign', 'assign', 'call']);
     expect(sent[0]).toMatchObject({ status: 'started', roundNo: 1, hostKey: 'KEY' });
   });
 
   it('a late hello after start gets round, lobby(started) and assign', async () => {
     await mount();
+    await emit(hello('s1'));
+    await emit(hello('s2', 'Bea'));
     fireEvent.click(screen.getByRole('button', { name: 'Empezar' }));
     await flush();
     sent.length = 0;
-    await emit(hello('late', 'Bea'));
+    await emit(hello('late', 'Cris'));
     expect(sent.map((m) => m.t)).toEqual(['round', 'lobby', 'assign', 'call']);
     const lobby = sent[1]!;
     expect(lobby).toMatchObject({ status: 'started' });
-    expect((lobby.players as { seat: string }[]).map((p) => p.seat)).toEqual(['late']);
+    expect((lobby.players as { seat: string }[]).map((p) => p.seat)).toEqual(['s1', 's2', 'late']);
+  });
+
+  it('after start, the 21st hello gets lobby(full) and is not added', async () => {
+    await mount();
+    for (let i = 0; i < 20; i++) await emit(hello(`p${i}`, `N${i}`));
+    fireEvent.click(screen.getByRole('button', { name: 'Empezar' }));
+    await flush();
+    sent.length = 0;
+    await emit(hello('extra', 'Extra'));
+    expect(sent.some((m) => m.t === 'lobby' && m.status === 'full')).toBe(true);
+    expect(sent.some((m) => m.t === 'assign' && m.seat === 'extra')).toBe(false);
   });
 
   it('hides Share without navigator.share and shows it with', async () => {
@@ -148,15 +162,25 @@ describe('host lobby', () => {
     expect(screen.getByRole('button', { name: 'Compartir' })).toBeTruthy();
   });
 
-  it('shows a hint with zero players but still allows starting', async () => {
+  it('disables Empezar until 2 players have joined and says how many are missing', async () => {
     await mount();
-    expect(screen.getByText(/papel/)).toBeTruthy();
+    const start = screen.getByRole('button', { name: 'Empezar' });
+    expect(start).toHaveProperty('disabled', true);
+    expect(screen.getByText('Faltan 2 personas')).toBeTruthy();
+    fireEvent.click(start);
+    await flush();
+    expect(sent.some((m) => m.t === 'call')).toBe(false);
+    await emit(hello('s1'));
+    expect(screen.getByText('Falta 1 persona')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Empezar' })).toHaveProperty('disabled', true);
+    await emit(hello('s2', 'Bea'));
     expect(screen.getByRole('button', { name: 'Empezar' })).toHaveProperty('disabled', false);
+    expect(screen.queryByText(/Falta/)).toBeNull();
   });
 });
 
 describe('roster control', () => {
-  it('limits hellos per seat, removes and ignores banned seats, caps at 60', async () => {
+  it('limits hellos per seat, removes and ignores banned seats, caps at 20', async () => {
     await mount();
     await emit(hello('s1', 'Ana'));
     await emit(hello('s1', 'Otra')); // within 2 s: ignored
@@ -169,13 +193,15 @@ describe('roster control', () => {
     await emit(hello('s1', 'Ana'));
     expect(screen.queryAllByText('Ana')).toHaveLength(0); // banned for the session
 
-    for (let i = 0; i < 60; i++) await emit(hello(`p${i}`, `N${i}`));
+    for (let i = 0; i < 20; i++) await emit(hello(`p${i}`, `N${i}`));
+    expect(screen.getAllByText(/20\/20/).length).toBeGreaterThan(0);
     sent.length = 0;
-    await emit(hello('extra', 'Extra'));
+    await emit(hello('extra', 'Extra')); // the 21st
     expect(screen.queryAllByText('Extra')).toHaveLength(0);
     const l = lobbies();
     expect(l).toHaveLength(1);
-    expect((l[0]!.players as unknown[]).length).toBe(60);
+    expect(l[0]).toMatchObject({ status: 'full' });
+    expect((l[0]!.players as unknown[]).length).toBe(20);
   });
 
   it('persists the roster and restores it on resume', async () => {
@@ -199,6 +225,8 @@ describe('roster control', () => {
   it('has exactly one main landmark with id=main', async () => {
     await mount();
     expect(document.querySelectorAll('main#main')).toHaveLength(1);
+    await emit(hello('s1'));
+    await emit(hello('s2', 'Bea'));
     fireEvent.click(screen.getByRole('button', { name: 'Empezar' }));
     await flush();
     expect(document.querySelectorAll('main#main')).toHaveLength(1);

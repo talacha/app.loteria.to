@@ -102,3 +102,12 @@
     max-width: 64rem;
   }
 }
+.topEnd {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.notice p {
+  margin: var(--space-1) 0 var(--space-2);
+}

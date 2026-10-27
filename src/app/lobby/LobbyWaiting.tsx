@@ -4,9 +4,9 @@ import { createTransport, getSeat, type Transport } from '@net';
 import PlayerGame from '../game/PlayerGame';
 import type { PlayerProfile } from '../player/PlayerBoard';
 import Roster, { type RosterPlayer } from './Roster';
-import { Button, Panel, PaperCard, Pill, ReviewTag, RoomCodeTiles } from '../ui';
+import UiLangSwitch from '../player/UiLangSwitch';
+import { Button, Panel, PaperCard, Pill, RoomCodeTiles } from '../ui';
 import { MessageLog } from './messageLog';
-import { langInReview } from './langInfo';
 import styles from './LobbyWaiting.module.css';
 
 export interface LobbyWaitingProps {
@@ -16,6 +16,8 @@ export interface LobbyWaitingProps {
   /** True only when the host key came from the QR/link fragment (#k=). */
   hostKeyFromQr?: boolean;
   onLeave: () => void;
+  /** "Crear una sala nueva" when the room is full; defaults to going to /host. */
+  onCreateRoom?: () => void;
   /** Test seam: receives the seat to pin. */
   transportFactory?: (seat: string) => Transport;
 }
@@ -23,8 +25,6 @@ export interface LobbyWaitingProps {
 const HELLO_RETRY_MS = 3000;
 const HELLO_MAX_RETRIES = 3;
 const NO_HOST_MS = 12000;
-const FULL_MS = 6000;
-const MAX_PLAYERS = 60;
 
 interface Live {
   transport: Transport;
@@ -38,6 +38,7 @@ export default function LobbyWaiting({
   hostKey,
   hostKeyFromQr = false,
   onLeave,
+  onCreateRoom,
   transportFactory,
 }: LobbyWaitingProps) {
   const { t } = useTranslation();
@@ -48,14 +49,13 @@ export default function LobbyWaiting({
   const [playing, setPlaying] = useState(false);
   const [noHost, setNoHost] = useState(false);
   const [full, setFull] = useState(false);
-  const { name, glyph, pronouns, labelLang } = profile;
+  const { name, glyph, pronouns, spokenLang } = profile;
 
   useEffect(() => {
     let alive = true;
     let tr: Transport | null = null;
     let retry: ReturnType<typeof setTimeout> | undefined;
     let noHostTimer: ReturnType<typeof setTimeout> | undefined;
-    let fullTimer: ReturnType<typeof setTimeout> | undefined;
     let assignWatch: ReturnType<typeof setInterval> | undefined;
     // Deferred so React StrictMode's mount/cleanup/mount pass joins only once.
     const start = setTimeout(() => {
@@ -76,7 +76,7 @@ export default function LobbyWaiting({
           name,
           glyph,
           pronouns: pronouns || undefined,
-          labelLang,
+          labelLang: spokenLang,
         });
       };
       /** Re-announce myself, at most once per HELLO_RETRY_MS. */
@@ -94,18 +94,15 @@ export default function LobbyWaiting({
             const inRoom = m.players.some((p) => p.seat === mine.seat);
             hostKnowsMe = inRoom;
             if (inRoom) {
-              clearTimeout(fullTimer);
-              fullTimer = undefined;
               setFull(false);
+            } else if (m.status === 'full') {
+              // The host rejected my hello: 20 players are already in.
+              setFull(true);
             } else {
               // e.g. the host reloaded and lost its roster.
               rehello();
-              if (m.players.length >= MAX_PLAYERS && !fullTimer)
-                fullTimer = setTimeout(() => {
-                  if (alive && !hostKnowsMe) setFull(true);
-                }, FULL_MS);
             }
-            if (m.status === 'started') setPlaying(true);
+            if (m.status === 'started' && inRoom) setPlaying(true);
             break;
           }
           case 'round':
@@ -123,9 +120,9 @@ export default function LobbyWaiting({
             log.push(m);
             break;
           case 'call':
+          case 'callClosed':
           case 'pickResult':
           case 'scores':
-          case 'claimResult':
           case 'end':
             log.push(m);
             break;
@@ -163,11 +160,10 @@ export default function LobbyWaiting({
       clearTimeout(start);
       clearTimeout(retry);
       clearTimeout(noHostTimer);
-      clearTimeout(fullTimer);
       clearInterval(assignWatch);
       if (tr) void tr.leave();
     };
-  }, [code, hostKey, hostKeyFromQr, transportFactory, name, glyph, pronouns, labelLang, log]);
+  }, [code, hostKey, hostKeyFromQr, transportFactory, name, glyph, pronouns, spokenLang, log]);
 
   const leave = () => {
     if (live) void live.transport.leave();
@@ -190,8 +186,7 @@ export default function LobbyWaiting({
     );
   }
 
-  const langName = t(`lobby.langs.${labelLang}.name`);
-  const review = langInReview(labelLang);
+  const langName = t(`lobby.langs.${spokenLang}.name`);
 
   return (
     <main id="main" className={styles.page}>
@@ -200,6 +195,8 @@ export default function LobbyWaiting({
           <Button variant="link" icon={<Chevron />} onClick={leave}>
             {t('lobby.leave')}
           </Button>
+          <span className={styles.topEnd}>
+            <UiLangSwitch />
           <span role="status">
             <Pill tone={lost ? 'paper' : 'jade'} dot={!!live && !lost}>
               {lost
@@ -215,6 +212,7 @@ export default function LobbyWaiting({
               ) : null}
             </Pill>
           </span>
+          </span>
         </div>
 
         <div className={styles.cols}>
@@ -223,7 +221,6 @@ export default function LobbyWaiting({
               <RoomCodeTiles code={code} label={t('lobby.room')} />
               <div className={styles.youPlay}>
                 <span>{t('lobby.youPlay', { lang: langName })}</span>
-                {review && <ReviewTag variant="word" />}
               </div>
             </PaperCard>
 
@@ -243,9 +240,13 @@ export default function LobbyWaiting({
               </p>
             )}
             {full && (
-              <p className={styles.notice} role="alert">
-                {t('lobby.full')}
-              </p>
+              <div className={styles.notice} role="alert">
+                <strong>{t('lobby.fullTitle')}</strong>
+                <p>{t('lobby.fullLead')}</p>
+                <Button onClick={onCreateRoom ?? (() => window.location.assign('/host'))}>
+                  {t('lobby.createRoom')}
+                </Button>
+              </div>
             )}
 
             <div className={styles.head}>

@@ -2,16 +2,11 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
-import type { PatternId } from '@engine';
 import { Button, Panel, Pill, QrCard, RoomCodeTiles, RosterTile } from '../ui';
 import styles from './HostLobby.module.css';
 import { MAX_SPEED, MIN_SPEED, SPEED_PRESETS } from './roundMachine';
-import type { CallLang } from './roundMachine';
 import { MAX_PLAYERS } from './useHostRoom';
 import type { HostRoom } from './useHostRoom';
-import { callableLangs } from '@content';
-
-const PATTERNS: PatternId[] = ['line', 'corners', 'center', 'full'];
 
 /** Polite announcement when someone joins or leaves (the first roster is the baseline). */
 function useRosterNote(players: { seat: string; name: string }[]): string {
@@ -38,7 +33,6 @@ export default function HostLobby({ room }: { room: HostRoom }) {
   const [seedInput, setSeedInput] = useState('');
   const [seedError, setSeedError] = useState(false);
   const { settings } = room;
-  const callable = callableLangs();
   const canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
 
   const copy = async () => {
@@ -111,8 +105,11 @@ export default function HostLobby({ room }: { room: HostRoom }) {
         <div className={styles.side}>
           <section aria-labelledby="roster-h" className={styles.rosterBox}>
             <h2 id="roster-h" className={styles.rosterH}>
-              {t('lobby.count', { count: room.roster.length })}
-              <span className={styles.muted}> · {t('lobby.max', { max: MAX_PLAYERS })}</span>
+              {t('host.lobby.count', { count: room.roster.length })}
+              <span className={styles.muted}>
+                {' '}
+                · {room.roster.length}/{MAX_PLAYERS}
+              </span>
             </h2>
             <p className={styles.srOnly} role="status">
               {rosterNote}
@@ -157,24 +154,6 @@ export default function HostLobby({ room }: { room: HostRoom }) {
           <details className={styles.settings}>
             <summary>{t('host.lobby.settings')}</summary>
             <div className={styles.settingsBody}>
-              <label className={styles.field}>
-                {t('host.callLang')}
-                <select
-                  className={styles.input}
-                  value={settings.callLang}
-                  onChange={(e) => room.configure({ callLang: e.target.value as CallLang })}
-                >
-                  {callable.map((l) => (
-                    <option key={l} value={l}>
-                      {t(`lang.${l}`)}
-                    </option>
-                  ))}
-                  {callable.length > 1 ? (
-                    <option value="rotating">{t('host.rotating')}</option>
-                  ) : null}
-                </select>
-              </label>
-
               <fieldset className={styles.field}>
                 <legend>{t('host.speed')}</legend>
                 <div className={styles.row}>
@@ -206,43 +185,6 @@ export default function HostLobby({ room }: { room: HostRoom }) {
                 </label>
                 <span>{t('host.speedSeconds', { seconds: settings.speedSec })}</span>
               </fieldset>
-
-              <label className={styles.field}>
-                {t('host.pattern')}
-                <select
-                  className={styles.input}
-                  value={settings.pattern}
-                  onChange={(e) => room.configure({ pattern: e.target.value as PatternId })}
-                >
-                  {PATTERNS.map((p) => (
-                    <option key={p} value={p}>
-                      {t(`host.patterns.${p}`)}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className={styles.check}>
-                <input
-                  type="checkbox"
-                  checked={settings.mode === 'escucha'}
-                  onChange={(e) =>
-                    room.configure({ mode: e.target.checked ? 'escucha' : 'normal' })
-                  }
-                />
-                <span>
-                  {t('host.listenMode')}
-                  <small className={styles.muted}> {t('host.listenModeHint')}</small>
-                </span>
-              </label>
-              <label className={styles.check}>
-                <input
-                  type="checkbox"
-                  checked={settings.captions}
-                  onChange={(e) => room.configure({ captions: e.target.checked })}
-                />
-                <span>{t('host.captions')}</span>
-              </label>
 
               <h3>{t('host.printSeed')}</h3>
               <form onSubmit={onSeed}>
@@ -280,9 +222,19 @@ export default function HostLobby({ room }: { room: HostRoom }) {
       </div>
 
       <div className={styles.startBar}>
-        <Button variant="primary" onClick={room.startGame}>
+        <Button variant="primary" disabled={!room.canStart} onClick={room.startGame}>
           {t('host.start')}
         </Button>
+        {!room.canStart ? (
+          <p className={styles.hint} role="status">
+            {t('host.lobby.missing', { count: room.missing })}
+          </p>
+        ) : null}
+        {room.full ? (
+          <p className={styles.hint} role="status">
+            {t('host.lobby.full', { count: MAX_PLAYERS, max: MAX_PLAYERS })}
+          </p>
+        ) : null}
       </div>
     </main>
   );

@@ -31,8 +31,8 @@
   "celebrateBody": "{name} completó la figura.",
   "continue": "Seguir cantando",
   "ended": "La ronda terminó.",
-  "winners": "Quienes completaron la figura",
-  "noWinners": "Nadie completó la figura esta vez.",
+  "winners": "Quienes completaron la tabla",
+  "noWinners": "Nadie completó la tabla esta vez.",
   "mode": "Modo de juego",
   "modeNormal": "Normal",
   "speedSlider": "Velocidad en segundos",
@@ -50,22 +50,22 @@
     "linkCopied": "Enlace copiado",
     "share": "Compartir",
     "settings": "Ajustes de la partida",
-    "zeroHint": "Aún no hay nadie. Puedes empezar igual para jugar con tablas de papel.",
+    "zeroHint": "Aún no hay nadie. Se necesitan al menos 2 personas para empezar.",
     "manage": "Quitar a alguien",
     "remove": "Quitar",
     "removeNamed": "Quitar a {name}",
     "lead": "Quien organiza comparte el código. El cantor (automático) canta cuando toques Empezar.",
     "roomLabel": "SALA",
-    "noPhone": "¿Sin teléfono? Imprime tablas"
+    "noPhone": "¿Sin teléfono? Imprime tablas",
+    "count": "{count, plural, one {# persona} other {# personas}}",
+    "missing": "{count, plural, one {Falta # persona} other {Faltan # personas}}",
+    "full": "Sala llena: {count}/{max}"
   },
   "title": "Sala de canto",
   "resumeLobbyBody": "Hay una sala abierta en este dispositivo (sala {code}).",
   "game": {
     "cardNo": "Carta {n}",
-    "ofTotal": "de {total} · ¿cuál es en tu tabla?",
-    "wordsLabel": "Carta cantada en los idiomas de la sala",
-    "review": "palabra en revisión",
-    "pictureLater": "La imagen se muestra al terminar el canto",
+    "ofTotal": "de {total}",
     "time": "Tiempo",
     "seconds": "{s} s",
     "auto": "Cantor automático",
@@ -77,7 +77,9 @@
     "history": "Ya cantadas",
     "joinAt": "Únete en app.loteria.to",
     "paperName": "Tabla de papel {n}",
-    "shortcuts": "Atajos: Espacio o P pausa, R repetir, L revisar papel"
+    "shortcuts": "Atajos: Espacio o P pausa, R repetir, L revisar papel",
+    "picture": "Carta cantada",
+    "fullCard": "Primera persona en completar toda su tabla"
   },
   "resume": "Reanudar"
 }

@@ -31,8 +31,8 @@
   "celebrateBody": "{name} completed the pattern.",
   "continue": "Keep calling",
   "ended": "The round is over.",
-  "winners": "Who completed the pattern",
-  "noWinners": "Nobody completed the pattern this time.",
+  "winners": "Who completed the board",
+  "noWinners": "Nobody completed a board this time.",
   "mode": "Game mode",
   "modeNormal": "Normal",
   "speedSlider": "Speed in seconds",
@@ -50,21 +50,21 @@
     "linkCopied": "Link copied",
     "share": "Share",
     "settings": "Game settings",
-    "zeroHint": "Nobody has joined yet. You can still start for paper play.",
+    "zeroHint": "Nobody has joined yet. At least 2 players are needed to start.",
     "manage": "Remove someone",
     "remove": "Remove",
     "removeNamed": "Remove {name}",
     "lead": "The organiser shares the code. The cantor (automatic) calls once you tap Start.",
     "roomLabel": "ROOM",
-    "noPhone": "No phone? Print boards"
+    "noPhone": "No phone? Print boards",
+    "count": "{count, plural, one {# player} other {# players}}",
+    "missing": "{count, plural, one {# more player needed} other {# more players needed}}",
+    "full": "Room full: {count}/{max}"
   },
   "resumeLobbyBody": "A room is open on this device (room {code}).",
   "game": {
     "cardNo": "Card {n}",
-    "ofTotal": "of {total} · which one is on your board?",
-    "wordsLabel": "Called card in the languages of the room",
-    "review": "word under review",
-    "pictureLater": "The picture shows when the call ends",
+    "ofTotal": "of {total}",
     "time": "Time",
     "seconds": "{s} s",
     "auto": "Automatic cantor",
@@ -76,7 +76,9 @@
     "history": "Already called",
     "joinAt": "Join at app.loteria.to",
     "paperName": "Paper board {n}",
-    "shortcuts": "Shortcuts: Space or P pause, R repeat, L check paper"
+    "shortcuts": "Shortcuts: Space or P pause, R repeat, L check paper",
+    "picture": "Called card",
+    "fullCard": "First to complete the whole board"
   },
   "resume": "Resume"
 }
