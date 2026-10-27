@@ -137,6 +137,13 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 - **Evidence:** `public/art/` has 16 SVGs; the other 38 cards fall back to `art`/`emoji` in `cards.json`.
 - **Accept when:** 54 SVGs in the Feria de noche style, no people, each under the per-file budget; precache stays < 10 MB.
 
+### FEAT-006 · Card art revamp: vintage printed-lotería style, 2× resolution — P1
+
+**Why:** the flat SVG icons read as UI icons, not lotería cards; the printed style (solid mottled colour per card, painterly illustration, number top-left, name in capitals, paper grain) is the look players expect.
+**Status:** pilot done for `sol`, `jaguar`, `colibri` (`public/cards/*.webp`, preview `design/cards/pilot-preview@2x.png`, Figma file "Lotería de los Pueblos — Card art"). On hold until the 144-card list (`docs/deck-expansion.md`) is final, then generate all cards in one pass.
+**Plan:** illustrations only (no text) generated with Figma `generate_image` (gemini-3.1-flash-image, 1024×1536 request → ~848×1264), **full-bleed background to every edge** (the pilot images include a painted paper margin — crop or regenerate), original artwork only (no copying of existing commercial decks, no trademarks); converted to WebP 600×900 (2× for cards up to 300 CSS px); card frame, number and localized name composed in code by a `CardFace` component in `src/app/ui` (falls back to `public/art/*.svg`); isolated review for look-alikes and off-brief images.
+**Acceptance:** every card in the deck has `public/cards/<id>.webp`; boards, the call panel, the cantor screen and the win screen use `CardFace`; total card art ≤ 6 MB; design-lint and contrast checks pass; names render in the player's spoken language.
+
 ## Tech debt
 
 ### DEBT-001 · Fix the react-refresh lint warning in `Shell.tsx` — P2
