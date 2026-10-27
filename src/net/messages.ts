@@ -1,9 +1,8 @@
 import { z } from 'zod';
-import { MAX_TABLA_INDEX } from '@engine';
-import type { CardId, Lang, PatternId } from '@engine';
+import { MAX_TABLA_INDEX, ROOM_MAX_PLAYERS } from '@engine';
+import type { CardId, Lang } from '@engine';
 
 const lang = z.enum(['es', 'en', 'nah', 'yua', 'quz']);
-const pattern = z.enum(['line', 'corners', 'center', 'full']);
 const cardId = z.string().min(1).max(64);
 const seat = z.string().min(1).max(64);
 // Rejects control, format and bidi-override characters (except ZWJ).
@@ -35,12 +34,8 @@ export const msgSchema = z.discriminatedUnion('t', [
     t: z.literal('round'),
     seed: z.string().min(1).max(128),
     roundNo,
-    mode: z.enum(['normal', 'escucha']),
-    pattern,
-    callLang: z.union([lang, z.literal('rotating')]),
     speedSec: z.number().finite().min(3).max(60),
     hostKey: z.string().min(1).max(128).optional(),
-    called: cardList.default([]),
   }),
   z.object({
     t: z.literal('assign'),
@@ -54,20 +49,14 @@ export const msgSchema = z.discriminatedUnion('t', [
       i: z.number().int().min(0).max(1000),
       cardId,
       choices: z.tuple([cardId, cardId, cardId]),
-      lang,
       at: z.number().int().min(0),
     })
     .refine((c) => new Set(c.choices).size === 3 && c.choices.includes(c.cardId), 'bad choices'),
-  z.object({
-    t: z.literal('claimResult'),
-    seat,
-    roundNo,
-    valid: z.boolean(),
-    missing: cardList.optional(),
-  }),
+  z.object({ t: z.literal('callClosed'), roundNo, i: z.number().int().min(0).max(1000) }),
   z.object({
     t: z.literal('end'),
     roundNo,
+    reason: z.literal('full-card'),
     winners: z.array(seat).max(54).refine(unique, 'duplicate entries'),
   }),
   z.object({
@@ -83,6 +72,7 @@ export const msgSchema = z.discriminatedUnion('t', [
     i: z.number().int().min(0).max(1000),
     seat,
     correct: z.boolean(),
+    points: z.union([z.literal(0), z.literal(1), z.literal(2)]),
     first: z.boolean(),
   }),
   z.object({
@@ -94,10 +84,10 @@ export const msgSchema = z.discriminatedUnion('t', [
   }),
   z.object({
     t: z.literal('lobby'),
-    status: z.enum(['waiting', 'started']),
+    status: z.enum(['waiting', 'started', 'full']),
     players: z
       .array(lobbyPlayer)
-      .max(60)
+      .max(ROOM_MAX_PLAYERS)
       .refine((a) => new Set(a.map((p) => p.seat)).size === a.length, 'duplicate seats'),
     roundNo: roundNo.optional(),
     hostKey: z.string().min(1).max(128).optional(),
@@ -124,16 +114,12 @@ export type Msg =
       t: 'round';
       seed: string;
       roundNo: number;
-      mode: 'normal' | 'escucha';
-      pattern: PatternId;
-      callLang: Lang | 'rotating';
       speedSec: number;
       hostKey?: string;
-      called?: CardId[];
     }
   | {
       t: 'lobby';
-      status: 'waiting' | 'started';
+      status: 'waiting' | 'started' | 'full';
       players: { seat: string; name: string; glyph: string; pronouns?: string }[];
       roundNo?: number;
       hostKey?: string;
@@ -144,23 +130,30 @@ export type Msg =
       i: number;
       cardId: CardId;
       choices: [CardId, CardId, CardId];
-      lang: Lang;
       at: number;
     }
   | { t: 'pick'; seat: string; roundNo: number; i: number; cardId: CardId }
-  | { t: 'pickResult'; roundNo: number; i: number; seat: string; correct: boolean; first: boolean }
+  | {
+      t: 'pickResult';
+      roundNo: number;
+      i: number;
+      seat: string;
+      correct: boolean;
+      points: 0 | 1 | 2;
+      first: boolean;
+    }
+  | { t: 'callClosed'; roundNo: number; i: number }
   | { t: 'scores'; roundNo: number; points: Record<string, number> }
-  | { t: 'claimResult'; seat: string; roundNo: number; valid: boolean; missing?: CardId[] }
-  | { t: 'end'; roundNo: number; winners: string[] }
+  | { t: 'end'; roundNo: number; winners: string[]; reason: 'full-card' }
   | { t: 'hello'; seat: string; name: string; glyph: string; pronouns?: string; labelLang: Lang }
   | { t: 'claim'; seat: string; roundNo: number; tablaIndex: number; marks: CardId[] };
 
 export type HostOnlyType =
-  'round' | 'call' | 'claimResult' | 'end' | 'assign' | 'lobby' | 'pickResult' | 'scores';
+  'round' | 'call' | 'callClosed' | 'end' | 'assign' | 'lobby' | 'pickResult' | 'scores';
 export const HOST_ONLY: ReadonlySet<Msg['t']> = new Set<HostOnlyType>([
   'round',
   'call',
-  'claimResult',
+  'callClosed',
   'end',
   'assign',
   'lobby',

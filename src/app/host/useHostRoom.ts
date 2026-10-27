@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { callableLangs } from '@content';
-import { roomCode } from '@engine';
+import { ROOM_MAX_PLAYERS, ROOM_MIN_PLAYERS, roomCode } from '@engine';
 import { createTransport, generateHostKeyPair, getSeat } from '@net';
 import type { Msg, Transport } from '@net';
 import type { Lang } from '@engine';
@@ -27,7 +27,8 @@ export const LOBBY_RESEND_MS = 10_000;
 export const LEAVE_GRACE_MS = 4000;
 const SWEEP_MS = 500;
 const HELLO_LIMIT_MS = 2000;
-export const MAX_PLAYERS = 60;
+export const MAX_PLAYERS = ROOM_MAX_PLAYERS;
+export const MIN_PLAYERS = ROOM_MIN_PLAYERS;
 
 async function timedFetch(url: string, init?: RequestInit): Promise<Response> {
   const ctl = new AbortController();
@@ -62,7 +63,7 @@ export async function registerRoom(
 }
 
 export function lobbyMessage(
-  status: 'waiting' | 'started',
+  status: 'waiting' | 'started' | 'full',
   players: RosterPlayer[],
   roundNo?: number,
   hostKey?: string | null,
@@ -121,10 +122,10 @@ export function useHostRoom() {
   }, []);
 
   const sendLobbyNow = useCallback(() => {
-    // Only used for the "room full" case while in the lobby; the game sends its own.
+    // The 21st hello while in the lobby; the game sends its own.
     if (phaseRef.current !== 'lobby') return;
     transportRef.current?.send(
-      lobbyMessage('waiting', rosterRef.current, undefined, hostKeyRef.current),
+      lobbyMessage('full', rosterRef.current, undefined, hostKeyRef.current),
     );
   }, []);
 
@@ -359,6 +360,7 @@ export function useHostRoom() {
   const randomSeed = useCallback(() => setSeed(newSeed()), []);
 
   const startGame = useCallback(() => {
+    if (rosterRef.current.length < ROOM_MIN_PLAYERS) return;
     setGameSaved(null);
     setPhase('game');
   }, []);
@@ -430,6 +432,9 @@ export function useHostRoom() {
     hostKey,
     connection,
     roster,
+    canStart: roster.length >= ROOM_MIN_PLAYERS,
+    missing: Math.max(0, ROOM_MIN_PLAYERS - roster.length),
+    full: roster.length >= ROOM_MAX_PLAYERS,
     joinUrl,
     langs,
     isMember,

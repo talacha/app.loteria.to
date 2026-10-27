@@ -1,7 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import fc from 'fast-check';
 import {
-  FIRST_CORRECT_POINTS,
+  ROOM_MIN_PLAYERS,
+  ROOM_MAX_PLAYERS,
+  crossedAfterCall,
+  isCardComplete,
+  resolveFullCardWinners,
+  soloCpuPick,
+  mulberry32,
   choicesFor,
   initialPickState,
   resolveWinners,
@@ -63,33 +69,81 @@ describe('choicesFor', () => {
 
 describe('scorePick', () => {
   const call = { i: 4, cardId: 'c9' };
-  it('awards first correct only, wrong picks are inert, repeats idempotent', () => {
+  it('first correct 2, others 1, wrong 0, repeats idempotent', () => {
     let st = initialPickState();
-    let r = scorePick(st, { seat: 'a', i: 4, cardId: 'c1', at: 0 }, call);
-    expect(r.result).toEqual({ seat: 'a', i: 4, correct: false, first: false });
+    let r = scorePick(st, { seat: 'a', i: 4, cardId: 'c1' }, call);
+    expect(r.result).toEqual({ seat: 'a', i: 4, correct: false, points: 0, first: false });
     st = r.state;
-    r = scorePick(st, { seat: 'a', i: 4, cardId: 'c9', at: 1 }, call);
-    expect(r.result.first).toBe(true);
+    r = scorePick(st, { seat: 'a', i: 4, cardId: 'c9' }, call);
+    expect(r.result).toMatchObject({ correct: true, points: 2, first: true });
     st = r.state;
-    r = scorePick(st, { seat: 'b', i: 4, cardId: 'c9', at: 2 }, call);
-    expect(r.result).toEqual({ seat: 'b', i: 4, correct: true, first: false });
+    r = scorePick(st, { seat: 'b', i: 4, cardId: 'c9' }, call);
+    expect(r.result).toEqual({ seat: 'b', i: 4, correct: true, points: 1, first: false });
     st = r.state;
-    const again = scorePick(st, { seat: 'a', i: 4, cardId: 'c9', at: 3 }, call);
+    const again = scorePick(st, { seat: 'a', i: 4, cardId: 'c9' }, call);
     expect(again.state).toEqual(st);
-    expect(again.result.first).toBe(true);
-    expect(st.points).toEqual({ a: FIRST_CORRECT_POINTS, b: 0 });
-    expect(st.crossed).toEqual({ a: ['c9'], b: ['c9'] });
+    expect(again.result).toMatchObject({ points: 2, first: true });
+    expect(st.points).toEqual({ a: 2, b: 1 });
   });
-  it('total points per call never exceed 2 and seats cross each card once', () => {
+  it('allows at most 2 picks per seat per call', () => {
+    let st = initialPickState();
+    for (const c of ['c1', 'c2']) st = scorePick(st, { seat: 'a', i: 4, cardId: c }, call).state;
+    const r = scorePick(st, { seat: 'a', i: 4, cardId: 'c9' }, call);
+    expect(r.result.points).toBe(0);
+    expect(r.state).toEqual(st);
+  });
+  it('a correct second try earns 1 if not first', () => {
+    let st = scorePick(initialPickState(), { seat: 'b', i: 4, cardId: 'c9' }, call).state;
+    st = scorePick(st, { seat: 'a', i: 4, cardId: 'c1' }, call).state;
+    const r = scorePick(st, { seat: 'a', i: 4, cardId: 'c9' }, call);
+    expect(r.result).toMatchObject({ correct: true, points: 1, first: false });
+  });
+  it('per call: one first, total = 2 + (n-1), each seat scores once', () => {
     fc.assert(
-      fc.property(fc.array(fc.constantFrom('a', 'b', 'c'), { maxLength: 20 }), (seats) => {
+      fc.property(fc.array(fc.constantFrom('a', 'b', 'c', 'd'), { maxLength: 20 }), (seats) => {
         let st = initialPickState();
-        seats.forEach((seat, at) => {
-          st = scorePick(st, { seat, i: 4, cardId: 'c9', at }, call).state;
-        });
+        for (const seat of seats) st = scorePick(st, { seat, i: 4, cardId: 'c9' }, call).state;
+        const n = new Set(seats).size;
         const total = Object.values(st.points).reduce((x, y) => x + y, 0);
-        expect(total).toBe(seats.length ? FIRST_CORRECT_POINTS : 0);
-        for (const l of Object.values(st.crossed)) expect(l).toEqual(['c9']);
+        expect(total).toBe(n === 0 ? 0 : 2 + (n - 1));
+        expect(Object.values(st.points).filter((p) => p === 2).length).toBe(n ? 1 : 0);
+      }),
+    );
+  });
+});
+
+describe('crossing and full card', () => {
+  const t = { index: 0, cards: Array.from({ length: 16 }, (_, i) => `c${i + 1}`) };
+  it('crosses every called card on the tabla regardless of picks', () => {
+    expect(crossedAfterCall(t, ['c3', 'zz', 'c1'])).toEqual(['c1', 'c3']);
+    expect(crossedAfterCall(t, [])).toEqual([]);
+  });
+  it('is complete only with all 16', () => {
+    expect(isCardComplete(t, t.cards)).toBe(true);
+    expect(isCardComplete(t, t.cards.slice(1))).toBe(false);
+    expect(isCardComplete(t, crossedAfterCall(t, [...t.cards, 'x']))).toBe(true);
+  });
+  it('resolveFullCardWinners: highest points, ties share', () => {
+    expect(resolveFullCardWinners(['a', 'b'], { a: 3, b: 5 })).toEqual(['b']);
+    expect(resolveFullCardWinners(['a', 'b', 'c'], { a: 5, b: 5, c: 1 })).toEqual(['a', 'b']);
+    expect(resolveFullCardWinners(['a', 'b'], {})).toEqual(['a', 'b']);
+    expect(resolveFullCardWinners([], { a: 1 })).toEqual([]);
+  });
+});
+
+describe('room limits and soloCpuPick', () => {
+  it('constants', () => {
+    expect([ROOM_MIN_PLAYERS, ROOM_MAX_PLAYERS]).toEqual([2, 20]);
+  });
+  it('accuracy 0/1 are absolute and delay stays inside the window', () => {
+    fc.assert(
+      fc.property(fc.nat(1000), (n) => {
+        const rng = mulberry32(n);
+        expect(soloCpuPick({ accuracy: 1, rng }).correct).toBe(true);
+        expect(soloCpuPick({ accuracy: 0, rng }).correct).toBe(false);
+        const p = soloCpuPick({ accuracy: 0.5, rng });
+        expect(p.delayMs(4000)).toBeGreaterThan(0);
+        expect(p.delayMs(4000)).toBeLessThan(4000);
       }),
     );
   });

@@ -11,16 +11,12 @@ const call: Msg = {
   i: 0,
   cardId: 'gallo',
   choices: ['gallo', 'luna', 'sol'],
-  lang: 'es',
   at: 1,
 };
 const round: Msg = {
   t: 'round',
   seed: 's',
   roundNo: 1,
-  mode: 'normal',
-  pattern: 'line',
-  callLang: 'es',
   speedSec: 5,
 };
 const seatOf = (t: LocalTransport) => (t as unknown as { session: { seat: string } }).session.seat;
@@ -329,14 +325,22 @@ describe('v2 additions', () => {
     const gotP = collect(player);
     const gotH = collect(host);
     host.send(round);
-    host.send({ t: 'pickResult', roundNo: 1, i: 0, seat: 'a', correct: true, first: true });
+    host.send({
+      t: 'pickResult',
+      roundNo: 1,
+      i: 0,
+      seat: 'a',
+      correct: true,
+      points: 2,
+      first: true,
+    });
     await flush();
     raw('C7').postMessage({
       k: 'msg',
       frame: {
         role: 'host',
         from: 'h',
-        m: { t: 'pickResult', roundNo: 1, i: 1, seat: 'a', correct: true, first: true },
+        m: { t: 'pickResult', roundNo: 1, i: 1, seat: 'a', correct: true, points: 2, first: true },
         sig: 'AAAA',
       },
     });
@@ -360,11 +364,11 @@ describe('v2 additions', () => {
       player.send(pick(0));
       await flush();
     }
-    expect(gotH.filter((m) => m.t === 'pick')).toHaveLength(4); // cap of 4 per (round, i)
+    expect(gotH.filter((m) => m.t === 'pick')).toHaveLength(2); // cap of 2 per (round, i)
     // spoofed seat dropped
     vi.setSystemTime(Date.now() + 500);
     player.send({ t: 'pick', seat: 'someone-else', roundNo: 1, i: 2, cardId: 'x' });
     await flush();
-    expect(gotH.filter((m) => m.t === 'pick')).toHaveLength(4);
+    expect(gotH.filter((m) => m.t === 'pick')).toHaveLength(2);
   });
 });

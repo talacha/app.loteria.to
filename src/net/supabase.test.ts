@@ -40,7 +40,7 @@ describe('SupabaseTransport', () => {
     handlers['presence:sync']!({});
     expect(seats).toEqual([['p1']]);
 
-    t.send({ t: 'end', roundNo: 1, winners: [] });
+    t.send({ t: 'end', roundNo: 1, winners: [], reason: 'full-card' });
     await vi.waitFor(() => expect(channel.send).toHaveBeenCalled());
     const arg = (
       channel.send.mock.calls[0] as unknown as [
@@ -88,7 +88,7 @@ describe('SupabaseTransport', () => {
     const errs: unknown[] = [];
     t.onError((e) => errs.push(e));
     channel.send.mockResolvedValueOnce('error');
-    t.send({ t: 'end', roundNo: 1, winners: [] });
+    t.send({ t: 'end', roundNo: 1, winners: [], reason: 'full-card' });
     await vi.waitFor(() => expect(errs).toHaveLength(1));
   });
 });

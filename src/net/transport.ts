@@ -33,7 +33,7 @@ export interface TransportOptions {
 export const CLAIM_INTERVAL_MS = 3000;
 export const MAX_CLAIMS_PER_SEC = 20;
 export const PICK_INTERVAL_MS = 400;
-export const MAX_PICKS_PER_CALL = 4;
+export const MAX_PICKS_PER_CALL = 2;
 
 const memorySeats = new Map<string, string>();
 
