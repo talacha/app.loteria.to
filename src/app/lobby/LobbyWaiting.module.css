@@ -2,7 +2,7 @@
   min-height: 100dvh;
   box-sizing: border-box;
   background: var(--color-night);
-  color: var(--color-paper);
+  color: var(--color-text);
   font-family: var(--font-ui);
   padding: var(--space-6) var(--space-5);
 }

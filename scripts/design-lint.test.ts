@@ -48,6 +48,40 @@ describe('design-lint CSS', () => {
   });
 });
 
+describe('design-lint theme-text-on-ground', () => {
+  it('flags dark-only text colours on the ground', () => {
+    expect(rules('.a { color: var(--color-paper); }')).toEqual(['theme-text-on-ground']);
+    expect(rules('.a { color: var(--paper); }')).toEqual(['theme-text-on-ground']);
+    expect(rules('.a { color: var(--muted-on-night); }')).toEqual(['theme-text-on-ground']);
+    expect(rules('.a { color: var(--maiz); }')).toEqual(['theme-text-on-ground']);
+    expect(rules('.a { background: var(--color-night); color: var(--color-maiz); }')).toEqual([
+      'theme-text-on-ground',
+    ]);
+  });
+  it('reports the declaration line', () => {
+    expect(lintCss('.a {\n  margin: 0;\n  color: var(--color-paper);\n}')[0]?.line).toBe(3);
+  });
+  it('allows the same colours on a coloured fill in the same block', () => {
+    expect(rules('.a { background: var(--color-rosa); color: var(--color-paper); }')).toEqual([]);
+    expect(rules('.a { color: var(--color-paper); background: var(--lang-es); }')).toEqual([]);
+    expect(rules('.a { background-color: var(--color-ink); color: var(--color-maiz); }')).toEqual(
+      [],
+    );
+  });
+  it('does not take a background from another block', () => {
+    expect(
+      rules('.b { background: var(--color-rosa); }\n.a { color: var(--color-paper); }'),
+    ).toEqual(['theme-text-on-ground']);
+  });
+  it('allows flipping tokens', () => {
+    expect(
+      rules(
+        '.a { color: var(--color-text); } .b { color: var(--color-muted-on-night); } .c { color: var(--color-accent-text); }',
+      ),
+    ).toEqual([]);
+  });
+});
+
 describe('design-lint TSX', () => {
   it('flags style literals', () => {
     const src = `const a = <div style={{ color: '#fff', borderRadius: 12, boxShadow: '0 1px 2px red', fontFamily: 'serif' }} />;`;

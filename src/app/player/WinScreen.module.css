@@ -23,14 +23,14 @@
   line-height: 0.95;
   letter-spacing: -0.03em;
   text-align: center;
-  color: var(--color-paper);
+  color: var(--color-white);
   text-shadow: 0 5px 0 var(--color-ink);
 }
 .sub {
   margin: 0;
   font-size: var(--text-lg);
   text-align: center;
-  color: var(--color-paper);
+  color: var(--color-white);
 }
 .board {
   width: min(100%, 17.5rem);
@@ -70,7 +70,7 @@
   margin: 0;
   text-align: center;
   font-size: var(--text-sm);
-  color: var(--color-paper);
+  color: var(--color-white);
 }
 @media (min-width: 768px) {
   .inner {
@@ -78,5 +78,5 @@
   }
 }
 .back {
-  color: var(--color-paper);
+  color: var(--color-white);
 }

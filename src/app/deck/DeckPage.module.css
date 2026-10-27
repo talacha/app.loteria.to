@@ -17,8 +17,8 @@
   align-items: center;
   gap: var(--space-1);
   padding: var(--space-3);
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--color-paper);
+  color: var(--color-ink);
   border: var(--border-thick);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-hard);
@@ -28,7 +28,7 @@
 }
 .num {
   font-size: var(--text-sm);
-  color: var(--muted-on-paper);
+  color: var(--color-muted-on-paper);
 }
 .art,
 .emoji {
@@ -54,7 +54,7 @@
   font-size: 1.125rem;
 }
 .secondary {
-  color: var(--muted-on-paper);
+  color: var(--color-muted-on-paper);
 }
 .native {
   display: flex;

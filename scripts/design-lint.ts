@@ -97,6 +97,27 @@ function blank(css: string): string {
   return css.replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, ' '));
 }
 
+const GROUND_ONLY_TEXT =
+  /^\s*var\(--(?:paper|color-paper|muted-on-night|maiz|color-maiz)\)\s*(?:!important)?\s*$/;
+const COLOURED_FILL =
+  /var\(--(?:color-)?(?:maiz|rosa|cielo|jade|maya|quechua|ink|paper|chile|bean|shadow)(?:-[a-z]+)?\)|var\(--lang-[\w-]+\)/;
+
+/**
+ * theme-text-on-ground: these text colours are dark-theme-only. Unless the same rule block paints a
+ * coloured fill behind the text, the text sits on the page ground and must use var(--color-text),
+ * var(--color-muted-on-night) or var(--color-accent-text), which flip with the theme.
+ */
+function themeTextOnGround(text: string, index: number, prop: string, value: string): boolean {
+  if (prop.trim().toLowerCase() !== 'color' || !GROUND_ONLY_TEXT.test(value)) return false;
+  const open = text.lastIndexOf('{', index);
+  const close = text.indexOf('}', index);
+  const block = text.slice(open + 1, close === -1 ? undefined : close);
+  for (const m of block.matchAll(/(?:^|[;\s])background(?:-color)?\s*:\s*([^;}]+)/g)) {
+    if (COLOURED_FILL.test(m[1] as string)) return false;
+  }
+  return true;
+}
+
 export function lintCss(css: string): Finding[] {
   const text = blank(css);
   const findings: Finding[] = [];
@@ -113,6 +134,13 @@ export function lintCss(css: string): Finding[] {
     const gap = before.slice(lastBreak + 1);
     if (gap.trim() !== '') continue;
     for (const f of checkDeclaration(m[1] as string, m[2] as string)) findings.push({ line, ...f });
+    if (themeTextOnGround(text, m.index, m[1] as string, m[2] as string)) {
+      findings.push({
+        line,
+        rule: 'theme-text-on-ground',
+        message: `color: ${(m[2] as string).trim()} only works on dark; use var(--color-text), var(--color-muted-on-night) or var(--color-accent-text) (or set a coloured background in the same rule)`,
+      });
+    }
   }
   return findings;
 }

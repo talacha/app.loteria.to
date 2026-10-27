@@ -2,7 +2,7 @@
   min-height: 100dvh;
   box-sizing: border-box;
   background: var(--color-night);
-  color: var(--color-paper);
+  color: var(--color-text);
   font-family: var(--font-ui);
   padding: var(--space-4) var(--space-4) var(--space-8);
 }
@@ -41,7 +41,7 @@
   color: var(--color-muted-on-night);
 }
 .conn[data-state='lost'] {
-  color: var(--color-maiz);
+  color: var(--color-accent-text);
   font-weight: 700;
 }
 .waiting,
@@ -209,7 +209,7 @@
   z-index: 10;
   overflow-y: auto;
   background: var(--color-night);
-  color: var(--color-paper);
+  color: var(--color-text);
   padding: var(--space-5) var(--space-4);
 }
 .sheetInner {

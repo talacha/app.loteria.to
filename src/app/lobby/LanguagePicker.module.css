@@ -2,7 +2,7 @@
   min-height: 100dvh;
   box-sizing: border-box;
   background: var(--color-night);
-  color: var(--color-paper);
+  color: var(--color-text);
   font-family: var(--font-ui);
   display: flex;
   flex-direction: column;

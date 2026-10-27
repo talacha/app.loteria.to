@@ -86,5 +86,5 @@
   font-weight: 700;
 }
 .rank li[data-win='true'] {
-  color: var(--color-maiz);
+  color: var(--color-accent-text);
 }

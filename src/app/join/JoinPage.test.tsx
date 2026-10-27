@@ -45,8 +45,8 @@ describe('JoinPage', () => {
   });
   it('styles text for the night background (contrast guard)', () => {
     const css = readFileSync('src/app/join/JoinPage.module.css', 'utf8');
-    expect(css).toMatch(/\.page \{[^}]*color: var\(--color-paper\)/);
-    expect(css).toMatch(/\.field select \{[^}]*color: var\(--color-paper\)/);
+    expect(css).toMatch(/\.page \{[^}]*color: var\(--color-text\)/);
+    expect(css).toMatch(/\.field select \{[^}]*color: var\(--color-text\)/);
     expect(css).toMatch(/::placeholder \{[^}]*--color-muted-on-night/);
     expect(css).toMatch(/\.glyph \{[^}]*--color-night-dash/);
   });
