@@ -1,53 +1,32 @@
-import type { CardId, Category, Tabla } from './types';
-import { rngFromString, shuffle } from './rng';
-import { cmp } from './deck';
+import { cards } from '@content';
+import type { CardId, Tabla } from './types';
+import { rng, shuffle } from './rng';
 
 export const TABLA_SIZE = 16;
 export const MAX_PER_CATEGORY = 5;
-const MIN_PER_CATEGORY = 2;
+export const PHONE_START_INDEX = 10000;
+export const MAX_SHARED = 8;
 
-export function tabla(
-  seed: string,
-  index: number,
-  cards: { id: CardId; category: Category }[],
-): Tabla {
-  const unique = new Map<CardId, Category>();
-  for (const c of cards) if (!unique.has(c.id)) unique.set(c.id, c.category);
-  const sorted = [...unique]
-    .map(([id, category]) => ({ id, category }))
-    .sort((a, b) => cmp(a.id, b.id));
-  const rng = rngFromString(`tabla|${seed}|${index}`);
+export function tabla(seed: string, index: number): Tabla {
+  const counts = new Map<string, number>();
+  const out: CardId[] = [];
+  for (const c of shuffle(cards, rng(`${seed}:tabla:${index}`))) {
+    if (out.length === TABLA_SIZE) break;
+    const n = counts.get(c.category) ?? 0;
+    if (n >= MAX_PER_CATEGORY) continue;
+    counts.set(c.category, n + 1);
+    out.push(c.id);
+  }
+  return { index, cards: out };
+}
 
-  const byCat = new Map<Category, CardId[]>();
-  for (const c of sorted) {
-    const l = byCat.get(c.category);
-    if (l) l.push(c.id);
-    else byCat.set(c.category, [c.id]);
+/** R-06: first index >= startAt not taken whose tabla shares <= 8 cards with every taken one. */
+export function pickTablaIndex(seed: string, taken: number[], startAt = PHONE_START_INDEX): number {
+  const takenSet = new Set(taken);
+  const others = taken.map((i) => new Set(tabla(seed, i).cards));
+  for (let idx = startAt; ; idx++) {
+    if (takenSet.has(idx)) continue;
+    const mine = tabla(seed, idx).cards;
+    if (others.every((o) => mine.filter((c) => o.has(c)).length <= MAX_SHARED)) return idx;
   }
-  const catKeys = [...byCat.keys()].sort(cmp);
-  const lists = catKeys.map((k) => shuffle(byCat.get(k) as CardId[], rng));
-
-  const picked: CardId[] = [];
-  const rest: { id: CardId; ci: number }[] = [];
-  const counts = lists.map(() => 0);
-  lists.forEach((l, ci) => {
-    l.forEach((id, j) => {
-      if (j < MIN_PER_CATEGORY) {
-        picked.push(id);
-        counts[ci] = (counts[ci] as number) + 1;
-      } else rest.push({ id, ci });
-    });
-  });
-  for (const r of shuffle(rest, rng)) {
-    if (picked.length >= TABLA_SIZE) break;
-    if ((counts[r.ci] as number) >= MAX_PER_CATEGORY) continue;
-    counts[r.ci] = (counts[r.ci] as number) + 1;
-    picked.push(r.id);
-  }
-  if (picked.length < TABLA_SIZE) {
-    // Only reachable if the pool is too small; the first-pass quota never exceeds the cap.
-    throw new Error('tabla: not enough cards to satisfy 16 unique with <=5 per category');
-  }
-  // First pass can overshoot 16 with many categories; trim after shuffling.
-  return { index, cards: shuffle(picked, rng).slice(0, TABLA_SIZE) };
 }

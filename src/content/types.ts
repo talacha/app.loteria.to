@@ -2,7 +2,7 @@ import type { Category, Lang } from '@engine';
 
 export type { CardId, Category, Lang } from '@engine';
 
-export const LANGS = ['es', 'en', 'nah', 'yua', 'quz'] as const satisfies readonly Lang[];
+export const LANGS: Lang[] = ['es', 'en', 'nah', 'yua', 'quz'];
 export const CATEGORIES = [
   'animals',
   'plants_food',

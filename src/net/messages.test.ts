@@ -13,43 +13,27 @@ describe('parseMsg', () => {
         callLang: 'rotating',
         speedSec: 5,
         hostKey: 'k',
-        called: [],
       },
-      { t: 'assign', seat: 'a', tablaIndex: 5, roundNo: 1 },
-      { t: 'call', i: 0, cardId: 'gallo', choices: ['gallo', 'luna', 'sol'], lang: 'nah', at: 1 },
-      { t: 'pick', seat: 'a', roundNo: 1, i: 0, cardId: 'x' },
-      { t: 'pickResult', roundNo: 1, i: 0, seat: 'a', correct: true, first: false },
-      { t: 'scores', roundNo: 1, points: { a: 3, b: 0 } },
-      { t: 'claimResult', seat: 'a', roundNo: 1, valid: false, missing: ['x'] },
-      { t: 'end', roundNo: 1, winners: ['a'] },
+      { t: 'welcome', seat: 'a', tablaIndex: 5, round: null, called: ['x'] },
+      { t: 'call', i: 0, cardId: 'gallo', lang: 'nah', at: 1 },
+      { t: 'claimResult', seat: 'a', valid: false, missing: ['x'] },
+      { t: 'end', winners: ['a'] },
       { t: 'hello', seat: 'a', name: 'Ana', glyph: '*', labelLang: 'es' },
-      { t: 'claim', seat: 'a', roundNo: 1, tablaIndex: 3, marks: ['x'] },
+      { t: 'claim', seat: 'a', tablaIndex: 3, marks: ['x'] },
     ];
     for (const m of ok) expect(parseMsg(m)).toEqual(m);
   });
   it('rejects malformed input', () => {
     expect(parseMsg(null)).toBeNull();
     expect(parseMsg({ t: 'nope' })).toBeNull();
-    expect(
-      parseMsg({ t: 'call', i: -1, cardId: 'x', choices: ['x', 'y', 'z'], lang: 'es', at: 1 }),
-    ).toBeNull();
-    expect(
-      parseMsg({ t: 'call', i: 1001, cardId: 'x', choices: ['x', 'y', 'z'], lang: 'es', at: 1 }),
-    ).toBeNull();
-    expect(
-      parseMsg({ t: 'call', i: 0, cardId: 'x', choices: ['x', 'y', 'z'], lang: 'es', at: 1.5 }),
-    ).toBeNull();
-    expect(
-      parseMsg({ t: 'call', i: 0, cardId: 'x', choices: ['x', 'y', 'z'], lang: 'fr', at: 1 }),
-    ).toBeNull();
+    expect(parseMsg({ t: 'call', i: -1, cardId: 'x', lang: 'es', at: 1 })).toBeNull();
+    expect(parseMsg({ t: 'call', i: 1001, cardId: 'x', lang: 'es', at: 1 })).toBeNull();
+    expect(parseMsg({ t: 'call', i: 0, cardId: 'x', lang: 'es', at: 1.5 })).toBeNull();
+    expect(parseMsg({ t: 'call', i: 0, cardId: 'x', lang: 'fr', at: 1 })).toBeNull();
     expect(parseMsg({ t: 'claim', seat: 'a', tablaIndex: 1 })).toBeNull();
-    expect(
-      parseMsg({ t: 'claim', seat: 'a', roundNo: 1, tablaIndex: 99999, marks: [] }),
-    ).toBeNull();
-    expect(
-      parseMsg({ t: 'claim', seat: 'a', roundNo: 1, tablaIndex: 1, marks: ['x', 'x'] }),
-    ).toBeNull();
-    expect(parseMsg({ t: 'end', roundNo: 1, winners: ['a', 'a'] })).toBeNull();
+    expect(parseMsg({ t: 'claim', seat: 'a', tablaIndex: 99999, marks: [] })).toBeNull();
+    expect(parseMsg({ t: 'claim', seat: 'a', tablaIndex: 1, marks: ['x', 'x'] })).toBeNull();
+    expect(parseMsg({ t: 'end', winners: ['a', 'a'] })).toBeNull();
   });
   it('validates lobby', () => {
     const p = (i: number) => ({ seat: 's' + i, name: 'N' + i, glyph: '*' });
@@ -65,45 +49,25 @@ describe('parseMsg', () => {
     expect(parseMsg({ ...lobby(0), players: [{ ...p(1), name: 'a\u202Eb' }] })).toBeNull();
     expect(parseMsg({ ...lobby(0), status: 'bogus' })).toBeNull();
   });
-  it('validates choices, pick, pickResult, scores', () => {
-    const call = { t: 'call', i: 0, cardId: 'x', lang: 'es', at: 1 };
-    expect(parseMsg(call)).toBeNull();
-    expect(parseMsg({ ...call, choices: ['y', 'z', 'w'] })).toBeNull(); // missing cardId
-    expect(parseMsg({ ...call, choices: ['x', 'x', 'z'] })).toBeNull(); // not distinct
-    expect(parseMsg({ ...call, choices: ['x', 'z'] })).toBeNull();
-    expect(parseMsg({ t: 'pick', seat: 'a', roundNo: 1, i: 0 })).toBeNull();
-    expect(parseMsg({ t: 'pickResult', roundNo: 1, i: 0, seat: 'a', correct: true })).toBeNull();
-    expect(parseMsg({ t: 'scores', roundNo: 1, points: { a: 201 } })).toBeNull();
-    expect(parseMsg({ t: 'scores', roundNo: 1, points: { a: 1.5 } })).toBeNull();
-    const many = Object.fromEntries(Array.from({ length: 61 }, (_, i) => ['s' + i, 1]));
-    expect(parseMsg({ t: 'scores', roundNo: 1, points: many })).toBeNull();
-  });
-  it('requires roundNo and defaults called', () => {
-    expect(parseMsg({ t: 'end', winners: [] })).toBeNull();
-    expect(parseMsg({ t: 'claimResult', seat: 'a', valid: true })).toBeNull();
-    expect(parseMsg({ t: 'claim', seat: 'a', tablaIndex: 1, marks: [] })).toBeNull();
-    const r = parseMsg({
-      t: 'round',
+  it('welcome embeds a round and never carries deckSecret', () => {
+    const round = {
       seed: 's',
       roundNo: 1,
       mode: 'normal',
       pattern: 'line',
       callLang: 'es',
       speedSec: 5,
-    });
-    expect(r).toMatchObject({ called: [] });
+    };
+    const w = parseMsg({ t: 'welcome', seat: 'a', tablaIndex: 1, round, called: [] });
+    expect(w).toMatchObject({ t: 'welcome', round });
+    const r = parseMsg({ t: 'round', ...round, deckSecret: 'nope' });
+    expect(r).not.toBeNull();
+    expect(JSON.stringify(r)).not.toContain('deckSecret');
     expect(
-      parseMsg({
-        t: 'round',
-        seed: 's',
-        roundNo: 1,
-        mode: 'normal',
-        pattern: 'line',
-        callLang: 'es',
-        speedSec: 5,
-        called: ['a', 'a'],
-      }),
+      parseMsg({ t: 'welcome', seat: 'a', tablaIndex: 1, round: null, called: ['x', 'x'] }),
     ).toBeNull();
+    expect(parseMsg({ t: 'pick', seat: 'a', roundNo: 1, i: 0, cardId: 'x' })).toBeNull();
+    expect(parseMsg({ t: 'assign', seat: 'a', tablaIndex: 1, roundNo: 1 })).toBeNull();
   });
   it('names: ZWJ emoji ok, zero-width space and bidi rejected', () => {
     const hello = { t: 'hello', seat: 'a', glyph: '*', labelLang: 'es' };

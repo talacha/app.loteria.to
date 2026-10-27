@@ -4,7 +4,7 @@
 
 **Sources of truth, in order:** [reglas.md](../reglas.md) (behaviour, `R-xx`) → this file (code contracts) → [catalogo.md](../catalogo.md) (figures and deck) → [PRD.md](../PRD.md). Plans: [CESAR.md](CESAR.md) · [ROB.md](ROB.md).
 
-**Out today (reglas.md D6):** paper boards / PDF, PWA offline mode, hint matcher, room-full message.
+**Out today (reglas.md D6):** hint matcher, room-full message. **Kept by Rob (2026-10-26):** paper boards / PDF and PWA offline mode are already built and tested and stay in, because print is a core inclusion feature (PRD §0).
 
 ## 1. Ownership
 

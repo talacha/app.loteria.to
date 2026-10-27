@@ -5,12 +5,11 @@ import { getSeat } from './transport.ts';
 import type { Msg } from './messages.ts';
 import type { JoinOptions, Role } from './transport.ts';
 
-const claim = (seat: string): Msg => ({ t: 'claim', seat, roundNo: 1, tablaIndex: 1, marks: [] });
+const claim = (seat: string): Msg => ({ t: 'claim', seat, tablaIndex: 1, marks: [] });
 const call: Msg = {
   t: 'call',
   i: 0,
   cardId: 'gallo',
-  choices: ['gallo', 'luna', 'sol'],
   lang: 'es',
   at: 1,
 };
@@ -31,7 +30,7 @@ let raws: BroadcastChannel[] = [];
 let n = 0;
 async function make(code: string, role: Role, opts?: JoinOptions) {
   const t = new LocalTransport(`seat${n++}`);
-  await t.join(code, role, opts);
+  await t.join(code, role, undefined, opts);
   open.push(t);
   return t;
 }
@@ -222,26 +221,27 @@ describe('LocalTransport', () => {
 });
 
 describe('v2 additions', () => {
-  it('verifies signed assign and drops a forged one', async () => {
+  it('verifies signed welcome and drops a forged one', async () => {
     const host = await make('C1', 'host');
     const player = await make('C1', 'player');
     const got = collect(player);
     host.send(round);
-    host.send({ t: 'assign', seat: 'x', tablaIndex: 7, roundNo: 1 });
+    const w: Msg = { t: 'welcome', seat: 'x', tablaIndex: 7, round: null, called: ['a'] };
+    host.send(w);
     await flush();
-    const r = raw('C1');
-    r.postMessage({
+    raw('C1').postMessage({
       k: 'msg',
-      frame: {
-        role: 'host',
-        from: 'h',
-        m: { t: 'assign', seat: 'x', tablaIndex: 8, roundNo: 1 },
-        sig: 'AAAA',
-      },
+      frame: { role: 'host', from: 'h', m: { ...w, tablaIndex: 8 }, sig: 'AAAA' },
     });
     await flush();
-    const assigns = got.filter((m) => m.t === 'assign');
-    expect(assigns).toEqual([{ t: 'assign', seat: 'x', tablaIndex: 7, roundNo: 1 }]);
+    expect(got.filter((m) => m.t === 'welcome')).toEqual([w]);
+  });
+
+  it('join takes the seat as third argument', async () => {
+    const p = new LocalTransport();
+    open.push(p);
+    await p.join('C2b', 'player', 'given-seat');
+    expect(p.seat).toBe('given-seat');
   });
 
   it('uses an injected seat as from and exposes it', async () => {
@@ -279,8 +279,8 @@ describe('v2 additions', () => {
     const a = new LocalTransport();
     const b = new LocalTransport();
     open.push(a, b);
-    await a.join('C3', 'host', { keyPair: kp });
-    await b.join('C4', 'host', { keyPair: kp });
+    await a.join('C3', 'host', undefined, { keyPair: kp });
+    await b.join('C4', 'host', undefined, { keyPair: kp });
     expect(await a.hostPublicKey()).toBe(await b.hostPublicKey());
   });
 
@@ -316,50 +316,5 @@ describe('v2 additions', () => {
     b.send(lobby);
     await flush();
     expect(got.map((m) => m.t)).toEqual(['lobby', 'round']);
-  });
-
-  it('drops a forged pickResult and rate limits picks', async () => {
-    const host = await make('C7', 'host');
-    const player = await make('C7', 'player');
-    const gotP = collect(player);
-    const gotH = collect(host);
-    host.send(round);
-    host.send({ t: 'pickResult', roundNo: 1, i: 0, seat: 'a', correct: true, first: true });
-    await flush();
-    raw('C7').postMessage({
-      k: 'msg',
-      frame: {
-        role: 'host',
-        from: 'h',
-        m: { t: 'pickResult', roundNo: 1, i: 1, seat: 'a', correct: true, first: true },
-        sig: 'AAAA',
-      },
-    });
-    await flush();
-    expect(gotP.filter((m) => m.t === 'pickResult')).toHaveLength(1);
-
-    const pick = (i: number): Msg => ({
-      t: 'pick',
-      seat: seatOf(player),
-      roundNo: 1,
-      i,
-      cardId: 'x',
-    });
-    player.send(pick(0));
-    player.send(pick(0)); // within 400 ms: dropped
-    await flush();
-    expect(gotH.filter((m) => m.t === 'pick')).toHaveLength(1);
-    vi.useFakeTimers({ toFake: ['Date'] });
-    for (let k = 1; k <= 5; k++) {
-      vi.setSystemTime(Date.now() + 500);
-      player.send(pick(0));
-      await flush();
-    }
-    expect(gotH.filter((m) => m.t === 'pick')).toHaveLength(4); // cap of 4 per (round, i)
-    // spoofed seat dropped
-    vi.setSystemTime(Date.now() + 500);
-    player.send({ t: 'pick', seat: 'someone-else', roundNo: 1, i: 2, cardId: 'x' });
-    await flush();
-    expect(gotH.filter((m) => m.t === 'pick')).toHaveLength(4);
   });
 });

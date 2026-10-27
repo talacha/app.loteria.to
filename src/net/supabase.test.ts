@@ -40,7 +40,7 @@ describe('SupabaseTransport', () => {
     handlers['presence:sync']!({});
     expect(seats).toEqual([['p1']]);
 
-    t.send({ t: 'end', roundNo: 1, winners: [] });
+    t.send({ t: 'end', winners: [] });
     await vi.waitFor(() => expect(channel.send).toHaveBeenCalled());
     const arg = (
       channel.send.mock.calls[0] as unknown as [
@@ -60,7 +60,7 @@ describe('SupabaseTransport', () => {
     await t.join('ABCDE', 'host');
     const got: unknown[] = [];
     t.onMessage((m) => got.push(m));
-    const claim = { t: 'claim', seat: 'p1', roundNo: 1, tablaIndex: 1, marks: [] };
+    const claim = { t: 'claim', seat: 'p1', tablaIndex: 1, marks: [] };
     handlers['broadcast:msg']!({ payload: { role: 'player', from: 'p1', m: claim } });
     handlers['broadcast:msg']!({ payload: { role: 'player', from: 'other', m: claim } });
     await vi.waitFor(() => expect(got).toHaveLength(1));
@@ -88,7 +88,7 @@ describe('SupabaseTransport', () => {
     const errs: unknown[] = [];
     t.onError((e) => errs.push(e));
     channel.send.mockResolvedValueOnce('error');
-    t.send({ t: 'end', roundNo: 1, winners: [] });
+    t.send({ t: 'end', winners: [] });
     await vi.waitFor(() => expect(errs).toHaveLength(1));
   });
 });

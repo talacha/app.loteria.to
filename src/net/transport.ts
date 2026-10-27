@@ -11,7 +11,7 @@ export interface JoinOptions {
 }
 
 export interface Transport {
-  join(code: string, role: Role, opts?: JoinOptions): Promise<void>;
+  join(code: string, role: Role, seat?: string, opts?: JoinOptions): Promise<void>;
   send(m: Msg): void;
   onMessage(cb: (m: Msg) => void): () => void;
   /** Player seats only (the host is never listed). */
@@ -32,8 +32,6 @@ export interface TransportOptions {
 
 export const CLAIM_INTERVAL_MS = 3000;
 export const MAX_CLAIMS_PER_SEC = 20;
-export const PICK_INTERVAL_MS = 400;
-export const MAX_PICKS_PER_CALL = 4;
 
 const memorySeats = new Map<string, string>();
 

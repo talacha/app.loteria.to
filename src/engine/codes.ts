@@ -2,12 +2,13 @@ import { hashString } from './rng';
 
 const CROCKFORD = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
 const ROOM_ALPHABET = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
-const SEED_BITS = 13;
-const INDEX_BITS = 12;
+// R-25: paper 0..9999, phones 10000..32767 => 15 index bits; 10 bits left for seedRef.
+const SEED_BITS = 10;
+const INDEX_BITS = 15;
 export const MAX_TABLA_INDEX = (1 << INDEX_BITS) - 1;
 
 /**
- * A few bits (13) of the seed hash embedded in tabla codes. Weak hint only: the host must
+ * A few bits (10) of the seed hash embedded in tabla codes. Weak hint only: the host must
  * verify `decoded.seedRef === seedRef(roomSeed)` and then call `tabla(roomSeed, index)`.
  */
 export function seedRef(seed: string): number {
@@ -76,4 +77,9 @@ export function roomCode(rng: () => number = Math.random): string {
     s += ROOM_ALPHABET[k];
   }
   return s;
+}
+
+/** R-23.2: true when a decoded code belongs to this room (weak 10-bit hint). */
+export function codeMatchesRoom(decoded: { ok: boolean; seedRef?: number }, seed: string): boolean {
+  return decoded.ok && decoded.seedRef === seedRef(seed);
 }

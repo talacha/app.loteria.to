@@ -1,9 +1,11 @@
+import { cards } from '@content';
 import type { CardId } from './types';
-import { rngFromString, shuffle } from './rng';
+import { rng, shuffle } from './rng';
 
-export const cmp = (a: string, b: string): number => (a < b ? -1 : a > b ? 1 : 0);
-
-export function deckOrder(roomSeed: string, roundNo: number, cardIds: CardId[]): CardId[] {
-  const sorted = [...cardIds].sort(cmp);
-  return shuffle(sorted, rngFromString(`deck|${roomSeed}|${roundNo}`));
+/** R-09: depends only on the host's secret and the round number, never the public seed. */
+export function deckOrder(deckSecret: string, roundNo: number): CardId[] {
+  return shuffle(
+    cards.map((c) => c.id),
+    rng(`${deckSecret}:deck:${roundNo}`),
+  );
 }
