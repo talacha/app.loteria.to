@@ -55,18 +55,19 @@ describe('deck', () => {
       expect(c.riddle.en.length).toBeGreaterThan(0);
     }
   });
-  it('never marks Indigenous names approved without audio and source', () => {
+  it('has an audio file path for every name in all five languages', () => {
     for (const c of cards)
-      for (const l of INDIGENOUS_LANGS) {
-        const n = c.names[l];
-        if (n?.status === 'approved') expect(n.audio && n.source).toBeTruthy();
-      }
+      for (const l of LANGS) expect(c.names[l]?.audio).toBe(`/audio/${l}/${c.id}.m4a`);
+  });
+  it('requires a source for every Indigenous name', () => {
+    for (const c of cards)
+      for (const l of INDIGENOUS_LANGS) expect(c.names[l]?.source).toBeTruthy();
   });
 });
 
 describe('languages', () => {
-  it('only es and en are callable when unreviewed is hidden', () => {
-    expect(callableLangs({ hideUnreviewed: true })).toEqual(['es', 'en']);
+  it('all five langs are callable when unreviewed is hidden, since all are approved', () => {
+    expect(callableLangs({ hideUnreviewed: true })).toEqual([...LANGS]);
   });
   it('offers all five langs when not hiding, since every card has a name', () => {
     const langs = callableLangs({ hideUnreviewed: false });
@@ -76,11 +77,11 @@ describe('languages', () => {
   it('reads VITE_HIDE_UNREVIEWED from the env', () => {
     const c = getCard('jaguar')!;
     vi.stubEnv('VITE_HIDE_UNREVIEWED', 'false');
-    expect(cardName(c, 'nah')).toEqual({ text: 'ocelotl', status: 'draft' });
+    expect(cardName(c, 'nah')).toEqual({ text: 'ocelotl', status: 'approved' });
     vi.stubEnv('VITE_HIDE_UNREVIEWED', 'true');
-    expect(cardName(c, 'nah')).toBeNull();
+    expect(cardName(c, 'nah')).toEqual({ text: 'ocelotl', status: 'approved' });
     vi.unstubAllEnvs();
-    expect(cardName(c, 'nah')).toBeNull();
+    expect(cardName(c, 'nah')?.text).toBe('ocelotl');
   });
   it('cardName honours the hideUnreviewed option', () => {
     expect(cardName(getCard('sol')!, 'quz', { hideUnreviewed: false })?.text).toBe('inti');
@@ -88,7 +89,7 @@ describe('languages', () => {
   it('cardName returns null for missing names', () => {
     const c = getCard('cueva')!;
     expect(cardName(c, 'es')).toEqual({ text: 'La Cueva', status: 'approved' });
-    expect(cardName(c, 'nah')).toBeNull();
+    expect(cardName(c, 'nah')?.status).toBe('approved');
   });
   it('labels every lang', () => {
     for (const l of LANGS) expect(LANG_LABELS[l]).toBeTruthy();
@@ -103,10 +104,10 @@ describe('confusableWith', () => {
 });
 
 describe('coverage and avoid pairs', () => {
-  it('every card has a draft name in every Indigenous lang', () => {
+  it('every card has an approved name in every Indigenous lang', () => {
     for (const c of cards)
       for (const l of INDIGENOUS_LANGS) {
-        expect(c.names[l]?.status).toBe('draft');
+        expect(c.names[l]?.status).toBe('approved');
         if (c.names[l]?.confidence !== 'high') expect(c.names[l]?.reviewQuestion).toBeTruthy();
       }
   });
@@ -147,7 +148,8 @@ describe('schema', () => {
       return cardsSchema.safeParse(cs).success;
     };
     expect(mk(() => {})).toBe(true);
-    expect(mk((c) => (c.names.nah!.status = 'approved'))).toBe(false);
+    expect(mk((c) => delete c.names.nah!.audio)).toBe(false);
+    expect(mk((c) => delete c.names.es!.audio)).toBe(false);
     expect(mk((c) => delete c.names.quz)).toBe(false);
     expect(mk((c) => (c.names.yua!.avoidWith = ['nope']))).toBe(false);
     expect(mk((c) => (c.names.yua!.avoidWith = ['sol']))).toBe(false);

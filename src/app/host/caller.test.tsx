@@ -88,7 +88,7 @@ function assignIndices(list: number[]) {
       a[0] = Math.ceil(((q.shift()! + 0.5) / (MAX_TABLA_INDEX + 1)) * 2 ** 32);
       return a;
     }
-    return real(a);
+    return real(a as Uint32Array<ArrayBuffer>);
   }) as typeof crypto.getRandomValues);
 }
 const results = (seat?: string) =>

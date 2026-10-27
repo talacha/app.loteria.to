@@ -6,7 +6,7 @@ import { LocalTransport, type Msg, type Transport } from '@net';
 import LobbyWaiting from './LobbyWaiting';
 
 const CODE = 'ABCDE';
-const profile = { name: 'Ana', glyph: '🐆', labelLang: 'es' as const };
+const profile = { name: 'Ana', glyph: '🐆', spokenLang: 'es' as const };
 const flush = async (ms = 30) => {
   await act(async () => {
     await new Promise((r) => setTimeout(r, ms));
@@ -40,11 +40,7 @@ const roundMsg: Msg = {
   t: 'round',
   seed: 's1',
   roundNo: 1,
-  mode: 'normal',
-  pattern: 'line',
-  callLang: 'es',
   speedSec: 8,
-  called: [],
 };
 
 async function mount(strict = false, onLeave = () => {}) {
@@ -160,5 +156,50 @@ describe('LobbyWaiting', () => {
     await mount();
     expect(document.querySelectorAll('#main')).toHaveLength(1);
     expect(screen.getByRole('img', { name: /Código de sala A B C D E/ })).toBeTruthy();
+  });
+
+  it('shows no review tag, and "Jugarás en" uses the spoken language', async () => {
+    await mount();
+    expect(document.body.textContent).not.toMatch(/en revisión/i);
+    expect(screen.getByText(/Jugarás en Español/)).toBeTruthy();
+  });
+
+  it('says the room is full when the host answers lobby full and I am not in players', async () => {
+    await mount();
+    host.send({ t: 'lobby', status: 'full', players: [{ seat: 'x', name: 'Bo', glyph: '🌽' }] });
+    await flush();
+    expect(screen.getByText('Esta sala está llena')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Crear una sala nueva' })).toBeTruthy();
+  });
+
+  it('"Crear una sala nueva" goes to the create-room handler', async () => {
+    const onCreateRoom = vi.fn();
+    render(
+      <LobbyWaiting
+        code={CODE}
+        profile={profile}
+        hostKey={hostKey}
+        hostKeyFromQr
+        transportFactory={factory}
+        onLeave={() => {}}
+        onCreateRoom={onCreateRoom}
+      />,
+    );
+    await flush(80);
+    host.send({ t: 'lobby', status: 'full', players: [] });
+    await flush();
+    fireEvent.click(screen.getByRole('button', { name: 'Crear una sala nueva' }));
+    expect(onCreateRoom).toHaveBeenCalled();
+  });
+
+  it('does not show "sala llena" when I am in the roster', async () => {
+    await mount();
+    host.send({
+      t: 'lobby',
+      status: 'full',
+      players: [{ seat: player!.seat, name: 'Ana', glyph: '🐆' }],
+    });
+    await flush();
+    expect(screen.queryByText('Esta sala está llena')).toBeNull();
   });
 });

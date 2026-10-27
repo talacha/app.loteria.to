@@ -1,10 +1,11 @@
+import { existsSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import cardsJson from '../src/content/cards.json' with { type: 'json' };
 import creditsJson from '../src/content/credits.json' with { type: 'json' };
 import es from '../src/content/i18n/es.json' with { type: 'json' };
 import en from '../src/content/i18n/en.json' with { type: 'json' };
 import { cardsSchema, creditsSchema } from '../src/content/schema.ts';
-import { CATEGORIES, INDIGENOUS_LANGS } from '../src/content/types.ts';
+import { CATEGORIES, INDIGENOUS_LANGS, LANGS } from '../src/content/types.ts';
 
 /**
  * Allowlist of art codepoints (VS16 stripped). Every entry is Emoji version <= 12.0
@@ -96,10 +97,11 @@ export function validateContent(): string[] {
       if (cp === undefined || !EMOJI_ALLOWLIST.has(cp)) {
         errors.push(`${c.id}: art ${c.art} is not in the Emoji <= 12.0 allowlist`);
       }
-      for (const lang of INDIGENOUS_LANGS) {
+      for (const lang of LANGS) {
         const nm = c.names[lang];
-        if (nm?.status === 'approved' && !(nm.audio && nm.source)) {
-          errors.push(`${c.id}.${lang} is approved without audio and source`);
+        if (!nm?.audio) continue;
+        if (!existsSync(new URL(`../public${nm.audio}`, import.meta.url))) {
+          errors.push(`${c.id}.${lang}: audio file ${nm.audio} does not exist`);
         }
       }
     }

@@ -8,15 +8,31 @@
   },
   "names": {
     "note": {
-      "es": "Los nombres en español e inglés fueron escritos por el equipo. Los nombres en náhuatl, maya yucateco y quechua están pendientes de revisión por hablantes nativos y no se muestran hasta entonces.",
-      "en": "Spanish and English names were written by the team. Nahuatl, Yucatec Maya, and Quechua names are pending native-speaker review and stay hidden until then."
+      "es": "Los nombres en español e inglés fueron escritos por el equipo. Los nombres en náhuatl, maya yucateco y quechua provienen de diccionarios y gramáticas citados en cada ficha. Todas las voces se generaron con Meta MMS-TTS (licencia CC-BY-NC 4.0, uso no comercial con atribución).",
+      "en": "Spanish and English names were written by the team. Nahuatl, Yucatec Maya, and Quechua names come from dictionaries and grammars cited on each card. All voices were generated with Meta MMS-TTS (CC-BY-NC 4.0, non-commercial use with attribution)."
     }
   },
   "software": [
-    { "name": "React", "license": "MIT" },
-    { "name": "i18next", "license": "MIT" },
-    { "name": "pdf-lib", "license": "MIT" },
-    { "name": "zod", "license": "MIT" }
+    {
+      "name": "React",
+      "license": "MIT"
+    },
+    {
+      "name": "i18next",
+      "license": "MIT"
+    },
+    {
+      "name": "pdf-lib",
+      "license": "MIT"
+    },
+    {
+      "name": "zod",
+      "license": "MIT"
+    },
+    {
+      "name": "Meta MMS-TTS (facebook/mms-tts-spa, -eng, -nhe, -yua, -quz)",
+      "license": "CC-BY-NC 4.0"
+    }
   ],
   "contributors": []
 }

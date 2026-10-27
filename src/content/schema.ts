@@ -41,6 +41,8 @@ const namesSchema = z
             message: `${lang} name must exist and be approved`,
           });
         }
+        if (n && !n.audio)
+          ctx.addIssue({ code: 'custom', path: [lang, 'audio'], message: 'audio required' });
         continue;
       }
       if (!n) {
@@ -56,13 +58,8 @@ const namesSchema = z
       }
       if (!n.source)
         ctx.addIssue({ code: 'custom', path: [lang, 'source'], message: 'source required' });
-      if (n.status !== 'draft' && !(n.audio && n.source)) {
-        ctx.addIssue({
-          code: 'custom',
-          path: [lang],
-          message: `${n.status} name requires audio and source`,
-        });
-      }
+      if (!n.audio)
+        ctx.addIssue({ code: 'custom', path: [lang, 'audio'], message: 'audio required' });
     }
   });
 
