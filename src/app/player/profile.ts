@@ -1,5 +1,6 @@
 import type { Lang } from '@engine';
 import { LANGS } from '@content';
+import { mergeProfile } from '../ui/profile';
 
 export const PROFILE_KEY = 'loteria:profile';
 
@@ -40,11 +41,5 @@ export function readLocalProfile(): Partial<LocalProfile> {
 
 /** Merge into the stored profile so fields written elsewhere (pronouns...) survive. */
 export function patchLocalProfile(patch: Partial<LocalProfile>): void {
-  try {
-    const raw: unknown = JSON.parse(localStorage.getItem(PROFILE_KEY) ?? 'null');
-    const prev = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : {};
-    localStorage.setItem(PROFILE_KEY, JSON.stringify({ ...prev, ...patch }));
-  } catch {
-    /* storage unavailable: the choice lasts for this visit only */
-  }
+  mergeProfile({ ...patch });
 }

@@ -6,7 +6,8 @@ import { callableLangs, cardsAvailableIn, langsForDeck, getCard, isAvoidedPair }
 import { applyStoredPrefs } from '../theme/prefs';
 import { LanguageSwitch } from '../theme/Preferences';
 import { readProfile } from '../home/profile';
-import { setAllowedSpokenLangs } from '../ui/profile';
+import { readRawProfile, setAllowedSpokenLangs } from '../ui/profile';
+import { patchLocalProfile, readLocalProfile } from '../player/profile';
 import {
   Button,
   Leaderboard,
@@ -41,6 +42,8 @@ function newSeed(): string {
 }
 
 function initialSpoken(options: Lang[]): Lang {
+  const shared = readLocalProfile().spokenLang;
+  if (shared && options.includes(shared)) return shared;
   try {
     const v = localStorage.getItem(SPOKEN_KEY) as Lang | null;
     if (v && options.includes(v)) return v;
@@ -71,6 +74,15 @@ export default function SoloPage() {
     setAllowedSpokenLangs(langsForDeck(game.state.order));
     return () => setAllowedSpokenLangs(null);
   }, [game]);
+  // Setup, the in-game sheet and the global gear share one spoken preference.
+  useEffect(() => {
+    if (readRawProfile().spokenLang !== spoken) patchLocalProfile({ spokenLang: spoken });
+    try {
+      localStorage.setItem(SPOKEN_KEY, spoken);
+    } catch {
+      /* storage unavailable */
+    }
+  }, [spoken]);
   // The header gear changes the spoken language: follow it, also during a game.
   const gearLang = useProfile().spokenLang;
   const [seenGear, setSeenGear] = useState(gearLang);
@@ -93,11 +105,6 @@ export default function SoloPage() {
   );
 
   function start() {
-    try {
-      localStorage.setItem(SPOKEN_KEY, spoken);
-    } catch {
-      /* storage unavailable */
-    }
     const pool = availablePool.map((c) => ({ id: c.id, category: c.category }));
     const state = createSolo({
       seed: newSeed(),

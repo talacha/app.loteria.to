@@ -9,6 +9,7 @@ import {
   FeedbackStrip,
   HistoryStrip,
   Leaderboard,
+  LanguageSettings,
   Sheet,
   type LeaderboardEntry,
   Panel,
@@ -86,6 +87,7 @@ export default function SoloGame({
   const [s, dispatch] = useReducer(reducer, initial);
   const last = useRef(0);
   const [leaving, setLeaving] = useState(false);
+  const [languageSettings, setLanguageSettings] = useState(false);
 
   // Clock: advances only while the game is running (pause stops it).
   useEffect(() => {
@@ -171,6 +173,14 @@ export default function SoloGame({
           </span>
         </div>
         <div className={styles.controls}>
+          <Button
+            variant="secondary"
+            fit
+            aria-haspopup="dialog"
+            onClick={() => setLanguageSettings(true)}
+          >
+            {t('theme.kit.gear.label')}
+          </Button>
           <Button
             variant="secondary"
             fit
@@ -283,6 +293,14 @@ export default function SoloGame({
         <Tabla cells={cells} label={t('solo.board')} />
         <p className={styles.mine}>{t('solo.squaresLeft', { n: remainingSquares(s, HUMAN) })}</p>
       </section>
+
+      <Sheet
+        title={t('theme.settings.title')}
+        open={languageSettings}
+        onClose={() => setLanguageSettings(false)}
+      >
+        <LanguageSettings />
+      </Sheet>
 
       <Sheet title={t('solo.leaveTitle')} open={leaving} onClose={() => setLeaving(false)}>
         <p>{t('solo.leaveBody')}</p>

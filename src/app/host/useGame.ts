@@ -282,7 +282,8 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       const choices = choicesForCall(s, i);
       setCurrentChoices(choices);
       const preferred = roomRef.current.local?.spokenLang ?? langForCall(s, i);
-      const lang = s.langs.includes(preferred) ? preferred : (s.langs[0] ?? 'es');
+      const availableLangs = langsForDeck(s.deck);
+      const lang = availableLangs.includes(preferred) ? preferred : (availableLangs[0] ?? 'es');
       send({
         t: 'call',
         i,

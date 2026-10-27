@@ -4,6 +4,8 @@ import { MemoryRouter } from 'react-router';
 import { cardsAvailableIn, cards, isAvoidedPair } from '@content';
 import { MAX_SHARED_CARDS, MAX_TABLA_INDEX, choicesFor, deckOrder, tabla } from '@engine';
 import '../i18n';
+import * as audio from '../audio';
+import { mergeProfile } from '../ui/profile';
 
 vi.mock('@print/options', async (orig) => ({
   ...(await orig<Record<string, unknown>>()),
@@ -418,6 +420,24 @@ describe('automatic caller', () => {
 });
 
 describe('Jugar también (the host screen plays)', () => {
+  it('uses a newly selected voice on the next call without restarting a Spanish round', async () => {
+    const speak = vi.spyOn(audio, 'speakCall').mockResolvedValue('audio');
+    await started(['a'], true);
+    const round = sent.find((m) => m.t === 'round');
+    const board = screen.getByRole('list', { name: 'Tu tabla' }).textContent;
+    expect(speak.mock.calls.at(-1)?.[1]).toBe('es');
+    act(() => mergeProfile({ spokenLang: 'en' }));
+    expect(calls()).toHaveLength(1);
+    expect(screen.getByRole('list', { name: 'Tu tabla' }).textContent).toBe(board);
+    await tick(10_000);
+    expect(calls()).toHaveLength(2);
+    expect(speak.mock.calls.at(-1)?.[1]).toBe('en');
+    expect(sent.filter((m) => m.t === 'round').at(-1)).toMatchObject({
+      seed: round!.seed,
+      roundNo: round!.roundNo,
+    });
+  });
+
   const LOCAL = 'host-local';
   const choicesGroup = () => screen.getByRole('group', { name: 'Elige cómo se escribe' });
   const word = (id: string) => cards.find((c) => c.id === id)!.names.es!.text;

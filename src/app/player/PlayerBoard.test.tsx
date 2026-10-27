@@ -7,6 +7,7 @@ import { cards, getCard } from '@content';
 import PlayerBoard, { type PlayerProfile } from './PlayerBoard';
 import { makeBoard } from './playerState';
 import { wordOf } from './words';
+import { LanguageSettings } from '../ui';
 
 const speak = vi.hoisted(() => vi.fn(async () => 'audio'));
 vi.mock('../audio', async (importOriginal) => ({
@@ -344,6 +345,34 @@ describe('PlayerBoard crossing and settings', () => {
     });
     // The menus stay in Spanish/English independently.
     expect(document.documentElement.lang).toBe('es');
+  });
+
+  it('keeps the in-game and global language controls synchronized without resetting play', async () => {
+    await mount();
+    await start();
+    await callTarget();
+    host.send({ t: 'scores', roundNo: 1, points: { [player.seat]: 7 } });
+    await flush();
+    const pictures = () =>
+      [...tabla().querySelectorAll('img')].map((image) => image.getAttribute('src'));
+    const before = pictures();
+    render(<LanguageSettings />);
+    fireEvent.click(screen.getByRole('button', { name: 'Ajustes' }));
+    const sheet = within(screen.getByRole('dialog', { name: 'Ajustes' }));
+    fireEvent.click(sheet.getByRole('radio', { name: /^English/ }));
+    fireEvent.click(sheet.getByRole('button', { name: 'Cerrar ajustes' }));
+    const global = within(
+      screen.getByRole('radiogroup', { name: i18n.t('theme.settings.spokenTitle') }),
+    );
+    expect(global.getByRole('radio', { name: /^English/ }).getAttribute('aria-checked')).toBe(
+      'true',
+    );
+    fireEvent.click(global.getByRole('radio', { name: /^Español/ }));
+    expect(screen.getByRole('button', { name: wordOf(target, 'es') })).toBeTruthy();
+    expect(pictures()).toEqual(before);
+    expect(screen.getByTestId('points').textContent).toBe('7 puntos');
+    await callTarget(1, board[3]!);
+    expect(speak).toHaveBeenLastCalledWith(expect.anything(), 'es');
   });
 
   it('switching the UI language leaves the spoken language alone', async () => {
