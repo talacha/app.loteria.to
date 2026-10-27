@@ -1,0 +1,517 @@
+{
+  "lang": "cjp",
+  "variety": "Cabécar, primarily the northern (Chirripó) dialect as used in the Bible.is New Testament (CJPTJV, the MMS-TTS training text) and Margery's d.n. forms; general (unmarked) dictionary forms preferred; southern (d.s./Ujarrás/SJC) forms used only where no northern/general form was found and flagged in note.",
+  "orthography": "MMS-TTS cjp (Bible.is CJPTJV) orthography: nasal vowels with combining macron below U+0331 (a̱ e̱ i̱ o̱ u̱ ä̱ ë̱ ö̱), ä ë ö for the extra vowels, ñ, j=/h/, sh, ch, tk, ts, k'. Model vocab (vocab.json) has a à á ä è é ë í ó ö ú ñ, U+0331 and apostrophe; no ì/ò/ù/ü or combining acute, so tone accents on ë/ö are dropped in synthesis. Words attested in the Bible are given in Bible spelling; dictionary-only words keep Margery 1989 spelling (his underline for nasality rendered as U+0331; his acute tone marks kept). Margery writes some vowels differently from the Bible (e.g. dayë vs däyë, tkabë vs tkäbe, ká̱ wö́ vs ka̱wä) — a reviewer should normalise to one standard (MEP/UCR alphabet, González Campos & Obando 2017) before recording.",
+  "sources": [
+    {
+      "id": "margery1989",
+      "title": "Diccionario cabécar-español, español-cabécar",
+      "author": "Enrique Margery Peña",
+      "year": 1989,
+      "url": "https://web.archive.org/web/20240610124624/https://inil.ucr.ac.cr/libros/Diccionario%20Cab%C3%A9car-espa%C3%B1ol.pdf",
+      "note": "Editorial de la Universidad de Costa Rica; scan formerly hosted by UCR INIL (now 404, archived). Cited by entry number; dialect labels d.n. (northern/Chirripó), d.s. (southern), Uj. (Ujarrás), Ch. (Chirripó), SJC (San José Cabécar), LE (La Estrella)."
+    },
+    {
+      "id": "bibleis-cjptjv",
+      "title": "Cabécar New Testament (CJPTJV) on Bible.is",
+      "author": "Aziel, Marian and Timothy Jones (translators)",
+      "year": 2014,
+      "url": "https://live.bible.is/bible/CJPTJV/MAT/1"
+    },
+    {
+      "id": "mms-tts-cjp",
+      "title": "facebook/mms-tts-cjp model card, vocab.json and tokenizer_config.json (is_uroman=false)",
+      "author": "Meta AI (Pratap et al., Scaling Speech Technology to 1,000+ Languages)",
+      "year": 2023,
+      "url": "https://huggingface.co/facebook/mms-tts-cjp"
+    }
+  ],
+  "cards": {
+    "jaguar": {
+      "text": "na̱má̱",
+      "gloss": "jaguar (Panthera onca); also generic 'big cat'",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 4516 (s. cl. al., zool.) 'tigre (genérico)', 'jaguar'",
+      "note": "General (unmarked) form. d.n. synonym satálá (entry 5405). SENSITIVE: the jaguar has ritual weight in Cabécar practice; the dictionary lists na_má_ bata (ceremonial helper, 4517) and na_má_ dalí 'enfermedad del tigre', a taboo-linked illness (4518). Plain noun is everyday vocabulary.",
+      "reviewQuestion": "¿Se usa 'na̱má̱' para el jaguar con niños sin problema, o prefieren 'satálá' (Chirripó)?"
+    },
+    "colibri": {
+      "text": "batsu̱",
+      "gloss": "hummingbird (generic, Trochilidae)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 301 (d.s.) 'colibrí' genérico",
+      "note": "Southern-dialect form. The northern (d.n.) generic is ma_tsu_ (entry ~4295), but the dictionary also gives ma_tsu_ (d.n., vulg.) 'pene' — avoided for a children's game. batsu_ is also a dog's name in San José Cabécar (SJC). Chirripó speakers may expect ma_tsu_.",
+      "reviewQuestion": "¿Cómo dicen 'colibrí' en su comunidad: 'batsu̱' o 'ma̱tsu̱'? ¿'ma̱tsu̱' tiene un doble sentido que no conviene para niños?"
+    },
+    "llama": {
+      "text": null,
+      "gloss": "llama (Andean camelid)",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989 or Bible.is CJPTJV",
+      "note": "Andean animal with no Cabécar term in the dictionary. The Bible translation borrows Spanish names for foreign animals ('camello', 'oveja', 'cabra'), so a Spanish loan 'llama' is plausible, but it is unattested here; left null rather than guessed.",
+      "reviewQuestion": "¿Dirían simplemente 'llama' (en español) o hay otra forma?"
+    },
+    "condor": {
+      "text": null,
+      "gloss": "Andean condor",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989",
+      "note": "Not a Costa Rican bird; no entry. The closest native concept is olo 'zopilote' (vulture, Bible.is Mt 24:28) and an entry for 'zopilote rey' (king vulture), but neither is a condor. Left null.",
+      "reviewQuestion": "¿Usarían 'cóndor' prestado del español, o el nombre del zopilote rey?"
+    },
+    "mariposa": {
+      "text": "kuákua",
+      "gloss": "butterfly (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 3951 (s. cl. pl., ent.) 'mariposa' (genérico)",
+      "note": "General form. d.n. variant kuák'a (3950, marked p.u. 'poco usado'). Night moths: kuákua yee (d.n.) 'mariposa nocturna'.",
+      "reviewQuestion": "¿Es 'kuákua' la palabra común para mariposa?"
+    },
+    "guajolote": {
+      "text": "cho̱",
+      "gloss": "turkey (domestic, 'chompipe')",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 883 (s., ornit.) 'pavo', 'chompipe' (Meleagris gallopavo)",
+      "note": "General form. Short one-syllable word: check it is distinct enough in audio from other cho-/chö- words.",
+      "reviewQuestion": "¿Se dice 'cho̱' para el chompipe/pavo?"
+    },
+    "tortuga": {
+      "text": "kuë",
+      "gloss": "turtle (generic)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 Spanish-index s.v. 'tortuga': kuë (3975), k'uë́ (d.n., 3444)",
+      "note": "General form kuë; Chirripó (d.n.) k'uë́ with glottalized k'. Tone mark on the general form not verified on the scan. Note: in the southern dialect kuë also means 'maíz' (entry ~4044) — homonym risk in a game that also has a maize card.",
+      "reviewQuestion": "¿Dicen 'kuë' o 'k'uë' para tortuga? ¿En su zona 'kuë' también es maíz?"
+    },
+    "rana": {
+      "text": "bulbí",
+      "gloss": "frog (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 677 (s. cl. pl., zool.) 'rana' (genérico)",
+      "note": "General form. Ch. variant yökok (p.u.). Do not confuse with buki/buke 'sapo' (toad, 647; Bible.is Rev 16:13 'buke'); buki also has a vulgar sense ('vulva', 647) — another reason to prefer bulbí.",
+      "reviewQuestion": "¿'Bulbí' es la rana (no el sapo)?"
+    },
+    "serpiente": {
+      "text": "tkäbe",
+      "gloss": "snake (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 10:16, Lk 10:19 'tkäbe'; margery1989 entry 6784 tkabë (generic)",
+      "note": "Bible spelling (matches MMS-TTS training text); dictionary writes tkabë, d.s. tkebë (6811), SJC chabe (734). Snakes are associated with healers/taboos in Cabécar tradition; neutral as a noun.",
+      "reviewQuestion": "¿Se escribe 'tkäbe' o 'tkabë'?"
+    },
+    "maiz": {
+      "text": "ik'uö́",
+      "gloss": "maize, corn (Zea mays)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 1610 (d.n.) 'maíz'",
+      "note": "Northern (Chirripó) form. Southern form kuë (d.s., ~4044) is homonymous with 'turtle'. Maize has ceremonial uses (chicha), but the word is everyday.",
+      "reviewQuestion": "¿'Ik'uö' es la forma usada en su comunidad para maíz?"
+    },
+    "nopal": {
+      "text": null,
+      "gloss": "nopal cactus (Opuntia)",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989",
+      "note": "Opuntia is not part of the Talamanca/Chirripó environment; no entry. Left null.",
+      "reviewQuestion": "¿Existe un nombre cabécar para este cactus, o se usaría 'nopal'?"
+    },
+    "frijol": {
+      "text": "ka̱ní̱",
+      "gloss": "bean (Phaseolus)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 3023 (s., bot.) 'frijol'",
+      "note": "General form; d.n./Uj. k'a_ní_ (3330) with glottalized k'. ka_ní_ kicharaga 'vainica' (green bean pod).",
+      "reviewQuestion": "¿'Ka̱ní̱' o 'k'a̱ní̱'?"
+    },
+    "pina": {
+      "text": "bísh kö́",
+      "gloss": "pineapple (Ananas comosus)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 477 (s., bot.) 'piña'",
+      "note": "General form, two words as printed. Tone accents (í, ö́) as in the dictionary; MMS vocab has no combining acute so the accent on ö is dropped in synthesis.",
+      "reviewQuestion": "¿Se dice 'bísh kö' para la piña?"
+    },
+    "chile": {
+      "text": "shá",
+      "gloss": "chili pepper (Capsicum, generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 5964 (s., bot.) 'chile' (genérico)",
+      "note": "General form. SJC dapa/dapo/dipa; Uj. baka shi 'chile de ganado'. One-syllable word.",
+      "reviewQuestion": "¿'Shá' es el chile?"
+    },
+    "papa": {
+      "text": "papa",
+      "gloss": "potato (Spanish loan)",
+      "kind": "loanword",
+      "confidence": "low",
+      "source": "no Cabécar term in margery1989 (only baga kiwö 'papa chiricana', a different tuber, entry 141)",
+      "note": "Potato is not a traditional Cabécar crop. Spanish loan offered on the Bible.is precedent of keeping Spanish nouns for introduced items; not attested in Cabécar sources. Homophone risk: Spanish 'papá'.",
+      "reviewQuestion": "¿Dicen 'papa' en español para la papa, o hay otra palabra?"
+    },
+    "aguacate": {
+      "text": "ja̱mó̱",
+      "gloss": "avocado (Persea americana)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 1928 (s. cl. red., bot.) 'aguacate'",
+      "note": "General form; also jo_mó_ (2356) and d.n. a_mó_ (98). ja_mó_ klö́ = avocado tree.",
+      "reviewQuestion": "¿'Ja̱mó̱', 'jo̱mó̱' o 'a̱mó̱'?"
+    },
+    "tomate": {
+      "text": "tomate",
+      "gloss": "tomato (Spanish loan)",
+      "kind": "loanword",
+      "confidence": "low",
+      "source": "no Cabécar term for cultivated tomato in margery1989; wild relative shalbo (d.n., 5985) 'tomate de montaña' (Cyphomandra)",
+      "note": "Cultivated tomato has no entry. shalbo names a different wild plant, so it is not offered as the card word. Spanish loan, unattested in Cabécar sources.",
+      "reviewQuestion": "¿Para el tomate rojo usan 'tomate' o 'shalbo'?"
+    },
+    "girasol": {
+      "text": "juku̱lí̱ wö́",
+      "gloss": "sunflower (Helianthus annuus)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 2413 (d.s.) 'girasol'",
+      "note": "Southern-dialect only; no northern form found. Nasal underlines read from the scan (u, í) — verify.",
+      "reviewQuestion": "¿Conocen 'juku̱lí̱ wö' como nombre del girasol?"
+    },
+    "sol": {
+      "text": "ka̱wä",
+      "gloss": "sun",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 24:29, Rev 10:1, Rev 12:1 'ka̱wä'; margery1989 entry 3085 ká_ wö́ 'sol'",
+      "note": "Bible spelling (MMS training text). Dictionary: ká_ wö́ (general), kö́wö́ and k'á_ wö (d.n.). The sun figures in Cabécar cosmology (Sibö's creation narratives) — neutral as a noun but note for reviewers.",
+      "reviewQuestion": "¿'Ka̱wä' o 'ká̱wö'?"
+    },
+    "luna": {
+      "text": "tulu",
+      "gloss": "moon (also 'month')",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 6729; bibleis-cjptjv Mt 24:29, Rev 12:1 'tulu'",
+      "note": "Same in dictionary and Bible. tulu balá = full moon (6730).",
+      "reviewQuestion": "¿'Tulu' es correcto?"
+    },
+    "estrella": {
+      "text": "bekwä",
+      "gloss": "star",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 2:2, Mt 24:29, Rev 12:1 'bekwä'; margery1989 entry 312 béi wö́ (d.n.), margery1989 entry 316 bék wö́ (d.s.)",
+      "note": "Bible spelling chosen for MMS. Dictionary forms are written as two words (béi wö́ / bék wö́); bekwä appears to be the same word written together.",
+      "reviewQuestion": "¿'Bekwä' o 'béi wö'?"
+    },
+    "lluvia": {
+      "text": "ka̱li̱",
+      "gloss": "rain",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 2996 kalí_ 'lluvia'; bibleis-cjptjv Mt 7:25,27 'ka̱li̱'",
+      "note": "Bible spelling; dictionary accents the second syllable. ka_lí_ bulána 'llover'.",
+      "reviewQuestion": "¿'Ka̱li̱' es la lluvia?"
+    },
+    "rayo": {
+      "text": "kuálklö́",
+      "gloss": "lightning bolt",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 3960 (d.n.) 'rayo', 'relámpago'",
+      "note": "Northern form. d.s. tala wö́rkua (6435). The Bible renders lightning as 'ka̱ wäju̱r' (Mt 28:3, Lk 10:18), which may be a verb phrase ('it flashes'). Thunder is tala bula (Rev 4:5). Storms/thunder have spiritual associations; neutral as noun.",
+      "reviewQuestion": "¿Para el rayo dicen 'kuálklö', 'tala wörkua' o 'ka̱ wäju̱r'?"
+    },
+    "arcoiris": {
+      "text": "shikaba",
+      "gloss": "rainbow",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Rev 4:3, 10:1 'shikaba'; margery1989 entry 6112 shikabá (d.n.)",
+      "note": "Bible spelling; d.s. shkabä (also 'halo of sun/moon'). In many Chibchan traditions the rainbow is an omen; check whether it carries a taboo for children.",
+      "reviewQuestion": "¿'Shikaba' es el arcoíris? ¿Tiene algún significado delicado?"
+    },
+    "nube": {
+      "text": "mo̱",
+      "gloss": "cloud",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 4369 (s. cl. pl.) 'nube'; bibleis-cjptjv Mt 24:30, Rev 10:1 'mo̱'",
+      "note": "Same in dictionary and Bible. One-syllable word.",
+      "reviewQuestion": "¿'Mo̱' es la nube?"
+    },
+    "viento": {
+      "text": "si̱wa̱",
+      "gloss": "wind, air",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 5682 si_wá_ 'viento', 'aire', 'historia, leyenda'; bibleis-cjptjv Mt 7:25 'si̱wa̱'",
+      "note": "SENSITIVE: si_wá_ also means traditional/sacred knowledge and narratives ('historia', 'leyenda'); using it for wind is normal everyday speech, but reviewers should confirm it is fine on a game card.",
+      "reviewQuestion": "¿'Si̱wa̱' para el viento en un juego infantil está bien, dado que también significa la historia/sabiduría tradicional?"
+    },
+    "cometa": {
+      "text": "bég wö́ jolorgé",
+      "gloss": "shooting star / meteor (not a comet)",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1989 entry 317 (d.s.) 'aerolito', 'estrella fugaz'",
+      "note": "No word for 'comet' found; this is the southern term for a meteor/shooting star (d.n. equivalent at entry 370, not verified on scan). Bible Mt 24:29 'bekwä jolortémi' = 'stars will fall'. SENSITIVE: the dictionary records fiery streaks in the sky (ja_má_ júr, mit., 1908) as omens of calamity — confirm the shooting-star word is not ominous for children.",
+      "reviewQuestion": "¿Hay palabra para 'cometa'? ¿La estrella fugaz se considera mal presagio?"
+    },
+    "montana": {
+      "text": "ka̱tsä",
+      "gloss": "mountain, hill",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 5:14, Mt 17:1 'ka̱tsä (bata)'; margery1989 entry 2928 ká_ bata 'cerro, montaña'",
+      "note": "Bible spelling. Dictionary: ká_ tsö (s. cl. red.) and ká_ bata (generic). Some mountains (e.g. Chirripó peaks) are sacred places; the generic noun is neutral.",
+      "reviewQuestion": "¿'Ka̱tsä' o 'ká̱ bata' para la montaña?"
+    },
+    "volcan": {
+      "text": "volcán",
+      "gloss": "volcano (Spanish loan)",
+      "kind": "loanword",
+      "confidence": "low",
+      "source": "no entry for 'volcán' in margery1989",
+      "note": "No native term found. Bible Rev 8:8 describes 'something like a great mountain burning' descriptively. Spanish loan, unattested.",
+      "reviewQuestion": "¿Cómo llaman a un volcán (p. ej. el Turrialba)?"
+    },
+    "manantial": {
+      "text": "díglö tsi̱ní̱",
+      "gloss": "spring, water source",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 1133 (d.n.) 'vertiente', 'manantial', 'ojo de agua'",
+      "note": "Northern form (díglö 'water'; Bible writes diklä). d.s. díglö yölí (1142); Ch. bölë. Bible Jas 3:11 uses a verb phrase 'diklä tsikirke̱ ska'. Springs can be spiritually significant places.",
+      "reviewQuestion": "¿'Díglö tsi̱ní̱' es el ojo de agua/naciente?"
+    },
+    "mar": {
+      "text": "däyë",
+      "gloss": "sea (also 'salt')",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Acts 27:41, Rev 4:6 'däyë'; margery1989 entry 1040 dayë 'mar', 'sal'",
+      "note": "Bible spelling (dictionary dayë). Same word means 'salt'.",
+      "reviewQuestion": "¿'Däyë' para el mar?"
+    },
+    "desierto": {
+      "text": "ka̱ ssi̱lewa̱ pjoo",
+      "gloss": "deserted/wild place (descriptive)",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "bibleis-cjptjv Mt 3:1, Heb 11:38",
+      "note": "The Bible's rendering of Spanish 'desierto' (wilderness). Lit. roughly 'empty/abandoned place'; it does not evoke sand dunes. Long phrase for a card.",
+      "reviewQuestion": "¿Hay una palabra más corta para desierto, o se usaría 'desierto' en español?"
+    },
+    "selva": {
+      "text": "ká̱ ni̱ki̱",
+      "gloss": "forest, jungle",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 3026 (d.n.) 'selva', 'bosque', 'monte'",
+      "note": "Northern form; d.s. kal gi_ (2721). ká_ bata 'cerro' also extends to 'monte'.",
+      "reviewQuestion": "¿'Ká̱ ni̱ki̱' es la selva/el monte?"
+    },
+    "cristal": {
+      "text": "vidrio",
+      "gloss": "glass/crystal (Spanish loan)",
+      "kind": "loanword",
+      "confidence": "low",
+      "source": "bibleis-cjptjv Rev 4:6, 21:11, 22:1 'vidrio' for Spanish 'cristal'",
+      "note": "No native word for crystal/gem found. The Bible uses the Spanish loan 'vidrio' where Spanish has 'cristal'. 'jak' = stone.",
+      "reviewQuestion": "¿Para un cristal de roca usarían 'vidrio', 'jak' u otra palabra?"
+    },
+    "isla": {
+      "text": "däyë wäbala",
+      "gloss": "island (in the sea)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Acts 27:26, 28:1 'däyë wäbala'",
+      "note": "Bible term; däyë 'sea'. Dictionary only has díglö wöbla (d.s., 1196) 'small river island'.",
+      "reviewQuestion": "¿'Däyë wäbala' se entiende como isla?"
+    },
+    "cueva": {
+      "text": null,
+      "gloss": "cave",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "not found in margery1989 (closest: k'olöi d.n. 'hueco de cierta extensión y profundidad', 3393 area)",
+      "note": "No clear noun for 'cave' found. Bible Heb 11:38 'ka̱ wäja̱r' / 'ishäkä wäja̱r' may mean 'holes/caves of the earth' but the gloss is uncertain. Caves can be sacred/burial places in Talamanca tradition. Left null.",
+      "reviewQuestion": "¿Cómo se dice 'cueva'? ¿Tiene alguna connotación sagrada?"
+    },
+    "olla": {
+      "text": "ká̱ wí̱",
+      "gloss": "clay pot",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 3084 (s. cl. red.) 'olla de barro'",
+      "note": "Matches the art (clay pot). Generic 'olla' is u_ (7374), a single nasal vowel — too short for a card.",
+      "reviewQuestion": "¿'Ká̱ wí̱' es la olla de barro?"
+    },
+    "cesto": {
+      "text": "bójkö́",
+      "gloss": "basket",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 523 (s. cl. red.) 'canasto'; (s. cl. pl.) 'bolso pequeño'",
+      "note": "General form. Other baskets: jokóbölo (d.s.), kok'óbölo (d.n.). Bible uses Spanish 'canasta' (Mt 14:20).",
+      "reviewQuestion": "¿'Bójkö' es el canasto?"
+    },
+    "tambor": {
+      "text": "sábák",
+      "gloss": "drum",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 5300 (s. cl. al.) 'tambor'",
+      "note": "General form; SJC bak (154). Drums accompany ceremonies and chichadas; neutral as a noun.",
+      "reviewQuestion": "¿'Sábák' para el tambor?"
+    },
+    "adobe": {
+      "text": null,
+      "gloss": "adobe brick",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none in margery1989 (dù 'barro, lodo', 1278, is mud, not brick)",
+      "note": "Adobe construction is not traditional in the region; no term. Left null.",
+      "reviewQuestion": "¿Hay forma de decir 'adobe' o se usaría el español?"
+    },
+    "hilo": {
+      "text": "tulúk kicha",
+      "gloss": "thread",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 6733 (s.) 'hilo'",
+      "note": "General form (tulúk = needle). Uj. ja_má_ kséi (1910).",
+      "reviewQuestion": "¿'Tulúk kicha' es el hilo?"
+    },
+    "canoa": {
+      "text": "ko̱no",
+      "gloss": "canoe, boat",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 13:2, Acts 27:44 'ko̱no'; margery1989 entry 3838 kö_no_ 'bote', 'canoa'",
+      "note": "Bible spelling; dictionary kö_no_.",
+      "reviewQuestion": "¿'Ko̱no' o 'kö̱no̱'?"
+    },
+    "puente": {
+      "text": "ksa",
+      "gloss": "bridge (lit. rope, vine)",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1989 entry 3876 (s. cl. al.) 'soga', 'bejuco'; (p.u.) 'puente'",
+      "note": "Primary meaning is rope/vine; 'bridge' sense marked p.u. (rarely used) — fits a hanging/rope bridge. Nasal/tone marking not verified on the scan; Bible uses ksa̱ for 'sand' (Mt 7:26), so tone/nasality distinguishes homonyms.",
+      "reviewQuestion": "¿Para un puente dicen 'ksa' o 'puente'?"
+    },
+    "vela": {
+      "text": "tsi̱ni",
+      "gloss": "candle, lamp, light",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Lk 15:8, Rev 4:5 'tsi̱ni'; margery1989 entry 7127 tsini (d.n.) 'candela', 'luz'",
+      "note": "Bible spelling (lamp). General dictionary form tsa_ni_ (7007) 'hule', 'candela', 'luz' — also means rubber/resin.",
+      "reviewQuestion": "¿'Tsi̱ni' es la vela/candela?"
+    },
+    "martillo": {
+      "text": "martillo",
+      "gloss": "hammer (Spanish loan)",
+      "kind": "loanword",
+      "confidence": "low",
+      "source": "no entry in margery1989",
+      "note": "No native term found (dictionary 'martilla' is an animal, kinkajou). Spanish loan, unattested.",
+      "reviewQuestion": "¿Usan 'martillo' en español?"
+    },
+    "casa": {
+      "text": "ju",
+      "gloss": "house",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 2368 (s. cl. pl.) 'casa' (genérico), 'rancho'; bibleis-cjptjv Mt 7:24-27 'ju'",
+      "note": "Same in dictionary and Bible. Traditional conical house (usulë) is a sacred structure — the generic ju is neutral.",
+      "reviewQuestion": "¿'Ju' es casa?"
+    },
+    "milpa": {
+      "text": "të",
+      "gloss": "cornfield, milpa",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 6516 (s.) 'milpa', 'maizal'",
+      "note": "General form; d.n. të́i (6519) and ik'uö́ të́i (1611).",
+      "reviewQuestion": "¿'Të' es la milpa?"
+    },
+    "tienda": {
+      "text": "dalí wí",
+      "gloss": "shop, store ('pulpería')",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 977 (d.s.) 'almacén', 'pulpería'",
+      "note": "Southern form; no northern form found. Bible uses 'jile watju̱aklä jui' (house of selling, Jn 2:16).",
+      "reviewQuestion": "¿Cómo dicen 'pulpería/tienda' en su comunidad?"
+    },
+    "plaza": {
+      "text": "sa tapanaklä",
+      "gloss": "gathering place (descriptive)",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "bibleis-cjptjv Mt 11:16, Mt 20:3, Acts 17:17 'sa tapanaklä däli watju̱ak shtä ska'",
+      "note": "Shortened from the Bible's phrase for 'marketplace/plaza' ('where we gather, where things are sold'). The shortening is mine — reviewers must confirm it stands alone.",
+      "reviewQuestion": "¿'Sa tapanaklä' se entiende como plaza? ¿O usan 'plaza'?"
+    },
+    "puerto": {
+      "text": "ko̱no däkläwa̱",
+      "gloss": "harbor (boat landing place)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Acts 27:8,12 'ko̱no däkläwa̱'",
+      "note": "Bible term ('where boats arrive'), also used in the place name 'Buenos Puertos'.",
+      "reviewQuestion": "¿'Ko̱no däkläwa̱' se entiende como puerto?"
+    },
+    "pueblo": {
+      "text": "jukläyäkä",
+      "gloss": "town, village",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Mt 5:14, Mt 9:35, Lk 19:30 'jukläyäkä'",
+      "note": "Bible term for town/city. Dictionary d.n. ju k'ö́lö́ yökö (2408) 'pueblo, ranchería'.",
+      "reviewQuestion": "¿'Jukläyäkä' o 'ju k'ölö yökö'?"
+    },
+    "escuela": {
+      "text": "sä yuäklä jui",
+      "gloss": "school (descriptive: 'house of learning')",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "bibleis-cjptjv Acts 19:9 'Tirano wa̱ sä yuäklä jui' (Spanish 'escuela de Tirano')",
+      "note": "Bible descriptive rendering of 'escuela'. Modern Cabécar communities with MEP schools probably use the Spanish loan 'escuela'; unverified.",
+      "reviewQuestion": "¿Cómo dicen 'escuela' hoy: 'escuela' o 'sä yuäklä jui'?"
+    },
+    "observatorio": {
+      "text": null,
+      "gloss": "astronomical observatory",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none",
+      "note": "No attested term; any phrase would be invented. Left null.",
+      "reviewQuestion": "¿Cómo dirían 'observatorio' (lugar para mirar estrellas)?"
+    },
+    "biblioteca": {
+      "text": null,
+      "gloss": "library",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none",
+      "note": "No attested term (dictionary has ayë k'uö 'papel, libro' d.n., entry 84, but no 'library'). Left null rather than compose a phrase.",
+      "reviewQuestion": "¿Cómo dirían 'biblioteca'?"
+    }
+  }
+}

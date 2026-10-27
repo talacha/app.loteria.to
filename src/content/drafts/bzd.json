@@ -1,0 +1,588 @@
+{
+  "lang": "bzd",
+  "variety": "Bribri of Talamanca, Costa Rica. Headwords follow Krohn's pandialectal dictionary, preferring forms attested in Jara & García Segura (based on Coroma speech, Alí García Segura) and Margery (Amubri/Salitre data); dialect variants (Amubri, Coroma, Salitre) noted per card. Not checked for Panamanian Bribri.",
+  "orthography": "Bribri practical orthography (Wilson, revised by Constenla; as used by Krohn, UCR and DIPALICORI): nasal vowels marked with a combining macron below (U+0331, the 'underline'), extra vowels ë ö; tone on the stressed syllable: acute = high/rising, grave = falling, circumflex = rising (Amubri); apostrophe = glottal stop; tk is pronounced tch by some speakers (DIPALICORI writes tch). Strings stored NFC. Jara's newer diacritic-only (tilde) nasal spelling is NOT used.",
+  "sources": [
+    {
+      "id": "krohn2025",
+      "title": "Diccionario bribri–español español–bribri (online, pandialectal; aggregates the sources below)",
+      "author": "Haakon S. Krohn (Universidad de Costa Rica)",
+      "year": 2025,
+      "url": "http://www.haakonkrohn.com/bribri/"
+    },
+    {
+      "id": "margery1996",
+      "title": "Diccionario fraseológico bribri–español español–bribri (2nd ed.)",
+      "author": "Enrique Margery Peña",
+      "year": 1996
+    },
+    {
+      "id": "jaragarcia2013",
+      "title": "Se' ttö́ bribri ie / Hablemos en bribri",
+      "author": "Carla Victoria Jara Murillo & Alí García Segura",
+      "year": 2013,
+      "url": "https://www.lenguabribri.com/se-ttö-bribri-ie-hablemos-en-bribri"
+    },
+    {
+      "id": "jaragarcia2003",
+      "title": "Diccionario de mitología bribri",
+      "author": "Carla Victoria Jara Murillo & Alí García Segura",
+      "year": 2003,
+      "url": "https://www.lenguabribri.com/diccionario-de-mitología-bribri"
+    },
+    {
+      "id": "jara2018",
+      "title": "Gramática de la lengua bribri",
+      "author": "Carla Victoria Jara Murillo",
+      "year": 2018
+    },
+    {
+      "id": "constenla1998",
+      "title": "Curso básico de bribri",
+      "author": "Adolfo Constenla Umaña, Feliciano Elizondo Figueroa & Francisco Pereira Mora",
+      "year": 1998
+    },
+    {
+      "id": "constenla2010",
+      "title": "Toponimia bribri (Estudios de Lingüística Chibcha 29)",
+      "author": "Adolfo Constenla Umaña",
+      "year": 2010
+    },
+    {
+      "id": "krohn2016",
+      "title": "Aculturación léxica del bribri (Estudios de Lingüística Chibcha 35)",
+      "author": "Haakon S. Krohn",
+      "year": 2016
+    },
+    {
+      "id": "rimolo2007",
+      "title": "Aplicación de los postulados de la teoría clasificatoria etnobiológica de Brent Berlin al universo ornitológico del bribri de Coroma (Estudios de Lingüística Chibcha 26)",
+      "author": "Annamaría Rimolo Bariatti",
+      "year": 2007
+    },
+    {
+      "id": "flores2009",
+      "title": "Los mamíferos en la clasificación etnobiológica de la comunidad de Amubre (Estudios de Lingüística Chibcha 28)",
+      "author": "Sofía Flores Solórzano",
+      "year": 2009
+    },
+    {
+      "id": "chevrier2017",
+      "title": "Analyse de la phonologie du bribri (chibcha) dans une perspective typologique (PhD thesis)",
+      "author": "Natacha Chevrier",
+      "year": 2017
+    },
+    {
+      "id": "sanchez_sf",
+      "title": "Diccionarios pictográficos bribri (DIPALICORI), cited by Krohn as Sánchez (s.f.)",
+      "author": "Carlos Sánchez Avendaño (coord.)",
+      "url": "https://dipalicori.ucr.ac.cr/recursos-bribri/"
+    },
+    {
+      "id": "dipalicori_animales",
+      "title": "Íyiwak. Diccionario pictográfico de los animales en bribri",
+      "author": "Proyecto Diversidad Lingüística de Costa Rica (TC-625, UCR); I. Solano Rodríguez, C. Jara Murillo, A. García Segura, C. Sánchez Avendaño",
+      "url": "https://www.dipalicori.ucr.ac.cr/wp-content/uploads/Diccionario-Animales-Bribri.pdf"
+    },
+    {
+      "id": "dipalicori_casa",
+      "title": "Ù. Diccionario pictográfico de la casa tradicional bribri",
+      "author": "Proyecto Diversidad Lingüística de Costa Rica (TC-625, UCR); documentation Carla Jara Murillo, speakers Alí García Segura, Fausto López, Hernán Segura García",
+      "year": 2015,
+      "url": "https://www.dipalicori.ucr.ac.cr/wp-content/uploads/Diccionario_casa_tradicional_bribri.pdf"
+    },
+    {
+      "id": "garcia_com_pers",
+      "title": "Personal communication recorded in Krohn's dictionary",
+      "author": "Alí García Segura"
+    }
+  ],
+  "cards": {
+    "jaguar": {
+      "text": "na̱mù̱",
+      "gloss": "jaguar; also generic 'feline'",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996; flores2009 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'jaguar'; primary page not verified)",
+      "note": "Everyday noun for jaguar (Panthera onca). Synonym dulë́kalöm (variants dulë́kalö, dulë́klöm) per Margery 1996/Flores 2009. Variant spelling nmù̱. Sensitivity: the jaguar figures in Bribri narratives and is associated with a clan (Tùbölwak, per Jara & García 2003); the plain animal noun is ordinary vocabulary, but avoid compounds like na̱mù̱ dalë̀ ('jaguar sickness').",
+      "reviewQuestion": "Is na̱mù̱ the word children would use for the jaguar picture, or dulë́kalöm? Which do you prefer for a game?"
+    },
+    "colibri": {
+      "text": "batsù̱",
+      "gloss": "hummingbird (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2003; flores2009; margery1996; dipalicori_animales (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'colibrí'; primary page not verified)",
+      "note": "Generic for hummingbirds (Trochilidae); also 'small long-billed bird'. Variants bitsù̱, btsù̱. Many species compounds exist; avoid sibö̀batsu̱ (contains the sacred name Sibö̀).",
+      "reviewQuestion": "Is batsù̱ (or bitsù̱/btsù̱) how your community says it?"
+    },
+    "llama": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for the Andean llama; the animal is not native to Talamanca. No attested Bribri loan found. Do not substitute another animal.",
+      "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
+    },
+    "condor": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for the Andean condor. Related but DIFFERENT birds are attested: ölö́bulu / uchí (king vulture, Sarcoramphus papa), ölö́ (vulture, generic), pú̱ (raptor, generic). Using any of these would name a different animal, so left empty.",
+      "reviewQuestion": "Is there a Bribri way to refer to the Andean condor, or would you accept ölö́bulu (king vulture) only if the card art is changed?"
+    },
+    "mariposa": {
+      "text": "kua’kua",
+      "gloss": "butterfly (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996; jaragarcia2003; dipalicori_animales (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'mariposa'; primary page not verified)",
+      "note": "Generic for butterflies/moths (Lepidoptera). Variants kuàkua, short form kua’. Blue morpho is dulùkuékua. Also shown in the DIPALICORI animals dictionary as kua’kua / kuâkua.",
+      "reviewQuestion": "Is kua’kua the everyday form, and which tone/spelling do you prefer (kua’kua vs kuàkua)?"
+    },
+    "guajolote": {
+      "text": "chò̱",
+      "gloss": "turkey (Meleagris gallopavo), 'chompipe'",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; rimolo2007 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'chompipe / pavo'; primary page not verified)",
+      "note": "Domestic turkey; Costa Rican Spanish 'chompipe'. Nasal vowel ò̱ (macron below).",
+      "reviewQuestion": "Is chò̱ used for the domestic turkey in your community?"
+    },
+    "tortuga": {
+      "text": "kuë̀",
+      "gloss": "turtle (generic, order Testudines)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; flores2009; dipalicori_animales (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'tortuga'; primary page not verified)",
+      "note": "Generic turtle. Sea turtles have specific names (sö̀ hawksbill, kakò̱ leatherback); freshwater turtle ö̀lëkuë / pó̱kuë. DIPALICORI animals dictionary shows 'sö / ölë kuë' on the turtles page.",
+      "reviewQuestion": "For a generic turtle picture, is kuë̀ right, or would children name a specific kind?"
+    },
+    "rana": {
+      "text": "bukuë’",
+      "gloss": "frog / toad (generic, order Anura)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; flores2009; jaragarcia2003; dipalicori_animales (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'rana'; primary page not verified)",
+      "note": "Generic for frogs and toads. Variants bukë’ (used as the category label in the DIPALICORI animals dictionary) and bkuë’.",
+      "reviewQuestion": "Which form is used in your variety: bukuë’ or bukë’?"
+    },
+    "serpiente": {
+      "text": "tkabë̀",
+      "gloss": "snake (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996; dipalicori_animales (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'serpiente'; primary page not verified)",
+      "note": "Generic snake. Krohn writes tk for a sound some speakers write tch (DIPALICORI uses tkabë / tchabë). Variant tkbë̀. Ritual-speech synonym tulít — do not use. Note tkabë̀ also means 'rainbow' (see arcoiris), linked to Bribri narratives.",
+      "reviewQuestion": "Should the game spell this tkabë̀ or tchabë̀ for your community?"
+    },
+    "maiz": {
+      "text": "ikuö̀",
+      "gloss": "maize, corn (Zea mays)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; jaragarcia2013 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'maíz'; primary page not verified)",
+      "note": "Variants ikuö̀wö / ikuwö̀ (also 'maize grain') and kuwö̀. Many named varieties exist; avoid ritual-speech forms (sékibö etc.).",
+      "reviewQuestion": "Is ikuö̀ or ikuö̀wö the better word for a picture of an ear of corn?"
+    },
+    "nopal": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for nopal (Opuntia), which is not a Talamanca plant. The only cactus entry is na̱mù̱yibala (Pereskia grandifolia), a different plant. No attested loan.",
+      "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
+    },
+    "frijol": {
+      "text": "átu",
+      "gloss": "bean (Phaseolus vulgaris), plant or grain",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; sanchez_sf (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'frijol'; primary page not verified)",
+      "note": "Common bean. Seed: átwö.",
+      "reviewQuestion": "Is átu the usual word for beans?"
+    },
+    "pina": {
+      "text": "abáwö",
+      "gloss": "pineapple (Ananas comosus)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; sanchez_sf (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'piña'; primary page not verified)",
+      "note": "Synonyms/variants: alàbawö, a̱mù̱wö, a̱mù̱wöli.",
+      "reviewQuestion": "Which of abáwö / alàbawö / a̱mù̱wö is used in your community?"
+    },
+    "chile": {
+      "text": "dipa’",
+      "gloss": "chili pepper (sweet; also generic hot chili per Chevrier)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; constenla2010; chevrier2017 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'chile'; primary page not verified)",
+      "note": "Primary sources gloss dipa’ as 'chile dulce' (Capsicum spp.); Chevrier 2017 also lists it as generic 'chile picante'. Variant dapa’; also sha’. Card shows a red hot chili.",
+      "reviewQuestion": "Does dipa’ cover a hot red chili, or only sweet pepper? Is there a different word for the hot chili?"
+    },
+    "papa": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for potato (Solanum tuberosum). Generic tu’ means 'tuber / yam' and would name a different food. No attested loan.",
+      "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
+    },
+    "aguacate": {
+      "text": "ja̱mo̱’",
+      "gloss": "avocado (Persea americana)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jara2018; chevrier2017 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'aguacate'; primary page not verified)",
+      "note": "Variants a̱mo̱’, mo̱’.",
+      "reviewQuestion": "Is ja̱mo̱’ or a̱mo̱’ the form used for avocado in your community?"
+    },
+    "tomate": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for tomato. No attested loan found.",
+      "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
+    },
+    "girasol": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for sunflower. Generic 'flower' is attested (dakuà / mà̱ma̱) but would not identify this card. A phrase with dìwö 'sun' would be an invention, so not proposed.",
+      "reviewQuestion": "Is there a Bribri name for the sunflower, or a Spanish loan in use? Would 'flower' (dakuà / mà̱ma̱) be acceptable?"
+    },
+    "sol": {
+      "text": "dìwö",
+      "gloss": "sun (also 'day', 'hour')",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'sol'; primary page not verified)",
+      "note": "Everyday word. Sensitivity: the sun has mythological names (Dalàbulu, Dìwö Akë́köl) and a sun clan (Dìwöwak) — do NOT use those.",
+      "reviewQuestion": "Is dìwö correct for the sun picture?"
+    },
+    "luna": {
+      "text": "síwö",
+      "gloss": "moon",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; jaragarcia2013; jaragarcia2003 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'luna'; primary page not verified)",
+      "note": "Variants si’wö and short si’ (Jara & García list si’ among the forms). Choose one per community.",
+      "reviewQuestion": "Which form do children use: síwö, si’wö or si’?"
+    },
+    "estrella": {
+      "text": "bë̀kwö",
+      "gloss": "star",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'estrella'; primary page not verified)",
+      "note": "Everyday word.",
+      "reviewQuestion": "Is bë̀kwö right?"
+    },
+    "lluvia": {
+      "text": "kà̱li̱",
+      "gloss": "rain",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jara2018; margery1996; constenla1998 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'lluvia'; primary page not verified)",
+      "note": "Variant kò̱li̱ (dialectal a/o alternation in nasal syllables).",
+      "reviewQuestion": "Which variant is used in your community: kà̱li̱ or kò̱li̱?"
+    },
+    "rayo": {
+      "text": "talàwöñor",
+      "gloss": "lightning, lightning flash ('relámpago, rayería')",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "garcia_com_pers (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'relámpago'; primary page not verified)",
+      "note": "Single source: personal communication from Alí García Segura recorded in Krohn's dictionary. Thunder is alá. Sensitivity: thunder/lightning are tied to mythological beings (Kikílma̱, Télma̱, Talàchake, the thunder lords) — do NOT use those names; ritual-speech tkë́rme̱ also avoided.",
+      "reviewQuestion": "Is talàwöñor the everyday word for a lightning bolt? Variant tlàwöñor?"
+    },
+    "arcoiris": {
+      "text": "dulà",
+      "gloss": "rainbow",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'arcoíris'; primary page not verified)",
+      "note": "Alternatives: tkabë̀ / tkabë̀köl (also 'snake'; Margery) and shkaba’ (Jara & García 2003, mythology dictionary). Sensitivity: in Bribri tradition the rainbow is associated with a serpent; dulà avoids the homonym with 'snake' (also a card). Do not confuse with Dulù (mythological serpent).",
+      "reviewQuestion": "Which word do children use for the rainbow: dulà, tkabë̀köl or shkaba’? Is any of them sensitive?"
+    },
+    "nube": {
+      "text": "mò̱",
+      "gloss": "cloud (also mist)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'nube'; primary page not verified)",
+      "note": "Everyday word; nasal vowel.",
+      "reviewQuestion": "Is mò̱ right?"
+    },
+    "viento": {
+      "text": "su̱wa̱’",
+      "gloss": "wind, air",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "jaragarcia2003; constenla1998 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'viento'; primary page not verified)",
+      "note": "Variants si̱wa̱’, su̱a̱’. Sensitivity: the same form also means 'knowledge' and 'sacred history / traditional narration' (Constenla et al. 1998; Jara & García 2003). Reviewer should confirm it is appropriate as a game word for 'wind'.",
+      "reviewQuestion": "Is su̱wa̱’ acceptable for the wind card given its other meaning ('sacred history')? Is there a better everyday word?"
+    },
+    "cometa": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for comet. Not inventing a descriptive phrase.",
+      "reviewQuestion": "Is there a Bribri name for a comet (or 'star with a tail')? Or a Spanish loan in use?"
+    },
+    "montana": {
+      "text": "ká̱bata",
+      "gloss": "mountain, hill",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'montaña'; primary page not verified)",
+      "note": "Variants ká̱bta, kó̱bata, kó̱bta.",
+      "reviewQuestion": "Which variant is used in your community?"
+    },
+    "volcan": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for volcano (Talamanca has no active volcanoes). Not substituting 'mountain'.",
+      "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
+    },
+    "manantial": {
+      "text": "tù̱m",
+      "gloss": "spring, 'ojo de agua'",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; constenla2010 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'manantial'; primary page not verified)",
+      "note": "Water spring / source. Appears in place names (e.g. Tùm Ajkö̀ Ki̱, Constenla 2010).",
+      "reviewQuestion": "Is tù̱m the word for a water spring?"
+    },
+    "mar": {
+      "text": "dayë̀",
+      "gloss": "sea (also 'salt')",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; sanchez_sf (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'mar'; primary page not verified)",
+      "note": "Variants diyë̀, dyë̀. Sensitivity: ritual-speech words for the sea (Dulù, së̀) must NOT be used.",
+      "reviewQuestion": "Is dayë̀ right for the sea?"
+    },
+    "desierto": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for desert. Attested 'sand' (stsa̱’ña̱) or 'beach/sandy area' (tsà̱itö) would mean something else.",
+      "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
+    },
+    "selva": {
+      "text": "ka̱ñí̱k",
+      "gloss": "forest, jungle; 'monte'",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jara2018; jaragarcia2013; margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'selva'; primary page not verified)",
+      "note": "Variant kñí̱k. Synonym kàlyök ('selva', Margery 1996).",
+      "reviewQuestion": "Is ka̱ñí̱k or kàlyök better for a rainforest picture?"
+    },
+    "cristal": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for crystal/quartz. SENSITIVITY: the sacred healing stones of Bribri healers (si̱a̱’, and ritual-speech names) are listed under 'piedra' and must NOT be used for a game card. Plain 'stone' ák exists but names a different thing. Wö̀sa̱wa̱k means 'mirror'.",
+      "reviewQuestion": "Is there an everyday (non-sacred) word for a clear crystal or quartz? If the only words are sacred, should this card be skipped in Bribri?"
+    },
+    "isla": {
+      "text": "data’",
+      "gloss": "small river islet; also 'plot of land'",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'isla'; primary page not verified)",
+      "note": "Attested only for 'small island formed in a riverbed' (variants dara’, dra’, dta’). The card shows a sea island with palms, so this is a meaning mismatch. Note data’ also = 'dewlap' (Sánchez).",
+      "reviewQuestion": "Can data’ be used for an island in the sea, or is there another word?"
+    },
+    "cueva": {
+      "text": "ká̱uk",
+      "gloss": "cave (also 'hole')",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "constenla1998; margery1996; garcia_com_pers (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'cueva'; primary page not verified)",
+      "note": "Variants kó̱uk; synonym úk / ùk.",
+      "reviewQuestion": "Is ká̱uk or úk used for a cave?"
+    },
+    "olla": {
+      "text": "ù̱",
+      "gloss": "cooking pot",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'olla'; primary page not verified)",
+      "note": "Differs from ù 'house' (card 'casa') only by nasality (macron below). Good teaching pair, but audio and spelling must keep them distinct; avoid using these two as each other's distractors without review.",
+      "reviewQuestion": "Is ù̱ used for a clay pot? Do children clearly distinguish ù̱ (pot) from ù (house)?"
+    },
+    "cesto": {
+      "text": "ajkö́",
+      "gloss": "basket",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; jaragarcia2003; dipalicori_casa (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'canasta'; primary page not verified)",
+      "note": "Variants jkö́, kö́. Also listed as 'ajkö / kö' in the DIPALICORI traditional house dictionary. Other basket word: àba 'canasto' (Margery). Avoid bika’, a ritual basket of healers.",
+      "reviewQuestion": "Which is the everyday basket word: ajkö́ or àba?"
+    },
+    "tambor": {
+      "text": "sabák",
+      "gloss": "drum",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; dipalicori_casa (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'tambor'; primary page not verified)",
+      "note": "Variant sbák; synonym dulë̀ (Rimolo 2007; also 'traditional chicha-festival song' and 'small bird'). DIPALICORI house dictionary lists 'sabák/dulë'. Possible cultural note: drums accompany traditional dances/songs.",
+      "reviewQuestion": "Is sabák the right word, and is there any ceremonial restriction on the drum?"
+    },
+    "adobe": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for adobe brick (not a traditional Bribri building material). dö́ means 'mud, clay' — a different thing.",
+      "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
+    },
+    "hilo": {
+      "text": "ja̱mù̱",
+      "gloss": "cord, thread, string",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; chevrier2017 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'hilo'; primary page not verified)",
+      "note": "Means cord/thread/rope (synonyms stsa’, kichà); also the cabuya plant. Sensitivity: Ja̱mù̱ is also the name of a mythological being (owner of traps) per Jara & García 2003 — the common noun should be fine but confirm. Fine cotton thread: suítöm 'cotton cord' (Jara & García 2008).",
+      "reviewQuestion": "Is ja̱mù̱ fine for sewing/weaving thread, or is suítöm better?"
+    },
+    "canoa": {
+      "text": "ka̱nò̱",
+      "gloss": "canoe, boat",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; krohn2016 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'canoa / bote'; primary page not verified)",
+      "note": "Variants knò̱, ko̱nò̱. Krohn 2016 (lexical acculturation) also lists it; it may be a borrowing (cf. Spanish canoa). Kept as attested.",
+      "reviewQuestion": "Is ka̱nò̱ a native word or felt to be a loan? Is it the everyday word?"
+    },
+    "puente": {
+      "text": "shkótkö",
+      "gloss": "bridge",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "garcia_com_pers (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'puente'; primary page not verified)",
+      "note": "Single source (personal communication). Krohn's Spanish index lists shkë́k for 'puente', but its own Bribri entry for shkë́k means 'standing, upright' — conflicting; chose shkótkö, whose entry explicitly glosses 'puente'.",
+      "reviewQuestion": "What is the word for a bridge (hanging/rope bridge): shkótkö, shkë́k or another?"
+    },
+    "vela": {
+      "text": "bùlña̱",
+      "gloss": "candle (also 'beeswax')",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "constenla1998; margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'vela / candela'; primary page not verified)",
+      "note": "Constenla et al. 1998 gloss 'candela'; Margery 1996 'cera' (wax). Alternative akatùwö 'candela, vela' (Chevrier 2017).",
+      "reviewQuestion": "Which is used for a candle: bùlña̱ or akatùwö?"
+    },
+    "martillo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for hammer. Verbs for hitting exist (tö́k, ppö́k) but no noun.",
+      "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
+    },
+    "casa": {
+      "text": "ù",
+      "gloss": "house, home, building",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; jaragarcia2013; dipalicori_casa (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'casa'; primary page not verified)",
+      "note": "Title word of the DIPALICORI traditional house dictionary. Combining form wé (as in compounds). Do not use chö́we / wéri (cultured/ritual speech). Minimal pair with ù̱ 'pot' (card 'olla').",
+      "reviewQuestion": "Is ù right?"
+    },
+    "milpa": {
+      "text": "të̀",
+      "gloss": "cultivated field, plot, 'milpa'",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "constenla2010; jaragarcia2013 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'milpa'; primary page not verified)",
+      "note": "Glossed 'sembradío, labranza, milpa'. A Bribri të̀ is a general cultivated plot, not specifically the Mesoamerican maize–bean–squash milpa.",
+      "reviewQuestion": "Is të̀ the right word for a planted field?"
+    },
+    "tienda": {
+      "text": "dalì wé",
+      "gloss": "shop, small store ('pulpería')",
+      "kind": "descriptive",
+      "confidence": "medium",
+      "source": "constenla1998; krohn2016 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'tienda'; primary page not verified)",
+      "note": "Compound with wé 'house'; dalì = 'cargo, goods'. Listed in Constenla et al. 1998 and in Krohn 2016 (lexical acculturation), i.e. a coined compound, not a loan.",
+      "reviewQuestion": "Is dalì wé what people say for the local shop?"
+    },
+    "plaza": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for town square/plaza. ù apà / ùjkö mean 'house yard, patio' — not a public square.",
+      "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
+    },
+    "puerto": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for harbor/port.",
+      "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
+    },
+    "pueblo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No generic Bribri entry for village/town found; only place names and ká̱ kibí 'city' (Krohn 2016) and ká̱ 'place, land'. ká̱ kibí would name a city, not a village.",
+      "reviewQuestion": "What word or phrase is used for a village/community? Would ká̱ kibí be wrong here?"
+    },
+    "escuela": {
+      "text": "stsàwöwe",
+      "gloss": "school",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; jara2018 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'escuela'; primary page not verified)",
+      "note": "Spelling varies: stsàwöwe (Margery), tsa’wöwe (Jara 2018), jtsàwöwe. Descriptive alternative se’ yawók wé 'house where we learn' (Krohn 2016). Compound with wé 'house'.",
+      "reviewQuestion": "Which spelling/pronunciation is used locally: stsàwöwe, tsa’wöwe or jtsàwöwe?"
+    },
+    "observatorio": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for observatory or telescope. Not coining a phrase.",
+      "reviewQuestion": "Is there a way to say 'observatory' (place to look at stars)? Otherwise skip this card in Bribri."
+    },
+    "biblioteca": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no entry found under the Spanish lemma; also searched Bribri definitions)",
+      "note": "No Bribri entry for library. Attested parts exist (uyë́jkuö 'book/paper'; X + wé 'house of X' as in dalì wé 'shop', stë̀ wé 'museum'), but no speaker-attested compound for 'library', so none is proposed.",
+      "reviewQuestion": "Would uyë́jkuö wé ('book house') be natural for 'library', or is there an existing word?"
+    }
+  }
+}
