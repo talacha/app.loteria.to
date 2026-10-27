@@ -403,12 +403,27 @@
 }
 .choice[data-state='wrong'] {
   background: var(--color-disabled-on-night);
-  opacity: 0.45;
+  color: var(--color-text);
   box-shadow: none;
   transform: var(--motion-press);
 }
 .choice:disabled {
   cursor: default;
+}
+.cross {
+  position: absolute;
+  top: calc(-1 * var(--space-2));
+  right: calc(-1 * var(--space-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border: var(--border-thin);
+  border-color: var(--color-paper);
+  border-radius: var(--radius-pill);
 }
 .check {
   position: absolute;
@@ -510,6 +525,12 @@ button.cell {
 }
 .cell[data-winning='true'] {
   background: var(--color-maiz);
+  outline: 3px solid var(--color-ink);
+  outline-offset: -6px;
+}
+.cell[data-winning='true']:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
 }
 .cell[data-marked='true'] .cellArt,
 .cell[data-marked='true'] .cellEmoji {
@@ -549,7 +570,8 @@ button.cell {
   box-sizing: border-box;
   width: 100%;
   max-width: 220px;
-  padding: var(--space-2);
+  padding: 0;
+  overflow: hidden;
   background: var(--color-white);
   border: var(--border-thick);
   border-radius: var(--radius-sm);

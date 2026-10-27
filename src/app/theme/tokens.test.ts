@@ -129,6 +129,40 @@ const UI_PAIRS: [string, string, number][] = [
   ['color-night-dash', 'color-night-raised', 3],
 ];
 
+// Control/card boundaries (night-dash) and the focus ring must reach 3:1 against the ground,
+// the raised panel fill and paper/white surfaces, in every theme (WCAG 1.4.11).
+describe('boundary and focus colours (non-text contrast)', () => {
+  for (const [name, t] of Object.entries({
+    night: base,
+    light,
+    'auto-light': autoLight,
+    contrast,
+  })) {
+    for (const bg of ['color-night', 'color-night-raised']) {
+      it(`${name}: color-night-dash on ${bg} >= 3`, () => {
+        expect(ratio(hex(t, 'color-night-dash'), hex(t, bg))).toBeGreaterThanOrEqual(3);
+      });
+    }
+    for (const bg of ['color-night', 'color-night-raised', 'color-paper', 'color-white']) {
+      // On the dark grounds the focus ring sits on night; on paper/white the ink halo carries it
+      // (ink halo vs surface is asserted below), so the ring itself must clear 3:1 on the ground.
+      if (bg === 'color-night' || bg === 'color-night-raised') {
+        it(`${name}: color-focus on ${bg} >= 3`, () => {
+          expect(ratio(hex(t, 'color-focus'), hex(t, bg))).toBeGreaterThanOrEqual(3);
+        });
+      }
+    }
+    it(`${name}: color-focus on paper and white >= 3 (light themes) or ink halo >= 3`, () => {
+      for (const bg of ['color-paper', 'color-white']) {
+        const ring = ratio(hex(t, 'color-focus'), hex(t, bg));
+        const halo = ratio(hex(t, 'color-ink'), hex(t, bg));
+        expect(Math.max(ring, halo)).toBeGreaterThanOrEqual(3);
+      }
+      expect(ratio(hex(t, 'color-focus'), hex(t, 'color-night'))).toBeGreaterThanOrEqual(3);
+    });
+  }
+});
+
 describe('token contrast', () => {
   for (const [name, t] of Object.entries({
     night: base,

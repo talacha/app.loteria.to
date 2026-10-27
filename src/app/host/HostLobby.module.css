@@ -75,11 +75,13 @@
   font-weight: 600;
   border-radius: var(--radius-sm);
   border: var(--border-thick);
+  border-color: var(--color-night-dash);
   cursor: pointer;
   color: var(--color-text);
   background: var(--night-raised);
 }
 .primary {
+  border-color: var(--color-ink);
   background: var(--maiz);
   color: var(--ink);
   box-shadow: var(--shadow-hard);
@@ -87,6 +89,7 @@
 .settings {
   background: var(--night-raised);
   border: var(--border-thick);
+  border-color: var(--color-night-dash);
   border-radius: var(--radius-md);
 }
 .settings summary {
@@ -122,7 +125,46 @@
 .range {
   width: 100%;
   min-height: var(--tap);
+  appearance: none;
+  background: transparent;
+  accent-color: var(--color-maiz);
 }
+.range::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-night-dash);
+}
+.range::-moz-range-track {
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-night-dash);
+}
+.range::-moz-range-progress {
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-maiz);
+}
+.range::-webkit-slider-thumb {
+  appearance: none;
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  margin-top: -9px;
+  border-radius: var(--radius-pill);
+  background: var(--color-maiz);
+  border: var(--border-thick);
+  border-color: var(--color-text);
+}
+.range::-moz-range-thumb {
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  background: var(--color-maiz);
+  border: var(--border-thick);
+  border-color: var(--color-text);
+}
+
 .check {
   display: flex;
   align-items: flex-start;
@@ -238,8 +280,9 @@
 .page summary:focus-visible,
 .page input:focus-visible,
 .page select:focus-visible {
-  outline: 3px solid var(--color-maiz);
+  outline: 3px solid var(--color-focus);
   outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--color-ink);
 }
 
 .modes {
@@ -264,18 +307,20 @@
   min-height: var(--tap);
   padding: var(--space-4);
   border: var(--border-thick);
+  border-color: var(--color-night-dash);
   border-radius: var(--radius-md);
   background: var(--night-raised);
   color: var(--color-text);
   cursor: pointer;
 }
 .mode[data-checked] {
+  border-color: var(--color-ink);
   background: var(--maiz);
   color: var(--ink);
   box-shadow: var(--shadow-hard);
 }
 .mode:focus-within {
-  outline: 3px solid var(--maiz);
+  outline: 3px solid var(--color-focus);
   outline-offset: 2px;
 }
 .modeInput {

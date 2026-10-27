@@ -1,3 +1,4 @@
+import QRCode from 'qrcode';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -185,6 +186,20 @@ describe('game components', () => {
     expect(container.querySelector('svg')).toBeTruthy();
     expect(screen.getByText('K7MPQ')).toBeTruthy();
     expect(screen.getByText('Únete en app.loteria.to')).toBeTruthy();
+  });
+  it('QrCard keeps a 4-module light margin inside the border', () => {
+    const { container } = render(<QrCard url="https://app.loteria.to/r/K7MPQ" code="K7MPQ" />);
+    const svg = container.querySelector('svg') as SVGSVGElement;
+    const [x, y, w, h] = (svg.getAttribute('viewBox') ?? '').split(' ').map(Number) as number[];
+    const n = QRCode.create('https://app.loteria.to/r/K7MPQ', { errorCorrectionLevel: 'M' }).modules
+      .size;
+    expect(x).toBeLessThanOrEqual(-4);
+    expect(y).toBeLessThanOrEqual(-4);
+    expect((w as number) + (x as number)).toBeGreaterThanOrEqual(n + 4);
+    expect((h as number) + (y as number)).toBeGreaterThanOrEqual(n + 4);
+    const bg = svg.querySelector('rect');
+    expect(bg?.getAttribute('fill')).toBe('var(--color-white)');
+    expect(Number(bg?.getAttribute('x'))).toBeLessThanOrEqual(-4);
   });
   it('WordCard shows language, word, review and verse', () => {
     render(

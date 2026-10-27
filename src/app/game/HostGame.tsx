@@ -283,12 +283,33 @@ export default function HostGame(props: GameProps) {
                     type="button"
                     className={styles.choice}
                     data-state={right ? 'correct' : wrong ? 'wrong' : 'idle'}
+                    aria-label={
+                      wrong && !right
+                        ? `${wordOf(id, room.local?.spokenLang ?? 'es')} · ${t('theme.kit.wrong')}`
+                        : undefined
+                    }
                     disabled={
                       !running || ended || play.callPoints > 0 || wrong || play.picksUsed >= 2
                     }
                     onClick={() => play.pick(id)}
                   >
                     {wordOf(id, room.local?.spokenLang ?? 'es')}
+                    {wrong && !right ? (
+                      <svg
+                        className={styles.wrongMark}
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M6 6l12 12M18 6L6 18" />
+                      </svg>
+                    ) : null}
                   </button>
                 );
               })}

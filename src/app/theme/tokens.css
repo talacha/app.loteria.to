@@ -98,6 +98,7 @@
   --color-text: var(--color-paper);
   --color-accent-text: var(--color-maiz);
   --color-disabled-on-night: #3a3e6a;
+  --color-focus: var(--color-maiz);
 
   /* lang */
   --lang-nah: var(--color-jade);
@@ -205,7 +206,6 @@
   --color-ink-muted: var(--color-muted-on-night);
   --color-accent: var(--color-maiz);
   --color-accent-ink: var(--color-ink);
-  --color-focus: var(--color-maiz);
   --color-border: var(--color-night-dash);
   --color-warn-bg: var(--color-maiz-soft);
   --color-card-white: var(--color-white);
@@ -222,6 +222,7 @@
   --color-text: #16182f;
   --color-accent-text: #8a5a00;
   --color-disabled-on-night: #ddd3ba;
+  --color-focus: #8a5a00;
 }
 /* Auto follows the OS: light when it asks for light (dark otherwise). */
 @media (prefers-color-scheme: light) {
@@ -235,6 +236,7 @@
     --color-text: #16182f;
     --color-accent-text: #8a5a00;
     --color-disabled-on-night: #ddd3ba;
+    --color-focus: #8a5a00;
   }
 }
 
@@ -253,6 +255,7 @@
   --color-accent-text: #ffc233;
   --color-jade-soft: #ffffff;
   --color-disabled-on-night: #000000;
+  --color-focus: #ffc233;
 }
 
 html {
@@ -275,7 +278,7 @@ h3 {
   letter-spacing: -0.02em;
 }
 :focus-visible {
-  outline: 3px solid var(--color-maiz);
+  outline: 3px solid var(--color-focus);
   outline-offset: 2px;
   box-shadow: 0 0 0 5px var(--color-ink);
 }

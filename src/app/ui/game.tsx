@@ -223,6 +223,22 @@ export function ChoiceTile({
           </svg>
         </span>
       ) : null}
+      {state === 'wrong' ? (
+        <span className={styles.cross} aria-hidden="true">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </span>
+      ) : null}
     </button>
   );
 }
@@ -320,6 +336,9 @@ export function Tabla({
   );
 }
 
+/** Light margin around the code, in modules (QR spec: at least 4). */
+export const QR_QUIET = 4;
+
 function QrSvg({ value }: { value: string }) {
   const qr = QRCode.create(value, { errorCorrectionLevel: 'M' });
   const n = qr.modules.size;
@@ -328,12 +347,19 @@ function QrSvg({ value }: { value: string }) {
     for (let c = 0; c < n; c++) if (qr.modules.data[r * n + c]) cells.push(`M${c} ${r}h1v1h-1z`);
   return (
     <svg
-      viewBox={`0 0 ${n} ${n}`}
+      viewBox={`${-QR_QUIET} ${-QR_QUIET} ${n + 2 * QR_QUIET} ${n + 2 * QR_QUIET}`}
       shapeRendering="crispEdges"
       role="img"
       aria-label={value}
       focusable="false"
     >
+      <rect
+        x={-QR_QUIET}
+        y={-QR_QUIET}
+        width={n + 2 * QR_QUIET}
+        height={n + 2 * QR_QUIET}
+        fill="var(--color-white)"
+      />
       <path d={cells.join('')} fill="var(--color-ink)" />
     </svg>
   );
