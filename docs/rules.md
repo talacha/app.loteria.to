@@ -5,7 +5,7 @@
 1. A game is played in a **room**. The person who creates it is the **organiser**; the room gets a code that is not in use by any other room.
 2. Players join with the room code (typed, by link or by QR code), a name (1–24 characters; duplicates allowed) and a picture of their choice.
 3. A round can start with **at least 2 players**. A room holds **at most 20 players**; a 21st player is offered a new room instead.
-4. The organiser's screen is the **cantor's screen**: it calls the cards and shows the round. It does not hold a cartón. The organiser can start the round, pause, resume, change the calling speed and end the round early.
+4. The organiser's screen is the **cantor's screen**: it calls the cards and shows the round. When creating the room, the organiser chooses whether that screen **only displays** the game or **also plays**: with "Jugar también", the organiser gets their own cartón and spelling choices on the same screen and plays by the same rules as everyone else (they count toward the 2-player minimum and their picks are scored in the same order as all others). The organiser can start the round, pause, resume, change the calling speed and end the round early.
 5. A player who joins after the round has started gets a cartón with every card already called crossed off, and starts with 0 points.
 6. A player who reloads or briefly disconnects gets back the same cartón, crossed squares, points and languages.
 
