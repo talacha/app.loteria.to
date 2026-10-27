@@ -4,8 +4,9 @@
 
 ## 1. Setup
 1. A room is created and players join (link, QR or code) and pick a call language: Náhuatl, Maya yucateco, Quechua (Cusco-Collao), Español or English. Only languages whose names are approved are offered in production.
-2. Each phone player gets one 4×4 tabla (16 cards) assigned by the host. Paper players use printed tablas.
-3. The host chooses the winning pattern (line, four corners, centre, full board) and the call speed. **[Assumption]** Default pattern: any line (row, column or diagonal). Default speed: Normal, 10 s per call.
+2. **[Assumption]** The device that creates the room runs the automatic caller screen (it does not hold a tabla). A creator who wants to play also joins from a second device.
+3. Each phone player gets one 4×4 tabla (16 cards) assigned by the host. Paper players use printed tablas.
+4. The host chooses the winning pattern (line, four corners, centre, full board) and the call speed. **[Assumption]** Default pattern: any line (row, column or diagonal). Default speed: Normal, 10 s per call.
 
 ## 2. The automatic caller
 1. When the host taps **Empezar**, cards are drawn automatically from the shuffled 54-card deck, one every call interval. There is no manual "next card". The host can **pause and resume** and change speed.
