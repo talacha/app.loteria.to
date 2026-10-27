@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
-import { Button, Panel, Pill, QrCard, RoomCodeTiles, RosterTile } from '../ui';
+import { Button, Panel, PaperCard, Pill, QrCard, RoomCodeTiles, RosterTile } from '../ui';
 import styles from './HostLobby.module.css';
 import { MAX_SPEED, MIN_SPEED, SPEED_PRESETS } from './roundMachine';
 import { MAX_PLAYERS } from './useHostRoom';
@@ -83,7 +83,9 @@ export default function HostLobby({ room }: { room: HostRoom }) {
             {t('host.scanQr')}
           </h2>
           <QrCard url={room.joinUrl} code={room.code} />
-          <RoomCodeTiles code={room.code} label={t('host.lobby.roomLabel')} />
+          <PaperCard>
+            <RoomCodeTiles code={room.code} label={t('host.lobby.roomLabel')} />
+          </PaperCard>
           <div className={styles.row}>
             <Button variant="secondary" fit onClick={() => void copy()}>
               {copied ? t('host.lobby.linkCopied') : t('host.lobby.copyLink')}

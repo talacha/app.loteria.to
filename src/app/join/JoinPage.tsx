@@ -111,7 +111,6 @@ export default function JoinPage() {
   const [pronouns, setPronouns] = useState('');
   const [spokenLang, setSpokenLang] = useState<Lang>(saved.spokenLang);
   const [error, setError] = useState(false);
-  const [paperOpen, setPaperOpen] = useState(false);
   const [step, setStep] = useState<'who' | 'lang'>('who');
   const [joined, setJoined] = useState<Joined | null>(() => (validCode ? loadSession(code) : null));
   const hostKeyP = useRef<Promise<string | undefined> | null>(null);
@@ -321,16 +320,6 @@ export default function JoinPage() {
           {t('join.next')}
         </button>
       </form>
-
-      <button
-        type="button"
-        className={styles.link}
-        onClick={() => setPaperOpen((o) => !o)}
-        aria-expanded={paperOpen}
-      >
-        {t('join.paperLink')}
-      </button>
-      {paperOpen && <p className={styles.paper}>{t('join.paperExplain')}</p>}
     </main>
   );
 }

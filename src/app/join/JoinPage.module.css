@@ -1,11 +1,14 @@
 .page {
+  box-sizing: border-box;
+  min-height: 100dvh;
   max-width: 30rem;
   margin: 0 auto;
   padding: var(--space-4);
-  color: var(--color-ink);
+  background: var(--color-night);
+  color: var(--color-paper);
 }
 .code {
-  color: var(--color-ink-muted);
+  color: var(--color-muted-on-night);
 }
 .form {
   display: flex;
@@ -23,10 +26,15 @@
   min-height: var(--tap);
   font: inherit;
   padding: 0 var(--space-3);
-  color: var(--color-ink);
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
+  color: var(--color-paper);
+  background: transparent;
+  border: 2px solid var(--color-night-dash);
   border-radius: var(--radius);
+  accent-color: var(--color-maiz);
+}
+.field input::placeholder {
+  color: var(--color-muted-on-night);
+  opacity: 1;
 }
 .fieldset {
   border: 0;
@@ -48,45 +56,29 @@
   min-width: var(--tap);
   aspect-ratio: 1;
   font-size: 1.75rem;
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
+  background: transparent;
+  border: 2px solid var(--color-night-dash);
   border-radius: var(--radius);
   cursor: pointer;
 }
 .glyph[data-selected='true'] {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px var(--color-accent);
+  border-color: var(--color-maiz);
+  box-shadow: 0 0 0 3px var(--color-maiz);
 }
 .error {
   margin: 0;
-  color: var(--color-accent);
+  color: var(--color-maiz);
   font-weight: 700;
 }
 .submit {
   min-height: 3.25rem;
   font: inherit;
   font-weight: 800;
-  background: var(--color-accent);
-  color: var(--color-accent-ink);
+  background: var(--color-maiz);
+  color: var(--color-ink);
   border: 0;
   border-radius: var(--radius);
   cursor: pointer;
-}
-.link {
-  margin-top: var(--space-4);
-  min-height: var(--tap);
-  background: none;
-  border: 0;
-  font: inherit;
-  color: var(--color-cielo);
-  text-decoration: underline;
-  cursor: pointer;
-}
-.paper {
-  margin: 0;
-  padding: var(--space-3);
-  background: var(--color-warn-bg);
-  border-radius: var(--radius);
 }
 .topBar {
   display: flex;
