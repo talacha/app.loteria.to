@@ -197,21 +197,21 @@ export default function LobbyWaiting({
           </Button>
           <span className={styles.topEnd}>
             <UiLangSwitch />
-          <span role="status">
-            <Pill tone={lost ? 'paper' : 'jade'} dot={!!live && !lost}>
-              {lost
-                ? t('player.connectionLost')
-                : live
-                  ? t('player.connected')
-                  : t('player.connecting')}
-              {live && !lost ? (
-                <>
-                  {' · '}
-                  {live.verified ? t('lobby.verified') : t('lobby.unverified')}
-                </>
-              ) : null}
-            </Pill>
-          </span>
+            <span role="status">
+              <Pill tone={lost ? 'paper' : 'jade'} dot={!!live && !lost}>
+                {lost
+                  ? t('player.connectionLost')
+                  : live
+                    ? t('player.connected')
+                    : t('player.connecting')}
+                {live && !lost ? (
+                  <>
+                    {' · '}
+                    {live.verified ? t('lobby.verified') : t('lobby.unverified')}
+                  </>
+                ) : null}
+              </Pill>
+            </span>
           </span>
         </div>
 

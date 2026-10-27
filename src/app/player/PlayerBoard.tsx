@@ -359,7 +359,11 @@ export default function PlayerBoard({
                         strokeLinejoin="round"
                       >
                         <path d="M4 9v6h4l5 4V5L8 9H4z" />
-                        {muted ? <path d="M17 9l5 6M22 9l-5 6" /> : <path d="M16.5 8.5a5 5 0 010 7" />}
+                        {muted ? (
+                          <path d="M17 9l5 6M22 9l-5 6" />
+                        ) : (
+                          <path d="M16.5 8.5a5 5 0 010 7" />
+                        )}
                       </svg>
                     </button>
                     <span className={styles.ai}>{t('player.aiVoice')}</span>

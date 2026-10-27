@@ -1,4 +1,12 @@
-import { MAX_TABLA_INDEX, checkClaim, decodeTablaCode, deckOrder, seedRef, tabla } from '@engine';
+import {
+  MAX_TABLA_INDEX,
+  checkClaim,
+  decodeTablaCode,
+  deckOrder,
+  isCardComplete,
+  seedRef,
+  tabla,
+} from '@engine';
 import type { CardId, Category, Lang, PatternId, PickState } from '@engine';
 
 export type DeckCard = { id: CardId; category: Category };
@@ -269,10 +277,12 @@ export function validatePaperCode(s: RoundState, deck: DeckCard[], code: string)
   const d = decodeTablaCode(code);
   if (!d.ok || d.index === undefined || d.seedRef === undefined) return { kind: 'invalid' };
   if (d.seedRef !== seedRef(s.roomSeed)) return { kind: 'otherGame' };
-  const r = checkClaim(tabla(s.roomSeed, d.index, deck), calledCards(s), s.settings.pattern);
-  return r.valid
+  const t = tabla(s.roomSeed, d.index, deck);
+  const called = new Set(calledCards(s));
+  const crossed = t.cards.filter((c) => called.has(c));
+  return isCardComplete(t, crossed)
     ? { kind: 'valid', index: d.index }
-    : { kind: 'almost', index: d.index, missing: r.missing ?? [] };
+    : { kind: 'almost', index: d.index, missing: t.cards.filter((c) => !called.has(c)) };
 }
 
 const B32 = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';

@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { cards, isAvoidedPair } from '@content';
-import { MAX_TABLA_INDEX, choicesFor, deckOrder, tabla } from '@engine';
+import { MAX_TABLA_INDEX, tablaCode, choicesFor, deckOrder, tabla } from '@engine';
 import '../i18n';
 
 vi.mock('@print/options', async (orig) => ({
@@ -263,5 +263,53 @@ describe('automatic caller', () => {
     const n = calls().length;
     await tick(60_000);
     expect(calls()).toHaveLength(n);
+  });
+
+  describe('paper boards', () => {
+    const check = async (code: string) => {
+      fireEvent.click(screen.getByRole('button', { name: 'Revisar tabla de papel' }));
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: code } });
+      fireEvent.click(screen.getByRole('button', { name: 'Revisar' }));
+      await flush();
+    };
+
+    it('an incomplete board gets a friendly Casi with the missing cards', async () => {
+      await started(['a', 'b']);
+      await check(tablaCode('TESTSEED', 5));
+      expect(screen.getByText(/Casi/)).toBeTruthy();
+      expect(screen.getByRole('list', { name: 'Cartas que faltan' })).toBeTruthy();
+      await tick(10_000);
+      expect(sent.some((m) => m.t === 'end')).toBe(false);
+    });
+
+    it('a complete paper board wins at the end of the call (0 points)', async () => {
+      const [x] = tiedIndices();
+      const at = completesAt(x);
+      const late = Array.from({ length: 400 }, (_, i) => i).filter((i) => completesAt(i) > at);
+      assignIndices([late[0]!, late[1]!]);
+      await started(['a', 'b']);
+      for (let k = 0; k < at - 1; k++) await tick(10_000);
+      await check(tablaCode('TESTSEED', x));
+      expect(screen.getByText(/completa/)).toBeTruthy();
+      await tick(10_000);
+      const end = sent.find((m) => m.t === 'end') as Sent;
+      expect(end.winners).toEqual([`paper:${x + 1}`]);
+      expect(end.reason).toBe('full-card');
+    });
+
+    it('a same-call tie goes to the phone player with points', async () => {
+      const [x, y] = tiedIndices();
+      assignIndices([x, y]);
+      await started(['a', 'b']);
+      const at = completesAt(x);
+      for (let k = 0; k < at; k++) {
+        await pick('a');
+        if (k < at - 1) await tick(10_000);
+      }
+      await check(tablaCode('TESTSEED', y + 1 > MAX_TABLA_INDEX ? 0 : x));
+      await tick(10_000);
+      const end = sent.find((m) => m.t === 'end') as Sent;
+      expect(end.winners).toEqual(['a']);
+    });
   });
 });

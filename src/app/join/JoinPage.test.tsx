@@ -88,7 +88,7 @@ describe('JoinPage', () => {
       fireEvent.click(screen.getByRole('button', { name: 'English' }));
     });
     // Menus are English now; the chosen spoken language is still Náhuatl.
-    fireEvent.click(screen.getByRole('button', { name: 'Play in Náhuatl' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Play in Nahuatl' }));
     await act(async () => {
       await new Promise((r) => setTimeout(r, 20));
     });

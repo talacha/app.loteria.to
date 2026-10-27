@@ -16,10 +16,7 @@ export interface CurrentCall {
   receivedAt: number;
 }
 
-export type Feedback =
-  | null
-  | { kind: 'ok'; points: 1 | 2; first: boolean }
-  | { kind: 'casi' };
+export type Feedback = null | { kind: 'ok'; points: 1 | 2; first: boolean } | { kind: 'casi' };
 
 export interface PlayerState {
   round: RoundInfo | null;
@@ -55,7 +52,14 @@ export type PlayerAction =
   | { type: 'assign'; tablaIndex: number; roundNo: number }
   | { type: 'call'; cardId: CardId; choices: [CardId, CardId, CardId]; i: number; now: number }
   | { type: 'pick'; cardId: CardId }
-  | { type: 'pickResult'; roundNo: number; i: number; correct: boolean; points: number; first: boolean }
+  | {
+      type: 'pickResult';
+      roundNo: number;
+      i: number;
+      correct: boolean;
+      points: number;
+      first: boolean;
+    }
   | { type: 'callClosed'; roundNo: number; i: number }
   | { type: 'scores'; roundNo: number; points: Record<string, number> }
   | { type: 'dismissEnded' }

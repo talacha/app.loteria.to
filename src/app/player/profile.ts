@@ -27,7 +27,11 @@ export function readLocalProfile(): Partial<LocalProfile> {
       glyph: typeof o.glyph === 'string' ? o.glyph : undefined,
       uiLang: o.uiLang === 'en' || o.uiLang === 'es' ? o.uiLang : undefined,
       // `labelLang` is what earlier versions stored.
-      spokenLang: isLang(o.spokenLang) ? o.spokenLang : isLang(o.labelLang) ? o.labelLang : undefined,
+      spokenLang: isLang(o.spokenLang)
+        ? o.spokenLang
+        : isLang(o.labelLang)
+          ? o.labelLang
+          : undefined,
     };
   } catch {
     return {};
