@@ -1,4 +1,4 @@
-import { afterEach, describe, it, expect } from 'vitest';
+import { afterEach, describe, it, expect, vi } from 'vitest';
 import { cleanup, render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router';
 import '../i18n';
@@ -14,12 +14,15 @@ function renderAt(path: string) {
   );
 }
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  vi.unstubAllEnvs();
+});
 
 describe('JoinPage', () => {
   it('requires a name', () => {
     renderAt('/r/ABCDE');
-    fireEvent.click(screen.getByRole('button', { name: /entrar a la sala/i }));
+    fireEvent.click(screen.getByRole('button', { name: /continuar/i }));
     expect(screen.getByRole('alert').textContent).toMatch(/nombre/i);
   });
   it('rejects a malformed code', () => {
@@ -49,11 +52,29 @@ describe('JoinPage', () => {
       }),
     );
     renderAt('/r/ABCDE');
-    expect(screen.getByText(/Esperando a quien canta/)).toBeTruthy();
+    expect(screen.getByText(/Ya casi empezamos/)).toBeTruthy();
     sessionStorage.clear();
   });
   it('has exactly one #main', () => {
     renderAt('/r/ABCDE');
     expect(document.querySelectorAll('#main')).toHaveLength(1);
+  });
+  it('goes to the language step after the name, with one card per callable language', () => {
+    vi.stubEnv('VITE_HIDE_UNREVIEWED', 'false'); // preview build: all five languages
+    renderAt('/r/ABCDE');
+    fireEvent.change(screen.getByPlaceholderText(/Como te gustaría/), {
+      target: { value: 'Ana' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /continuar/i }));
+    expect(screen.getByRole('heading', { name: '¿En qué idioma te cantamos?' })).toBeTruthy();
+    expect(screen.getByText('Paso 2 de 2')).toBeTruthy();
+    const radios = screen.getAllByRole('radio');
+    expect(radios).toHaveLength(5);
+    expect(screen.getAllByText('palabra en revisión').length).toBeGreaterThan(0);
+    fireEvent.click(screen.getByRole('radio', { name: /Español/ }));
+    expect(screen.getByRole('button', { name: 'Jugar en Español' })).toBeTruthy();
+    fireEvent.click(screen.getByRole('radio', { name: /Náhuatl/ }));
+    expect(screen.getByRole('button', { name: 'Jugar en Náhuatl' })).toBeTruthy();
+    expect(screen.getByLabelText(/Modo escucha/)).toBeTruthy();
   });
 });

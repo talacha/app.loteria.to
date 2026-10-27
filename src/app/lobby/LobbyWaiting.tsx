@@ -4,7 +4,7 @@ import { createTransport, getSeat, type Transport } from '@net';
 import PlayerGame from '../game/PlayerGame';
 import type { PlayerProfile } from '../player/PlayerBoard';
 import Roster, { type RosterPlayer } from './Roster';
-import RoomCode from './RoomCode';
+import { Button, Panel, PaperCard, Pill, ReviewTag, RoomCodeTiles } from '../ui';
 import { MessageLog } from './messageLog';
 import { langInReview } from './langInfo';
 import styles from './LobbyWaiting.module.css';
@@ -184,6 +184,7 @@ export default function LobbyWaiting({
           profile={profile}
           log={log}
           onLeave={leave}
+          onBackToLobby={() => setPlaying(false)}
         />
       </>
     );
@@ -196,67 +197,104 @@ export default function LobbyWaiting({
     <main id="main" className={styles.page}>
       <div className={styles.inner}>
         <div className={styles.topRow}>
-          <button type="button" className={styles.back} onClick={leave}>
-            <span aria-hidden="true">‹</span> {t('lobby.leave')}
-          </button>
-          <span
-            className={styles.pill}
-            role="status"
-            data-state={lost ? 'lost' : live ? 'ok' : 'wait'}
-          >
-            <span aria-hidden="true">{lost ? '▲' : live ? '●' : '○'}</span>{' '}
-            {lost
-              ? t('player.connectionLost')
-              : live
-                ? t('player.connected')
-                : t('player.connecting')}
-            {live && (
-              <>
-                {' · '}
-                {live.verified ? t('lobby.verified') : t('lobby.unverified')}
-              </>
-            )}
+          <Button variant="link" icon={<Chevron />} onClick={leave}>
+            {t('lobby.leave')}
+          </Button>
+          <span role="status">
+            <Pill tone={lost ? 'paper' : 'jade'} dot={!!live && !lost}>
+              {lost
+                ? t('player.connectionLost')
+                : live
+                  ? t('player.connected')
+                  : t('player.connecting')}
+              {live && !lost ? (
+                <>
+                  {' · '}
+                  {live.verified ? t('lobby.verified') : t('lobby.unverified')}
+                </>
+              ) : null}
+            </Pill>
           </span>
         </div>
 
-        <div className={styles.codeCard}>
-          <RoomCode code={code} />
-          <div className={styles.youPlay}>
-            <span>{t('lobby.youPlay', { lang: langName })}</span>
-            {review && <span className={styles.review}>{t('lobby.reviewShort')}</span>}
+        <div className={styles.cols}>
+          <div className={styles.col}>
+            <PaperCard size="lg" className={styles.codeCard}>
+              <RoomCodeTiles code={code} label={t('lobby.room')} />
+              <div className={styles.youPlay}>
+                <span>{t('lobby.youPlay', { lang: langName })}</span>
+                {review && <ReviewTag variant="word" />}
+              </div>
+            </PaperCard>
+
+            {live && !live.verified && <p className={styles.notice}>{t('host.unverifiedRoom')}</p>}
+            {noHost && (
+              <p className={styles.notice} role="alert">
+                {t('lobby.noHost')}{' '}
+                <a
+                  href="/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    leave();
+                  }}
+                >
+                  {t('lobby.toHome')}
+                </a>
+              </p>
+            )}
+            {full && (
+              <p className={styles.notice} role="alert">
+                {t('lobby.full')}
+              </p>
+            )}
+
+            <div className={styles.head}>
+              <h1 className={styles.title}>{t('lobby.waitingTitle')}</h1>
+              <p className={styles.lead}>{t('lobby.waitingLead')}</p>
+            </div>
+          </div>
+
+          <div className={styles.col}>
+            <Roster players={roster} selfSeat={live?.seat} />
+            <Panel variant="dashed" className={styles.invite}>
+              <svg
+                aria-hidden="true"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--color-maiz)"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+                <path d="M14 14h3v3h-3zM20 14v1M14 20h1M18 20h3v1" />
+              </svg>
+              <p>{t('lobby.invite', { code })}</p>
+            </Panel>
           </div>
         </div>
-
-        {live && !live.verified && <p className={styles.notice}>{t('host.unverifiedRoom')}</p>}
-        {noHost && (
-          <p className={styles.notice} role="alert">
-            {t('lobby.noHost')}{' '}
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault();
-                leave();
-              }}
-            >
-              {t('lobby.toHome')}
-            </a>
-          </p>
-        )}
-        {full && (
-          <p className={styles.notice} role="alert">
-            {t('lobby.full')}
-          </p>
-        )}
-
-        <div className={styles.head}>
-          <h1 className={styles.title}>{t('lobby.waitingTitle')}</h1>
-          <p className={styles.lead}>{t('lobby.waitingLead')}</p>
-        </div>
-
-        <Roster players={roster} selfSeat={live?.seat} />
-
-        <p className={styles.invite}>{t('lobby.invite', { code })}</p>
       </div>
     </main>
+  );
+}
+
+function Chevron() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M15 5l-7 7 7 7" />
+    </svg>
   );
 }

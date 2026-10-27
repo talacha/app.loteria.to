@@ -27,7 +27,10 @@ export function supabaseCreds(): { url: string; key: string } | null {
   const e = process.env;
   const url = e.VITE_SUPABASE_URL || e.NEXT_PUBLIC_SUPABASE_URL || '';
   const key =
-    e.VITE_SUPABASE_ANON_KEY || e.NEXT_PUBLIC_SUPABASE_ANON_KEY || e.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || '';
+    e.VITE_SUPABASE_ANON_KEY ||
+    e.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    e.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+    '';
   return url && key ? { url: url.trim(), key: key.trim() } : null;
 }
 
@@ -39,7 +42,10 @@ export function cardPool(): { id: CardId; category: Category }[] {
   } catch {
     // Working copy mid-edit (e.g. merge markers): fall back to the committed deck.
     raw = JSON.parse(
-      execFileSync('git', ['show', 'HEAD:src/content/cards.json'], { cwd: root, maxBuffer: 1 << 26 }).toString(),
+      execFileSync('git', ['show', 'HEAD:src/content/cards.json'], {
+        cwd: root,
+        maxBuffer: 1 << 26,
+      }).toString(),
     ) as Raw;
   }
   const list = Array.isArray(raw) ? raw : raw.cards;
@@ -53,7 +59,12 @@ export function pct(sorted: number[], p: number): number {
 
 export function stats(xs: number[]): { n: number; p50: number; p95: number; max: number } {
   const s = [...xs].sort((a, b) => a - b);
-  return { n: s.length, p50: pct(s, 50), p95: pct(s, 95), max: s.length ? (s[s.length - 1] as number) : NaN };
+  return {
+    n: s.length,
+    p50: pct(s, 50),
+    p95: pct(s, 95),
+    max: s.length ? (s[s.length - 1] as number) : NaN,
+  };
 }
 
 export const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));

@@ -23,7 +23,9 @@ export async function launchAppHost(): Promise<{
 }> {
   let server: ChildProcess | null = null;
   if (!process.env.LOADTEST_BASE_URL) {
-    server = spawn('pnpm', ['exec', 'vite', 'preview', '--port', String(port), '--strictPort'], { stdio: 'ignore' });
+    server = spawn('pnpm', ['exec', 'vite', 'preview', '--port', String(port), '--strictPort'], {
+      stdio: 'ignore',
+    });
     for (let i = 0; i < 50; i++) {
       try {
         if ((await fetch(base)).ok) break;
@@ -50,7 +52,10 @@ export async function launchAppHost(): Promise<{
       await page.getByRole('button', { name: RX.start }).click();
     },
     async waitEnd() {
-      await page.getByText(RX.winner).first().waitFor({ timeout: 10 * 60_000 });
+      await page
+        .getByText(RX.winner)
+        .first()
+        .waitFor({ timeout: 10 * 60_000 });
     },
     async close() {
       await browser.close();

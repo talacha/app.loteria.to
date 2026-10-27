@@ -132,7 +132,7 @@ describe('host lobby', () => {
     await flush();
     sent.length = 0;
     await emit(hello('late', 'Bea'));
-    expect(sent.map((m) => m.t)).toEqual(['round', 'lobby', 'assign']);
+    expect(sent.map((m) => m.t)).toEqual(['round', 'lobby', 'assign', 'call']);
     const lobby = sent[1]!;
     expect(lobby).toMatchObject({ status: 'started' });
     expect((lobby.players as { seat: string }[]).map((p) => p.seat)).toEqual(['late']);
@@ -225,7 +225,7 @@ describe('resume', () => {
     await flush();
     await flush();
     expect(screen.getByRole('button', { name: 'Empezar' })).toBeTruthy();
-    expect(screen.getAllByText(/ABC DE/).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole('img', { name: /A B C D E/ }).length).toBeGreaterThan(0);
   });
 
   it('returns to the game when a round was in progress', async () => {
@@ -235,7 +235,7 @@ describe('resume', () => {
     await flush();
     await flush();
     expect(screen.queryByRole('button', { name: 'Empezar' })).toBeNull();
-    expect(screen.getByRole('button', { name: 'Seguir' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Reanudar' })).toBeTruthy();
     expect(sent.some((m) => m.t === 'lobby' && m.status === 'started')).toBe(true);
   });
 });

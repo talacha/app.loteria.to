@@ -4,8 +4,26 @@ import type { CardId, Lang } from '@engine';
 import { cardName, getCard } from '@content';
 import type { Msg, Transport } from '@net';
 import type { MessageLog } from '../lobby/messageLog';
-import { matcherProvider } from '@ai';
-import { canClaim, initialPlayerState, playerReducer, CLAIM_REPLY_TIMEOUT_MS } from './playerState';
+import { speakCall } from '../audio';
+import {
+  Button,
+  CallPanel,
+  ChoiceTile,
+  FeedbackStrip,
+  Panel,
+  Pill,
+  Tabla,
+  type CellData,
+  type PillTone,
+} from '../ui';
+import WinScreen from './WinScreen';
+import {
+  canClaim,
+  completedSet,
+  initialPlayerState,
+  playerReducer,
+  CLAIM_REPLY_TIMEOUT_MS,
+} from './playerState';
 import styles from './PlayerBoard.module.css';
 
 export interface PlayerProfile {
@@ -13,16 +31,20 @@ export interface PlayerProfile {
   glyph: string;
   pronouns?: string;
   labelLang: Lang;
+  /** Escucha: hide the written word, play by ear. */
+  listenOnly?: boolean;
 }
 
 export interface PlayerBoardProps {
   transport: Transport;
   room: { code: string; seat: string; hostVerified: boolean };
-  roster?: { seat: string }[];
+  roster?: { seat: string; name?: string }[];
   profile: PlayerProfile;
   /** Lobby message buffer; when absent the board listens to the transport directly. */
   log?: MessageLog;
   onLeave?: () => void;
+  /** "Volver a la sala" from the win screen; falls back to just closing the win screen. */
+  onBackToLobby?: () => void;
 }
 
 const TEXT_SCALES = [100, 115, 130, 150];
@@ -71,12 +93,20 @@ function Modal(props: {
   );
 }
 
-export default function PlayerBoard({ transport, room, roster, profile, log }: PlayerBoardProps) {
+export default function PlayerBoard({
+  transport,
+  room,
+  roster,
+  profile,
+  log,
+  onBackToLobby,
+}: PlayerBoardProps) {
   const { t } = useTranslation();
   const { code } = room;
   const [state, dispatch] = useReducer(playerReducer, initialPlayerState);
   const [lost, setLost] = useState(false);
   const [now, setNow] = useState(() => Date.now());
+  const [tick, setTick] = useState(() => Date.now());
   const [scaleIdx, setScaleIdx] = useState(() => {
     try {
       const n = Number(localStorage.getItem('loteria:textScale'));
@@ -88,10 +118,13 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
   const [contrast, setContrast] = useState(
     () => document.documentElement.dataset.theme === 'contrast',
   );
-  const [hint, setHint] = useState<{ cardId: CardId | null } | null>(null);
-  const claimBtn = useRef<HTMLButtonElement>(null);
+  const claimWrap = useRef<HTMLDivElement>(null);
   const wasModal = useRef(false);
-  const { name, glyph, labelLang } = profile;
+  const { name, labelLang } = profile;
+  const startListen = profile.listenOnly === true;
+  useEffect(() => {
+    if (startListen) dispatch({ type: 'setListenOnly', on: true });
+  }, [startListen]);
 
   useEffect(() => {
     const handle = (m: Msg) => {
@@ -124,7 +157,6 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
             i: m.i,
             now: Date.now(),
           });
-          setHint(null);
           break;
         case 'pickResult':
           if (m.seat === transport.seat)
@@ -238,6 +270,41 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
     });
   }, [state, transport]);
 
+  // Speak each new call; the speaker button replays it.
+  const cur = state.current;
+  const round = state.round;
+  const board = state.board;
+  const hidden = round?.mode === 'escucha' || state.listenOnly;
+  const speak = useCallback((cardId: CardId, lang: Lang) => {
+    const card = getCard(cardId);
+    if (!card) return;
+    try {
+      void speakCall(card, lang).catch(() => undefined);
+    } catch {
+      /* no audio available */
+    }
+  }, []);
+  const curKey = cur ? `${cur.i}:${cur.cardId}:${cur.lang}` : '';
+  useEffect(() => {
+    if (cur) speak(cur.cardId, cur.lang);
+    // Only when a different call arrives.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [curKey, speak]);
+
+  // Call timer: from the local receive time plus the round's speed.
+  const speedMs = (round?.speedSec ?? 8) * 1000;
+  const open = !!cur && !state.currentExpired;
+  useEffect(() => {
+    if (!open || !cur) return;
+    const id = setInterval(() => {
+      const n = Date.now();
+      setTick(n);
+      if (n - cur.receivedAt >= speedMs) dispatch({ type: 'expire', i: cur.i });
+    }, 250);
+    return () => clearInterval(id);
+  }, [open, cur, speedMs]);
+  const progress = cur ? (state.currentExpired ? 1 : (tick - cur.receivedAt) / speedMs) : 0;
+
   const pick = (cardId: CardId) => {
     const c = state.current;
     if (!c || !state.round) return;
@@ -251,23 +318,14 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
     });
   };
 
-  const curId = state.current?.cardId;
-  const audioOnly = state.round?.mode === 'escucha';
-  const boardCards = state.board;
-  const askHint = useCallback(async () => {
-    const r = await matcherProvider.pick({ cardId: curId, audioOnly }, boardCards);
-    setHint({ cardId: r.cardId && r.confidence >= 0.6 ? r.cardId : null });
-  }, [curId, audioOnly, boardCards]);
-
-  const { round, board, current } = state;
-  const hidden = round?.mode === 'escucha' || state.listenOnly;
-  const cooling = !canClaim(state, now) && board.length > 0 && state.ended === null;
+  const set = completedSet(state);
+  const canPress = canClaim(state, now);
   const showResult = state.claimResult !== null;
-  const showEnded = !showResult && state.ended !== null && !state.ended.dismissed;
-  const modalOpen = showResult || showEnded;
+  const endedOpen = state.ended !== null && !state.ended.dismissed;
+  const modalOpen = showResult;
 
   useEffect(() => {
-    if (wasModal.current && !modalOpen) claimBtn.current?.focus();
+    if (wasModal.current && !modalOpen) claimWrap.current?.querySelector('button')?.focus();
     wasModal.current = modalOpen;
   }, [modalOpen]);
 
@@ -276,52 +334,100 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
     .map((id) => label(id, labelLang))
     .join(', ');
 
+  const langName = (l: Lang) => t(`lobby.langs.${l}.name`);
+  const nameOf = (id: CardId, l: Lang) => {
+    const c = getCard(id);
+    return c ? (cardName(c, l)?.text ?? null) : null;
+  };
+  const inReview = (id: CardId, l: Lang) => {
+    const c = getCard(id);
+    const n = c ? cardName(c, l) : null;
+    return !!n && n.status !== 'approved';
+  };
+
+  if (endedOpen && state.ended && round && board.length > 0) {
+    const names: Record<string, string> = { [transport.seat]: name };
+    for (const r of roster ?? []) if (r.name) names[r.seat] = r.name;
+    return (
+      <WinScreen
+        board={board}
+        crossed={state.crossed}
+        pattern={round.pattern}
+        winners={state.ended.winners}
+        wonByMe={state.ended.wonByMe}
+        names={names}
+        labelLang={labelLang}
+        onAnother={() => dispatch({ type: 'dismissEnded' })}
+        onBack={() => {
+          dispatch({ type: 'dismissEnded' });
+          onBackToLobby?.();
+        }}
+      />
+    );
+  }
+
+  const cells: CellData[] = board.map((id, i) => ({
+    id,
+    emoji: emoji(id),
+    label: label(id, labelLang),
+    marked: state.crossed.includes(id),
+    winning: set?.includes(i) ?? false,
+  }));
+  const onBoard = !!cur && board.includes(cur.cardId);
+  const callWord = cur ? (nameOf(cur.cardId, cur.lang) ?? label(cur.cardId, 'es')) : '';
+  const callReview = cur && !hidden && inReview(cur.cardId, cur.lang) ? 'word' : undefined;
+  const crossedNow = !!cur && state.crossed.includes(cur.cardId);
+  const points = state.points[transport.seat] ?? 0;
+  const patternName = round ? t(`player.patternNames.${round.pattern}`) : '';
+
+  let feedback: { tone: 'neutral' | 'ok' | 'casi'; title: string; text: string };
+  if (state.feedback?.kind === 'casi')
+    feedback = {
+      tone: 'casi',
+      title: t('player.feedbackCasi'),
+      text: t('player.feedbackCasiHint'),
+    };
+  else if (state.feedback?.kind === 'ok' && cur)
+    feedback = {
+      tone: 'ok',
+      title: state.feedback.first ? t('player.feedbackFirst') : t('player.feedbackOk'),
+      text: t('player.feedbackOkHint', {
+        word: callWord,
+        gloss: label(cur.cardId, labelLang === 'en' ? 'en' : 'es'),
+      }),
+    };
+  else if (state.currentExpired && onBoard && !crossedNow)
+    feedback = { tone: 'neutral', title: t('player.timeUp'), text: t('player.timeUpHint') };
+  else
+    feedback = {
+      tone: 'neutral',
+      title: t('player.feedbackIdle'),
+      text: t('player.feedbackIdleHint'),
+    };
+
   return (
     <main id="main" className={styles.root} style={{ fontSize: `${TEXT_SCALES[scaleIdx]}%` }}>
       <div className={styles.content} inert={modalOpen}>
         <header className={styles.bar}>
-          <span className={styles.who}>
-            <span aria-hidden="true">{glyph}</span> {name}
-            {roster && roster.length > 0 && (
-              <small className={styles.status}>
-                {' '}
-                · {t('lobby.count', { count: roster.length })}
-              </small>
+          <span className={styles.code}>{code}</span>
+          <span className={styles.cardNo}>{cur ? t('player.cardOf', { n: cur.i + 1 }) : ''}</span>
+          <span className={styles.barEnd}>
+            {cur ? (
+              <Pill tone={cur.lang as PillTone}>{langName(cur.lang)}</Pill>
+            ) : (
+              <Pill tone={labelLang as PillTone}>{langName(labelLang)}</Pill>
             )}
-          </span>
-          <span className={styles.status} role="status" data-state={lost ? 'lost' : 'connected'}>
-            <span aria-hidden="true">{lost ? '▲' : '●'}</span>{' '}
-            {lost ? t('player.connectionLost') : t('player.connected')}
           </span>
         </header>
 
-        {!room.hostVerified && (
-          <p className={styles.notice} role="note">
-            {t('player.unverifiedBadge')}. {t('host.unverifiedRoom')}
-          </p>
-        )}
-
-        <div className={styles.tools}>
-          <button
-            type="button"
-            onClick={() => setScaleIdx((i) => Math.max(0, i - 1))}
-            disabled={scaleIdx === 0}
-            aria-label={t('player.textSmaller')}
-          >
-            A−
-          </button>
-          <button
-            type="button"
-            onClick={() => setScaleIdx((i) => Math.min(TEXT_SCALES.length - 1, i + 1))}
-            disabled={scaleIdx === TEXT_SCALES.length - 1}
-            aria-label={t('player.textLarger')}
-          >
-            A+
-          </button>
-          <button type="button" aria-pressed={contrast} onClick={() => setContrast((c) => !c)}>
-            {t('player.highContrast')}
-          </button>
-        </div>
+        <p className={styles.conn} role="status" data-state={lost ? 'lost' : 'connected'}>
+          <span aria-hidden="true">{lost ? '▲' : '●'}</span>{' '}
+          {lost ? t('player.connectionLost') : t('player.connected')}
+          {roster && roster.length > 0 ? (
+            <> · {t('lobby.count', { count: roster.length })}</>
+          ) : null}
+          {!room.hostVerified ? <> · {t('player.unverifiedBadge')}</> : null}
+        </p>
 
         {!round ? (
           <p className={styles.waiting}>{t('player.waitingRound')}</p>
@@ -331,79 +437,145 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
           </p>
         ) : (
           <>
-            <div className={styles.call} data-testid="call" aria-live="polite" aria-atomic="true">
-              {hidden ? (
-                <>
-                  <p className={styles.callWord}>{t('player.listening')}</p>
-                  <p className={styles.muted}>{t('player.listeningHint')}</p>
-                </>
-              ) : current ? (
-                <>
-                  <p className={styles.callEmoji} aria-hidden="true">
-                    {emoji(current.cardId)}
-                  </p>
-                  <p className={styles.callWord}>{label(current.cardId, current.lang)}</p>
-                </>
+            <div data-testid="call" aria-live="polite" aria-atomic="true">
+              {cur ? (
+                <CallPanel
+                  word={callWord}
+                  listening={hidden}
+                  review={callReview}
+                  progress={Math.min(1, Math.max(0, progress))}
+                  onReplay={() => speak(cur.cardId, cur.lang)}
+                />
               ) : (
-                <p className={styles.muted}>{t('player.currentCall')}…</p>
+                <Panel variant="dashed" className={styles.idle}>
+                  <span>{t('player.waitingCall')}</span>
+                </Panel>
               )}
             </div>
-            {current && !state.currentExpired && board.includes(current.cardId) && (
-              <div role="group" aria-label={t('player.whichOne')} className={styles.row}>
-                {current.choices.map((id) => (
-                  <button
-                    key={id}
-                    type="button"
-                    className={styles.secondary}
-                    disabled={state.crossed.includes(current.cardId) || state.wrong.includes(id)}
-                    onClick={() => pick(id)}
-                  >
-                    <span aria-hidden="true">{emoji(id)}</span> {label(id, labelLang)}
-                  </button>
-                ))}
+
+            {cur && !onBoard ? (
+              <Panel variant="dashed" className={styles.off} aria-labelledby="off-title">
+                <svg
+                  aria-hidden="true"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="4" y="4" width="16" height="16" rx="3" />
+                  <path d="M9 9l6 6M15 9l-6 6" />
+                </svg>
+                <span id="off-title" className={styles.offTitle}>
+                  {t('player.offBoard')}
+                </span>
+                <span className={styles.offText}>{t('player.offBoardHint')}</span>
+              </Panel>
+            ) : cur ? (
+              <section aria-labelledby="which" className={styles.choices}>
+                <h2 id="which" className={styles.h2}>
+                  {t('player.whichOne')}
+                </h2>
+                <div className={styles.choiceRow}>
+                  {cur.choices.map((id) => {
+                    const wrong = state.wrong.includes(id);
+                    const right = crossedNow && id === cur.cardId;
+                    return (
+                      <ChoiceTile
+                        key={id}
+                        id={id}
+                        emoji={emoji(id)}
+                        label={label(id, labelLang)}
+                        state={right ? 'correct' : wrong ? 'wrong' : 'idle'}
+                        disabled={crossedNow || state.currentExpired || state.pickPending}
+                        onChoose={() => pick(id)}
+                      />
+                    );
+                  })}
+                </div>
+              </section>
+            ) : null}
+
+            <FeedbackStrip tone={feedback.tone} title={feedback.title}>
+              {feedback.text}
+            </FeedbackStrip>
+
+            <section aria-labelledby="tabla-h" className={styles.tabla}>
+              <div className={styles.tablaHead}>
+                <h2 id="tabla-h" className={styles.h3}>
+                  {t('player.tablaTitle')} · {patternName}
+                </h2>
+                <span title={t('player.pointsTip')}>
+                  <Pill tone="paper">
+                    <svg
+                      aria-hidden="true"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="var(--color-maiz)"
+                      stroke="var(--color-ink)"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" />
+                    </svg>
+                    {t('player.points', { count: points })}
+                  </Pill>
+                </span>
+              </div>
+              <Tabla cells={cells} label={t('player.tablaTitle')} />
+            </section>
+
+            {set && (
+              <div ref={claimWrap}>
+                <Button
+                  className={styles.claim}
+                  onClick={claim}
+                  disabled={!canPress || state.ended !== null}
+                  aria-describedby="claim-status"
+                >
+                  {t('player.claim')}
+                </Button>
               </div>
             )}
-            <p className={styles.muted} role="status" data-testid="feedback">
-              {state.feedback?.kind === 'casi'
-                ? t('player.feedbackCasi')
-                : state.feedback?.kind === 'ok'
-                  ? state.feedback.first
-                    ? t('player.feedbackFirst')
-                    : t('player.feedbackOk')
+            <p id="claim-status" className={styles.muted} role="status">
+              {state.claimPending
+                ? t('player.claimSent')
+                : state.claimNoReply
+                  ? t('player.claimNoReply')
                   : ''}
             </p>
-            <p className={styles.muted}>
-              {t('player.cardsCalled', { count: state.calledSoFar.length })}
-            </p>
 
-            <ul className={styles.grid} aria-label={t('player.title')}>
-              {board.map((id) => {
-                const marked = state.crossed.includes(id);
-                const cardLabel = label(id, labelLang);
-                return (
-                  <li key={id}>
-                    <div
-                      className={styles.cell}
-                      data-marked={marked}
-                      data-hint={hint?.cardId === id}
-                      aria-label={cardLabel}
-                    >
-                      <span className={styles.cellEmoji} aria-hidden="true">
-                        {emoji(id)}
-                      </span>
-                      <span className={styles.cellName}>{cardLabel}</span>
-                      {marked && (
-                        <span className={styles.bean} aria-hidden="true">
-                          ●
-                        </span>
-                      )}
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-
-            <div className={styles.row}>
+            <details className={styles.settings}>
+              <summary>{t('player.settings')}</summary>
+              <div className={styles.tools}>
+                <button
+                  type="button"
+                  onClick={() => setScaleIdx((i) => Math.max(0, i - 1))}
+                  disabled={scaleIdx === 0}
+                  aria-label={t('player.textSmaller')}
+                >
+                  A−
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setScaleIdx((i) => Math.min(TEXT_SCALES.length - 1, i + 1))}
+                  disabled={scaleIdx === TEXT_SCALES.length - 1}
+                  aria-label={t('player.textLarger')}
+                >
+                  A+
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={contrast}
+                  onClick={() => setContrast((c) => !c)}
+                >
+                  {t('player.highContrast')}
+                </button>
+              </div>
               <label className={styles.check}>
                 <input
                   type="checkbox"
@@ -420,40 +592,10 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
                 />
                 {t('player.listenOnly')}
               </label>
-            </div>
-
-            <div className={styles.row}>
-              <button type="button" className={styles.secondary} onClick={() => void askHint()}>
-                {t('player.hint')}
-              </button>
-              {hint && (
-                <p className={styles.muted} role="status">
-                  {!current
-                    ? t('player.hintNeedsCall')
-                    : hint.cardId
-                      ? t('player.hintOnBoard')
-                      : t('player.hintNotOnBoard')}
-                </p>
-              )}
-            </div>
-
-            <button
-              ref={claimBtn}
-              type="button"
-              className={styles.claim}
-              onClick={claim}
-              disabled={cooling || state.ended !== null}
-              aria-describedby="claim-status"
-            >
-              {t('player.claim')}
-            </button>
-            <p id="claim-status" className={styles.muted} role="status">
-              {state.claimPending
-                ? t('player.claimSent')
-                : state.claimNoReply
-                  ? t('player.claimNoReply')
-                  : ''}
-            </p>
+              <p className={styles.muted}>
+                {t('player.cardsCalled', { count: state.calledSoFar.length })}
+              </p>
+            </details>
           </>
         )}
       </div>
@@ -463,36 +605,18 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
           <h2 id="almost-title">{t('lotto.almost')}</h2>
           <p>{t('lotto.almostHint')}</p>
           {missingText && <p>{t('player.almostMissing', { cards: missingText })}</p>}
-          <button type="button" autoFocus onClick={() => dispatch({ type: 'dismissResult' })}>
+          <Button autoFocus onClick={() => dispatch({ type: 'dismissResult' })}>
             {t('player.gotIt')}
-          </button>
+          </Button>
         </Modal>
       )}
       {showResult && state.claimResult?.valid && (
         <Modal celebrate labelId="yay-title" onClose={() => dispatch({ type: 'dismissResult' })}>
-          <h2 id="yay-title">
-            <span aria-hidden="true" className={styles.party}>
-              🎉
-            </span>{' '}
-            {t('lotto.shout')}
-          </h2>
+          <h2 id="yay-title">{t('lotto.shout')}</h2>
           <p>{t('player.celebrate')}</p>
-          <button type="button" autoFocus onClick={() => dispatch({ type: 'dismissResult' })}>
+          <Button autoFocus onClick={() => dispatch({ type: 'dismissResult' })}>
             {t('player.gotIt')}
-          </button>
-        </Modal>
-      )}
-      {showEnded && state.ended && (
-        <Modal labelId="end-title" onClose={() => dispatch({ type: 'dismissEnded' })}>
-          <h2 id="end-title">{t('player.roundEnded')}</h2>
-          {state.ended.wonByMe ? (
-            <p>{t('player.youCalled')}</p>
-          ) : state.ended.winners.length > 0 ? (
-            <p>{t('player.someoneCalled')}</p>
-          ) : null}
-          <button type="button" autoFocus onClick={() => dispatch({ type: 'dismissEnded' })}>
-            {t('player.gotIt')}
-          </button>
+          </Button>
         </Modal>
       )}
     </main>

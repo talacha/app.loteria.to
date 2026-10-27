@@ -21,7 +21,7 @@ describe('Roster', () => {
   });
   it('marks self and shows pronouns', () => {
     render(<Roster players={[ana, bo]} selfSeat="b" />);
-    expect(screen.getByText('(tú)')).toBeTruthy();
+    expect(screen.getByText('Tú · Bo')).toBeTruthy();
     expect(screen.getByText('ella')).toBeTruthy();
   });
   it('announces joins and leaves politely', () => {

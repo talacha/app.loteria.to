@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { callableLangs, LANG_LABELS } from '@content';
+import { callableLangs } from '@content';
 import { isValidName, sanitizeName } from '@net';
 import type { Lang } from '@engine';
 import type { PlayerProfile } from '../player/PlayerBoard';
 import LobbyWaiting from '../lobby/LobbyWaiting';
+import LanguagePicker from '../lobby/LanguagePicker';
 import { normalizeCode, isRoomCode } from './code';
 import styles from './JoinPage.module.css';
 
@@ -59,6 +60,7 @@ function loadSession(code: string): Joined | null {
         glyph: p.glyph,
         pronouns: typeof p.pronouns === 'string' && p.pronouns ? p.pronouns : undefined,
         labelLang: lang as Lang,
+        listenOnly: p.listenOnly === true ? true : undefined,
       },
       hostKey: typeof v?.hostKey === 'string' ? v.hostKey : undefined,
       fromQr: v?.hostKeyFromQr === true,
@@ -118,6 +120,8 @@ export default function JoinPage() {
   const [labelLang, setLabelLang] = useState<Lang>(saved.labelLang);
   const [error, setError] = useState(false);
   const [paperOpen, setPaperOpen] = useState(false);
+  const [step, setStep] = useState<'who' | 'lang'>('who');
+  const [escucha, setEscucha] = useState(false);
   const [joined, setJoined] = useState<Joined | null>(() => (validCode ? loadSession(code) : null));
   const hostKeyP = useRef<Promise<string | undefined> | null>(null);
   const fromQr = useRef(false);
@@ -133,10 +137,24 @@ export default function JoinPage() {
     hostKeyP.current = k ? Promise.resolve(k) : fetchHostKey(code);
   }, [code, validCode]);
 
-  const langs: Lang[] = ['es', 'en', ...callableLangs().filter((l) => l !== 'es' && l !== 'en')];
-
-  async function submit(e: FormEvent) {
+  function next(e: FormEvent) {
     e.preventDefault();
+    if (!isValidName(sanitizeName(name))) {
+      setError(true);
+      nameRef.current?.focus();
+      return;
+    }
+    if (sanitizeName(pronouns).length > 30) {
+      setPronounsError(true);
+      pronounsRef.current?.focus();
+      return;
+    }
+    setError(false);
+    setPronounsError(false);
+    setStep('lang');
+  }
+
+  async function submit() {
     if (busy) return;
     const clean = sanitizeName(name);
     const cleanPronouns = sanitizeName(pronouns);
@@ -160,7 +178,13 @@ export default function JoinPage() {
     }
     const hostKey = await (hostKeyP.current ?? Promise.resolve(undefined));
     const next: Joined = {
-      profile: { name: clean, glyph, pronouns: cleanPronouns || undefined, labelLang },
+      profile: {
+        name: clean,
+        glyph,
+        pronouns: cleanPronouns || undefined,
+        labelLang,
+        listenOnly: escucha || undefined,
+      },
       hostKey,
       fromQr: fromQr.current,
     };
@@ -219,13 +243,27 @@ export default function JoinPage() {
     );
   }
 
+  if (step === 'lang') {
+    return (
+      <LanguagePicker
+        value={labelLang}
+        onChange={setLabelLang}
+        escucha={escucha}
+        onEscuchaChange={setEscucha}
+        onSubmit={() => void submit()}
+        busy={busy}
+        onBack={() => setStep('who')}
+      />
+    );
+  }
+
   return (
     <main id="main" className={styles.page}>
       <h1>{t('join.title')}</h1>
       <p className={styles.code}>
         {t('join.codeLabel')}: <strong>{code}</strong>
       </p>
-      <form onSubmit={(e) => void submit(e)} noValidate className={styles.form}>
+      <form onSubmit={next} noValidate className={styles.form}>
         <label className={styles.field}>
           <span>{t('join.nameLabel')}</span>
           <input
@@ -283,19 +321,8 @@ export default function JoinPage() {
           </p>
         )}
 
-        <label className={styles.field}>
-          <span>{t('join.labelLang')}</span>
-          <select value={labelLang} onChange={(e) => setLabelLang(e.target.value as Lang)}>
-            {langs.map((l) => (
-              <option key={l} value={l}>
-                {LANG_LABELS[l]}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <button type="submit" className={styles.submit} disabled={busy} aria-busy={busy}>
-          {busy ? t('join.connecting') : t('join.submit')}
+        <button type="submit" className={styles.submit}>
+          {t('join.next')}
         </button>
       </form>
 

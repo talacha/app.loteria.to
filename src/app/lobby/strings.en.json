@@ -25,13 +25,13 @@
   "listenMode": "Listen mode: sound only, no written word",
   "cta": "Play in {lang}",
   "noCosts": "No accounts, no money. Just little beans.",
-  "youPlay": "You will play in {lang}",
+  "youPlay": "You’ll play in {lang}",
   "reviewShort": "in review",
   "leave": "Leave the room",
   "room": "Room",
-  "waitingTitle": "Waiting for the caller…",
-  "waitingLead": "The game starts when the caller taps “Start”.",
-  "invite": "Anyone else want to play? Scan the caller's QR code or type {code} at loteria.to",
+  "waitingTitle": "Almost ready…",
+  "waitingLead": "When the organiser taps “Start”, the automatic cantor will call the cards.",
+  "invite": "Anyone else want to play? Scan the room's QR code or type {code} at loteria.to. No phone? Print a tabla.",
   "me": "You · {name}",
   "langs": {
     "nah": {
@@ -54,5 +54,6 @@
       "name": "English",
       "native": "English"
     }
-  }
+  },
+  "back": "Back"
 }

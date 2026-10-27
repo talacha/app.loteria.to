@@ -8,5 +8,6 @@
   "joinFailed": "No pudimos entrar a la sala. Intenta de nuevo.",
   "glyphs": "Figuras",
   "pronounsInvalid": "Los pronombres admiten hasta 30 caracteres, sin símbolos raros.",
-  "codeRetry": "Probar con este código"
+  "codeRetry": "Probar con este código",
+  "next": "Continuar"
 }

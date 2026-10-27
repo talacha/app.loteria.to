@@ -257,12 +257,7 @@ export default function HostGame(props: GameProps) {
               <Button variant="secondary" fit onClick={h.endRound}>
                 {t('host.endRound')}
               </Button>
-              <Button
-                variant="secondary"
-                fit
-                aria-pressed={muted}
-                onClick={() => setMuted(!muted)}
-              >
+              <Button variant="secondary" fit aria-pressed={muted} onClick={() => setMuted(!muted)}>
                 {muted ? t('host.unmute') : t('host.mute')}
               </Button>
             </div>

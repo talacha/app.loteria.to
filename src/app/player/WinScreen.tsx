@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { PATTERNS, type CardId, type Lang, type PatternId } from '@engine';
 import { cardName, getCard } from '@content';
-import CardArt from './CardArt';
+import { Button, PapelPicado, PaperCard, ReviewTag, Tabla, type CellData } from '../ui';
 import styles from './WinScreen.module.css';
 
 export interface WinScreenProps {
@@ -13,10 +13,11 @@ export interface WinScreenProps {
   /** seat -> display name */
   names: Record<string, string>;
   labelLang: Lang;
+  /** "Otra ronda": wait for the next round. */
+  onAnother: () => void;
+  /** "Volver a la sala". */
   onBack: () => void;
 }
-
-const BAND = ['maiz', 'jade', 'cielo', 'paper', 'maiz', 'jade'] as const;
 
 export default function WinScreen({
   board,
@@ -26,6 +27,7 @@ export default function WinScreen({
   wonByMe,
   names,
   labelLang,
+  onAnother,
   onBack,
 }: WinScreenProps) {
   const { t } = useTranslation();
@@ -33,8 +35,7 @@ export default function WinScreen({
     ? (PATTERNS[pattern].find((set) => set.every((i) => crossed.includes(board[i] as CardId))) ??
       [])
     : [];
-  const lineIds = line.map((i) => board[i] as CardId);
-  const wordIds = wonByMe ? lineIds : crossed.slice(0, 8);
+  const wordIds = wonByMe ? line.map((i) => board[i] as CardId) : crossed.slice(0, 8);
   const patternName = t(`player.patternNames.${pattern}`);
   const winnerNames = winners.map((s) => names[s] ?? '…');
 
@@ -44,6 +45,17 @@ export default function WinScreen({
     subtitle = wonByMe
       ? t('player.winYou', { pattern: patternName })
       : t('player.winSolo', { name: winnerNames[0], pattern: patternName });
+
+  const cells: CellData[] = board.map((id, i) => {
+    const c = getCard(id);
+    return {
+      id,
+      emoji: c?.emoji ?? c?.art ?? '?',
+      label: (c && (cardName(c, labelLang) ?? cardName(c, 'es'))?.text) || id,
+      marked: crossed.includes(id),
+      winning: line.includes(i),
+    };
+  });
 
   const words = wordIds.map((id) => {
     const card = getCard(id);
@@ -55,27 +67,18 @@ export default function WinScreen({
 
   return (
     <main id="main" className={styles.page}>
-      <div className={styles.band} aria-hidden="true">
-        {BAND.map((c, i) => (
-          <span key={i} className={styles.flag} data-c={c} />
-        ))}
-      </div>
+      <PapelPicado />
       <div className={styles.inner}>
         <h1 className={styles.title}>{t('player.winTitle')}</h1>
         <p className={styles.sub} role="status">
           {subtitle}
         </p>
 
-        <ul className={styles.board} aria-label={t('player.tablaTitle')}>
-          {board.map((id, i) => (
-            <li key={id} className={styles.cell} data-line={line.includes(i)}>
-              <CardArt cardId={id} className={styles.art} />
-              {crossed.includes(id) && <span className={styles.bean} aria-hidden="true" />}
-            </li>
-          ))}
-        </ul>
+        <div className={styles.board}>
+          <Tabla cells={cells} label={t('player.tablaTitle')} />
+        </div>
 
-        <section className={styles.words} aria-labelledby="learned">
+        <PaperCard as="section" aria-labelledby="learned" className={styles.words}>
           <h2 id="learned" className={styles.h2}>
             {wonByMe ? t('player.winWordsLine') : t('player.winWordsLearned')}
           </h2>
@@ -95,14 +98,17 @@ export default function WinScreen({
               </li>
             ))}
           </ul>
-          {anyReview && <span className={styles.review}>{t('player.wordsReview')}</span>}
-        </section>
+          {anyReview && <ReviewTag variant="words" />}
+        </PaperCard>
 
         <div className={styles.actions}>
+          <Button onClick={onAnother} autoFocus>
+            {t('player.anotherRound')}
+          </Button>
           <p className={styles.hint}>{t('player.anotherRoundHint')}</p>
-          <button type="button" className={styles.back} onClick={onBack} autoFocus>
+          <Button variant="link" className={styles.back} onClick={onBack}>
             {t('player.backToRoom')}
-          </button>
+          </Button>
         </div>
       </div>
     </main>

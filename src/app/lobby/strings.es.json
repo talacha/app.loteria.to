@@ -29,9 +29,9 @@
   "reviewShort": "en revisión",
   "leave": "Salir de la sala",
   "room": "Sala",
-  "waitingTitle": "Esperando a quien canta…",
-  "waitingLead": "La partida empieza cuando quien canta toque «Empezar».",
-  "invite": "¿Alguien más quiere jugar? Que escanee el código QR de quien canta o escriba {code} en loteria.to",
+  "waitingTitle": "Ya casi empezamos…",
+  "waitingLead": "Cuando quien organiza toque «Empezar», el cantor automático cantará las cartas.",
+  "invite": "¿Alguien más quiere jugar? Que escanee el código QR de la sala o escriba {code} en loteria.to. ¿Sin teléfono? Imprime una tabla.",
   "me": "Tú · {name}",
   "langs": {
     "nah": {
@@ -54,5 +54,6 @@
       "name": "English",
       "native": "Inglés"
     }
-  }
+  },
+  "back": "Atrás"
 }

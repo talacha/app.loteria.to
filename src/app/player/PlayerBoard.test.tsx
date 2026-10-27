@@ -4,7 +4,7 @@ import '../i18n';
 import { LocalTransport, type Msg } from '@net';
 import PlayerBoard from './PlayerBoard';
 import { makeBoard } from './playerState';
-import { getCard } from '@content';
+import { cards, getCard } from '@content';
 
 const profile = { name: 'Ana', glyph: '🐆', labelLang: 'es' as const };
 const CODE = 'ABCDE';
@@ -33,14 +33,14 @@ function round(over: Partial<Extract<Msg, { t: 'round' }>> = {}): Msg {
   };
 }
 
-async function mount() {
+async function mount(p: typeof profile & { listenOnly?: boolean } = profile) {
   player = new LocalTransport({ seat: 'p1' });
   await player.join(CODE, 'player');
   render(
     <PlayerBoard
       transport={player}
       room={{ code: CODE, seat: 'p1', hostVerified: false }}
-      profile={profile}
+      profile={p}
     />,
   );
   await flush(30);
@@ -83,8 +83,7 @@ describe('PlayerBoard', () => {
     await mount();
     host.send(round());
     await assign(7, 1);
-    const btn = screen.getByRole('button', { name: '¡Lotería!' }) as HTMLButtonElement;
-    expect(btn.disabled).toBe(true);
+    expect(screen.queryByRole('button', { name: '¡Lotería!' })).toBeNull();
     cleanup();
     await player.leave();
     sessionStorage.setItem(`loteria:marks:${CODE}:${SEED}:1`, JSON.stringify(board.slice(0, 4)));
@@ -168,5 +167,131 @@ describe('PlayerBoard', () => {
     host.send({ t: 'claimResult', seat: player!.seat, roundNo: 2, valid: false });
     await flush();
     expect(screen.getByRole('dialog')).toBeTruthy();
+  });
+
+  it('shows the dashed off-board panel and no choices when the card is not on my tabla', async () => {
+    await mount();
+    const board = makeBoard(SEED, 7);
+    host.send(round());
+    await assign(7, 1);
+    const off = cards.find((c) => !board.includes(c.id))!.id;
+    const others = board.slice(0, 2) as [string, string];
+    host.send({
+      t: 'call',
+      i: 3,
+      cardId: off,
+      choices: [off, others[0], others[1]],
+      lang: 'es',
+      at: 0,
+    });
+    await flush();
+    expect(screen.getByText('No está en tu tabla')).toBeTruthy();
+    expect(screen.queryByText('¿Cuál es?')).toBeNull();
+    expect(screen.getByText(/Carta 4 de 54/)).toBeTruthy();
+  });
+
+  it('wrong then right: casi, then Eso with the first badge, and the card is crossed', async () => {
+    await mount();
+    const board = makeBoard(SEED, 7);
+    host.send(round());
+    await assign(7, 1);
+    const target = board[1]!;
+    const [d1, d2] = board.filter((x) => x !== target).slice(0, 2) as [string, string];
+    host.send({ t: 'call', i: 0, cardId: target, choices: [d1, target, d2], lang: 'es', at: 0 });
+    await flush();
+    const nm = (id: string) => getCard(id)!.names.es!.text;
+    fireEvent.click(screen.getByRole('button', { name: nm(d1) }));
+    await flush();
+    expect(screen.getByText('¡Casi!')).toBeTruthy();
+    expect(
+      (screen.getByRole('button', { name: new RegExp(`${nm(d1)} · `) }) as HTMLButtonElement)
+        .disabled,
+    ).toBe(true);
+    fireEvent.click(screen.getByRole('button', { name: nm(target) }));
+    await flush();
+    host.send({
+      t: 'pickResult',
+      roundNo: 1,
+      i: 0,
+      seat: player!.seat,
+      correct: true,
+      first: true,
+    });
+    host.send({ t: 'scores', roundNo: 1, points: { [player!.seat]: 2 } });
+    await flush();
+    expect(screen.getByText('¡Eso! +2 · ¡Fuiste primero!')).toBeTruthy();
+    expect(screen.getByText('2 puntos · desempate')).toBeTruthy();
+    expect(
+      screen.getByRole('button', { name: new RegExp(`${nm(target)} · Correcta`) }),
+    ).toBeTruthy();
+    expect(screen.getAllByText('Marcada')).toHaveLength(1);
+  });
+
+  it('plain Eso without the badge when not first', async () => {
+    await mount();
+    const board = makeBoard(SEED, 7);
+    host.send(round());
+    await assign(7, 1);
+    const target = board[1]!;
+    const [d1, d2] = board.filter((x) => x !== target).slice(0, 2) as [string, string];
+    host.send({ t: 'call', i: 0, cardId: target, choices: [d1, target, d2], lang: 'es', at: 0 });
+    await flush();
+    host.send({
+      t: 'pickResult',
+      roundNo: 1,
+      i: 0,
+      seat: player!.seat,
+      correct: true,
+      first: false,
+    });
+    await flush();
+    expect(screen.getByText('¡Eso!')).toBeTruthy();
+    expect(screen.queryByText(/Fuiste primero/)).toBeNull();
+  });
+
+  it('shows the win screen with the line words when the round ends and I won', async () => {
+    const board = makeBoard(SEED, 7);
+    sessionStorage.setItem(`loteria:marks:${CODE}:${SEED}:1`, JSON.stringify(board.slice(0, 4)));
+    await mount();
+    host.send(round());
+    await assign(7, 1);
+    host.send({ t: 'end', roundNo: 1, winners: [player!.seat] });
+    await flush();
+    expect(screen.getByRole('heading', { name: '¡Lotería!' })).toBeTruthy();
+    expect(screen.getByText(/Completaste la línea/)).toBeTruthy();
+    expect(screen.getByText('Palabras de tu línea')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Otra ronda' })).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Otra ronda' }));
+    await flush();
+    expect(screen.queryByRole('heading', { name: '¡Lotería!' })).toBeNull();
+  });
+
+  it('shows a tie text when several seats win', async () => {
+    await mount();
+    host.send(round());
+    await assign(7, 1);
+    host.send({ t: 'end', roundNo: 1, winners: [player!.seat, 'other'] });
+    await flush();
+    expect(screen.getByText(/Empate: .* completaron la figura/)).toBeTruthy();
+  });
+
+  it('plays in Escucha when chosen at join, and the speaker replays the call', async () => {
+    await mount({ ...profile, listenOnly: true });
+    const board = makeBoard(SEED, 7);
+    host.send(round());
+    await assign(7, 1);
+    host.send({
+      t: 'call',
+      i: 0,
+      cardId: board[2]!,
+      choices: [board[2]!, board[3]!, board[4]!],
+      lang: 'es',
+      at: 0,
+    });
+    await flush();
+    const call = screen.getByTestId('call');
+    expect(call.textContent).toContain('Escucha');
+    expect(call.textContent).not.toContain(getCard(board[2]!)!.names.es!.text);
+    expect(screen.getByRole('button', { name: 'Repetir la carta' })).toBeTruthy();
   });
 });

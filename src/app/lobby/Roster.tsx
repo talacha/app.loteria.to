@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { RosterTile } from '../ui';
 import styles from './Roster.module.css';
 
 export interface RosterPlayer {
@@ -54,20 +55,13 @@ export default function Roster({ players, selfSeat, max }: RosterProps) {
       ) : (
         <ul className={styles.list} aria-label={t('lobby.roster')}>
           {players.map((p) => (
-            <li key={p.seat} className={styles.item} data-self={p.seat === selfSeat}>
-              <span className={styles.glyph} aria-hidden="true">
-                {p.glyph}
-              </span>
-              <span className={styles.who}>
-                <span className={styles.name}>{p.name}</span>
-                {(p.pronouns || p.seat === selfSeat) && (
-                  <small className={styles.pronouns}>
-                    {p.seat === selfSeat && <span className={styles.you}>{t('lobby.you')}</span>}
-                    {p.seat === selfSeat && p.pronouns ? ' · ' : ''}
-                    {p.pronouns}
-                  </small>
-                )}
-              </span>
+            <li key={p.seat}>
+              <RosterTile
+                name={p.name}
+                glyph={p.glyph}
+                detail={p.pronouns}
+                self={p.seat === selfSeat}
+              />
             </li>
           ))}
         </ul>

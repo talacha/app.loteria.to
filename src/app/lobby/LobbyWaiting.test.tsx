@@ -82,8 +82,10 @@ afterEach(async () => {
 describe('LobbyWaiting', () => {
   it('shows the code, waiting text and the roster from lobby messages', async () => {
     await mount();
-    expect(screen.getByText(/Esperando a quien canta/)).toBeTruthy();
-    expect(screen.getByText(/Código de sala: A, B, C, D, E/)).toBeTruthy();
+    expect(screen.getByText(/Ya casi empezamos/)).toBeTruthy();
+    expect(screen.getByRole('img', { name: /Código de sala A B C D E/ })).toBeTruthy();
+    expect(screen.getByText(/Jugarás en/)).toBeTruthy();
+    expect(screen.getByText(/Imprime una tabla/)).toBeTruthy();
     host.send({
       t: 'lobby',
       status: 'waiting',
@@ -94,7 +96,7 @@ describe('LobbyWaiting', () => {
     });
     await flush();
     expect(screen.getByText(/^2 personas en la sala/)).toBeTruthy();
-    expect(screen.getByText('(tú)')).toBeTruthy();
+    expect(screen.getByText('Tú · Ana')).toBeTruthy();
   });
 
   it('sends one hello, and none in response to lobby or round', async () => {
@@ -112,8 +114,8 @@ describe('LobbyWaiting', () => {
     await flush();
     host.send({ t: 'assign', seat: player!.seat, tablaIndex: 4, roundNo: 1 });
     await flush();
-    expect(screen.queryByText(/Esperando a quien canta/)).toBeNull();
-    expect(screen.getByRole('button', { name: '¡Lotería!' })).toBeTruthy();
+    expect(screen.queryByText(/Ya casi empezamos/)).toBeNull();
+    expect(screen.getByRole('list', { name: 'Tu tabla' })).toBeTruthy();
   });
 
   it('goes straight to the game when a round arrives without a lobby message', async () => {
@@ -157,6 +159,6 @@ describe('LobbyWaiting', () => {
   it('has a single #main and an accessible room code', async () => {
     await mount();
     expect(document.querySelectorAll('#main')).toHaveLength(1);
-    expect(document.querySelector('[aria-label]:not(button):not(ul)')).toBeNull();
+    expect(screen.getByRole('img', { name: /Código de sala A B C D E/ })).toBeTruthy();
   });
 });

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { callableLangs, type Lang } from '@content';
-import { LANG_COLORS } from '@content';
+import { Button, LanguageCard } from '../ui';
 import { langInReview, sampleWord } from './langInfo';
 import styles from './LanguagePicker.module.css';
 
@@ -15,8 +15,11 @@ export interface LanguagePickerProps {
   /** Languages offered; defaults to the callable ones. */
   langs?: Lang[];
   busy?: boolean;
+  /** Go back to the name step. */
+  onBack?: () => void;
 }
 
+/** Join step 2 (PDF p.1): which language the cantor calls in for me. */
 export default function LanguagePicker({
   value,
   onChange,
@@ -25,15 +28,22 @@ export default function LanguagePicker({
   onSubmit,
   langs,
   busy = false,
+  onBack,
 }: LanguagePickerProps) {
   const { t } = useTranslation();
   const offered = ORDER.filter((l) => (langs ?? callableLangs()).includes(l));
   const name = (l: Lang) => t(`lobby.langs.${l}.name`);
 
   return (
-    <div className={styles.page}>
+    <main id="main" className={styles.page}>
       <div className={styles.top}>
-        <span className={styles.brand}>{t('app.name')}</span>
+        {onBack ? (
+          <Button variant="link" onClick={onBack}>
+            {t('lobby.back')}
+          </Button>
+        ) : (
+          <span className={styles.brand}>{t('app.name')}</span>
+        )}
         <span className={styles.step}>{t('lobby.step', { n: 2 })}</span>
       </div>
       <div className={styles.head}>
@@ -42,36 +52,18 @@ export default function LanguagePicker({
       </div>
 
       <div role="radiogroup" aria-label={t('lobby.pickLangGroup')} className={styles.list}>
-        {offered.map((l) => {
-          const selected = value === l;
-          const review = langInReview(l);
-          return (
-            <button
-              key={l}
-              type="button"
-              role="radio"
-              aria-checked={selected}
-              data-selected={selected}
-              className={styles.option}
-              style={{ ['--chip' as string]: LANG_COLORS[l] }}
-              onClick={() => onChange(l)}
-            >
-              <span className={styles.chip} aria-hidden="true">
-                {name(l).slice(0, 1)}
-              </span>
-              <span className={styles.text}>
-                <span className={styles.name}>{name(l)}</span>
-                <span className={styles.native}>
-                  {t(`lobby.langs.${l}.native`)} · «{sampleWord(l)}»
-                </span>
-                {review && <span className={styles.review}>{t('lobby.inReview')}</span>}
-              </span>
-              <span className={styles.dot} aria-hidden="true">
-                {selected ? '✓' : ''}
-              </span>
-            </button>
-          );
-        })}
+        {offered.map((l) => (
+          <LanguageCard
+            key={l}
+            lang={l}
+            name={name(l)}
+            native={t(`lobby.langs.${l}.native`)}
+            sample={sampleWord(l)}
+            review={langInReview(l)}
+            selected={value === l}
+            onSelect={() => onChange(l)}
+          />
+        ))}
       </div>
 
       <label className={styles.escucha}>
@@ -84,17 +76,11 @@ export default function LanguagePicker({
       </label>
 
       <div className={styles.footer}>
-        <button
-          type="button"
-          className={styles.cta}
-          onClick={onSubmit}
-          disabled={busy}
-          aria-busy={busy}
-        >
+        <Button onClick={onSubmit} loading={busy}>
           {t('lobby.cta', { lang: name(value) })}
-        </button>
+        </Button>
         <p className={styles.fine}>{t('lobby.noCosts')}</p>
       </div>
-    </div>
+    </main>
   );
 }

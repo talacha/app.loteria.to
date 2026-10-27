@@ -133,7 +133,8 @@ export class Bot {
   }
 
   private mk(): void {
-    if (this.seed && this.tablaIndex >= 0 && !this.tbl) this.tbl = tabla(this.seed, this.tablaIndex, this.pool);
+    if (this.seed && this.tablaIndex >= 0 && !this.tbl)
+      this.tbl = tabla(this.seed, this.tablaIndex, this.pool);
   }
 
   private onCall(m: Extract<Msg, { t: 'call' }>, now: number): void {

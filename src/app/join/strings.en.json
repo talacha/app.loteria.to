@@ -8,5 +8,6 @@
   "joinFailed": "We could not join the room. Please try again.",
   "glyphs": "Figures",
   "pronounsInvalid": "Pronouns can be up to 30 characters, without unusual symbols.",
-  "codeRetry": "Try this code"
+  "codeRetry": "Try this code",
+  "next": "Continue"
 }

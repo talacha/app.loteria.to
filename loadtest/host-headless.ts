@@ -53,7 +53,11 @@ export class HeadlessHost {
 
   constructor(private o: HostOpts) {
     this.seed = o.seed ?? 'lt-' + Math.random().toString(36).slice(2, 10);
-    this.deck = deckOrder(this.seed, this.roundNo, o.pool.map((c) => c.id));
+    this.deck = deckOrder(
+      this.seed,
+      this.roundNo,
+      o.pool.map((c) => c.id),
+    );
   }
 
   async start(): Promise<string> {
@@ -84,7 +88,11 @@ export class HeadlessHost {
       this.send({
         t: 'lobby',
         status: this.cur >= 0 ? 'started' : 'waiting',
-        players: [...this.players.keys()].map((seat) => ({ seat, name: 'Bot ' + seat, glyph: '🫘' })),
+        players: [...this.players.keys()].map((seat) => ({
+          seat,
+          name: 'Bot ' + seat,
+          glyph: '🫘',
+        })),
       });
     }, 300);
   }
@@ -127,13 +135,21 @@ export class HeadlessHost {
   private onPick(m: Extract<Msg, { t: 'pick' }>): void {
     const order = this.order++;
     const call = this.calls[m.i];
-    const inWindow = !!call && m.i === this.cur
-      ? true
-      : !!call && m.i === this.cur - 1 && Date.now() - this.curAt < (this.o.graceMs ?? 400);
+    const inWindow =
+      !!call && m.i === this.cur
+        ? true
+        : !!call && m.i === this.cur - 1 && Date.now() - this.curAt < (this.o.graceMs ?? 400);
     if (!call || m.roundNo !== this.roundNo || !inWindow) {
       this.pickLog.push({ seat: m.seat, i: m.i, cardId: m.cardId, order, accepted: false });
       if (call)
-        this.send({ t: 'pickResult', roundNo: this.roundNo, i: m.i, seat: m.seat, correct: false, first: false });
+        this.send({
+          t: 'pickResult',
+          roundNo: this.roundNo,
+          i: m.i,
+          seat: m.seat,
+          correct: false,
+          first: false,
+        });
       return;
     }
     this.pickLog.push({ seat: m.seat, i: m.i, cardId: m.cardId, order, accepted: true });
@@ -150,7 +166,13 @@ export class HeadlessHost {
     const called = this.calls.map((c) => c.cardId);
     const r = checkClaim(t, called, this.o.pattern, this.state.crossed[m.seat] ?? []);
     this.claimLog.push({ seat: m.seat, atCall: this.cur, valid: r.valid });
-    this.send({ t: 'claimResult', seat: m.seat, roundNo: this.roundNo, valid: r.valid, missing: r.missing });
+    this.send({
+      t: 'claimResult',
+      seat: m.seat,
+      roundNo: this.roundNo,
+      valid: r.valid,
+      missing: r.missing,
+    });
     if (r.valid && !this.window.some((w) => w.seat === m.seat))
       this.window.push({ seat: m.seat, points: this.state.points[m.seat] ?? 0 });
   }

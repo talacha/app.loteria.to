@@ -62,5 +62,6 @@
     "corners": "the four corners",
     "center": "the centre square",
     "full": "the full board"
-  }
+  },
+  "waitingCall": "Waiting for the next card…"
 }

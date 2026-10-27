@@ -62,5 +62,6 @@
     "corners": "las cuatro esquinas",
     "center": "el cuadro del centro",
     "full": "la tabla entera"
-  }
+  },
+  "waitingCall": "Esperando la siguiente carta…"
 }

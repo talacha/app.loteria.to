@@ -64,29 +64,28 @@ describe('HostPage', () => {
     expect(screen.getByRole('button', { name: 'Pausa' })).toBeTruthy();
   });
 
-  it('auto-advances, pauses, resumes and advances with next', async () => {
+  it('auto-advances, pauses and resumes; there is no manual next', async () => {
     await started();
     await tick(10_000);
     expect(calls()).toHaveLength(2);
     fireEvent.click(screen.getByRole('button', { name: 'Pausa' }));
     await tick(60_000);
     expect(calls()).toHaveLength(2);
-    fireEvent.click(screen.getByRole('button', { name: 'Seguir' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Reanudar' }));
     await tick(10_000);
     expect(calls()).toHaveLength(3);
-    fireEvent.click(screen.getByRole('button', { name: 'Siguiente carta' }));
-    expect(calls()).toHaveLength(4);
+    expect(screen.queryByRole('button', { name: 'Siguiente carta' })).toBeNull();
   });
 
   it('ignores keyboard shortcuts while a dialog is open', async () => {
     await started();
     fireEvent.keyDown(window, { key: 'l' });
     expect(screen.getByRole('dialog')).toBeTruthy();
-    fireEvent.keyDown(window, { key: 'n' });
-    expect(calls()).toHaveLength(1);
+    fireEvent.keyDown(window, { key: 'p' });
+    expect(screen.queryByRole('button', { name: 'Reanudar' })).toBeNull();
     fireEvent.keyDown(document, { key: 'Escape' });
     expect(screen.queryByRole('dialog')).toBeNull();
-    fireEvent.keyDown(window, { key: 'n' });
-    expect(calls()).toHaveLength(2);
+    fireEvent.keyDown(window, { key: 'p' });
+    expect(screen.getByRole('button', { name: 'Reanudar' })).toBeTruthy();
   });
 });

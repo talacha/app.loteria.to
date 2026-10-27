@@ -12,6 +12,7 @@ export interface PlayerGameProps {
   /** Messages received in the lobby, replayed on mount. */
   log?: MessageLog;
   onLeave?: () => void;
+  onBackToLobby?: () => void;
 }
 
 const DEFAULT_PROFILE: PlayerProfile = { name: '', glyph: '', labelLang: 'es' };
@@ -24,6 +25,7 @@ export default function PlayerGame({
   profile,
   log,
   onLeave,
+  onBackToLobby,
 }: PlayerGameProps) {
   return (
     <PlayerBoard
@@ -33,6 +35,7 @@ export default function PlayerGame({
       profile={profile ?? DEFAULT_PROFILE}
       log={log}
       onLeave={onLeave}
+      onBackToLobby={onBackToLobby}
     />
   );
 }
