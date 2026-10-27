@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Outlet, useLocation } from 'react-router';
+import { Link, Outlet, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { ThemeSwitch } from './theme/Preferences';
 import { applyStoredPrefs } from './theme/prefs';
@@ -61,6 +61,11 @@ export default function Shell() {
         {t('common.skipToContent')}
       </a>
       <header className={styles.bar}>
+        {pathname !== '/' && (
+          <Link className={styles.brand} to="/" aria-label={t('app.name')}>
+            <img src="/brand/loteria-banner.webp" alt="" width="1200" height="403" />
+          </Link>
+        )}
         <button
           type="button"
           className={styles.iconBtn}

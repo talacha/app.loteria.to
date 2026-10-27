@@ -79,8 +79,13 @@ export default function HomePage() {
         <div className={styles.setup}>
           <div className={styles.top}>
             <div className={styles.logo}>
-              <img src="/favicon.svg" alt="" />
-              <span>{t('app.name')}</span>
+              <img
+                src="/brand/loteria-banner.webp"
+                alt={t('app.name')}
+                width="1200"
+                height="403"
+                fetchPriority="high"
+              />
             </div>
           </div>
 

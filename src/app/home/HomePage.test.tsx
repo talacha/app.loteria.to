@@ -40,7 +40,7 @@ describe('HomePage', () => {
     );
     expect(screen.getByRole('heading', { name: '¿Cómo te llamas?' })).toBeTruthy();
     expect(screen.getByText('¿Es gratis?')).toBeTruthy();
-    expect(screen.getByText('Lotería de los Pueblos')).toBeTruthy();
+    expect(screen.getByRole('img', { name: 'Lotería de los Pueblos' })).toBeTruthy();
     expect(screen.getByText('El Sol')).toBeTruthy();
     expect(screen.queryByText('pendiente de revisión')).toBeNull();
     expect(screen.getByRole('heading', { name: 'Cómo es una ronda' })).toBeTruthy();

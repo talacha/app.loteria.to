@@ -266,9 +266,15 @@ html {
 body {
   margin: 0;
   background: var(--color-night);
+  background-image: url('/textures/rugged-paper.webp');
+  background-size: 480px 480px;
+  background-blend-mode: multiply;
   color: var(--color-text);
   font-family: var(--font-ui);
   font-size: var(--text-base);
+}
+:root[data-theme='contrast'] body {
+  background-image: none;
 }
 h1,
 h2,
