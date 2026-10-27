@@ -104,6 +104,11 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 - **Evidence:** `loadtest/bot.ts:99` reads `m.pattern` from `round`, which no longer has patterns; the bot still models v1 claims.
 - **Accept when:** bots follow protocol.md (assign → tabla, pick within the call window, callClosed, end); `pnpm tsx loadtest/run.ts` with 20 players × 3 rooms exits 0 and writes a report.
 
+### BUG-016 · Invalid card data blanks the whole app — P1
+
+**Why:** `src/content/index.ts` parses `cards.json` with zod at import time; any schema mismatch throws a `ZodError` before React renders, so the page is blank with no message (seen locally on 2026-10-27 during the audio inventory migration).
+**Acceptance:** a content parse failure renders a friendly error screen (es/en) with a retry, and is reported to the console with the failing paths; `pnpm check` keeps failing on invalid content so it never ships; schema changes land together with the data migration (never stricter than the data).
+
 ## Feature requests
 
 ### FEAT-001 · Add Bribri (`bzd`) and Cabécar (`cjp`) — P1
