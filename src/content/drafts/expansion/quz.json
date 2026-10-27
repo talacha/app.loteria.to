@@ -1,0 +1,941 @@
+{
+  "lang": "quz",
+  "variety": "Southern Quechua, Cusco-Collao (Qusqu-Qullaw), as in src/content/cards.json",
+  "orthography": "Peruvian official alphabet (1985), trivocalic a/i/u: AMLQ 2005 five-vowel spellings are converted (e→i, o→u) and its np before p is written mp (panpa → pampa), as in cards.json. Aspirates ph th chh kh qh, ejectives p' t' ch' k' q'. Loans keep the form the source gives.",
+  "sources": [
+    {
+      "id": "amlq2005",
+      "title": "Diccionario Quechua–Español–Quechua / Qheswa–Español–Qheswa Simi Taqe, 2nd ed. (cited by PDF page of the lengamer.org scan; Esp.-Qu. = Spanish–Quechua section)",
+      "author": "Academia Mayor de la Lengua Quechua",
+      "year": 2005,
+      "url": "http://lengamer.org/admin/language_folders/quechuadecusco/user_uploaded_files/links/File/AMLQuechua-Dic.pdf"
+    },
+    {
+      "id": "calvo2022",
+      "title": "Nuevo diccionario español-quechua, quechua-español, vol. 1, 2nd ed. (Cusco-based, trivocalic; cited by PDF page)",
+      "author": "Julio Calvo Pérez",
+      "year": 2022,
+      "url": "https://fcctp.usmp.edu.pe/librosfcctp/DICCIONARIO-Quechua-espanol-VOL_1.pdf"
+    }
+  ],
+  "cards": {
+    "perro": {
+      "text": "allqu",
+      "gloss": "dog",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Qu.-Esp. s.v. alqo 'Canis familiaris... Perro' (PDF p.19); calvo2022 s.v. perruno 'allqu' (PDF p.1429)",
+      "note": "AMLQ spells the headword alqo (single l); Calvo Pérez and general Cusco usage write allqu. Plain everyday noun.",
+      "reviewQuestion": "¿Dicen 'allqu' (con ll) para el perro?"
+    },
+    "pez": {
+      "text": "challwa",
+      "gloss": "fish",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. pez 'Challwa' (PDF p.458)",
+      "note": "Generic word for fish (also 'mayu challwa', river fish, s.v. mayu).",
+      "reviewQuestion": "¿'Challwa' es la palabra común para 'pez' en su comunidad?"
+    },
+    "venado": {
+      "text": "taruka",
+      "gloss": "deer (taruka, Andean deer)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. ciervo 'Taruka' (PDF p.417) and s.v. venado ciervo 'Taruka, luych'u' (PDF p.476); calvo2022 s.v. venado 'taruka' (PDF p.1969)",
+      "note": "AMLQ also lists 'Taruka' as the name of a huaca in the Cusco ceque system (Etnohist., PDF p.323); the card uses the everyday animal noun. 'Luychu' is the white-tailed/small-horned deer.",
+      "reviewQuestion": "¿Usan 'taruka' o 'luychu' para el venado de la imagen?"
+    },
+    "mono": {
+      "text": "k'usillu",
+      "gloss": "monkey",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. mono 'K'usillu, wititi, miku, chipi' (PDF p.449); Qu.-Esp. s.v. k'usillu 'Mono' (PDF p.137)",
+      "note": "Lowland animal; highland children may know it mainly from the k'usillu masked character in festival dances.",
+      "reviewQuestion": "¿'K'usillu' se entiende como el animal mono, no solo como el personaje de danza?"
+    },
+    "murcielago": {
+      "text": "masu",
+      "gloss": "bat",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. murciélago 'Masu, masu huk'ucha' (PDF p.449); Qu.-Esp. s.v. masu (PDF p.170); calvo2022 s.v. murciélago 'masu' (PDF p.1261)",
+      "note": "AMLQ glosses with the vampire bat species but the word is the general term.",
+      "reviewQuestion": "¿'Masu' es la palabra general para murciélago?"
+    },
+    "hormiga": {
+      "text": "sisi",
+      "gloss": "ant",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. hormiga 'Sisi, añayllo' (PDF p.440); Qu.-Esp. s.v. sisi (PDF p.302); calvo2022 s.v. hormiga 'sisi' (PDF p.981)",
+      "note": "Shares its root with the hormiguero entry (sisi hutkhu); only one of the two cards should stay if spelling choices would clash.",
+      "reviewQuestion": "¿'Sisi' es la hormiga común?"
+    },
+    "abeja": {
+      "text": "lachiwa",
+      "gloss": "bee / wasp",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. abeja 'Lachiwa' (PDF p.402); Qu.-Esp. s.v. lachiwa 'Avispa... || Apic. Miel' (PDF p.139); calvo2022 s.v. abeja 'misk'i ch'uspi... lachiwa' (PDF p.100)",
+      "note": "AMLQ's Quechua side defines lachiwa as wasp (Vespa) and honey; its Spanish side gives it for abeja. Calvo Pérez also gives 'misk'i ch'uspi' (lit. honey fly). Possible confusion with colmena (lachiwana).",
+      "reviewQuestion": "¿Para la abeja dicen 'lachiwa', 'misk'i ch'uspi' u otra palabra? ¿'Lachiwa' es más bien la avispa?"
+    },
+    "arana": {
+      "text": "apasanka",
+      "gloss": "spider (esp. large/wolf spider, tarantula)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. araña 'Apasanka, kusi kusi' (PDF p.408); Qu.-Esp. s.v. apasanka 'Araña lobo' (PDF p.25)",
+      "note": "AMLQ's Quechua side defines apasanka as wolf spider/tarantula; 'kusi kusi' (also listed) may be the small house spider. Draw a generic spider.",
+      "reviewQuestion": "¿Para una araña común dicen 'apasanka' o 'kusi kusi'?"
+    },
+    "caracol": {
+      "text": "ch'uru",
+      "gloss": "snail",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. caracol (Zool.) 'Ch'uru, q'ewsu ch'uru' (PDF p.415); Qu.-Esp. s.v. ch'uru 'Concha univalva de los moluscos gasterópodos' (PDF p.73)",
+      "note": "Not 'pututu', which is the conch trumpet (separate AMLQ entry caracol, Mús.) with ceremonial use. Because ch'uru also means a snail shell, the 'concha' card has no separate word.",
+      "reviewQuestion": "¿'Ch'uru' es el caracol de tierra?"
+    },
+    "cangrejo": {
+      "text": "apanqura",
+      "gloss": "crab (river crab)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. cangrejo 'Apanqora' (PDF p.415); Qu.-Esp. s.v. apanqora (PDF p.25); calvo2022 s.v. cangrejo 'apanqura' (PDF p.404)",
+      "note": "AMLQ's Quechua entry first defines apanqora as large tarantula species, and second as river crab (Astacus). Risk of confusion with the araña card for speakers who use the spider sense.",
+      "reviewQuestion": "¿'Apanqura' es para ustedes el cangrejo, la tarántula o los dos?"
+    },
+    "armadillo": {
+      "text": "kirkinchu",
+      "gloss": "armadillo",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. armadillo 'Kirkinchu, q'arachupa' (PDF p.408); Qu.-Esp. s.v. kirkinchu (PDF p.117); calvo2022 s.v. armadillo 'kirkinchu' (PDF p.234)",
+      "note": "Source of Spanish 'quirquincho'.",
+      "reviewQuestion": "¿'Kirkinchu' es la palabra que usan?"
+    },
+    "lagartija": {
+      "text": "qalaywa",
+      "gloss": "lizard",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. lagartija 'Qalaywa, qaraywa, sukulluku, haqarwitu' (PDF p.444); Qu.-Esp. s.v. qalaywa 'Lagartija' (PDF p.237); calvo2022 s.v. lagartija 'suk'ayllu... qaraywa' (PDF p.1068)",
+      "note": "Variants qaraywa and sukulluku in the same sources.",
+      "reviewQuestion": "¿Dicen 'qalaywa', 'qaraywa' o 'sukulluku'?"
+    },
+    "perico": {
+      "text": "k'alla",
+      "gloss": "small parrot, parakeet",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. perico 'K'alla' and s.v. loro 'K'alla' (PDF p.457, 445); Qu.-Esp. s.v. k'alla 'Loro pequeño' (PDF p.130); calvo2022 s.v. perico 'uritu (luritu)' (PDF p.1421)",
+      "note": "AMLQ: k'alla = small parrot (Aratinga mitrata); Calvo Pérez gives 'uritu' for loro. 'Uritu' is also listed in AMLQ's Spanish side (s.v. papagayo, PDF p.454).",
+      "reviewQuestion": "¿Para el perico verde dicen 'k'alla' o 'uritu'?"
+    },
+    "raton": {
+      "text": "huk'ucha",
+      "gloss": "mouse",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. ratón 'Huk'ucha' (PDF p.465); Qu.-Esp. s.v. huk'ucha (PDF p.99)",
+      "note": "Covers mouse and rat.",
+      "reviewQuestion": "¿'Huk'ucha' es la palabra común?"
+    },
+    "gallina": {
+      "text": "wallpa",
+      "gloss": "hen, chicken",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. gallina 'Wallpa' (PDF p.436); Qu.-Esp. s.v. wallpa 'Gallo, gallina' (PDF p.370); calvo2022 s.v. gallina 'wallpa' (PDF p.875)",
+      "note": "Nativised word for the introduced chicken.",
+      "reviewQuestion": "¿'Wallpa' es la gallina?"
+    },
+    "arbol": {
+      "text": "mallki",
+      "gloss": "tree",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. árbol 'Mallki' (PDF p.408); Qu.-Esp. s.v. mallki 'Árbol' (PDF p.161); calvo2022 s.v. árbol 'mallki... {bajo y frondoso}, sach'a' (PDF p.227)",
+      "note": "Everyday speech often uses 'sach'a' (AMLQ: shrub; also tree), but 'selva' already uses 'sach'a sach'a'. Reviewer to confirm 'mallki' has no ancestor/lineage sense that would be inappropriate.",
+      "reviewQuestion": "¿Para un árbol solo dicen 'mallki' o 'sach'a'? ¿'Mallki' tiene algún sentido de antepasado que lo haga inapropiado?"
+    },
+    "hoja": {
+      "text": "raphi",
+      "gloss": "leaf",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. hoja 'Raphi, rap'i' (PDF p.439); Qu.-Esp. s.v. raphi 'La hoja de la planta. SINÓN: rap'i' (PDF p.271)",
+      "note": "AMLQ example 'koka raphi' (coca leaf); the card shows a plain leaf. Variant rap'i.",
+      "reviewQuestion": "¿Dicen 'raphi' o 'rap'i'?"
+    },
+    "flor": {
+      "text": "t'ika",
+      "gloss": "flower",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Qu.-Esp. s.v. t'ika 'Flor' (PDF p.346); Esp.-Qu. s.v. flor (PDF p.435)",
+      "note": "Note the ejective t'. The existing 'adobe' card is 'tika' (plain t, AMLQ PDF p.325): a near-minimal pair among spelling choices.",
+      "reviewQuestion": "¿'T'ika' (flor) y 'tika' (adobe) se distinguen bien al oído para los niños?"
+    },
+    "cacahuate": {
+      "text": "inchis",
+      "gloss": "peanut",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. maní 'Inchis' (PDF p.447); Qu.-Esp. s.v. inchis 'Maní o cacahuete' (PDF p.105); calvo2022 s.v. cacahuete 'inchis (chuqupi)' (PDF p.367)",
+      "note": "Native crop word.",
+      "reviewQuestion": "¿'Inchis' es la palabra que usan para el maní?"
+    },
+    "raiz": {
+      "text": "saphi",
+      "gloss": "root",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. raíz 'Saphi' (PDF p.464); Qu.-Esp. s.v. saphi (PDF p.287)",
+      "note": "Also figurative 'origin'; the card shows a plant root.",
+      "reviewQuestion": "¿'Saphi' es la raíz?"
+    },
+    "calabaza": {
+      "text": "lakawiti",
+      "gloss": "squash",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. calabaza 'Lakawete, puru, p'uru' (PDF p.414); Qu.-Esp. s.v. lakawiti 'Calabaza' (PDF p.139); calvo2022 s.v. calabaza 'sapallu' (PDF p.379)",
+      "note": "Calvo Pérez gives the loan 'sapallu' (zapallo) for the plant/fruit, which may be the commoner spoken form.",
+      "reviewQuestion": "¿Dicen 'lakawiti' o 'sapallu' para la calabaza?"
+    },
+    "yuca": {
+      "text": "rumu",
+      "gloss": "cassava",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. yuca 'Khumara, rumu' (PDF p.478); Qu.-Esp. s.v. rumu 'Yuca' (PDF p.280)",
+      "note": "Lowland crop; AMLQ's Quechua side assigns 'khumara' to sweet potato, so 'rumu' is used here.",
+      "reviewQuestion": "¿Conocen la yuca como 'rumu'?"
+    },
+    "camote": {
+      "text": "apichu",
+      "gloss": "sweet potato",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. camote 'Apichu, kumara, khumara' (PDF p.415); Qu.-Esp. s.v. apichu 'Camote, batata' (PDF p.25)",
+      "note": "Alternative 'khumara'.",
+      "reviewQuestion": "¿Dicen 'apichu' o 'khumara'?"
+    },
+    "guayaba": {
+      "text": "sawintu",
+      "gloss": "guava",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. guayaba 'Sawintu' (PDF p.437); calvo2022 s.v. guayaba 'sawintu (sawin)' (PDF p.924)",
+      "note": "Valley/lowland fruit; no Quechua-side AMLQ entry found.",
+      "reviewQuestion": "¿Conocen 'sawintu' para la guayaba?"
+    },
+    "algodon": {
+      "text": "utkhu",
+      "gloss": "cotton",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. algodón 'Anpi, utkhu' (PDF p.406); Qu.-Esp. s.v. utkhu 'Algodón' (PDF p.364)",
+      "note": "Alternative 'ampi' (AMLQ anpi, PDF p.22).",
+      "reviewQuestion": "¿Dicen 'utkhu' o 'ampi'?"
+    },
+    "huevo": {
+      "text": "runtu",
+      "gloss": "egg",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. huevo 'Runtu' (PDF p.440)",
+      "note": "Basic vocabulary.",
+      "reviewQuestion": "¿'Runtu'?"
+    },
+    "hongo": {
+      "text": "k'allampa",
+      "gloss": "mushroom",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. hongo 'K'allanpa, paku' (PDF p.439); Qu.-Esp. s.v. k'allanpa (PDF p.130); calvo2022 s.v. hongo 'k'allanpa' (PDF p.977)",
+      "note": "Respelled with mp per the 1985 alphabet (AMLQ/Calvo write np). No sacred sense found in the Cusco sources.",
+      "reviewQuestion": "¿'K'allampa' es el hongo comestible común?"
+    },
+    "platano": {
+      "text": "latanus",
+      "gloss": "banana",
+      "kind": "loanword",
+      "confidence": "medium",
+      "source": "calvo2022 s.v. plátano 'latanus' (PDF p.1467)",
+      "note": "Spanish loan; AMLQ 2005 has no general entry (only the variety 'artawillaku', PDF p.28). Other spoken forms are likely; none verified.",
+      "reviewQuestion": "¿Cómo dicen 'plátano' en quechua: 'latanus', 'plátanu' u otra forma?"
+    },
+    "pasto": {
+      "text": "q'achu",
+      "gloss": "grass, green fodder",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. pasto 'Q'achu' (PDF p.455); Esp.-Qu. s.v. hierba 'Qora, q'achu' (PDF p.439)",
+      "note": "'Qura' is weed/herb; q'achu is green grass/fodder.",
+      "reviewQuestion": "¿'Q'achu' es el pasto verde?"
+    },
+    "papaya": {
+      "text": "papaya",
+      "gloss": "papaya",
+      "kind": "loanword",
+      "confidence": "medium",
+      "source": "calvo2022 s.v. papaya 'papaya' (PDF p.1360)",
+      "note": "Same form as Spanish. AMLQ 2005 only has 'monte papaya' marked NEOL (PDF p.180).",
+      "reviewQuestion": "¿Dicen 'papaya' igual que en castellano?"
+    },
+    "fuego": {
+      "text": "nina",
+      "gloss": "fire",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. fuego 'Nina' (PDF p.435)",
+      "note": "AMLQ also lists 'Nina' as a huaca name (Etnohist., PDF p.189); the card uses the everyday noun. 'Volcán' already uses 'nina urqu'.",
+      "reviewQuestion": "¿'Nina' para el fuego de leña?"
+    },
+    "humo": {
+      "text": "q'usñi",
+      "gloss": "smoke",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. humo 'Q'osñi' (PDF p.440); Qu.-Esp. s.v. q'osñi 'Humo, humareda' (PDF p.267)",
+      "note": "Trivocalic spelling of AMLQ q'osñi.",
+      "reviewQuestion": "¿'Q'usñi'?"
+    },
+    "neblina": {
+      "text": "pacha phuyu",
+      "gloss": "fog, mist",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. neblina 'Pacha phuyu' (PDF p.450); Qu.-Esp. s.v. phuyu, EJEM 'pacha phuyu, neblina' (PDF p.228)",
+      "note": "Contains 'phuyu', the existing 'nube' card: confusion risk among spelling choices. AMLQ s.v. niebla gives 'phuyu phuyu'.",
+      "reviewQuestion": "¿Dicen 'pacha phuyu' para la neblina? ¿Se confunde con 'phuyu' (nube)?"
+    },
+    "granizo": {
+      "text": "chikchi",
+      "gloss": "hail",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. granizo 'Chikchi' (PDF p.437); Qu.-Esp. s.v. chikchi (PDF p.44)",
+      "note": "Basic weather word in the highlands.",
+      "reviewQuestion": "¿'Chikchi'?"
+    },
+    "nieve": {
+      "text": "rit'i",
+      "gloss": "snow",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. nieve 'Rit'i' (PDF p.450); Qu.-Esp. s.v. rit'i (PDF p.277)",
+      "note": "Basic highland word.",
+      "reviewQuestion": "¿'Rit'i'?"
+    },
+    "hielo": {
+      "text": "chhullunku",
+      "gloss": "ice",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. hielo 'Chullunku' (PDF p.439); Qu.-Esp. s.v. chhullunku 'Hielo, carámbano' (PDF p.59); calvo2022 s.v. hielo 'chullunku' (PDF p.952)",
+      "note": "AMLQ headword has aspirated chh, with chullunku as synonym; Calvo Pérez writes chullunku.",
+      "reviewQuestion": "¿Pronuncian 'chhullunku' (aspirada) o 'chullunku'?"
+    },
+    "amanecer": {
+      "text": "paqariy",
+      "gloss": "dawn, daybreak",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. amanecer 'Pacha illariy, paqariy, pacha achikyay, p'unchayay' (PDF p.406); Qu.-Esp. s.v. paqariy, EJEM 'pacha paqariy, amanecer' (PDF p.207)",
+      "note": "Verbal noun ('to dawn; to be born'); 'pacha paqariy' is the fuller form.",
+      "reviewQuestion": "¿Para el amanecer dicen 'paqariy', 'pacha paqariy' o 'illariy'?"
+    },
+    "noche": {
+      "text": "tuta",
+      "gloss": "night",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. noche 'Tuta' (PDF p.450); Qu.-Esp. s.v. tuta 'Noche' (PDF p.335)",
+      "note": "Basic vocabulary.",
+      "reviewQuestion": "¿'Tuta'?"
+    },
+    "cielo": {
+      "text": "hanaq pacha",
+      "gloss": "sky; upper world",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. cielo 'Hanaq pacha' (PDF p.417); calvo2022 s.v. cielo [astr.] 'hanaq pacha' (PDF p.473)",
+      "note": "Sensitivity: hanaq pacha is the upper world of Andean cosmology and the Christian heaven. Calvo Pérez gives 'siyilu' (fam.) or 'pacha' for the physical atmosphere.",
+      "reviewQuestion": "¿Para el cielo azul (no el cielo religioso) dicen 'hanaq pacha'? ¿Es apropiado en un juego?"
+    },
+    "sombra": {
+      "text": "llanthu",
+      "gloss": "shadow, shade",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. sombra 'Llanthu' (PDF p.470); Qu.-Esp. s.v. llanthu (PDF p.147)",
+      "note": "Shade of a tree fits the planned art.",
+      "reviewQuestion": "¿'Llanthu'?"
+    },
+    "rocio": {
+      "text": "chhulla",
+      "gloss": "dew",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. rocío 'Chhulla, sulla' (PDF p.467); Qu.-Esp. s.v. chhulla 'Rocío de la mañana' (PDF p.59)",
+      "note": "Variant 'sulla'.",
+      "reviewQuestion": "¿'Chhulla' o 'sulla'?"
+    },
+    "remolino": {
+      "text": "muyuq wayra",
+      "gloss": "whirlwind",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Qu.-Esp. s.v. muyuq 'Remolino de viento o de agua... EJEM: muyuq wayra, remolino de viento' (PDF p.186)",
+      "note": "Contains 'wayra', the existing 'viento' card. AMLQ also lists 'antayqunchuy' (dust devil, PDF p.23). No Spanish-side headword.",
+      "reviewQuestion": "¿Dicen 'muyuq wayra' para el remolino? ¿Otra palabra?"
+    },
+    "agua": {
+      "text": "unu",
+      "gloss": "water",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. agua 'Unu, yaku' (PDF p.405); Qu.-Esp. s.v. unu (PDF p.358)",
+      "note": "'Yaku' is the form of other Quechua varieties; Cusco uses unu.",
+      "reviewQuestion": "¿'Unu'?"
+    },
+    "ceniza": {
+      "text": "uspha",
+      "gloss": "ash",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. ceniza 'Uspha' (PDF p.416)",
+      "note": "Basic vocabulary.",
+      "reviewQuestion": "¿'Uspha'?"
+    },
+    "trueno": {
+      "text": "q'aqya",
+      "gloss": "thunder",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. trueno 'Q'aqya' (PDF p.474)",
+      "note": "No Quechua-side headword found in the text extraction. 'Rayo' already uses 'illapa'; check that q'aqya is not also used for the lightning bolt.",
+      "reviewQuestion": "¿'Q'aqya' es el trueno y no el rayo?"
+    },
+    "rio": {
+      "text": "mayu",
+      "gloss": "river",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. río 'Mayu' (PDF p.467); Qu.-Esp. s.v. mayu (PDF p.172)",
+      "note": "AMLQ also lists 'Mayu' as a huaca name; everyday noun used.",
+      "reviewQuestion": "¿'Mayu'?"
+    },
+    "lago": {
+      "text": "qucha",
+      "gloss": "lake",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. lago 'Qocha, hatun qocha' (PDF p.444); Qu.-Esp. s.v. qocha (PDF p.244)",
+      "note": "The existing 'mar' card is 'lamar qucha': confusion risk among spelling choices.",
+      "reviewQuestion": "¿'Qucha' para el lago? ¿Se confunde con 'lamar qucha'?"
+    },
+    "piedra": {
+      "text": "rumi",
+      "gloss": "stone",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. piedra 'Rumi' (PDF p.458); Qu.-Esp. s.v. rumi (PDF p.279)",
+      "note": "Plain noun; no sacred stone.",
+      "reviewQuestion": "¿'Rumi'?"
+    },
+    "arena": {
+      "text": "aqu",
+      "gloss": "sand",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. arena 'Aqo, t'iyu' (PDF p.408); Qu.-Esp. s.v. aqo 'Arena' (PDF p.26); calvo2022 s.v. arena 'aqu' (PDF p.231)",
+      "note": "'T'iyu' is fine white sand.",
+      "reviewQuestion": "¿'Aqu'?"
+    },
+    "playa": {
+      "text": "qucha pata",
+      "gloss": "shore, beach",
+      "kind": "descriptive",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. playa 'Mayupata, qochapata' (PDF p.459); calvo2022 s.v. playa 'qucha pata' (PDF p.1468)",
+      "note": "Lit. 'lake/sea edge'. Shares 'qucha' with lago and mar.",
+      "reviewQuestion": "¿Dicen 'qucha pata' para la playa?"
+    },
+    "cascada": {
+      "text": "phaqcha",
+      "gloss": "waterfall",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Qu.-Esp. s.v. phaqcha 'Chorro, chorrera, cascada' (PDF p.224); calvo2022 s.v. cascada 'phaqcha' (PDF p.438)",
+      "note": "Common in Andean place names.",
+      "reviewQuestion": "¿'Phaqcha'?"
+    },
+    "charco": {
+      "text": "p'uytu",
+      "gloss": "puddle",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. charco 'P'uytu, p'onqo' (PDF p.422); calvo2022 s.v. charco '{de lluvia}, p'uytu' (PDF p.596)",
+      "note": "AMLQ also gives p'uytu and p'onqo for pozo; here p'uytu = puddle, p'unqu = pozo.",
+      "reviewQuestion": "¿'P'uytu' es el charco de lluvia, distinto de 'p'unqu'?"
+    },
+    "lodo": {
+      "text": "t'uru",
+      "gloss": "mud",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. barro 'T'uru' (PDF p.411); Qu.-Esp. s.v. t'uru 'Barro, lodo' (PDF p.352); calvo2022 s.v. lodo 't'uru' (PDF p.1107)",
+      "note": "Distinct from 'adobe' (tika).",
+      "reviewQuestion": "¿'T'uru'?"
+    },
+    "barranca": {
+      "text": "qaqapana",
+      "gloss": "ravine, cliff",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. barranco 'Qaqapana, hatun sanqha' (PDF p.411); Qu.-Esp. s.v. qaqapana 'Despeñadero, barranco, abismo' (PDF p.239)",
+      "note": "Means precipice/drop rather than a stream gully; 'wayq'u' is used for valle.",
+      "reviewQuestion": "¿'Qaqapana' es la barranca?"
+    },
+    "llano": {
+      "text": "pampa",
+      "gloss": "plain",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. llano / llanura 'Panpa' (PDF p.446)",
+      "note": "Respelled with mp. Existing 'desierto' is 'ch'aki pampa' and 'patio' here is 'wasi pampa': shared word.",
+      "reviewQuestion": "¿'Pampa' para el llano? ¿Se confunde con 'ch'aki pampa'?"
+    },
+    "pantano": {
+      "text": "uqhu",
+      "gloss": "swamp, bog",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. pantano, ciénaga 'Oqho, ch'uyu' (PDF p.454); Qu.-Esp. s.v. oqho 'Bofedal, fango, ciénaga' (PDF p.200)",
+      "note": "Trivocalic of AMLQ oqho. Highland bofedal rather than lowland swamp.",
+      "reviewQuestion": "¿'Uqhu'?"
+    },
+    "ola": {
+      "text": "phuqchiy",
+      "gloss": "wave",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "calvo2022 s.v. ola 'phuqchiy' (PDF p.1311); amlq2005 Esp.-Qu. s.v. ola 'Ayti' (PDF p.452)",
+      "note": "Sources disagree: AMLQ's Quechua side defines ayti as 'rinse' (PDF p.34), so it is not used; Calvo's phuqchiy is a verbal noun ('boiling over'). Highland speech may lack a word.",
+      "reviewQuestion": "¿Tienen una palabra para la ola del mar? ¿'Phuqchiy' sirve?"
+    },
+    "concha": {
+      "text": null,
+      "gloss": "shell",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "amlq2005 Qu.-Esp. s.v. ch'uru (PDF p.73), s.v. mullu (PDF p.183); calvo2022 s.v. concha (PDF p.521)",
+      "note": "No usable distinct word: ch'uru (univalve shell) is the caracol card; mullu is Spondylus used in ritual offerings (excluded); Calvo's 'qaracha' is AMLQ's word for mange (PDF p.239).",
+      "reviewQuestion": "¿Hay una palabra para una concha (de río o mar) que no sea 'ch'uru' ni 'mullu'?"
+    },
+    "valle": {
+      "text": "wayq'u",
+      "gloss": "valley",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Qu.-Esp. s.v. wayq'o 'Valle o quebrada interandina' (PDF p.383); Esp.-Qu. s.v. quebrada (PDF p.463); calvo2022 s.v. valle 'wayq'u' (PDF p.1960)",
+      "note": "Trivocalic of AMLQ wayq'o.",
+      "reviewQuestion": "¿'Wayq'u'?"
+    },
+    "tierra": {
+      "text": "allpa",
+      "gloss": "soil, earth",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. tierra 'Allpa' (PDF p.472); Qu.-Esp. s.v. allpa 'Tierra, suelo, terreno de cultivo' (PDF p.19)",
+      "note": "Soil, not Pachamama.",
+      "reviewQuestion": "¿'Allpa'?"
+    },
+    "hacha": {
+      "text": "ch'iqtana",
+      "gloss": "axe",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "calvo2022 s.v. hacha 'ch'iqtana; «fam.» hach'a; «ant.» ayri' (PDF p.945); amlq2005 Qu.-Esp. s.v. ch'eqtana 'Herramienta que sirve para partir, rajar' (PDF p.66); Esp.-Qu. s.v. hacha 'Ayri, chanpi' (PDF p.438)",
+      "note": "Not 'champi' (Inca war mace, a weapon). Calvo marks 'ayri' as old; loan 'hach'a' also listed.",
+      "reviewQuestion": "¿Para el hacha de cortar leña dicen 'ch'iqtana', 'hach'a' o 'ayri'?"
+    },
+    "red": {
+      "text": "llika",
+      "gloss": "net",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. red 'Llika, lluku, ch'ipa' (PDF p.465); Qu.-Esp. s.v. llika 'Red. Malla muy fina' (PDF p.151); calvo2022 s.v. red 'llika; {de pesca} challwana' (PDF p.1609)",
+      "note": "Word collision: AMLQ also gives llika for telaraña. Only one card can keep it. Calvo's 'challwana' is a fish trap.",
+      "reviewQuestion": "¿'Llika' es la red de pescar? ¿Cómo distinguen la red de la telaraña?"
+    },
+    "cuerda": {
+      "text": "waskha",
+      "gloss": "rope",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. soga 'Waskha' (PDF p.470); Qu.-Esp. s.v. waskha 'Soga, lazo, cuerda' (PDF p.379)",
+      "note": "AMLQ s.v. cuerda spells 'Waska' (PDF p.420).",
+      "reviewQuestion": "¿'Waskha'?"
+    },
+    "jicara": {
+      "text": "hanq'ara",
+      "gloss": "gourd bowl, wooden bowl",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Qu.-Esp. s.v. hanq'ara 'Plato grande de madera. Por extensión... la mitad de un p'uru' (PDF p.84); calvo2022 s.v. calabaza '{de peregrino}, hanq'ara' (PDF p.379)",
+      "note": "Primarily a large wooden bowl; extended to half-gourd bowls.",
+      "reviewQuestion": "¿'Hanq'ara' es el plato de calabaza?"
+    },
+    "metate": {
+      "text": "maran",
+      "gloss": "grinding stone (batán)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. batán 'Maran' (PDF p.411); Qu.-Esp. s.v. maran 'Batán de piedra' (PDF p.167)",
+      "note": "Referent is the Andean batán (flat stone with rocking upper stone), not the legged metate: the art must suit both.",
+      "reviewQuestion": "¿'Maran' es el batán de moler?"
+    },
+    "comal": {
+      "text": "k'analla",
+      "gloss": "toasting pot",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "amlq2005 Esp.-Qu. s.v. tostadora 'K'analla' (PDF p.473); Qu.-Esp. s.v. k'analla 'Tostadera. Olla especial para tostar' (PDF p.130)",
+      "note": "Different object: a clay toasting pot, not a flat griddle. AMLQ notes Ayacucho 'kallana'.",
+      "reviewQuestion": "¿Usan 'k'analla' o 'kallana' para tostar maíz? ¿Hay palabra para un comal plano?"
+    },
+    "escoba": {
+      "text": "pichana",
+      "gloss": "broom",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. escoba 'Pichana' (PDF p.431); Qu.-Esp. s.v. pichana (PDF p.212)",
+      "note": "Straw broom.",
+      "reviewQuestion": "¿'Pichana'?"
+    },
+    "aguja": {
+      "text": "yawri",
+      "gloss": "needle (large)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. aguja 'Yawri. Neol. akwa' (PDF p.405); Qu.-Esp. s.v. yawri 'Aguja grande y gruesa' (PDF p.398)",
+      "note": "Calvo Pérez gives the loan 'awha' for the sewing needle (PDF p.145).",
+      "reviewQuestion": "¿Dicen 'yawri' o 'awha'?"
+    },
+    "huso": {
+      "text": "puska",
+      "gloss": "spindle",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. huso 'Puska' (PDF p.440); Qu.-Esp. s.v. puska (PDF p.222); calvo2022 s.v. huso 'puska' (PDF p.995)",
+      "note": "Other spellings may exist (e.g. with aspirate or ch); reviewer to confirm.",
+      "reviewQuestion": "¿Cómo pronuncian el huso: 'puska' u otra forma?"
+    },
+    "banco": {
+      "text": "tiyana",
+      "gloss": "seat, stool",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Qu.-Esp. s.v. tiyana 'Asiento, poyo, banca, silleta. || Hist. Banco real' (PDF p.327)",
+      "note": "Flag: historical sense of the Inca royal seat; the everyday sense is any seat.",
+      "reviewQuestion": "¿'Tiyana' es un banquito común?"
+    },
+    "sombrero": {
+      "text": "chuku",
+      "gloss": "hat",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. sombrero 'Chuku' (PDF p.470); Qu.-Esp. s.v. chuku 'Sombrero, gorro' (PDF p.51)",
+      "note": "Also 'cap'. A Spanish loan may be commoner in speech (not verified).",
+      "reviewQuestion": "¿Dicen 'chuku' para el sombrero?"
+    },
+    "morral": {
+      "text": "wayaqa",
+      "gloss": "woven bag",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Qu.-Esp. s.v. wayaqa 'talega... bolsa tejido de lana' (PDF p.381); calvo2022 s.v. morral 'wayaqa' (PDF p.1246)",
+      "note": "Not 'ch'uspa', the coca bag.",
+      "reviewQuestion": "¿'Wayaqa'?"
+    },
+    "hamaca": {
+      "text": "amaka",
+      "gloss": "hammock",
+      "kind": "loanword",
+      "confidence": "low",
+      "source": "calvo2022 s.v. hamaca 'amaka' (PDF p.947)",
+      "note": "Not Andean; not in AMLQ 2005.",
+      "reviewQuestion": "¿Conocen la hamaca? ¿Cómo la llaman?"
+    },
+    "coa": {
+      "text": "chakitaklla",
+      "gloss": "foot plough",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. arado 'Taklla, chakitaklla; arado de pie' (PDF p.408); Qu.-Esp. s.v. chakitaklla 'Tirapié' (PDF p.37)",
+      "note": "The Andean foot plough rather than a plain digging stick; the art must suit both.",
+      "reviewQuestion": "¿'Chakitaklla' sirve para la coa (palo de sembrar)?"
+    },
+    "petate": {
+      "text": "kusuru",
+      "gloss": "sleeping mat",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "calvo2022 s.v. petate 'kusuru' (PDF p.1433); s.v. estera 'q'uya' (PDF p.783); amlq2005 Qu.-Esp. s.v. q'oya 'paja... para esteras' (PDF p.267)",
+      "note": "Only Calvo Pérez has kusuru; not in AMLQ 2005.",
+      "reviewQuestion": "¿Cómo llaman la estera para dormir: 'kusuru', 'q'uya' u otra?"
+    },
+    "camino": {
+      "text": "ñan",
+      "gloss": "path, road",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. camino 'Ñan' (PDF p.415); Qu.-Esp. s.v. ñan (PDF p.191)",
+      "note": "AMLQ also lists a huaca named Ñan; everyday noun.",
+      "reviewQuestion": "¿'Ñan'?"
+    },
+    "pozo": {
+      "text": "p'unqu",
+      "gloss": "well, pool",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. pozo 'P'onqo, p'uytu' (PDF p.460); Qu.-Esp. s.v. p'onqo 'Poza, pozo, estanque' (PDF p.235)",
+      "note": "Pool or pond rather than a dug well. Overlaps with charco (p'uytu).",
+      "reviewQuestion": "¿'P'unqu' es un pozo de agua?"
+    },
+    "nido": {
+      "text": "q'isa",
+      "gloss": "nest",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. nido 'Q'esa' (PDF p.450); Qu.-Esp. s.v. q'esa (PDF p.265); calvo2022 s.v. nido 'q'isa' (PDF p.1277)",
+      "note": "Trivocalic of AMLQ q'esa.",
+      "reviewQuestion": "¿'Q'isa'?"
+    },
+    "colmena": {
+      "text": "lachiwana",
+      "gloss": "beehive",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Qu.-Esp. s.v. lachiwana 'Panal, colmena' (PDF p.139); Esp.-Qu. s.v. panal (PDF p.454); calvo2022 s.v. colmena 'llachiwana' (PDF p.504)",
+      "note": "Shares its root with abeja (lachiwa).",
+      "reviewQuestion": "¿'Lachiwana'?"
+    },
+    "hormiguero": {
+      "text": "sisi hutkhu",
+      "gloss": "anthill",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "calvo2022 s.v. hormiguero 'sisi hutkhu (sisi t'uqu)' (PDF p.981)",
+      "note": "Lit. 'ant hole'. Not in AMLQ. Shares 'sisi' with hormiga.",
+      "reviewQuestion": "¿Cómo llaman al hormiguero?"
+    },
+    "telarana": {
+      "text": "llika",
+      "gloss": "spider web",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. telaraña 'Llika' (PDF p.472); Qu.-Esp. s.v. llika (PDF p.151)",
+      "note": "Word collision with red (llika); only one can stay.",
+      "reviewQuestion": "¿La telaraña es 'llika' igual que la red?"
+    },
+    "patio": {
+      "text": "wasi pampa",
+      "gloss": "yard",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "calvo2022 s.v. patio 'kancha... {de la casa}, wasi panpa' (PDF p.1389); amlq2005 Qu.-Esp. s.v. kancha 'Patio. Corralón' (PDF p.114)",
+      "note": "Lit. 'house plain'. 'Kancha' is kept for corral to avoid a collision.",
+      "reviewQuestion": "¿El patio de la casa es 'kancha' o 'wasi pampa'?"
+    },
+    "huerto": {
+      "text": "muya",
+      "gloss": "garden, orchard",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. huerta 'Muya' (PDF p.440); Qu.-Esp. s.v. muya 'Pastal reservado... || Frutal, huerto' (PDF p.186)",
+      "note": "Also a reserved pasture. Not 'chakra' (milpa).",
+      "reviewQuestion": "¿'Muya'?"
+    },
+    "cerca": {
+      "text": "pirqa",
+      "gloss": "wall, fence",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Qu.-Esp. s.v. perqa 'Pared, muro, valla cercada de piedras' (PDF p.212), s.v. pirka (PDF p.215)",
+      "note": "Means stone wall; 'kanchay' is the verb 'to fence'. Overlaps with corral.",
+      "reviewQuestion": "¿'Pirqa' para la cerca?"
+    },
+    "puerta": {
+      "text": "punku",
+      "gloss": "door",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. puerta 'Punku' (PDF p.462); Qu.-Esp. s.v. punku (PDF p.220); calvo2022 s.v. puerta (PDF p.1547)",
+      "note": "Also a huaca name; everyday noun.",
+      "reviewQuestion": "¿'Punku'?"
+    },
+    "techo": {
+      "text": "wasi qata",
+      "gloss": "roof",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. techo 'Wasi qata, wasi pata, wasi p'istu' (PDF p.472)",
+      "note": "'Qata' alone means blanket (PDF p.240). Contains 'wasi' (casa card).",
+      "reviewQuestion": "¿'Wasi qata' para el techo?"
+    },
+    "escalera": {
+      "text": "wichana",
+      "gloss": "ladder, stairs",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. escalera 'Wichana, seqana' (PDF p.431); Qu.-Esp. s.v. wichana (PDF p.385); calvo2022 s.v. escalera (PDF p.747)",
+      "note": "Also stairs.",
+      "reviewQuestion": "¿'Wichana' para la escalera de palo?"
+    },
+    "troje": {
+      "text": "pirwa",
+      "gloss": "granary",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. troje 'Taqe, pirwa, qolqa' (PDF p.474); Qu.-Esp. s.v. pirwa '|| Granero o troje' (PDF p.215); calvo2022 s.v. troje (PDF p.1926)",
+      "note": "Not 'qullqa' (Inca state storehouse; also the Pleiades).",
+      "reviewQuestion": "¿'Pirwa' o 'taqi'?"
+    },
+    "cocina": {
+      "text": "wayk'una wasi",
+      "gloss": "kitchen",
+      "kind": "descriptive",
+      "confidence": "medium",
+      "source": "calvo2022 s.v. cocina 'wayk'una (wayk'una wasi)' (PDF p.492); amlq2005 Qu.-Esp. s.v. wayk'una 'Cocinable' (PDF p.381)",
+      "note": "Lit. 'cooking house'. Not in AMLQ. Contains 'wasi'.",
+      "reviewQuestion": "¿Cómo llaman la cocina: 'wayk'una wasi' u otra forma?"
+    },
+    "corral": {
+      "text": "kancha",
+      "gloss": "corral",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. corral 'Kancha' (PDF p.420); Qu.-Esp. s.v. kancha (PDF p.114); calvo2022 s.v. corral 'kancha' (PDF p.548)",
+      "note": "Also patio; kept here.",
+      "reviewQuestion": "¿'Kancha'?"
+    },
+    "gusano": {
+      "text": "kuru",
+      "gloss": "worm",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. gusano 'Kuru, uru' (PDF p.437); Qu.-Esp. s.v. kuru (PDF p.121)",
+      "note": "Basic vocabulary.",
+      "reviewQuestion": "¿'Kuru'?"
+    },
+    "zorro": {
+      "text": "atuq",
+      "gloss": "fox",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. zorro 'Atoq' (PDF p.479); Qu.-Esp. s.v. atoq (PDF p.31)",
+      "note": "Trivocalic. Trickster in folk tales.",
+      "reviewQuestion": "¿'Atuq'?"
+    },
+    "pato": {
+      "text": "ñuñuma",
+      "gloss": "duck",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. pato 'Wallata, nuñuma, qanqena' (PDF p.455); calvo2022 s.v. pato '{doméstico}, ñuñuma; patu' (PDF p.1389)",
+      "note": "Not 'wallata' (Andean goose, PDF p.370). Loan 'patu' also listed.",
+      "reviewQuestion": "¿'Ñuñuma' o 'patu'?"
+    },
+    "luciernaga": {
+      "text": "pinchinkuru",
+      "gloss": "firefly",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. luciérnaga (PDF p.445); Qu.-Esp. s.v. pinchinkuru 'Luciérnaga' (PDF p.214)",
+      "note": "Synonyms tuta kuru, nina kuru.",
+      "reviewQuestion": "¿'Pinchinkuru'?"
+    },
+    "cantaro": {
+      "text": "p'uyñu",
+      "gloss": "water jar",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. cántaro 'P'uyñu, chatu' (PDF p.415); Qu.-Esp. s.v. p'uyñu (PDF p.236)",
+      "note": "Not 'olla' (manka).",
+      "reviewQuestion": "¿'P'uyñu'?"
+    },
+    "pelota": {
+      "text": "lump'u",
+      "gloss": "ball",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Qu.-Esp. s.v. lunp'u 'Esfera, pelota, bola' (PDF p.144); calvo2022 s.v. pelota 'bulacha; piluta' (PDF p.1406)",
+      "note": "Respelled with mp. Loans 'bula/piluta' may be commoner.",
+      "reviewQuestion": "¿'Lump'u' o 'piluta'?"
+    },
+    "collar": {
+      "text": "walqa",
+      "gloss": "necklace",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. collar 'Walqa' (PDF p.418); Qu.-Esp. s.v. walqa (PDF p.369)",
+      "note": "AMLQ also notes noble gold necklaces; plain bead necklace in art.",
+      "reviewQuestion": "¿'Walqa'?"
+    },
+    "cuchara": {
+      "text": "wisllacha",
+      "gloss": "spoon (small wooden)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Qu.-Esp. s.v. wisllacha 'cucharilla de madera' (PDF p.391); calvo2022 s.v. cuchara 'wisllacha; kuchara' (PDF p.571)",
+      "note": "'Wislla' is a ladle. Loan 'kuchara' also listed.",
+      "reviewQuestion": "¿'Wisllacha' o 'kuchara'?"
+    },
+    "remo": {
+      "text": "t'uyu",
+      "gloss": "paddle, oar",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "amlq2005 Esp.-Qu. s.v. remo 'T'uyu' (PDF p.466); Qu.-Esp. s.v. t'uyu 'Remo' (PDF p.353)",
+      "note": "Lake (Titicaca) vocabulary.",
+      "reviewQuestion": "¿'T'uyu'?"
+    },
+    "sal": {
+      "text": "kachi",
+      "gloss": "salt",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. sal 'Kachi' (PDF p.468); Qu.-Esp. s.v. kachi (PDF p.112)",
+      "note": "Basic vocabulary.",
+      "reviewQuestion": "¿'Kachi'?"
+    },
+    "semilla": {
+      "text": "muhu",
+      "gloss": "seed",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Qu.-Esp. s.v. muhu 'Semilla, simiente' (PDF p.182); Esp.-Qu. s.v. semilla 'Muku' (PDF p.469)",
+      "note": "AMLQ's Spanish side spells it muku.",
+      "reviewQuestion": "¿'Muhu' o 'muku'?"
+    },
+    "lena": {
+      "text": "llant'a",
+      "gloss": "firewood",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "amlq2005 Esp.-Qu. s.v. leña 'Llant'a' (PDF p.445); Qu.-Esp. s.v. llant'a (PDF p.147)",
+      "note": "Basic vocabulary.",
+      "reviewQuestion": "¿'Llant'a'?"
+    }
+  }
+}
