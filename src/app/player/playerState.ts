@@ -7,6 +7,8 @@ export interface RoundInfo {
   speedSec: number;
   /** Cartón is gridSize x gridSize; 4 when the host did not say. */
   gridSize?: number;
+  /** Absent on legacy rounds, which always use the original 54 cards. */
+  deck?: CardId[];
 }
 
 export interface CurrentCall {
@@ -93,8 +95,14 @@ export const initialPlayerState: PlayerState = {
   ended: null,
 };
 
-export function makeBoard(seed: string, tablaIndex: number, grid = 4): CardId[] {
-  return tabla(seed, tablaIndex, cards, grid).cards;
+export function makeBoard(
+  seed: string,
+  tablaIndex: number,
+  grid = 4,
+  ids?: readonly CardId[],
+): CardId[] {
+  const pool = ids ? cards.filter((c) => ids.includes(c.id)) : cards.filter((c) => c.n <= 54);
+  return tabla(seed, tablaIndex, pool, grid).cards;
 }
 
 const add = (list: CardId[], id: CardId) => (list.includes(id) ? list : [...list, id]);
@@ -105,7 +113,7 @@ function withBoard(s: PlayerState): PlayerState {
   const board =
     s.board.length > 0
       ? s.board
-      : makeBoard(s.round.roomSeed, s.assign.tablaIndex, s.round.gridSize);
+      : makeBoard(s.round.roomSeed, s.assign.tablaIndex, s.round.gridSize, s.round.deck);
   const revealed = [...new Set([...s.revealed, ...(s.assign.closed ?? [])])];
   const currentClosed = s.currentClosed || !!(s.current && revealed.includes(s.current.cardId));
   return {
@@ -139,7 +147,11 @@ export function playerReducer(s: PlayerState, a: PlayerAction): PlayerState {
     case 'round': {
       const same =
         s.round && s.round.roundNo === a.round.roundNo && s.round.roomSeed === a.round.roomSeed;
-      if (same && (s.round?.gridSize ?? 4) !== (a.round.gridSize ?? 4))
+      if (
+        same &&
+        ((s.round?.gridSize ?? 4) !== (a.round.gridSize ?? 4) ||
+          JSON.stringify(s.round?.deck) !== JSON.stringify(a.round.deck))
+      )
         return withBoard({ ...s, round: a.round, board: [], crossed: [] });
       if (same) return withBoard({ ...s, round: a.round });
       return withBoard({
@@ -162,6 +174,11 @@ export function playerReducer(s: PlayerState, a: PlayerAction): PlayerState {
     }
     case 'call': {
       if (!s.round) return s;
+      if (
+        s.round.deck &&
+        (!s.round.deck.includes(a.cardId) || a.choices.some((id) => !s.round!.deck!.includes(id)))
+      )
+        return s;
       // Hello/repeat broadcasts resend the current call to everyone. Keep its progress.
       if (s.current && a.i <= s.current.i) return s;
       // A new call implicitly closes the previous one (in case callClosed was missed).

@@ -2,6 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-10-27
+- **Wire-version update:** The version-2 envelope recorded below is superseded by version 3 in [0023](0023-expanded-catalog-and-language-coverage.md). Its durable sequencing decision remains in effect.
 
 ## Context
 

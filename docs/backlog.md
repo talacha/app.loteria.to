@@ -10,7 +10,7 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Updated after the 2026
 | Section | P0 | P1 | P2 | Total |
 | --- | --- | --- | --- | --- |
 | Bugs | 0 | 1 | 3 | 4 |
-| Feature requests | 0 | 2 | 5 | 7 |
+| Feature requests | 0 | 1 | 4 | 5 |
 | Tech debt | 1 | 2 | 5 | 8 |
 
 ## Bugs
@@ -41,7 +41,7 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Updated after the 2026
 
 ## Feature requests
 
-Expansion and new languages are on hold by owner instruction (2026-10-27). Existing-game maintenance is the current scope.
+The owner authorized static asset production and the 144-card expansion on 2026-10-27, superseding the earlier hold. New language publication still requires source verification, community review and recordings.
 
 ### FEAT-001 · Add Bribri (`bzd`) and Cabécar (`cjp`) — P1
 
@@ -67,19 +67,6 @@ Expansion and new languages are on hold by owner instruction (2026-10-27). Exist
 - **Why:** Decision 0009 keeps paper out of the online game; classrooms without phones still need a cantor screen that checks paper cartones.
 - **Evidence:** `/print` (`src/app/print/`), rules §12.
 - **Accept when:** a separate flow pairs `/print` cartones (with check codes) with a display-only cantor screen and a "check a cartón" action; it never mixes with an online room.
-
-### FEAT-005 · Commissioned art for the 38 cards still shown as emoji — P2
-
-- **Why:** Only 16 cards have illustrations; emoji vary by platform and look unfinished next to the art.
-- **Evidence:** `public/art/` has 16 SVGs; the other 38 cards fall back to `art`/`emoji` in `cards.json`.
-- **Accept when:** 54 SVGs in the Feria de noche style, no people, each under the per-file budget; precache stays < 10 MB.
-
-### FEAT-006 · Card art revamp: vintage printed-lotería style, 2× resolution — P1
-
-**Why:** the flat SVG icons read as UI icons, not lotería cards; the printed style (solid mottled colour per card, painterly illustration, number top-left, name in capitals, paper grain) is the look players expect.
-**Status:** 32 illustrations are indexed; the shared picture component now uses CardFace across the existing game with SVG/emoji fallbacks. Full art production remains on hold until the 144-card list (`deck-expansion.md`) is final. Framed numbered/name compositions and full-deck coverage are not yet complete.
-**Plan:** illustrations only (no text) generated with Figma `generate_image` (gemini-3.1-flash-image, 1024×1536 request → ~848×1264), **full-bleed background to every edge** (the pilot images include a painted paper margin — crop or regenerate), original artwork only (no copying of existing commercial decks, no trademarks); converted to WebP 600×900 (2× for cards up to 300 CSS px); card frame, number and localized name composed in code by a `CardFace` component in `src/app/ui` (falls back to `public/art/*.svg`); isolated review for look-alikes and off-brief images.
-**Acceptance:** every card in the deck has `public/cards/<id>.webp`; boards, the call panel, the cantor screen and the win screen use `CardFace`; total card art ≤ 6 MB; design-lint and contrast checks pass; names render in the player's spoken language.
 
 ### FEAT-007 · More languages: Ngäbere (replacement voiced Chibchan language) and Mekatelyu — P2
 

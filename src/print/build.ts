@@ -11,7 +11,9 @@ import QRCode from 'qrcode';
 import es from './strings.es.json';
 import en from './strings.en.json';
 import { tabla, tablaCode, type Lang } from '@engine';
-import { callableLangs, cardName, cards, type Card } from '@content';
+import { cardName, type Card } from '@content';
+import { printPool } from './cards';
+import type { PrintImage } from './illustrations';
 import {
   GRID,
   PAPER_SIZES,
@@ -33,6 +35,8 @@ import {
 export interface BuildContext {
   /** card id -> PNG bytes. Absent/empty means names only. */
   emoji: Map<string, Uint8Array> | null;
+  /** Current card illustrations, converted from WebP for PDF embedding. */
+  images?: Map<string, PrintImage>;
   fontBytes: Uint8Array | null;
   onProgress?: (done: number, total: number) => void;
   signal?: AbortSignal;
@@ -72,9 +76,10 @@ const CATEGORY_TINT: Record<string, [number, number, number]> = {
   places: [0.93, 0.92, 0.82],
 };
 
-function labelFor(card: Card, lang: Lang, callable: readonly Lang[]): string {
-  const use: Lang = lang === 'es' || lang === 'en' || callable.includes(lang) ? lang : 'es';
-  return cardName(card, use)?.text ?? cardName(card, 'es')?.text ?? card.id;
+function labelFor(card: Card, lang: Lang): string {
+  const name = cardName(card, lang);
+  if (!name) throw new Error(`No approved ${lang} label for printable card ${card.id}`);
+  return name.text;
 }
 
 async function loadFont(
@@ -132,7 +137,6 @@ interface Kit {
   safe: (s: string) => string;
   images: Map<string, PDFImage>;
   opts: PrintOptions;
-  callable: readonly Lang[];
   byId: Map<string, Card>;
 }
 
@@ -169,7 +173,7 @@ function drawBoard(
     });
     if (!card) return;
     const pad = big ? 8 : 4;
-    const text = safe(labelFor(card, opts.labelLang, kit.callable));
+    const text = safe(labelFor(card, opts.labelLang));
     const maxLines = big ? 2 : 2;
     const fit = fitLabel(text, cell.w - 2 * pad, maxLines, labelSize, 6, (s, sz) =>
       font.widthOfTextAtSize(s, sz),
@@ -179,7 +183,15 @@ function drawBoard(
     const img = kit.images.get(id);
     if (img) {
       const pic = pictureRect(cell, labelH, pad);
-      page.drawImage(img, { x: pic.x, y: pic.y, width: pic.w, height: pic.h });
+      const scale = Math.min(pic.w / img.width, pic.h / img.height);
+      const width = img.width * scale;
+      const height = img.height * scale;
+      page.drawImage(img, {
+        x: pic.x + (pic.w - width) / 2,
+        y: pic.y + (pic.h - height) / 2,
+        width,
+        height,
+      });
     }
     const labelBlockTop = cell.y + pad + lineH * fit.lines.length;
     // Without a picture the label is centred in the cell.
@@ -288,8 +300,22 @@ export async function buildBoardsPdf(
   const { font, safe, fallback } = await loadFont(pdf, ctx.fontBytes);
 
   const images = new Map<string, PDFImage>();
+  if (ctx.images)
+    for (const [id, image] of ctx.images) {
+      try {
+        images.set(
+          id,
+          image.format === 'jpeg'
+            ? await pdf.embedJpg(image.bytes)
+            : await pdf.embedPng(image.bytes),
+        );
+      } catch {
+        /* retain a name or fallback picture if a single image is invalid */
+      }
+    }
   if (ctx.emoji) {
     for (const [id, bytes] of ctx.emoji) {
+      if (images.has(id)) continue;
       try {
         images.set(id, await pdf.embedPng(bytes));
       } catch {
@@ -297,19 +323,17 @@ export async function buildBoardsPdf(
       }
     }
   }
+  const available = printPool(opts.labelLang);
   const kit: Kit = {
     font,
     safe,
     images,
     opts,
-    callable: callableLangs(),
-    byId: new Map(cards.map((c) => [c.id, c])),
+    byId: new Map(available.map((c) => [c.id, c])),
   };
-  const pool = cards.map((c) => ({ id: c.id, category: c.category }));
+  const pool = available.map((c) => ({ id: c.id, category: c.category }));
 
-  const callable = kit.callable;
-  const degraded =
-    fallback && cards.some((c) => hasUnsupported(labelFor(c, opts.labelLang, callable)));
+  const degraded = fallback && available.some((c) => hasUnsupported(labelFor(c, opts.labelLang)));
   const plan = boardsPlan(opts);
 
   await drawCantorSheet(pdf, kit, opts.count);

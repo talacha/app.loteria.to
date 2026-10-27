@@ -1,11 +1,11 @@
 # Lotería de los Pueblos
 
-> Lotería de los Pueblos (https://app.loteria.to) is a free, no-account web game: the picture lotería called aloud in five languages (Nahuatl, Yucatec Maya, Cusco-Collao Quechua, Spanish and English). Indigenous-language names are drafts based on dictionary and grammar references that remain unverified and have not been confirmed by native-speaker review. One person opens a room, everyone else joins from their phone with a QR code or a 5-character code, and a synthetic voice calls the 54 illustrated cards. Spanish and English audio was generated with Kokoro-82M (Apache-2.0); Nahuatl, Yucatec Maya and Quechua audio uses Meta MMS-TTS (CC BY-NC 4.0, non-commercial use with attribution). Players can also play solo against the computer or print paper boards.
+> Lotería de los Pueblos (https://app.loteria.to) is a free, no-account picture-lotería game with five spoken-language options: Nahuatl, Yucatec Maya, Cusco-Collao Quechua, Spanish and English. Coverage differs by language: all 144 cards have Spanish and English calls; the original 54 cards also have calls in the three Indigenous languages. Indigenous-language names are legacy drafts whose references remain unverified and have not been confirmed by native-speaker review. One person opens a room and others join from their phones with a QR code or 5-character code. Spanish and English audio uses Kokoro-82M (Apache-2.0); Nahuatl, Yucatec Maya and Quechua audio uses Meta MMS-TTS (CC BY-NC 4.0, non-commercial use with attribution). Players can also play solo or print paper boards.
 
 ## Pages
 
 - [Home: play, create or join a room](https://app.loteria.to/): create a room, join with a code, FAQ.
-- [The 54 cards](https://app.loteria.to/deck): every card with its name in five languages.
+- [The 144 cards](https://app.loteria.to/deck): Spanish and English names for the full deck; Indigenous-language names appear on the original 54 cards.
 - [Play solo](https://app.loteria.to/solo): offline game against 1 to 3 computer players.
 - [Print boards](https://app.loteria.to/print): printable PDF boards for paper play.
 - [Credits and licences](https://app.loteria.to/creditos): art, voices, typefaces, software and contributors.

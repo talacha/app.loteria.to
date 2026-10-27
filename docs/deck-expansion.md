@@ -1,7 +1,7 @@
 # Deck expansion: 54 to 144 cards
 
-**Status:** proposal, not started. Nothing in `src/content/` changes until each card has sourced names (see §4).
-**Goal:** 6 categories x 24 = **144 cards**, so a 20-player room can play 8x8 cartones (needs ≥ 137 cards). Today: 54 cards, 9 per category.
+**Status (2026-10-27):** production authorized. The selected list retains all original 54 and adds the 90 below, with no reserve swaps. All 144 cards have Spanish and English names, audio and reviewed full-cover images. Current playable coverage is 144 cards in Spanish and English, and 54 in each of Nahuatl, Yucatec Maya and Quechua. The 90 added Indigenous-language entries remain absent from the playable catalog pending source verification and community review. The 144 image files total 4,324,088 bytes; the generated unique PWA precache measures 9,255,794 bytes, within the art and installation budgets. [Decision 0023](decisions/0023-expanded-catalog-and-language-coverage.md) governs release eligibility.
+**Goal:** 6 categories x 24 = **144 cards**, so a 20-player room can play 8x8 cartones (needs ≥ 137 cards). The selected catalog has 24 cards per category; the original 54 are retained.
 **Inputs:** [PRD.md](PRD.md), [rules.md](rules.md), `src/content/cards.json`, `src/content/drafts/{bzd,cjp}.json` (Bribri and Cabécar drafts, not yet in the deck), `public/art/*.svg`.
 
 Deck size needed for 20 players, by grid (the rule that no two cartones share more than half their cells, [0018](decisions/0018-cartones-share-at-most-eight-cards.md)):
@@ -126,11 +126,11 @@ Risk: **L** = expected attested in all five Indigenous languages and visually cl
 
 ### Rule for missing words
 
-A card may stay in the deck while lacking a name in one language. Proposed rule (needs a rules.md change and a decision record, since rules §9.1 assumes a fixed 54-card deck and 4x4):
+A card may stay in the deck while lacking a name in one language. Accepted coverage rule (see [rules.md](rules.md) and decision 0023; the original 54 retain their existing eligibility without any new provenance claim):
 
 1. A card is **available** in a language only if that language has a sourced name (`kind: attested`, or a loan attested in speech, never a coinage) and an audio clip.
 2. At round start, the **room deck** is the intersection of the available cards across every spoken language present in the room.
-3. The **grid** is the largest size whose deck requirement for the actual player count fits the room deck (the 20-player table above is the worst case).
+3. The chosen **grid** is preserved when it fits, otherwise reduced to the largest size whose deck requirement for the actual player count fits the room deck (the 20-player table above is the worst case).
 4. A player may switch spoken language mid-round only to a language that covers the room deck; other languages are shown disabled with a short reason.
 
 Per-player decks (each player's cartón drawn only from their own language) were rejected: every called card must be callable to everyone, with three spelling choices, in each player's language.
@@ -181,11 +181,9 @@ Work order: research the 90 in the existing draft format (`src/content/drafts/{l
 
 ### Art
 
-Only 16 of the 54 cards have an SVG today (`public/art/`); the rest show emoji. Several new cards have no emoji (metate, comal, coa, huso, troje, petate), so they need SVG before shipping.
+The release uses portrait WebP covers under `public/cards/`, rendered as full-card backgrounds. All 144 covers are present and reviewed. The 144 files total 4,324,088 bytes, and the generated unique PWA precache measures 9,255,794 bytes, within their 6,000,000-byte art and 10 MiB installation budgets.
 
-- **Style, as in `public/art/*.svg`:** `viewBox="0 0 120 120"`, one centred subject, 5 px `#16182F` outline with round joins and caps, flat fills from the existing palette (`#3BA55C`, `#FFC233`, `#2F6FE4`, `#0E9F7E`, `#F2A33A`, `#E2412B`, `#E5177E`, `#FFF6E5`, `#8A5A3B`), no gradients, no text, about 1 KB each.
-- **Scope:** 90 new SVGs, plus the 38 existing cards without art, so the deck looks uniform.
-- **Checks:** silhouette test at 48 px and in greyscale (high-contrast theme), each confusion pair in the table drawn side by side, no people or hands, regional forms that read across regions (log beehive, notched-log ladder, plain edible mushroom, land snail).
+- **Checks:** silhouette and legibility at phone size and in greyscale/high contrast; draw known confusion pairs distinctly; no people or hands; review culturally specific forms (log beehive, notched-log ladder, plain edible mushroom, land snail).
 
 ### Audio
 

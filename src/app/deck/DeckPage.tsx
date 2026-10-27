@@ -53,26 +53,30 @@ export default function DeckPage() {
                 className={styles.art}
                 emojiClassName={styles.emoji}
               />
-              <ul className={styles.names}>
-                <li className={styles.primary} lang="es">
-                  {es?.text}
-                </li>
-                <li className={styles.secondary} lang="en">
-                  {en?.text}
-                </li>
-              </ul>
-              {NATIVE.map((lang) => {
-                const n = cardName(card, lang);
-                if (!n) return null;
-                return (
-                  <span key={lang} className={styles.native} lang={lang}>
-                    <span>
-                      <span className="sr-only">{t(`lang.${lang}`)}: </span>
-                      {n.text}
-                    </span>
-                  </span>
-                );
-              })}
+              <div className={styles.caption}>
+                <ul className={styles.names}>
+                  <li className={styles.primary} lang="es">
+                    {es?.text}
+                  </li>
+                  <li className={styles.secondary} lang="en">
+                    {en?.text}
+                  </li>
+                </ul>
+                <div className={styles.nativeNames}>
+                  {NATIVE.map((lang) => {
+                    const n = cardName(card, lang);
+                    if (!n) return null;
+                    return (
+                      <span key={lang} className={styles.native} lang={lang}>
+                        <span>
+                          <span className="sr-only">{t(`lang.${lang}`)}: </span>
+                          {n.text}
+                        </span>
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
             </li>
           );
         })}

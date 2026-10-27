@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
-import { cards } from '@content';
 import { MAX_GRID, MIN_GRID, maxGridFor, minDeckFor } from '@engine';
 import { Button, Panel, PaperCard, Pill, QrCard, RoomCodeTiles, RosterTile } from '../ui';
 import { SPOKEN_LANGS } from '../ui/profile';
@@ -37,7 +36,7 @@ export default function HostLobby({ room }: { room: HostRoom }) {
   const [seedError, setSeedError] = useState(false);
   const { settings } = room;
   const players = Math.max(2, room.roster.length);
-  const maxGrid = maxGridFor(cards.length, players);
+  const maxGrid = maxGridFor(room.deckSize, players);
   const { configure } = room;
   useEffect(() => {
     // Players joining can make the chosen size unsupported: step down to the largest that fits.
@@ -232,7 +231,7 @@ export default function HostLobby({ room }: { room: HostRoom }) {
                   {Array.from({ length: MAX_GRID - MIN_GRID + 1 }, (_, k) => MIN_GRID + k).map(
                     (g) => {
                       const need = minDeckFor(g, players);
-                      const ok = cards.length >= need;
+                      const ok = room.deckSize >= need;
                       return (
                         <button
                           key={g}

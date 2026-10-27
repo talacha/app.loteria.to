@@ -3,7 +3,7 @@ import { act, cleanup, fireEvent, render, screen, within } from '@testing-librar
 import '../i18n';
 import i18n from '../i18n';
 import { LocalTransport, type Msg } from '@net';
-import { getCard } from '@content';
+import { cards, getCard } from '@content';
 import PlayerBoard, { type PlayerProfile } from './PlayerBoard';
 import { makeBoard } from './playerState';
 import { wordOf } from './words';
@@ -87,6 +87,27 @@ async function callTarget(i = 0, id = target) {
 const tabla = () => screen.getByRole('list', { name: 'Tu tabla' });
 
 describe('PlayerBoard board', () => {
+  it('keeps a late Indigenous-language joiner on a supported voice for an expanded round', async () => {
+    await mount();
+    host.send(round({ deck: cards.map((card) => card.id), gridSize: 8 }));
+    host.send({ t: 'assign', seat: player.seat, tablaIndex: 7, roundNo: 1 });
+    await flush();
+    expect(within(tabla()).getAllByRole('listitem')).toHaveLength(64);
+    expect(
+      screen.getByText(/Náhuatl no está disponible en esta ronda. Escucharás Español/),
+    ).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Ajustes' }));
+    expect((screen.getByRole('radio', { name: /Náhuatl/ }) as HTMLButtonElement).disabled).toBe(
+      true,
+    );
+    expect((screen.getByRole('radio', { name: /Español/ }) as HTMLButtonElement).disabled).toBe(
+      false,
+    );
+    expect(received.some((message) => message.t === 'hello' && message.labelLang === 'es')).toBe(
+      true,
+    );
+  });
+
   it('shows a preparing state until its own assign arrives; ignores other seats', async () => {
     await mount();
     host.send(round());
@@ -135,7 +156,7 @@ describe('PlayerBoard call', () => {
     await callTarget();
     const call = screen.getByTestId('call');
     expect(within(call).getByRole('img', { name: 'Carta que se está cantando' })).toBeTruthy();
-    expect(call.querySelector('img')?.getAttribute('src')).toBe(`/art/${target}.svg`);
+    expect(call.querySelector('img')?.getAttribute('src')).toBe(`/cards/${target}.webp`);
     expect(call.textContent).not.toContain(wordOf(target, 'nah'));
     expect(speak).toHaveBeenCalledTimes(1);
     expect(speak.mock.calls[0]).toEqual([getCard(target), 'nah']);

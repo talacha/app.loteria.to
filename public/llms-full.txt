@@ -1,23 +1,23 @@
 # Lotería de los Pueblos
 
 URL: https://app.loteria.to
-Languages of the game: Nahuatl (nah), Yucatec Maya (yua), Quechua Cusco-Collao (quz), Spanish (es), English (en). App interface: Spanish and English.
+Spoken-language options: Nahuatl (nah), Yucatec Maya (yua), Quechua Cusco-Collao (quz), Spanish (es), English (en). Coverage differs: all 144 cards have Spanish and English calls; the original 54 cards also have calls in the three Indigenous languages. App interface: Spanish and English.
 Price: free. Accounts: none. Ads: none. Use: non-commercial.
 
 ## What the game is
 
-Lotería de los Pueblos is a progressive web app (installable, works offline after the first visit) that plays the traditional picture lotería, the Mexican bingo-like game of illustrated cards, with the cards called aloud in five languages instead of one. The deck has 54 original illustrations inspired by the nature, crafts and places of Mesoamerica and the Andes. Cards never show people. Every card has a name in each of the five languages.
+Lotería de los Pueblos is a progressive web app (installable, works offline after the first visit) that plays the traditional picture lotería, the Mexican bingo-like game of illustrated cards. The catalog has 144 original illustrations inspired by the nature, crafts and places of Mesoamerica and the Andes. Cards never show people. Every card has a Spanish and English name; the original 54-card set also has names and synthetic calls in Nahuatl, Yucatec Maya and Quechua Cusco-Collao. The shared deck for a room is limited to cards available in the spoken languages selected for that round.
 
 ## How a round works
 
 1. One person creates a room (the cantor's screen) and shows its code and QR. Players join from their phones with the code, the link or the QR, choosing a name and a picture. A round needs at least 2 players; a room holds up to 20.
-2. Each player gets one board (cartón) of 4 columns by 4 rows: 16 different cards drawn from the deck, at most 5 from the same group. Boards in the same room differ from each other. The board shows pictures only; a square's written name appears once that card has been called.
+2. Each player gets one board (cartón) in the size chosen for the room, with different cards drawn from the round's shared playable deck. Boards in the same room differ from each other. The board shows pictures only; a square's written name appears once that card has been called.
 3. The cantor is an automatic voice. It calls each card once, in random order, one at a time, every 6 to 20 seconds as the organiser set. Every player sees the picture and hears the name in their own spoken language at the same moment.
 4. Each player gets three written spellings of the card in their spoken language and picks the right one. The first correct pick earns 2 points, other correct picks earn 1, and a wrong pick earns 0 with a friendly "¡Casi!" and one more try. Points only break ties within the round.
 5. Everyone who has the called card on their board crosses it off with a bean, whether they picked correctly or not.
-6. The first player to cross off all 16 squares calls "¡Lotería!". If several complete on the same card, the one with the most points wins; equal points share. Then "Otra ronda" starts a new round with new boards.
+6. The first player to cross off every square calls "¡Lotería!". If several complete on the same card, points break the tie; tied players share completion. Then "Otra ronda" starts a new round with new boards.
 
-Each player chooses two languages independently: the app language (Spanish or English) and the spoken language (any of the five). A Spanish speaker can keep the app in Spanish and hear Nahuatl to practise it. A "listen" mode calls only the word, to learn by ear.
+Each player chooses two languages independently: the app language (Spanish or English) and a spoken language with available cards. A Spanish speaker can keep the app in Spanish and hear Nahuatl to practise it; that room uses the original 54-card pool. A "listen" mode calls only the word, to learn by ear.
 
 ## Other ways to play
 
@@ -26,16 +26,16 @@ Each player chooses two languages independently: the app language (Spanish or En
 
 ## Who it is for
 
-Multilingual families (grandparents call in their language while children look for pictures), classrooms and community centres, and people learning a heritage language. Designed to include everyone: adjustable text size, high contrast, keyboard support, no accounts, and your name and marks stay on your device.
+Multilingual families (grandparents call in their language while children look for pictures), classrooms and community centres, and people learning a heritage language. Designed to include everyone: adjustable text size, high contrast, keyboard support, and no accounts. Your name and answers are shared within the room.
 
 ## Audio, content and licences
 
-The card names are voiced with synthetic voices generated with Meta MMS-TTS, licensed CC BY-NC 4.0, which is why the game is non-commercial. Words in Indigenous languages are only called once reviewed by native speakers; review status is tracked per word. See https://app.loteria.to/creditos for art, typefaces (Atkinson Hyperlegible, Bricolage Grotesque, Noto Sans under the SIL Open Font License) and software credits.
+Spanish and English card names are voiced with Kokoro-82M (Apache-2.0). Nahuatl, Yucatec Maya and Quechua names use Meta MMS-TTS (CC BY-NC 4.0), which is why the game is non-commercial. The original Indigenous-language names are legacy entries based on references that have not all been verified with native speakers; they should not be treated as community-approved. See https://app.loteria.to/creditos for content provenance, art, typefaces (Atkinson Hyperlegible, Bricolage Grotesque, Noto Sans under the SIL Open Font License) and software credits.
 
 ## Pages
 
 - https://app.loteria.to/ (home, create or join a room, FAQ)
-- https://app.loteria.to/deck (the 54 cards)
+- https://app.loteria.to/deck (144 cards, with Indigenous-language names on the original 54-card set)
 - https://app.loteria.to/solo (play solo)
 - https://app.loteria.to/print (printable boards)
 - https://app.loteria.to/creditos (credits and licences)

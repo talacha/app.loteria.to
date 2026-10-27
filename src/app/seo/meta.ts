@@ -6,7 +6,7 @@ export const SITE_NAME = 'Lotería de los Pueblos';
 export const OG_DEFAULT = `${SITE}/og/default.png`;
 export const OG_INVITE = `${SITE}/og/invite.png`;
 export const OG_DEFAULT_ALT =
-  'Lotería de los Pueblos: un cartón de lotería con dibujos y los cinco idiomas: náhuatl, maya yucateco, quechua, español e inglés.';
+  'Lotería de los Pueblos: 144 cartas en español e inglés y 54 también en náhuatl, maya yucateco y quechua.';
 export const OG_INVITE_ALT = 'Invitación a una sala de Lotería de los Pueblos.';
 
 export type SeoLang = 'es' | 'en';
@@ -23,19 +23,19 @@ export interface RouteSeo {
 }
 
 export const HOME_TITLE = {
-  es: 'Lotería de los Pueblos — la lotería en cinco idiomas',
-  en: 'Lotería de los Pueblos — the lotería in five languages',
+  es: 'Lotería de los Pueblos — lotería con cinco idiomas de llamada',
+  en: 'Lotería de los Pueblos — lotería with five call languages',
 } as const;
 
 const HOME_DESC = {
-  es: 'Lotería de imágenes para jugar en familia desde tu teléfono. Las voces sintéticas cantan en cinco idiomas; los borradores de nombres en lenguas originarias aún no se verifican. Gratis, sin cuentas.',
-  en: 'Picture lotería to play with family from your phone. Synthetic voices call cards in five languages; Indigenous-language name drafts remain unverified. Free, no accounts.',
+  es: 'Lotería de imágenes para jugar en familia: 144 cartas con llamadas en español e inglés y 54 también en náhuatl, maya yucateco y quechua. Los nombres indígenas aún requieren verificación. Gratis, sin cuentas.',
+  en: 'Picture lotería for families: 144 cards with Spanish and English calls, and 54 also in Nahuatl, Yucatec Maya and Quechua. Indigenous names still need verification. Free, no accounts.',
 } as const;
 
 const DESC: Record<string, Record<SeoLang, string>> = {
   '/deck': {
-    es: 'Las 54 cartas de la baraja: ilustraciones originales inspiradas en la naturaleza, los oficios y los lugares de Mesoamérica y los Andes, con su nombre en cinco idiomas.',
-    en: 'All 54 cards of the deck: original illustrations inspired by the nature, crafts and places of Mesoamerica and the Andes, each named in five languages.',
+    es: 'Las 144 cartas tienen nombre en español e inglés. Las 54 originales también muestran nombres heredados en náhuatl, maya yucateco y quechua; sus fuentes aún no se han verificado por completo.',
+    en: 'All 144 cards have Spanish and English names. The original 54 also show legacy Nahuatl, Yucatec Maya and Quechua names; their sources have not all been verified.',
   },
   '/creditos': {
     es: 'Créditos de Lotería de los Pueblos: ilustraciones, voces sintéticas (Meta MMS-TTS, CC BY-NC 4.0), tipografías, software libre y colaboradores.',

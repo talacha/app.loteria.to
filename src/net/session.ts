@@ -11,6 +11,9 @@ import {
   type Role,
 } from './transport.ts';
 
+/** v3 freezes the per-round deck; older clients must reload before playing. */
+export const PROTOCOL_VERSION = 3;
+
 export interface Frame {
   role: Role;
   from: string;
@@ -79,7 +82,7 @@ export class Session {
       if (!this.keys) throw new Error('only the host may send ' + m.t);
       if (m.t === 'round' || m.t === 'lobby') m = { ...m, hostKey: this.keys.pub };
       const seq = await this.sequences.next('tx:' + this.keys.pub);
-      const envelope = { v: 2, seq, m };
+      const envelope = { v: PROTOCOL_VERSION, seq, m };
       return {
         role: this.role,
         from: this.seat,
@@ -118,18 +121,18 @@ export class Session {
         if ((m.t !== 'round' && m.t !== 'lobby') || !m.hostKey) return null;
         key = m.hostKey;
       }
-      if (f.v !== 2) {
+      if (f.v !== PROTOCOL_VERSION) {
         // Only an authenticated old host can raise a compatibility error. Forgery stays silent.
         const authenticated = await verifyMsg(
           key,
           f.sig,
-          f.v === undefined ? m : { v: f.v, seq: f.seq, m },
+          f.v === undefined ? f.m : { v: f.v, seq: f.seq, m: f.m },
         );
         if (authenticated) throw new ProtocolVersionError();
         return null;
       }
       if (!Number.isSafeInteger(f.seq) || (f.seq as number) < 1) return null;
-      if (!(await verifyMsg(key, f.sig, { v: 2, seq: f.seq, m }))) return null;
+      if (!(await verifyMsg(key, f.sig, { v: PROTOCOL_VERSION, seq: f.seq, m }))) return null;
       // Write before delivery so a reload cannot accept a frame already shown to this seat.
       if (!(await this.sequences.accept(`rx:${key}:${this.seat}`, f.seq as number))) return null;
       this.pinned = key;

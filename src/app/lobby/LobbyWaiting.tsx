@@ -76,6 +76,7 @@ export default function LobbyWaiting({
       let lastHello = 0;
       let assignedRound = -1;
       let currentRound = -1;
+      let activeSpokenLang = spokenLang;
       const hello = () => {
         lastHello = Date.now();
         mine.send({
@@ -84,7 +85,7 @@ export default function LobbyWaiting({
           name,
           glyph,
           pronouns: pronouns || undefined,
-          labelLang: spokenLang,
+          labelLang: activeSpokenLang,
         });
       };
       /** Re-announce myself, at most once per HELLO_RETRY_MS. */
@@ -113,6 +114,10 @@ export default function LobbyWaiting({
                 setUiLang(m.defaults.uiLang);
                 mergeProfile({ spokenLang: m.defaults.spokenLang });
                 setRoomSpoken(m.defaults.spokenLang);
+                if (activeSpokenLang !== m.defaults.spokenLang) {
+                  activeSpokenLang = m.defaults.spokenLang;
+                  hello();
+                }
               }
             }
             const inRoom = m.players.some((p) => p.seat === mine.seat);

@@ -66,6 +66,7 @@
   min-width: 0;
 }
 .avatar {
+  overflow: hidden;
   flex: none;
   display: grid;
   place-items: center;
@@ -78,7 +79,7 @@
 .avatarArt {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 .rivalText {
   display: flex;
@@ -93,30 +94,39 @@
   font-size: var(--text-sm);
 }
 .callPanel {
+  position: relative;
+  overflow: hidden;
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-4);
-  align-items: center;
-  padding: var(--space-4);
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(8rem, 1fr) auto auto;
+  min-height: 14rem;
+  gap: 0;
+  padding: 0;
 }
-.callCard {
-  display: grid;
-  place-items: center;
-  width: 9rem;
-  aspect-ratio: 1;
-  padding: var(--space-2);
-  box-sizing: border-box;
+.callCard[data-size] {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  box-shadow: none;
 }
 .callArt {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
 }
 .callSide {
+  position: relative;
+  grid-row: 2;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-2);
+  padding: var(--space-2);
+  color: var(--color-ink);
+  background: var(--color-paper);
 }
 .replay {
   display: grid;
@@ -136,7 +146,10 @@
   font-size: var(--text-xl);
 }
 .timer {
-  grid-column: 1 / -1;
+  position: relative;
+  grid-row: 3;
+  padding: 0 var(--space-2) var(--space-2);
+  background: var(--color-paper);
 }
 .choices {
   display: grid;
@@ -193,9 +206,6 @@
   }
   .choices {
     grid-template-columns: repeat(3, 1fr);
-  }
-  .callCard {
-    width: 12rem;
   }
 }
 @media (min-width: 1280px) {

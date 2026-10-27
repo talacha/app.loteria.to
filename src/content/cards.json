@@ -7378,5 +7378,3245 @@
       "es": "Tengo estantes llenos de cuentos; se habla bajito y se llevan libros prestados.",
       "en": "I have shelves full of stories; we speak softly and borrow books."
     }
+  },
+  {
+    "n": 55,
+    "id": "perro",
+    "category": "animals",
+    "art": "🐕",
+    "names": {
+      "es": {
+        "text": "El Perro",
+        "status": "approved",
+        "audio": "/audio/es/perro.4a8e9fb8.m4a",
+        "clip": {
+          "file": "/audio/es/perro.4a8e9fb8.m4a",
+          "sha256": "4a8e9fb8f5283f494526a15f41e1a953827f812a5dbc20ec9ece91863a9eefdd",
+          "engine": "kokoro",
+          "durationMs": 663,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Dog",
+        "status": "approved",
+        "audio": "/audio/en/perro.6fb1e23e.m4a",
+        "clip": {
+          "file": "/audio/en/perro.6fb1e23e.m4a",
+          "sha256": "6fb1e23ef5bf6f86c7ec7088a4627aa2ce8d971c36f801681cf1c82340c61a9b",
+          "engine": "kokoro",
+          "durationMs": 687,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 56,
+    "id": "pez",
+    "category": "animals",
+    "art": "🐟",
+    "names": {
+      "es": {
+        "text": "El Pez",
+        "status": "approved",
+        "audio": "/audio/es/pez.9b3fb837.m4a",
+        "clip": {
+          "file": "/audio/es/pez.9b3fb837.m4a",
+          "sha256": "9b3fb837e4162790257b214e4116ba83db177380685877b6df8b60d330c2e00e",
+          "engine": "kokoro",
+          "durationMs": 702,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Fish",
+        "status": "approved",
+        "audio": "/audio/en/pez.4992f7db.m4a",
+        "clip": {
+          "file": "/audio/en/pez.4992f7db.m4a",
+          "sha256": "4992f7dbeba87824828a20fa6aa90f179267022931064510416b411f99d7a439",
+          "engine": "kokoro",
+          "durationMs": 707,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 57,
+    "id": "venado",
+    "category": "animals",
+    "art": "🦌",
+    "names": {
+      "es": {
+        "text": "El Venado",
+        "status": "approved",
+        "audio": "/audio/es/venado.b1233435.m4a",
+        "clip": {
+          "file": "/audio/es/venado.b1233435.m4a",
+          "sha256": "b1233435f098548b84ba859209b1f586dad1961554153bb12cca05bc93092548",
+          "engine": "kokoro",
+          "durationMs": 742,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Deer",
+        "status": "approved",
+        "audio": "/audio/en/venado.32ce14b7.m4a",
+        "clip": {
+          "file": "/audio/en/venado.32ce14b7.m4a",
+          "sha256": "32ce14b79133cff194f2fc0a86f9ef09d49a6203bb75fdd1260b5fbe7020705d",
+          "engine": "kokoro",
+          "durationMs": 676,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 58,
+    "id": "mono",
+    "category": "animals",
+    "art": "🐒",
+    "names": {
+      "es": {
+        "text": "El Mono",
+        "status": "approved",
+        "audio": "/audio/es/mono.03fa4314.m4a",
+        "clip": {
+          "file": "/audio/es/mono.03fa4314.m4a",
+          "sha256": "03fa4314e0936409fe379238b0241fecbd07b4c3f3d6e57db90da3a62c6bf3b4",
+          "engine": "kokoro",
+          "durationMs": 701,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Monkey",
+        "status": "approved",
+        "audio": "/audio/en/mono.66f023cd.m4a",
+        "clip": {
+          "file": "/audio/en/mono.66f023cd.m4a",
+          "sha256": "66f023cdada1ba5fe3836b9d6a85db7070d8164a08f63d8f5e1edeb0bf957574",
+          "engine": "kokoro",
+          "durationMs": 757,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 59,
+    "id": "murcielago",
+    "category": "animals",
+    "art": "🦇",
+    "names": {
+      "es": {
+        "text": "El Murciélago",
+        "status": "approved",
+        "audio": "/audio/es/murcielago.22d28ca5.m4a",
+        "clip": {
+          "file": "/audio/es/murcielago.22d28ca5.m4a",
+          "sha256": "22d28ca59c83556a27672c6e48d767b863bc97985b3b314ec2dfb2406ad966a3",
+          "engine": "kokoro",
+          "durationMs": 973,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Bat",
+        "status": "approved",
+        "audio": "/audio/en/murcielago.768d5461.m4a",
+        "clip": {
+          "file": "/audio/en/murcielago.768d5461.m4a",
+          "sha256": "768d5461cd3d711c3f75c967834f7b7bcc37235014be976cc5ebad0dbc8a133e",
+          "engine": "kokoro",
+          "durationMs": 667,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 60,
+    "id": "hormiga",
+    "category": "animals",
+    "art": "🐜",
+    "names": {
+      "es": {
+        "text": "La Hormiga",
+        "status": "approved",
+        "audio": "/audio/es/hormiga.1fc9debe.m4a",
+        "clip": {
+          "file": "/audio/es/hormiga.1fc9debe.m4a",
+          "sha256": "1fc9debe21583ef67bed0f1a2f8cfce268af4739b133c8dbade9af9f28c405f7",
+          "engine": "kokoro",
+          "durationMs": 784,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Ant",
+        "status": "approved",
+        "audio": "/audio/en/hormiga.622587f1.m4a",
+        "clip": {
+          "file": "/audio/en/hormiga.622587f1.m4a",
+          "sha256": "622587f144bda1663eb713b9f6eea62eb3aeb96756e103e62978e95aaea22cf5",
+          "engine": "kokoro",
+          "durationMs": 682,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "am_michael"
+        }
+      }
+    }
+  },
+  {
+    "n": 61,
+    "id": "abeja",
+    "category": "animals",
+    "art": "🐝",
+    "names": {
+      "es": {
+        "text": "La Abeja",
+        "status": "approved",
+        "audio": "/audio/es/abeja.b34e3d45.m4a",
+        "clip": {
+          "file": "/audio/es/abeja.b34e3d45.m4a",
+          "sha256": "b34e3d45368d423d929ab2c0b0066a00297bbaf9012cadc2f8b172ef506afeb4",
+          "engine": "kokoro",
+          "durationMs": 769,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Bee",
+        "status": "approved",
+        "audio": "/audio/en/abeja.12ad3cd8.m4a",
+        "clip": {
+          "file": "/audio/en/abeja.12ad3cd8.m4a",
+          "sha256": "12ad3cd8cb3bd0718b73cd359ef056650318ba52c3ddb3331c32c2866e0e3df2",
+          "engine": "kokoro",
+          "durationMs": 621,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 62,
+    "id": "arana",
+    "category": "animals",
+    "art": "🕷",
+    "names": {
+      "es": {
+        "text": "La Araña",
+        "status": "approved",
+        "audio": "/audio/es/arana.8bbc46cd.m4a",
+        "clip": {
+          "file": "/audio/es/arana.8bbc46cd.m4a",
+          "sha256": "8bbc46cdcf65184643efcd508e7b4ef477b92e8063c7e13eb4cbd7ed2650dd3b",
+          "engine": "kokoro",
+          "durationMs": 719,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Spider",
+        "status": "approved",
+        "audio": "/audio/en/arana.aaad9cd4.m4a",
+        "clip": {
+          "file": "/audio/en/arana.aaad9cd4.m4a",
+          "sha256": "aaad9cd46f78816b95d0953ce6935c90adccf83140954eea22147afb8297feec",
+          "engine": "kokoro",
+          "durationMs": 752,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 63,
+    "id": "caracol",
+    "category": "animals",
+    "art": "🐌",
+    "names": {
+      "es": {
+        "text": "El Caracol",
+        "status": "approved",
+        "audio": "/audio/es/caracol.bf5e879c.m4a",
+        "clip": {
+          "file": "/audio/es/caracol.bf5e879c.m4a",
+          "sha256": "bf5e879cfda1b6038d148a57a90e322280debe5d4b1e5c0ee1747b38955a3fca",
+          "engine": "kokoro",
+          "durationMs": 992,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Snail",
+        "status": "approved",
+        "audio": "/audio/en/caracol.819b99fe.m4a",
+        "clip": {
+          "file": "/audio/en/caracol.819b99fe.m4a",
+          "sha256": "819b99fe6e5fc2571ffbacc84d6246ac38918e7cfd45f1cd84e30815bf269fc4",
+          "engine": "kokoro",
+          "durationMs": 761,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 64,
+    "id": "cangrejo",
+    "category": "animals",
+    "art": "🦀",
+    "names": {
+      "es": {
+        "text": "El Cangrejo",
+        "status": "approved",
+        "audio": "/audio/es/cangrejo.4df991d8.m4a",
+        "clip": {
+          "file": "/audio/es/cangrejo.4df991d8.m4a",
+          "sha256": "4df991d8f0baea0edccf42d74213518d5aa7f4666fe31d089021d90c96626448",
+          "engine": "kokoro",
+          "durationMs": 911,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Crab",
+        "status": "approved",
+        "audio": "/audio/en/cangrejo.4f65bd4b.m4a",
+        "clip": {
+          "file": "/audio/en/cangrejo.4f65bd4b.m4a",
+          "sha256": "4f65bd4be15922c46a067cc424ff111e767d52127ac4dc320c7e0bf70df22710",
+          "engine": "kokoro",
+          "durationMs": 592,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_bella"
+        }
+      }
+    }
+  },
+  {
+    "n": 65,
+    "id": "armadillo",
+    "category": "animals",
+    "art": "🦔",
+    "names": {
+      "es": {
+        "text": "El Armadillo",
+        "status": "approved",
+        "audio": "/audio/es/armadillo.eadbd928.m4a",
+        "clip": {
+          "file": "/audio/es/armadillo.eadbd928.m4a",
+          "sha256": "eadbd9284cd9d0d293ed9f031220a3e1fe1fac30995b8ce9658f58e0fc87e07e",
+          "engine": "kokoro",
+          "durationMs": 993,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Armadillo",
+        "status": "approved",
+        "audio": "/audio/en/armadillo.1135145e.m4a",
+        "clip": {
+          "file": "/audio/en/armadillo.1135145e.m4a",
+          "sha256": "1135145e294df543585f4f828a785a1235a6ef90a6ebaadd6915ef78d3ef815e",
+          "engine": "kokoro",
+          "durationMs": 846,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 66,
+    "id": "lagartija",
+    "category": "animals",
+    "art": "🦎",
+    "names": {
+      "es": {
+        "text": "La Lagartija",
+        "status": "approved",
+        "audio": "/audio/es/lagartija.46b0990c.m4a",
+        "clip": {
+          "file": "/audio/es/lagartija.46b0990c.m4a",
+          "sha256": "46b0990c63af52988caacff4544dfc85d774b6b3a607fe3595692adf23b5f3d9",
+          "engine": "kokoro",
+          "durationMs": 971,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Lizard",
+        "status": "approved",
+        "audio": "/audio/en/lagartija.39d4bc6e.m4a",
+        "clip": {
+          "file": "/audio/en/lagartija.39d4bc6e.m4a",
+          "sha256": "39d4bc6ebbb5d30c454a9816b83c4efe89f57d45b6fe6171d61d8b9b4623a4e0",
+          "engine": "kokoro",
+          "durationMs": 698,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 67,
+    "id": "perico",
+    "category": "animals",
+    "art": "🦜",
+    "names": {
+      "es": {
+        "text": "El Perico",
+        "status": "approved",
+        "audio": "/audio/es/perico.9008d1b7.m4a",
+        "clip": {
+          "file": "/audio/es/perico.9008d1b7.m4a",
+          "sha256": "9008d1b753284fc9febf74409f46270748096bae572e32daf39e11c3b51deb46",
+          "engine": "kokoro",
+          "durationMs": 634,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Parrot",
+        "status": "approved",
+        "audio": "/audio/en/perico.92034e62.m4a",
+        "clip": {
+          "file": "/audio/en/perico.92034e62.m4a",
+          "sha256": "92034e62471faeec83bafd26403f98df46581f190263f4df3e0e4b47adf5268f",
+          "engine": "kokoro",
+          "durationMs": 741,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 68,
+    "id": "raton",
+    "category": "animals",
+    "art": "🐁",
+    "names": {
+      "es": {
+        "text": "El Ratón",
+        "status": "approved",
+        "audio": "/audio/es/raton.b3ad18db.m4a",
+        "clip": {
+          "file": "/audio/es/raton.b3ad18db.m4a",
+          "sha256": "b3ad18dbd84bbddf217cc270b30313a20a4b85058cc9dbb331088bd7fcacc10f",
+          "engine": "kokoro",
+          "durationMs": 796,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Mouse",
+        "status": "approved",
+        "audio": "/audio/en/raton.bb2db620.m4a",
+        "clip": {
+          "file": "/audio/en/raton.bb2db620.m4a",
+          "sha256": "bb2db620015ebca6ed3518eb14afedfffdfa84ff37274a671b3b1797b7e6136f",
+          "engine": "kokoro",
+          "durationMs": 698,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 69,
+    "id": "gallina",
+    "category": "animals",
+    "art": "🐔",
+    "names": {
+      "es": {
+        "text": "La Gallina",
+        "status": "approved",
+        "audio": "/audio/es/gallina.3893b73b.m4a",
+        "clip": {
+          "file": "/audio/es/gallina.3893b73b.m4a",
+          "sha256": "3893b73b4e9822cd9d6fcabe0b6d138aac222d9edad53ffc9f3f78ee3742d69e",
+          "engine": "kokoro",
+          "durationMs": 905,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Hen",
+        "status": "approved",
+        "audio": "/audio/en/gallina.8799ddfe.m4a",
+        "clip": {
+          "file": "/audio/en/gallina.8799ddfe.m4a",
+          "sha256": "8799ddfec7c57f7ebfe5382f443c8788ef1ab0ce1fc09c31d2d4b5c613173384",
+          "engine": "kokoro",
+          "durationMs": 664,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 70,
+    "id": "arbol",
+    "category": "plants_food",
+    "art": "🌳",
+    "names": {
+      "es": {
+        "text": "El Árbol",
+        "status": "approved",
+        "audio": "/audio/es/arbol.84e7c9dc.m4a",
+        "clip": {
+          "file": "/audio/es/arbol.84e7c9dc.m4a",
+          "sha256": "84e7c9dc6a02e36bd9bb27f2a940aa44c808b0d9bad60d6b8107d392be0e8f61",
+          "engine": "kokoro",
+          "durationMs": 728,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Tree",
+        "status": "approved",
+        "audio": "/audio/en/arbol.8d63927e.m4a",
+        "clip": {
+          "file": "/audio/en/arbol.8d63927e.m4a",
+          "sha256": "8d63927e1d5249cb1ca9e7d7af499fb8c968949fe10f3ab3a35c7bc76329ec44",
+          "engine": "kokoro",
+          "durationMs": 699,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 71,
+    "id": "hoja",
+    "category": "plants_food",
+    "art": "🍃",
+    "names": {
+      "es": {
+        "text": "La Hoja",
+        "status": "approved",
+        "audio": "/audio/es/hoja.d428087b.m4a",
+        "clip": {
+          "file": "/audio/es/hoja.d428087b.m4a",
+          "sha256": "d428087b08fd670ad25cb384a87686decd0828b227047efe5ef49d406580104a",
+          "engine": "kokoro",
+          "durationMs": 692,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Leaf",
+        "status": "approved",
+        "audio": "/audio/en/hoja.36e121ca.m4a",
+        "clip": {
+          "file": "/audio/en/hoja.36e121ca.m4a",
+          "sha256": "36e121ca0d3127a00a68ddfd3ed96f8c7d29f0b60cb6bcec9c815368cd7fb945",
+          "engine": "kokoro",
+          "durationMs": 643,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 72,
+    "id": "flor",
+    "category": "plants_food",
+    "art": "🌸",
+    "names": {
+      "es": {
+        "text": "La Flor",
+        "status": "approved",
+        "audio": "/audio/es/flor.8c3d71f9.m4a",
+        "clip": {
+          "file": "/audio/es/flor.8c3d71f9.m4a",
+          "sha256": "8c3d71f93efe140c639c8f7b71430a4567a00b7edb0f553c289c0b1517fb0876",
+          "engine": "kokoro",
+          "durationMs": 677,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Flower",
+        "status": "approved",
+        "audio": "/audio/en/flor.f9447877.m4a",
+        "clip": {
+          "file": "/audio/en/flor.f9447877.m4a",
+          "sha256": "f94478771935f216eb8ccab544d59acbbbfff9b0d35853b88afdfd6336cadf0e",
+          "engine": "kokoro",
+          "durationMs": 734,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 73,
+    "id": "cacahuate",
+    "category": "plants_food",
+    "art": "🥜",
+    "names": {
+      "es": {
+        "text": "El Cacahuate",
+        "status": "approved",
+        "audio": "/audio/es/cacahuate.7989d29d.m4a",
+        "clip": {
+          "file": "/audio/es/cacahuate.7989d29d.m4a",
+          "sha256": "7989d29d1f781f21c37fe7000e64f921d5f766fdf6ce3d513f4dc59bc298c325",
+          "engine": "kokoro",
+          "durationMs": 987,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Peanut",
+        "status": "approved",
+        "audio": "/audio/en/cacahuate.c2c297eb.m4a",
+        "clip": {
+          "file": "/audio/en/cacahuate.c2c297eb.m4a",
+          "sha256": "c2c297ebbacbfbed9b45399234844c16db8d87442ce33df3419884c082d531ef",
+          "engine": "kokoro",
+          "durationMs": 748,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 74,
+    "id": "raiz",
+    "category": "plants_food",
+    "art": "🌱",
+    "names": {
+      "es": {
+        "text": "La Raíz",
+        "status": "approved",
+        "audio": "/audio/es/raiz.e503c4b1.m4a",
+        "clip": {
+          "file": "/audio/es/raiz.e503c4b1.m4a",
+          "sha256": "e503c4b159f6519579911561497e6ea9f7b31fc9dc52eba1946e50a68eb061fe",
+          "engine": "kokoro",
+          "durationMs": 748,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Root",
+        "status": "approved",
+        "audio": "/audio/en/raiz.abb1ff56.m4a",
+        "clip": {
+          "file": "/audio/en/raiz.abb1ff56.m4a",
+          "sha256": "abb1ff561cd8b9b17cd31c4dfd0387c502a323606d6b8831d9afbe857ef84a2e",
+          "engine": "kokoro",
+          "durationMs": 600,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "am_michael"
+        }
+      }
+    }
+  },
+  {
+    "n": 75,
+    "id": "calabaza",
+    "category": "plants_food",
+    "art": "🎃",
+    "names": {
+      "es": {
+        "text": "La Calabaza",
+        "status": "approved",
+        "audio": "/audio/es/calabaza.9050aa58.m4a",
+        "clip": {
+          "file": "/audio/es/calabaza.9050aa58.m4a",
+          "sha256": "9050aa5876613f9da791a04f80ced0fdeec471c76d49a10bbb3ee4d8ebbc9706",
+          "engine": "kokoro",
+          "durationMs": 903,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Squash",
+        "status": "approved",
+        "audio": "/audio/en/calabaza.0171ce2b.m4a",
+        "clip": {
+          "file": "/audio/en/calabaza.0171ce2b.m4a",
+          "sha256": "0171ce2b5ec4d034810e29adc8b2b763f457f2bd2c275a1c43e2079af4549385",
+          "engine": "kokoro",
+          "durationMs": 789,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 76,
+    "id": "yuca",
+    "category": "plants_food",
+    "art": "🍠",
+    "names": {
+      "es": {
+        "text": "La Yuca",
+        "status": "approved",
+        "audio": "/audio/es/yuca.81897acf.m4a",
+        "clip": {
+          "file": "/audio/es/yuca.81897acf.m4a",
+          "sha256": "81897acf4dc70fb03027a0bc35fb40171cd23efa6b9d05910cfa8af03e47ea1c",
+          "engine": "kokoro",
+          "durationMs": 758,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Cassava",
+        "status": "approved",
+        "audio": "/audio/en/yuca.9cef1728.m4a",
+        "clip": {
+          "file": "/audio/en/yuca.9cef1728.m4a",
+          "sha256": "9cef172853e60e9b9653e613af913e8d068998820a0cb544726e24e37150ad12",
+          "engine": "kokoro",
+          "durationMs": 805,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_bella"
+        }
+      }
+    }
+  },
+  {
+    "n": 77,
+    "id": "camote",
+    "category": "plants_food",
+    "art": "🍠",
+    "names": {
+      "es": {
+        "text": "El Camote",
+        "status": "approved",
+        "audio": "/audio/es/camote.9fdaea65.m4a",
+        "clip": {
+          "file": "/audio/es/camote.9fdaea65.m4a",
+          "sha256": "9fdaea65954f8025c82c68abf575951ac247c098d92ae11c5f3e142659027bf9",
+          "engine": "kokoro",
+          "durationMs": 748,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Sweet Potato",
+        "status": "approved",
+        "audio": "/audio/en/camote.dfae4e2a.m4a",
+        "clip": {
+          "file": "/audio/en/camote.dfae4e2a.m4a",
+          "sha256": "dfae4e2a021e4db8921b1c0d55a3f00f875396f50b2cb9fe93b3f353b7a30103",
+          "engine": "kokoro",
+          "durationMs": 978,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 78,
+    "id": "guayaba",
+    "category": "plants_food",
+    "art": "🍐",
+    "names": {
+      "es": {
+        "text": "La Guayaba",
+        "status": "approved",
+        "audio": "/audio/es/guayaba.efbb296b.m4a",
+        "clip": {
+          "file": "/audio/es/guayaba.efbb296b.m4a",
+          "sha256": "efbb296b9adcfc82bc06b9d7b32f85891d758f12758ef95a1327137fc82542c9",
+          "engine": "kokoro",
+          "durationMs": 838,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Guava",
+        "status": "approved",
+        "audio": "/audio/en/guayaba.4a9aa7c0.m4a",
+        "clip": {
+          "file": "/audio/en/guayaba.4a9aa7c0.m4a",
+          "sha256": "4a9aa7c04be7c090e21d6994099686e4d6a01d7002a9e8d856a5890451efcddb",
+          "engine": "kokoro",
+          "durationMs": 785,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "am_michael"
+        }
+      }
+    }
+  },
+  {
+    "n": 79,
+    "id": "algodon",
+    "category": "plants_food",
+    "art": "☁",
+    "names": {
+      "es": {
+        "text": "El Algodón",
+        "status": "approved",
+        "audio": "/audio/es/algodon.0d37926e.m4a",
+        "clip": {
+          "file": "/audio/es/algodon.0d37926e.m4a",
+          "sha256": "0d37926e6d10275d3e994335ad557f407038e3090648e046acff63b35b1ce475",
+          "engine": "kokoro",
+          "durationMs": 848,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Cotton",
+        "status": "approved",
+        "audio": "/audio/en/algodon.e1c5fd61.m4a",
+        "clip": {
+          "file": "/audio/en/algodon.e1c5fd61.m4a",
+          "sha256": "e1c5fd61cac408e8c375f16df00e532ecb24bce6cc616615b6b4d85fe9977682",
+          "engine": "kokoro",
+          "durationMs": 730,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 80,
+    "id": "huevo",
+    "category": "plants_food",
+    "art": "🥚",
+    "names": {
+      "es": {
+        "text": "El Huevo",
+        "status": "approved",
+        "audio": "/audio/es/huevo.4c41ef70.m4a",
+        "clip": {
+          "file": "/audio/es/huevo.4c41ef70.m4a",
+          "sha256": "4c41ef70d8377d0de91d411a2677017edbaa079979eb63b26626ba754156f766",
+          "engine": "kokoro",
+          "durationMs": 703,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Egg",
+        "status": "approved",
+        "audio": "/audio/en/huevo.46932780.m4a",
+        "clip": {
+          "file": "/audio/en/huevo.46932780.m4a",
+          "sha256": "46932780517428f933f5bf48c0dabe295e2a7a1a55e7627a8f9b73d3a9da8524",
+          "engine": "kokoro",
+          "durationMs": 574,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 81,
+    "id": "hongo",
+    "category": "plants_food",
+    "art": "🍄",
+    "names": {
+      "es": {
+        "text": "El Hongo",
+        "status": "approved",
+        "audio": "/audio/es/hongo.1bc11cc7.m4a",
+        "clip": {
+          "file": "/audio/es/hongo.1bc11cc7.m4a",
+          "sha256": "1bc11cc77fc2897c8deaeaa60e107828c139efda6a083638cb4cfacb20f722ae",
+          "engine": "kokoro",
+          "durationMs": 738,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Mushroom",
+        "status": "approved",
+        "audio": "/audio/en/hongo.135d99fc.m4a",
+        "clip": {
+          "file": "/audio/en/hongo.135d99fc.m4a",
+          "sha256": "135d99fc8f0a9248f7a58cd631327f9836c8dc8a498bed2cc90a0fd9737ca59b",
+          "engine": "kokoro",
+          "durationMs": 751,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 82,
+    "id": "platano",
+    "category": "plants_food",
+    "art": "🍌",
+    "names": {
+      "es": {
+        "text": "El Plátano",
+        "status": "approved",
+        "audio": "/audio/es/platano.85a3c554.m4a",
+        "clip": {
+          "file": "/audio/es/platano.85a3c554.m4a",
+          "sha256": "85a3c554b0d8ea866144bb04e05f3e891a8b72343be60a0d73e5958574b7fcea",
+          "engine": "kokoro",
+          "durationMs": 677,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Banana",
+        "status": "approved",
+        "audio": "/audio/en/platano.17ebb4e0.m4a",
+        "clip": {
+          "file": "/audio/en/platano.17ebb4e0.m4a",
+          "sha256": "17ebb4e0248ab380f7c2ec72d5cc5939debd46a58555eb438d18c938bc10ae60",
+          "engine": "kokoro",
+          "durationMs": 724,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 83,
+    "id": "pasto",
+    "category": "plants_food",
+    "art": "🌿",
+    "names": {
+      "es": {
+        "text": "El Pasto",
+        "status": "approved",
+        "audio": "/audio/es/pasto.1a0f7154.m4a",
+        "clip": {
+          "file": "/audio/es/pasto.1a0f7154.m4a",
+          "sha256": "1a0f7154d5ed94eb2772671e780c298c1fe23be197b57e7c05ae7cafcba015f8",
+          "engine": "kokoro",
+          "durationMs": 554,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Grass",
+        "status": "approved",
+        "audio": "/audio/en/pasto.872c6219.m4a",
+        "clip": {
+          "file": "/audio/en/pasto.872c6219.m4a",
+          "sha256": "872c621976e17ebc05d719bb084f6a92727d316a027ba971e363974ebfd4131e",
+          "engine": "kokoro",
+          "durationMs": 742,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 84,
+    "id": "papaya",
+    "category": "plants_food",
+    "art": "🍈",
+    "names": {
+      "es": {
+        "text": "La Papaya",
+        "status": "approved",
+        "audio": "/audio/es/papaya.4c708abb.m4a",
+        "clip": {
+          "file": "/audio/es/papaya.4c708abb.m4a",
+          "sha256": "4c708abb0556f28c9d33989bcec6d93fbc051d083bfc4c96dbb22a4b92361216",
+          "engine": "kokoro",
+          "durationMs": 887,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Papaya",
+        "status": "approved",
+        "audio": "/audio/en/papaya.fe8e36b6.m4a",
+        "clip": {
+          "file": "/audio/en/papaya.fe8e36b6.m4a",
+          "sha256": "fe8e36b6596723ccba2f85f919277164158f51f908aca73fff2cc1a76a716464",
+          "engine": "kokoro",
+          "durationMs": 799,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 85,
+    "id": "fuego",
+    "category": "sky",
+    "art": "🔥",
+    "names": {
+      "es": {
+        "text": "El Fuego",
+        "status": "approved",
+        "audio": "/audio/es/fuego.d1c2d124.m4a",
+        "clip": {
+          "file": "/audio/es/fuego.d1c2d124.m4a",
+          "sha256": "d1c2d124152338b7b272df5eeb2c1097897bceea323ce09e2a26fbbc1f575ee1",
+          "engine": "kokoro",
+          "durationMs": 763,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Fire",
+        "status": "approved",
+        "audio": "/audio/en/fuego.e1672256.m4a",
+        "clip": {
+          "file": "/audio/en/fuego.e1672256.m4a",
+          "sha256": "e1672256346c73fd71d79ae46f0f30f50fddffe90e7e99f2576b4a5f8ad61317",
+          "engine": "kokoro",
+          "durationMs": 666,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 86,
+    "id": "humo",
+    "category": "sky",
+    "art": "💨",
+    "names": {
+      "es": {
+        "text": "El Humo",
+        "status": "approved",
+        "audio": "/audio/es/humo.9ddf90ed.m4a",
+        "clip": {
+          "file": "/audio/es/humo.9ddf90ed.m4a",
+          "sha256": "9ddf90ed885463d79b149e80ff47f8aec1313bbcc1a0d1bdd3f4d8414699c48d",
+          "engine": "kokoro",
+          "durationMs": 607,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Smoke",
+        "status": "approved",
+        "audio": "/audio/en/humo.feac45a7.m4a",
+        "clip": {
+          "file": "/audio/en/humo.feac45a7.m4a",
+          "sha256": "feac45a7b6c26d2fe969247a981670a0947997779a5a377377e84af21dbc5efd",
+          "engine": "kokoro",
+          "durationMs": 742,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 87,
+    "id": "neblina",
+    "category": "sky",
+    "art": "🌫",
+    "names": {
+      "es": {
+        "text": "La Neblina",
+        "status": "approved",
+        "audio": "/audio/es/neblina.d74a343c.m4a",
+        "clip": {
+          "file": "/audio/es/neblina.d74a343c.m4a",
+          "sha256": "d74a343caef137839022cc1d4f9fb58ea6d7cb1908e8cc80ee6e7390fb7c9136",
+          "engine": "kokoro",
+          "durationMs": 730,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Fog",
+        "status": "approved",
+        "audio": "/audio/en/neblina.ec982f0c.m4a",
+        "clip": {
+          "file": "/audio/en/neblina.ec982f0c.m4a",
+          "sha256": "ec982f0cb2a99f88f116fa89fad60ff9a86694307fb186e7b4e572d0b7b7ed70",
+          "engine": "kokoro",
+          "durationMs": 521,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 88,
+    "id": "granizo",
+    "category": "sky",
+    "art": "🧊",
+    "names": {
+      "es": {
+        "text": "El Granizo",
+        "status": "approved",
+        "audio": "/audio/es/granizo.d201416c.m4a",
+        "clip": {
+          "file": "/audio/es/granizo.d201416c.m4a",
+          "sha256": "d201416c6c68b4036015708712831c6ceccdc6af845d8d5e19d6b4d18888594e",
+          "engine": "kokoro",
+          "durationMs": 778,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Hail",
+        "status": "approved",
+        "audio": "/audio/en/granizo.117e4fbb.m4a",
+        "clip": {
+          "file": "/audio/en/granizo.117e4fbb.m4a",
+          "sha256": "117e4fbb75eaf8ddff47cff9fc38c2c24246c2dc2baa3f2993e0c2ff06dec0b9",
+          "engine": "kokoro",
+          "durationMs": 559,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_bella"
+        }
+      }
+    }
+  },
+  {
+    "n": 89,
+    "id": "nieve",
+    "category": "sky",
+    "art": "❄",
+    "names": {
+      "es": {
+        "text": "La Nieve",
+        "status": "approved",
+        "audio": "/audio/es/nieve.24edf103.m4a",
+        "clip": {
+          "file": "/audio/es/nieve.24edf103.m4a",
+          "sha256": "24edf1034371919a99243fa8801222fe8a78fc5f065fb04e3f66e2de5566c90a",
+          "engine": "kokoro",
+          "durationMs": 790,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Snow",
+        "status": "approved",
+        "audio": "/audio/en/nieve.c077cc23.m4a",
+        "clip": {
+          "file": "/audio/en/nieve.c077cc23.m4a",
+          "sha256": "c077cc235cb6b77c9af5f6b12266e6f449d1765e85ad1403f5b03e341a3a2615",
+          "engine": "kokoro",
+          "durationMs": 723,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 90,
+    "id": "hielo",
+    "category": "sky",
+    "art": "🧊",
+    "names": {
+      "es": {
+        "text": "El Hielo",
+        "status": "approved",
+        "audio": "/audio/es/hielo.fa9637f1.m4a",
+        "clip": {
+          "file": "/audio/es/hielo.fa9637f1.m4a",
+          "sha256": "fa9637f136f852892b5d7b22104547bc8e8c25e0cbb416a16ef0a2bfe940752a",
+          "engine": "kokoro",
+          "durationMs": 690,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Ice",
+        "status": "approved",
+        "audio": "/audio/en/hielo.caa11285.m4a",
+        "clip": {
+          "file": "/audio/en/hielo.caa11285.m4a",
+          "sha256": "caa112852c361550dae61e18ea0a0f7534effdf98e8b686ddc4ebe35757d93d4",
+          "engine": "kokoro",
+          "durationMs": 695,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 91,
+    "id": "amanecer",
+    "category": "sky",
+    "art": "🌅",
+    "names": {
+      "es": {
+        "text": "El Amanecer",
+        "status": "approved",
+        "audio": "/audio/es/amanecer.221bac36.m4a",
+        "clip": {
+          "file": "/audio/es/amanecer.221bac36.m4a",
+          "sha256": "221bac363c307b4dbbbd3c80fd6fdfcffe27453c1ec1ef3360ce0644c2840464",
+          "engine": "kokoro",
+          "durationMs": 870,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Dawn",
+        "status": "approved",
+        "audio": "/audio/en/amanecer.25b8eaf1.m4a",
+        "clip": {
+          "file": "/audio/en/amanecer.25b8eaf1.m4a",
+          "sha256": "25b8eaf113a09d3306fc954a028a56ab887e3167630e1138dabeff2275404351",
+          "engine": "kokoro",
+          "durationMs": 619,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 92,
+    "id": "noche",
+    "category": "sky",
+    "art": "🌙",
+    "names": {
+      "es": {
+        "text": "La Noche",
+        "status": "approved",
+        "audio": "/audio/es/noche.5a37fd4c.m4a",
+        "clip": {
+          "file": "/audio/es/noche.5a37fd4c.m4a",
+          "sha256": "5a37fd4c832f61c2a03d7b9863293a8b7bfd081e8a9062f5bc724a6e8bc34067",
+          "engine": "kokoro",
+          "durationMs": 712,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Night",
+        "status": "approved",
+        "audio": "/audio/en/noche.46f4cff7.m4a",
+        "clip": {
+          "file": "/audio/en/noche.46f4cff7.m4a",
+          "sha256": "46f4cff7e48fe30317121c97f06503221296b5081cc9f2a8a9cdb91c3ec077e2",
+          "engine": "kokoro",
+          "durationMs": 673,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 93,
+    "id": "cielo",
+    "category": "sky",
+    "art": "🌌",
+    "names": {
+      "es": {
+        "text": "El Cielo",
+        "status": "approved",
+        "audio": "/audio/es/cielo.b5c55624.m4a",
+        "clip": {
+          "file": "/audio/es/cielo.b5c55624.m4a",
+          "sha256": "b5c55624522d4c41c22b2da0a9129f9f203c5349331f9c36b4b3f15f276a85d5",
+          "engine": "kokoro",
+          "durationMs": 763,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Sky",
+        "status": "approved",
+        "audio": "/audio/en/cielo.f6ef3300.m4a",
+        "clip": {
+          "file": "/audio/en/cielo.f6ef3300.m4a",
+          "sha256": "f6ef3300a7c3297307e481df3720f9272ce706c48410563398d899c3107c9104",
+          "engine": "kokoro",
+          "durationMs": 734,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 94,
+    "id": "sombra",
+    "category": "sky",
+    "art": "🌑",
+    "names": {
+      "es": {
+        "text": "La Sombra",
+        "status": "approved",
+        "audio": "/audio/es/sombra.c0b52931.m4a",
+        "clip": {
+          "file": "/audio/es/sombra.c0b52931.m4a",
+          "sha256": "c0b529317cc78d54367b4a3b2cc838d4e62840d6ea5fb4c803319315b29e85d3",
+          "engine": "kokoro",
+          "durationMs": 682,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Shadow",
+        "status": "approved",
+        "audio": "/audio/en/sombra.1d856dbb.m4a",
+        "clip": {
+          "file": "/audio/en/sombra.1d856dbb.m4a",
+          "sha256": "1d856dbb9d2ec6c371f1f29939916f11e3b694166728e19a6e590970e9ba7246",
+          "engine": "kokoro",
+          "durationMs": 713,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 95,
+    "id": "rocio",
+    "category": "sky",
+    "art": "💧",
+    "names": {
+      "es": {
+        "text": "El Rocío",
+        "status": "approved",
+        "audio": "/audio/es/rocio.16f5c74f.m4a",
+        "clip": {
+          "file": "/audio/es/rocio.16f5c74f.m4a",
+          "sha256": "16f5c74f555bd60d8dfa7c7e25effce0ad5335b7e67ec1fac40cd849ec5b2416",
+          "engine": "kokoro",
+          "durationMs": 767,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Dew",
+        "status": "approved",
+        "audio": "/audio/en/rocio.aeb21d7d.m4a",
+        "clip": {
+          "file": "/audio/en/rocio.aeb21d7d.m4a",
+          "sha256": "aeb21d7d4850d0554cc36d5e62dd7482ab00febb32d2300a4278f8635bb203c3",
+          "engine": "kokoro",
+          "durationMs": 768,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "am_michael"
+        }
+      }
+    }
+  },
+  {
+    "n": 96,
+    "id": "remolino",
+    "category": "sky",
+    "art": "🌪",
+    "names": {
+      "es": {
+        "text": "El Remolino",
+        "status": "approved",
+        "audio": "/audio/es/remolino.f167a91f.m4a",
+        "clip": {
+          "file": "/audio/es/remolino.f167a91f.m4a",
+          "sha256": "f167a91ff8843cce0987354ba566aabaef869f02d3076abe05f62c575b8e7830",
+          "engine": "kokoro",
+          "durationMs": 1037,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Whirlwind",
+        "status": "approved",
+        "audio": "/audio/en/remolino.f8024866.m4a",
+        "clip": {
+          "file": "/audio/en/remolino.f8024866.m4a",
+          "sha256": "f8024866d98647d4210d581058f165b35c9a5c067a6998682f3c9d7ae50ce88b",
+          "engine": "kokoro",
+          "durationMs": 773,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 97,
+    "id": "agua",
+    "category": "sky",
+    "art": "💧",
+    "names": {
+      "es": {
+        "text": "El Agua",
+        "status": "approved",
+        "audio": "/audio/es/agua.1767e8da.m4a",
+        "clip": {
+          "file": "/audio/es/agua.1767e8da.m4a",
+          "sha256": "1767e8dac03aa5745d732ce94895510cf228d7e721f7946db899f3dbb6c7ff3b",
+          "engine": "kokoro",
+          "durationMs": 692,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Water",
+        "status": "approved",
+        "audio": "/audio/en/agua.6b677721.m4a",
+        "clip": {
+          "file": "/audio/en/agua.6b677721.m4a",
+          "sha256": "6b67772188def8be29e8de39ab558e876a1a3e09b48c2709c31744649681c1b2",
+          "engine": "kokoro",
+          "durationMs": 683,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 98,
+    "id": "ceniza",
+    "category": "sky",
+    "art": "🌫",
+    "names": {
+      "es": {
+        "text": "La Ceniza",
+        "status": "approved",
+        "audio": "/audio/es/ceniza.6431aaee.m4a",
+        "clip": {
+          "file": "/audio/es/ceniza.6431aaee.m4a",
+          "sha256": "6431aaeeaa57c31831ad408416952a9a13f1b4363e8be3425929ff0fb0cfd89b",
+          "engine": "kokoro",
+          "durationMs": 736,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Ash",
+        "status": "approved",
+        "audio": "/audio/en/ceniza.0a883a0b.m4a",
+        "clip": {
+          "file": "/audio/en/ceniza.0a883a0b.m4a",
+          "sha256": "0a883a0b3cfab59ad8377b2f441e474ca58401eafbffcb84ce51d8225ada87c6",
+          "engine": "kokoro",
+          "durationMs": 499,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 99,
+    "id": "trueno",
+    "category": "sky",
+    "art": "⚡",
+    "names": {
+      "es": {
+        "text": "El Trueno",
+        "status": "approved",
+        "audio": "/audio/es/trueno.9002146b.m4a",
+        "clip": {
+          "file": "/audio/es/trueno.9002146b.m4a",
+          "sha256": "9002146b66542a26016a8f3034a85ff735335abd5377c019e6fb58593a0f0093",
+          "engine": "kokoro",
+          "durationMs": 939,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Thunder",
+        "status": "approved",
+        "audio": "/audio/en/trueno.e8e397a2.m4a",
+        "clip": {
+          "file": "/audio/en/trueno.e8e397a2.m4a",
+          "sha256": "e8e397a29c2234d77c92c57b7ceed255f2262fe541fe5c1d2fc16b2708938417",
+          "engine": "kokoro",
+          "durationMs": 720,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 100,
+    "id": "rio",
+    "category": "land",
+    "art": "🌊",
+    "names": {
+      "es": {
+        "text": "El Río",
+        "status": "approved",
+        "audio": "/audio/es/rio.4b8e147c.m4a",
+        "clip": {
+          "file": "/audio/es/rio.4b8e147c.m4a",
+          "sha256": "4b8e147c3460933de0d1c7b80d1e77a3d4143800fb40a99633219224670cccac",
+          "engine": "kokoro",
+          "durationMs": 686,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The River",
+        "status": "approved",
+        "audio": "/audio/en/rio.382ccfad.m4a",
+        "clip": {
+          "file": "/audio/en/rio.382ccfad.m4a",
+          "sha256": "382ccfad9f8dc5e97d48b1f55d766d58db978da7c287e91b09f2ac11009366ce",
+          "engine": "kokoro",
+          "durationMs": 654,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 101,
+    "id": "lago",
+    "category": "land",
+    "art": "🏞",
+    "names": {
+      "es": {
+        "text": "El Lago",
+        "status": "approved",
+        "audio": "/audio/es/lago.3e86101b.m4a",
+        "clip": {
+          "file": "/audio/es/lago.3e86101b.m4a",
+          "sha256": "3e86101b3278082661d2f37c803fc8ca50ee8727f1d00a9dbad056121b6ac4ea",
+          "engine": "kokoro",
+          "durationMs": 738,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Lake",
+        "status": "approved",
+        "audio": "/audio/en/lago.e6d8b440.m4a",
+        "clip": {
+          "file": "/audio/en/lago.e6d8b440.m4a",
+          "sha256": "e6d8b4408400ec5a1448752f966d7d004dbce337272971198a7ce6716ba51c53",
+          "engine": "kokoro",
+          "durationMs": 680,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 102,
+    "id": "piedra",
+    "category": "land",
+    "art": "🪨",
+    "names": {
+      "es": {
+        "text": "La Piedra",
+        "status": "approved",
+        "audio": "/audio/es/piedra.32f70aa7.m4a",
+        "clip": {
+          "file": "/audio/es/piedra.32f70aa7.m4a",
+          "sha256": "32f70aa794ef9c82b47637cd17753b4c7a145c79957ed0c77143ade084fbeac6",
+          "engine": "kokoro",
+          "durationMs": 714,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Stone",
+        "status": "approved",
+        "audio": "/audio/en/piedra.8ffd0ffe.m4a",
+        "clip": {
+          "file": "/audio/en/piedra.8ffd0ffe.m4a",
+          "sha256": "8ffd0ffe327a1c6f27b059a2a46f1e859f408a56aa1240b76aa3ae0302532802",
+          "engine": "kokoro",
+          "durationMs": 555,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_bella"
+        }
+      }
+    }
+  },
+  {
+    "n": 103,
+    "id": "arena",
+    "category": "land",
+    "art": "🏖",
+    "names": {
+      "es": {
+        "text": "La Arena",
+        "status": "approved",
+        "audio": "/audio/es/arena.071d88b2.m4a",
+        "clip": {
+          "file": "/audio/es/arena.071d88b2.m4a",
+          "sha256": "071d88b2536130ba64a26addce0bb337e73558f981ff0d71ceaba4d615da22f0",
+          "engine": "kokoro",
+          "durationMs": 607,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Sand",
+        "status": "approved",
+        "audio": "/audio/en/arena.8e35ff12.m4a",
+        "clip": {
+          "file": "/audio/en/arena.8e35ff12.m4a",
+          "sha256": "8e35ff12be83281d88d36ae0305fa1966c550c4a6865912231fe5933b2388c93",
+          "engine": "kokoro",
+          "durationMs": 741,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 104,
+    "id": "playa",
+    "category": "land",
+    "art": "🏝",
+    "names": {
+      "es": {
+        "text": "La Playa",
+        "status": "approved",
+        "audio": "/audio/es/playa.d76ab65c.m4a",
+        "clip": {
+          "file": "/audio/es/playa.d76ab65c.m4a",
+          "sha256": "d76ab65c7a337067d61270c666f909446c0207a70f496d4c86259943561c5d82",
+          "engine": "kokoro",
+          "durationMs": 760,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Beach",
+        "status": "approved",
+        "audio": "/audio/en/playa.de506ae5.m4a",
+        "clip": {
+          "file": "/audio/en/playa.de506ae5.m4a",
+          "sha256": "de506ae58f89ad181b027703468422e520e8b93fe1760f279c36353da23df591",
+          "engine": "kokoro",
+          "durationMs": 734,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 105,
+    "id": "cascada",
+    "category": "land",
+    "art": "💦",
+    "names": {
+      "es": {
+        "text": "La Cascada",
+        "status": "approved",
+        "audio": "/audio/es/cascada.21f20644.m4a",
+        "clip": {
+          "file": "/audio/es/cascada.21f20644.m4a",
+          "sha256": "21f20644da4d657bc7a159019daac648d6f8a5301a45f645222ae74d551352b8",
+          "engine": "kokoro",
+          "durationMs": 884,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Waterfall",
+        "status": "approved",
+        "audio": "/audio/en/cascada.01e67fea.m4a",
+        "clip": {
+          "file": "/audio/en/cascada.01e67fea.m4a",
+          "sha256": "01e67feab04de948c1a5f306a77445174a528e0b1e806fac73e21478f5568d66",
+          "engine": "kokoro",
+          "durationMs": 768,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 106,
+    "id": "charco",
+    "category": "land",
+    "art": "🟤",
+    "names": {
+      "es": {
+        "text": "El Charco",
+        "status": "approved",
+        "audio": "/audio/es/charco.85cf95bb.m4a",
+        "clip": {
+          "file": "/audio/es/charco.85cf95bb.m4a",
+          "sha256": "85cf95bbc890aae35d8a5ab416841ebce83647ec7e4021f1368d9ba4ab1f9e72",
+          "engine": "kokoro",
+          "durationMs": 780,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Puddle",
+        "status": "approved",
+        "audio": "/audio/en/charco.35c1affd.m4a",
+        "clip": {
+          "file": "/audio/en/charco.35c1affd.m4a",
+          "sha256": "35c1affd38fe40d4b925be9387a553186fbf7f3ea48ddd924e31408729c20e20",
+          "engine": "kokoro",
+          "durationMs": 566,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_bella"
+        }
+      }
+    }
+  },
+  {
+    "n": 107,
+    "id": "lodo",
+    "category": "land",
+    "art": "⛰",
+    "names": {
+      "es": {
+        "text": "El Lodo",
+        "status": "approved",
+        "audio": "/audio/es/lodo.3066b28a.m4a",
+        "clip": {
+          "file": "/audio/es/lodo.3066b28a.m4a",
+          "sha256": "3066b28aead2237e76fc40fa507a2b8f6e8c4b73f98a3d725fca9fe18a6562be",
+          "engine": "kokoro",
+          "durationMs": 713,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Mud",
+        "status": "approved",
+        "audio": "/audio/en/lodo.4f3c821e.m4a",
+        "clip": {
+          "file": "/audio/en/lodo.4f3c821e.m4a",
+          "sha256": "4f3c821e1dc4f35373307d2a1d89429d6b41d5b403ec7f10958bbcd060b4531f",
+          "engine": "kokoro",
+          "durationMs": 638,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 108,
+    "id": "barranca",
+    "category": "land",
+    "art": "🌾",
+    "names": {
+      "es": {
+        "text": "La Barranca",
+        "status": "approved",
+        "audio": "/audio/es/barranca.1572696e.m4a",
+        "clip": {
+          "file": "/audio/es/barranca.1572696e.m4a",
+          "sha256": "1572696e510d3ef5638452f0b8d36ac1f2f1caaa56fb26a5a9132ba74493847b",
+          "engine": "kokoro",
+          "durationMs": 835,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Ravine",
+        "status": "approved",
+        "audio": "/audio/en/barranca.7cbd79f0.m4a",
+        "clip": {
+          "file": "/audio/en/barranca.7cbd79f0.m4a",
+          "sha256": "7cbd79f0c835cabdbecbbac98b2388d87622d333ea9683bacef3bc32a65a72a4",
+          "engine": "kokoro",
+          "durationMs": 760,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 109,
+    "id": "llano",
+    "category": "land",
+    "art": "🌿",
+    "names": {
+      "es": {
+        "text": "El Llano",
+        "status": "approved",
+        "audio": "/audio/es/llano.fe2385ae.m4a",
+        "clip": {
+          "file": "/audio/es/llano.fe2385ae.m4a",
+          "sha256": "fe2385ae5e400c1fff4b9ecb5107dd468d26c951d5aa11a9ca95ad95095e2b80",
+          "engine": "kokoro",
+          "durationMs": 795,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Plain",
+        "status": "approved",
+        "audio": "/audio/en/llano.16b6bc4a.m4a",
+        "clip": {
+          "file": "/audio/en/llano.16b6bc4a.m4a",
+          "sha256": "16b6bc4a4b420cd6ce817381395dc308d8d921588325ac2170b2ab5ba0482f83",
+          "engine": "kokoro",
+          "durationMs": 709,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 110,
+    "id": "pantano",
+    "category": "land",
+    "art": "🌊",
+    "names": {
+      "es": {
+        "text": "El Pantano",
+        "status": "approved",
+        "audio": "/audio/es/pantano.6d628ee3.m4a",
+        "clip": {
+          "file": "/audio/es/pantano.6d628ee3.m4a",
+          "sha256": "6d628ee3cfe929978d9cbb9d6dde70df1dcf0aa30c3cb86a461f1a305c2b5bda",
+          "engine": "kokoro",
+          "durationMs": 1066,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Swamp",
+        "status": "approved",
+        "audio": "/audio/en/pantano.e30237ba.m4a",
+        "clip": {
+          "file": "/audio/en/pantano.e30237ba.m4a",
+          "sha256": "e30237ba0798a1a7aba284462783bda34e0a83743691fd26b369315192edcc5a",
+          "engine": "kokoro",
+          "durationMs": 737,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 111,
+    "id": "ola",
+    "category": "land",
+    "art": "🐚",
+    "names": {
+      "es": {
+        "text": "La Ola",
+        "status": "approved",
+        "audio": "/audio/es/ola.c5d560f5.m4a",
+        "clip": {
+          "file": "/audio/es/ola.c5d560f5.m4a",
+          "sha256": "c5d560f5a6e69ab291139ee12f5fb991d2939f743b73e0a5cf73809f7b76e605",
+          "engine": "kokoro",
+          "durationMs": 676,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Wave",
+        "status": "approved",
+        "audio": "/audio/en/ola.4f6e23fb.m4a",
+        "clip": {
+          "file": "/audio/en/ola.4f6e23fb.m4a",
+          "sha256": "4f6e23fbb216504f8a179da7f8c90d8acebe52db0689f8052c24841b7d26f55d",
+          "engine": "kokoro",
+          "durationMs": 669,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 112,
+    "id": "concha",
+    "category": "land",
+    "art": "🏞",
+    "names": {
+      "es": {
+        "text": "La Concha",
+        "status": "approved",
+        "audio": "/audio/es/concha.8049f61a.m4a",
+        "clip": {
+          "file": "/audio/es/concha.8049f61a.m4a",
+          "sha256": "8049f61ac771f82f2f64cc328529f6484ef3b6a1a64a40515a15f5d52097afd8",
+          "engine": "kokoro",
+          "durationMs": 630,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Shell",
+        "status": "approved",
+        "audio": "/audio/en/concha.2832a123.m4a",
+        "clip": {
+          "file": "/audio/en/concha.2832a123.m4a",
+          "sha256": "2832a1238709d3a163e8c86d2c996d6758ff78c396b15a9c0478a52a0f63e956",
+          "engine": "kokoro",
+          "durationMs": 645,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 113,
+    "id": "valle",
+    "category": "land",
+    "art": "🟤",
+    "names": {
+      "es": {
+        "text": "El Valle",
+        "status": "approved",
+        "audio": "/audio/es/valle.39281462.m4a",
+        "clip": {
+          "file": "/audio/es/valle.39281462.m4a",
+          "sha256": "392814626f100a24fdc5563f7a6607a17d830764af2b90a4524ab6e99a115de5",
+          "engine": "kokoro",
+          "durationMs": 760,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Valley",
+        "status": "approved",
+        "audio": "/audio/en/valle.ad54debe.m4a",
+        "clip": {
+          "file": "/audio/en/valle.ad54debe.m4a",
+          "sha256": "ad54debed80ab5ed3dce38e6fabc6a334d92729aafb15d57186e869d196899ad",
+          "engine": "kokoro",
+          "durationMs": 676,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 114,
+    "id": "tierra",
+    "category": "land",
+    "art": "🌍",
+    "names": {
+      "es": {
+        "text": "La Tierra",
+        "status": "approved",
+        "audio": "/audio/es/tierra.443a2587.m4a",
+        "clip": {
+          "file": "/audio/es/tierra.443a2587.m4a",
+          "sha256": "443a2587c634ceb77a91d3b0bdbf2a6105777690f371d85ff3c77104d61ae520",
+          "engine": "kokoro",
+          "durationMs": 699,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Soil",
+        "status": "approved",
+        "audio": "/audio/en/tierra.bef9266b.m4a",
+        "clip": {
+          "file": "/audio/en/tierra.bef9266b.m4a",
+          "sha256": "bef9266b58e775eaea077db00bb5540c5fe710f62625cb3646f8bdb92d878eea",
+          "engine": "kokoro",
+          "durationMs": 728,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 115,
+    "id": "hacha",
+    "category": "handmade",
+    "art": "🪓",
+    "names": {
+      "es": {
+        "text": "El Hacha",
+        "status": "approved",
+        "audio": "/audio/es/hacha.02ea324f.m4a",
+        "clip": {
+          "file": "/audio/es/hacha.02ea324f.m4a",
+          "sha256": "02ea324f0c13a7e7f1390ea7afcaed1244129e8f7956f6059dcfc83fa5b0718b",
+          "engine": "kokoro",
+          "durationMs": 699,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Axe",
+        "status": "approved",
+        "audio": "/audio/en/hacha.a1f91221.m4a",
+        "clip": {
+          "file": "/audio/en/hacha.a1f91221.m4a",
+          "sha256": "a1f912210e7173e9f36ec66719854d2fdf6eb46e3687fa95086c153f138b6f14",
+          "engine": "kokoro",
+          "durationMs": 716,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 116,
+    "id": "red",
+    "category": "handmade",
+    "art": "🕸",
+    "names": {
+      "es": {
+        "text": "La Red",
+        "status": "approved",
+        "audio": "/audio/es/red.f94c3d1f.m4a",
+        "clip": {
+          "file": "/audio/es/red.f94c3d1f.m4a",
+          "sha256": "f94c3d1fd0dd9ad4eff8336da77b1d51bacd1c5be159a06264dea5ef07a62c4b",
+          "engine": "kokoro",
+          "durationMs": 644,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Fishing Net",
+        "status": "approved",
+        "audio": "/audio/en/red.8be1aac0.m4a",
+        "clip": {
+          "file": "/audio/en/red.8be1aac0.m4a",
+          "sha256": "8be1aac0bef9b179f584d614a55bea98912e837217deafd77da20d4f9477872c",
+          "engine": "kokoro",
+          "durationMs": 965,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 117,
+    "id": "cuerda",
+    "category": "handmade",
+    "art": "🪢",
+    "names": {
+      "es": {
+        "text": "La Cuerda",
+        "status": "approved",
+        "audio": "/audio/es/cuerda.8f856a1c.m4a",
+        "clip": {
+          "file": "/audio/es/cuerda.8f856a1c.m4a",
+          "sha256": "8f856a1c2a443a39f2561ce29c0c4206888605ce36b514867f400a9bc4a715c0",
+          "engine": "kokoro",
+          "durationMs": 561,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Rope",
+        "status": "approved",
+        "audio": "/audio/en/cuerda.e5180ab7.m4a",
+        "clip": {
+          "file": "/audio/en/cuerda.e5180ab7.m4a",
+          "sha256": "e5180ab76bfa58f67f1ca61e487dfea722fe21147a4848083801eb45df60c9f8",
+          "engine": "kokoro",
+          "durationMs": 641,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 118,
+    "id": "jicara",
+    "category": "handmade",
+    "art": "🥣",
+    "names": {
+      "es": {
+        "text": "La Jícara",
+        "status": "approved",
+        "audio": "/audio/es/jicara.2cc759ff.m4a",
+        "clip": {
+          "file": "/audio/es/jicara.2cc759ff.m4a",
+          "sha256": "2cc759ff6ba0fb643719d80f7f1ab510c80eab6ecaa4652e80c205f8c53d9b4d",
+          "engine": "kokoro",
+          "durationMs": 913,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Gourd Bowl",
+        "status": "approved",
+        "audio": "/audio/en/jicara.3628b6bd.m4a",
+        "clip": {
+          "file": "/audio/en/jicara.3628b6bd.m4a",
+          "sha256": "3628b6bd148ea1b736d6d72d2d5e291a892f8c04591051af49abc7e765cfdeba",
+          "engine": "kokoro",
+          "durationMs": 880,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 119,
+    "id": "metate",
+    "category": "handmade",
+    "art": "🪨",
+    "names": {
+      "es": {
+        "text": "El Metate",
+        "status": "approved",
+        "audio": "/audio/es/metate.68850122.m4a",
+        "clip": {
+          "file": "/audio/es/metate.68850122.m4a",
+          "sha256": "688501227b1878f40a64893918ec46eb964b261017b8d616213fbb75a67ee2a9",
+          "engine": "kokoro",
+          "durationMs": 848,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Grinding Stone",
+        "status": "approved",
+        "audio": "/audio/en/metate.ed5ccab7.m4a",
+        "clip": {
+          "file": "/audio/en/metate.ed5ccab7.m4a",
+          "sha256": "ed5ccab7561470434c7f21ec5185b3515d28a525f159f8416ccabcd0eadb74c1",
+          "engine": "kokoro",
+          "durationMs": 1082,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "am_michael"
+        }
+      }
+    }
+  },
+  {
+    "n": 120,
+    "id": "comal",
+    "category": "handmade",
+    "art": "🍳",
+    "names": {
+      "es": {
+        "text": "El Comal",
+        "status": "approved",
+        "audio": "/audio/es/comal.ace6c979.m4a",
+        "clip": {
+          "file": "/audio/es/comal.ace6c979.m4a",
+          "sha256": "ace6c9799c9016d70db954d85e95acdebb7773451719b47be2b5f74d9d53bfe8",
+          "engine": "kokoro",
+          "durationMs": 728,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Griddle",
+        "status": "approved",
+        "audio": "/audio/en/comal.4f24ad85.m4a",
+        "clip": {
+          "file": "/audio/en/comal.4f24ad85.m4a",
+          "sha256": "4f24ad858a681942346c693eec76c7eeddee53d523c7ad55617878dcf6d6ab88",
+          "engine": "kokoro",
+          "durationMs": 697,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 121,
+    "id": "escoba",
+    "category": "handmade",
+    "art": "🧹",
+    "names": {
+      "es": {
+        "text": "La Escoba",
+        "status": "approved",
+        "audio": "/audio/es/escoba.dced3805.m4a",
+        "clip": {
+          "file": "/audio/es/escoba.dced3805.m4a",
+          "sha256": "dced38054e6bfcfec8c311bbda9302db156dacf5a2e6315414027b957a5759bd",
+          "engine": "kokoro",
+          "durationMs": 850,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Broom",
+        "status": "approved",
+        "audio": "/audio/en/escoba.052d0218.m4a",
+        "clip": {
+          "file": "/audio/en/escoba.052d0218.m4a",
+          "sha256": "052d02188ad20ae880aaa44bcfd09e8aff9bb96e61f9a88590f4c35c7878ee05",
+          "engine": "kokoro",
+          "durationMs": 734,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 122,
+    "id": "aguja",
+    "category": "handmade",
+    "art": "🪡",
+    "names": {
+      "es": {
+        "text": "La Aguja",
+        "status": "approved",
+        "audio": "/audio/es/aguja.5ef956b0.m4a",
+        "clip": {
+          "file": "/audio/es/aguja.5ef956b0.m4a",
+          "sha256": "5ef956b093d90b440f57b117fa620f8166f88bf0de591adc9438e9d959f50b8d",
+          "engine": "kokoro",
+          "durationMs": 819,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Needle",
+        "status": "approved",
+        "audio": "/audio/en/aguja.9b302c9b.m4a",
+        "clip": {
+          "file": "/audio/en/aguja.9b302c9b.m4a",
+          "sha256": "9b302c9b31f6624326b8315ae8e5e10ccbb2ac6ddad7c7a59c2b432bc2dba7fd",
+          "engine": "kokoro",
+          "durationMs": 646,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 123,
+    "id": "huso",
+    "category": "handmade",
+    "art": "🧵",
+    "names": {
+      "es": {
+        "text": "El Huso",
+        "status": "approved",
+        "audio": "/audio/es/huso.89751123.m4a",
+        "clip": {
+          "file": "/audio/es/huso.89751123.m4a",
+          "sha256": "897511233d6cec9b1a4e3d1a7f4ce1a813db37cc620102ce25d3388457a04357",
+          "engine": "kokoro",
+          "durationMs": 565,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Spindle",
+        "status": "approved",
+        "audio": "/audio/en/huso.f4e54963.m4a",
+        "clip": {
+          "file": "/audio/en/huso.f4e54963.m4a",
+          "sha256": "f4e54963c977dd638499e98f38fcc612271276adf5d0ab1e5f0ef648328e799a",
+          "engine": "kokoro",
+          "durationMs": 652,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 124,
+    "id": "banco",
+    "category": "handmade",
+    "art": "🪑",
+    "names": {
+      "es": {
+        "text": "El Banco",
+        "status": "approved",
+        "audio": "/audio/es/banco.f902521d.m4a",
+        "clip": {
+          "file": "/audio/es/banco.f902521d.m4a",
+          "sha256": "f902521d48c9e033ebb102f79785756ef6c7d89b1dd1a5c47b8009efb14c24d6",
+          "engine": "kokoro",
+          "durationMs": 780,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Stool",
+        "status": "approved",
+        "audio": "/audio/en/banco.83033e02.m4a",
+        "clip": {
+          "file": "/audio/en/banco.83033e02.m4a",
+          "sha256": "83033e02633c658f088cf3f99747c87d55af6715797b92c77e2d89170b4ed126",
+          "engine": "kokoro",
+          "durationMs": 620,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_bella"
+        }
+      }
+    }
+  },
+  {
+    "n": 125,
+    "id": "sombrero",
+    "category": "handmade",
+    "art": "🎩",
+    "names": {
+      "es": {
+        "text": "El Sombrero",
+        "status": "approved",
+        "audio": "/audio/es/sombrero.731b0465.m4a",
+        "clip": {
+          "file": "/audio/es/sombrero.731b0465.m4a",
+          "sha256": "731b0465b5fb03dfbe0c9121b8f5b5f1cbfbae0c8374ff7e0c811053cc60f6a7",
+          "engine": "kokoro",
+          "durationMs": 919,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Hat",
+        "status": "approved",
+        "audio": "/audio/en/sombrero.5fcf389c.m4a",
+        "clip": {
+          "file": "/audio/en/sombrero.5fcf389c.m4a",
+          "sha256": "5fcf389cc81a1598c79d4d5f7c3709e93d0db50da9471b496a9b1ba4bf2077c8",
+          "engine": "kokoro",
+          "durationMs": 646,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 126,
+    "id": "morral",
+    "category": "handmade",
+    "art": "🎒",
+    "names": {
+      "es": {
+        "text": "El Morral",
+        "status": "approved",
+        "audio": "/audio/es/morral.2ae0bf34.m4a",
+        "clip": {
+          "file": "/audio/es/morral.2ae0bf34.m4a",
+          "sha256": "2ae0bf3402e23caa4bea97ed15f766bef21e46a1727cec4d0e959ccb938bc93c",
+          "engine": "kokoro",
+          "durationMs": 696,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Woven Bag",
+        "status": "approved",
+        "audio": "/audio/en/morral.0e6ac691.m4a",
+        "clip": {
+          "file": "/audio/en/morral.0e6ac691.m4a",
+          "sha256": "0e6ac6919819816d0842a2166faebcd53165e7b65e85b3b541fccb33c7af207a",
+          "engine": "kokoro",
+          "durationMs": 978,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 127,
+    "id": "hamaca",
+    "category": "handmade",
+    "art": "🛏",
+    "names": {
+      "es": {
+        "text": "La Hamaca",
+        "status": "approved",
+        "audio": "/audio/es/hamaca.2db07441.m4a",
+        "clip": {
+          "file": "/audio/es/hamaca.2db07441.m4a",
+          "sha256": "2db074414c3b1b451d5fe616b8b87372b1501d7047098556be4fd9b5d6e68840",
+          "engine": "kokoro",
+          "durationMs": 702,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Hammock",
+        "status": "approved",
+        "audio": "/audio/en/hamaca.2d58ff33.m4a",
+        "clip": {
+          "file": "/audio/en/hamaca.2d58ff33.m4a",
+          "sha256": "2d58ff33c311368a3723ae667b282848bc510a1d691c17ea1d4fba09536143c3",
+          "engine": "kokoro",
+          "durationMs": 705,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 128,
+    "id": "coa",
+    "category": "handmade",
+    "art": "🪓",
+    "names": {
+      "es": {
+        "text": "La Coa",
+        "status": "approved",
+        "audio": "/audio/es/coa.afe1b5fa.m4a",
+        "clip": {
+          "file": "/audio/es/coa.afe1b5fa.m4a",
+          "sha256": "afe1b5fa96eb568ea0a3c179652f18d3ce4aafbc7214dd7de86c4f1417a895d8",
+          "engine": "kokoro",
+          "durationMs": 706,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Digging Stick",
+        "status": "approved",
+        "audio": "/audio/en/coa.e3abb1f8.m4a",
+        "clip": {
+          "file": "/audio/en/coa.e3abb1f8.m4a",
+          "sha256": "e3abb1f8bff0f80ec9fe3a0c0efea19ebeebba4a0808f362c8536ec234956ca4",
+          "engine": "kokoro",
+          "durationMs": 926,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 129,
+    "id": "petate",
+    "category": "handmade",
+    "art": "🧺",
+    "names": {
+      "es": {
+        "text": "El Petate",
+        "status": "approved",
+        "audio": "/audio/es/petate.fcc031b1.m4a",
+        "clip": {
+          "file": "/audio/es/petate.fcc031b1.m4a",
+          "sha256": "fcc031b1807eb9965908a3d241267b28265ee17486bc75b57a919f3fcfe07923",
+          "engine": "kokoro",
+          "durationMs": 1016,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Sleeping Mat",
+        "status": "approved",
+        "audio": "/audio/en/petate.3574fc1f.m4a",
+        "clip": {
+          "file": "/audio/en/petate.3574fc1f.m4a",
+          "sha256": "3574fc1f7842ac9498fa7aabe1f0ab0515f9744a0907ffe96b828e48128aee38",
+          "engine": "kokoro",
+          "durationMs": 1010,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 130,
+    "id": "camino",
+    "category": "places",
+    "art": "🛤",
+    "names": {
+      "es": {
+        "text": "El Camino",
+        "status": "approved",
+        "audio": "/audio/es/camino.ba5bbe03.m4a",
+        "clip": {
+          "file": "/audio/es/camino.ba5bbe03.m4a",
+          "sha256": "ba5bbe0301a7d18725bb3b2537df74c4fd48f3fd8c4ff74a7d4c8ee735a0adde",
+          "engine": "kokoro",
+          "durationMs": 720,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Path",
+        "status": "approved",
+        "audio": "/audio/en/camino.5dc600bb.m4a",
+        "clip": {
+          "file": "/audio/en/camino.5dc600bb.m4a",
+          "sha256": "5dc600bb55906d4b037f6324c8c7ec9118effb6b85999172336beab7ec5f8ecc",
+          "engine": "kokoro",
+          "durationMs": 607,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 131,
+    "id": "pozo",
+    "category": "places",
+    "art": "🕳",
+    "names": {
+      "es": {
+        "text": "El Pozo",
+        "status": "approved",
+        "audio": "/audio/es/pozo.2af761ce.m4a",
+        "clip": {
+          "file": "/audio/es/pozo.2af761ce.m4a",
+          "sha256": "2af761cec5ed1b0a1dcc08647a473b40b7ebaeb8bd1aa86ac1332bca000df4bf",
+          "engine": "kokoro",
+          "durationMs": 826,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Well",
+        "status": "approved",
+        "audio": "/audio/en/pozo.ffb2a242.m4a",
+        "clip": {
+          "file": "/audio/en/pozo.ffb2a242.m4a",
+          "sha256": "ffb2a2429d84e7ec1dbbc31a5122e92d0b438a85355dfbf3ef0f0b5e03bc640c",
+          "engine": "kokoro",
+          "durationMs": 577,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 132,
+    "id": "nido",
+    "category": "places",
+    "art": "🪺",
+    "names": {
+      "es": {
+        "text": "El Nido",
+        "status": "approved",
+        "audio": "/audio/es/nido.afb353db.m4a",
+        "clip": {
+          "file": "/audio/es/nido.afb353db.m4a",
+          "sha256": "afb353db885da1f312e2a9802910d68774d674545758ac2069fd2de01e461eed",
+          "engine": "kokoro",
+          "durationMs": 698,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Nest",
+        "status": "approved",
+        "audio": "/audio/en/nido.80ffc415.m4a",
+        "clip": {
+          "file": "/audio/en/nido.80ffc415.m4a",
+          "sha256": "80ffc415ec91b995b2420bb44c0661c7386441e97b769db496043c60608f4927",
+          "engine": "kokoro",
+          "durationMs": 667,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 133,
+    "id": "colmena",
+    "category": "places",
+    "art": "🐝",
+    "names": {
+      "es": {
+        "text": "La Colmena",
+        "status": "approved",
+        "audio": "/audio/es/colmena.2af870b8.m4a",
+        "clip": {
+          "file": "/audio/es/colmena.2af870b8.m4a",
+          "sha256": "2af870b830baa8a67eef766e697473ecc462286145fa40ca8ce586d162f928ab",
+          "engine": "kokoro",
+          "durationMs": 681,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Beehive",
+        "status": "approved",
+        "audio": "/audio/en/colmena.ddf95474.m4a",
+        "clip": {
+          "file": "/audio/en/colmena.ddf95474.m4a",
+          "sha256": "ddf95474eefbbf96f676dd84ccca53568d5e2abfe15171d2a62006332eea24be",
+          "engine": "kokoro",
+          "durationMs": 743,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 134,
+    "id": "hormiguero",
+    "category": "places",
+    "art": "🪹",
+    "names": {
+      "es": {
+        "text": "El Hormiguero",
+        "status": "approved",
+        "audio": "/audio/es/hormiguero.69fe2c0e.m4a",
+        "clip": {
+          "file": "/audio/es/hormiguero.69fe2c0e.m4a",
+          "sha256": "69fe2c0e520dd11a42d4c945a13f18de37b8f7443ab76e151ec067ef3e40680c",
+          "engine": "kokoro",
+          "durationMs": 892,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Anthill",
+        "status": "approved",
+        "audio": "/audio/en/hormiguero.30eb0ac4.m4a",
+        "clip": {
+          "file": "/audio/en/hormiguero.30eb0ac4.m4a",
+          "sha256": "30eb0ac4ca78064fd7cdedc12d6a2641d7e08ad7edc5bc58da4bd40fe6275a2b",
+          "engine": "kokoro",
+          "durationMs": 877,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "am_michael"
+        }
+      }
+    }
+  },
+  {
+    "n": 135,
+    "id": "telarana",
+    "category": "places",
+    "art": "🕸",
+    "names": {
+      "es": {
+        "text": "La Telaraña",
+        "status": "approved",
+        "audio": "/audio/es/telarana.aa6dc2b0.m4a",
+        "clip": {
+          "file": "/audio/es/telarana.aa6dc2b0.m4a",
+          "sha256": "aa6dc2b0375c1f7c4ca02ed133745b0bd7a0102d149f4a0294fe2d13d8e9bdfb",
+          "engine": "kokoro",
+          "durationMs": 1017,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Spider Web",
+        "status": "approved",
+        "audio": "/audio/en/telarana.6743c6e8.m4a",
+        "clip": {
+          "file": "/audio/en/telarana.6743c6e8.m4a",
+          "sha256": "6743c6e88947d8d166f4b2b1be41c1e69b1bc6c4a2dbe1388b005d821a81497c",
+          "engine": "kokoro",
+          "durationMs": 1004,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 136,
+    "id": "patio",
+    "category": "places",
+    "art": "🏡",
+    "names": {
+      "es": {
+        "text": "El Patio",
+        "status": "approved",
+        "audio": "/audio/es/patio.f73d99a7.m4a",
+        "clip": {
+          "file": "/audio/es/patio.f73d99a7.m4a",
+          "sha256": "f73d99a7b04df938743e6d012ff6e71ee97e7b2afe8effd710b68202082cc3ec",
+          "engine": "kokoro",
+          "durationMs": 780,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Yard",
+        "status": "approved",
+        "audio": "/audio/en/patio.cb201e07.m4a",
+        "clip": {
+          "file": "/audio/en/patio.cb201e07.m4a",
+          "sha256": "cb201e0793205ac510f8145feb4a56b94fb3622aeaeee075bec8ca5306a64e1b",
+          "engine": "kokoro",
+          "durationMs": 669,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 137,
+    "id": "huerto",
+    "category": "places",
+    "art": "🌿",
+    "names": {
+      "es": {
+        "text": "El Huerto",
+        "status": "approved",
+        "audio": "/audio/es/huerto.947ea9fe.m4a",
+        "clip": {
+          "file": "/audio/es/huerto.947ea9fe.m4a",
+          "sha256": "947ea9fe24a043e2d0a69688f428275a868101faa3be1208dd7b0b32e88ec9ff",
+          "engine": "kokoro",
+          "durationMs": 693,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Garden",
+        "status": "approved",
+        "audio": "/audio/en/huerto.67f4d7f8.m4a",
+        "clip": {
+          "file": "/audio/en/huerto.67f4d7f8.m4a",
+          "sha256": "67f4d7f8a15f69db5c6b077ef200b7de2551d9079f7fe448fd3bc358f7f0dfc5",
+          "engine": "kokoro",
+          "durationMs": 719,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 138,
+    "id": "cerca",
+    "category": "places",
+    "art": "🚧",
+    "names": {
+      "es": {
+        "text": "La Cerca",
+        "status": "approved",
+        "audio": "/audio/es/cerca.ff2a4ba2.m4a",
+        "clip": {
+          "file": "/audio/es/cerca.ff2a4ba2.m4a",
+          "sha256": "ff2a4ba2ea59d69b3cb004e38994192ef11fc2052dcc99cf451e4e9332f4c80a",
+          "engine": "kokoro",
+          "durationMs": 618,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Fence",
+        "status": "approved",
+        "audio": "/audio/en/cerca.b75ef683.m4a",
+        "clip": {
+          "file": "/audio/en/cerca.b75ef683.m4a",
+          "sha256": "b75ef68314a3c5b55c4630533d45c8b101107288f5f756cef553b96feac8922f",
+          "engine": "kokoro",
+          "durationMs": 741,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 139,
+    "id": "puerta",
+    "category": "places",
+    "art": "🚪",
+    "names": {
+      "es": {
+        "text": "La Puerta",
+        "status": "approved",
+        "audio": "/audio/es/puerta.2ef11a4c.m4a",
+        "clip": {
+          "file": "/audio/es/puerta.2ef11a4c.m4a",
+          "sha256": "2ef11a4ca53e9204a5ae971a06e3d1b117190269e7bc1cb28164dc4691ded13d",
+          "engine": "kokoro",
+          "durationMs": 823,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Door",
+        "status": "approved",
+        "audio": "/audio/en/puerta.eb49610d.m4a",
+        "clip": {
+          "file": "/audio/en/puerta.eb49610d.m4a",
+          "sha256": "eb49610d1204b8dbc43660684c21b2812ee8144492ffb8569eef5683813e8e85",
+          "engine": "kokoro",
+          "durationMs": 653,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 140,
+    "id": "techo",
+    "category": "places",
+    "art": "🏠",
+    "names": {
+      "es": {
+        "text": "El Techo",
+        "status": "approved",
+        "audio": "/audio/es/techo.798a3a8d.m4a",
+        "clip": {
+          "file": "/audio/es/techo.798a3a8d.m4a",
+          "sha256": "798a3a8d78db468635ee30e7f229f9b059adb8f41f29559d723d74210e886e3a",
+          "engine": "kokoro",
+          "durationMs": 807,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Roof",
+        "status": "approved",
+        "audio": "/audio/en/techo.6324b9da.m4a",
+        "clip": {
+          "file": "/audio/en/techo.6324b9da.m4a",
+          "sha256": "6324b9daec0b6ff2bc9542bcf4ae02da7768ad68a8c966bd23fb1e9347de69f8",
+          "engine": "kokoro",
+          "durationMs": 688,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 141,
+    "id": "escalera",
+    "category": "places",
+    "art": "🪜",
+    "names": {
+      "es": {
+        "text": "La Escalera",
+        "status": "approved",
+        "audio": "/audio/es/escalera.c79eb1f8.m4a",
+        "clip": {
+          "file": "/audio/es/escalera.c79eb1f8.m4a",
+          "sha256": "c79eb1f8bee185fdb6f5a7f9a5cc23f3ff5eeb5a37777629f5882f94b4a0b5a3",
+          "engine": "kokoro",
+          "durationMs": 796,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_santa"
+        }
+      },
+      "en": {
+        "text": "The Ladder",
+        "status": "approved",
+        "audio": "/audio/en/escalera.e9a4922f.m4a",
+        "clip": {
+          "file": "/audio/en/escalera.e9a4922f.m4a",
+          "sha256": "e9a4922fefc8dcb1304f1e89c6181e52c9a9e6b5e214d790bfcef1ca79bb662e",
+          "engine": "kokoro",
+          "durationMs": 683,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "am_michael"
+        }
+      }
+    }
+  },
+  {
+    "n": 142,
+    "id": "troje",
+    "category": "places",
+    "art": "🏚",
+    "names": {
+      "es": {
+        "text": "La Troje",
+        "status": "approved",
+        "audio": "/audio/es/troje.ecce31b3.m4a",
+        "clip": {
+          "file": "/audio/es/troje.ecce31b3.m4a",
+          "sha256": "ecce31b355d9c1e4dd5e9dab32b11d16b080a4b1f0b42213ffdd7a7cfb6e057d",
+          "engine": "kokoro",
+          "durationMs": 761,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Granary",
+        "status": "approved",
+        "audio": "/audio/en/troje.729597a8.m4a",
+        "clip": {
+          "file": "/audio/en/troje.729597a8.m4a",
+          "sha256": "729597a86c179b9a0d1155de10f6356ed933a4b17c31445cc1b132f0e39ee088",
+          "engine": "kokoro",
+          "durationMs": 777,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 143,
+    "id": "cocina",
+    "category": "places",
+    "art": "🔥",
+    "names": {
+      "es": {
+        "text": "La Cocina",
+        "status": "approved",
+        "audio": "/audio/es/cocina.68fcd7b2.m4a",
+        "clip": {
+          "file": "/audio/es/cocina.68fcd7b2.m4a",
+          "sha256": "68fcd7b2746ec3f2b6725b31c4f1285286f1fa97b5b0a47af6bf5f41ec258a6d",
+          "engine": "kokoro",
+          "durationMs": 718,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "em_alex"
+        }
+      },
+      "en": {
+        "text": "The Kitchen",
+        "status": "approved",
+        "audio": "/audio/en/cocina.d1b4885e.m4a",
+        "clip": {
+          "file": "/audio/en/cocina.d1b4885e.m4a",
+          "sha256": "d1b4885e8cfb23dd54b8c788e9e6044bf2ee7eeb211bc39d95c23d1047985e30",
+          "engine": "kokoro",
+          "durationMs": 756,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
+  },
+  {
+    "n": 144,
+    "id": "corral",
+    "category": "places",
+    "art": "🐄",
+    "names": {
+      "es": {
+        "text": "El Corral",
+        "status": "approved",
+        "audio": "/audio/es/corral.ead4fb36.m4a",
+        "clip": {
+          "file": "/audio/es/corral.ead4fb36.m4a",
+          "sha256": "ead4fb36d82f33579b25a374b2cd4e714bdfd0716ecea6c24165874f1eeb1c9e",
+          "engine": "kokoro",
+          "durationMs": 727,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "ef_dora"
+        }
+      },
+      "en": {
+        "text": "The Corral",
+        "status": "approved",
+        "audio": "/audio/en/corral.73f4b58c.m4a",
+        "clip": {
+          "file": "/audio/en/corral.73f4b58c.m4a",
+          "sha256": "73f4b58cf7676cc84d8fdf3a18de6493dd35bd2f78d3ba52addbca2370a89871",
+          "engine": "kokoro",
+          "durationMs": 780,
+          "model": "hexgrad/Kokoro-82M",
+          "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+          "voice": "af_heart"
+        }
+      }
+    }
   }
 ]

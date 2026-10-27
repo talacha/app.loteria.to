@@ -1,16 +1,16 @@
 {
-  "tagline": "La lotería de imágenes con la que todos crecimos, cantada en cinco idiomas.",
+  "tagline": "Lotería de imágenes: 144 cartas con llamada en español e inglés; 54 también en náhuatl, maya y quechua.",
   "actions": "Empezar",
   "joinLabel": "Código de la sala",
   "joinInvalid": "El código tiene 5 letras o números (sin I, L, O, 0 ni 1).",
   "joinSubmit": "Unirme a una sala",
   "joinHelp": "Escribe el código de 5 caracteres que ves en la pantalla de quien canta.",
-  "languagesTitle": "Cinco idiomas",
-  "languagesIntro": "Cada persona elige el idioma de las llamadas. Consulta la procedencia de los nombres y las voces en los créditos.",
+  "languagesTitle": "Idiomas de las llamadas",
+  "languagesIntro": "El español y el inglés cubren las 144 cartas. El náhuatl, el maya yucateco y el quechua están disponibles para las 54 cartas originales. Consulta la procedencia de los nombres y las voces en los créditos.",
   "pendingBadge": "sin audio",
-  "readyBadge": "listo para cantar",
+  "readyBadge": "disponible",
   "sampleTitle": "Una muestra de la baraja",
-  "sampleAll": "Ver las 54 cartas",
+  "sampleAll": "Ver las 144 cartas",
   "howTitle": "Cómo es una ronda",
   "steps": {
     "one": {
@@ -62,7 +62,7 @@
   "logoAlt": "",
   "printLink": "Imprimir tablas",
   "deckLink": "Cartas",
-  "h1": "Lotería de los Pueblos — la lotería cantada en náhuatl, maya, quechua, español e inglés",
+  "h1": "Lotería de los Pueblos — 144 cartas y cinco opciones de idioma",
   "lede": "Una lotería de imágenes para jugar en familia o en el aula: una voz canta cada carta y tú eliges cómo se escribe. Entra desde tu teléfono con el código QR. Es gratis y no necesita cuentas.",
   "faq": {
     "title": "Preguntas frecuentes",
@@ -73,7 +73,7 @@
       },
       "langs": {
         "q": "¿Qué idiomas tiene?",
-        "a": "Las cartas se cantan en náhuatl, maya yucateco, quechua (Cusco-Collao), español e inglés. Cada persona elige el idioma que escucha y el idioma de la app (español o inglés), y puede cambiarlos en cualquier momento."
+        "a": "Puedes escuchar las llamadas en náhuatl, maya yucateco, quechua (Cusco-Collao), español o inglés. La baraja completa de 144 cartas tiene llamadas en español e inglés; las 54 cartas originales también están disponibles en los otros tres idiomas. Cada persona elige el idioma que escucha y el idioma de la app (español o inglés). Durante la ronda, el idioma de llamada se puede cambiar entre los que cubren todas las cartas de esa sala."
       },
       "free": {
         "q": "¿Es gratis?",

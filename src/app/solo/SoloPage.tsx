@@ -1,11 +1,12 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { maxGridFor, minDeckFor, MAX_GRID, MIN_GRID, type Lang } from '@engine';
-import { callableLangs, cards, getCard, isAvoidedPair } from '@content';
+import { callableLangs, cardsAvailableIn, langsForDeck, getCard, isAvoidedPair } from '@content';
 import { applyStoredPrefs } from '../theme/prefs';
 import { LanguageSwitch } from '../theme/Preferences';
 import { readProfile } from '../home/profile';
+import { setAllowedSpokenLangs } from '../ui/profile';
 import {
   Button,
   Leaderboard,
@@ -64,12 +65,19 @@ export default function SoloPage() {
   const [game, setGame] = useState<{ state: SoloState; key: number } | null>(null);
   const [done, setDone] = useState<SoloState | null>(null);
   const profile = useMemo(() => readProfile(), []);
+  const availablePool = cardsAvailableIn([spoken]);
+  useEffect(() => {
+    if (!game) return;
+    setAllowedSpokenLangs(langsForDeck(game.state.order));
+    return () => setAllowedSpokenLangs(null);
+  }, [game]);
   // The header gear changes the spoken language: follow it, also during a game.
   const gearLang = useProfile().spokenLang;
   const [seenGear, setSeenGear] = useState(gearLang);
   if (seenGear !== gearLang) {
     setSeenGear(gearLang);
-    if (options.includes(gearLang)) setSpoken(gearLang);
+    if (options.includes(gearLang) && (!game || langsForDeck(game.state.order).includes(gearLang)))
+      setSpoken(gearLang);
   }
 
   const players = useMemo<SoloPlayerInfo[]>(
@@ -90,7 +98,7 @@ export default function SoloPage() {
     } catch {
       /* storage unavailable */
     }
-    const pool = cards.map((c) => ({ id: c.id, category: c.category }));
+    const pool = availablePool.map((c) => ({ id: c.id, category: c.category }));
     const state = createSolo({
       seed: newSeed(),
       cpus,
@@ -215,13 +223,13 @@ export default function SoloPage() {
         <legend>{t('solo.grid')}</legend>
         <div className={styles.chips} role="radiogroup" aria-label={t('solo.grid')}>
           {Array.from({ length: MAX_GRID - MIN_GRID + 1 }, (_, k) => MIN_GRID + k).map((g) => {
-            const ok = cards.length >= minDeckFor(g, cpus + 1);
+            const ok = availablePool.length >= minDeckFor(g, cpus + 1);
             return (
               <button
                 key={g}
                 type="button"
                 role="radio"
-                aria-checked={Math.min(grid, maxGridFor(cards.length, cpus + 1)) === g}
+                aria-checked={Math.min(grid, maxGridFor(availablePool.length, cpus + 1)) === g}
                 aria-disabled={!ok}
                 className={styles.chip}
                 onClick={() => ok && setGrid(g)}

@@ -24,7 +24,7 @@ export function isValidName(s: string): boolean {
 
 const unique = (a: string[]) => new Set(a).size === a.length;
 const roundNo = z.number().int().min(0).max(10000);
-const cardList = z.array(cardId).max(54).refine(unique, 'duplicate entries');
+const cardList = z.array(cardId).max(144).refine(unique, 'duplicate entries');
 
 const name = z.string().trim().min(1).max(NAME_MAX).regex(SAFE_TEXT);
 const glyph = z.string().min(1).max(16).regex(SAFE_TEXT);
@@ -39,6 +39,8 @@ export const msgSchema = z.discriminatedUnion('t', [
     speedSec: z.number().finite().min(3).max(60),
     /** Cartón is gridSize x gridSize, 3..8. Absent (older hosts) means 4. */
     gridSize: z.number().int().min(3).max(8).optional(),
+    /** Frozen canonical card pool shared by calls, choices and every tabla. */
+    deck: cardList.refine((ids) => ids.length >= 9, 'deck too small').optional(),
     hostKey: z.string().min(1).max(128).optional(),
   }),
   z.object({
@@ -85,7 +87,7 @@ export const msgSchema = z.discriminatedUnion('t', [
     t: z.literal('scores'),
     roundNo,
     points: z
-      .record(seat, z.number().int().min(0).max(200))
+      .record(seat, z.number().int().min(0).max(288))
       .refine((r) => Object.keys(r).length <= 60, 'too many entries'),
     /** Squares crossed out (0..64, at most gridSize²) per seat, for the leaderboard. Hosts always send it. */
     crossed: z
@@ -129,6 +131,7 @@ export type Msg =
       roundNo: number;
       speedSec: number;
       gridSize?: number;
+      deck?: CardId[];
       hostKey?: string;
     }
   | {

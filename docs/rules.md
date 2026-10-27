@@ -5,13 +5,13 @@
 1. A game is played in a **room**. The person who creates it is the **organiser**; the room gets a code that is not in use by any other room.
 2. Players join with the room code (typed, by link or by QR code), a name (1–24 characters; duplicates allowed) and a picture of their choice.
 3. A round can start with **at least 2 players**. A room holds **at most 20 players**; a 21st player is offered a new room instead.
-4. The organiser's screen is the **cantor's screen**: it calls the cards and shows the round. When creating the room, the organiser chooses whether that screen **only displays** the game or **also plays**: with "Jugar también", the organiser gets their own cartón and spelling choices on the same screen and plays by the same rules as everyone else (they count toward the 2-player minimum and their picks are scored in the same order as all others). The organiser can start the round, pause, resume and change the calling speed. **Nobody can end a round early:** the round goes on until all 16 squares of one player's cartón are crossed off (§9). A player may leave the room; that does not end the round for the others.
+4. The organiser's screen is the **cantor's screen**: it calls the cards and shows the round. When creating the room, the organiser chooses whether that screen **only displays** the game or **also plays**: with "Jugar también", the organiser gets their own cartón and spelling choices on the same screen and plays by the same rules as everyone else (they count toward the 2-player minimum and their picks are scored in the same order as all others). The organiser can start the round, pause, resume and change the calling speed. **Nobody can end a round early:** the round goes on until all g² squares of one player's cartón are crossed off (§9). A player may leave the room; that does not end the round for the others.
 5. A player who joins after the round has started gets a cartón with every card already called crossed off, and starts with 0 points.
 6. A player who reloads or briefly disconnects gets back the same cartón, crossed squares, points and languages.
 
 ## 2. Languages
 
-Each player chooses two languages, independently, and can change either at any time without losing their cartón, crossed squares or points:
+Each player chooses two languages, independently, and can change either within the available round languages without losing their cartón, crossed squares or points:
 
 1. **App language** — Español or English — for menus, buttons and messages.
 2. **Spoken language** — Náhuatl, Maya yucateco, Quechua (Cusco-Collao), Español or English — the language the cantor speaks to that player, the language of their three spelling choices, and the language of the words revealed on their cartón.
@@ -21,19 +21,19 @@ Each player chooses two languages, independently, and can change either at any t
 
 Example: a Spanish speaker can keep the app in Español and hear Náhuatl to practise it.
 
-All five spoken languages are always offered. Each player hears and reads the same card in their own spoken language at the same moment.
+All five spoken languages are offered before a round. During a round, only languages covering every card in its frozen deck can be selected. A late joiner chooses a covering language; an unavailable choice is explained. Each player hears and reads the same card in their own spoken language at the same moment.
 
 ## 3. The cards
 
-1. The deck has **54 cards** in six groups: animals, plants and food, sky, land, things made by hand, and places.
-2. Every card has a picture and a name in each of the five languages.
+1. The catalog has **144 cards**, 24 in each of six groups: animals, plants and food, sky, land, things made by hand, and places.
+2. Every card has a picture and Spanish and English names and clips. The original 54 retain the existing Indigenous-language coverage. The 90 added Indigenous names remain research drafts until sourced, reviewed and voiced. At round start, the room deck is the intersection of available cards in the participating spoken languages (including the organiser only when playing). That deck is fixed for the round, saved for recovery, and used for every cartón, call and spelling choice. Solo play uses the selected spoken language’s available cards.
 3. Cards never show people, and the game never uses gendered roles for people.
 
 ## 4. The cartón
 
 1. Each player gets one **cartón of g columns × g rows**, with g from **3 to 8** (default **4 × 4**). The organiser chooses g when creating the room; everyone in the room has the same size. A cartón has g² different cards chosen at random from the deck, with at most ⌈g² × 5 ⁄ 16⌉ from the same group (5 of 16 at 4 × 4); if the deck cannot satisfy that limit it is relaxed.
 2. Cartones in the same room are kept different from each other: no two share more than ⌊g² ⁄ 2⌋ cards (8 of 16 at 4 × 4).
-3. A size is offered only if the deck can deal that many different cartones to the players in the room. The deck is 54 cards today, so 3 × 3 and 4 × 4 always work, 5 × 5 works for up to 8 players, and 6 × 6 to 8 × 8 are shown disabled with "Requiere N cartas" (59, 83 and 108 cards for 2 players; 80, 110 and 138 for 20). If more people join than the chosen size allows, it steps down to the largest that fits.
+3. A size is offered only if the deck can deal that many different cartones to the players in the room. Capacity uses the room’s shared deck, rather than the entire catalog. Spanish/English rooms can use 144 cards and reach 8 × 8; rooms including existing Indigenous languages use their shared 54-card coverage. Unavailable sizes explain the required card count. If more people join than the chosen size allows, it steps down to the largest that fits.
 4. The cartón shows **pictures only**. A square's word, in the player's spoken language, appears once that card has been called.
 5. The cartón is always visible during the round; nothing covers it. Every size fits a phone screen (cells of at least 44 px at 390 px wide); on large sizes the words of crossed squares are read by screen readers and shown on the ¡Lotería! screen instead of inside each small cell.
 
@@ -74,7 +74,7 @@ All five spoken languages are always offered. Each player hears and reads the sa
 
 ## 10. Audio
 
-1. Every card's name is voiced in all five languages, from pre-recorded clips. The voices are generated with Meta MMS-TTS; the game says so and credits it.
+1. Every available card name has a pre-recorded clip in the selected language. Spanish and English use Kokoro; the existing Indigenous voices use Meta MMS-TTS. The game identifies and credits these synthetic voices.
 2. A player hears only their own spoken language. A new call stops the previous one.
 3. Players can turn the sound off on their device; the picture and choices still appear.
 4. The cantor's screen plays no names unless the organiser turns its sound on.

@@ -25,4 +25,5 @@ Lightweight ADRs for Lotería de los Pueblos. One file per decision: `NNNN-short
 | [0020](0020-nahuatl-variant-and-voice.md) | Náhuatl: Classical/Central spellings, Huasteca (`nhe`) voice | Accepted |
 | [0021](0021-no-hide-picture-practice-mode.md) | No "hide the picture" practice mode in v1.0 | Accepted |
 | [0022](0022-durable-signed-frame-sequences.md) | Durable signed host-frame sequences and explicit legacy recovery | Accepted |
+| [0023](0023-expanded-catalog-and-language-coverage.md) | 144-card catalog and language-safe room decks | Accepted |
 | [0024](0024-painted-paper-brand.md) | Painted ribbon identity and rugged paper background | Accepted |

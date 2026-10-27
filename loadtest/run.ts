@@ -17,6 +17,7 @@ import {
   tabla,
 } from '@engine';
 import { generateHostKeys, signMsg } from '../src/net/crypto.ts';
+import { PROTOCOL_VERSION } from '../src/net/session.ts';
 import { Bot } from './bot.ts';
 import { Wire, cardPool, loadEnv, sleep, stats, supabaseCreds } from './common.ts';
 import { HeadlessHost } from './host-headless.ts';
@@ -29,7 +30,7 @@ if (process.argv.includes('--help')) {
   --transport KIND   local or supabase (default local)
   --host KIND        headless or app (default headless; app requires supabase)
   --mode MODE        normal or race (default normal)
-  --calls K          maximum calls, 1..54 (default 54; truncation fails if no full card)
+  --calls K          maximum calls, 1..catalog size (default whole catalog; truncation fails if no full card)
   --tick MS          accelerated headless call window (default local 1500, supabase 3000)
   --delay MIN,MAX    pick delay in ms (default derived from tick)
   --wrong RATE       wrong-first-pick probability, 0..1 (default 0.1)
@@ -47,12 +48,13 @@ function arg(name: string, def?: string): string | undefined {
 }
 const flag = (n: string) => process.argv.includes('--' + n);
 
+const pool = cardPool();
 const cfg = {
   players: Number(arg('players', '20')),
   rooms: Number(arg('rooms', '3')),
   transport: arg('transport', 'local') as 'local' | 'supabase',
   mode: arg('mode', 'normal') as 'normal' | 'race',
-  calls: Number(arg('calls', '54')),
+  calls: Number(arg('calls', String(pool.length))),
   host: arg('host', 'headless') as 'headless' | 'app',
   tick: Number(arg('tick', arg('transport', 'local') === 'supabase' ? '3000' : '1500')),
   delay: (arg('delay', '') || '').split(',').map(Number),
@@ -78,7 +80,8 @@ if (!['headless', 'app'].includes(cfg.host)) invalid('unknown host');
 if (!['normal', 'race'].includes(cfg.mode)) invalid('unknown mode');
 if (cfg.host === 'app' && cfg.transport !== 'supabase')
   invalid('app host requires supabase: Node and browser BroadcastChannels do not share a process');
-if (!Number.isInteger(cfg.calls) || cfg.calls < 1 || cfg.calls > 54) invalid('calls must be 1..54');
+if (!Number.isInteger(cfg.calls) || cfg.calls < 1 || cfg.calls > pool.length)
+  invalid('calls must be 1..' + pool.length);
 if (!Number.isFinite(cfg.tick) || cfg.tick <= 0) invalid('tick must be positive');
 if (!Number.isFinite(cfg.wrong) || cfg.wrong < 0 || cfg.wrong > 1) invalid('wrong must be 0..1');
 if (!Number.isFinite(cfg.maxLoss) || cfg.maxLoss < 0 || cfg.maxLoss > 100)
@@ -103,7 +106,6 @@ if (cfg.transport === 'supabase') {
 }
 
 const wire = new Wire();
-const pool = cardPool();
 const roomCode = () => 'LT' + Math.random().toString(36).slice(2, 5).toUpperCase();
 
 interface Violation {
@@ -175,7 +177,7 @@ async function adversary(
   };
   const inj: unknown[] = [];
   for (const m of [forgedCall, forgedEnd, forgedPR, forgedRound]) {
-    const envelope = { v: 2, seq: 1_000_000, m };
+    const envelope = { v: PROTOCOL_VERSION, seq: 1_000_000, m };
     inj.push({ role: 'host', from: 'host', ...envelope }); // unsigned
     inj.push({ role: 'host', from: 'host', ...envelope, sig: 'AAAA' }); // garbage sig
     inj.push({ role: 'host', from: 'host', ...envelope, sig: await sign(envelope) }); // wrong key

@@ -62,6 +62,30 @@ describe('JoinPage', () => {
     expect(screen.getByText(/Ya casi empezamos/)).toBeTruthy();
     sessionStorage.clear();
   });
+  it('restores the latest spoken preference instead of the initial join voice', () => {
+    sessionStorage.setItem(
+      'loteria:session:ABCDE',
+      JSON.stringify({
+        profile: { name: 'Ana', glyph: '🐆', spokenLang: 'nah' },
+        hostKeyFromQr: false,
+      }),
+    );
+    localStorage.setItem(
+      'loteria:profile',
+      JSON.stringify({
+        name: 'Ana',
+        glyph: '🐆',
+        spokenLang: 'en',
+        uiLang: 'es',
+      }),
+    );
+    renderAt('/r/ABCDE');
+    expect(screen.getByText('Jugarás en English')).toBeTruthy();
+    expect(screen.queryByText('Jugarás en Náhuatl')).toBeNull();
+    sessionStorage.clear();
+    localStorage.clear();
+  });
+
   it('has exactly one #main', () => {
     renderAt('/r/ABCDE');
     expect(document.querySelectorAll('#main')).toHaveLength(1);

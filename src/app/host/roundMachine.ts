@@ -48,6 +48,8 @@ export interface RoundState {
   langs: Lang[];
   /** All card ids in deck order for this round (empty during setup). */
   order: CardId[];
+  /** Canonical card pool frozen at start and persisted through reload. */
+  deck: CardId[];
   /** How many cards have been called; the current card is order[calledCount - 1]. */
   calledCount: number;
   winners: string[];
@@ -69,6 +71,7 @@ export function initialRound(code: string, roomSeed: string, langs: Lang[]): Rou
     settings: { ...DEFAULT_SETTINGS },
     langs: langs.length ? langs : ['es'],
     order: [],
+    deck: [],
     calledCount: 0,
     winners: [],
     assignments: {},
@@ -100,6 +103,7 @@ export interface SavedRound {
   langs: Lang[];
   phase: Phase;
   assignments?: Record<string, number>;
+  deck?: CardId[];
   /** Roster at save time (seat -> player + assigned board). */
   roster?: SavedPlayer[];
   /** Points and crossed-out cards per seat (pick scoring). */
@@ -133,6 +137,7 @@ export function roundReducer(s: RoundState, a: RoundAction): RoundState {
         phase: 'running',
         langs,
         order: deckOrder(s.roomSeed, s.roundNo, a.ids),
+        deck: [...a.ids],
         calledCount: 1,
         winners: [],
       };
@@ -167,13 +172,15 @@ export function roundReducer(s: RoundState, a: RoundAction): RoundState {
         phase: 'setup',
         roundNo: s.roundNo + 1,
         order: [],
+        deck: [],
         calledCount: 0,
         winners: [],
         assignments: {},
       };
     case 'restore': {
       const v = a.saved;
-      const order = v.phase === 'setup' ? [] : deckOrder(v.roomSeed, v.roundNo, a.ids);
+      const deck = v.deck ?? a.ids;
+      const order = v.phase === 'setup' ? [] : deckOrder(v.roomSeed, v.roundNo, deck);
       const calledCount = Math.max(0, Math.min(v.calledCount, order.length));
       const phase: Phase = v.phase === 'running' ? 'paused' : v.phase;
       return {
@@ -184,6 +191,7 @@ export function roundReducer(s: RoundState, a: RoundAction): RoundState {
         settings: { ...DEFAULT_SETTINGS, ...v.settings },
         langs: v.langs.length ? v.langs : ['es'],
         order,
+        deck,
         calledCount,
         winners: v.winners,
         assignments: { ...v.assignments },
@@ -203,6 +211,7 @@ export function toSaved(s: RoundState): SavedRound {
     langs: s.langs,
     phase: s.phase,
     assignments: s.assignments,
+    deck: s.deck,
   };
 }
 

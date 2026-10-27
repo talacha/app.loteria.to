@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { callableLangs } from '@content';
+import { callableLangs, cardsAvailableIn } from '@content';
 import { ROOM_MAX_PLAYERS, ROOM_MIN_PLAYERS, roomCode } from '@engine';
 import { createTransport, generateHostKeyPair, getSeat } from '@net';
 import { useTranslation } from 'react-i18next';
@@ -165,12 +165,12 @@ export function useHostRoom() {
   const onHello = useCallback(
     (m: Extract<Msg, { t: 'hello' }>) => {
       if (bannedRef.current.has(m.seat)) return;
+      setLabels((l) => (l[m.seat] === m.labelLang ? l : { ...l, [m.seat]: m.labelLang }));
       const now = Date.now();
       const last = lastHelloRef.current.get(m.seat);
       if (last !== undefined && now - last < HELLO_LIMIT_MS) return;
       lastHelloRef.current.set(m.seat, now);
       missingRef.current.delete(m.seat);
-      setLabels((l) => (l[m.seat] === m.labelLang ? l : { ...l, [m.seat]: m.labelLang }));
       const p: RosterPlayer = {
         seat: m.seat,
         name: m.name,
@@ -484,11 +484,11 @@ export function useHostRoom() {
   const langs = useMemo(() => {
     const out: Lang[] = [];
     for (const p of roster) {
-      const l = labels[p.seat];
+      const l = p.seat === LOCAL_SEAT ? spokenLang : (labels[p.seat] ?? settings.defaultSpokenLang);
       if (l && !out.includes(l)) out.push(l);
     }
     return out;
-  }, [roster, labels]);
+  }, [roster, labels, spokenLang, settings.defaultSpokenLang]);
 
   const joinUrl = useMemo(() => {
     const base = `${window.location.origin}/r/${code}`;
@@ -514,6 +514,7 @@ export function useHostRoom() {
     full: roster.length >= ROOM_MAX_PLAYERS,
     joinUrl,
     langs,
+    deckSize: cardsAvailableIn(langs.length ? langs : [settings.defaultSpokenLang]).length,
     isMember,
     getRoster,
     removePlayer,

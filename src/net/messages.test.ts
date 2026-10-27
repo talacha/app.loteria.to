@@ -61,8 +61,17 @@ describe('parseMsg', () => {
     expect(parseMsg({ ...assign, closed: ['sol', 'sol'] })).toBeNull();
     expect(parseMsg({ ...assign, closed: [''] })).toBeNull();
     expect(
-      parseMsg({ ...assign, closed: Array.from({ length: 55 }, (_, i) => `c${i}`) }),
+      parseMsg({ ...assign, closed: Array.from({ length: 145 }, (_, i) => `c${i}`) }),
     ).toBeNull();
+  });
+
+  it('round carries a unique frozen pool of up to 144 cards and scores allow 288 points', () => {
+    const round = { t: 'round', seed: 's', roundNo: 1, speedSec: 8, gridSize: 8 };
+    const deck = Array.from({ length: 144 }, (_, i) => `card-${i}`);
+    expect(parseMsg({ ...round, deck })).toMatchObject({ deck });
+    expect(parseMsg({ ...round, deck: [...deck, 'extra'] })).toBeNull();
+    expect(parseMsg({ ...round, deck: [...deck.slice(0, 9), deck[0]] })).toBeNull();
+    expect(parseMsg({ t: 'scores', roundNo: 1, points: { player: 288 } })).not.toBeNull();
   });
 
   it('validates lobby', () => {
@@ -117,7 +126,7 @@ describe('parseMsg', () => {
       }),
     ).toBeNull();
     expect(parseMsg({ t: 'end', roundNo: 1, winners: [], reason: 'line' })).toBeNull();
-    expect(parseMsg({ t: 'scores', roundNo: 1, points: { a: 201 } })).toBeNull();
+    expect(parseMsg({ t: 'scores', roundNo: 1, points: { a: 289 } })).toBeNull();
     expect(parseMsg({ t: 'scores', roundNo: 1, points: { a: 1.5 } })).toBeNull();
     expect(parseMsg({ t: 'scores', roundNo: 1, points: {}, crossed: { a: 65 } })).toBeNull();
     expect(parseMsg({ t: 'scores', roundNo: 1, points: {}, crossed: { a: 1.5 } })).toBeNull();

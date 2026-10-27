@@ -1,0 +1,2289 @@
+{
+  "status": "proposal",
+  "source": "docs/deck-expansion.md",
+  "existingPolicy": "retain-all-54",
+  "proposed": [
+    {
+      "id": "perro",
+      "number": 1,
+      "category": "animals",
+      "es": "El Perro",
+      "en": "The Dog",
+      "risk": "L",
+      "whyLikelyAttestable": "Swadesh 100, Leipzig–Jakarta",
+      "visualConfusion": "jaguar: draw floppy ears, wagging tail",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/perro",
+          "yua": "drafts/expansion/yua.json#cards/perro",
+          "quz": "drafts/expansion/quz.json#cards/perro",
+          "bzd": "drafts/expansion/bzd.json#cards/perro",
+          "cjp": "drafts/expansion/cjp.json#cards/perro"
+        }
+      }
+    },
+    {
+      "id": "pez",
+      "number": 2,
+      "category": "animals",
+      "es": "El Pez",
+      "en": "The Fish",
+      "risk": "L",
+      "whyLikelyAttestable": "Swadesh 100, LJ",
+      "visualConfusion": "mar (keep fish alone, no waves)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/pez",
+          "yua": "drafts/expansion/yua.json#cards/pez",
+          "quz": "drafts/expansion/quz.json#cards/pez",
+          "bzd": "drafts/expansion/bzd.json#cards/pez",
+          "cjp": "drafts/expansion/cjp.json#cards/pez"
+        }
+      }
+    },
+    {
+      "id": "venado",
+      "number": 3,
+      "category": "animals",
+      "es": "El Venado",
+      "en": "The Deer",
+      "risk": "L",
+      "whyLikelyAttestable": "Native deer in all three regions (white-tailed, taruka)",
+      "visualConfusion": "llama: antlers, short tail",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/venado",
+          "yua": "drafts/expansion/yua.json#cards/venado",
+          "quz": "drafts/expansion/quz.json#cards/venado",
+          "bzd": "drafts/expansion/bzd.json#cards/venado",
+          "cjp": "drafts/expansion/cjp.json#cards/venado"
+        }
+      }
+    },
+    {
+      "id": "mono",
+      "number": 4,
+      "category": "animals",
+      "es": "El Mono",
+      "en": "The Monkey",
+      "risk": "M",
+      "whyLikelyAttestable": "Native in Mesoamerica and Talamanca; Quechua has an Amazonian term",
+      "visualConfusion": "none",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/mono",
+          "yua": "drafts/expansion/yua.json#cards/mono",
+          "quz": "drafts/expansion/quz.json#cards/mono",
+          "bzd": "drafts/expansion/bzd.json#cards/mono",
+          "cjp": "drafts/expansion/cjp.json#cards/mono"
+        }
+      }
+    },
+    {
+      "id": "murcielago",
+      "number": 5,
+      "category": "animals",
+      "es": "El Murciélago",
+      "en": "The Bat",
+      "risk": "M",
+      "whyLikelyAttestable": "Native everywhere; in DIPALICORI animals list",
+      "visualConfusion": "mariposa (wings): dark, membranous, upside down",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/murcielago",
+          "yua": "drafts/expansion/yua.json#cards/murcielago",
+          "quz": "drafts/expansion/quz.json#cards/murcielago",
+          "bzd": "drafts/expansion/bzd.json#cards/murcielago",
+          "cjp": "drafts/expansion/cjp.json#cards/murcielago"
+        }
+      }
+    },
+    {
+      "id": "hormiga",
+      "number": 6,
+      "category": "animals",
+      "es": "La Hormiga",
+      "en": "The Ant",
+      "risk": "L",
+      "whyLikelyAttestable": "Leipzig–Jakarta \"ant\"",
+      "visualConfusion": "hormiguero (word collision likely)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/hormiga",
+          "yua": "drafts/expansion/yua.json#cards/hormiga",
+          "quz": "drafts/expansion/quz.json#cards/hormiga",
+          "bzd": "drafts/expansion/bzd.json#cards/hormiga",
+          "cjp": "drafts/expansion/cjp.json#cards/hormiga"
+        }
+      }
+    },
+    {
+      "id": "abeja",
+      "number": 7,
+      "category": "animals",
+      "es": "La Abeja",
+      "en": "The Bee",
+      "risk": "L",
+      "whyLikelyAttestable": "Stingless bees kept by Maya, known in Talamanca and Andes",
+      "visualConfusion": "mariposa, colibri (small flyers)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/abeja",
+          "yua": "drafts/expansion/yua.json#cards/abeja",
+          "quz": "drafts/expansion/quz.json#cards/abeja",
+          "bzd": "drafts/expansion/bzd.json#cards/abeja",
+          "cjp": "drafts/expansion/cjp.json#cards/abeja"
+        }
+      }
+    },
+    {
+      "id": "arana",
+      "number": 8,
+      "category": "animals",
+      "es": "La Araña",
+      "en": "The Spider",
+      "risk": "L",
+      "whyLikelyAttestable": "Universal fauna",
+      "visualConfusion": "telarana: spider without web",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/arana",
+          "yua": "drafts/expansion/yua.json#cards/arana",
+          "quz": "drafts/expansion/quz.json#cards/arana",
+          "bzd": "drafts/expansion/bzd.json#cards/arana",
+          "cjp": "drafts/expansion/cjp.json#cards/arana"
+        }
+      }
+    },
+    {
+      "id": "caracol",
+      "number": 9,
+      "category": "animals",
+      "es": "El Caracol",
+      "en": "The Snail",
+      "risk": "L",
+      "whyLikelyAttestable": "Land snails everywhere",
+      "visualConfusion": "tortuga (shell); draw land snail, never the conch trumpet",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/caracol",
+          "yua": "drafts/expansion/yua.json#cards/caracol",
+          "quz": "drafts/expansion/quz.json#cards/caracol",
+          "bzd": "drafts/expansion/bzd.json#cards/caracol",
+          "cjp": "drafts/expansion/cjp.json#cards/caracol"
+        }
+      }
+    },
+    {
+      "id": "cangrejo",
+      "number": 10,
+      "category": "animals",
+      "es": "El Cangrejo",
+      "en": "The Crab",
+      "risk": "M",
+      "whyLikelyAttestable": "River and sea crabs in all regions",
+      "visualConfusion": "none",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/cangrejo",
+          "yua": "drafts/expansion/yua.json#cards/cangrejo",
+          "quz": "drafts/expansion/quz.json#cards/cangrejo",
+          "bzd": "drafts/expansion/bzd.json#cards/cangrejo",
+          "cjp": "drafts/expansion/cjp.json#cards/cangrejo"
+        }
+      }
+    },
+    {
+      "id": "armadillo",
+      "number": 11,
+      "category": "animals",
+      "es": "El Armadillo",
+      "en": "The Armadillo",
+      "risk": "L",
+      "whyLikelyAttestable": "Native in Mexico, Yucatán, Talamanca, Andes",
+      "visualConfusion": "tortuga (shell): banded, long snout",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/armadillo",
+          "yua": "drafts/expansion/yua.json#cards/armadillo",
+          "quz": "drafts/expansion/quz.json#cards/armadillo",
+          "bzd": "drafts/expansion/bzd.json#cards/armadillo",
+          "cjp": "drafts/expansion/cjp.json#cards/armadillo"
+        }
+      }
+    },
+    {
+      "id": "lagartija",
+      "number": 12,
+      "category": "animals",
+      "es": "La Lagartija",
+      "en": "The Lizard",
+      "risk": "L",
+      "whyLikelyAttestable": "Generic lizard covers highland and lowland species",
+      "visualConfusion": "serpiente: four legs, upright pose",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/lagartija",
+          "yua": "drafts/expansion/yua.json#cards/lagartija",
+          "quz": "drafts/expansion/quz.json#cards/lagartija",
+          "bzd": "drafts/expansion/bzd.json#cards/lagartija",
+          "cjp": "drafts/expansion/cjp.json#cards/lagartija"
+        }
+      }
+    },
+    {
+      "id": "perico",
+      "number": 13,
+      "category": "animals",
+      "es": "El Perico",
+      "en": "The Parrot",
+      "risk": "L",
+      "whyLikelyAttestable": "Native parrots; Quechua term from trade",
+      "visualConfusion": "colibri, guajolote: hooked beak, green",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/perico",
+          "yua": "drafts/expansion/yua.json#cards/perico",
+          "quz": "drafts/expansion/quz.json#cards/perico",
+          "bzd": "drafts/expansion/bzd.json#cards/perico",
+          "cjp": "drafts/expansion/cjp.json#cards/perico"
+        }
+      }
+    },
+    {
+      "id": "raton",
+      "number": 14,
+      "category": "animals",
+      "es": "El Ratón",
+      "en": "The Mouse",
+      "risk": "L",
+      "whyLikelyAttestable": "Core fauna, IDS lists",
+      "visualConfusion": "none",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/raton",
+          "yua": "drafts/expansion/yua.json#cards/raton",
+          "quz": "drafts/expansion/quz.json#cards/raton",
+          "bzd": "drafts/expansion/bzd.json#cards/raton",
+          "cjp": "drafts/expansion/cjp.json#cards/raton"
+        }
+      }
+    },
+    {
+      "id": "gallina",
+      "number": 15,
+      "category": "animals",
+      "es": "La Gallina",
+      "en": "The Hen",
+      "risk": "M",
+      "whyLikelyAttestable": "Introduced 1500s, nativised words widely recorded",
+      "visualConfusion": "guajolote (strong): small, red comb, no fan tail",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/gallina",
+          "yua": "drafts/expansion/yua.json#cards/gallina",
+          "quz": "drafts/expansion/quz.json#cards/gallina",
+          "bzd": "drafts/expansion/bzd.json#cards/gallina",
+          "cjp": "drafts/expansion/cjp.json#cards/gallina"
+        }
+      }
+    },
+    {
+      "id": "arbol",
+      "number": 16,
+      "category": "plants_food",
+      "es": "El Árbol",
+      "en": "The Tree",
+      "risk": "L",
+      "whyLikelyAttestable": "Swadesh 100",
+      "visualConfusion": "selva: one tree, visible trunk",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/arbol",
+          "yua": "drafts/expansion/yua.json#cards/arbol",
+          "quz": "drafts/expansion/quz.json#cards/arbol",
+          "bzd": "drafts/expansion/bzd.json#cards/arbol",
+          "cjp": "drafts/expansion/cjp.json#cards/arbol"
+        }
+      }
+    },
+    {
+      "id": "hoja",
+      "number": 17,
+      "category": "plants_food",
+      "es": "La Hoja",
+      "en": "The Leaf",
+      "risk": "L",
+      "whyLikelyAttestable": "Swadesh 100, LJ",
+      "visualConfusion": "frijol (sprout): one big leaf, no stem in soil",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/hoja",
+          "yua": "drafts/expansion/yua.json#cards/hoja",
+          "quz": "drafts/expansion/quz.json#cards/hoja",
+          "bzd": "drafts/expansion/bzd.json#cards/hoja",
+          "cjp": "drafts/expansion/cjp.json#cards/hoja"
+        }
+      }
+    },
+    {
+      "id": "flor",
+      "number": 18,
+      "category": "plants_food",
+      "es": "La Flor",
+      "en": "The Flower",
+      "risk": "M",
+      "whyLikelyAttestable": "Swadesh 207",
+      "visualConfusion": "girasol: small, pink/red, five petals",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/flor",
+          "yua": "drafts/expansion/yua.json#cards/flor",
+          "quz": "drafts/expansion/quz.json#cards/flor",
+          "bzd": "drafts/expansion/bzd.json#cards/flor",
+          "cjp": "drafts/expansion/cjp.json#cards/flor"
+        }
+      }
+    },
+    {
+      "id": "cacahuate",
+      "number": 19,
+      "category": "plants_food",
+      "es": "El Cacahuate",
+      "en": "The Peanut",
+      "risk": "M",
+      "whyLikelyAttestable": "Native South American crop, spread to Mesoamerica early",
+      "visualConfusion": "frijol (pod)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/cacahuate",
+          "yua": "drafts/expansion/yua.json#cards/cacahuate",
+          "quz": "drafts/expansion/quz.json#cards/cacahuate",
+          "bzd": "drafts/expansion/bzd.json#cards/cacahuate",
+          "cjp": "drafts/expansion/cjp.json#cards/cacahuate"
+        }
+      }
+    },
+    {
+      "id": "raiz",
+      "number": 20,
+      "category": "plants_food",
+      "es": "La Raíz",
+      "en": "The Root",
+      "risk": "M",
+      "whyLikelyAttestable": "Swadesh 100, LJ",
+      "visualConfusion": "papa (tuber)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/raiz",
+          "yua": "drafts/expansion/yua.json#cards/raiz",
+          "quz": "drafts/expansion/quz.json#cards/raiz",
+          "bzd": "drafts/expansion/bzd.json#cards/raiz",
+          "cjp": "drafts/expansion/cjp.json#cards/raiz"
+        }
+      }
+    },
+    {
+      "id": "calabaza",
+      "number": 21,
+      "category": "plants_food",
+      "es": "La Calabaza",
+      "en": "The Squash",
+      "risk": "L",
+      "whyLikelyAttestable": "Milpa crop in all regions",
+      "visualConfusion": "olla (round shape)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/calabaza",
+          "yua": "drafts/expansion/yua.json#cards/calabaza",
+          "quz": "drafts/expansion/quz.json#cards/calabaza",
+          "bzd": "drafts/expansion/bzd.json#cards/calabaza",
+          "cjp": "drafts/expansion/cjp.json#cards/calabaza"
+        }
+      }
+    },
+    {
+      "id": "yuca",
+      "number": 22,
+      "category": "plants_food",
+      "es": "La Yuca",
+      "en": "The Cassava",
+      "risk": "M",
+      "whyLikelyAttestable": "Core crop in Talamanca, Yucatán, Amazon side of the Andes; weaker in central Mexico",
+      "visualConfusion": "papa, camote (tubers)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/yuca",
+          "yua": "drafts/expansion/yua.json#cards/yuca",
+          "quz": "drafts/expansion/quz.json#cards/yuca",
+          "bzd": "drafts/expansion/bzd.json#cards/yuca",
+          "cjp": "drafts/expansion/cjp.json#cards/yuca"
+        }
+      }
+    },
+    {
+      "id": "camote",
+      "number": 23,
+      "category": "plants_food",
+      "es": "El Camote",
+      "en": "The Sweet Potato",
+      "risk": "M",
+      "whyLikelyAttestable": "Native crop in all regions",
+      "visualConfusion": "papa (strong): purple skin, tapered",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/camote",
+          "yua": "drafts/expansion/yua.json#cards/camote",
+          "quz": "drafts/expansion/quz.json#cards/camote",
+          "bzd": "drafts/expansion/bzd.json#cards/camote",
+          "cjp": "drafts/expansion/cjp.json#cards/camote"
+        }
+      }
+    },
+    {
+      "id": "guayaba",
+      "number": 24,
+      "category": "plants_food",
+      "es": "La Guayaba",
+      "en": "The Guava",
+      "risk": "M",
+      "whyLikelyAttestable": "Native fruit, lowlands and Andean valleys",
+      "visualConfusion": "aguacate, tomate: pink cut half",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/guayaba",
+          "yua": "drafts/expansion/yua.json#cards/guayaba",
+          "quz": "drafts/expansion/quz.json#cards/guayaba",
+          "bzd": "drafts/expansion/bzd.json#cards/guayaba",
+          "cjp": "drafts/expansion/cjp.json#cards/guayaba"
+        }
+      }
+    },
+    {
+      "id": "algodon",
+      "number": 25,
+      "category": "plants_food",
+      "es": "El Algodón",
+      "en": "The Cotton",
+      "risk": "M",
+      "whyLikelyAttestable": "Native cotton, ancient weaving in all regions",
+      "visualConfusion": "nube, hilo: open boll on branch",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/algodon",
+          "yua": "drafts/expansion/yua.json#cards/algodon",
+          "quz": "drafts/expansion/quz.json#cards/algodon",
+          "bzd": "drafts/expansion/bzd.json#cards/algodon",
+          "cjp": "drafts/expansion/cjp.json#cards/algodon"
+        }
+      }
+    },
+    {
+      "id": "huevo",
+      "number": 26,
+      "category": "plants_food",
+      "es": "El Huevo",
+      "en": "The Egg",
+      "risk": "L",
+      "whyLikelyAttestable": "Swadesh 100, LJ",
+      "visualConfusion": "none",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/huevo",
+          "yua": "drafts/expansion/yua.json#cards/huevo",
+          "quz": "drafts/expansion/quz.json#cards/huevo",
+          "bzd": "drafts/expansion/bzd.json#cards/huevo",
+          "cjp": "drafts/expansion/cjp.json#cards/huevo"
+        }
+      }
+    },
+    {
+      "id": "hongo",
+      "number": 27,
+      "category": "plants_food",
+      "es": "El Hongo",
+      "en": "The Mushroom",
+      "risk": "M",
+      "whyLikelyAttestable": "Common in IDS lists",
+      "visualConfusion": "Sacred double (ritual mushrooms): draw a plain edible cap",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/hongo",
+          "yua": "drafts/expansion/yua.json#cards/hongo",
+          "quz": "drafts/expansion/quz.json#cards/hongo",
+          "bzd": "drafts/expansion/bzd.json#cards/hongo",
+          "cjp": "drafts/expansion/cjp.json#cards/hongo"
+        }
+      }
+    },
+    {
+      "id": "platano",
+      "number": 28,
+      "category": "plants_food",
+      "es": "El Plátano",
+      "en": "The Banana",
+      "risk": "M",
+      "whyLikelyAttestable": "Introduced but staple in Talamanca and Yucatán; Quechua likely a loan",
+      "visualConfusion": "none",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/platano",
+          "yua": "drafts/expansion/yua.json#cards/platano",
+          "quz": "drafts/expansion/quz.json#cards/platano",
+          "bzd": "drafts/expansion/bzd.json#cards/platano",
+          "cjp": "drafts/expansion/cjp.json#cards/platano"
+        }
+      }
+    },
+    {
+      "id": "pasto",
+      "number": 29,
+      "category": "plants_food",
+      "es": "El Pasto",
+      "en": "The Grass",
+      "risk": "M",
+      "whyLikelyAttestable": "Swadesh 207",
+      "visualConfusion": "milpa",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/pasto",
+          "yua": "drafts/expansion/yua.json#cards/pasto",
+          "quz": "drafts/expansion/quz.json#cards/pasto",
+          "bzd": "drafts/expansion/bzd.json#cards/pasto",
+          "cjp": "drafts/expansion/cjp.json#cards/pasto"
+        }
+      }
+    },
+    {
+      "id": "papaya",
+      "number": 30,
+      "category": "plants_food",
+      "es": "La Papaya",
+      "en": "The Papaya",
+      "risk": "M",
+      "whyLikelyAttestable": "Native to Mesoamerica; loans likely in the Andes",
+      "visualConfusion": "aguacate (cut fruit)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/papaya",
+          "yua": "drafts/expansion/yua.json#cards/papaya",
+          "quz": "drafts/expansion/quz.json#cards/papaya",
+          "bzd": "drafts/expansion/bzd.json#cards/papaya",
+          "cjp": "drafts/expansion/cjp.json#cards/papaya"
+        }
+      }
+    },
+    {
+      "id": "fuego",
+      "number": 31,
+      "category": "sky",
+      "es": "El Fuego",
+      "en": "The Fire",
+      "risk": "M",
+      "whyLikelyAttestable": "Swadesh 100, LJ",
+      "visualConfusion": "vela (strong): open campfire, logs, no wax",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/fuego",
+          "yua": "drafts/expansion/yua.json#cards/fuego",
+          "quz": "drafts/expansion/quz.json#cards/fuego",
+          "bzd": "drafts/expansion/bzd.json#cards/fuego",
+          "cjp": "drafts/expansion/cjp.json#cards/fuego"
+        }
+      }
+    },
+    {
+      "id": "humo",
+      "number": 32,
+      "category": "sky",
+      "es": "El Humo",
+      "en": "The Smoke",
+      "risk": "H",
+      "whyLikelyAttestable": "Swadesh 100, LJ",
+      "visualConfusion": "nube, volcan (strong): grey curls, no mountain",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/humo",
+          "yua": "drafts/expansion/yua.json#cards/humo",
+          "quz": "drafts/expansion/quz.json#cards/humo",
+          "bzd": "drafts/expansion/bzd.json#cards/humo",
+          "cjp": "drafts/expansion/cjp.json#cards/humo"
+        }
+      }
+    },
+    {
+      "id": "neblina",
+      "number": 33,
+      "category": "sky",
+      "es": "La Neblina",
+      "en": "The Fog",
+      "risk": "H",
+      "whyLikelyAttestable": "Swadesh 207",
+      "visualConfusion": "nube (strong): horizontal bands over hills",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/neblina",
+          "yua": "drafts/expansion/yua.json#cards/neblina",
+          "quz": "drafts/expansion/quz.json#cards/neblina",
+          "bzd": "drafts/expansion/bzd.json#cards/neblina",
+          "cjp": "drafts/expansion/cjp.json#cards/neblina"
+        }
+      }
+    },
+    {
+      "id": "granizo",
+      "number": 34,
+      "category": "sky",
+      "es": "El Granizo",
+      "en": "The Hail",
+      "risk": "M",
+      "whyLikelyAttestable": "Andes and highland Talamanca; lowland Yucatán uncertain",
+      "visualConfusion": "lluvia: white round stones",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/granizo",
+          "yua": "drafts/expansion/yua.json#cards/granizo",
+          "quz": "drafts/expansion/quz.json#cards/granizo",
+          "bzd": "drafts/expansion/bzd.json#cards/granizo",
+          "cjp": "drafts/expansion/cjp.json#cards/granizo"
+        }
+      }
+    },
+    {
+      "id": "nieve",
+      "number": 35,
+      "category": "sky",
+      "es": "La Nieve",
+      "en": "The Snow",
+      "risk": "H",
+      "whyLikelyAttestable": "Swadesh 207; Andes and Nahua highlands; unlikely in Yucatec and Talamanca speech",
+      "visualConfusion": "estrella (flake shape)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/nieve",
+          "yua": "drafts/expansion/yua.json#cards/nieve",
+          "quz": "drafts/expansion/quz.json#cards/nieve",
+          "bzd": "drafts/expansion/bzd.json#cards/nieve",
+          "cjp": "drafts/expansion/cjp.json#cards/nieve"
+        }
+      }
+    },
+    {
+      "id": "hielo",
+      "number": 36,
+      "category": "sky",
+      "es": "El Hielo",
+      "en": "The Ice",
+      "risk": "H",
+      "whyLikelyAttestable": "Swadesh 207; same regional gap as snow",
+      "visualConfusion": "cristal (strong)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/hielo",
+          "yua": "drafts/expansion/yua.json#cards/hielo",
+          "quz": "drafts/expansion/quz.json#cards/hielo",
+          "bzd": "drafts/expansion/bzd.json#cards/hielo",
+          "cjp": "drafts/expansion/cjp.json#cards/hielo"
+        }
+      }
+    },
+    {
+      "id": "amanecer",
+      "number": 37,
+      "category": "sky",
+      "es": "El Amanecer",
+      "en": "The Dawn",
+      "risk": "H",
+      "whyLikelyAttestable": "Common time noun in dictionaries",
+      "visualConfusion": "sol (strong): half sun on horizon",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/amanecer",
+          "yua": "drafts/expansion/yua.json#cards/amanecer",
+          "quz": "drafts/expansion/quz.json#cards/amanecer",
+          "bzd": "drafts/expansion/bzd.json#cards/amanecer",
+          "cjp": "drafts/expansion/cjp.json#cards/amanecer"
+        }
+      }
+    },
+    {
+      "id": "noche",
+      "number": 38,
+      "category": "sky",
+      "es": "La Noche",
+      "en": "The Night",
+      "risk": "H",
+      "whyLikelyAttestable": "Swadesh 100",
+      "visualConfusion": "luna, estrella (strong)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/noche",
+          "yua": "drafts/expansion/yua.json#cards/noche",
+          "quz": "drafts/expansion/quz.json#cards/noche",
+          "bzd": "drafts/expansion/bzd.json#cards/noche",
+          "cjp": "drafts/expansion/cjp.json#cards/noche"
+        }
+      }
+    },
+    {
+      "id": "cielo",
+      "number": 39,
+      "category": "sky",
+      "es": "El Cielo",
+      "en": "The Sky",
+      "risk": "H",
+      "whyLikelyAttestable": "Swadesh 207; cosmological sense in nah and quz",
+      "visualConfusion": "nube; weak picture",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/cielo",
+          "yua": "drafts/expansion/yua.json#cards/cielo",
+          "quz": "drafts/expansion/quz.json#cards/cielo",
+          "bzd": "drafts/expansion/bzd.json#cards/cielo",
+          "cjp": "drafts/expansion/cjp.json#cards/cielo"
+        }
+      }
+    },
+    {
+      "id": "sombra",
+      "number": 40,
+      "category": "sky",
+      "es": "La Sombra",
+      "en": "The Shadow",
+      "risk": "M",
+      "whyLikelyAttestable": "Common noun in all dictionaries",
+      "visualConfusion": "arbol (tree plus shadow)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/sombra",
+          "yua": "drafts/expansion/yua.json#cards/sombra",
+          "quz": "drafts/expansion/quz.json#cards/sombra",
+          "bzd": "drafts/expansion/bzd.json#cards/sombra",
+          "cjp": "drafts/expansion/cjp.json#cards/sombra"
+        }
+      }
+    },
+    {
+      "id": "rocio",
+      "number": 41,
+      "category": "sky",
+      "es": "El Rocío",
+      "en": "The Dew",
+      "risk": "M",
+      "whyLikelyAttestable": "Common noun",
+      "visualConfusion": "lluvia, hoja: drops on a leaf",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/rocio",
+          "yua": "drafts/expansion/yua.json#cards/rocio",
+          "quz": "drafts/expansion/quz.json#cards/rocio",
+          "bzd": "drafts/expansion/bzd.json#cards/rocio",
+          "cjp": "drafts/expansion/cjp.json#cards/rocio"
+        }
+      }
+    },
+    {
+      "id": "remolino",
+      "number": 42,
+      "category": "sky",
+      "es": "El Remolino",
+      "en": "The Whirlwind",
+      "risk": "M",
+      "whyLikelyAttestable": "Weather noun, often recorded",
+      "visualConfusion": "viento (strong): spiral funnel",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/remolino",
+          "yua": "drafts/expansion/yua.json#cards/remolino",
+          "quz": "drafts/expansion/quz.json#cards/remolino",
+          "bzd": "drafts/expansion/bzd.json#cards/remolino",
+          "cjp": "drafts/expansion/cjp.json#cards/remolino"
+        }
+      }
+    },
+    {
+      "id": "agua",
+      "number": 43,
+      "category": "sky",
+      "es": "El Agua",
+      "en": "The Water",
+      "risk": "M",
+      "whyLikelyAttestable": "Swadesh 100, LJ: the best-attested noun on this list",
+      "visualConfusion": "manantial, lluvia (strong): one big drop",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/agua",
+          "yua": "drafts/expansion/yua.json#cards/agua",
+          "quz": "drafts/expansion/quz.json#cards/agua",
+          "bzd": "drafts/expansion/bzd.json#cards/agua",
+          "cjp": "drafts/expansion/cjp.json#cards/agua"
+        }
+      }
+    },
+    {
+      "id": "ceniza",
+      "number": 44,
+      "category": "sky",
+      "es": "La Ceniza",
+      "en": "The Ash",
+      "risk": "M",
+      "whyLikelyAttestable": "Swadesh 100, LJ",
+      "visualConfusion": "weak picture: grey heap with ember",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/ceniza",
+          "yua": "drafts/expansion/yua.json#cards/ceniza",
+          "quz": "drafts/expansion/quz.json#cards/ceniza",
+          "bzd": "drafts/expansion/bzd.json#cards/ceniza",
+          "cjp": "drafts/expansion/cjp.json#cards/ceniza"
+        }
+      }
+    },
+    {
+      "id": "trueno",
+      "number": 45,
+      "category": "sky",
+      "es": "El Trueno",
+      "en": "The Thunder",
+      "risk": "H",
+      "whyLikelyAttestable": "Weather noun, often recorded",
+      "visualConfusion": "rayo (strong); hard to draw sound",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/trueno",
+          "yua": "drafts/expansion/yua.json#cards/trueno",
+          "quz": "drafts/expansion/quz.json#cards/trueno",
+          "bzd": "drafts/expansion/bzd.json#cards/trueno",
+          "cjp": "drafts/expansion/cjp.json#cards/trueno"
+        }
+      }
+    },
+    {
+      "id": "rio",
+      "number": 46,
+      "category": "land",
+      "es": "El Río",
+      "en": "The River",
+      "risk": "L",
+      "whyLikelyAttestable": "Swadesh 207",
+      "visualConfusion": "mar, manantial: winding band between banks",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/rio",
+          "yua": "drafts/expansion/yua.json#cards/rio",
+          "quz": "drafts/expansion/quz.json#cards/rio",
+          "bzd": "drafts/expansion/bzd.json#cards/rio",
+          "cjp": "drafts/expansion/cjp.json#cards/rio"
+        }
+      }
+    },
+    {
+      "id": "lago",
+      "number": 47,
+      "category": "land",
+      "es": "El Lago",
+      "en": "The Lake",
+      "risk": "L",
+      "whyLikelyAttestable": "Swadesh 207",
+      "visualConfusion": "mar: closed shore, reeds",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/lago",
+          "yua": "drafts/expansion/yua.json#cards/lago",
+          "quz": "drafts/expansion/quz.json#cards/lago",
+          "bzd": "drafts/expansion/bzd.json#cards/lago",
+          "cjp": "drafts/expansion/cjp.json#cards/lago"
+        }
+      }
+    },
+    {
+      "id": "piedra",
+      "number": 48,
+      "category": "land",
+      "es": "La Piedra",
+      "en": "The Stone",
+      "risk": "L",
+      "whyLikelyAttestable": "Swadesh 100, LJ; use the plain noun, never sacred stones (Bribri note)",
+      "visualConfusion": "cristal: grey, rounded",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/piedra",
+          "yua": "drafts/expansion/yua.json#cards/piedra",
+          "quz": "drafts/expansion/quz.json#cards/piedra",
+          "bzd": "drafts/expansion/bzd.json#cards/piedra",
+          "cjp": "drafts/expansion/cjp.json#cards/piedra"
+        }
+      }
+    },
+    {
+      "id": "arena",
+      "number": 49,
+      "category": "land",
+      "es": "La Arena",
+      "en": "The Sand",
+      "risk": "M",
+      "whyLikelyAttestable": "Swadesh 100, LJ",
+      "visualConfusion": "desierto (strong): sand pile, no dunes",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/arena",
+          "yua": "drafts/expansion/yua.json#cards/arena",
+          "quz": "drafts/expansion/quz.json#cards/arena",
+          "bzd": "drafts/expansion/bzd.json#cards/arena",
+          "cjp": "drafts/expansion/cjp.json#cards/arena"
+        }
+      }
+    },
+    {
+      "id": "playa",
+      "number": 50,
+      "category": "land",
+      "es": "La Playa",
+      "en": "The Beach",
+      "risk": "M",
+      "whyLikelyAttestable": "Coastal everywhere; a Bribri form is mentioned in the bzd draft notes",
+      "visualConfusion": "isla (strong): no palm, shoreline only",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/playa",
+          "yua": "drafts/expansion/yua.json#cards/playa",
+          "quz": "drafts/expansion/quz.json#cards/playa",
+          "bzd": "drafts/expansion/bzd.json#cards/playa",
+          "cjp": "drafts/expansion/cjp.json#cards/playa"
+        }
+      }
+    },
+    {
+      "id": "cascada",
+      "number": 51,
+      "category": "land",
+      "es": "La Cascada",
+      "en": "The Waterfall",
+      "risk": "M",
+      "whyLikelyAttestable": "Andes and Talamanca; flat Yucatán has none",
+      "visualConfusion": "manantial",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/cascada",
+          "yua": "drafts/expansion/yua.json#cards/cascada",
+          "quz": "drafts/expansion/quz.json#cards/cascada",
+          "bzd": "drafts/expansion/bzd.json#cards/cascada",
+          "cjp": "drafts/expansion/cjp.json#cards/cascada"
+        }
+      }
+    },
+    {
+      "id": "charco",
+      "number": 52,
+      "category": "land",
+      "es": "El Charco",
+      "en": "The Puddle",
+      "risk": "M",
+      "whyLikelyAttestable": "Common noun",
+      "visualConfusion": "lluvia, lago",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/charco",
+          "yua": "drafts/expansion/yua.json#cards/charco",
+          "quz": "drafts/expansion/quz.json#cards/charco",
+          "bzd": "drafts/expansion/bzd.json#cards/charco",
+          "cjp": "drafts/expansion/cjp.json#cards/charco"
+        }
+      }
+    },
+    {
+      "id": "lodo",
+      "number": 53,
+      "category": "land",
+      "es": "El Lodo",
+      "en": "The Mud",
+      "risk": "L",
+      "whyLikelyAttestable": "A Bribri form is mentioned in the bzd draft notes",
+      "visualConfusion": "adobe",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/lodo",
+          "yua": "drafts/expansion/yua.json#cards/lodo",
+          "quz": "drafts/expansion/quz.json#cards/lodo",
+          "bzd": "drafts/expansion/bzd.json#cards/lodo",
+          "cjp": "drafts/expansion/cjp.json#cards/lodo"
+        }
+      }
+    },
+    {
+      "id": "barranca",
+      "number": 54,
+      "category": "land",
+      "es": "La Barranca",
+      "en": "The Ravine",
+      "risk": "M",
+      "whyLikelyAttestable": "Andes, Mexico, Talamanca; Yucatán flat",
+      "visualConfusion": "cueva, montana",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/barranca",
+          "yua": "drafts/expansion/yua.json#cards/barranca",
+          "quz": "drafts/expansion/quz.json#cards/barranca",
+          "bzd": "drafts/expansion/bzd.json#cards/barranca",
+          "cjp": "drafts/expansion/cjp.json#cards/barranca"
+        }
+      }
+    },
+    {
+      "id": "llano",
+      "number": 55,
+      "category": "land",
+      "es": "El Llano",
+      "en": "The Plain",
+      "risk": "M",
+      "whyLikelyAttestable": "Andes and Mexico; Talamanca uncertain",
+      "visualConfusion": "desierto, milpa",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/llano",
+          "yua": "drafts/expansion/yua.json#cards/llano",
+          "quz": "drafts/expansion/quz.json#cards/llano",
+          "bzd": "drafts/expansion/bzd.json#cards/llano",
+          "cjp": "drafts/expansion/cjp.json#cards/llano"
+        }
+      }
+    },
+    {
+      "id": "pantano",
+      "number": 56,
+      "category": "land",
+      "es": "El Pantano",
+      "en": "The Swamp",
+      "risk": "M",
+      "whyLikelyAttestable": "Lowlands; highland Quechua uncertain",
+      "visualConfusion": "selva, charco",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/pantano",
+          "yua": "drafts/expansion/yua.json#cards/pantano",
+          "quz": "drafts/expansion/quz.json#cards/pantano",
+          "bzd": "drafts/expansion/bzd.json#cards/pantano",
+          "cjp": "drafts/expansion/cjp.json#cards/pantano"
+        }
+      }
+    },
+    {
+      "id": "ola",
+      "number": 57,
+      "category": "land",
+      "es": "La Ola",
+      "en": "The Wave",
+      "risk": "H",
+      "whyLikelyAttestable": "Coastal vocabulary",
+      "visualConfusion": "mar (strong): one curling wave",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/ola",
+          "yua": "drafts/expansion/yua.json#cards/ola",
+          "quz": "drafts/expansion/quz.json#cards/ola",
+          "bzd": "drafts/expansion/bzd.json#cards/ola",
+          "cjp": "drafts/expansion/cjp.json#cards/ola"
+        }
+      }
+    },
+    {
+      "id": "concha",
+      "number": 58,
+      "category": "land",
+      "es": "La Concha",
+      "en": "The Shell",
+      "risk": "M",
+      "whyLikelyAttestable": "Coastal and lake vocabulary; land-snail word may double",
+      "visualConfusion": "caracol",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/concha",
+          "yua": "drafts/expansion/yua.json#cards/concha",
+          "quz": "drafts/expansion/quz.json#cards/concha",
+          "bzd": "drafts/expansion/bzd.json#cards/concha",
+          "cjp": "drafts/expansion/cjp.json#cards/concha"
+        }
+      }
+    },
+    {
+      "id": "valle",
+      "number": 59,
+      "category": "land",
+      "es": "El Valle",
+      "en": "The Valley",
+      "risk": "H",
+      "whyLikelyAttestable": "Andes and Mexico; Yucatán flat",
+      "visualConfusion": "montana (strong)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/valle",
+          "yua": "drafts/expansion/yua.json#cards/valle",
+          "quz": "drafts/expansion/quz.json#cards/valle",
+          "bzd": "drafts/expansion/bzd.json#cards/valle",
+          "cjp": "drafts/expansion/cjp.json#cards/valle"
+        }
+      }
+    },
+    {
+      "id": "tierra",
+      "number": 60,
+      "category": "land",
+      "es": "La Tierra",
+      "en": "The Soil",
+      "risk": "H",
+      "whyLikelyAttestable": "Swadesh 100 \"earth\"; use soil, not the deity sense (Pachamama)",
+      "visualConfusion": "lodo (strong)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/tierra",
+          "yua": "drafts/expansion/yua.json#cards/tierra",
+          "quz": "drafts/expansion/quz.json#cards/tierra",
+          "bzd": "drafts/expansion/bzd.json#cards/tierra",
+          "cjp": "drafts/expansion/cjp.json#cards/tierra"
+        }
+      }
+    },
+    {
+      "id": "hacha",
+      "number": 61,
+      "category": "handmade",
+      "es": "El Hacha",
+      "en": "The Axe",
+      "risk": "M",
+      "whyLikelyAttestable": "Stone and metal axes everywhere",
+      "visualConfusion": "martillo (strong): blade head",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/hacha",
+          "yua": "drafts/expansion/yua.json#cards/hacha",
+          "quz": "drafts/expansion/quz.json#cards/hacha",
+          "bzd": "drafts/expansion/bzd.json#cards/hacha",
+          "cjp": "drafts/expansion/cjp.json#cards/hacha"
+        }
+      }
+    },
+    {
+      "id": "red",
+      "number": 62,
+      "category": "handmade",
+      "es": "La Red",
+      "en": "The Fishing Net",
+      "risk": "M",
+      "whyLikelyAttestable": "Fishing nets in all regions",
+      "visualConfusion": "hamaca, telarana",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/red",
+          "yua": "drafts/expansion/yua.json#cards/red",
+          "quz": "drafts/expansion/quz.json#cards/red",
+          "bzd": "drafts/expansion/bzd.json#cards/red",
+          "cjp": "drafts/expansion/cjp.json#cards/red"
+        }
+      }
+    },
+    {
+      "id": "cuerda",
+      "number": 63,
+      "category": "handmade",
+      "es": "La Cuerda",
+      "en": "The Rope",
+      "risk": "M",
+      "whyLikelyAttestable": "Leipzig–Jakarta \"rope\"",
+      "visualConfusion": "hilo (strong): thick coiled rope",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/cuerda",
+          "yua": "drafts/expansion/yua.json#cards/cuerda",
+          "quz": "drafts/expansion/quz.json#cards/cuerda",
+          "bzd": "drafts/expansion/bzd.json#cards/cuerda",
+          "cjp": "drafts/expansion/cjp.json#cards/cuerda"
+        }
+      }
+    },
+    {
+      "id": "jicara",
+      "number": 64,
+      "category": "handmade",
+      "es": "La Jícara",
+      "en": "The Gourd Bowl",
+      "risk": "M",
+      "whyLikelyAttestable": "Calabash bowl used in all regions",
+      "visualConfusion": "olla, calabaza; ceremonial use in Talamanca: draw an everyday bowl",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/jicara",
+          "yua": "drafts/expansion/yua.json#cards/jicara",
+          "quz": "drafts/expansion/quz.json#cards/jicara",
+          "bzd": "drafts/expansion/bzd.json#cards/jicara",
+          "cjp": "drafts/expansion/cjp.json#cards/jicara"
+        }
+      }
+    },
+    {
+      "id": "metate",
+      "number": 65,
+      "category": "handmade",
+      "es": "El Metate",
+      "en": "The Grinding Stone",
+      "risk": "M",
+      "whyLikelyAttestable": "Mesoamerican metate, Andean batán; Talamanca uncertain",
+      "visualConfusion": "none",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/metate",
+          "yua": "drafts/expansion/yua.json#cards/metate",
+          "quz": "drafts/expansion/quz.json#cards/metate",
+          "bzd": "drafts/expansion/bzd.json#cards/metate",
+          "cjp": "drafts/expansion/cjp.json#cards/metate"
+        }
+      }
+    },
+    {
+      "id": "comal",
+      "number": 66,
+      "category": "handmade",
+      "es": "El Comal",
+      "en": "The Griddle",
+      "risk": "M",
+      "whyLikelyAttestable": "Mesoamerican comal, Andean toasting pan; Talamanca uncertain",
+      "visualConfusion": "none",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/comal",
+          "yua": "drafts/expansion/yua.json#cards/comal",
+          "quz": "drafts/expansion/quz.json#cards/comal",
+          "bzd": "drafts/expansion/bzd.json#cards/comal",
+          "cjp": "drafts/expansion/cjp.json#cards/comal"
+        }
+      }
+    },
+    {
+      "id": "escoba",
+      "number": 67,
+      "category": "handmade",
+      "es": "La Escoba",
+      "en": "The Broom",
+      "risk": "M",
+      "whyLikelyAttestable": "Household noun in all regions",
+      "visualConfusion": "coa",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/escoba",
+          "yua": "drafts/expansion/yua.json#cards/escoba",
+          "quz": "drafts/expansion/quz.json#cards/escoba",
+          "bzd": "drafts/expansion/bzd.json#cards/escoba",
+          "cjp": "drafts/expansion/cjp.json#cards/escoba"
+        }
+      }
+    },
+    {
+      "id": "aguja",
+      "number": 68,
+      "category": "handmade",
+      "es": "La Aguja",
+      "en": "The Needle",
+      "risk": "M",
+      "whyLikelyAttestable": "Sewing needle, bone needles pre-contact",
+      "visualConfusion": "hilo (strong): needle alone, big eye",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/aguja",
+          "yua": "drafts/expansion/yua.json#cards/aguja",
+          "quz": "drafts/expansion/quz.json#cards/aguja",
+          "bzd": "drafts/expansion/bzd.json#cards/aguja",
+          "cjp": "drafts/expansion/cjp.json#cards/aguja"
+        }
+      }
+    },
+    {
+      "id": "huso",
+      "number": 69,
+      "category": "handmade",
+      "es": "El Huso",
+      "en": "The Spindle",
+      "risk": "M",
+      "whyLikelyAttestable": "Spinning in all three regions",
+      "visualConfusion": "hilo",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/huso",
+          "yua": "drafts/expansion/yua.json#cards/huso",
+          "quz": "drafts/expansion/quz.json#cards/huso",
+          "bzd": "drafts/expansion/bzd.json#cards/huso",
+          "cjp": "drafts/expansion/cjp.json#cards/huso"
+        }
+      }
+    },
+    {
+      "id": "banco",
+      "number": 70,
+      "category": "handmade",
+      "es": "El Banco",
+      "en": "The Stool",
+      "risk": "M",
+      "whyLikelyAttestable": "In the Bribri casa tradicional dictionary; Maya and Andean stools",
+      "visualConfusion": "check no ceremonial-stool sense",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/banco",
+          "yua": "drafts/expansion/yua.json#cards/banco",
+          "quz": "drafts/expansion/quz.json#cards/banco",
+          "bzd": "drafts/expansion/bzd.json#cards/banco",
+          "cjp": "drafts/expansion/cjp.json#cards/banco"
+        }
+      }
+    },
+    {
+      "id": "sombrero",
+      "number": 71,
+      "category": "handmade",
+      "es": "El Sombrero",
+      "en": "The Hat",
+      "risk": "M",
+      "whyLikelyAttestable": "Woven hats in all regions; loans possible",
+      "visualConfusion": "none",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/sombrero",
+          "yua": "drafts/expansion/yua.json#cards/sombrero",
+          "quz": "drafts/expansion/quz.json#cards/sombrero",
+          "bzd": "drafts/expansion/bzd.json#cards/sombrero",
+          "cjp": "drafts/expansion/cjp.json#cards/sombrero"
+        }
+      }
+    },
+    {
+      "id": "morral",
+      "number": 72,
+      "category": "handmade",
+      "es": "El Morral",
+      "en": "The Woven Bag",
+      "risk": "L",
+      "whyLikelyAttestable": "Carry bags in all regions",
+      "visualConfusion": "cesto",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/morral",
+          "yua": "drafts/expansion/yua.json#cards/morral",
+          "quz": "drafts/expansion/quz.json#cards/morral",
+          "bzd": "drafts/expansion/bzd.json#cards/morral",
+          "cjp": "drafts/expansion/cjp.json#cards/morral"
+        }
+      }
+    },
+    {
+      "id": "hamaca",
+      "number": 73,
+      "category": "handmade",
+      "es": "La Hamaca",
+      "en": "The Hammock",
+      "risk": "H",
+      "whyLikelyAttestable": "Core in Yucatán and Talamanca; not Andean",
+      "visualConfusion": "red (strong)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/hamaca",
+          "yua": "drafts/expansion/yua.json#cards/hamaca",
+          "quz": "drafts/expansion/quz.json#cards/hamaca",
+          "bzd": "drafts/expansion/bzd.json#cards/hamaca",
+          "cjp": "drafts/expansion/cjp.json#cards/hamaca"
+        }
+      }
+    },
+    {
+      "id": "coa",
+      "number": 74,
+      "category": "handmade",
+      "es": "La Coa",
+      "en": "The Digging Stick",
+      "risk": "M",
+      "whyLikelyAttestable": "Planting stick in all three farming traditions",
+      "visualConfusion": "hacha, martillo",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/coa",
+          "yua": "drafts/expansion/yua.json#cards/coa",
+          "quz": "drafts/expansion/quz.json#cards/coa",
+          "bzd": "drafts/expansion/bzd.json#cards/coa",
+          "cjp": "drafts/expansion/cjp.json#cards/coa"
+        }
+      }
+    },
+    {
+      "id": "petate",
+      "number": 75,
+      "category": "handmade",
+      "es": "El Petate",
+      "en": "The Sleeping Mat",
+      "risk": "M",
+      "whyLikelyAttestable": "Woven mats in all regions",
+      "visualConfusion": "cesto (weave pattern)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/petate",
+          "yua": "drafts/expansion/yua.json#cards/petate",
+          "quz": "drafts/expansion/quz.json#cards/petate",
+          "bzd": "drafts/expansion/bzd.json#cards/petate",
+          "cjp": "drafts/expansion/cjp.json#cards/petate"
+        }
+      }
+    },
+    {
+      "id": "camino",
+      "number": 76,
+      "category": "places",
+      "es": "El Camino",
+      "en": "The Path",
+      "risk": "L",
+      "whyLikelyAttestable": "Swadesh 207 \"road\"",
+      "visualConfusion": "puente",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/camino",
+          "yua": "drafts/expansion/yua.json#cards/camino",
+          "quz": "drafts/expansion/quz.json#cards/camino",
+          "bzd": "drafts/expansion/bzd.json#cards/camino",
+          "cjp": "drafts/expansion/cjp.json#cards/camino"
+        }
+      }
+    },
+    {
+      "id": "pozo",
+      "number": 77,
+      "category": "places",
+      "es": "El Pozo",
+      "en": "The Well",
+      "risk": "H",
+      "whyLikelyAttestable": "Yucatán and Andes; Talamanca uses streams",
+      "visualConfusion": "cueva; never a cenote (sacred)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/pozo",
+          "yua": "drafts/expansion/yua.json#cards/pozo",
+          "quz": "drafts/expansion/quz.json#cards/pozo",
+          "bzd": "drafts/expansion/bzd.json#cards/pozo",
+          "cjp": "drafts/expansion/cjp.json#cards/pozo"
+        }
+      }
+    },
+    {
+      "id": "nido",
+      "number": 78,
+      "category": "places",
+      "es": "El Nido",
+      "en": "The Nest",
+      "risk": "L",
+      "whyLikelyAttestable": "Common noun",
+      "visualConfusion": "huevo (eggs in nest)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/nido",
+          "yua": "drafts/expansion/yua.json#cards/nido",
+          "quz": "drafts/expansion/quz.json#cards/nido",
+          "bzd": "drafts/expansion/bzd.json#cards/nido",
+          "cjp": "drafts/expansion/cjp.json#cards/nido"
+        }
+      }
+    },
+    {
+      "id": "colmena",
+      "number": 79,
+      "category": "places",
+      "es": "La Colmena",
+      "en": "The Beehive",
+      "risk": "M",
+      "whyLikelyAttestable": "Log hives of stingless bees (Maya, Talamanca)",
+      "visualConfusion": "abeja, cesto",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/colmena",
+          "yua": "drafts/expansion/yua.json#cards/colmena",
+          "quz": "drafts/expansion/quz.json#cards/colmena",
+          "bzd": "drafts/expansion/bzd.json#cards/colmena",
+          "cjp": "drafts/expansion/cjp.json#cards/colmena"
+        }
+      }
+    },
+    {
+      "id": "hormiguero",
+      "number": 80,
+      "category": "places",
+      "es": "El Hormiguero",
+      "en": "The Anthill",
+      "risk": "H",
+      "whyLikelyAttestable": "Common noun",
+      "visualConfusion": "hormiga (word collision likely)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/hormiguero",
+          "yua": "drafts/expansion/yua.json#cards/hormiguero",
+          "quz": "drafts/expansion/quz.json#cards/hormiguero",
+          "bzd": "drafts/expansion/bzd.json#cards/hormiguero",
+          "cjp": "drafts/expansion/cjp.json#cards/hormiguero"
+        }
+      }
+    },
+    {
+      "id": "telarana",
+      "number": 81,
+      "category": "places",
+      "es": "La Telaraña",
+      "en": "The Spider Web",
+      "risk": "M",
+      "whyLikelyAttestable": "Common noun",
+      "visualConfusion": "arana",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/telarana",
+          "yua": "drafts/expansion/yua.json#cards/telarana",
+          "quz": "drafts/expansion/quz.json#cards/telarana",
+          "bzd": "drafts/expansion/bzd.json#cards/telarana",
+          "cjp": "drafts/expansion/cjp.json#cards/telarana"
+        }
+      }
+    },
+    {
+      "id": "patio",
+      "number": 82,
+      "category": "places",
+      "es": "El Patio",
+      "en": "The Yard",
+      "risk": "H",
+      "whyLikelyAttestable": "A Bribri form is mentioned in the bzd draft notes",
+      "visualConfusion": "casa, plaza (strong)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/patio",
+          "yua": "drafts/expansion/yua.json#cards/patio",
+          "quz": "drafts/expansion/quz.json#cards/patio",
+          "bzd": "drafts/expansion/bzd.json#cards/patio",
+          "cjp": "drafts/expansion/cjp.json#cards/patio"
+        }
+      }
+    },
+    {
+      "id": "huerto",
+      "number": 83,
+      "category": "places",
+      "es": "El Huerto",
+      "en": "The Garden",
+      "risk": "H",
+      "whyLikelyAttestable": "Common noun",
+      "visualConfusion": "milpa (strong)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/huerto",
+          "yua": "drafts/expansion/yua.json#cards/huerto",
+          "quz": "drafts/expansion/quz.json#cards/huerto",
+          "bzd": "drafts/expansion/bzd.json#cards/huerto",
+          "cjp": "drafts/expansion/cjp.json#cards/huerto"
+        }
+      }
+    },
+    {
+      "id": "cerca",
+      "number": 84,
+      "category": "places",
+      "es": "La Cerca",
+      "en": "The Fence",
+      "risk": "M",
+      "whyLikelyAttestable": "Common noun",
+      "visualConfusion": "corral (strong)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/cerca",
+          "yua": "drafts/expansion/yua.json#cards/cerca",
+          "quz": "drafts/expansion/quz.json#cards/cerca",
+          "bzd": "drafts/expansion/bzd.json#cards/cerca",
+          "cjp": "drafts/expansion/cjp.json#cards/cerca"
+        }
+      }
+    },
+    {
+      "id": "puerta",
+      "number": 85,
+      "category": "places",
+      "es": "La Puerta",
+      "en": "The Door",
+      "risk": "L",
+      "whyLikelyAttestable": "In the Bribri casa tradicional dictionary",
+      "visualConfusion": "casa",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/puerta",
+          "yua": "drafts/expansion/yua.json#cards/puerta",
+          "quz": "drafts/expansion/quz.json#cards/puerta",
+          "bzd": "drafts/expansion/bzd.json#cards/puerta",
+          "cjp": "drafts/expansion/cjp.json#cards/puerta"
+        }
+      }
+    },
+    {
+      "id": "techo",
+      "number": 86,
+      "category": "places",
+      "es": "El Techo",
+      "en": "The Roof",
+      "risk": "M",
+      "whyLikelyAttestable": "In the Bribri casa tradicional dictionary",
+      "visualConfusion": "casa (strong): thatch only",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/techo",
+          "yua": "drafts/expansion/yua.json#cards/techo",
+          "quz": "drafts/expansion/quz.json#cards/techo",
+          "bzd": "drafts/expansion/bzd.json#cards/techo",
+          "cjp": "drafts/expansion/cjp.json#cards/techo"
+        }
+      }
+    },
+    {
+      "id": "escalera",
+      "number": 87,
+      "category": "places",
+      "es": "La Escalera",
+      "en": "The Ladder",
+      "risk": "M",
+      "whyLikelyAttestable": "Notched-log ladders in Talamanca and Maya houses",
+      "visualConfusion": "puente",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/escalera",
+          "yua": "drafts/expansion/yua.json#cards/escalera",
+          "quz": "drafts/expansion/quz.json#cards/escalera",
+          "bzd": "drafts/expansion/bzd.json#cards/escalera",
+          "cjp": "drafts/expansion/cjp.json#cards/escalera"
+        }
+      }
+    },
+    {
+      "id": "troje",
+      "number": 88,
+      "category": "places",
+      "es": "La Troje",
+      "en": "The Granary",
+      "risk": "H",
+      "whyLikelyAttestable": "Mesoamerican and Andean storehouses; Talamanca uncertain",
+      "visualConfusion": "casa",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/troje",
+          "yua": "drafts/expansion/yua.json#cards/troje",
+          "quz": "drafts/expansion/quz.json#cards/troje",
+          "bzd": "drafts/expansion/bzd.json#cards/troje",
+          "cjp": "drafts/expansion/cjp.json#cards/troje"
+        }
+      }
+    },
+    {
+      "id": "cocina",
+      "number": 89,
+      "category": "places",
+      "es": "La Cocina",
+      "en": "The Kitchen",
+      "risk": "H",
+      "whyLikelyAttestable": "Separate kitchen huts in all regions",
+      "visualConfusion": "casa (strong): pot, smoke",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/cocina",
+          "yua": "drafts/expansion/yua.json#cards/cocina",
+          "quz": "drafts/expansion/quz.json#cards/cocina",
+          "bzd": "drafts/expansion/bzd.json#cards/cocina",
+          "cjp": "drafts/expansion/cjp.json#cards/cocina"
+        }
+      }
+    },
+    {
+      "id": "corral",
+      "number": 90,
+      "category": "places",
+      "es": "El Corral",
+      "en": "The Corral",
+      "risk": "H",
+      "whyLikelyAttestable": "Andean animal pens; loans likely in nah, yua, bzd",
+      "visualConfusion": "cerca (strong)",
+      "research": {
+        "drafts": {
+          "nah": "drafts/expansion/nah.json#cards/corral",
+          "yua": "drafts/expansion/yua.json#cards/corral",
+          "quz": "drafts/expansion/quz.json#cards/corral",
+          "bzd": "drafts/expansion/bzd.json#cards/corral",
+          "cjp": "drafts/expansion/cjp.json#cards/corral"
+        }
+      }
+    }
+  ],
+  "reserve": [
+    "gusano",
+    "zorro",
+    "pato",
+    "luciernaga",
+    "cantaro",
+    "pelota",
+    "collar",
+    "cuchara",
+    "remo",
+    "sal",
+    "semilla",
+    "lena"
+  ],
+  "coverage": {
+    "newCardCount": 90,
+    "allFiveIndigenousAttestedOrLoanwordCandidates": 52,
+    "allFiveCandidateIds": [
+      "perro",
+      "pez",
+      "venado",
+      "mono",
+      "murcielago",
+      "hormiga",
+      "abeja",
+      "arana",
+      "cangrejo",
+      "armadillo",
+      "lagartija",
+      "perico",
+      "raton",
+      "gallina",
+      "arbol",
+      "hoja",
+      "flor",
+      "raiz",
+      "yuca",
+      "camote",
+      "guayaba",
+      "algodon",
+      "huevo",
+      "platano",
+      "pasto",
+      "papaya",
+      "fuego",
+      "humo",
+      "cielo",
+      "agua",
+      "ceniza",
+      "lago",
+      "piedra",
+      "arena",
+      "lodo",
+      "barranca",
+      "llano",
+      "tierra",
+      "hacha",
+      "cuerda",
+      "jicara",
+      "metate",
+      "escoba",
+      "aguja",
+      "banco",
+      "sombrero",
+      "morral",
+      "camino",
+      "nido",
+      "cerca",
+      "puerta",
+      "escalera"
+    ],
+    "languages": {
+      "nah": {
+        "counts": {
+          "attested": 86,
+          "loanword": 2,
+          "missing": 2
+        },
+        "missing": ["cascada", "hamaca"],
+        "descriptive": [],
+        "candidate": [
+          "perro",
+          "pez",
+          "venado",
+          "mono",
+          "murcielago",
+          "hormiga",
+          "abeja",
+          "arana",
+          "caracol",
+          "cangrejo",
+          "armadillo",
+          "lagartija",
+          "perico",
+          "raton",
+          "gallina",
+          "arbol",
+          "hoja",
+          "flor",
+          "cacahuate",
+          "raiz",
+          "calabaza",
+          "yuca",
+          "camote",
+          "guayaba",
+          "algodon",
+          "huevo",
+          "hongo",
+          "platano",
+          "pasto",
+          "papaya",
+          "fuego",
+          "humo",
+          "neblina",
+          "granizo",
+          "nieve",
+          "hielo",
+          "amanecer",
+          "noche",
+          "cielo",
+          "sombra",
+          "rocio",
+          "remolino",
+          "agua",
+          "ceniza",
+          "trueno",
+          "rio",
+          "lago",
+          "piedra",
+          "arena",
+          "playa",
+          "charco",
+          "lodo",
+          "barranca",
+          "llano",
+          "pantano",
+          "ola",
+          "concha",
+          "valle",
+          "tierra",
+          "hacha",
+          "red",
+          "cuerda",
+          "jicara",
+          "metate",
+          "comal",
+          "escoba",
+          "aguja",
+          "huso",
+          "banco",
+          "sombrero",
+          "morral",
+          "coa",
+          "petate",
+          "camino",
+          "pozo",
+          "nido",
+          "colmena",
+          "hormiguero",
+          "telarana",
+          "patio",
+          "huerto",
+          "cerca",
+          "puerta",
+          "techo",
+          "escalera",
+          "troje",
+          "cocina",
+          "corral"
+        ]
+      },
+      "yua": {
+        "counts": {
+          "attested": 79,
+          "missing": 7,
+          "descriptive": 4
+        },
+        "missing": ["cacahuate", "nieve", "cascada", "pantano", "huso", "hormiguero", "techo"],
+        "descriptive": ["hielo", "colmena", "telarana", "corral"],
+        "candidate": [
+          "perro",
+          "pez",
+          "venado",
+          "mono",
+          "murcielago",
+          "hormiga",
+          "abeja",
+          "arana",
+          "caracol",
+          "cangrejo",
+          "armadillo",
+          "lagartija",
+          "perico",
+          "raton",
+          "gallina",
+          "arbol",
+          "hoja",
+          "flor",
+          "raiz",
+          "calabaza",
+          "yuca",
+          "camote",
+          "guayaba",
+          "algodon",
+          "huevo",
+          "hongo",
+          "platano",
+          "pasto",
+          "papaya",
+          "fuego",
+          "humo",
+          "neblina",
+          "granizo",
+          "amanecer",
+          "noche",
+          "cielo",
+          "sombra",
+          "rocio",
+          "remolino",
+          "agua",
+          "ceniza",
+          "trueno",
+          "rio",
+          "lago",
+          "piedra",
+          "arena",
+          "playa",
+          "charco",
+          "lodo",
+          "barranca",
+          "llano",
+          "ola",
+          "concha",
+          "valle",
+          "tierra",
+          "hacha",
+          "red",
+          "cuerda",
+          "jicara",
+          "metate",
+          "comal",
+          "escoba",
+          "aguja",
+          "banco",
+          "sombrero",
+          "morral",
+          "hamaca",
+          "coa",
+          "petate",
+          "camino",
+          "pozo",
+          "nido",
+          "patio",
+          "huerto",
+          "cerca",
+          "puerta",
+          "escalera",
+          "troje",
+          "cocina"
+        ]
+      },
+      "quz": {
+        "counts": {
+          "attested": 81,
+          "loanword": 3,
+          "descriptive": 4,
+          "missing": 2
+        },
+        "missing": ["concha", "telarana"],
+        "descriptive": ["playa", "hormiguero", "patio", "cocina"],
+        "candidate": [
+          "perro",
+          "pez",
+          "venado",
+          "mono",
+          "murcielago",
+          "hormiga",
+          "abeja",
+          "arana",
+          "caracol",
+          "cangrejo",
+          "armadillo",
+          "lagartija",
+          "perico",
+          "raton",
+          "gallina",
+          "arbol",
+          "hoja",
+          "flor",
+          "cacahuate",
+          "raiz",
+          "calabaza",
+          "yuca",
+          "camote",
+          "guayaba",
+          "algodon",
+          "huevo",
+          "hongo",
+          "platano",
+          "pasto",
+          "papaya",
+          "fuego",
+          "humo",
+          "neblina",
+          "granizo",
+          "nieve",
+          "hielo",
+          "amanecer",
+          "noche",
+          "cielo",
+          "sombra",
+          "rocio",
+          "remolino",
+          "agua",
+          "ceniza",
+          "trueno",
+          "rio",
+          "lago",
+          "piedra",
+          "arena",
+          "cascada",
+          "charco",
+          "lodo",
+          "barranca",
+          "llano",
+          "pantano",
+          "ola",
+          "valle",
+          "tierra",
+          "hacha",
+          "red",
+          "cuerda",
+          "jicara",
+          "metate",
+          "comal",
+          "escoba",
+          "aguja",
+          "huso",
+          "banco",
+          "sombrero",
+          "morral",
+          "hamaca",
+          "coa",
+          "petate",
+          "camino",
+          "pozo",
+          "nido",
+          "colmena",
+          "huerto",
+          "cerca",
+          "puerta",
+          "techo",
+          "escalera",
+          "troje",
+          "corral"
+        ]
+      },
+      "bzd": {
+        "counts": {
+          "attested": 65,
+          "missing": 23,
+          "descriptive": 2
+        },
+        "missing": [
+          "caracol",
+          "cacahuate",
+          "hongo",
+          "neblina",
+          "granizo",
+          "nieve",
+          "amanecer",
+          "sombra",
+          "rocio",
+          "remolino",
+          "charco",
+          "pantano",
+          "ola",
+          "valle",
+          "red",
+          "comal",
+          "huso",
+          "coa",
+          "pozo",
+          "hormiguero",
+          "huerto",
+          "troje",
+          "corral"
+        ],
+        "descriptive": ["hielo", "noche"],
+        "candidate": [
+          "perro",
+          "pez",
+          "venado",
+          "mono",
+          "murcielago",
+          "hormiga",
+          "abeja",
+          "arana",
+          "cangrejo",
+          "armadillo",
+          "lagartija",
+          "perico",
+          "raton",
+          "gallina",
+          "arbol",
+          "hoja",
+          "flor",
+          "raiz",
+          "calabaza",
+          "yuca",
+          "camote",
+          "guayaba",
+          "algodon",
+          "huevo",
+          "platano",
+          "pasto",
+          "papaya",
+          "fuego",
+          "humo",
+          "cielo",
+          "agua",
+          "ceniza",
+          "trueno",
+          "rio",
+          "lago",
+          "piedra",
+          "arena",
+          "playa",
+          "cascada",
+          "lodo",
+          "barranca",
+          "llano",
+          "concha",
+          "tierra",
+          "hacha",
+          "cuerda",
+          "jicara",
+          "metate",
+          "escoba",
+          "aguja",
+          "banco",
+          "sombrero",
+          "morral",
+          "hamaca",
+          "petate",
+          "camino",
+          "nido",
+          "colmena",
+          "telarana",
+          "patio",
+          "cerca",
+          "puerta",
+          "techo",
+          "escalera",
+          "cocina"
+        ]
+      },
+      "cjp": {
+        "counts": {
+          "attested": 76,
+          "missing": 11,
+          "loanword": 1,
+          "descriptive": 2
+        },
+        "missing": [
+          "cacahuate",
+          "calabaza",
+          "hielo",
+          "trueno",
+          "rio",
+          "charco",
+          "comal",
+          "huso",
+          "coa",
+          "petate",
+          "corral"
+        ],
+        "descriptive": ["huerto", "troje"],
+        "candidate": [
+          "perro",
+          "pez",
+          "venado",
+          "mono",
+          "murcielago",
+          "hormiga",
+          "abeja",
+          "arana",
+          "caracol",
+          "cangrejo",
+          "armadillo",
+          "lagartija",
+          "perico",
+          "raton",
+          "gallina",
+          "arbol",
+          "hoja",
+          "flor",
+          "raiz",
+          "yuca",
+          "camote",
+          "guayaba",
+          "algodon",
+          "huevo",
+          "hongo",
+          "platano",
+          "pasto",
+          "papaya",
+          "fuego",
+          "humo",
+          "neblina",
+          "granizo",
+          "nieve",
+          "amanecer",
+          "noche",
+          "cielo",
+          "sombra",
+          "rocio",
+          "remolino",
+          "agua",
+          "ceniza",
+          "lago",
+          "piedra",
+          "arena",
+          "playa",
+          "cascada",
+          "lodo",
+          "barranca",
+          "llano",
+          "pantano",
+          "ola",
+          "concha",
+          "valle",
+          "tierra",
+          "hacha",
+          "red",
+          "cuerda",
+          "jicara",
+          "metate",
+          "escoba",
+          "aguja",
+          "banco",
+          "sombrero",
+          "morral",
+          "hamaca",
+          "camino",
+          "pozo",
+          "nido",
+          "colmena",
+          "hormiguero",
+          "telarana",
+          "patio",
+          "cerca",
+          "puerta",
+          "techo",
+          "escalera",
+          "cocina"
+        ]
+      }
+    },
+    "mergeRule": "Draft candidates are not active names. Merge only after source verification and community review; playable availability also requires approved name and audio."
+  },
+  "decisions": {
+    "retainExisting54": true,
+    "retirementCandidates": ["observatorio", "biblioteca"],
+    "pending": [
+      "room-deck intersection rules",
+      "reserve swaps after source review",
+      "native-speaker review",
+      "source verification",
+      "audio generation"
+    ]
+  }
+}

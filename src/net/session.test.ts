@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { generateHostKeyPair, generateHostKeys, signMsg } from './crypto.ts';
 import type { Msg } from './messages.ts';
-import { ProtocolVersionError, Session } from './session.ts';
+import { PROTOCOL_VERSION, ProtocolVersionError, Session } from './session.ts';
 import { SequenceStorageError, sequenceStore } from './sequence.ts';
 import type { SequenceStore } from './sequence.ts';
 
@@ -34,7 +34,7 @@ describe('versioned signed host envelopes', () => {
     expect(await player.decode({ ...next, v: 1 })).toBeNull();
     const keys = await generateHostKeys(keyPair);
     for (const seq of [0, -1, 1.5, Number.MAX_SAFE_INTEGER + 1, NaN]) {
-      const envelope = { v: 2, seq, m: call };
+      const envelope = { v: PROTOCOL_VERSION, seq, m: call };
       expect(
         await player.decode({ ...next, ...envelope, sig: await signMsg(keys.priv, envelope) }),
       ).toBeNull();
@@ -84,6 +84,25 @@ describe('versioned signed host envelopes', () => {
     const legacy = { role: 'host', from: 'host', m: call, sig: await signMsg(keys.priv, call) };
     await expect(player.decode(legacy)).rejects.toBeInstanceOf(ProtocolVersionError);
     expect(await player.decode({ ...legacy, sig: 'AAAA' })).toBeNull();
+  });
+
+  it('reports authenticated v2 hosts even when the future/old payload has unrecognized fields', async () => {
+    const { host, player, keyPair } = await pair();
+    expect((await host.encode(round)).v).toBe(3);
+    const keys = await generateHostKeys(keyPair);
+    const envelope = {
+      v: 2,
+      seq: 1,
+      m: { ...round, futureField: 'must not be stripped before verification' },
+    };
+    await expect(
+      player.decode({
+        role: 'host',
+        from: 'old-host',
+        ...envelope,
+        sig: await signMsg(keys.priv, envelope),
+      }),
+    ).rejects.toBeInstanceOf(ProtocolVersionError);
   });
 
   it('does not pin a TOFU key until a valid versioned frame has been accepted', async () => {

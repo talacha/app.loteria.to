@@ -21,3 +21,5 @@ export function createTransport(opts?: TransportOptions): Transport {
   }
   return new LocalTransport(opts);
 }
+
+export { PROTOCOL_VERSION } from './session.ts';

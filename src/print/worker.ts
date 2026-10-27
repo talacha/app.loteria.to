@@ -1,15 +1,15 @@
 /// <reference lib="webworker" />
-import { cards } from '@content';
 import { buildBoardsPdf } from './build';
-import { renderEmojiPngs } from './emoji';
+import { printArt } from './cards';
+import { renderPrintArt, type PrintImage } from './illustrations';
 import type { PrintOptions } from './layout';
 
 export interface WorkerRequest {
   opts: PrintOptions;
   /** Absolute URL of the Noto Sans TTF. */
   fontUrl?: string;
-  /** Pre-rendered emoji PNGs from the main thread, when the worker has no canvas. */
-  emoji?: Record<string, Uint8Array>;
+  /** Pictures prepared by the main thread when the worker has no canvas. */
+  images?: Record<string, PrintImage>;
 }
 export type WorkerResponse =
   | { type: 'progress'; done: number; total: number }
@@ -20,7 +20,7 @@ const ctx = self as unknown as DedicatedWorkerGlobalScope;
 
 ctx.onmessage = async (e: MessageEvent<WorkerRequest>) => {
   try {
-    const { opts, fontUrl, emoji } = e.data;
+    const { opts, fontUrl, images: providedImages } = e.data;
     let fontBytes = opts.fontBytes ?? null;
     if (!fontBytes && fontUrl) {
       try {
@@ -30,11 +30,12 @@ ctx.onmessage = async (e: MessageEvent<WorkerRequest>) => {
         /* Helvetica fallback */
       }
     }
-    const png = emoji
-      ? new Map(Object.entries(emoji))
-      : await renderEmojiPngs(cards.map((c) => ({ id: c.id, art: c.art })));
+    const images = providedImages
+      ? new Map(Object.entries(providedImages))
+      : await renderPrintArt(printArt(opts));
     const { bytes, degraded } = await buildBoardsPdf(opts, {
-      emoji: png,
+      emoji: null,
+      images,
       fontBytes,
       onProgress: (done, total) =>
         ctx.postMessage({ type: 'progress', done, total } satisfies WorkerResponse),

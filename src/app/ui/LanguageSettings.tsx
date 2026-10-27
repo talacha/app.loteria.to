@@ -15,7 +15,7 @@ const UI_LANGS: UiLang[] = ['es', 'en'];
  */
 export default function LanguageSettings() {
   const { t } = useTranslation();
-  const { uiLang, spokenLang, update } = useProfile();
+  const { uiLang, spokenLang, availableSpokenLangs, update } = useProfile();
   const [note, setNote] = useState('');
   const sun = getCard('sol');
 
@@ -64,8 +64,10 @@ export default function LanguageSettings() {
                   name={t(`lang.${l}`)}
                   sample={word || undefined}
                   selected={spokenLang === l}
+                  disabled={!availableSpokenLangs.includes(l)}
                   onSelect={() => update({ spokenLang: l })}
                 />
+                {!availableSpokenLangs.includes(l) ? <p>{t('player.languageNotInRound')}</p> : null}
                 {word && (
                   <button
                     type="button"

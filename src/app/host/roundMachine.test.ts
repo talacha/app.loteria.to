@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cards } from '@content';
+import { cardsAvailableIn } from '@content';
 import {
   MAX_SHARED_CARDS,
   decodeTablaCode,
@@ -21,20 +21,32 @@ import {
 } from './roundMachine';
 import type { RoundAction, RoundState } from './roundMachine';
 
-const ids = cards.map((c) => c.id);
-const deck = cards.map((c) => ({ id: c.id, category: c.category }));
+const ids = cardsAvailableIn(['es']).map((c) => c.id);
+const deck = cardsAvailableIn(['es']).map((c) => ({ id: c.id, category: c.category }));
 const run = (s: RoundState, ...as: RoundAction[]) => as.reduce(roundReducer, s);
 const fresh = () => initialRound('ABCDE', 'SEEDSEED', ['es', 'en']);
 const started = () => run(fresh(), { type: 'start', ids, langs: ['es', 'en'] });
 
 describe('roundMachine', () => {
+  it('restores the frozen pool even when the catalog or room coverage changed', () => {
+    const original = started();
+    const saved = toSaved(original);
+    const restored = run(fresh(), {
+      type: 'restore',
+      saved,
+      ids: ['replacement-a', 'replacement-b'],
+    });
+    expect(restored.deck).toEqual(original.deck);
+    expect(restored.order).toEqual(original.order);
+  });
+
   it('start calls the first card of deckOrder and no repeats follow', () => {
     let s = started();
     const order = deckOrder('SEEDSEED', 1, ids);
     expect(currentCard(s)).toBe(order[0]);
-    for (let i = 1; i < 54; i++) s = run(s, { type: 'next' });
+    for (let i = 1; i < ids.length; i++) s = run(s, { type: 'next' });
     expect(calledCards(s)).toEqual(order);
-    expect(new Set(calledCards(s)).size).toBe(54);
+    expect(new Set(calledCards(s)).size).toBe(ids.length);
     s = run(s, { type: 'next' });
     expect(s.phase).toBe('ended');
   });
@@ -75,7 +87,7 @@ describe('roundMachine', () => {
       ...o,
     });
     expect(validateSeatClaim(s, deck, claim()).valid).toBe(false);
-    for (let i = 1; i < 54; i++) s = run(s, { type: 'next' });
+    for (let i = 1; i < ids.length; i++) s = run(s, { type: 'next' });
     expect(validateSeatClaim(s, deck, claim()).valid).toBe(true);
     expect(validateSeatClaim(s, deck, claim({ tablaIndex: 4 })).valid).toBe(false);
     expect(validateSeatClaim(s, deck, claim({ roundNo: 2 })).valid).toBe(false);
@@ -128,7 +140,7 @@ describe('roundMachine', () => {
     )
       other = `OTHER${n}`;
     expect(validatePaperCode(s, deck, tablaCode(other, 7)).kind).toBe('otherGame');
-    for (let i = 1; i < 54; i++) s = run(s, { type: 'next' });
+    for (let i = 1; i < ids.length; i++) s = run(s, { type: 'next' });
     expect(validatePaperCode(s, deck, code)).toEqual({ kind: 'valid', index: 7 });
   });
 

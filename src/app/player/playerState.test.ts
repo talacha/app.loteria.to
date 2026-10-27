@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { cards } from '@content';
 import {
   playerReducer as r,
   initialPlayerState as init,
@@ -18,6 +19,28 @@ const started = () =>
   r(r(init, { type: 'round', round }), { type: 'assign', tablaIndex: 5, roundNo: 1 });
 
 describe('playerReducer', () => {
+  it('uses the exact host pool for expanded boards and rejects choices from outside it', () => {
+    const deck = cards.map((card) => card.id);
+    const expanded = { ...round, gridSize: 8, deck };
+    let s = r(r(init, { type: 'round', round: expanded }), {
+      type: 'assign',
+      tablaIndex: 5,
+      roundNo: 1,
+    });
+    expect(s.board).toEqual(makeBoard('s', 5, 8, deck));
+    expect(s.board).toHaveLength(64);
+    expect(s.board.some((id) => cards.some((card) => card.n > 54 && card.id === id))).toBe(true);
+    const before = s;
+    s = r(s, {
+      type: 'call',
+      cardId: deck[0]!,
+      choices: [deck[0]!, deck[1]!, 'foreign-card'],
+      i: 0,
+      now: 0,
+    });
+    expect(s).toBe(before);
+  });
+
   it('builds a random 4x4 board once round and assign agree, in either order', () => {
     expect(board).toHaveLength(16);
     expect(new Set(board).size).toBe(16);

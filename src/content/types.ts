@@ -24,4 +24,5 @@ export const CATEGORIES = [
   'places',
 ] as const satisfies readonly Category[];
 export const INDIGENOUS_LANGS = ['nah', 'yua', 'quz'] as const satisfies readonly Lang[];
-export const DECK_SIZE = 54;
+/** Canonical card catalog size; an in-room playable deck may be smaller by language coverage. */
+export const DECK_SIZE = 144;

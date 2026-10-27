@@ -1,10 +1,12 @@
 // Writes src/content/card-art.json: the card ids that have public/cards/<id>.webp, so the UI never
 // requests a missing illustration. Run before `vite build` (see the `build` script).
-// Usage: node scripts/cards-index.mjs [cardsDir] [outFile]
+// Usage: node scripts/cards-index.mjs [cardsDir] [outFile] [--check]
+// --check verifies catalog coverage and hashes without rewriting the index.
 import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertArtworkIndexMatches, assertCatalogArt } from './card-art-check.ts';
 
 /** Width and height of a WebP buffer (VP8, VP8L or VP8X), or null if it is not a WebP. */
 export function webpSize(buf) {
@@ -44,10 +46,16 @@ export function buildIndex(dir) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const dir = process.argv[2] ?? fileURLToPath(new URL('../public/cards/', import.meta.url));
-  const out =
-    process.argv[3] ?? fileURLToPath(new URL('../src/content/card-art.json', import.meta.url));
+  const check = process.argv.includes('--check');
+  const args = process.argv.slice(2).filter((arg) => arg !== '--check');
+  const dir = args[0] ?? fileURLToPath(new URL('../public/cards/', import.meta.url));
+  const out = args[1] ?? fileURLToPath(new URL('../src/content/card-art.json', import.meta.url));
   const index = buildIndex(dir);
-  writeFileSync(out, JSON.stringify(index, null, 2) + '\n');
-  console.log(`cards-index: ${index.length} illustrated cards -> ${out}`);
+  const catalog = JSON.parse(
+    readFileSync(new URL('../src/content/cards.json', import.meta.url), 'utf8'),
+  );
+  assertCatalogArt(index, catalog);
+  if (check) assertArtworkIndexMatches(JSON.parse(readFileSync(out, 'utf8')), index);
+  else writeFileSync(out, JSON.stringify(index, null, 2) + '\n');
+  console.log(`cards-index: ${index.length} illustrated cards ${check ? 'verified' : '-> ' + out}`);
 }

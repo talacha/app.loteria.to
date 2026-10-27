@@ -32,7 +32,7 @@
     "joinHint": "Escanea el QR o escribe el código de la sala.",
     "printCta": "Imprimir tablas",
     "printHint": "Para jugar con papel, sin teléfonos.",
-    "deckCta": "Ver las 54 cartas",
+    "deckCta": "Ver las 144 cartas",
     "creditsCta": "Créditos",
     "installHint": "Puedes instalar esta app y jugar sin conexión.",
     "beansNote": "Se juega con frijoles: marca cada carta con un frijol."
@@ -76,7 +76,7 @@
     "paperCodeOk": "La tabla está completa. ¡Lotería!",
     "paperCodeMissing": "{count, plural, one {Falta # carta} other {Faltan # cartas}}",
     "shortcuts": "Atajos: Espacio, N siguiente, R repetir, L revisar papel, P pausa",
-    "called": "{count} de 54 cartas cantadas",
+    "called": "{count} de 144 cartas cantadas",
     "currentCard": "Carta actual",
     "claimFrom": "{name} dice: ¡Lotería!",
     "claimValid": "¡Lotería de {name}! Las cartas coinciden.",
@@ -147,7 +147,7 @@
     "pageOf": "Página {n} de {total}"
   },
   "deck": {
-    "title": "Las 54 cartas",
+    "title": "Las 144 cartas",
     "intro": "Cartas originales inspiradas en la naturaleza, los oficios y los lugares de Mesoamérica y los Andes.",
     "category": "Categoría",
     "all": "Todas",

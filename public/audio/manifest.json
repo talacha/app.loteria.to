@@ -1139,6 +1139,45 @@
    "text": "ameyalli",
    "voice": null
   },
+  "025081a7c538851d3fc55b268ccd36913f9a7dab0c956dd03bcf16621828f31e": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    0.72,
+    1.0,
+    0.86
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 761,
+   "engine": "kokoro",
+   "file": "/audio/en/caracol.819b99fe.m4a",
+   "hyp": "the snail",
+   "id": "caracol",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.53,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.4
+   },
+   "master": "en/caracol.819b99fe.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "819b99fe6e5fc2571ffbacc84d6246ac38918e7cfd45f1cd84e30815bf269fc4",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Snail",
+   "voice": "af_heart"
+  },
   "0297c125014978a40202b772164f01689aa41194da1c5f71d2119707e97bcc16": {
    "candidateScores": [
     0.7821,
@@ -1254,6 +1293,84 @@
    "signal": 1.0,
    "source": "kokoro",
    "text": "El Observatorio",
+   "voice": "em_santa"
+  },
+  "034c1fa4a7d49a7d4756f231c93f8b0dafb791cdf3dd9a7b8132e9cc7a498d40": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.8,
+    0.7667,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 646,
+   "engine": "kokoro",
+   "file": "/audio/en/sombrero.5fcf389c.m4a",
+   "hyp": "the hat",
+   "id": "sombrero",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.883,
+    "rawClip": 0.0,
+    "rmsDb": -15.8
+   },
+   "master": "en/sombrero.5fcf389c.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "5fcf389cc81a1598c79d4d5f7c3709e93d0db50da9471b496a9b1ba4bf2077c8",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Hat",
+   "voice": "af_heart"
+  },
+  "0359a006054539dc8cfa2e9494895e7cbd9cb892f407f33254fe876822a1d69d": {
+   "candidateScores": [
+    0.9775,
+    1.0,
+    0.9394,
+    0.9727,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 973,
+   "engine": "kokoro",
+   "file": "/audio/es/murcielago.22d28ca5.m4a",
+   "hyp": "el murcielago",
+   "id": "murcielago",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.4,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.9
+   },
+   "master": "es/murcielago.22d28ca5.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "22d28ca59c83556a27672c6e48d767b863bc97985b3b314ec2dfb2406ad966a3",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Murciélago",
    "voice": "em_santa"
   },
   "03ae44084b64d4650a7e3757e0ee6b46ce453484c43617773b0cfb9e2603710a": {
@@ -1656,6 +1773,84 @@
    "text": "The Jungle",
    "voice": "af_heart"
   },
+  "07db8fbf6689ff028a89119c6b26587d11c6143ce7b10ce710f859299762cb50": {
+   "candidateScores": [
+    0.9472,
+    0.8481,
+    0.8932,
+    0.7767,
+    1.0,
+    0.79
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 848,
+   "engine": "kokoro",
+   "file": "/audio/es/algodon.0d37926e.m4a",
+   "hyp": "algodón",
+   "id": "algodon",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.32,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.0
+   },
+   "master": "es/algodon.0d37926e.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "0d37926e6d10275d3e994335ad557f407038e3090648e046acff63b35b1ce475",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Algodón",
+   "voice": "em_santa"
+  },
+  "07eb48e8098ba8e4a92b4c48e82da4098d4fd4864d67f2322343c891aa2e46d7": {
+   "candidateScores": [
+    0.9181,
+    1.0,
+    0.8971,
+    0.58,
+    0.86,
+    0.9019
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 796,
+   "engine": "kokoro",
+   "file": "/audio/es/raton.b3ad18db.m4a",
+   "hyp": "el ratón",
+   "id": "raton",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.43,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.3
+   },
+   "master": "es/raton.b3ad18db.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "b3ad18dbd84bbddf217cc270b30313a20a4b85058cc9dbb331088bd7fcacc10f",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Ratón",
+   "voice": "em_santa"
+  },
   "0870c55185d26c812f50597be9ca3ea50f88b2127c2e518bf367282178f1d876": {
    "candidateScores": [
     1.0,
@@ -1774,6 +1969,162 @@
    "source": "mms",
    "text": "ka̱li̱",
    "voice": null
+  },
+  "0a81704f7d41f2849ed2f886d9a25358fce3b17aa7794d1661a9b5405c1ff251": {
+   "candidateScores": [
+    0.8052,
+    0.8939,
+    0.4067,
+    0.887,
+    0.9553,
+    0.2712
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 703,
+   "engine": "kokoro",
+   "file": "/audio/es/huevo.4c41ef70.m4a",
+   "hyp": "el huevo",
+   "id": "huevo",
+   "lang": "es",
+   "loudness": {
+    "lufs": -19.49,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -19.5
+   },
+   "master": "es/huevo.4c41ef70.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9553,
+   "scoring": "asr",
+   "sha256": "4c41ef70d8377d0de91d411a2677017edbaa079979eb63b26626ba754156f766",
+   "signal": 0.851,
+   "source": "kokoro",
+   "text": "El Huevo",
+   "voice": "em_santa"
+  },
+  "0abba76ee10ab0ccf8d184195033841e01d7a00562b922eafc8c54db9b80fa88": {
+   "candidateScores": [
+    0.8917,
+    0.9658,
+    0.8974,
+    0.9856,
+    0.9988,
+    0.9454
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 911,
+   "engine": "kokoro",
+   "file": "/audio/es/cangrejo.4df991d8.m4a",
+   "hyp": "cangrejo",
+   "id": "cangrejo",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.04,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.3
+   },
+   "master": "es/cangrejo.4df991d8.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9988,
+   "scoring": "asr",
+   "sha256": "4df991d8f0baea0edccf42d74213518d5aa7f4666fe31d089021d90c96626448",
+   "signal": 0.996,
+   "source": "kokoro",
+   "text": "El Cangrejo",
+   "voice": "em_alex"
+  },
+  "0ae7d27db333ca2ec0c402438128d866d9cb6ebd7795a793aa97c51b6da6f0a0": {
+   "candidateScores": [
+    0.86,
+    0.5333,
+    0.8833,
+    0.7667,
+    0.7667,
+    0.7667
+   ],
+   "candidates": 6,
+   "cer": 0.1667,
+   "durationMs": 683,
+   "engine": "kokoro",
+   "file": "/audio/en/escalera.e9a4922f.m4a",
+   "hyp": "latder",
+   "id": "escalera",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.98,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.8
+   },
+   "master": "en/escalera.e9a4922f.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "am_michael"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.8833,
+   "scoring": "asr",
+   "sha256": "e9a4922fefc8dcb1304f1e89c6181e52c9a9e6b5e214d790bfcef1ca79bb662e",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Ladder",
+   "voice": "am_michael"
+  },
+  "0afb2deb0ebb089892e58f3a14f600213ffb8c1242d44e946ab86bd885cd9b60": {
+   "candidateScores": [
+    0.8082,
+    0.8454,
+    0.6269,
+    0.9892,
+    0.6134,
+    0.6215
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 677,
+   "engine": "kokoro",
+   "file": "/audio/es/flor.8c3d71f9.m4a",
+   "hyp": "la flor",
+   "id": "flor",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.36,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.2
+   },
+   "master": "es/flor.8c3d71f9.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9892,
+   "scoring": "asr",
+   "sha256": "8c3d71f93efe140c639c8f7b71430a4567a00b7edb0f553c289c0b1517fb0876",
+   "signal": 0.964,
+   "source": "kokoro",
+   "text": "La Flor",
+   "voice": "em_santa"
   },
   "0b3bb28906c748123396cc2c03c73214575454f9ad030a2790cd3f5028aa5f45": {
    "candidateScores": [
@@ -2220,6 +2571,45 @@
    "text": "aaktun",
    "voice": null
   },
+  "138187fd395f7e0963b2e9b0f340da0285c3bcd494023501248acb6860f14ab9": {
+   "candidateScores": [
+    0.9493,
+    0.8531,
+    0.9481,
+    0.9733,
+    0.9883,
+    0.9337
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 1037,
+   "engine": "kokoro",
+   "file": "/audio/es/remolino.f167a91f.m4a",
+   "hyp": "el remolino",
+   "id": "remolino",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.39,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -19.0
+   },
+   "master": "es/remolino.f167a91f.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9883,
+   "scoring": "asr",
+   "sha256": "f167a91ff8843cce0987354ba566aabaef869f02d3076abe05f62c575b8e7830",
+   "signal": 0.961,
+   "source": "kokoro",
+   "text": "El Remolino",
+   "voice": "em_santa"
+  },
   "138d430a45380f290784c717295e7b06a2701216df46b44b52326b7087fef301": {
    "candidateScores": [
     0.916,
@@ -2300,6 +2690,45 @@
    "text": "bójkö́",
    "voice": null
   },
+  "155589fba4df200a6b6ce2c17db4fb0fbeaea2e13c97022141a18d1d73817744": {
+   "candidateScores": [
+    0.7556,
+    0.737,
+    0.2541,
+    0.8833,
+    0.2532,
+    0.2778
+   ],
+   "candidates": 6,
+   "cer": 0.1667,
+   "durationMs": 702,
+   "engine": "kokoro",
+   "file": "/audio/es/pez.9b3fb837.m4a",
+   "hyp": "el pezo",
+   "id": "pez",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.96,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.9
+   },
+   "master": "es/pez.9b3fb837.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.8833,
+   "scoring": "asr",
+   "sha256": "9b3fb837e4162790257b214e4116ba83db177380685877b6df8b60d330c2e00e",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Pez",
+   "voice": "em_santa"
+  },
   "15844dc09e466197bbee193c5e0594cd05f1e1be6f0f2d031ef8a57607dc5380": {
    "candidateScores": [
     0.825,
@@ -2340,6 +2769,45 @@
    "source": "mms",
    "text": "si̱wa̱",
    "voice": null
+  },
+  "166eee73304d3aff14d4f8bd68a6c1abee24134bc48f86a77127c38f98a22e5e": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.9462
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 768,
+   "engine": "kokoro",
+   "file": "/audio/en/cascada.01e67fea.m4a",
+   "hyp": "the waterfall",
+   "id": "cascada",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.1,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -15.5
+   },
+   "master": "en/cascada.01e67fea.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "01e67feab04de948c1a5f306a77445174a528e0b1e806fac73e21478f5568d66",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Waterfall",
+   "voice": "af_heart"
   },
   "1678ca6917380745ba776b023224f929baf319538e3abd6bb7523dfe5856cdbd": {
    "candidateScores": [
@@ -2503,6 +2971,45 @@
    "text": "purutu",
    "voice": null
   },
+  "18def93bfd06b908adb1e6f4e1b452673eaa6b1e1f5f80310d2e001616638630": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.86,
+    0.72,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 737,
+   "engine": "kokoro",
+   "file": "/audio/en/pantano.e30237ba.m4a",
+   "hyp": "the swamp",
+   "id": "pantano",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.95,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.0
+   },
+   "master": "en/pantano.e30237ba.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "e30237ba0798a1a7aba284462783bda34e0a83743691fd26b369315192edcc5a",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Swamp",
+   "voice": "af_heart"
+  },
   "1908b163f5560ca38c3122d4f8aa08be02222f86ee088acfbf07f0d7463878ad": {
    "candidateScores": [
     0.825,
@@ -2622,6 +3129,123 @@
    "text": "The Milpa",
    "voice": "af_heart"
   },
+  "1a260ceeb685f013dfbdadb5369b20030d2c624974d4fa7c02b22718d5c72005": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.7905,
+    0.8013,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 738,
+   "engine": "kokoro",
+   "file": "/audio/es/lago.3e86101b.m4a",
+   "hyp": "el lago",
+   "id": "lago",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.0,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.1
+   },
+   "master": "es/lago.3e86101b.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "3e86101b3278082661d2f37c803fc8ca50ee8727f1d00a9dbad056121b6ac4ea",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Lago",
+   "voice": "ef_dora"
+  },
+  "1ab3bff02512368cacc1f55dc509ff9ed4021732128202f63422010537b29abc": {
+   "candidateScores": [
+    0.6889,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 555,
+   "engine": "kokoro",
+   "file": "/audio/en/piedra.8ffd0ffe.m4a",
+   "hyp": "stone",
+   "id": "piedra",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.807,
+    "rawClip": 0.0,
+    "rmsDb": -15.6
+   },
+   "master": "en/piedra.8ffd0ffe.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "no-article",
+    "voice": "af_bella"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "8ffd0ffe327a1c6f27b059a2a46f1e859f408a56aa1240b76aa3ae0302532802",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Stone",
+   "voice": "af_bella"
+  },
+  "1acda44358ba94b1075316c491c631d66f519c930d4f2e7a3cbd8f239658d22f": {
+   "candidateScores": [
+    1.0,
+    0.8607,
+    0.9508,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 709,
+   "engine": "kokoro",
+   "file": "/audio/en/llano.16b6bc4a.m4a",
+   "hyp": "the plain",
+   "id": "llano",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.73,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.6
+   },
+   "master": "en/llano.16b6bc4a.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "16b6bc4a4b420cd6ce817381395dc308d8d921588325ac2170b2ab5ba0482f83",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Plain",
+   "voice": "af_heart"
+  },
   "1af4889b9e6dba65021fd37f3c37fdca61e56fe41de7a25c5813115890d1e5aa": {
    "candidateScores": [
     0.58,
@@ -2663,6 +3287,45 @@
    "text": "qispi",
    "voice": null
   },
+  "1b22202c6c4794b7b5bb8bc2dbe38cd742e574f8cefe962d7ea238c4488b96c6": {
+   "candidateScores": [
+    0.7,
+    0.5333,
+    0.8,
+    0.9,
+    0.5333,
+    0.8
+   ],
+   "candidates": 6,
+   "cer": 0.1429,
+   "durationMs": 574,
+   "engine": "kokoro",
+   "file": "/audio/en/huevo.46932780.m4a",
+   "hyp": "the eg",
+   "id": "huevo",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.697,
+    "rawClip": 0.0,
+    "rmsDb": -15.6
+   },
+   "master": "en/huevo.46932780.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9,
+   "scoring": "asr",
+   "sha256": "46932780517428f933f5bf48c0dabe295e2a7a1a55e7627a8f9b73d3a9da8524",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Egg",
+   "voice": "af_heart"
+  },
   "1b33b802d1bf64bd8b85915e6ee19e537a548fc39bedc92c575717d6439147e1": {
    "candidateScores": [
     0.9832,
@@ -2701,6 +3364,45 @@
    "source": "kokoro",
    "text": "La Estrella",
    "voice": "em_santa"
+  },
+  "1cdfab2cdfe07e8e6c59baeeafaf0fef131cd2ec9eb45f5af053f295aed7522a": {
+   "candidateScores": [
+    0.8727,
+    0.9364,
+    0.8727,
+    0.8,
+    0.6,
+    0.9
+   ],
+   "candidates": 6,
+   "cer": 0.0909,
+   "durationMs": 877,
+   "engine": "kokoro",
+   "file": "/audio/en/hormiguero.30eb0ac4.m4a",
+   "hyp": "the anthil",
+   "id": "hormiguero",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.2,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.0
+   },
+   "master": "en/hormiguero.30eb0ac4.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "am_michael"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9364,
+   "scoring": "asr",
+   "sha256": "30eb0ac4ca78064fd7cdedc12d6a2641d7e08ad7edc5bc58da4bd40fe6275a2b",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Anthill",
+   "voice": "am_michael"
   },
   "1d20aec0d6aef7b96e5c3b258a266fd4ee6dd158eeb39062b3df53be773d66ab": {
    "candidateScores": [
@@ -2742,6 +3444,45 @@
    "source": "mms",
    "text": "manka",
    "voice": null
+  },
+  "1dfb12af0f1a7f99203a390216eaf3100bf6516ce40dc03f57659969fc52898d": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.9889,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 698,
+   "engine": "kokoro",
+   "file": "/audio/en/lagartija.39d4bc6e.m4a",
+   "hyp": "the lizard",
+   "id": "lagartija",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.47,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.4
+   },
+   "master": "en/lagartija.39d4bc6e.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "39d4bc6ebbb5d30c454a9816b83c4efe89f57d45b6fe6171d61d8b9b4623a4e0",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Lizard",
+   "voice": "af_heart"
   },
   "1ec4a617190a524c6ad16618572d8886266ba2a8a9b61d223740de9996ad26b7": {
    "candidateScores": [
@@ -2866,6 +3607,84 @@
    "text": "citlalin",
    "voice": null
   },
+  "1f5ca3b439cfdc93792b9593d6c371371284a647d277564abe16ae9c34157841": {
+   "candidateScores": [
+    0.9772,
+    0.6,
+    0.3,
+    0.475,
+    0.616,
+    0.4285
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 692,
+   "engine": "kokoro",
+   "file": "/audio/es/hoja.d428087b.m4a",
+   "hyp": "la hoja",
+   "id": "hoja",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.76,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.6
+   },
+   "master": "es/hoja.d428087b.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9772,
+   "scoring": "asr",
+   "sha256": "d428087b08fd670ad25cb384a87686decd0828b227047efe5ef49d406580104a",
+   "signal": 0.924,
+   "source": "kokoro",
+   "text": "La Hoja",
+   "voice": "ef_dora"
+  },
+  "2069c69c275b428c7d46802a826eccc2886ef26edf8784c137bd8c4192369490": {
+   "candidateScores": [
+    0.6111,
+    0.5333,
+    0.5333,
+    0.5246,
+    0.6111,
+    0.7667
+   ],
+   "candidates": 6,
+   "cer": 0.3333,
+   "durationMs": 702,
+   "engine": "kokoro",
+   "file": "/audio/es/hamaca.2db07441.m4a",
+   "hyp": "amacka",
+   "id": "hamaca",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.79,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.2
+   },
+   "master": "es/hamaca.2db07441.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "no-article",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.7667,
+   "scoring": "asr",
+   "sha256": "2db074414c3b1b451d5fe616b8b87372b1501d7047098556be4fd9b5d6e68840",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Hamaca",
+   "voice": "em_alex"
+  },
   "208544823c873d1f5f4fcfe10efb66212f02a4880ef2c35a3a185c7f28efd6c6": {
    "candidateScores": [
     0.8445,
@@ -2989,6 +3808,45 @@
    "text": "baalam",
    "voice": null
   },
+  "2296a9324362237ebbf7aedc184328b19aaee90006c8aaa2e6988ff87c4f27bf": {
+   "candidateScores": [
+    0.9934,
+    1.0,
+    0.9673,
+    1.0,
+    0.9913,
+    0.9736
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 730,
+   "engine": "kokoro",
+   "file": "/audio/en/algodon.e1c5fd61.m4a",
+   "hyp": "cotton",
+   "id": "algodon",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.704,
+    "rawClip": 0.0,
+    "rmsDb": -15.8
+   },
+   "master": "en/algodon.e1c5fd61.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "e1c5fd61cac408e8c375f16df00e532ecb24bce6cc616615b6b4d85fe9977682",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Cotton",
+   "voice": "af_heart"
+  },
   "230f40917847407366fd9e70f90de2c8d2c04e263da41940488031d36e1e8113": {
    "candidateScores": [
     0.9364,
@@ -3071,6 +3929,45 @@
    "text": "däyë",
    "voice": null
   },
+  "2382f10e67ff4165cb71d93aa8a73ee72269d83dc0f90da2ae4aff2ad6af48e6": {
+   "candidateScores": [
+    0.9592,
+    0.9946,
+    0.982,
+    0.8,
+    0.9772,
+    0.9502
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 677,
+   "engine": "kokoro",
+   "file": "/audio/es/platano.85a3c554.m4a",
+   "hyp": "platano",
+   "id": "platano",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.18,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.1
+   },
+   "master": "es/platano.85a3c554.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "no-article",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9946,
+   "scoring": "asr",
+   "sha256": "85a3c554b0d8ea866144bb04e05f3e891a8b72343be60a0d73e5958574b7fcea",
+   "signal": 0.982,
+   "source": "kokoro",
+   "text": "El Plátano",
+   "voice": "em_santa"
+  },
   "238809a1461f98da9e2c32cd405d9f9fbebd9f95fe8adc92274202ab22e00d93": {
    "candidateScores": [
     0.825,
@@ -3112,6 +4009,45 @@
    "text": "tuna",
    "voice": null
   },
+  "2421d39c0f131259d385abf48a56c04aca1ff0cbaf075641b043ba835db367a4": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.9364,
+    0.872,
+    0.9364,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 965,
+   "engine": "kokoro",
+   "file": "/audio/en/red.8be1aac0.m4a",
+   "hyp": "the fishing net",
+   "id": "red",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.34,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.5
+   },
+   "master": "en/red.8be1aac0.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "8be1aac0bef9b179f584d614a55bea98912e837217deafd77da20d4f9477872c",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Fishing Net",
+   "voice": "af_heart"
+  },
   "24ffb8aafc0346dd7e7417cffb532b29e9c6664876ebb4a3b3e2c52cc748ed23": {
    "candidateScores": [
     0.825,
@@ -3150,6 +4086,84 @@
    "source": "kokoro",
    "text": "El Adobe",
    "voice": "ef_dora"
+  },
+  "252d45d90718081f00acc6499121dd4e429716b1cfc43eb74a0982cdca1e2763": {
+   "candidateScores": [
+    1.0,
+    0.9808,
+    0.9838,
+    0.9703,
+    1.0,
+    0.8659
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 742,
+   "engine": "kokoro",
+   "file": "/audio/es/venado.b1233435.m4a",
+   "hyp": "el venado",
+   "id": "venado",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.31,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.6
+   },
+   "master": "es/venado.b1233435.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "b1233435f098548b84ba859209b1f586dad1961554153bb12cca05bc93092548",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Venado",
+   "voice": "ef_dora"
+  },
+  "255fa9a4139b18a5b1d317287c7e65db1d96cb811cb56b64d13b70c5fc13d105": {
+   "candidateScores": [
+    1.0,
+    0.7667,
+    0.979,
+    0.9979,
+    0.3,
+    0.991
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 734,
+   "engine": "kokoro",
+   "file": "/audio/en/cielo.f6ef3300.m4a",
+   "hyp": "the sky",
+   "id": "cielo",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.18,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.1
+   },
+   "master": "en/cielo.f6ef3300.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "f6ef3300a7c3297307e481df3720f9272ce706c48410563398d899c3107c9104",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Sky",
+   "voice": "af_heart"
   },
   "25861cd672ead91318174ebdcf4d80e8c881dbde690be994d77a4e513d3166d7": {
    "candidateScores": [
@@ -3191,6 +4205,45 @@
    "source": "mms",
    "text": "tulúk kicha",
    "voice": null
+  },
+  "266b45fc93d8189eab56ac3acc78212591e6b0a0405e003ba6f05b6e9a31c187": {
+   "candidateScores": [
+    0.7547,
+    0.3,
+    0.8,
+    0.8994,
+    0.7706,
+    0.3
+   ],
+   "candidates": 6,
+   "cer": 0.1429,
+   "durationMs": 607,
+   "engine": "kokoro",
+   "file": "/audio/es/humo.9ddf90ed.m4a",
+   "hyp": "el lumo",
+   "id": "humo",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.02,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.5
+   },
+   "master": "es/humo.9ddf90ed.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.8994,
+   "scoring": "asr",
+   "sha256": "9ddf90ed885463d79b149e80ff47f8aec1313bbcc1a0d1bdd3f4d8414699c48d",
+   "signal": 0.998,
+   "source": "kokoro",
+   "text": "El Humo",
+   "voice": "ef_dora"
   },
   "2729abb065d31bf622cec4027e5568a0098d3d84058b867bb3b44f1565c8074c": {
    "candidateScores": [
@@ -3354,6 +4407,45 @@
    "text": "El Mar",
    "voice": "ef_dora"
   },
+  "27b1465c7cea8298570c516326f2da59828aa7f397d24ecf9427f6f92a24a197": {
+   "candidateScores": [
+    1.0,
+    0.9901,
+    0.9125,
+    0.86,
+    0.8915,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 728,
+   "engine": "kokoro",
+   "file": "/audio/es/comal.ace6c979.m4a",
+   "hyp": "el comal",
+   "id": "comal",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.35,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.2
+   },
+   "master": "es/comal.ace6c979.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "ace6c9799c9016d70db954d85e95acdebb7773451719b47be2b5f74d9d53bfe8",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Comal",
+   "voice": "ef_dora"
+  },
   "280a55a74b281544859e0c51df295a83f434cac96457203efd472d99a822cce3": {
    "candidateScores": [
     1.0,
@@ -3433,6 +4525,45 @@
    "source": "mms",
    "text": "llama",
    "voice": null
+  },
+  "28c6ce5fedbf81f7d2018d995aa5f44cb9b1ae7441634bc245473f6b8d1d0c5c": {
+   "candidateScores": [
+    0.9895,
+    0.9571,
+    0.9748,
+    0.9973,
+    0.9532,
+    0.9802
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 693,
+   "engine": "kokoro",
+   "file": "/audio/es/huerto.947ea9fe.m4a",
+   "hyp": "huerto",
+   "id": "huerto",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.09,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.9
+   },
+   "master": "es/huerto.947ea9fe.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9973,
+   "scoring": "asr",
+   "sha256": "947ea9fe24a043e2d0a69688f428275a868101faa3be1208dd7b0b32e88ec9ff",
+   "signal": 0.991,
+   "source": "kokoro",
+   "text": "El Huerto",
+   "voice": "em_alex"
   },
   "2aaba654c1b6ea731e82b7c5e73cb2bd816f24db822526c7ff7a5c32d72ba58d": {
    "candidateScores": [
@@ -3637,6 +4768,45 @@
    "text": "The Rain",
    "voice": "af_heart"
   },
+  "301ae542fe5562841845da7167981bf9d1959f004c6012bf6dcee9dc4dc7ffaa": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    0.65,
+    1.0,
+    0.8833
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 789,
+   "engine": "kokoro",
+   "file": "/audio/en/calabaza.0171ce2b.m4a",
+   "hyp": "the squash",
+   "id": "calabaza",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.835,
+    "rawClip": 0.0,
+    "rmsDb": -16.0
+   },
+   "master": "en/calabaza.0171ce2b.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "0171ce2b5ec4d034810e29adc8b2b763f457f2bd2c275a1c43e2079af4549385",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Squash",
+   "voice": "af_heart"
+  },
   "31974b6ea0eb5c760bd6db0ec0e27ac8b93fb8d60a63788da9ea99d71bd73017": {
    "candidateScores": [
     0.4167,
@@ -3760,6 +4930,45 @@
    "text": "shikaba",
    "voice": null
   },
+  "326bc8e1d5680e2a7525501430009b775d543cfdc8068738286136577c4f341f": {
+   "candidateScores": [
+    0.9754,
+    1.0,
+    1.0,
+    0.3,
+    0.9751,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 763,
+   "engine": "kokoro",
+   "file": "/audio/es/fuego.d1c2d124.m4a",
+   "hyp": "el fuego",
+   "id": "fuego",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.61,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.6
+   },
+   "master": "es/fuego.d1c2d124.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "d1c2d124152338b7b272df5eeb2c1097897bceea323ce09e2a26fbbc1f575ee1",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Fuego",
+   "voice": "em_alex"
+  },
   "329d82b30f1109a51959af97787e13ce8f4a660e2fb0b5a9a7784e34da986f6a": {
    "candidateScores": [
     0.44,
@@ -3800,6 +5009,45 @@
    "source": "mms",
    "text": "wayra",
    "voice": null
+  },
+  "32a61fa9ccedaa8170448b919ad52c0a118a339f4234ec0d6d3df7c583cd2f4f": {
+   "candidateScores": [
+    1.0,
+    0.9712,
+    1.0,
+    1.0,
+    0.9563,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 1010,
+   "engine": "kokoro",
+   "file": "/audio/en/petate.3574fc1f.m4a",
+   "hyp": "the sleeping mat",
+   "id": "petate",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.78,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.0
+   },
+   "master": "en/petate.3574fc1f.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "3574fc1f7842ac9498fa7aabe1f0ab0515f9744a0907ffe96b828e48128aee38",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Sleeping Mat",
+   "voice": "af_heart"
   },
   "32ca1bf0184ac44cf9b8e9b755a28a6a08a42e48004c4f2af5aee5d811206029": {
    "candidateScores": [
@@ -3881,6 +5129,45 @@
    "text": "iik'",
    "voice": null
   },
+  "33da90ea979eefc98c04d6daa38234634b7ba2c51afdaa80b1f0cbcdcf21d370": {
+   "candidateScores": [
+    0.9364,
+    0.9364,
+    1.0,
+    1.0,
+    0.8,
+    0.9292
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 652,
+   "engine": "kokoro",
+   "file": "/audio/en/huso.f4e54963.m4a",
+   "hyp": "spindle",
+   "id": "huso",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.853,
+    "rawClip": 0.0,
+    "rmsDb": -16.1
+   },
+   "master": "en/huso.f4e54963.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "no-article",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "f4e54963c977dd638499e98f38fcc612271276adf5d0ab1e5f0ef648328e799a",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Spindle",
+   "voice": "af_heart"
+  },
   "346649f7417ea8cf261e2856f27ac54ec6905516bed21864e4fcc28017a6b5cf": {
    "candidateScores": [
     1.0,
@@ -3920,6 +5207,123 @@
    "text": "El Frijol",
    "voice": "ef_dora"
   },
+  "355786c8bd70bbc00cc8b7dbf7c0c8c2e5839f065923fa41f125a13877b07c79": {
+   "candidateScores": [
+    0.9049,
+    0.8386,
+    0.9199,
+    0.8707,
+    0.9925,
+    0.9222
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 630,
+   "engine": "kokoro",
+   "file": "/audio/es/concha.8049f61a.m4a",
+   "hyp": "concha",
+   "id": "concha",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.25,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.9
+   },
+   "master": "es/concha.8049f61a.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9925,
+   "scoring": "asr",
+   "sha256": "8049f61ac771f82f2f64cc328529f6484ef3b6a1a64a40515a15f5d52097afd8",
+   "signal": 0.975,
+   "source": "kokoro",
+   "text": "La Concha",
+   "voice": "em_santa"
+  },
+  "360fe3345b75faf72e62ca550a6f4133d5bc1150d2dfa42dbd42281e198051b5": {
+   "candidateScores": [
+    0.8721,
+    0.9616,
+    0.9823,
+    0.9499,
+    0.8833,
+    0.8182
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 634,
+   "engine": "kokoro",
+   "file": "/audio/es/perico.9008d1b7.m4a",
+   "hyp": "perico",
+   "id": "perico",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.59,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.0
+   },
+   "master": "es/perico.9008d1b7.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "no-article",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9823,
+   "scoring": "asr",
+   "sha256": "9008d1b753284fc9febf74409f46270748096bae572e32daf39e11c3b51deb46",
+   "signal": 0.941,
+   "source": "kokoro",
+   "text": "El Perico",
+   "voice": "em_alex"
+  },
+  "36bb39cf43f589bb4149893936ea7918b6acc8fc7a35146a8de1dd62a16003ef": {
+   "candidateScores": [
+    1.0,
+    0.58,
+    0.9898,
+    0.7164,
+    0.9685,
+    0.9379
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 734,
+   "engine": "kokoro",
+   "file": "/audio/en/playa.de506ae5.m4a",
+   "hyp": "the beach",
+   "id": "playa",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.92,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.5
+   },
+   "master": "en/playa.de506ae5.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "de506ae58f89ad181b027703468422e520e8b93fe1760f279c36353da23df591",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Beach",
+   "voice": "af_heart"
+  },
   "36f7ab34d4d3b693da045c22455df4eabf70fb4b7288d2e647031805eef183d4": {
    "candidateScores": [
     0.8727,
@@ -3958,6 +5362,45 @@
    "source": "kokoro",
    "text": "El Aguacate",
    "voice": "ef_dora"
+  },
+  "3896c3331678b0a4efba103044224ed2223176c72094f3f5cc265dd60e90cfe3": {
+   "candidateScores": [
+    0.825,
+    0.8927,
+    0.8375,
+    0.7899,
+    0.6235,
+    0.3
+   ],
+   "candidates": 6,
+   "cer": 0.125,
+   "durationMs": 738,
+   "engine": "kokoro",
+   "file": "/audio/es/hongo.1bc11cc7.m4a",
+   "hyp": "el songo",
+   "id": "hongo",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.66,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.4
+   },
+   "master": "es/hongo.1bc11cc7.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.8927,
+   "scoring": "asr",
+   "sha256": "1bc11cc77fc2897c8deaeaa60e107828c139efda6a083638cb4cfacb20f722ae",
+   "signal": 0.934,
+   "source": "kokoro",
+   "text": "El Hongo",
+   "voice": "em_alex"
   },
   "38ab2e874ea2f7689ca64bd68993958be8d6c9e37c8aeb7ff229c616d721a590": {
    "candidateScores": [
@@ -4036,6 +5479,45 @@
    "source": "kokoro",
    "text": "La Escuela",
    "voice": "em_santa"
+  },
+  "38f1e9f4a87f8540a1b577c19b12a040b7a999825d550b3ce263c25b3a8fbd88": {
+   "candidateScores": [
+    0.9057,
+    0.8728,
+    0.7124,
+    0.8833,
+    0.4982,
+    0.8767
+   ],
+   "candidates": 6,
+   "cer": 0.0833,
+   "durationMs": 987,
+   "engine": "kokoro",
+   "file": "/audio/es/cacahuate.7989d29d.m4a",
+   "hyp": "el cacauate",
+   "id": "cacahuate",
+   "lang": "es",
+   "loudness": {
+    "lufs": -19.2,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -19.8
+   },
+   "master": "es/cacahuate.7989d29d.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9057,
+   "scoring": "asr",
+   "sha256": "7989d29d1f781f21c37fe7000e64f921d5f766fdf6ce3d513f4dc59bc298c325",
+   "signal": 0.88,
+   "source": "kokoro",
+   "text": "El Cacahuate",
+   "voice": "ef_dora"
   },
   "3a1dacf23fc2ed6c54b06cd6ce183f3587297d567a6f85ef9307e345f9e90722": {
    "candidateScores": [
@@ -4398,6 +5880,84 @@
    "text": "martillu",
    "voice": null
   },
+  "40806055b4b7c8fe2736b9a7d49fbf7c4b314fe127eb87426b64f6e72666f79a": {
+   "candidateScores": [
+    0.94,
+    0.9826,
+    0.7931,
+    0.9631,
+    0.8668,
+    0.9238
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 730,
+   "engine": "kokoro",
+   "file": "/audio/es/neblina.d74a343c.m4a",
+   "hyp": "neblina",
+   "id": "neblina",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.58,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.4
+   },
+   "master": "es/neblina.d74a343c.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "no-article",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9826,
+   "scoring": "asr",
+   "sha256": "d74a343caef137839022cc1d4f9fb58ea6d7cb1908e8cc80ee6e7390fb7c9136",
+   "signal": 0.942,
+   "source": "kokoro",
+   "text": "La Neblina",
+   "voice": "em_santa"
+  },
+  "41fa831a0749ab54a033a377849b562c86622319afd2fe440a0e1c96fc883c6f": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.9985,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 742,
+   "engine": "kokoro",
+   "file": "/audio/en/pasto.872c6219.m4a",
+   "hyp": "the grass",
+   "id": "pasto",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.67,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.4
+   },
+   "master": "en/pasto.872c6219.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "872c621976e17ebc05d719bb084f6a92727d316a027ba971e363974ebfd4131e",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Grass",
+   "voice": "af_heart"
+  },
   "420f041e59433330e45296d570432c9da9dc110a9c545da50ebb8e3e558ba577": {
    "candidateScores": [
     0.4167,
@@ -4480,6 +6040,45 @@
    "text": "llama",
    "voice": null
   },
+  "4706a0ce2f5ae8a90c4cb4d2a50e4d4d02a1300d690a9f2d1eaaa897a4751ed4": {
+   "candidateScores": [
+    1.0,
+    0.9946,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 723,
+   "engine": "kokoro",
+   "file": "/audio/en/nieve.c077cc23.m4a",
+   "hyp": "the snow",
+   "id": "nieve",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.882,
+    "rawClip": 0.0,
+    "rmsDb": -16.1
+   },
+   "master": "en/nieve.c077cc23.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "c077cc235cb6b77c9af5f6b12266e6f449d1765e85ad1403f5b03e341a3a2615",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Snow",
+   "voice": "af_heart"
+  },
   "47b4e93df287d694ec621c53d2081493d44d3d17dba9aa65d33f0b456b152b84": {
    "candidateScores": [
     1.0,
@@ -4517,6 +6116,45 @@
    "signal": 1.0,
    "source": "kokoro",
    "text": "The Star",
+   "voice": "af_heart"
+  },
+  "486838589a27c2bf0fcb118776f4610f40d6c5b43e746a7053d67d1f36200fcc": {
+   "candidateScores": [
+    0.9364,
+    0.9235,
+    0.9,
+    0.9,
+    0.9364,
+    0.9
+   ],
+   "candidates": 6,
+   "cer": 0.0909,
+   "durationMs": 743,
+   "engine": "kokoro",
+   "file": "/audio/en/colmena.ddf95474.m4a",
+   "hyp": "the behive",
+   "id": "colmena",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.76,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.3
+   },
+   "master": "en/colmena.ddf95474.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9364,
+   "scoring": "asr",
+   "sha256": "ddf95474eefbbf96f676dd84ccca53568d5e2abfe15171d2a62006332eea24be",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Beehive",
    "voice": "af_heart"
   },
   "49028dd447759d06b924a29ab1ac9e7d9f7b97580f02b156c8a89497aa26c701": {
@@ -4639,6 +6277,45 @@
    "source": "mms",
    "text": "tlamachtiloyan",
    "voice": null
+  },
+  "4aae180041c0b0e568cd6ec6ef92f5053585cef2c8e9a4e96584bf750acc6add": {
+   "candidateScores": [
+    1.0,
+    0.9574,
+    0.9433,
+    0.9955,
+    0.7667,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 644,
+   "engine": "kokoro",
+   "file": "/audio/es/red.f94c3d1f.m4a",
+   "hyp": "la red",
+   "id": "red",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.84,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.9
+   },
+   "master": "es/red.f94c3d1f.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "f94c3d1fd0dd9ad4eff8336da77b1d51bacd1c5be159a06264dea5ef07a62c4b",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Red",
+   "voice": "ef_dora"
   },
   "4af919ab8dcf124c2ef56712aaa626ad1da82d5d913f8fc06ac343534eda5172": {
    "candidateScores": [
@@ -4882,6 +6559,45 @@
    "text": "The House",
    "voice": "af_heart"
   },
+  "50dd97c0f7d4ae33c67dcee5b7abdb871b163fe23f9d5bcb462264fab1344aea": {
+   "candidateScores": [
+    0.934,
+    1.0,
+    0.9,
+    1.0,
+    0.9,
+    0.8
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 784,
+   "engine": "kokoro",
+   "file": "/audio/es/hormiga.1fc9debe.m4a",
+   "hyp": "la hormiga",
+   "id": "hormiga",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.879,
+    "rawClip": 0.0,
+    "rmsDb": -15.5
+   },
+   "master": "es/hormiga.1fc9debe.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "1fc9debe21583ef67bed0f1a2f8cfce268af4739b133c8dbade9af9f28c405f7",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Hormiga",
+   "voice": "em_alex"
+  },
   "50fe09a3e319c5b4b60e562d4ac7b959e835a56e5574ee3ae8eced75b51cd541": {
    "candidateScores": [
     0.3,
@@ -5044,6 +6760,84 @@
    "text": "ko̱no",
    "voice": null
   },
+  "51a84d6b9cea2ad409b8ddcd60d1daf1e6972a06d78b4cb3ceb5fad1be9f5ac5": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.9481,
+    1.0,
+    0.9868,
+    0.86
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 734,
+   "engine": "kokoro",
+   "file": "/audio/en/escoba.052d0218.m4a",
+   "hyp": "the broom",
+   "id": "escoba",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.1,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.0
+   },
+   "master": "en/escoba.052d0218.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "052d02188ad20ae880aaa44bcfd09e8aff9bb96e61f9a88590f4c35c7878ee05",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Broom",
+   "voice": "af_heart"
+  },
+  "51af6769ef78d87584aa19eef8bb02b7617a8c9c5ed4c4acab0f7e75b29e9e04": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 741,
+   "engine": "kokoro",
+   "file": "/audio/en/arena.8e35ff12.m4a",
+   "hyp": "the sand",
+   "id": "arena",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.09,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.2
+   },
+   "master": "en/arena.8e35ff12.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "8e35ff12be83281d88d36ae0305fa1966c550c4a6865912231fe5933b2388c93",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Sand",
+   "voice": "af_heart"
+  },
   "5209e2098f80d182b794229acafbc39df71b941466fecb3445df6106eebde8c5": {
    "candidateScores": [
     0.8833,
@@ -5084,6 +6878,45 @@
    "source": "mms",
    "text": "tlanamacoyan",
    "voice": null
+  },
+  "5323ada24cb402307eccf8b9a75a249d5ef71b878e3fbcd803e878e6ec18b77f": {
+   "candidateScores": [
+    1.0,
+    0.6897,
+    0.58,
+    0.58,
+    1.0,
+    0.72
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 645,
+   "engine": "kokoro",
+   "file": "/audio/en/concha.2832a123.m4a",
+   "hyp": "the shell",
+   "id": "concha",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.28,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.3
+   },
+   "master": "en/concha.2832a123.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "2832a1238709d3a163e8c86d2c996d6758ff78c396b15a9c0478a52a0f63e956",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Shell",
+   "voice": "af_heart"
   },
   "543baed5025a231b6fa7d0bae788a126e128ef1b4e5994757ef9faafd21fe5e9": {
    "candidateScores": [
@@ -5167,6 +7000,45 @@
    "text": "pukyu",
    "voice": null
   },
+  "55ae1b5a6b4042d7806e796c9d791afc7e2e0e3a223d00dc5a8cc4e6d2eed242": {
+   "candidateScores": [
+    0.898,
+    0.9619,
+    0.8956,
+    1.0,
+    0.9151,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 736,
+   "engine": "kokoro",
+   "file": "/audio/es/ceniza.6431aaee.m4a",
+   "hyp": "ceniza",
+   "id": "ceniza",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.08,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.6
+   },
+   "master": "es/ceniza.6431aaee.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "no-article",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "6431aaeeaa57c31831ad408416952a9a13f1b4363e8be3425929ff0fb0cfd89b",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Ceniza",
+   "voice": "em_alex"
+  },
   "55b32b98c381d3eee39fc6f620026de65acae556e212fd26f990cef26e91ddc6": {
    "candidateScores": [
     0.65,
@@ -5207,6 +7079,84 @@
    "source": "mms",
    "text": "much",
    "voice": null
+  },
+  "55b94a80870e8ffceb42050dc59b2446899a5398a859566f3fabaee5a3d4dc11": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.9529,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 752,
+   "engine": "kokoro",
+   "file": "/audio/en/arana.aaad9cd4.m4a",
+   "hyp": "the spider",
+   "id": "arana",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.92,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.9
+   },
+   "master": "en/arana.aaad9cd4.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "aaad9cd46f78816b95d0953ce6935c90adccf83140954eea22147afb8297feec",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Spider",
+   "voice": "af_heart"
+  },
+  "5661fa80187c80e87efde551c4450d865cba7cacf06a20f86ab0c0175f6b3397": {
+   "candidateScores": [
+    0.8677,
+    0.7734,
+    0.9706,
+    0.8052,
+    0.7978,
+    0.9385
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 993,
+   "engine": "kokoro",
+   "file": "/audio/es/armadillo.eadbd928.m4a",
+   "hyp": "el armadillo",
+   "id": "armadillo",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.98,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -19.0
+   },
+   "master": "es/armadillo.eadbd928.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9706,
+   "scoring": "asr",
+   "sha256": "eadbd9284cd9d0d293ed9f031220a3e1fe1fac30995b8ce9658f58e0fc87e07e",
+   "signal": 0.902,
+   "source": "kokoro",
+   "text": "El Armadillo",
+   "voice": "em_santa"
   },
   "57a7d2af5231ee41dde0ff6141709190c2936ccbb1577dd7e883c3e3f269d6eb": {
    "candidateScores": [
@@ -5249,6 +7199,84 @@
    "text": "kuë",
    "voice": null
   },
+  "5811198fef39e73d06a4fec9981fd23021ffe7b44e35d344fa2183cb012ab420": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 742,
+   "engine": "kokoro",
+   "file": "/audio/en/humo.feac45a7.m4a",
+   "hyp": "the smoke",
+   "id": "humo",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.15,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.3
+   },
+   "master": "en/humo.feac45a7.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "feac45a7b6c26d2fe969247a981670a0947997779a5a377377e84af21dbc5efd",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Smoke",
+   "voice": "af_heart"
+  },
+  "5853a572d4b80b2dc0ce5661a56c073bc30f6503fed7ba15a8340585a7ba0abd": {
+   "candidateScores": [
+    1.0,
+    0.9442,
+    0.9025,
+    0.9907,
+    0.967,
+    0.9157
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 666,
+   "engine": "kokoro",
+   "file": "/audio/en/fuego.e1672256.m4a",
+   "hyp": "the fire",
+   "id": "fuego",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.95,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.7
+   },
+   "master": "en/fuego.e1672256.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "e1672256346c73fd71d79ae46f0f30f50fddffe90e7e99f2576b4a5f8ad61317",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Fire",
+   "voice": "af_heart"
+  },
   "58eab8202386c80854dac24b52cc1a9069c18cc6da7ba33ad9d31ab613d0172b": {
    "candidateScores": [
     0.65,
@@ -5289,6 +7317,84 @@
    "source": "mms",
    "text": "kuum",
    "voice": null
+  },
+  "594dc09ae528d8f5460ea1d8de984ff0aa5d6789581055a5f35b84c98e2c71cb": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 654,
+   "engine": "kokoro",
+   "file": "/audio/en/rio.382ccfad.m4a",
+   "hyp": "the river",
+   "id": "rio",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.4,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -15.7
+   },
+   "master": "en/rio.382ccfad.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "382ccfad9f8dc5e97d48b1f55d766d58db978da7c287e91b09f2ac11009366ce",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The River",
+   "voice": "af_heart"
+  },
+  "599c61b784690c0b999cfde71ca8737d1a5534e373338245dc9a990a8150efde": {
+   "candidateScores": [
+    0.9724,
+    0.9289,
+    0.768,
+    0.8476,
+    0.8436,
+    0.8637
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 971,
+   "engine": "kokoro",
+   "file": "/audio/es/lagartija.46b0990c.m4a",
+   "hyp": "la lagartija",
+   "id": "lagartija",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.92,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.7
+   },
+   "master": "es/lagartija.46b0990c.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9724,
+   "scoring": "asr",
+   "sha256": "46b0990c63af52988caacff4544dfc85d774b6b3a607fe3595692adf23b5f3d9",
+   "signal": 0.908,
+   "source": "kokoro",
+   "text": "La Lagartija",
+   "voice": "ef_dora"
   },
   "59a1c0e1d469c3e115a014a142617e169712ce2932a399d0943f4dbb01675bf0": {
    "candidateScores": [
@@ -5331,6 +7437,45 @@
    "text": "cuauhtla",
    "voice": null
   },
+  "59a6e9cccc059b7a307788e0c8be6477eb9b6bd84b0e72a6e8300ded4b9cf8d8": {
+   "candidateScores": [
+    0.9889,
+    0.9952,
+    1.0,
+    1.0,
+    0.8682,
+    0.9631
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 1082,
+   "engine": "kokoro",
+   "file": "/audio/en/metate.ed5ccab7.m4a",
+   "hyp": "the grinding stone",
+   "id": "metate",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.36,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.7
+   },
+   "master": "en/metate.ed5ccab7.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "am_michael"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "ed5ccab7561470434c7f21ec5185b3515d28a525f159f8416ccabcd0eadb74c1",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Grinding Stone",
+   "voice": "am_michael"
+  },
   "59d896e3838d1d8103977a41882b58b699791ebdb74fa86c97d10440a7870c51": {
    "candidateScores": [
     0.8932,
@@ -5369,6 +7514,162 @@
    "source": "kokoro",
    "text": "La Luna",
    "voice": "em_santa"
+  },
+  "5a260a237d3bd877ac0f7c3cb369a1684b861843bbd33d9894c724ac035b34ee": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.8,
+    0.9412
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 720,
+   "engine": "kokoro",
+   "file": "/audio/en/trueno.e8e397a2.m4a",
+   "hyp": "the thunder",
+   "id": "trueno",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.22,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.0
+   },
+   "master": "en/trueno.e8e397a2.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "e8e397a29c2234d77c92c57b7ceed255f2262fe541fe5c1d2fc16b2708938417",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Thunder",
+   "voice": "af_heart"
+  },
+  "5a8a3ba7986662dd838dd487ba5691420570f32220146bf874454d46e2f64751": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 919,
+   "engine": "kokoro",
+   "file": "/audio/es/sombrero.731b0465.m4a",
+   "hyp": "el sombrero",
+   "id": "sombrero",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.61,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.5
+   },
+   "master": "es/sombrero.731b0465.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "731b0465b5fb03dfbe0c9121b8f5b5f1cbfbae0c8374ff7e0c811053cc60f6a7",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Sombrero",
+   "voice": "ef_dora"
+  },
+  "5b4c3aba3a6356e4738331c6043d6e645ae9934357cd643027b7163b140735a1": {
+   "candidateScores": [
+    1.0,
+    0.93,
+    1.0,
+    0.86,
+    0.9745,
+    0.93
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 892,
+   "engine": "kokoro",
+   "file": "/audio/es/hormiguero.69fe2c0e.m4a",
+   "hyp": "el hormiguero",
+   "id": "hormiguero",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.21,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.1
+   },
+   "master": "es/hormiguero.69fe2c0e.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "69fe2c0e520dd11a42d4c945a13f18de37b8f7443ab76e151ec067ef3e40680c",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Hormiguero",
+   "voice": "ef_dora"
+  },
+  "5bf8d9625e8de269376f8d5a15b270a0c3d7e6f6681a182aad95f2bfb2265874": {
+   "candidateScores": [
+    0.86,
+    0.86,
+    0.8282,
+    0.79,
+    0.7667,
+    0.7667
+   ],
+   "candidates": 6,
+   "cer": 0.2,
+   "durationMs": 748,
+   "engine": "kokoro",
+   "file": "/audio/en/cacahuate.c2c297eb.m4a",
+   "hyp": "the penot",
+   "id": "cacahuate",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.767,
+    "rawClip": 0.0,
+    "rmsDb": -15.9
+   },
+   "master": "en/cacahuate.c2c297eb.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.86,
+   "scoring": "asr",
+   "sha256": "c2c297ebbacbfbed9b45399234844c16db8d87442ce33df3419884c082d531ef",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Peanut",
+   "voice": "af_heart"
   },
   "5cfcf7cc54af56379a7f31fb905d42731c6e3543dd0f589918424ccf609d431f": {
    "candidateScores": [
@@ -5568,6 +7869,45 @@
    "source": "mms",
    "text": "bekwä",
    "voice": null
+  },
+  "5fd759dd14dab0a96db54488000b8a79fd3e5d3e963f6d95d021e4d61a882654": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 697,
+   "engine": "kokoro",
+   "file": "/audio/en/comal.4f24ad85.m4a",
+   "hyp": "the griddle",
+   "id": "comal",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.13,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.1
+   },
+   "master": "en/comal.4f24ad85.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "4f24ad858a681942346c693eec76c7eeddee53d523c7ad55617878dcf6d6ab88",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Griddle",
+   "voice": "af_heart"
   },
   "606142c276858685b31a41d0a248ad0e5c2dddbf12d137fa49262a2b0b91e138": {
    "candidateScores": [
@@ -5854,6 +8194,84 @@
    "text": "të",
    "voice": null
   },
+  "6587dbab6d8afe349f962ede594a62c79d58889cdba8878978d298b86d47a6a3": {
+   "candidateScores": [
+    0.9991,
+    0.7667,
+    1.0,
+    0.7667,
+    0.9502,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 499,
+   "engine": "kokoro",
+   "file": "/audio/en/ceniza.0a883a0b.m4a",
+   "hyp": "ash",
+   "id": "ceniza",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.32,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.1
+   },
+   "master": "en/ceniza.0a883a0b.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "no-article",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "0a883a0b3cfab59ad8377b2f441e474ca58401eafbffcb84ce51d8225ada87c6",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Ash",
+   "voice": "af_heart"
+  },
+  "65b2314209b16123b3a8f11ccbba4f017f9b6e66114a73f01aa1ff5ceec11323": {
+   "candidateScores": [
+    0.9125,
+    1.0,
+    0.825,
+    0.7761,
+    0.825,
+    0.7667
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 978,
+   "engine": "kokoro",
+   "file": "/audio/en/camote.dfae4e2a.m4a",
+   "hyp": "sweet potato",
+   "id": "camote",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.796,
+    "rawClip": 0.0,
+    "rmsDb": -16.1
+   },
+   "master": "en/camote.dfae4e2a.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "no-article",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "dfae4e2a021e4db8921b1c0d55a3f00f875396f50b2cb9fe93b3f353b7a30103",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Sweet Potato",
+   "voice": "af_heart"
+  },
   "65d079c4ed76d02dc522cc5686ac08d0487a7be77614caef3f77399469d51817": {
    "candidateScores": [
     0.65,
@@ -5894,6 +8312,45 @@
    "source": "mms",
    "text": "acalli",
    "voice": null
+  },
+  "66854e67ac733142be5df510efce95d226816e7570b10978fc40c5f0ae5cc418": {
+   "candidateScores": [
+    0.9616,
+    0.2913,
+    0.8727,
+    0.8935,
+    0.9364,
+    0.3875
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 903,
+   "engine": "kokoro",
+   "file": "/audio/es/calabaza.9050aa58.m4a",
+   "hyp": "la calabaza",
+   "id": "calabaza",
+   "lang": "es",
+   "loudness": {
+    "lufs": -19.28,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -19.9
+   },
+   "master": "es/calabaza.9050aa58.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9616,
+   "scoring": "asr",
+   "sha256": "9050aa5876613f9da791a04f80ced0fdeec471c76d49a10bbb3ee4d8ebbc9706",
+   "signal": 0.872,
+   "source": "kokoro",
+   "text": "La Calabaza",
+   "voice": "ef_dora"
   },
   "66c12b86bddcb587946f9ed2829141916d11e7c63705bcfea8af4ae0f7b308cb": {
    "candidateScores": [
@@ -6018,6 +8475,45 @@
    "text": "popocani tepetl",
    "voice": null
   },
+  "68798a30703530a55b9600adf1ec02e9972fa95739393e4bc6f12c5b770aa17c": {
+   "candidateScores": [
+    0.9103,
+    1.0,
+    0.9352,
+    0.922,
+    0.9277,
+    0.9496
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 720,
+   "engine": "kokoro",
+   "file": "/audio/es/camino.ba5bbe03.m4a",
+   "hyp": "camino",
+   "id": "camino",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.77,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.5
+   },
+   "master": "es/camino.ba5bbe03.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "ba5bbe0301a7d18725bb3b2537df74c4fd48f3fd8c4ff74a7d4c8ee735a0adde",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Camino",
+   "voice": "em_santa"
+  },
   "68a4135a65a69c67aa1f069aa3dfcae3ebd2a81b856d778dbf90bc05cb057075": {
    "candidateScores": [
     1.0,
@@ -6058,6 +8554,123 @@
    "source": "mms",
    "text": "uturunku",
    "voice": null
+  },
+  "68c5f88456ba512e8b250579115b7c9eff4380e0bff7ac282d56dcaf892b6121": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.9706,
+    0.9625,
+    0.8833,
+    0.8782
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 848,
+   "engine": "kokoro",
+   "file": "/audio/es/metate.68850122.m4a",
+   "hyp": "el metate",
+   "id": "metate",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.5,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.6
+   },
+   "master": "es/metate.68850122.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "688501227b1878f40a64893918ec46eb964b261017b8d616213fbb75a67ee2a9",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Metate",
+   "voice": "ef_dora"
+  },
+  "69712f0864ee7d41c08b402bba61e896d76300bd927b120cf7638d23e7824905": {
+   "candidateScores": [
+    0.9219,
+    0.9751,
+    0.288,
+    0.65,
+    0.9222,
+    0.991
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 1016,
+   "engine": "kokoro",
+   "file": "/audio/es/petate.fcc031b1.m4a",
+   "hyp": "el petate",
+   "id": "petate",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.3,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.4
+   },
+   "master": "es/petate.fcc031b1.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.991,
+   "scoring": "asr",
+   "sha256": "fcc031b1807eb9965908a3d241267b28265ee17486bc75b57a919f3fcfe07923",
+   "signal": 0.97,
+   "source": "kokoro",
+   "text": "El Petate",
+   "voice": "em_alex"
+  },
+  "6a32df40fc7cc8532ad3ed2d1e872bb1894f761ec5c17d20e8d7ceeae926cfba": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.8579,
+    0.72,
+    0.7261,
+    0.58
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 690,
+   "engine": "kokoro",
+   "file": "/audio/es/hielo.fa9637f1.m4a",
+   "hyp": "el hielo",
+   "id": "hielo",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.5,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.5
+   },
+   "master": "es/hielo.fa9637f1.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "fa9637f136f852892b5d7b22104547bc8e8c25e0cbb416a16ef0a2bfe940752a",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Hielo",
+   "voice": "ef_dora"
   },
   "6b05f1765e14fb909fb156577c6233eb2b1b1b731ef71dc9d5046d1acad9858a": {
    "candidateScores": [
@@ -6262,6 +8875,45 @@
    "text": "iik",
    "voice": null
   },
+  "6c2918b1f334aa6ce88275633cda6214924ecc5803ca86340dbbcb95468aac54": {
+   "candidateScores": [
+    1.0,
+    0.9418,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 673,
+   "engine": "kokoro",
+   "file": "/audio/en/noche.46f4cff7.m4a",
+   "hyp": "the night",
+   "id": "noche",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.773,
+    "rawClip": 0.0,
+    "rmsDb": -15.8
+   },
+   "master": "en/noche.46f4cff7.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "46f4cff7e48fe30317121c97f06503221296b5081cc9f2a8a9cdb91c3ec077e2",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Night",
+   "voice": "af_heart"
+  },
   "6e08f8be31d28009b9d400c0def995ea617b2cb235f7ca99c33675f5a8c835b9": {
    "candidateScores": [
     0.6111,
@@ -6385,6 +9037,45 @@
    "text": "muuyal",
    "voice": null
   },
+  "6e7a499d2faf3e75408f06fc3013f1769d0572c96db36dfbdc52ae675d74354a": {
+   "candidateScores": [
+    0.9859,
+    1.0,
+    0.9673,
+    1.0,
+    0.9946,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 592,
+   "engine": "kokoro",
+   "file": "/audio/en/cangrejo.4f65bd4b.m4a",
+   "hyp": "crab",
+   "id": "cangrejo",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.851,
+    "rawClip": 0.0,
+    "rmsDb": -15.6
+   },
+   "master": "en/cangrejo.4f65bd4b.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "af_bella"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "4f65bd4be15922c46a067cc424ff111e767d52127ac4dc320c7e0bf70df22710",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Crab",
+   "voice": "af_bella"
+  },
   "6eb4a96643a68c33741cbfd70d14ed8b9c18c0ecbc75978f1d9d5b28a55a44a2": {
    "candidateScores": [
     0.8,
@@ -6426,6 +9117,162 @@
    "text": "metztli",
    "voice": null
   },
+  "6fed8159a3899ac6c12bd65d6acad815ea6c4289fab8b79e65b76cf26ebd681f": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.9793,
+    0.7667,
+    0.8913,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 734,
+   "engine": "kokoro",
+   "file": "/audio/en/flor.f9447877.m4a",
+   "hyp": "the flower",
+   "id": "flor",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.53,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.4
+   },
+   "master": "en/flor.f9447877.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "f94478771935f216eb8ccab544d59acbbbfff9b0d35853b88afdfd6336cadf0e",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Flower",
+   "voice": "af_heart"
+  },
+  "6ffcdf41451a902493daed468178fb3442bf213f935084962862d16cc4b684b1": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    0.4444,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 667,
+   "engine": "kokoro",
+   "file": "/audio/en/nido.80ffc415.m4a",
+   "hyp": "the nest",
+   "id": "nido",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.757,
+    "rawClip": 0.0,
+    "rmsDb": -15.6
+   },
+   "master": "en/nido.80ffc415.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "80ffc415ec91b995b2420bb44c0661c7386441e97b769db496043c60608f4927",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Nest",
+   "voice": "af_heart"
+  },
+  "70004e0f856503790c2cee5772c042f3568b945bde4309d531082548da28362c": {
+   "candidateScores": [
+    0.9658,
+    1.0,
+    0.7667,
+    0.65,
+    0.8833,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 699,
+   "engine": "kokoro",
+   "file": "/audio/es/tierra.443a2587.m4a",
+   "hyp": "la tierra",
+   "id": "tierra",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.89,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.1
+   },
+   "master": "es/tierra.443a2587.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "443a2587c634ceb77a91d3b0bdbf2a6105777690f371d85ff3c77104d61ae520",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Tierra",
+   "voice": "em_santa"
+  },
+  "701c1c28effb67bd9bb8912fc782cfa1a1951a3a94479e90bf88b52b2c5548ce": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.7667,
+    0.65,
+    1.0,
+    0.7767
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 887,
+   "engine": "kokoro",
+   "file": "/audio/es/papaya.4c708abb.m4a",
+   "hyp": "la papaya",
+   "id": "papaya",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.25,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.2
+   },
+   "master": "es/papaya.4c708abb.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "4c708abb0556f28c9d33989bcec6d93fbc051d083bfc4c96dbb22a4b92361216",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Papaya",
+   "voice": "ef_dora"
+  },
   "705c65973eb92cac4c7f1f756faba48ab1c7d6e8ac707436424a418cfe8ee47a": {
    "candidateScores": [
     0.9364,
@@ -6464,6 +9311,45 @@
    "source": "kokoro",
    "text": "The Rainbow",
    "voice": "af_bella"
+  },
+  "706041c504bff3d0e7077fc1c6151aef51767b850828c5a9545ecc2810d16c0a": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 698,
+   "engine": "kokoro",
+   "file": "/audio/en/raton.bb2db620.m4a",
+   "hyp": "the mouse",
+   "id": "raton",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.823,
+    "rawClip": 0.0,
+    "rmsDb": -15.9
+   },
+   "master": "en/raton.bb2db620.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "bb2db620015ebca6ed3518eb14afedfffdfa84ff37274a671b3b1797b7e6136f",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Mouse",
+   "voice": "af_heart"
   },
   "7090d5a14cdd642f45f4d54a776203b141ba1f5bef4cbb35292aa4ab8bbb55d2": {
    "candidateScores": [
@@ -6586,6 +9472,84 @@
    "text": "papa",
    "voice": null
   },
+  "716b3d17b496556fcedcf8c88524d9aa769263edba50be462bff537f92432c7d": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.825,
+    0.8217,
+    0.9119,
+    0.9364
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 835,
+   "engine": "kokoro",
+   "file": "/audio/es/barranca.1572696e.m4a",
+   "hyp": "la barranca",
+   "id": "barranca",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.93,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.9
+   },
+   "master": "es/barranca.1572696e.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "1572696e510d3ef5638452f0b8d36ac1f2f1caaa56fb26a5a9132ba74493847b",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Barranca",
+   "voice": "ef_dora"
+  },
+  "71c1d2f8913aa354a6905b3453ba5b54b19d6b74c06bc6b68f551031e31a77c5": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.7667,
+    1.0,
+    0.9979,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 664,
+   "engine": "kokoro",
+   "file": "/audio/en/gallina.8799ddfe.m4a",
+   "hyp": "the hen",
+   "id": "gallina",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.734,
+    "rawClip": 0.0,
+    "rmsDb": -15.8
+   },
+   "master": "en/gallina.8799ddfe.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "8799ddfec7c57f7ebfe5382f443c8788ef1ab0ce1fc09c31d2d4b5c613173384",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Hen",
+   "voice": "af_heart"
+  },
   "728a04c110be58cfeead3271b471bf2209a6b58d6797926064ac592f5ac22f19": {
    "candidateScores": [
     1.0,
@@ -6624,6 +9588,45 @@
    "source": "kokoro",
    "text": "The Wind",
    "voice": "af_heart"
+  },
+  "735f1677ad4cdc2c7d5b3294472bb1782944a5446ec5916988e291a246c73c02": {
+   "candidateScores": [
+    0.8166,
+    0.9919,
+    0.6455,
+    1.0,
+    0.7375,
+    0.86
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 607,
+   "engine": "kokoro",
+   "file": "/audio/es/arena.071d88b2.m4a",
+   "hyp": "arena",
+   "id": "arena",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.11,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -15.8
+   },
+   "master": "es/arena.071d88b2.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "no-article",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "071d88b2536130ba64a26addce0bb337e73558f981ff0d71ceaba4d615da22f0",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Arena",
+   "voice": "em_alex"
   },
   "738d75933a8dabf4d334c7cabba5eda9b10c146efc23a4f169df27b20883f9e4": {
    "candidateScores": [
@@ -6704,6 +9707,45 @@
    "source": "mms",
    "text": "amoxcalli",
    "voice": null
+  },
+  "759e9cc9616cd288361a23e8fd589612a7d8441e48509db6cbaa103592e8b3a9": {
+   "candidateScores": [
+    0.93,
+    0.8823,
+    0.8374,
+    0.72,
+    0.4784,
+    0.65
+   ],
+   "candidates": 6,
+   "cer": 0.1,
+   "durationMs": 799,
+   "engine": "kokoro",
+   "file": "/audio/en/papaya.fe8e36b6.m4a",
+   "hyp": "the papaia",
+   "id": "papaya",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.53,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.1
+   },
+   "master": "en/papaya.fe8e36b6.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.93,
+   "scoring": "asr",
+   "sha256": "fe8e36b6596723ccba2f85f919277164158f51f908aca73fff2cc1a76a716464",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Papaya",
+   "voice": "af_heart"
   },
   "773e86e746d6164fddd034a0f0ba82be4f4eda6472d47875e1ba96f57663b355": {
    "candidateScores": [
@@ -6824,6 +9866,84 @@
    "text": "El Guajolote",
    "voice": "em_alex"
   },
+  "788e398a5850742e3bdec0ccf7827c7a3ee211cd56510fac503bbf081b72a1ec": {
+   "candidateScores": [
+    0.9643,
+    0.58,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 618,
+   "engine": "kokoro",
+   "file": "/audio/es/cerca.ff2a4ba2.m4a",
+   "hyp": "cerca",
+   "id": "cerca",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.65,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.4
+   },
+   "master": "es/cerca.ff2a4ba2.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "no-article",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "ff2a4ba2ea59d69b3cb004e38994192ef11fc2052dcc99cf451e4e9332f4c80a",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Cerca",
+   "voice": "ef_dora"
+  },
+  "78fc8efd7c4f8f526d165193b0135a50012a92c2daf0a79f83e4a5f241c0bfd1": {
+   "candidateScores": [
+    0.9958,
+    0.9829,
+    0.3,
+    0.9862,
+    1.0,
+    0.9125
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 761,
+   "engine": "kokoro",
+   "file": "/audio/es/troje.ecce31b3.m4a",
+   "hyp": "la troje",
+   "id": "troje",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.71,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.4
+   },
+   "master": "es/troje.ecce31b3.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "ecce31b355d9c1e4dd5e9dab32b11d16b080a4b1f0b42213ffdd7a7cfb6e057d",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Troje",
+   "voice": "em_alex"
+  },
   "7965a3d6d4a061aadb1b102bfee8744fe7462c75078e7341f7664ceb6fc00c7a": {
    "candidateScores": [
     0.623,
@@ -6864,6 +9984,201 @@
    "source": "mms",
    "text": "k'aak'il wits",
    "voice": null
+  },
+  "7a8ee197e29af288cd3c0cb537e44b3b5ac0ccba750c70bc102ae9ae231bf023": {
+   "candidateScores": [
+    0.8445,
+    0.7667,
+    0.58,
+    0.58,
+    0.9222,
+    0.912
+   ],
+   "candidates": 6,
+   "cer": 0.1111,
+   "durationMs": 785,
+   "engine": "kokoro",
+   "file": "/audio/en/guayaba.4a9aa7c0.m4a",
+   "hyp": "the guave",
+   "id": "guayaba",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.72,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.9
+   },
+   "master": "en/guayaba.4a9aa7c0.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "am_michael"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9222,
+   "scoring": "asr",
+   "sha256": "4a9aa7c04be7c090e21d6994099686e4d6a01d7002a9e8d856a5890451efcddb",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Guava",
+   "voice": "am_michael"
+  },
+  "7be84f1c5c56434f054c12c42dc73e818f85d0d4229b630a2bcfeb363cb351bf": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 687,
+   "engine": "kokoro",
+   "file": "/audio/en/perro.6fb1e23e.m4a",
+   "hyp": "the dog",
+   "id": "perro",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.817,
+    "rawClip": 0.0,
+    "rmsDb": -15.8
+   },
+   "master": "en/perro.6fb1e23e.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "6fb1e23ef5bf6f86c7ec7088a4627aa2ce8d971c36f801681cf1c82340c61a9b",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Dog",
+   "voice": "af_heart"
+  },
+  "7bf5a5402ac76cbb3eae67aa91437167f6ee613d36ac557864252632bb343f87": {
+   "candidateScores": [
+    0.825,
+    0.9125,
+    0.9125,
+    0.65,
+    0.65,
+    0.65
+   ],
+   "candidates": 6,
+   "cer": 0.125,
+   "durationMs": 559,
+   "engine": "kokoro",
+   "file": "/audio/en/granizo.117e4fbb.m4a",
+   "hyp": "the  hal",
+   "id": "granizo",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.61,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.6
+   },
+   "master": "en/granizo.117e4fbb.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "af_bella"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9125,
+   "scoring": "asr",
+   "sha256": "117e4fbb75eaf8ddff47cff9fc38c2c24246c2dc2baa3f2993e0c2ff06dec0b9",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Hail",
+   "voice": "af_bella"
+  },
+  "7c0e3c280757f417f3febd3a793478b6dcdad9d00b4ff6525d49e502611bc0be": {
+   "candidateScores": [
+    0.9778,
+    0.5368,
+    0.86,
+    1.0,
+    0.9898,
+    0.9709
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 790,
+   "engine": "kokoro",
+   "file": "/audio/es/nieve.24edf103.m4a",
+   "hyp": "la nieve",
+   "id": "nieve",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.67,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.0
+   },
+   "master": "es/nieve.24edf103.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "24edf1034371919a99243fa8801222fe8a78fc5f065fb04e3f66e2de5566c90a",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Nieve",
+   "voice": "em_santa"
+  },
+  "7cd99effffda1be0e42d2a7549f462d3ca584990913020cfae515d320a049a74": {
+   "candidateScores": [
+    0.9,
+    0.7511,
+    0.8,
+    0.9,
+    0.7667,
+    0.7667
+   ],
+   "candidates": 6,
+   "cer": 0.1429,
+   "durationMs": 638,
+   "engine": "kokoro",
+   "file": "/audio/en/lodo.4f3c821e.m4a",
+   "hyp": "the mid",
+   "id": "lodo",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.675,
+    "rawClip": 0.0,
+    "rmsDb": -15.7
+   },
+   "master": "en/lodo.4f3c821e.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9,
+   "scoring": "asr",
+   "sha256": "4f3c821e1dc4f35373307d2a1d89429d6b41d5b403ec7f10958bbcd060b4531f",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Mud",
+   "voice": "af_heart"
   },
   "7e3f959f7155e004bf76f9c3cd1aa112aa33d4f298a42e25728d3caba7d4e277": {
    "candidateScores": [
@@ -6945,6 +10260,162 @@
    "text": "sara",
    "voice": null
   },
+  "7ebb4688c5719feabb8f7501cc95cdde1e3bd774e743bfe090b7ddeb3fa3d489": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.9682,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 757,
+   "engine": "kokoro",
+   "file": "/audio/en/mono.66f023cd.m4a",
+   "hyp": "the monkey",
+   "id": "mono",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.38,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -15.7
+   },
+   "master": "en/mono.66f023cd.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "66f023cdada1ba5fe3836b9d6a85db7070d8164a08f63d8f5e1edeb0bf957574",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Monkey",
+   "voice": "af_heart"
+  },
+  "7ecf06544e8827c58c1c3ced5e288acb4aadd22edebc5255b7fb11b51c7ab918": {
+   "candidateScores": [
+    0.8727,
+    0.7517,
+    0.8727,
+    0.6,
+    0.8,
+    0.7847
+   ],
+   "candidates": 6,
+   "cer": 0.1818,
+   "durationMs": 777,
+   "engine": "kokoro",
+   "file": "/audio/en/troje.729597a8.m4a",
+   "hyp": "the grainery",
+   "id": "troje",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.843,
+    "rawClip": 0.0,
+    "rmsDb": -15.8
+   },
+   "master": "en/troje.729597a8.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.8727,
+   "scoring": "asr",
+   "sha256": "729597a86c179b9a0d1155de10f6356ed933a4b17c31445cc1b132f0e39ee088",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Granary",
+   "voice": "af_heart"
+  },
+  "7f0364c947585c326f12436b9efc16f150b0cab9349c10410c3705d6521dcb31": {
+   "candidateScores": [
+    0.8727,
+    0.8959,
+    0.8727,
+    0.8727,
+    0.825,
+    0.8706
+   ],
+   "candidates": 6,
+   "cer": 0.0909,
+   "durationMs": 1017,
+   "engine": "kokoro",
+   "file": "/audio/es/telarana.aa6dc2b0.m4a",
+   "hyp": "la te laraña",
+   "id": "telarana",
+   "lang": "es",
+   "loudness": {
+    "lufs": -19.35,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -19.8
+   },
+   "master": "es/telarana.aa6dc2b0.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.8959,
+   "scoring": "asr",
+   "sha256": "aa6dc2b0375c1f7c4ca02ed133745b0bd7a0102d149f4a0294fe2d13d8e9bdfb",
+   "signal": 0.865,
+   "source": "kokoro",
+   "text": "La Telaraña",
+   "voice": "ef_dora"
+  },
+  "80c8817565a752c8154680e1455df42705299bc9fbd53fd8dae26dac23ec9fb2": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 676,
+   "engine": "kokoro",
+   "file": "/audio/en/valle.ad54debe.m4a",
+   "hyp": "the valley",
+   "id": "valle",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.838,
+    "rawClip": 0.0,
+    "rmsDb": -15.7
+   },
+   "master": "en/valle.ad54debe.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "ad54debed80ab5ed3dce38e6fabc6a334d92729aafb15d57186e869d196899ad",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Valley",
+   "voice": "af_heart"
+  },
   "8197cc5b3ca827c508c1b54f24dd814c56d2cb4c84ff679fe0e3f06626494ada": {
    "candidateScores": [
     0.65,
@@ -6985,6 +10456,45 @@
    "source": "mms",
    "text": "wila",
    "voice": null
+  },
+  "8207cca4cc1f4a5c3abc1ba0d3a0c43da179eb62ae5d89ea99e2d2c3fa4505c4": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 724,
+   "engine": "kokoro",
+   "file": "/audio/en/platano.17ebb4e0.m4a",
+   "hyp": "the banana",
+   "id": "platano",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.79,
+    "rawClip": 0.0,
+    "rmsDb": -15.5
+   },
+   "master": "en/platano.17ebb4e0.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "17ebb4e0248ab380f7c2ec72d5cc5939debd46a58555eb438d18c938bc10ae60",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Banana",
+   "voice": "af_heart"
   },
   "822845cd3bc68e1a5987c339b184cf80bb2c7799822c4f0c3cd5856cd146c425": {
    "candidateScores": [
@@ -7109,6 +10619,45 @@
    "text": "adobe",
    "voice": null
   },
+  "834def4a26b0d6b5a4d8b45a9cc1bb7b941a5de4b025abb6f8a37e1349a50d0f": {
+   "candidateScores": [
+    1.0,
+    0.8833,
+    0.8772,
+    1.0,
+    0.93,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 741,
+   "engine": "kokoro",
+   "file": "/audio/en/perico.92034e62.m4a",
+   "hyp": "the parrot",
+   "id": "perico",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.29,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.2
+   },
+   "master": "en/perico.92034e62.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "92034e62471faeec83bafd26403f98df46581f190263f4df3e0e4b47adf5268f",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Parrot",
+   "voice": "af_heart"
+  },
   "83cbd9d7ab7fac7d8484326e9e0d949c4cc98d287e82936bb4f6d64a7baa07b0": {
    "candidateScores": [
     0.9835,
@@ -7147,6 +10696,45 @@
    "source": "kokoro",
    "text": "La Plaza",
    "voice": "ef_dora"
+  },
+  "84160faddbbdbe3ea84c3c4c3da4c4cdab338afbf4b5c262826424c8c0ffac19": {
+   "candidateScores": [
+    0.7994,
+    0.782,
+    0.7598,
+    0.7244,
+    0.86,
+    0.6361
+   ],
+   "candidates": 6,
+   "cer": 0.2,
+   "durationMs": 905,
+   "engine": "kokoro",
+   "file": "/audio/es/gallina.3893b73b.m4a",
+   "hyp": "la gagina",
+   "id": "gallina",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.51,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.6
+   },
+   "master": "es/gallina.3893b73b.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.86,
+   "scoring": "asr",
+   "sha256": "3893b73b4e9822cd9d6fcabe0b6d138aac222d9edad53ffc9f3f78ee3742d69e",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Gallina",
+   "voice": "em_alex"
   },
   "841e0a670ecb0aa7ac1577e30ca567442ac2906091a574e1d5f7fa6f1da71bf3": {
    "candidateScores": [
@@ -7225,6 +10813,84 @@
    "source": "kokoro",
    "text": "El Rayo",
    "voice": "ef_dora"
+  },
+  "845129a375811dbc065faba9e74d2155eeb7086ae9973f9c99fd42761b6240b2": {
+   "candidateScores": [
+    0.825,
+    0.982,
+    1.0,
+    0.65,
+    0.994,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 619,
+   "engine": "kokoro",
+   "file": "/audio/en/amanecer.25b8eaf1.m4a",
+   "hyp": "the dawn",
+   "id": "amanecer",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.05,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -15.6
+   },
+   "master": "en/amanecer.25b8eaf1.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "25b8eaf113a09d3306fc954a028a56ab887e3167630e1138dabeff2275404351",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Dawn",
+   "voice": "af_heart"
+  },
+  "852acfb88bb7bfc0b587a8e0be7a69fc00413f4db9c14a0945314789988cbb5b": {
+   "candidateScores": [
+    0.7667,
+    1.0,
+    1.0,
+    0.72,
+    0.44,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 620,
+   "engine": "kokoro",
+   "file": "/audio/en/banco.83033e02.m4a",
+   "hyp": "the stool",
+   "id": "banco",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.05,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.4
+   },
+   "master": "en/banco.83033e02.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "af_bella"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "83033e02633c658f088cf3f99747c87d55af6715797b92c77e2d89170b4ed126",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Stool",
+   "voice": "af_bella"
   },
   "866ec562b6c41a9cf02a24aa67dcf308c44ec5093a605db7d6944b2f8974e83f": {
    "candidateScores": [
@@ -7708,6 +11374,45 @@
    "text": "escuela",
    "voice": null
   },
+  "8accafd2abfbf97c0288dcc793d5a02bfa94461119a41af3a02b56bee03cfe5f": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 823,
+   "engine": "kokoro",
+   "file": "/audio/es/puerta.2ef11a4c.m4a",
+   "hyp": "la puerta",
+   "id": "puerta",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.88,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.8
+   },
+   "master": "es/puerta.2ef11a4c.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "2ef11a4ca53e9204a5ae971a06e3d1b117190269e7bc1cb28164dc4691ded13d",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Puerta",
+   "voice": "ef_dora"
+  },
   "8ae126edbfc291dd056dfae0a893c2c26b727ffe41a5d9230ff6cc485d0ea8e4": {
    "candidateScores": [
     1.0,
@@ -7787,6 +11492,45 @@
    "source": "mms",
    "text": "juku̱lí̱ wö́",
    "voice": null
+  },
+  "8bbb60e04e18d649176a8e61e504203df15bdade60ef6fa264b24b5cd4f89975": {
+   "candidateScores": [
+    0.95,
+    0.9098,
+    0.86,
+    0.95,
+    0.8816,
+    0.86
+   ],
+   "candidates": 6,
+   "cer": 0.0714,
+   "durationMs": 880,
+   "engine": "kokoro",
+   "file": "/audio/en/jicara.3628b6bd.m4a",
+   "hyp": "the gord bowl",
+   "id": "jicara",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.1,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.9
+   },
+   "master": "en/jicara.3628b6bd.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.95,
+   "scoring": "asr",
+   "sha256": "3628b6bd148ea1b736d6d72d2d5e291a892f8c04591051af49abc7e765cfdeba",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Gourd Bowl",
+   "voice": "af_heart"
   },
   "8bbbaa593a4a258854f1411fc1e391425db8bc5a7e48c243b4b1dbf28bffd2b1": {
    "candidateScores": [
@@ -8073,6 +11817,45 @@
    "text": "k'ayra",
    "voice": null
   },
+  "8f4fbcf0b715d4c29cdc23e199c9258d13b18a5d0e791ba3b55d9694f167dccf": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 669,
+   "engine": "kokoro",
+   "file": "/audio/en/ola.4f6e23fb.m4a",
+   "hyp": "the wave",
+   "id": "ola",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.84,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.2
+   },
+   "master": "en/ola.4f6e23fb.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "4f6e23fbb216504f8a179da7f8c90d8acebe52db0689f8052c24841b7d26f55d",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Wave",
+   "voice": "af_heart"
+  },
   "8f564d0fda22063dec9d7e5277f60fcdc94fd8582026ff1ec8cbc2a015a606b6": {
    "candidateScores": [
     0.7,
@@ -8114,6 +11897,45 @@
    "text": "k'u'uch",
    "voice": null
   },
+  "8fb82b6d71bd38956c3feff60bbf751fa20dc4223ba3442fd5401ff40864a00f": {
+   "candidateScores": [
+    0.8,
+    0.9,
+    0.8,
+    0.8,
+    0.5333,
+    0.8
+   ],
+   "candidates": 6,
+   "cer": 0.1429,
+   "durationMs": 768,
+   "engine": "kokoro",
+   "file": "/audio/en/rocio.aeb21d7d.m4a",
+   "hyp": "the duw",
+   "id": "rocio",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.819,
+    "rawClip": 0.0,
+    "rmsDb": -16.2
+   },
+   "master": "en/rocio.aeb21d7d.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "am_michael"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9,
+   "scoring": "asr",
+   "sha256": "aeb21d7d4850d0554cc36d5e62dd7482ab00febb32d2300a4278f8635bb203c3",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Dew",
+   "voice": "am_michael"
+  },
   "9161f6420e9e0bbb3450f26978bf290a5a7c36e2bacb6ffd1f70807c5144e9cb": {
    "candidateScores": [
     0.9745,
@@ -8153,6 +11975,45 @@
    "text": "The Island",
    "voice": "af_bella"
   },
+  "91a0149e91da6b0e316a37596fa35b2cb72a881ab80628b6c37546f34b6b36c2": {
+   "candidateScores": [
+    1.0,
+    0.5333,
+    1.0,
+    1.0,
+    0.93,
+    0.7667
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 646,
+   "engine": "kokoro",
+   "file": "/audio/en/aguja.9b302c9b.m4a",
+   "hyp": "the needle",
+   "id": "aguja",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.12,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -15.7
+   },
+   "master": "en/aguja.9b302c9b.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "9b302c9b31f6624326b8315ae8e5e10ccbb2ac6ddad7c7a59c2b432bc2dba7fd",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Needle",
+   "voice": "af_heart"
+  },
   "91ffcac3cfeff7a6ac03c945c71401a14e87ab0b906395ab838c350992ef2b56": {
    "candidateScores": [
     0.825,
@@ -8191,6 +12052,45 @@
    "source": "kokoro",
    "text": "The Clay Pot",
    "voice": "am_michael"
+  },
+  "948213052aa77335acbb9e07235a14092d988d01c60643f3010718d44be81b1e": {
+   "candidateScores": [
+    0.8657,
+    0.9316,
+    1.0,
+    0.72,
+    0.9125,
+    0.8591
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 712,
+   "engine": "kokoro",
+   "file": "/audio/es/noche.5a37fd4c.m4a",
+   "hyp": "noche",
+   "id": "noche",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.81,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.6
+   },
+   "master": "es/noche.5a37fd4c.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "5a37fd4c832f61c2a03d7b9863293a8b7bfd081e8a9062f5bc724a6e8bc34067",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Noche",
+   "voice": "em_alex"
   },
   "94c9ff14329aca633d2bdcfe494e2e741763a63df19abdf753e95ed4e10f16f0": {
    "candidateScores": [
@@ -8233,6 +12133,45 @@
    "text": "naaj",
    "voice": null
   },
+  "94dee97031aab999d10a05f134bd77deff4e3f25c03c1973fb042a941fe00412": {
+   "candidateScores": [
+    0.9802,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 686,
+   "engine": "kokoro",
+   "file": "/audio/es/rio.4b8e147c.m4a",
+   "hyp": "el río",
+   "id": "rio",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.78,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.3
+   },
+   "master": "es/rio.4b8e147c.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "4b8e147c3460933de0d1c7b80d1e77a3d4143800fb40a99633219224670cccac",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Río",
+   "voice": "em_alex"
+  },
   "94e15bdd578bad367918ee1b51a8b01fa51758345b2389749608c74cabe6171f": {
    "candidateScores": [
     0.5333,
@@ -8273,6 +12212,84 @@
    "source": "mms",
    "text": "kuákua",
    "voice": null
+  },
+  "94e67c82721879a7c260569fca61e83a07a1ff7ceb701571a9dce1d70a9541c0": {
+   "candidateScores": [
+    1.0,
+    0.8663,
+    1.0,
+    0.9077,
+    0.8711,
+    0.8855
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 751,
+   "engine": "kokoro",
+   "file": "/audio/en/hongo.135d99fc.m4a",
+   "hyp": "the mushroom",
+   "id": "hongo",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.68,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.2
+   },
+   "master": "en/hongo.135d99fc.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "135d99fc8f0a9248f7a58cd631327f9836c8dc8a498bed2cc90a0fd9737ca59b",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Mushroom",
+   "voice": "af_heart"
+  },
+  "96c761651c3798a6d4b5806f1e081ec349af9d00257a2f334c96f8fdb4a292a4": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.9898,
+    0.9529,
+    0.94,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 1004,
+   "engine": "kokoro",
+   "file": "/audio/en/telarana.6743c6e8.m4a",
+   "hyp": "the spider web",
+   "id": "telarana",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.799,
+    "rawClip": 0.0,
+    "rmsDb": -16.6
+   },
+   "master": "en/telarana.6743c6e8.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "6743c6e88947d8d166f4b2b1be41c1e69b1bc6c4a2dbe1388b005d821a81497c",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Spider Web",
+   "voice": "af_heart"
   },
   "97180aeb5eebdc2101f53d444f0ee035f7adab842ae7f0d9551fb22c6989bed1": {
    "candidateScores": [
@@ -8315,6 +12332,45 @@
    "text": "ka̱tsä",
    "voice": null
   },
+  "972ec7f529d8fa8fabb1565e513f7b62f41f35e4277f201a9ef41d4b191e7b43": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.982,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 763,
+   "engine": "kokoro",
+   "file": "/audio/es/cielo.b5c55624.m4a",
+   "hyp": "el cielo",
+   "id": "cielo",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.19,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.1
+   },
+   "master": "es/cielo.b5c55624.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "b5c55624522d4c41c22b2da0a9129f9f203c5349331f9c36b4b3f15f276a85d5",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Cielo",
+   "voice": "ef_dora"
+  },
   "97aa30b27c239646da3d74913a499bd459d845fbb2c1a10e5a566001281bb78c": {
    "candidateScores": [
     0.9,
@@ -8352,6 +12408,45 @@
    "signal": 1.0,
    "source": "kokoro",
    "text": "The Sun",
+   "voice": "af_heart"
+  },
+  "987c0de9401ecd84cd8485f64371b94c3d99afa1e0cc618a18466e69575f88a5": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 756,
+   "engine": "kokoro",
+   "file": "/audio/en/cocina.d1b4885e.m4a",
+   "hyp": "the kitchen",
+   "id": "cocina",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.78,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.4
+   },
+   "master": "en/cocina.d1b4885e.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "d1b4885e8cfb23dd54b8c788e9e6044bf2ee7eeb211bc39d95c23d1047985e30",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Kitchen",
    "voice": "af_heart"
   },
   "99a7bd372eaf4c092ff958ed52664b0489d2414458ae0d09cc50ab1b7ba6221a": {
@@ -8470,6 +12565,123 @@
    "source": "kokoro",
    "text": "La Llama",
    "voice": "ef_dora"
+  },
+  "9bb64bb967d9e09a6a20cf9e89ef8074297a0468b747f88fcb528e6ea616f00c": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.3
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 653,
+   "engine": "kokoro",
+   "file": "/audio/en/puerta.eb49610d.m4a",
+   "hyp": "the door",
+   "id": "puerta",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.817,
+    "rawClip": 0.0,
+    "rmsDb": -15.8
+   },
+   "master": "en/puerta.eb49610d.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "eb49610d1204b8dbc43660684c21b2812ee8144492ffb8569eef5683813e8e85",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Door",
+   "voice": "af_heart"
+  },
+  "9bdf703132fea3036c2104a21ef608c8db8292737bccc003d9394af0f8da2349": {
+   "candidateScores": [
+    0.7375,
+    0.6485,
+    0.908,
+    0.65,
+    1.0,
+    0.8075
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 719,
+   "engine": "kokoro",
+   "file": "/audio/es/arana.8bbc46cd.m4a",
+   "hyp": "la araña",
+   "id": "arana",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.43,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.2
+   },
+   "master": "es/arana.8bbc46cd.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "8bbc46cdcf65184643efcd508e7b4ef477b92e8063c7e13eb4cbd7ed2650dd3b",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Araña",
+   "voice": "em_santa"
+  },
+  "9be0fecddfabb0c03e62264b657c02cfd478c2dccfd1ef8332379f7d433bb6f2": {
+   "candidateScores": [
+    0.9439,
+    0.9979,
+    0.973,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 1066,
+   "engine": "kokoro",
+   "file": "/audio/es/pantano.6d628ee3.m4a",
+   "hyp": "el pantano",
+   "id": "pantano",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.59,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.7
+   },
+   "master": "es/pantano.6d628ee3.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "6d628ee3cfe929978d9cbb9d6dde70df1dcf0aa30c3cb86a461f1a305c2b5bda",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Pantano",
+   "voice": "em_santa"
   },
   "9bf50f30ebd5b7f07d6021f6fc3af9ee6fb388febbebddee08aba2754c9daee8": {
    "candidateScores": [
@@ -8632,6 +12844,45 @@
    "source": "mms",
    "text": "tomate",
    "voice": null
+  },
+  "9da7d9bca3e433fc4bdccf124bf3e0c036578d3a497011ecb8f861f2f059ebb8": {
+   "candidateScores": [
+    0.9697,
+    0.65,
+    0.2688,
+    0.2793,
+    0.5625,
+    0.4379
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 819,
+   "engine": "kokoro",
+   "file": "/audio/es/aguja.5ef956b0.m4a",
+   "hyp": "la aguja",
+   "id": "aguja",
+   "lang": "es",
+   "loudness": {
+    "lufs": -19.01,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.6
+   },
+   "master": "es/aguja.5ef956b0.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9697,
+   "scoring": "asr",
+   "sha256": "5ef956b093d90b440f57b117fa620f8166f88bf0de591adc9438e9d959f50b8d",
+   "signal": 0.899,
+   "source": "kokoro",
+   "text": "La Aguja",
+   "voice": "ef_dora"
   },
   "9ebdcaa836eb238af11ce7bd56498b940afee83e160b393e46870cde41b75957": {
    "candidateScores": [
@@ -8836,6 +13087,45 @@
    "text": "tehuilotl",
    "voice": null
   },
+  "a23b42420fc38d1f20c9700f9153b418953458cd1bd6c399b49e15e0ca026c7a": {
+   "candidateScores": [
+    0.8605,
+    0.9229,
+    0.85,
+    0.8833,
+    1.0,
+    0.9349
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 718,
+   "engine": "kokoro",
+   "file": "/audio/es/cocina.68fcd7b2.m4a",
+   "hyp": "cocina",
+   "id": "cocina",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.68,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.1
+   },
+   "master": "es/cocina.68fcd7b2.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "no-article",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "68fcd7b2746ec3f2b6725b31c4f1285286f1fa97b5b0a47af6bf5f41ec258a6d",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Cocina",
+   "voice": "em_alex"
+  },
   "a23e706d9ac28d395931edc9f4e4ee17d28bbfede5ede6df08438a9db9b88e9e": {
    "candidateScores": [
     0.8094,
@@ -8877,6 +13167,84 @@
    "text": "chem",
    "voice": null
   },
+  "a2f303aea1d91e0f6c8c8fb63766162436ca5f7213eab310b9bb357bbf8640e0": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.9937,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 870,
+   "engine": "kokoro",
+   "file": "/audio/es/amanecer.221bac36.m4a",
+   "hyp": "el amanecer",
+   "id": "amanecer",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.75,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.5
+   },
+   "master": "es/amanecer.221bac36.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "221bac363c307b4dbbbd3c80fd6fdfcffe27453c1ec1ef3360ce0644c2840464",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Amanecer",
+   "voice": "ef_dora"
+  },
+  "a345fefc4ab9374d6df1f64a684958f70d3e8281c92c4b83549e53442deaee98": {
+   "candidateScores": [
+    0.958,
+    1.0,
+    0.9736,
+    0.9775,
+    0.7869,
+    0.825
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 748,
+   "engine": "kokoro",
+   "file": "/audio/es/raiz.e503c4b1.m4a",
+   "hyp": "la raíz",
+   "id": "raiz",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.64,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.4
+   },
+   "master": "es/raiz.e503c4b1.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "e503c4b159f6519579911561497e6ea9f7b31fc9dc52eba1946e50a68eb061fe",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Raíz",
+   "voice": "em_alex"
+  },
   "a430cc7b22f015c3a73002c183f9a09e30dc84fb6e677ea60c170e4e5a35c698": {
    "candidateScores": [
     0.4,
@@ -8917,6 +13285,45 @@
    "source": "mms",
    "text": "k'iiwik",
    "voice": null
+  },
+  "a5ceec966c0a4d1bbd2d65db2d2786349b0f67830ae44bb954abc550ca95c3b8": {
+   "candidateScores": [
+    0.9877,
+    1.0,
+    1.0,
+    0.9703,
+    0.9766,
+    0.9535
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 796,
+   "engine": "kokoro",
+   "file": "/audio/es/escalera.c79eb1f8.m4a",
+   "hyp": "escalera",
+   "id": "escalera",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.17,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.3
+   },
+   "master": "es/escalera.c79eb1f8.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "no-article",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "c79eb1f8bee185fdb6f5a7f9a5cc23f3ff5eeb5a37777629f5882f94b4a0b5a3",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Escalera",
+   "voice": "em_santa"
   },
   "a67342c5b5102fea5ffe0a1dae056e5f37f1226a52b3e2e78f375a413ddf19cb": {
    "candidateScores": [
@@ -9000,6 +13407,123 @@
    "text": "calli",
    "voice": null
   },
+  "a70574335c7e7dfe00786ecb4f0391a1096d9f949eacb1af5127fa71fee95c47": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 728,
+   "engine": "kokoro",
+   "file": "/audio/en/tierra.bef9266b.m4a",
+   "hyp": "the soil",
+   "id": "tierra",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.17,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.1
+   },
+   "master": "en/tierra.bef9266b.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "bef9266b58e775eaea077db00bb5540c5fe710f62625cb3646f8bdb92d878eea",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Soil",
+   "voice": "af_heart"
+  },
+  "a77e35b7dda9efd53a557bf203931c49d4d6f7ae0dc30ec408f8c0b76e6a9970": {
+   "candidateScores": [
+    0.7659,
+    0.9775,
+    0.9523,
+    0.9976,
+    0.9214,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 554,
+   "engine": "kokoro",
+   "file": "/audio/es/pasto.1a0f7154.m4a",
+   "hyp": "pasto",
+   "id": "pasto",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.2,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -15.8
+   },
+   "master": "es/pasto.1a0f7154.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "no-article",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "1a0f7154d5ed94eb2772671e780c298c1fe23be197b57e7c05ae7cafcba015f8",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Pasto",
+   "voice": "em_alex"
+  },
+  "a8291e65c422a1b91169703e46421b84a63d43cd5ed4d817e4fa804c22cfbf0d": {
+   "candidateScores": [
+    0.8476,
+    0.7667,
+    0.65,
+    0.3,
+    0.5333,
+    0.2679
+   ],
+   "candidates": 6,
+   "cer": 0.1667,
+   "durationMs": 676,
+   "engine": "kokoro",
+   "file": "/audio/es/ola.c5d560f5.m4a",
+   "hyp": "laola",
+   "id": "ola",
+   "lang": "es",
+   "loudness": {
+    "lufs": -19.19,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -19.1
+   },
+   "master": "es/ola.c5d560f5.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.8476,
+   "scoring": "asr",
+   "sha256": "c5d560f5a6e69ab291139ee12f5fb991d2939f743b73e0a5cf73809f7b76e605",
+   "signal": 0.881,
+   "source": "kokoro",
+   "text": "La Ola",
+   "voice": "ef_dora"
+  },
   "a8d29ee63a011df0d5a6de37dba3ee10eb5ba3ffc062914c90ccb4daee644c8a": {
    "candidateScores": [
     0.3,
@@ -9040,6 +13564,84 @@
    "source": "mms",
    "text": "mo̱",
    "voice": null
+  },
+  "a93d06ba85b73354487be2cf9d9dfb94e6754432407728447ad06878663d0069": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.9982,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 760,
+   "engine": "kokoro",
+   "file": "/audio/en/barranca.7cbd79f0.m4a",
+   "hyp": "the ravine",
+   "id": "barranca",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.21,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -15.6
+   },
+   "master": "en/barranca.7cbd79f0.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "7cbd79f0c835cabdbecbbac98b2388d87622d333ea9683bacef3bc32a65a72a4",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Ravine",
+   "voice": "af_heart"
+  },
+  "aa9fd81a16270717a2b897de61f417c4dc3f1d787629af9999f337d40eb1bd6d": {
+   "candidateScores": [
+    1.0,
+    0.9337,
+    0.9664,
+    0.65,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 643,
+   "engine": "kokoro",
+   "file": "/audio/en/hoja.36e121ca.m4a",
+   "hyp": "the leaf",
+   "id": "hoja",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.29,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.8
+   },
+   "master": "en/hoja.36e121ca.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "36e121ca0d3127a00a68ddfd3ed96f8c7d29f0b60cb6bcec9c815368cd7fb945",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Leaf",
+   "voice": "af_heart"
   },
   "aadbfe1b51025a365d59409bc6444b0cdbc58a0a8848318e1019848ef68b8ee2": {
    "candidateScores": [
@@ -9120,6 +13722,45 @@
    "source": "mms",
    "text": "ocelotl",
    "voice": null
+  },
+  "ab88ea216cbd1c19f596fe4917ca70b80fc973f399da6db7af85d28a7d468da5": {
+   "candidateScores": [
+    0.6314,
+    0.7375,
+    0.5752,
+    0.7129,
+    0.5665,
+    0.58
+   ],
+   "candidates": 6,
+   "cer": 0.375,
+   "durationMs": 760,
+   "engine": "kokoro",
+   "file": "/audio/es/valle.39281462.m4a",
+   "hyp": "el bage",
+   "id": "valle",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.67,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.7
+   },
+   "master": "es/valle.39281462.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.7375,
+   "scoring": "asr",
+   "sha256": "392814626f100a24fdc5563f7a6607a17d830764af2b90a4524ab6e99a115de5",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Valle",
+   "voice": "ef_dora"
   },
   "ac9775621e7e6f5c79965f7c627c8f25f5a40b4f5b1b7645234ba6ca5ccb3c64": {
    "candidateScores": [
@@ -9203,6 +13844,45 @@
    "text": "huehuetl",
    "voice": null
   },
+  "ad08b0a28bfbf195bc2593b2b68a39435bf2ef0bab39104c8db6d31ad8646b57": {
+   "candidateScores": [
+    1.0,
+    0.9,
+    0.9,
+    0.9,
+    1.0,
+    0.749
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 667,
+   "engine": "kokoro",
+   "file": "/audio/en/murcielago.768d5461.m4a",
+   "hyp": "the bat",
+   "id": "murcielago",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.88,
+    "rawClip": 0.0,
+    "rmsDb": -15.4
+   },
+   "master": "en/murcielago.768d5461.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "768d5461cd3d711c3f75c967834f7b7bcc37235014be976cc5ebad0dbc8a133e",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Bat",
+   "voice": "af_heart"
+  },
   "ad1e8dd6a17950251b95606875e4ad36500246d0cd3ef889757b8e72e4cc26b3": {
    "candidateScores": [
     0.5333,
@@ -9281,6 +13961,84 @@
    "signal": 1.0,
    "source": "kokoro",
    "text": "The Potato",
+   "voice": "af_heart"
+  },
+  "aec7d0ea2d9bc671b0583d57b59837b768ac885e1a2ab555a6b4bd3b4c190b2d": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.9772,
+    1.0,
+    0.9685,
+    0.7667
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 695,
+   "engine": "kokoro",
+   "file": "/audio/en/hielo.caa11285.m4a",
+   "hyp": "the ice",
+   "id": "hielo",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.62,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.7
+   },
+   "master": "en/hielo.caa11285.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "caa112852c361550dae61e18ea0a0f7534effdf98e8b686ddc4ebe35757d93d4",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Ice",
+   "voice": "af_heart"
+  },
+  "af6e379b45f6b4adf3fc8dc9c89df48029b317fe04681ae6f42de6643b62cba1": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.9874,
+    0.9949,
+    0.9955,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 683,
+   "engine": "kokoro",
+   "file": "/audio/en/agua.6b677721.m4a",
+   "hyp": "the water",
+   "id": "agua",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.813,
+    "rawClip": 0.0,
+    "rmsDb": -15.5
+   },
+   "master": "en/agua.6b677721.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "6b67772188def8be29e8de39ab558e876a1a3e09b48c2709c31744649681c1b2",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Water",
    "voice": "af_heart"
   },
   "aff0b58e7bf411781c1b493bfb1d0567d68245a38423d973b46ffa95f8a04f41": {
@@ -9484,6 +14242,123 @@
    "text": "lamar qucha",
    "voice": null
   },
+  "b3ad54a3bc5b84062dd7ad25fdca164ff9f5bc576ba3e853db64e86dabd2931c": {
+   "candidateScores": [
+    0.9073,
+    0.8833,
+    1.0,
+    1.0,
+    1.0,
+    0.9481
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 748,
+   "engine": "kokoro",
+   "file": "/audio/es/camote.9fdaea65.m4a",
+   "hyp": "camote",
+   "id": "camote",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.81,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.4
+   },
+   "master": "es/camote.9fdaea65.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "9fdaea65954f8025c82c68abf575951ac247c098d92ae11c5f3e142659027bf9",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Camote",
+   "voice": "em_alex"
+  },
+  "b3c4203db72bb50100dd5cf2ff8ce597d973b184d4cc6527e9b640f2646cfe4d": {
+   "candidateScores": [
+    0.825,
+    1.0,
+    1.0,
+    0.8052,
+    1.0,
+    0.825
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 607,
+   "engine": "kokoro",
+   "file": "/audio/en/camino.5dc600bb.m4a",
+   "hyp": "the path",
+   "id": "camino",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.15,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -15.7
+   },
+   "master": "en/camino.5dc600bb.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "5dc600bb55906d4b037f6324c8c7ec9118effb6b85999172336beab7ec5f8ecc",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Path",
+   "voice": "af_heart"
+  },
+  "b4f8ecb5d88310a7b9bf571538b2b42cfa73a14a4866cc4b83a4ec46191ae726": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 705,
+   "engine": "kokoro",
+   "file": "/audio/en/hamaca.2d58ff33.m4a",
+   "hyp": "the hammock",
+   "id": "hamaca",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.772,
+    "rawClip": 0.0,
+    "rmsDb": -15.6
+   },
+   "master": "en/hamaca.2d58ff33.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "2d58ff33c311368a3723ae667b282848bc510a1d691c17ea1d4fba09536143c3",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Hammock",
+   "voice": "af_heart"
+  },
   "b57f89f7de9978c105b0cfb55c63ce95a8e05c71b4a5876886e552f0a6b6f0ee": {
    "candidateScores": [
     1.0,
@@ -9646,6 +14521,45 @@
    "text": "ka̱wä",
    "voice": null
   },
+  "b5c2de4e924fb49d4cb0ed4344a660c73d82797ac0d2afd9e5a3d0b130d89502": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.72,
+    0.44,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 741,
+   "engine": "kokoro",
+   "file": "/audio/en/cerca.b75ef683.m4a",
+   "hyp": "the fence",
+   "id": "cerca",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.03,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.1
+   },
+   "master": "en/cerca.b75ef683.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "b75ef68314a3c5b55c4630533d45c8b101107288f5f756cef553b96feac8922f",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Fence",
+   "voice": "af_heart"
+  },
   "b5d4ae5aac81d59211eef7b719a3dc91f2f6179363a2e683f7b0e8c84e64e054": {
    "candidateScores": [
     1.0,
@@ -9722,6 +14636,45 @@
    "signal": 1.0,
    "source": "kokoro",
    "text": "La Biblioteca",
+   "voice": "ef_dora"
+  },
+  "b67824f3be57f057ac995cf8628635225bc8d45cdd404178d46d4d1eb58ada45": {
+   "candidateScores": [
+    0.9412,
+    0.8605,
+    0.7407,
+    0.386,
+    0.69,
+    0.9244
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 728,
+   "engine": "kokoro",
+   "file": "/audio/es/arbol.84e7c9dc.m4a",
+   "hyp": "el arbol",
+   "id": "arbol",
+   "lang": "es",
+   "loudness": {
+    "lufs": -19.96,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -19.8
+   },
+   "master": "es/arbol.84e7c9dc.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9412,
+   "scoring": "asr",
+   "sha256": "84e7c9dc6a02e36bd9bb27f2a940aa44c808b0d9bad60d6b8107d392be0e8f61",
+   "signal": 0.804,
+   "source": "kokoro",
+   "text": "El Árbol",
    "voice": "ef_dora"
   },
   "b70312a710c5208fc46beac785df1927226eb7679fd0c1c104ef6c23fc87aa3a": {
@@ -9805,6 +14758,45 @@
    "source": "mms",
    "text": "turtuga",
    "voice": null
+  },
+  "b8562c1ad65af5100e0bc1c31a2589dc7782af8f883ddcbb595cc56485b56971": {
+   "candidateScores": [
+    0.6709,
+    0.4456,
+    0.9874,
+    0.8832,
+    0.9544,
+    0.4669
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 701,
+   "engine": "kokoro",
+   "file": "/audio/es/mono.03fa4314.m4a",
+   "hyp": "el mono",
+   "id": "mono",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.42,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.2
+   },
+   "master": "es/mono.03fa4314.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9874,
+   "scoring": "asr",
+   "sha256": "03fa4314e0936409fe379238b0241fecbd07b4c3f3d6e57db90da3a62c6bf3b4",
+   "signal": 0.958,
+   "source": "kokoro",
+   "text": "El Mono",
+   "voice": "em_santa"
   },
   "b8bdc07f07ddb61e84934dd361051ef9e2a9987f9ef9e207ebcb49646ca66c64": {
    "candidateScores": [
@@ -9925,6 +14917,84 @@
    "text": "The Shop",
    "voice": "af_heart"
   },
+  "b9f7f06ce7417685063e808c47b52d575231cb4ec3bd000aacadcaac091771c6": {
+   "candidateScores": [
+    0.9125,
+    0.9125,
+    1.0,
+    1.0,
+    0.475,
+    0.825
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 600,
+   "engine": "kokoro",
+   "file": "/audio/en/raiz.abb1ff56.m4a",
+   "hyp": "root",
+   "id": "raiz",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.19,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -15.7
+   },
+   "master": "en/raiz.abb1ff56.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "no-article",
+    "voice": "am_michael"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "abb1ff561cd8b9b17cd31c4dfd0387c502a323606d6b8831d9afbe857ef84a2e",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Root",
+   "voice": "am_michael"
+  },
+  "ba0dea909448f9a3e52fe0e4d45f1ce4597a89a96df89b42c0508f31c5348f89": {
+   "candidateScores": [
+    0.9088,
+    1.0,
+    0.9838,
+    0.976,
+    0.9,
+    0.9592
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 778,
+   "engine": "kokoro",
+   "file": "/audio/es/granizo.d201416c.m4a",
+   "hyp": "granizo",
+   "id": "granizo",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.83,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.7
+   },
+   "master": "es/granizo.d201416c.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "no-article",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "d201416c6c68b4036015708712831c6ceccdc6af845d8d5e19d6b4d18888594e",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Granizo",
+   "voice": "em_alex"
+  },
   "bb27bcb21bbfd0a946e826354b7e209ea8ebfe4f906fc0489566469f027efe8e": {
    "candidateScores": [
     0.475,
@@ -10004,6 +15074,45 @@
    "source": "kokoro",
    "text": "La Piña",
    "voice": "em_alex"
+  },
+  "bc8e58a3b545055c683d998efe6da4c0f2e100a1f344f813eb092c560061a74c": {
+   "candidateScores": [
+    0.7433,
+    0.475,
+    0.65,
+    0.3,
+    0.65,
+    0.8
+   ],
+   "candidates": 6,
+   "cer": 0.2857,
+   "durationMs": 565,
+   "engine": "kokoro",
+   "file": "/audio/es/huso.89751123.m4a",
+   "hyp": "el usor",
+   "id": "huso",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.65,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.1
+   },
+   "master": "es/huso.89751123.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.8,
+   "scoring": "asr",
+   "sha256": "897511233d6cec9b1a4e3d1a7f4ce1a813db37cc620102ce25d3388457a04357",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Huso",
+   "voice": "ef_dora"
   },
   "bcabe192d297ccbe57b5bdb204644a0490f59ac189b8a9187acba60e1e283c3e": {
    "candidateScores": [
@@ -10290,6 +15399,45 @@
    "text": "hirasul",
    "voice": null
   },
+  "bf5f3f67855d102819da8c9caf089ba9a8dc9b1168638a489ed0a5eb69e1afe9": {
+   "candidateScores": [
+    0.9601,
+    0.8833,
+    1.0,
+    0.8566,
+    0.979,
+    0.6494
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 780,
+   "engine": "kokoro",
+   "file": "/audio/es/charco.85cf95bb.m4a",
+   "hyp": "el charco",
+   "id": "charco",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.73,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.0
+   },
+   "master": "es/charco.85cf95bb.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "85cf95bbc890aae35d8a5ab416841ebce83647ec7e4021f1368d9ba4ab1f9e72",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Charco",
+   "voice": "em_santa"
+  },
   "bf69403e69428b8f40a8ce83ed6eead251911672829e1b743bf5483c910a951e": {
    "candidateScores": [
     0.72,
@@ -10450,6 +15598,84 @@
    "text": "piña",
    "voice": null
   },
+  "c188a43770978813969ecdbfb84cc54a664e0bd54b0c353b275c7944367b11bd": {
+   "candidateScores": [
+    1.0,
+    0.9,
+    0.7997,
+    0.9919,
+    0.9847,
+    0.9964
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 884,
+   "engine": "kokoro",
+   "file": "/audio/es/cascada.21f20644.m4a",
+   "hyp": "la cascada",
+   "id": "cascada",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.71,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.8
+   },
+   "master": "es/cascada.21f20644.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "21f20644da4d657bc7a159019daac648d6f8a5301a45f645222ae74d551352b8",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Cascada",
+   "voice": "ef_dora"
+  },
+  "c2172f67f2a4d1556aec48adfbb11e78280b61c0f3ba60cc4d2293344a0148af": {
+   "candidateScores": [
+    0.9,
+    0.9,
+    0.7667,
+    0.9,
+    0.7667,
+    0.731
+   ],
+   "candidates": 6,
+   "cer": 0.1429,
+   "durationMs": 716,
+   "engine": "kokoro",
+   "file": "/audio/en/hacha.a1f91221.m4a",
+   "hyp": "the ax",
+   "id": "hacha",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.81,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.6
+   },
+   "master": "en/hacha.a1f91221.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9,
+   "scoring": "asr",
+   "sha256": "a1f912210e7173e9f36ec66719854d2fdf6eb46e3687fa95086c153f138b6f14",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Axe",
+   "voice": "af_heart"
+  },
   "c24bca012c469241233248f9e0ce1a1fcc933939b991efea7a2e1e59e3e8584d": {
    "candidateScores": [
     0.5,
@@ -10490,6 +15716,45 @@
    "source": "mms",
    "text": "ehecatl",
    "voice": null
+  },
+  "c27ecc23b9e8677b830c6312d561372569f963571838f0dc711640117bc2ba1d": {
+   "candidateScores": [
+    0.8979,
+    0.8827,
+    0.9222,
+    0.8734,
+    0.9219,
+    0.9222
+   ],
+   "candidates": 6,
+   "cer": 0.1111,
+   "durationMs": 696,
+   "engine": "kokoro",
+   "file": "/audio/es/morral.2ae0bf34.m4a",
+   "hyp": "el moral",
+   "id": "morral",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.53,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.3
+   },
+   "master": "es/morral.2ae0bf34.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9222,
+   "scoring": "asr",
+   "sha256": "2ae0bf3402e23caa4bea97ed15f766bef21e46a1727cec4d0e959ccb938bc93c",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Morral",
+   "voice": "em_santa"
   },
   "c2c0ce5bfdabdf33cc6d5f18b64de31a828b09e0f6494990f4a645902a295743": {
    "candidateScores": [
@@ -10570,6 +15835,45 @@
    "source": "kokoro",
    "text": "The Llama",
    "voice": "af_heart"
+  },
+  "c56998eb6a66f0e0b94a92b4cd28a400d8bc31563075afd9cc1155a372b539fd": {
+   "candidateScores": [
+    0.9544,
+    0.9385,
+    0.9724,
+    0.9871,
+    0.9118,
+    0.9253
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 939,
+   "engine": "kokoro",
+   "file": "/audio/es/trueno.9002146b.m4a",
+   "hyp": "el trueno",
+   "id": "trueno",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.43,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -19.1
+   },
+   "master": "es/trueno.9002146b.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9871,
+   "scoring": "asr",
+   "sha256": "9002146b66542a26016a8f3034a85ff735335abd5377c019e6fb58593a0f0093",
+   "signal": 0.957,
+   "source": "kokoro",
+   "text": "El Trueno",
+   "voice": "em_santa"
   },
   "c5a20d80b4a07a103ed38f110f4907f1820346f1e274fbdcb3e5214dc4b2d958": {
    "candidateScores": [
@@ -10693,6 +15997,84 @@
    "source": "mms",
    "text": "cho̱",
    "voice": null
+  },
+  "c8696f993a2d3b7d03b42007a6ff0b66d72df27c7e7f3826399dc221e9112caf": {
+   "candidateScores": [
+    1.0,
+    0.857,
+    0.7023,
+    0.5488,
+    0.3,
+    0.9418
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 807,
+   "engine": "kokoro",
+   "file": "/audio/es/techo.798a3a8d.m4a",
+   "hyp": "el techo",
+   "id": "techo",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.98,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.1
+   },
+   "master": "es/techo.798a3a8d.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "798a3a8d78db468635ee30e7f229f9b059adb8f41f29559d723d74210e886e3a",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Techo",
+   "voice": "ef_dora"
+  },
+  "c925fde9cab8949b7828df532b730d85c30c2bc0b0e8f1c796d8bb902eb9068d": {
+   "candidateScores": [
+    1.0,
+    0.825,
+    1.0,
+    0.825,
+    0.9125,
+    0.825
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 676,
+   "engine": "kokoro",
+   "file": "/audio/en/venado.32ce14b7.m4a",
+   "hyp": "the deer",
+   "id": "venado",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.831,
+    "rawClip": 0.0,
+    "rmsDb": -15.9
+   },
+   "master": "en/venado.32ce14b7.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "32ce14b79133cff194f2fc0a86f9ef09d49a6203bb75fdd1260b5fbe7020705d",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Deer",
+   "voice": "af_heart"
   },
   "c9c2f10c5150cc94f81dac21122049308bd9279648b3ac6482d848a14685980d": {
    "candidateScores": [
@@ -10854,6 +16236,45 @@
    "text": "tunk'ul",
    "voice": null
   },
+  "cc7e6627981eec1002247b64b91505c5cd8227f80c9b5f43780a52adc67b3a14": {
+   "candidateScores": [
+    0.8712,
+    0.9937,
+    0.6637,
+    0.7892,
+    0.9,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 838,
+   "engine": "kokoro",
+   "file": "/audio/es/guayaba.efbb296b.m4a",
+   "hyp": "la guayaba",
+   "id": "guayaba",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.5,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.6
+   },
+   "master": "es/guayaba.efbb296b.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "efbb296b9adcfc82bc06b9d7b32f85891d758f12758ef95a1327137fc82542c9",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Guayaba",
+   "voice": "em_santa"
+  },
   "cd2debfcb1c6c4f775fc72c5edce229194b3260979540d63d2e5a15ce4665fe7": {
    "candidateScores": [
     1.0,
@@ -10934,6 +16355,84 @@
    "text": "urqu",
    "voice": null
   },
+  "ceed0bf6588ae34c912ca3d3ee9b2bb442cd2a63a5e4e9ba6b133926e250c81f": {
+   "candidateScores": [
+    0.8,
+    0.5333,
+    0.5333,
+    0.5333,
+    0.8,
+    0.7949
+   ],
+   "candidates": 6,
+   "cer": 0.2857,
+   "durationMs": 621,
+   "engine": "kokoro",
+   "file": "/audio/en/abeja.12ad3cd8.m4a",
+   "hyp": "the b",
+   "id": "abeja",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.96,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.5
+   },
+   "master": "en/abeja.12ad3cd8.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.8,
+   "scoring": "asr",
+   "sha256": "12ad3cd8cb3bd0718b73cd359ef056650318ba52c3ddb3331c32c2866e0e3df2",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Bee",
+   "voice": "af_heart"
+  },
+  "cf4397a38f68e0a8c75db2b472ae8bc5f2f1193001739f8abc08c68af2dc529c": {
+   "candidateScores": [
+    1.0,
+    0.7544,
+    0.8,
+    0.9334,
+    0.9913,
+    0.7667
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 521,
+   "engine": "kokoro",
+   "file": "/audio/en/neblina.ec982f0c.m4a",
+   "hyp": "the fog",
+   "id": "neblina",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.19,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -15.6
+   },
+   "master": "en/neblina.ec982f0c.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "ec982f0cb2a99f88f116fa89fad60ff9a86694307fb186e7b4e572d0b7b7ed70",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Fog",
+   "voice": "af_heart"
+  },
   "cf71d916745404b23e1aa7d897e2aff1d5a21ed31827733716114d833218b4b6": {
    "candidateScores": [
     0.9364,
@@ -10974,6 +16473,45 @@
    "source": "mms",
    "text": "chiquihuitl",
    "voice": null
+  },
+  "d03f255d73a2e61563237be75644dc52550fcb1d1351767059eea417dd0a8124": {
+   "candidateScores": [
+    0.9943,
+    1.0,
+    1.0,
+    0.9523,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 714,
+   "engine": "kokoro",
+   "file": "/audio/es/piedra.32f70aa7.m4a",
+   "hyp": "la piedra",
+   "id": "piedra",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.78,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.8
+   },
+   "master": "es/piedra.32f70aa7.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "32f70aa794ef9c82b47637cd17753b4c7a145c79957ed0c77143ade084fbeac6",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Piedra",
+   "voice": "em_santa"
   },
   "d08efc999a8fee4f62b15c1180e5e80cbfa46abf6f07417015348fff524f9b9b": {
    "candidateScores": [
@@ -11057,6 +16595,84 @@
    "text": "inti",
    "voice": null
   },
+  "d15215db63dcbf9757954fd18200482bbd1201acf6698c198ffbc2e0eb3369a7": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.9462,
+    0.9462
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 773,
+   "engine": "kokoro",
+   "file": "/audio/en/remolino.f8024866.m4a",
+   "hyp": "the whirlwind",
+   "id": "remolino",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.811,
+    "rawClip": 0.0,
+    "rmsDb": -15.8
+   },
+   "master": "en/remolino.f8024866.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "f8024866d98647d4210d581058f165b35c9a5c067a6998682f3c9d7ae50ce88b",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Whirlwind",
+   "voice": "af_heart"
+  },
+  "d15b1ddb1026bfab42aef4e5960c1aa3045fd341be866f51840f20208c2b0339": {
+   "candidateScores": [
+    0.7667,
+    1.0,
+    0.9724,
+    0.991,
+    0.9781,
+    0.5333
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 682,
+   "engine": "kokoro",
+   "file": "/audio/es/sombra.c0b52931.m4a",
+   "hyp": "sombra",
+   "id": "sombra",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.85,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.6
+   },
+   "master": "es/sombra.c0b52931.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "c0b529317cc78d54367b4a3b2cc838d4e62840d6ea5fb4c803319315b29e85d3",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Sombra",
+   "voice": "em_santa"
+  },
   "d15d9e8af6509ad979d5abab595e26806c6681095b03dd2fa6b4ebb70fd3937e": {
    "candidateScores": [
     0.8757,
@@ -11133,6 +16749,84 @@
    "signal": 1.0,
    "source": "kokoro",
    "text": "El Nopal",
+   "voice": "ef_dora"
+  },
+  "d24b67b5fa621db966b1723cba1b85f03f8c4653b2cd19936e34e66e7bf86820": {
+   "candidateScores": [
+    0.9125,
+    0.86,
+    0.9916,
+    0.72,
+    0.9799,
+    0.9125
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 663,
+   "engine": "kokoro",
+   "file": "/audio/es/perro.4a8e9fb8.m4a",
+   "hyp": "el perro",
+   "id": "perro",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.28,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.2
+   },
+   "master": "es/perro.4a8e9fb8.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9916,
+   "scoring": "asr",
+   "sha256": "4a8e9fb8f5283f494526a15f41e1a953827f812a5dbc20ec9ece91863a9eefdd",
+   "signal": 0.972,
+   "source": "kokoro",
+   "text": "El Perro",
+   "voice": "em_alex"
+  },
+  "d2a776e7a061ba70b08dbf9644369691b4f4b28dbda2fe9fd67dfab5f00e5135": {
+   "candidateScores": [
+    0.9565,
+    0.7796,
+    0.9457,
+    0.997,
+    0.9475,
+    0.9958
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 767,
+   "engine": "kokoro",
+   "file": "/audio/es/rocio.16f5c74f.m4a",
+   "hyp": "rocio",
+   "id": "rocio",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.1,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.7
+   },
+   "master": "es/rocio.16f5c74f.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.997,
+   "scoring": "asr",
+   "sha256": "16f5c74f555bd60d8dfa7c7e25effce0ad5335b7e67ec1fac40cd849ec5b2416",
+   "signal": 0.99,
+   "source": "kokoro",
+   "text": "El Rocío",
    "voice": "ef_dora"
   },
   "d2f0f7ef434f82f84fc3f0f3d70a557ff6f5617bac82cf15dc53ecdb9e06021d": {
@@ -11336,6 +17030,45 @@
    "text": "The Thread",
    "voice": "af_heart"
   },
+  "d45f5ba6e399752cb34a683d1a8c299e1f6c5b5a134b9d2bf53b34034e22efc4": {
+   "candidateScores": [
+    0.904,
+    0.9841,
+    0.9655,
+    0.9583,
+    0.9379,
+    0.9787
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 780,
+   "engine": "kokoro",
+   "file": "/audio/es/banco.f902521d.m4a",
+   "hyp": "el banco",
+   "id": "banco",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.53,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.4
+   },
+   "master": "es/banco.f902521d.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9841,
+   "scoring": "asr",
+   "sha256": "f902521d48c9e033ebb102f79785756ef6c7d89b1dd1a5c47b8009efb14c24d6",
+   "signal": 0.947,
+   "source": "kokoro",
+   "text": "El Banco",
+   "voice": "em_santa"
+  },
   "d4b88b6b82771be024dd0341386cee472bca9aeaaabc1c6b758b9d98c16d4675": {
    "candidateScores": [
     0.3,
@@ -11376,6 +17109,45 @@
    "source": "mms",
    "text": "plasa",
    "voice": null
+  },
+  "d4c11b8c86f9f24473c582216599b1d2e09028031c32040830418e90c7954d6d": {
+   "candidateScores": [
+    0.9125,
+    0.7375,
+    0.2916,
+    0.3,
+    0.7375,
+    0.65
+   ],
+   "candidates": 6,
+   "cer": 0.125,
+   "durationMs": 769,
+   "engine": "kokoro",
+   "file": "/audio/es/abeja.b34e3d45.m4a",
+   "hyp": "la aveja",
+   "id": "abeja",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.6,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.3
+   },
+   "master": "es/abeja.b34e3d45.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9125,
+   "scoring": "asr",
+   "sha256": "b34e3d45368d423d929ab2c0b0066a00297bbaf9012cadc2f8b172ef506afeb4",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Abeja",
+   "voice": "ef_dora"
   },
   "d4f947a7461797606b877133df095253577981d36a7e7a38921ae136eee495bd": {
    "candidateScores": [
@@ -11494,6 +17266,45 @@
    "signal": 1.0,
    "source": "kokoro",
    "text": "The Pineapple",
+   "voice": "af_heart"
+  },
+  "d6e4e7faec145b6aaeab7eb56725eab495e02c5687914da70c7167b7e85e9f09": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.9643
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 680,
+   "engine": "kokoro",
+   "file": "/audio/en/lago.e6d8b440.m4a",
+   "hyp": "the lake",
+   "id": "lago",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.836,
+    "rawClip": 0.0,
+    "rmsDb": -16.0
+   },
+   "master": "en/lago.e6d8b440.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "e6d8b4408400ec5a1448752f966d7d004dbce337272971198a7ce6716ba51c53",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Lake",
    "voice": "af_heart"
   },
   "d775c3c9029dc8b19cbd4a50fe42ef8cc058c23518e279c68a88b8a02d7c20cf": {
@@ -11740,6 +17551,45 @@
    "text": "ju",
    "voice": null
   },
+  "d931c566b64d8e230f33605e51e97d7c2c23f27673de9cc4eb05c3521747047d": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    0.8445,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 978,
+   "engine": "kokoro",
+   "file": "/audio/en/morral.0e6ac691.m4a",
+   "hyp": "the woven bag",
+   "id": "morral",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.66,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.2
+   },
+   "master": "en/morral.0e6ac691.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "0e6ac6919819816d0842a2166faebcd53165e7b65e85b3b541fccb33c7af207a",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Woven Bag",
+   "voice": "af_heart"
+  },
   "d9454d1756a41ba8bb0b6ea857ce2f71fa2879d954c836d4c1a500567f828054": {
    "candidateScores": [
     0.6111,
@@ -11780,6 +17630,45 @@
    "source": "mms",
    "text": "pillpintu",
    "voice": null
+  },
+  "d962f4ada4f28606c6868dadcde2c0db68e5f20052c4bceb6c67766f965bb843": {
+   "candidateScores": [
+    0.9222,
+    1.0,
+    0.9222,
+    0.9222,
+    0.5333,
+    0.65
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 850,
+   "engine": "kokoro",
+   "file": "/audio/es/escoba.dced3805.m4a",
+   "hyp": "la escoba",
+   "id": "escoba",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.31,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.2
+   },
+   "master": "es/escoba.dced3805.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "dced38054e6bfcfec8c311bbda9302db156dacf5a2e6315414027b957a5759bd",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Escoba",
+   "voice": "em_alex"
   },
   "d9655f9d25e7ed0455ecec24deb868176a1996cb7ec537d6378bdb789d825f3d": {
    "candidateScores": [
@@ -11904,6 +17793,84 @@
    "text": "bulbí",
    "voice": null
   },
+  "dcf84c2fdf448478b785277b7def1aceda23d75a1ba28ecdb2f718e0872a0d28": {
+   "candidateScores": [
+    0.8329,
+    0.8539,
+    0.4976,
+    0.7415,
+    0.5333,
+    0.7667
+   ],
+   "candidates": 6,
+   "cer": 0.1667,
+   "durationMs": 706,
+   "engine": "kokoro",
+   "file": "/audio/es/coa.afe1b5fa.m4a",
+   "hyp": "la cor",
+   "id": "coa",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.98,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -19.0
+   },
+   "master": "es/coa.afe1b5fa.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.8539,
+   "scoring": "asr",
+   "sha256": "afe1b5fa96eb568ea0a3c179652f18d3ce4aafbc7214dd7de86c4f1417a895d8",
+   "signal": 0.902,
+   "source": "kokoro",
+   "text": "La Coa",
+   "voice": "ef_dora"
+  },
+  "ddfe876fd399058fec26c24d0025e0a252a5fd8f7faca22de84c2d25ad7c67ab": {
+   "candidateScores": [
+    0.7667,
+    0.8,
+    0.4708,
+    0.8,
+    0.65,
+    0.8
+   ],
+   "candidates": 6,
+   "cer": 0.2857,
+   "durationMs": 758,
+   "engine": "kokoro",
+   "file": "/audio/es/yuca.81897acf.m4a",
+   "hyp": "la juka",
+   "id": "yuca",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.01,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -15.6
+   },
+   "master": "es/yuca.81897acf.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.8,
+   "scoring": "asr",
+   "sha256": "81897acf4dc70fb03027a0bc35fb40171cd23efa6b9d05910cfa8af03e47ea1c",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Yuca",
+   "voice": "em_alex"
+  },
   "de409083ab15184635f2478dc85f742f1d2f32e4adac9aa08dcdaf1b6eb72616": {
    "candidateScores": [
     0.8692,
@@ -12022,6 +17989,84 @@
    "source": "mms",
    "text": "ka̱ ssi̱lewa̱ pjoo",
    "voice": null
+  },
+  "e020716680a99432d98df80e3e59e08ab1091496dccb2a6305adc081e0c9d4da": {
+   "candidateScores": [
+    0.9067,
+    1.0,
+    0.9265,
+    0.9784,
+    0.8,
+    0.9724
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 681,
+   "engine": "kokoro",
+   "file": "/audio/es/colmena.2af870b8.m4a",
+   "hyp": "colmena",
+   "id": "colmena",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.79,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.9
+   },
+   "master": "es/colmena.2af870b8.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "no-article",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "2af870b830baa8a67eef766e697473ecc462286145fa40ca8ce586d162f928ab",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Colmena",
+   "voice": "em_santa"
+  },
+  "e023942c123af4d5c6fe810133800d58311f7ddb27539ce64044491247b2ced1": {
+   "candidateScores": [
+    1.0,
+    0.994,
+    0.291,
+    0.9511,
+    1.0,
+    0.825
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 713,
+   "engine": "kokoro",
+   "file": "/audio/es/lodo.3066b28a.m4a",
+   "hyp": "el lodo",
+   "id": "lodo",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.08,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.9
+   },
+   "master": "es/lodo.3066b28a.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "3066b28aead2237e76fc40fa507a2b8f6e8c4b73f98a3d725fca9fe18a6562be",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Lodo",
+   "voice": "ef_dora"
   },
   "e136b0fed8ee1768bec5571cb7c60bffd9ad36ffe84cd5fbe95dc45f3e14d95f": {
    "candidateScores": [
@@ -12388,6 +18433,45 @@
    "text": "wankar",
    "voice": null
   },
+  "e39c132a6d77b17be6e36ed6aed72347693b43ea1d9896ff900adfcb72b2d98f": {
+   "candidateScores": [
+    1.0,
+    0.825,
+    0.825,
+    1.0,
+    1.0,
+    0.825
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 699,
+   "engine": "kokoro",
+   "file": "/audio/en/arbol.8d63927e.m4a",
+   "hyp": "the tree",
+   "id": "arbol",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.857,
+    "rawClip": 0.0,
+    "rmsDb": -16.1
+   },
+   "master": "en/arbol.8d63927e.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "8d63927e1d5249cb1ca9e7d7af499fb8c968949fe10f3ab3a35c7bc76329ec44",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Tree",
+   "voice": "af_heart"
+  },
   "e46673a3a6e23cf99f8ffbfcaf05a27526d6cae426c2e2dac6f9f0df7402483e": {
    "candidateScores": [
     0.7667,
@@ -12509,6 +18593,45 @@
    "text": "ká̱ ni̱ki̱",
    "voice": null
   },
+  "e61ac99d7464552d716f8595e29d5ce362e5888560a91a8291c03903c7b68b80": {
+   "candidateScores": [
+    0.8727,
+    0.8727,
+    0.7739,
+    0.9364,
+    0.7,
+    0.8622
+   ],
+   "candidates": 6,
+   "cer": 0.0909,
+   "durationMs": 805,
+   "engine": "kokoro",
+   "file": "/audio/en/yuca.9cef1728.m4a",
+   "hyp": "the casava",
+   "id": "yuca",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.93,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.4
+   },
+   "master": "en/yuca.9cef1728.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "af_bella"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9364,
+   "scoring": "asr",
+   "sha256": "9cef172853e60e9b9653e613af913e8d068998820a0cb544726e24e37150ad12",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Cassava",
+   "voice": "af_bella"
+  },
   "e6a75f2a27c61bb9e8450644674e34d7f8f02989aee116c12eaccb01f1573483": {
    "candidateScores": [
     0.825,
@@ -12589,6 +18712,45 @@
    "text": "The Hummingbird",
    "voice": "af_heart"
   },
+  "e7d61b162b3060556fe692b4940b8254ebfe122701593b879d92b1c1b631eec5": {
+   "candidateScores": [
+    0.8046,
+    0.5728,
+    0.825,
+    0.825,
+    0.6937,
+    0.7854
+   ],
+   "candidates": 6,
+   "cer": 0.25,
+   "durationMs": 795,
+   "engine": "kokoro",
+   "file": "/audio/es/llano.fe2385ae.m4a",
+   "hyp": "el siano",
+   "id": "llano",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.98,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.0
+   },
+   "master": "es/llano.fe2385ae.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.825,
+   "scoring": "asr",
+   "sha256": "fe2385ae5e400c1fff4b9ecb5107dd468d26c951d5aa11a9ca95ad95095e2b80",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Llano",
+   "voice": "em_alex"
+  },
   "e811fca2b56053feb0ced38eaf1283968cdb1826f194ea1864ad238c0bdfaac4": {
    "candidateScores": [
     0.86,
@@ -12629,6 +18791,45 @@
    "source": "mms",
    "text": "tlatzotzonaloni",
    "voice": null
+  },
+  "e85446759d03232f5dbd17613aa9b6e035746ec81765394895916cefecbf464a": {
+   "candidateScores": [
+    0.93,
+    0.5333,
+    0.9249,
+    0.72,
+    1.0,
+    0.8833
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 566,
+   "engine": "kokoro",
+   "file": "/audio/en/charco.35c1affd.m4a",
+   "hyp": "puddle",
+   "id": "charco",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.753,
+    "rawClip": 0.0,
+    "rmsDb": -15.5
+   },
+   "master": "en/charco.35c1affd.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "no-article",
+    "voice": "af_bella"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "35c1affd38fe40d4b925be9387a553186fbf7f3ea48ddd924e31408729c20e20",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Puddle",
+   "voice": "af_bella"
   },
   "e9139aa8120a02af188d2ac7a8b41f3f686b17c82f89e398e92a1a3f615269a8": {
    "candidateScores": [
@@ -12671,6 +18872,45 @@
    "text": "xicocuitlaocotl",
    "voice": null
   },
+  "e9a711d44dc5c084e94fbbff858d71883c529feea84407bcc3724f7c5cf9b279": {
+   "candidateScores": [
+    1.0,
+    0.9823,
+    1.0,
+    0.7316,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 727,
+   "engine": "kokoro",
+   "file": "/audio/es/corral.ead4fb36.m4a",
+   "hyp": "el corral",
+   "id": "corral",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.64,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.5
+   },
+   "master": "es/corral.ead4fb36.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "ead4fb36d82f33579b25a374b2cd4e714bdfd0716ecea6c24165874f1eeb1c9e",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Corral",
+   "voice": "ef_dora"
+  },
   "e9b5de2b055b29a3d7eb516dd963e50a17317350548f974f59dec40cf81fee43": {
    "candidateScores": [
     0.8445,
@@ -12712,6 +18952,45 @@
    "text": "nina urqu",
    "voice": null
   },
+  "e9f83b926c835e484bfd52cc932a1bd20126c6e87371852d8b73568d9c6d2704": {
+   "candidateScores": [
+    0.3517,
+    0.2571,
+    0.9,
+    0.2883,
+    0.2682,
+    0.3787
+   ],
+   "candidates": 6,
+   "cer": 0.1429,
+   "durationMs": 826,
+   "engine": "kokoro",
+   "file": "/audio/es/pozo.2af761ce.m4a",
+   "hyp": "el poso",
+   "id": "pozo",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.98,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.8
+   },
+   "master": "es/pozo.2af761ce.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9,
+   "scoring": "asr",
+   "sha256": "2af761cec5ed1b0a1dcc08647a473b40b7ebaeb8bd1aa86ac1332bca000df4bf",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Pozo",
+   "voice": "em_santa"
+  },
   "eac1a69194b167c8aab7dc8bda1adac54788da2c1b725debd42950477b9361da": {
    "candidateScores": [
     0.9067,
@@ -12750,6 +19029,45 @@
    "source": "kokoro",
    "text": "The Adobe Brick",
    "voice": "af_heart"
+  },
+  "eb13a39641abe5dcdc02460bcbebea9a0340ac7bb76e2cdf89fa70a45356faf8": {
+   "candidateScores": [
+    0.894,
+    0.65,
+    0.9222,
+    0.921,
+    0.8058,
+    0.8694
+   ],
+   "candidates": 6,
+   "cer": 0.1111,
+   "durationMs": 913,
+   "engine": "kokoro",
+   "file": "/audio/es/jicara.2cc759ff.m4a",
+   "hyp": "la hicara",
+   "id": "jicara",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.05,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.4
+   },
+   "master": "es/jicara.2cc759ff.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9222,
+   "scoring": "asr",
+   "sha256": "2cc759ff6ba0fb643719d80f7f1ab510c80eab6ecaa4652e80c205f8c53d9b4d",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Jícara",
+   "voice": "em_santa"
   },
   "ebef728cfaf5250243509af4b86aee6784a6bf776445946a11c04e910f0664d5": {
    "candidateScores": [
@@ -12951,6 +19269,123 @@
    "source": "kokoro",
    "text": "La Nube",
    "voice": "ef_dora"
+  },
+  "efad068401bf1687b1987b5c169e1e57c63f0393691a364acd2696b615adfedb": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.65
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 688,
+   "engine": "kokoro",
+   "file": "/audio/en/techo.6324b9da.m4a",
+   "hyp": "the roof",
+   "id": "techo",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.732,
+    "rawClip": 0.0,
+    "rmsDb": -16.1
+   },
+   "master": "en/techo.6324b9da.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "6324b9daec0b6ff2bc9542bcf4ae02da7768ad68a8c966bd23fb1e9347de69f8",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Roof",
+   "voice": "af_heart"
+  },
+  "f03fa4ddd55ed5b255fae88bf8ebabf5d4d3616d514e8a999cfd552b3d580469": {
+   "candidateScores": [
+    0.9532,
+    0.9763,
+    0.958,
+    0.8456,
+    1.0,
+    0.8
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 992,
+   "engine": "kokoro",
+   "file": "/audio/es/caracol.bf5e879c.m4a",
+   "hyp": "el caracol",
+   "id": "caracol",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.88,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.9
+   },
+   "master": "es/caracol.bf5e879c.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "em_alex"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "bf5e879cfda1b6038d148a57a90e322280debe5d4b1e5c0ee1747b38955a3fca",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Caracol",
+   "voice": "em_alex"
+  },
+  "f14628f1a56b18b7ca27b2abdde8110330ad31d701b65c487aa0cf467c019aaf": {
+   "candidateScores": [
+    0.93,
+    0.4167,
+    0.8833,
+    0.9532,
+    0.8833,
+    0.9874
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 780,
+   "engine": "kokoro",
+   "file": "/audio/en/corral.73f4b58c.m4a",
+   "hyp": "the corral",
+   "id": "corral",
+   "lang": "en",
+   "loudness": {
+    "lufs": -18.42,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.3
+   },
+   "master": "en/corral.73f4b58c.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 0.9,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.9874,
+   "scoring": "asr",
+   "sha256": "73f4b58cf7676cc84d8fdf3a18de6493dd35bd2f78d3ba52addbca2370a89871",
+   "signal": 0.958,
+   "source": "kokoro",
+   "text": "The Corral",
+   "voice": "af_heart"
   },
   "f17a969206b59d94738c18a1c53a3fbebc2d0e1b93cae942b6f6b981f04408cb": {
    "candidateScores": [
@@ -13272,6 +19707,84 @@
    "text": "llama",
    "voice": null
   },
+  "f45d990b18968e26c88fcc8883cf5407f8c8c322d1e03e80d371a09ce4a4e8e7": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 577,
+   "engine": "kokoro",
+   "file": "/audio/en/pozo.ffb2a242.m4a",
+   "hyp": "the well",
+   "id": "pozo",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.62,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.1
+   },
+   "master": "en/pozo.ffb2a242.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "ffb2a2429d84e7ec1dbbc31a5122e92d0b438a85355dfbf3ef0f0b5e03bc640c",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Well",
+   "voice": "af_heart"
+  },
+  "f4a11ab91f380abc59b742bc9a6edc4c1b03ba5cd12a53f7265374d9e9aad545": {
+   "candidateScores": [
+    0.93,
+    0.86,
+    0.5333,
+    0.5333,
+    0.7667,
+    0.65
+   ],
+   "candidates": 6,
+   "cer": 0.1,
+   "durationMs": 713,
+   "engine": "kokoro",
+   "file": "/audio/en/sombra.1d856dbb.m4a",
+   "hyp": "the shado",
+   "id": "sombra",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.874,
+    "rawClip": 0.0,
+    "rmsDb": -15.7
+   },
+   "master": "en/sombra.1d856dbb.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.93,
+   "scoring": "asr",
+   "sha256": "1d856dbb9d2ec6c371f1f29939916f11e3b694166728e19a6e590970e9ba7246",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Shadow",
+   "voice": "af_heart"
+  },
   "f4ab4569fc28dc9e90323c47336b287eaa4a8d7f49ddcf5150fcce1880db364b": {
    "candidateScores": [
     0.8833,
@@ -13313,6 +19826,45 @@
    "text": "centli",
    "voice": null
   },
+  "f4c6fd901a751289d0af1923bff62f859827299113804ded3175c700fbd6e200": {
+   "candidateScores": [
+    1.0,
+    0.825,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 669,
+   "engine": "kokoro",
+   "file": "/audio/en/patio.cb201e07.m4a",
+   "hyp": "the yard",
+   "id": "patio",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.7,
+    "rawClip": 0.0,
+    "rmsDb": -15.7
+   },
+   "master": "en/patio.cb201e07.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "cb201e0793205ac510f8145feb4a56b94fb3622aeaeee075bec8ca5306a64e1b",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Yard",
+   "voice": "af_heart"
+  },
   "f4e5a717920fdecb9cefd937f9545f13dc0d837ece03bbede2c9a9012f2bfee1": {
    "candidateScores": [
     1.0,
@@ -13351,6 +19903,45 @@
    "source": "kokoro",
    "text": "The Village",
    "voice": "af_heart"
+  },
+  "f5c39126c05cd3f26d09ed7ff8d0fd4edc6b97051a92e906006bb773b98f5452": {
+   "candidateScores": [
+    0.8229,
+    0.5248,
+    0.721,
+    0.3,
+    0.5791,
+    0.3527
+   ],
+   "candidates": 6,
+   "cer": 0.25,
+   "durationMs": 699,
+   "engine": "kokoro",
+   "file": "/audio/es/hacha.02ea324f.m4a",
+   "hyp": "elacha",
+   "id": "hacha",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.07,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.0
+   },
+   "master": "es/hacha.02ea324f.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.8229,
+   "scoring": "asr",
+   "sha256": "02ea324f0c13a7e7f1390ea7afcaed1244129e8f7956f6059dcfc83fa5b0718b",
+   "signal": 0.993,
+   "source": "kokoro",
+   "text": "El Hacha",
+   "voice": "ef_dora"
   },
   "f5e9067d7685e257622f99b7f4563711905da7841b56a3e209e4a8e2556998d0": {
    "candidateScores": [
@@ -13392,6 +19983,84 @@
    "source": "mms",
    "text": "kuuchil koonol",
    "voice": null
+  },
+  "f62a392c8878956d35e40c47a93662eed71cc5cb2010e23327e159982a70a347": {
+   "candidateScores": [
+    1.0,
+    0.9462,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 926,
+   "engine": "kokoro",
+   "file": "/audio/en/coa.e3abb1f8.m4a",
+   "hyp": "the digging stick",
+   "id": "coa",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.775,
+    "rawClip": 0.0,
+    "rmsDb": -16.3
+   },
+   "master": "en/coa.e3abb1f8.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "e3abb1f8bff0f80ec9fe3a0c0efea19ebeebba4a0808f362c8536ec234956ca4",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Digging Stick",
+   "voice": "af_heart"
+  },
+  "f676e2625ec7abfaea96effd3dfe4bb19291f19a7189a206c8a5c3ddfe2f3254": {
+   "candidateScores": [
+    1.0,
+    0.842,
+    0.58,
+    0.8423,
+    0.2589,
+    0.9991
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 780,
+   "engine": "kokoro",
+   "file": "/audio/es/patio.f73d99a7.m4a",
+   "hyp": "el patio",
+   "id": "patio",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.63,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.6
+   },
+   "master": "es/patio.f73d99a7.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "f73d99a7b04df938743e6d012ff6e71ee97e7b2afe8effd710b68202082cc3ec",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Patio",
+   "voice": "ef_dora"
   },
   "f68e29f54324477ff1af0e2d85039fd4678ed97da436f8109ff65f2f312d3df4": {
    "candidateScores": [
@@ -13633,6 +20302,84 @@
    "text": "The Tomato",
    "voice": "am_michael"
   },
+  "fa7d3433ef9a44f40a31e43671f51a89dda7391292fdb4b12f25e44f268bd642": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 719,
+   "engine": "kokoro",
+   "file": "/audio/en/huerto.67f4d7f8.m4a",
+   "hyp": "the garden",
+   "id": "huerto",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.834,
+    "rawClip": 0.0,
+    "rmsDb": -15.8
+   },
+   "master": "en/huerto.67f4d7f8.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "67f4d7f8a15f69db5c6b077ef200b7de2551d9079f7fe448fd3bc358f7f0dfc5",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Garden",
+   "voice": "af_heart"
+  },
+  "faf4ee23b8010488d6d78593bd205f3c67cc57b74c5be76148b0ff8c67a6f047": {
+   "candidateScores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.9973
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 641,
+   "engine": "kokoro",
+   "file": "/audio/en/cuerda.e5180ab7.m4a",
+   "hyp": "the rope",
+   "id": "cuerda",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.803,
+    "rawClip": 0.0,
+    "rmsDb": -15.8
+   },
+   "master": "en/cuerda.e5180ab7.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "e5180ab76bfa58f67f1ca61e487dfea722fe21147a4848083801eb45df60c9f8",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Rope",
+   "voice": "af_heart"
+  },
   "fb63f67c5d24291d0c713a0b194d814ed7b9e2caf7f2830181f9148781ac3d31": {
    "candidateScores": [
     0.72,
@@ -13673,6 +20420,84 @@
    "source": "mms",
    "text": "bu'ul",
    "voice": null
+  },
+  "fb9bd94ca3458fc00384da945a836cf64751953228c59138bc7ae17bf2e048b8": {
+   "candidateScores": [
+    0.985,
+    0.9181,
+    0.5451,
+    0.2754,
+    0.8199,
+    0.599
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 692,
+   "engine": "kokoro",
+   "file": "/audio/es/agua.1767e8da.m4a",
+   "hyp": "el agua",
+   "id": "agua",
+   "lang": "es",
+   "loudness": {
+    "lufs": -18.5,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -18.3
+   },
+   "master": "es/agua.1767e8da.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 0.985,
+   "scoring": "asr",
+   "sha256": "1767e8dac03aa5745d732ce94895510cf228d7e721f7946db899f3dbb6c7ff3b",
+   "signal": 0.95,
+   "source": "kokoro",
+   "text": "El Agua",
+   "voice": "ef_dora"
+  },
+  "fbb97cba27792afc20ac05af55a49a5a3e9bfc472d761ef9e68eb41c07a4f1e7": {
+   "candidateScores": [
+    1.0,
+    0.475,
+    0.4627,
+    0.97,
+    0.475,
+    0.825
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 707,
+   "engine": "kokoro",
+   "file": "/audio/en/pez.4992f7db.m4a",
+   "hyp": "the fish",
+   "id": "pez",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.884,
+    "rawClip": 0.0,
+    "rmsDb": -15.6
+   },
+   "master": "en/pez.4992f7db.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "4992f7dbeba87824828a20fa6aa90f179267022931064510416b411f99d7a439",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Fish",
+   "voice": "af_heart"
   },
   "fc00a5b4738e5d0ac03628754930e5c843a3a39fb61b26ed368baf9e17999589": {
    "candidateScores": [
@@ -13715,6 +20540,45 @@
    "text": "sayab",
    "voice": null
   },
+  "fd04c57bca96bcd7751ae642d18f0f03900ab309a34a2d01319690fff531b87d": {
+   "candidateScores": [
+    0.9199,
+    0.9222,
+    1.0,
+    1.0,
+    0.9937,
+    0.8667
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 561,
+   "engine": "kokoro",
+   "file": "/audio/es/cuerda.8f856a1c.m4a",
+   "hyp": "cuerda",
+   "id": "cuerda",
+   "lang": "es",
+   "loudness": {
+    "lufs": -16.68,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -16.3
+   },
+   "master": "es/cuerda.8f856a1c.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "no-article",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "8f856a1c2a443a39f2561ce29c0c4206888605ce36b514867f400a9bc4a715c0",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Cuerda",
+   "voice": "em_santa"
+  },
   "fd24682d0f7b9582ac51712b87695be9a3548f8775b9cf4beaf832c0c76ded24": {
    "candidateScores": [
     0.9364,
@@ -13755,6 +20619,123 @@
    "source": "mms",
    "text": "tianquiztli",
    "voice": null
+  },
+  "fd2900dbf58752988c9ff0b33b2709b70c336af0297a4b63c1f2371595cb8abf": {
+   "candidateScores": [
+    0.9025,
+    1.0,
+    0.475,
+    0.3,
+    0.65,
+    0.958
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 698,
+   "engine": "kokoro",
+   "file": "/audio/es/nido.afb353db.m4a",
+   "hyp": "el nido",
+   "id": "nido",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.68,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.9
+   },
+   "master": "es/nido.afb353db.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "em_santa"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "afb353db885da1f312e2a9802910d68774d674545758ac2069fd2de01e461eed",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "El Nido",
+   "voice": "em_santa"
+  },
+  "fd349348c1fc64af7495e22060992f47ced5d064dc66bf9ef9915a222006226b": {
+   "candidateScores": [
+    1.0,
+    0.9222,
+    1.0,
+    0.9222,
+    0.964,
+    1.0
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 846,
+   "engine": "kokoro",
+   "file": "/audio/en/armadillo.1135145e.m4a",
+   "hyp": "the armadillo",
+   "id": "armadillo",
+   "lang": "en",
+   "loudness": {
+    "lufs": -16.0,
+    "peak": 0.739,
+    "rawClip": 0.0,
+    "rmsDb": -16.1
+   },
+   "master": "en/armadillo.1135145e.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "af_heart"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "1135145e294df543585f4f828a785a1235a6ef90a6ebaadd6915ef78d3ef815e",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Armadillo",
+   "voice": "af_heart"
+  },
+  "fe7b95716a42020e6e5a59de593697c2f385164af7dc9546c3c7b9b4cc872c2a": {
+   "candidateScores": [
+    0.9,
+    0.5333,
+    0.7667,
+    0.7667,
+    1.0,
+    0.9
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 682,
+   "engine": "kokoro",
+   "file": "/audio/en/hormiga.622587f1.m4a",
+   "hyp": "the ant",
+   "id": "hormiga",
+   "lang": "en",
+   "loudness": {
+    "lufs": -17.23,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.0
+   },
+   "master": "en/hormiga.622587f1.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.1,
+    "variant": "as-is",
+    "voice": "am_michael"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "622587f144bda1663eb713b9f6eea62eb3aeb96756e103e62978e95aaea22cf5",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "The Ant",
+   "voice": "am_michael"
   },
   "ff027c306a22c732219a62b99a9265c83c7c873374386caf3999878cc12abc98": {
    "candidateScores": [
@@ -13878,6 +20859,45 @@
    "source": "mms",
    "text": "mach'aqway",
    "voice": null
+  },
+  "fff83ff3baa3da2678b47108033a4dc0447361d92fba557c0cffa046e834b885": {
+   "candidateScores": [
+    1.0,
+    0.86,
+    0.9676,
+    0.58,
+    1.0,
+    0.9125
+   ],
+   "candidates": 6,
+   "cer": 0.0,
+   "durationMs": 760,
+   "engine": "kokoro",
+   "file": "/audio/es/playa.d76ab65c.m4a",
+   "hyp": "la playa",
+   "id": "playa",
+   "lang": "es",
+   "loudness": {
+    "lufs": -17.39,
+    "peak": 0.89,
+    "rawClip": 0.0,
+    "rmsDb": -17.3
+   },
+   "master": "es/playa.d76ab65c.wav",
+   "model": "hexgrad/Kokoro-82M",
+   "params": {
+    "speed": 1.0,
+    "variant": "as-is",
+    "voice": "ef_dora"
+   },
+   "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+   "score": 1.0,
+   "scoring": "asr",
+   "sha256": "d76ab65c7a337067d61270c666f909446c0207a70f496d4c86259943561c5d82",
+   "signal": 1.0,
+   "source": "kokoro",
+   "text": "La Playa",
+   "voice": "ef_dora"
   }
  },
  "generatorVersion": "4",

@@ -1,5 +1,6 @@
 // Import-light entry: pdf-lib, fontkit and the builder load lazily inside generateBoardsPdf.
-import { canvasAvailable, renderEmojiPngs } from './emoji';
+import { canvasAvailable } from './emoji';
+import { renderPrintArt } from './illustrations';
 import type { PrintOptions } from './layout';
 import type { WorkerRequest, WorkerResponse } from './worker';
 
@@ -21,9 +22,9 @@ function fontUrl(): string | undefined {
   return new URL(`${base}fonts/NotoSans-Regular.ttf`, location.origin).href;
 }
 
-async function loadCardArt(): Promise<{ id: string; art: string }[]> {
-  const { cards } = await import('@content');
-  return cards.map((c) => ({ id: c.id, art: c.art }));
+async function loadCardArt(opts: PrintOptions) {
+  const { printArt } = await import('./cards');
+  return printArt(opts);
 }
 
 function aborted(signal: AbortSignal): Error {
@@ -32,8 +33,8 @@ function aborted(signal: AbortSignal): Error {
 
 async function onMainThread(opts: PrintOptions, hooks: GenerateHooks): Promise<PdfResult> {
   const { buildBoardsPdf } = await import('./build');
-  const art = await loadCardArt();
-  const emoji = canvasAvailable() ? await renderEmojiPngs(art) : null;
+  const art = await loadCardArt(opts);
+  const images = await renderPrintArt(art, hooks.signal);
   let fontBytes: Uint8Array | null = opts.fontBytes ?? null;
   const url = fontUrl();
   if (!fontBytes && url) {
@@ -45,7 +46,8 @@ async function onMainThread(opts: PrintOptions, hooks: GenerateHooks): Promise<P
     }
   }
   return buildBoardsPdf(opts, {
-    emoji,
+    emoji: null,
+    images,
     fontBytes,
     onProgress: hooks.onProgress,
     signal: hooks.signal,
@@ -55,7 +57,7 @@ async function onMainThread(opts: PrintOptions, hooks: GenerateHooks): Promise<P
 async function inWorker(opts: PrintOptions, hooks: GenerateHooks): Promise<PdfResult> {
   const req: WorkerRequest = { opts, fontUrl: fontUrl() };
   if (typeof OffscreenCanvas === 'undefined' && canvasAvailable()) {
-    req.emoji = Object.fromEntries(await renderEmojiPngs(await loadCardArt()));
+    req.images = Object.fromEntries(await renderPrintArt(await loadCardArt(opts), hooks.signal));
   }
   const { signal } = hooks;
   if (signal?.aborted) throw aborted(signal);
@@ -90,7 +92,7 @@ async function inWorker(opts: PrintOptions, hooks: GenerateHooks): Promise<PdfRe
 /**
  * Build the PDF of boards (cantor sheet first). Runs in a Web Worker when available and falls
  * back to the calling thread if the worker fails. Aborting rejects with an AbortError and
- * terminates the worker. Works offline: the font ships in /fonts.
+ * terminates the worker. Print dependencies cache after the first connected use; card art is part of the game precache.
  */
 export async function generateBoardsPdfDetailed(
   opts: PrintOptions,

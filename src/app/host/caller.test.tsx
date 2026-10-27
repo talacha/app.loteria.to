@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-import { cards, isAvoidedPair } from '@content';
+import { cardsAvailableIn, cards, isAvoidedPair } from '@content';
 import { MAX_SHARED_CARDS, MAX_TABLA_INDEX, choicesFor, deckOrder, tabla } from '@engine';
 import '../i18n';
 
@@ -47,7 +47,7 @@ vi.mock('./persist', () => ({
 
 import HostPage from './HostPage';
 
-const deck = cards.map((c) => ({ id: c.id, category: c.category }));
+const deck = cardsAvailableIn(['es']).map((c) => ({ id: c.id, category: c.category }));
 const flush = () => act(async () => vi.advanceTimersByTimeAsync(0));
 const tick = (ms: number) => act(async () => vi.advanceTimersByTimeAsync(ms));
 const emit = (m: unknown) => act(async () => void handlers.forEach((h) => h(m)));
@@ -59,7 +59,7 @@ const indexOf = (seat: string) =>
   sent.filter((m) => m.t === 'assign' && m.seat === seat).map((m) => m.tablaIndex as number)[0]!;
 const pick = (seat: string, cardId = lastCall().cardId) =>
   emit({ t: 'pick', seat, roundNo: 1, i: lastCall().i, cardId });
-const ids = cards.map((c) => c.id);
+const ids = cardsAvailableIn(['es']).map((c) => c.id);
 /** Number of calls (1-based) after which every card of this tabla has been called. */
 const completesAt = (index: number) => {
   const order = deckOrder('TESTSEED', 1, ids);
@@ -72,13 +72,13 @@ const sharedCards = (a: number, b: number) => {
   const s = new Set(tabla('TESTSEED', a, deck).cards);
   return tabla('TESTSEED', b, deck).cards.filter((c) => s.has(c)).length;
 };
-/** Two tabla indices that complete on the same call, below 54 so the game ends early. */
+/** Two tabla indices that complete on the same call, before the deck runs out. */
 function tiedIndices(): [number, number] {
   const seen = new Map<number, number>();
   for (let i = 0; i <= MAX_TABLA_INDEX; i++) {
     const at = completesAt(i);
     const other = seen.get(at);
-    if (other !== undefined && at < 54 && sharedCards(other, i) <= MAX_SHARED_CARDS)
+    if (other !== undefined && at < ids.length && sharedCards(other, i) <= MAX_SHARED_CARDS)
       return [other, i];
     if (!seen.has(at)) seen.set(at, i);
   }

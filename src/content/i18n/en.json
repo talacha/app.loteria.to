@@ -32,7 +32,7 @@
     "joinHint": "Scan the QR or type the room code.",
     "printCta": "Print boards",
     "printHint": "To play on paper, no phones needed.",
-    "deckCta": "See all 54 cards",
+    "deckCta": "See all 144 cards",
     "creditsCta": "Credits",
     "installHint": "You can install this app and play offline.",
     "beansNote": "We play with beans: mark each card with a bean."
@@ -76,7 +76,7 @@
     "paperCodeOk": "The board is complete. ¡Lotería!",
     "paperCodeMissing": "{count, plural, one {# card missing} other {# cards missing}}",
     "shortcuts": "Shortcuts: Space, N next, R repeat, L check paper, P pause",
-    "called": "{count} of 54 cards called",
+    "called": "{count} of 144 cards called",
     "currentCard": "Current card",
     "claimFrom": "{name} says: ¡Lotería!",
     "claimValid": "¡Lotería from {name}! The cards match.",
@@ -147,7 +147,7 @@
     "pageOf": "Page {n} of {total}"
   },
   "deck": {
-    "title": "The 54 cards",
+    "title": "The 144 cards",
     "intro": "Original cards inspired by the nature, crafts, and places of Mesoamerica and the Andes.",
     "category": "Category",
     "all": "All",

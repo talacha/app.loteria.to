@@ -7,8 +7,8 @@ export type CardFaceSize = 'cell' | 'card' | 'hero';
 export type CardFaceState = 'normal' | 'crossed' | 'winning' | 'dimmed';
 
 /**
- * A card picture. With an illustration (public/cards/<id>.webp) it is the printed look: paper
- * border, thin ink frame, full-bleed art, number top-left, NAME IN CAPS at the bottom. Without
+ * A card picture. With an illustration (public/cards/<id>.webp) it fills the entire card,
+ * with a number badge top-left and a solid name overlay at the bottom. Without
  * one, the SVG icon sits centred on a token background. 'cell' is the bare picture, cropped to
  * fill its (square) box: no frame, no number, no name.
  */

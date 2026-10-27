@@ -52,7 +52,8 @@ function loadSession(code: string): Joined | null {
     const p = v?.profile;
     if (!p || typeof p.name !== 'string' || !isValidName(p.name) || typeof p.glyph !== 'string')
       return null;
-    const lang = p.spokenLang;
+    // The room session records the join choice; settings persist later choices in the profile.
+    const lang = readLocalProfile().spokenLang ?? p.spokenLang;
     if (!isLang(lang)) return null;
     return {
       profile: {

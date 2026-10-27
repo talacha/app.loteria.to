@@ -217,6 +217,9 @@ describe('LobbyWaiting room defaults', () => {
     await flush();
     const stored = () => JSON.parse(localStorage.getItem('loteria:profile') ?? '{}');
     expect(stored()).toMatchObject({ spokenLang: 'nah', uiLang: 'en' });
+    expect(received.some((message) => message.t === 'hello' && message.labelLang === 'nah')).toBe(
+      true,
+    );
     // The player changes their mind; a later lobby message does not override it.
     localStorage.setItem('loteria:profile', JSON.stringify({ ...stored(), spokenLang: 'quz' }));
     host.send({

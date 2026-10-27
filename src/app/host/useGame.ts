@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { callableLangs, cards, getCard, isAvoidedPair } from '@content';
+import { cardsAvailableIn, langsForDeck, cards, getCard, isAvoidedPair } from '@content';
 import type { Card } from '@content';
 import {
   ROOM_MAX_PLAYERS,
+  maxGridFor,
   choicesFor,
   pickTablaIndex,
   initialPickState,
@@ -15,6 +16,7 @@ import type { CardId, Lang, PickState } from '@engine';
 import type { Msg, Transport } from '@net';
 import { setMediaSession, speakCall, stopAudio } from '../audio';
 import type { SpeakResult } from '../audio';
+import { setAllowedSpokenLangs } from '../ui/profile';
 import { clearRound, saveRound } from './persist';
 import {
   calledCards,
@@ -62,15 +64,23 @@ const ROUND_RESEND_MS = 10_000;
 const HELLO_COOLDOWN_MS = 2000;
 
 const randomUnit = () => globalThis.crypto.getRandomValues(new Uint32Array(1))[0]! / 2 ** 32;
-const deck = cards.map((c) => ({ id: c.id, category: c.category }));
-const ids = cards.map((c) => c.id);
+const legacyIds = cards.filter((c) => c.n <= 54).map((c) => c.id);
+const deckFor = (s: RoundState) => cards.filter((c) => s.deck.includes(c.id));
 
-function initialState(room: GameRoom): RoundState {
-  const base = initialRound(room.code, room.seed, callableLangs());
-  if (room.saved) return roundReducer(base, { type: 'restore', saved: room.saved, ids });
+function initialState(room: GameRoom, playerCount: number): RoundState {
+  const spoken = room.langs?.length ? room.langs : [room.settings?.defaultSpokenLang ?? 'es'];
+  const pool = cardsAvailableIn(spoken);
+  const ids = pool.map((c) => c.id);
+  const langs = langsForDeck(ids);
+  const base = initialRound(room.code, room.seed, langs);
+  if (room.saved) return roundReducer(base, { type: 'restore', saved: room.saved, ids: legacyIds });
   let s: RoundState = { ...base, roundNo: room.roundNo ?? 1 };
   if (room.settings) s = roundReducer(s, { type: 'configure', patch: room.settings });
-  return roundReducer(s, { type: 'start', ids, langs: callableLangs() });
+  s = roundReducer(s, {
+    type: 'configure',
+    patch: { gridSize: Math.min(s.settings.gridSize, maxGridFor(ids.length, playerCount) || 3) },
+  });
+  return roundReducer(s, { type: 'start', ids, langs });
 }
 
 /**
@@ -83,8 +93,12 @@ function initialState(room: GameRoom): RoundState {
  *   cards have been called; simultaneous completions are decided by points (ties share).
  */
 export function useGame({ transport, room, roster, onNewRound }: GameProps) {
-  const [state, setStateRaw] = useState<RoundState>(() => initialState(room));
+  const [state, setStateRaw] = useState<RoundState>(() => initialState(room, roster.length));
   const stateRef = useRef(state);
+  useEffect(() => {
+    setAllowedSpokenLangs(langsForDeck(state.deck));
+    return () => setAllowedSpokenLangs(null);
+  }, [state.deck]);
   const [pickState, setPickState] = useState<PickState>(
     () => room.saved?.pick ?? initialPickState(),
   );
@@ -161,6 +175,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       roundNo: s.roundNo,
       speedSec: s.settings.speedSec,
       gridSize: s.settings.gridSize,
+      deck: s.deck,
       ...(roomRef.current.hostKey ? { hostKey: roomRef.current.hostKey } : {}),
     });
   }, [send]);
@@ -174,7 +189,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       for (const p of players()) {
         const idx = s.assignments[p.seat];
         if (idx === undefined) continue;
-        out[p.seat] = tabla(s.roomSeed, idx, deck, s.settings.gridSize).cards.filter((c) =>
+        out[p.seat] = tabla(s.roomSeed, idx, deckFor(s), s.settings.gridSize).cards.filter((c) =>
           done.has(c),
         ).length;
       }
@@ -213,7 +228,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       const index = pickTablaIndex(
         stateRef.current.roomSeed,
         taken,
-        deck,
+        deckFor(stateRef.current),
         randomUnit,
         stateRef.current.settings.gridSize,
       );
@@ -251,7 +266,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     if (cached) return cached;
     const langs = roomRef.current.langs;
     const correct = s.order[i] as CardId;
-    const out = choicesFor(s.roomSeed, s.roundNo, i, correct, deck, (a, b) =>
+    const out = choicesFor(s.roomSeed, s.roundNo, i, correct, deckFor(s), (a, b) =>
       isAvoidedPair(a, b, langs && langs.length ? langs : undefined),
     );
     choicesRef.current.set(i, out);
@@ -266,7 +281,8 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       const i = s.calledCount - 1;
       const choices = choicesForCall(s, i);
       setCurrentChoices(choices);
-      const lang = roomRef.current.local?.spokenLang ?? langForCall(s, i);
+      const preferred = roomRef.current.local?.spokenLang ?? langForCall(s, i);
+      const lang = s.langs.includes(preferred) ? preferred : (s.langs[0] ?? 'es');
       send({
         t: 'call',
         i,
@@ -311,7 +327,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       for (const p of players()) {
         const idx = s.assignments[p.seat];
         if (idx === undefined) continue;
-        const t = tabla(s.roomSeed, idx, deck, s.settings.gridSize);
+        const t = tabla(s.roomSeed, idx, deckFor(s), s.settings.gridSize);
         if (
           isCardComplete(
             t,
@@ -584,7 +600,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
   const closedCount = state.phase === 'ended' ? state.calledCount : Math.max(0, i);
   const localCards: CardId[] =
     hostPlays && idx !== undefined
-      ? tabla(state.roomSeed, idx, deck, state.settings.gridSize).cards
+      ? tabla(state.roomSeed, idx, deckFor(state), state.settings.gridSize).cards
       : [];
   const closed = new Set(state.order.slice(0, closedCount));
   const localCrossed = localCards.filter((c) => closed.has(c));
@@ -613,7 +629,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       crossed:
         at === undefined
           ? 0
-          : tabla(state.roomSeed, at, deck, state.settings.gridSize).cards.filter((c) =>
+          : tabla(state.roomSeed, at, deckFor(state), state.settings.gridSize).cards.filter((c) =>
               closed.has(c),
             ).length,
     };

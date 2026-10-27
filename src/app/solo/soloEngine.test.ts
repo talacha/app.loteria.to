@@ -20,7 +20,7 @@ const mk = (seed: string, difficulty: Difficulty = 'normal', cpus = 2, speedSec 
 
 function playOut(s0: SoloState, human: 'perfect' | 'none'): SoloState {
   let s = s0;
-  for (let guard = 0; guard < 1000 && !s.ended; guard++) {
+  for (let guard = 0; guard < s.order.length * 30 && !s.ended; guard++) {
     if (human === 'perfect' && s.call) s = humanPick(s, s.call.cardId).s;
     s = tick(s, 1000);
   }
@@ -171,7 +171,7 @@ describe('solo grid sizes and the only end of a game', () => {
     for (const seat of s0.seats) expect(s0.tablas[seat]!.cards).toHaveLength(g * g);
     expect(remainingSquares(s0, HUMAN)).toBe(g * g);
     let s = s0;
-    for (let guard = 0; guard < 1000 && !s.ended; guard++) {
+    for (let guard = 0; guard < s.order.length * 30 && !s.ended; guard++) {
       s = tick(s, 1000);
       if (!s.ended) {
         // Not over while nobody has crossed every square.

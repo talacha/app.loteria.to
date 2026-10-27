@@ -27,7 +27,7 @@ describe('Shell', () => {
     expect(screen.getByRole('link', { name: 'Saltar al contenido' }).getAttribute('href')).toBe(
       '#main',
     );
-    expect(document.title).toBe('Las 54 cartas · Lotería de los Pueblos');
+    expect(document.title).toBe('Las 144 cartas · Lotería de los Pueblos');
     expect(document.documentElement.lang).toBe('es');
     await i18n.changeLanguage('en');
     expect(document.documentElement.lang).toBe('en');

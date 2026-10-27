@@ -21,7 +21,7 @@ const HEADER = [
   'reviewer_notes',
 ];
 
-const q = (v: string | number | undefined) => {
+const q = (v: string | number | null | undefined) => {
   const s = String(v ?? '');
   return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 };

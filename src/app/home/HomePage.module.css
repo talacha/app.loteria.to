@@ -130,6 +130,7 @@
   margin-top: 8px;
 }
 .glyph {
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,13 +145,7 @@
 }
 .glyph[aria-checked='true'] {
   background: var(--color-maiz);
-  box-shadow: 0 0 0 3px var(--color-paper);
-}
-.glyph img,
-.glyphEmoji {
-  width: 70%;
-  height: 70%;
-  object-fit: contain;
+  box-shadow: 0 0 0 3px var(--color-maiz);
 }
 .glyphEmoji {
   font-size: 1.6rem;
@@ -295,11 +290,14 @@
   gap: var(--space-2);
 }
 .sample {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-1);
-  padding: var(--space-3) var(--space-2);
+  justify-content: flex-end;
+  aspect-ratio: 2 / 3;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0;
   border: var(--border-thick);
   border-radius: var(--radius-md);
   background: var(--color-paper);
@@ -307,9 +305,18 @@
   box-shadow: var(--shadow-hard);
   text-align: center;
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
 }
-.sample img,
+.sample > [data-size] {
+  position: absolute;
+  inset: 0;
+}
+.sample > span {
+  position: relative;
+  padding: var(--space-2);
+  background: var(--color-paper);
+  overflow-wrap: anywhere;
+}
 .emoji {
   width: 56px;
   height: 56px;

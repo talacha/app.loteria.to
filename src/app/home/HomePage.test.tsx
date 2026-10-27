@@ -44,6 +44,11 @@ describe('HomePage', () => {
     expect(screen.getByText('El Sol')).toBeTruthy();
     expect(screen.queryByText('pendiente de revisión')).toBeNull();
     expect(screen.getByRole('heading', { name: 'Cómo es una ronda' })).toBeTruthy();
+    expect(
+      screen.getByText(
+        /El español y el inglés cubren las 144 cartas\. El náhuatl, el maya yucateco y el quechua están disponibles para las 54 cartas originales\./,
+      ),
+    ).toBeTruthy();
     expect(screen.getByText('Se completa un cartón')).toBeTruthy();
     expect(screen.getByRole('link', { name: /Jugar solo/i })).toBeTruthy();
     expect(screen.getByRole('link', { name: /Crear una sala/ })).toBeTruthy();

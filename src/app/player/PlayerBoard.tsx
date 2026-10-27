@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useReducer, useState } from 'react';
+import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { CardId, Lang } from '@engine';
-import { getCard } from '@content';
+import { cards, getCard, langsForDeck } from '@content';
 import type { Msg, Transport } from '@net';
 import type { MessageLog } from '../lobby/messageLog';
 import ConnectionRecovery from '../lobby/ConnectionRecovery';
@@ -26,6 +26,7 @@ import WinScreen from './WinScreen';
 import SettingsSheet from './SettingsSheet';
 import UiLangSwitch from './UiLangSwitch';
 import { patchLocalProfile } from './profile';
+import { setAllowedSpokenLangs } from '../ui/profile';
 import { emojiOf, wordOf } from './words';
 import { initialPlayerState, playerReducer } from './playerState';
 import styles from './PlayerBoard.module.css';
@@ -52,6 +53,7 @@ export interface PlayerBoardProps {
 }
 
 const TEXT_SCALES = [100, 115, 130, 150];
+const LEGACY_DECK = cards.filter((card) => card.n <= 54).map((card) => card.id);
 
 export default function PlayerBoard({
   transport,
@@ -69,7 +71,18 @@ export default function PlayerBoard({
   const [localRecovery, setLocalRecovery] = useState<ConnectionRecoveryKey | null>(null);
   const recovery = inheritedRecovery ?? localRecovery;
   const [tick, setTick] = useState(() => Date.now());
-  const [spokenLang, setSpokenLang] = useState<Lang>(profile.spokenLang);
+  const [preferredLang, setSpokenLang] = useState<Lang>(profile.spokenLang);
+  const deckIds = state.round?.deck ?? LEGACY_DECK;
+  const allowedLangs = langsForDeck(deckIds);
+  const roundNo = state.round?.roundNo;
+  const spokenLang = allowedLangs.includes(preferredLang)
+    ? preferredLang
+    : (allowedLangs.find((l) => l === 'es') ?? allowedLangs[0] ?? 'es');
+  useEffect(() => {
+    if (roundNo === undefined) return;
+    setAllowedSpokenLangs(langsForDeck(deckIds));
+    return () => setAllowedSpokenLangs(null);
+  }, [deckIds, roundNo]);
   const [sheet, setSheet] = useState(false);
   const [muted, setMutedState] = useState(isMuted);
   const [scaleIdx, setScaleIdx] = useState(() => {
@@ -84,6 +97,19 @@ export default function PlayerBoard({
     () => document.documentElement.dataset.theme === 'contrast',
   );
   const { name } = profile;
+  const announcedSpoken = useRef(profile.spokenLang);
+  useEffect(() => {
+    if (roundNo === undefined || announcedSpoken.current === spokenLang) return;
+    announcedSpoken.current = spokenLang;
+    transport.send({
+      t: 'hello',
+      seat: transport.seat,
+      name: profile.name,
+      glyph: profile.glyph,
+      pronouns: profile.pronouns,
+      labelLang: spokenLang,
+    });
+  }, [transport, roundNo, spokenLang, profile.name, profile.glyph, profile.pronouns]);
 
   useEffect(() => onMutedChange(setMutedState), []);
 
@@ -106,6 +132,7 @@ export default function PlayerBoard({
               roundNo: m.roundNo,
               speedSec: m.speedSec,
               ...(m.gridSize ? { gridSize: m.gridSize } : {}),
+              ...(m.deck ? { deck: m.deck } : {}),
             },
           });
           break;
@@ -240,6 +267,7 @@ export default function PlayerBoard({
   };
 
   const changeSpoken = (l: Lang) => {
+    if (!allowedLangs.includes(l)) return;
     setSpokenLang(l);
     patchLocalProfile({ spokenLang: l });
   };
@@ -346,7 +374,9 @@ export default function PlayerBoard({
       <div className={styles.content} inert={sheet}>
         <header className={styles.bar}>
           <span className={styles.code}>{code}</span>
-          <span className={styles.cardNo}>{cur ? t('player.cardOf', { n: cur.i + 1 }) : ''}</span>
+          <span className={styles.cardNo}>
+            {cur ? t('player.cardOf', { n: cur.i + 1, total: deckIds.length }) : ''}
+          </span>
           <span className={styles.barEnd}>
             <UiLangSwitch />
             <Pill tone={spokenLang as PillTone}>{langName(spokenLang)}</Pill>
@@ -363,6 +393,15 @@ export default function PlayerBoard({
         </p>
 
         {recovery ? <ConnectionRecovery recovery={recovery} /> : null}
+
+        {!allowedLangs.includes(preferredLang) ? (
+          <p role="status">
+            {t('player.languageFallback', {
+              lang: langName(preferredLang),
+              fallback: langName(spokenLang),
+            })}
+          </p>
+        ) : null}
 
         {!round ? (
           <p className={styles.waiting}>{t('player.waitingRound')}</p>
@@ -514,6 +553,7 @@ export default function PlayerBoard({
                 {t('player.tablaSummary', {
                   revealed: state.revealed.filter((id) => board.includes(id)).length,
                   crossed: state.crossed.length,
+                  total: board.length,
                 })}
               </p>
               <Tabla cells={cells} label={t('player.tablaTitle')} />
@@ -541,6 +581,7 @@ export default function PlayerBoard({
       {sheet && (
         <SettingsSheet
           spokenLang={spokenLang}
+          availableLangs={allowedLangs}
           onSpokenLang={changeSpoken}
           muted={muted}
           onMuted={setMuted}

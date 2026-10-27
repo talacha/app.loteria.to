@@ -10,6 +10,7 @@ const ORDER: Lang[] = ['nah', 'yua', 'quz', 'es', 'en'];
 
 export interface SettingsSheetProps {
   spokenLang: Lang;
+  availableLangs?: readonly Lang[];
   onSpokenLang: (l: Lang) => void;
   muted: boolean;
   onMuted: (m: boolean) => void;
@@ -45,6 +46,9 @@ export default function SettingsSheet(p: SettingsSheetProps) {
             {t('player.spokenLang')}
           </h3>
           <p className={styles.muted}>{t('player.spokenLangHint')}</p>
+          {p.availableLangs && p.availableLangs.length < LANGS.length ? (
+            <p>{t('player.languageNotInRound')}</p>
+          ) : null}
           <div role="radiogroup" aria-labelledby="spoken-h" className={styles.langList}>
             {ORDER.filter((l) => LANGS.includes(l)).map((l) => (
               <LanguageCard
@@ -54,6 +58,7 @@ export default function SettingsSheet(p: SettingsSheetProps) {
                 native={t(`lobby.langs.${l}.native`)}
                 sample={sampleWord(l)}
                 selected={p.spokenLang === l}
+                disabled={!!p.availableLangs && !p.availableLangs.includes(l)}
                 onSelect={() => p.onSpokenLang(l)}
               />
             ))}

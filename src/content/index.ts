@@ -21,21 +21,50 @@ export function getCard(id: CardId): Card | undefined {
   return byId.get(id);
 }
 
+function hasPlayableName(card: Card, lang: Lang, allowUnreviewed = false): boolean {
+  const name = card.names[lang];
+  if (!name || name.text === null || !name.audio) return false;
+  if (!allowUnreviewed && name.status !== 'approved') return false;
+  // Preserve the published 54-card pool exactly. New Indigenous names remain gated on
+  // attestation and a source until the community review process approves their entry.
+  if (card.n <= 54) return true;
+  if ((INDIGENOUS_LANGS as readonly Lang[]).includes(lang))
+    return (name.kind === 'attested' || name.kind === 'loanword') && !!name.source;
+  return true;
+}
+
+/** Cards with an approved, sourced name and a real clip in the requested language. */
+export function availableCards(lang: Lang): Card[] {
+  return cards.filter((card) => hasPlayableName(card, lang));
+}
+
+/** Cards callable in every language present in a room. */
+export function cardsAvailableIn(langs: readonly Lang[]): Card[] {
+  if (langs.length === 0) return [];
+  return cards.filter((card) => langs.every((lang) => hasPlayableName(card, lang)));
+}
+
+/** Languages that can voice every id in an already frozen deck. */
+export function langsForDeck(ids: readonly CardId[]): Lang[] {
+  if (ids.some((id) => !byId.has(id))) return [];
+  return LANGS.filter((lang) =>
+    ids.every((id) => {
+      const card = byId.get(id);
+      return card !== undefined && hasPlayableName(card, lang);
+    }),
+  );
+}
+
 function defaultHideUnreviewed(): boolean {
   // Keep the literal `import.meta.env` so Vite/Vitest can substitute it; undefined under plain Node.
   const env = import.meta.env as unknown as { VITE_HIDE_UNREVIEWED?: string } | undefined;
   return env?.VITE_HIDE_UNREVIEWED !== 'false';
 }
 
-/**
- * A lang is callable when every card has an approved name. With hideUnreviewed=false
- * (dev/review builds) a lang is also callable when every card has a name of any status.
- */
+/** Languages with at least one currently voiceable card; use cardsAvailableIn for a room pool. */
 export function callableLangs(opts?: { hideUnreviewed?: boolean }): Lang[] {
   const hide = opts?.hideUnreviewed ?? defaultHideUnreviewed();
-  return LANGS.filter((lang) =>
-    cards.every((c) => (hide ? c.names[lang]?.status === 'approved' : c.names[lang] !== undefined)),
-  );
+  return LANGS.filter((lang) => cards.some((card) => hasPlayableName(card, lang, !hide)));
 }
 
 export function cardName(
@@ -44,7 +73,7 @@ export function cardName(
   opts?: { hideUnreviewed?: boolean },
 ): { text: string; status: string } | null {
   const n = card.names[lang];
-  if (!n) return null;
+  if (!n || n.text === null) return null;
   const hide = opts?.hideUnreviewed ?? defaultHideUnreviewed();
   if (hide && (INDIGENOUS_LANGS as readonly Lang[]).includes(lang) && n.status === 'draft')
     return null;

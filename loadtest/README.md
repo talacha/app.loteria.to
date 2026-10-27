@@ -18,4 +18,22 @@ pnpm tsx loadtest/check-sequence-browser.ts
 
 It starts its own Vite server on port 4198 (`LOADTEST_SEQUENCE_PORT` overrides it), uses isolated Chromium browser contexts and closes both. It checks atomic sequence allocation across two tabs, atomic duplicate rejection, real page reload with the same persisted host key and player seat, and fail-closed behavior when IndexedDB is blocked. It uses the production IndexedDB path, without Node's in-memory fallback.
 
-The signed envelope is version 2. Refresh the organiser and every player together after deployment; old hosts/players cannot interoperate securely with the new envelope. See `docs/protocol.md` for storage and compatibility details.
+The signed envelope is version 3. Refresh the organiser and every player together after deployment; old hosts/players cannot interoperate securely with the new envelope. See `docs/protocol.md` for storage and compatibility details.
+
+Verify the completed production PWA after building all catalog assets:
+
+```sh
+pnpm build
+pnpm tsx loadtest/check-pwa-offline.ts
+```
+
+This starts a private preview on port 4199 (`LOADTEST_PWA_PORT` overrides it), waits for service-worker installation, warms the print worker/font online, disconnects Chromium and fetches every precached illustration and voice clip plus the warmed print files. It fails if the build lacks a catalog illustration or any offline media request fails. Game audio stays available offline after installation; print assets require their first connected use.
+
+After artwork production finishes, verify index coverage and the complete delivered catalog:
+
+```sh
+node scripts/cards-index.mjs --check
+pnpm tsx loadtest/check-card-art-browser.ts
+```
+
+The browser audit scrolls Home and Deck to exercise lazy loading, decodes every picture, checks all 144 catalog IDs and image hashes against the source index, and verifies edge-to-edge cover sizing at 390, 768 and 1280 px. It starts its own preview on port 4200 and writes screenshots plus a JSON report under `loadtest/reports/card-art-release/`. Set `LOADTEST_CARDS_BASE_URL` to audit an existing preview or production release; set `LOADTEST_CARDS_OUTPUT_DIR` to choose another artifact directory. Index verification is read-only; normal `cards:index` regenerates the index only when every catalog illustration is present at 600×900.

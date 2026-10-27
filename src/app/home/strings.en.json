@@ -1,16 +1,16 @@
 {
-  "tagline": "The picture lotería everyone grew up with, called in five languages.",
+  "tagline": "Picture lotería: 144 cards called in Spanish and English; 54 are also available in Nahuatl, Maya and Quechua.",
   "actions": "Get started",
   "joinLabel": "Room code",
   "joinInvalid": "The code has 5 letters or numbers (no I, L, O, 0 or 1).",
   "joinSubmit": "Join a room",
   "joinHelp": "Type the 5-character code shown on the cantor's screen.",
-  "languagesTitle": "Five languages",
-  "languagesIntro": "Each person chooses the language of the calls. See the credits for the provenance of names and voices.",
+  "languagesTitle": "Call languages",
+  "languagesIntro": "Spanish and English calls cover all 144 cards. Nahuatl, Yucatec Maya and Quechua are available for the original 54 cards. See the credits for the provenance of names and voices.",
   "pendingBadge": "no audio",
-  "readyBadge": "ready to call",
+  "readyBadge": "available",
   "sampleTitle": "A taste of the deck",
-  "sampleAll": "See all 54 cards",
+  "sampleAll": "See all 144 cards",
   "howTitle": "How a round works",
   "steps": {
     "one": {
@@ -62,7 +62,7 @@
   "logoAlt": "",
   "printLink": "Print boards",
   "deckLink": "Cards",
-  "h1": "Lotería de los Pueblos — lotería called in Nahuatl, Maya, Quechua, Spanish and English",
+  "h1": "Lotería de los Pueblos — 144 cards and five language options",
   "lede": "A picture lotería for families and classrooms: a voice calls each card and you pick how it is spelled. Join from your phone with a QR code. Free, with no accounts.",
   "faq": {
     "title": "Frequently asked questions",
@@ -73,7 +73,7 @@
       },
       "langs": {
         "q": "Which languages does it have?",
-        "a": "Cards are called in Nahuatl, Yucatec Maya, Quechua (Cusco-Collao), Spanish and English. Each player chooses the language they hear and the app language (Spanish or English), and can change them at any time."
+        "a": "Calls are available in Nahuatl, Yucatec Maya, Quechua (Cusco-Collao), Spanish or English. The full 144-card deck has Spanish and English calls; the original 54 cards are also available in the other three languages. Each player chooses the language they hear and the app language (Spanish or English). During a round, the call language can be changed among languages that cover every card in that room."
       },
       "free": {
         "q": "Is it free?",

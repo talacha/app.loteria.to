@@ -292,7 +292,7 @@ describe('host lobby: grid size and room defaults', () => {
 
   it('offers 3x3..8x8, disabling sizes the 54-card deck cannot deal', async () => {
     await mount();
-    await emit(hello('s1'));
+    await emit({ ...hello('s1'), labelLang: 'nah' });
     await emit(hello('s2', 'Beto'));
     await tick(400);
     openSettings();
@@ -316,9 +316,22 @@ describe('host lobby: grid size and room defaults', () => {
     expect(store.round?.settings.gridSize).toBe(5);
   });
 
-  it('steps the size down when more people join than the deck supports', async () => {
+  it('updates deck coverage immediately when a roster seat adopts another voice', async () => {
     await mount();
     await emit(hello('s1'));
+    await emit(hello('s2', 'Beto'));
+    openSettings();
+    const radios = () =>
+      within(screen.getByRole('radiogroup', { name: 'Tamaño de la tabla' })).getAllByRole('radio');
+    expect(radios()[5]!.getAttribute('aria-disabled')).toBe('false');
+    // Language adoption can follow the first hello before the roster's two-second cooldown.
+    await emit({ ...hello('s1'), labelLang: 'nah' });
+    expect(radios()[5]!.getAttribute('aria-disabled')).toBe('true');
+  });
+
+  it('steps the size down when more people join than the deck supports', async () => {
+    await mount();
+    await emit({ ...hello('s1'), labelLang: 'nah' });
     await emit(hello('s2', 'Beto'));
     await tick(400);
     openSettings();

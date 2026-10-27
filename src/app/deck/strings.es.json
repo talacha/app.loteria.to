@@ -1,4 +1,17 @@
 {
+  "title": "Las 144 cartas",
+  "intro": "Las 144 cartas tienen nombre en español e inglés. Las 54 originales también muestran nombres heredados en náhuatl, maya yucateco y quechua; sus fuentes aún no se han verificado por completo.",
+  "all": "Todas",
+  "category": "Categoría",
+  "categories": {
+    "animals": "Animales",
+    "plants_food": "Plantas y alimentos",
+    "sky": "Cielo",
+    "land": "Tierra",
+    "handmade": "Hecho a mano",
+    "places": "Lugares"
+  },
+  "cardNumber": "Carta {n}",
   "filterLabel": "Filtrar por categoría",
   "count": "{count, plural, one {# carta} other {# cartas}}",
   "home": "Inicio"

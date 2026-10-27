@@ -1,7 +1,9 @@
+import { readFileSync } from 'node:fs';
 import { defineConfig, loadEnv, type UserConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { aliases } from './vite.aliases.ts';
+import { assertPrecacheBudget, filterUnusedAudio } from './scripts/precache-budget.ts';
 import tokens from './design/tokens.json' with { type: 'json' };
 
 // The Vercel Supabase integration injects NEXT_PUBLIC_SUPABASE_*; expose only the
@@ -18,6 +20,17 @@ export default defineConfig(({ mode }) => {
   mapSupabasePublicEnv(mode);
   return config;
 });
+
+const catalog = JSON.parse(
+  readFileSync(new URL('./src/content/cards.json', import.meta.url), 'utf8'),
+) as {
+  names: Record<string, { audio?: string | null }>;
+}[];
+const activeAudio = new Set(
+  catalog.flatMap((card) =>
+    Object.values(card.names).flatMap((name) => (name.audio ? [name.audio] : [])),
+  ),
+);
 
 const config = {
   resolve: { alias: aliases },
@@ -49,13 +62,36 @@ const config = {
         ],
       },
       workbox: {
-        // Precache shell, content, art and audio (budget: < 10 MB total).
+        // Full game works offline after installation. Printing caches on first connected use.
         globPatterns: ['**/*.{js,css,html,svg,png,webp,jpg,json,webm,m4a,woff2,ttf}'],
+        globIgnores: [
+          '**/assets/worker-*.js',
+          '**/assets/build-*.js',
+          '**/fonts/NotoSans-Regular.ttf',
+        ],
         maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
+        manifestTransforms: [
+          (manifest) => {
+            const selected = filterUnusedAudio(manifest, activeAudio);
+            assertPrecacheBudget(selected);
+            return { manifest: selected, warnings: [] };
+          },
+        ],
         navigateFallback: '/index.html',
         navigateFallbackDenylist: [/^\/api\//],
         cleanupOutdatedCaches: true,
         runtimeCaching: [
+          {
+            urlPattern: ({ url }) =>
+              url.pathname.endsWith('/fonts/NotoSans-Regular.ttf') ||
+              /\/assets\/(?:worker|build)-[^/]+\.js$/.test(url.pathname),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'loteria-print-assets-v1',
+              cacheableResponse: { statuses: [200] },
+              expiration: { maxEntries: 12, maxAgeSeconds: 30 * 24 * 60 * 60 },
+            },
+          },
           {
             urlPattern: ({ url }) => url.pathname.startsWith('/api/'),
             handler: 'NetworkOnly',

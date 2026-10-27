@@ -127,7 +127,8 @@ describe('HostPage', () => {
   it('shows the picture, not the word, and a card counter', async () => {
     await started();
     expect(screen.getByText('Carta 1')).toBeTruthy();
-    expect(screen.getByText('de 54')).toBeTruthy();
+    const round = sent.find((message) => message.t === 'round')!;
+    expect(screen.getByText(`de ${(round.deck as string[]).length}`)).toBeTruthy();
     expect(screen.getByText('0 de 2 ya eligieron')).toBeTruthy();
     expect(document.querySelector('figure img, figure span')).toBeTruthy();
   });

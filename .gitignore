@@ -18,3 +18,7 @@ audio-masters/
 # Local Supabase CLI cache and editor backup files
 supabase/.temp/
 *-E
+
+# Local audio tooling and generated review artifacts
+__pycache__/
+output/

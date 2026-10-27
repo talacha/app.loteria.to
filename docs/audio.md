@@ -30,6 +30,21 @@ pnpm audio:check
 
 Flags: `--only lang[,lang]`, `--cards id[,id]`, `--k N`, `--score asr|signal`, `--force`. Python 3.10-3.12 (spaCy, pulled in by Kokoro, has no 3.14 wheels yet). Commit `public/audio/**`, `manifest.json` and `src/content/cards.json` (the `audio` paths).
 
+## Reproduce the 144-card production run
+
+Use the tested Python dependencies without changing the default system Python:
+
+```sh
+uv venv --python python3.11 ~/.cache/loteria-audio-venv
+uv pip install --python ~/.cache/loteria-audio-venv/bin/python -r scripts/audio/requirements.txt
+HF_HUB_OFFLINE=1 OMP_NUM_THREADS=4 ~/.cache/loteria-audio-venv/bin/python scripts/generate-audio.py --only es,en --k 6 --score asr
+pnpm audio:check
+```
+
+The offline flag requires the exact pinned Kokoro and MMS-ASR snapshots in the Hugging Face cache. Omit it only when fetching those models initially. Cache hits preserve existing clips; use `--cards` to restrict a run to selected IDs. The generator writes the complete card catalog at the end, so reserve exclusive access to `cards.json` during production. It also writes hashed public clips, manifest metadata and local lossless masters. `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed only for the separate masters upload, never for local generation.
+
+The full game (including all referenced languages' clips) remains in the PWA install cache. Retained historical clips stay on the CDN but are excluded from installation when no current name references them. The aggregate precache must stay below 10 MiB and card art must stay at or below 6,000,000 bytes; `scripts/precache-budget.ts` makes a build exceeding either fail. Print-only workers/builders and the Noto Sans PDF font use a separate runtime cache: printing requires a connected first use before those files can work offline.
+
 ## Add a language
 
 1. Add the name to `cards.json` for every card.
