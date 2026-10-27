@@ -49,6 +49,8 @@ export interface SoloConfig {
   pool: { id: CardId; category: Category }[];
   /** Pairs to keep apart in the three choices (spoken-language dependent). */
   exclude?: (a: CardId, b: CardId) => boolean;
+  /** Cartón is grid x grid (3..8, default 4). */
+  grid?: number;
 }
 
 export interface CpuPlan {
@@ -92,7 +94,7 @@ export const cpuSeat = (n: number): string => `cpu${n}`;
 export const isCpu = (seat: string): boolean => seat !== HUMAN;
 
 export function remainingSquares(s: SoloState, seat: string): number {
-  return 16 - (s.crossed[seat]?.length ?? 0);
+  return (s.tablas[seat]?.cards.length ?? 16) - (s.crossed[seat]?.length ?? 0);
 }
 
 function cpuPlan(
@@ -124,7 +126,7 @@ export function createSolo(cfg: SoloConfig): SoloState {
   const seats = [HUMAN, ...Array.from({ length: cpus }, (_, k) => cpuSeat(k + 1))];
   const tablas: Record<string, Tabla> = {};
   seats.forEach((seat, idx) => {
-    tablas[seat] = tabla(cfg.seed, idx, cfg.pool);
+    tablas[seat] = tabla(cfg.seed, idx, cfg.pool, cfg.grid);
   });
   const crossed: Record<string, CardId[]> = {};
   for (const seat of seats) crossed[seat] = [];

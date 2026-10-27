@@ -15,7 +15,8 @@ describe('parseMsg', () => {
       { t: 'call', i: 0, cardId: 'gallo', choices: ['gallo', 'luna', 'sol'], at: 1 },
       { t: 'pick', seat: 'a', roundNo: 1, i: 0, cardId: 'x' },
       { t: 'pickResult', roundNo: 1, i: 0, seat: 'a', correct: true, points: 1, first: false },
-      { t: 'scores', roundNo: 1, points: { a: 3, b: 0 } },
+      { t: 'scores', roundNo: 1, points: { a: 3, b: 0 }, crossed: { a: 4, b: 0 } },
+      { t: 'scores', roundNo: 1, points: { a: 3 } },
       { t: 'callClosed', roundNo: 1, i: 0 },
       { t: 'end', roundNo: 1, winners: ['a'], reason: 'full-card' },
       { t: 'lobby', status: 'full', players: [], hostKey: 'k' },
@@ -57,6 +58,22 @@ describe('parseMsg', () => {
     expect(parseMsg({ ...lobby(0), players: [{ ...p(1), name: 'a\u202Eb' }] })).toBeNull();
     expect(parseMsg({ ...lobby(0), status: 'bogus' })).toBeNull();
   });
+  it('round carries an optional gridSize 3..8', () => {
+    const r = { t: 'round', seed: 's', roundNo: 1, speedSec: 8 };
+    expect(parseMsg(r)).not.toBeNull();
+    expect(parseMsg({ ...r, gridSize: 8 })).toMatchObject({ gridSize: 8 });
+    expect(parseMsg({ ...r, gridSize: 2 })).toBeNull();
+    expect(parseMsg({ ...r, gridSize: 9 })).toBeNull();
+    expect(parseMsg({ ...r, gridSize: 4.5 })).toBeNull();
+  });
+
+  it('lobby carries optional room defaults', () => {
+    const l = { t: 'lobby', status: 'waiting', players: [] };
+    expect(parseMsg({ ...l, defaults: { spokenLang: 'nah', uiLang: 'en' } })).not.toBeNull();
+    expect(parseMsg({ ...l, defaults: { spokenLang: 'xx', uiLang: 'en' } })).toBeNull();
+    expect(parseMsg({ ...l, defaults: { spokenLang: 'nah', uiLang: 'nah' } })).toBeNull();
+  });
+
   it('validates choices, pick, pickResult, scores', () => {
     const call = { t: 'call', i: 0, cardId: 'x', at: 1 };
     expect(parseMsg(call)).toBeNull();
@@ -81,6 +98,9 @@ describe('parseMsg', () => {
     expect(parseMsg({ t: 'end', roundNo: 1, winners: [], reason: 'line' })).toBeNull();
     expect(parseMsg({ t: 'scores', roundNo: 1, points: { a: 201 } })).toBeNull();
     expect(parseMsg({ t: 'scores', roundNo: 1, points: { a: 1.5 } })).toBeNull();
+    expect(parseMsg({ t: 'scores', roundNo: 1, points: {}, crossed: { a: 65 } })).toBeNull();
+    expect(parseMsg({ t: 'scores', roundNo: 1, points: {}, crossed: { a: 1.5 } })).toBeNull();
+    expect(parseMsg({ t: 'scores', roundNo: 1, points: {}, crossed: { a: -1 } })).toBeNull();
     const many = Object.fromEntries(Array.from({ length: 61 }, (_, i) => ['s' + i, 1]));
     expect(parseMsg({ t: 'scores', roundNo: 1, points: many })).toBeNull();
   });

@@ -50,5 +50,8 @@
   "winWords": "Words you learned",
   "anotherRound": "Another round",
   "anotherRoundHint": "The organiser starts the next round and your board changes by itself.",
-  "backToRoom": "Back to the room"
+  "backToRoom": "Back to the room",
+  "pointsPanel": "Points",
+  "myRank": "Your place: {n}",
+  "finalStandings": "Final points table"
 }

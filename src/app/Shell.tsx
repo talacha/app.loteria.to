@@ -99,7 +99,7 @@ export default function Shell() {
         <button
           type="button"
           className={styles.iconBtn}
-          aria-label={t('theme.settings.open')}
+          aria-label={t('ui.gear.label')}
           aria-haspopup="dialog"
           onClick={() => setSheet('settings')}
         >

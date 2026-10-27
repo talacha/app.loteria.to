@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import '../i18n';
 import type { SavedRound } from './roundMachine';
@@ -284,5 +284,79 @@ describe('resume', () => {
     expect(screen.queryByRole('button', { name: 'Empezar' })).toBeNull();
     expect(screen.getByRole('button', { name: 'Reanudar' })).toBeTruthy();
     expect(sent.some((m) => m.t === 'lobby' && m.status === 'started')).toBe(true);
+  });
+});
+
+describe('host lobby: grid size and room defaults', () => {
+  const openSettings = () => document.querySelectorAll('details').forEach((d) => (d.open = true));
+
+  it('offers 3x3..8x8, disabling sizes the 54-card deck cannot deal', async () => {
+    await mount();
+    await emit(hello('s1'));
+    await emit(hello('s2', 'Beto'));
+    await tick(400);
+    openSettings();
+    const group = screen.getByRole('radiogroup', { name: 'Tamaño de la tabla' });
+    const radios = within(group).getAllByRole('radio');
+    expect(radios.map((r) => r.textContent?.replace(/\s+/g, ' ').trim())).toEqual([
+      '3×3',
+      '4×4',
+      '5×5',
+      '6×6 Requiere 59 cartas',
+      '7×7 Requiere 83 cartas',
+      '8×8 Requiere 108 cartas',
+    ]);
+    expect(radios[1]!.getAttribute('aria-checked')).toBe('true');
+    expect(radios[3]!.getAttribute('aria-disabled')).toBe('true');
+    fireEvent.click(radios[3]!); // disabled: ignored
+    expect(store.round?.settings.gridSize ?? 4).toBe(4);
+    fireEvent.click(radios[2]!);
+    await tick(10);
+    expect(radios[2]!.getAttribute('aria-checked')).toBe('true');
+    expect(store.round?.settings.gridSize).toBe(5);
+  });
+
+  it('steps the size down when more people join than the deck supports', async () => {
+    await mount();
+    await emit(hello('s1'));
+    await emit(hello('s2', 'Beto'));
+    await tick(400);
+    openSettings();
+    fireEvent.click(
+      within(screen.getByRole('radiogroup', { name: 'Tamaño de la tabla' })).getAllByRole(
+        'radio',
+      )[2]!,
+    );
+    for (let i = 3; i <= 12; i++) await emit(hello(`s${i}`, `P${i}`));
+    await tick(2000);
+    expect(store.round?.settings.gridSize).toBe(4);
+  });
+
+  it('sends the room defaults in every lobby message, and lets the organiser change them', async () => {
+    await mount();
+    await emit(hello('s1'));
+    await tick(400);
+    expect(lobbies().pop()).toMatchObject({ defaults: { spokenLang: 'es', uiLang: 'es' } });
+    openSettings();
+    fireEvent.click(
+      within(screen.getByRole('radiogroup', { name: 'Idioma hablado al empezar' })).getByRole(
+        'radio',
+        {
+          name: 'Náhuatl',
+        },
+      ),
+    );
+    fireEvent.click(
+      within(screen.getByRole('radiogroup', { name: 'Idioma de la app al empezar' })).getByRole(
+        'radio',
+        {
+          name: 'English',
+        },
+      ),
+    );
+    await emit(hello('s2', 'Beto'));
+    await tick(400);
+    expect(lobbies().pop()).toMatchObject({ defaults: { spokenLang: 'nah', uiLang: 'en' } });
+    expect(store.round?.settings).toMatchObject({ defaultSpokenLang: 'nah', defaultUiLang: 'en' });
   });
 });

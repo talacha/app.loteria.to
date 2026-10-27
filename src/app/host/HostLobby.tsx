@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
+import { cards } from '@content';
+import { MAX_GRID, MIN_GRID, maxGridFor, minDeckFor } from '@engine';
 import { Button, Panel, PaperCard, Pill, QrCard, RoomCodeTiles, RosterTile } from '../ui';
+import { SPOKEN_LANGS } from '../ui/profile';
 import styles from './HostLobby.module.css';
 import { MAX_SPEED, MIN_SPEED, SPEED_PRESETS } from './roundMachine';
 import { LOCAL_SEAT, MAX_PLAYERS } from './useHostRoom';
@@ -33,6 +36,13 @@ export default function HostLobby({ room }: { room: HostRoom }) {
   const [seedInput, setSeedInput] = useState('');
   const [seedError, setSeedError] = useState(false);
   const { settings } = room;
+  const players = Math.max(2, room.roster.length);
+  const maxGrid = maxGridFor(cards.length, players);
+  const { configure } = room;
+  useEffect(() => {
+    // Players joining can make the chosen size unsupported: step down to the largest that fits.
+    if (maxGrid >= MIN_GRID && settings.gridSize > maxGrid) configure({ gridSize: maxGrid });
+  }, [maxGrid, settings.gridSize, configure]);
   const canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
 
   const copy = async () => {
@@ -214,6 +224,79 @@ export default function HostLobby({ room }: { room: HostRoom }) {
                   />
                 </label>
                 <span>{t('host.speedSeconds', { seconds: settings.speedSec })}</span>
+              </fieldset>
+
+              <fieldset className={styles.field}>
+                <legend>{t('host.grid.title')}</legend>
+                <div className={styles.row} role="radiogroup" aria-label={t('host.grid.title')}>
+                  {Array.from({ length: MAX_GRID - MIN_GRID + 1 }, (_, k) => MIN_GRID + k).map(
+                    (g) => {
+                      const need = minDeckFor(g, players);
+                      const ok = cards.length >= need;
+                      return (
+                        <button
+                          key={g}
+                          type="button"
+                          role="radio"
+                          aria-checked={settings.gridSize === g}
+                          aria-disabled={!ok}
+                          aria-describedby={ok ? undefined : `grid-need-${g}`}
+                          className={settings.gridSize === g ? styles.primary : styles.btn}
+                          onClick={() => ok && room.configure({ gridSize: g })}
+                        >
+                          {g}×{g}
+                          {ok ? null : (
+                            <span id={`grid-need-${g}`} className={styles.muted}>
+                              {' '}
+                              {t('host.grid.needs', { n: need })}
+                            </span>
+                          )}
+                        </button>
+                      );
+                    },
+                  )}
+                </div>
+                <span className={styles.muted}>{t('host.grid.help')}</span>
+              </fieldset>
+
+              <fieldset className={styles.field}>
+                <legend>{t('host.defaults.spoken')}</legend>
+                <div
+                  className={styles.row}
+                  role="radiogroup"
+                  aria-label={t('host.defaults.spoken')}
+                >
+                  {SPOKEN_LANGS.map((l) => (
+                    <button
+                      key={l}
+                      type="button"
+                      role="radio"
+                      aria-checked={settings.defaultSpokenLang === l}
+                      className={settings.defaultSpokenLang === l ? styles.primary : styles.btn}
+                      onClick={() => room.configure({ defaultSpokenLang: l })}
+                    >
+                      {t(`lang.${l}`)}
+                    </button>
+                  ))}
+                </div>
+              </fieldset>
+              <fieldset className={styles.field}>
+                <legend>{t('host.defaults.ui')}</legend>
+                <div className={styles.row} role="radiogroup" aria-label={t('host.defaults.ui')}>
+                  {(['es', 'en'] as const).map((l) => (
+                    <button
+                      key={l}
+                      type="button"
+                      role="radio"
+                      aria-checked={settings.defaultUiLang === l}
+                      className={settings.defaultUiLang === l ? styles.primary : styles.btn}
+                      onClick={() => room.configure({ defaultUiLang: l })}
+                    >
+                      {t(`lang.${l}`)}
+                    </button>
+                  ))}
+                </div>
+                <span className={styles.muted}>{t('host.defaults.help')}</span>
               </fieldset>
 
               <h3>{t('host.printSeed')}</h3>

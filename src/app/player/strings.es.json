@@ -43,12 +43,15 @@
   "cardsCalled": "{count, plural, =0 {Aún no se canta ninguna carta} one {# carta cantada} other {# cartas cantadas}}",
   "unverifiedBadge": "Sala sin verificar",
   "winTitle": "¡Lotería!",
-  "winYou": "¡Completaste tu tabla! Ganaste con {points} puntos.",
+  "winYou": "¡Completaste tu tabla con {points} puntos!",
   "winSolo": "{name} completó la tabla con {points} puntos.",
-  "winTie": "Empate: {names} completaron la tabla en la misma carta y comparten la victoria con {points} puntos.",
+  "winTie": "Empate: {names} completaron la tabla en la misma carta, con {points} puntos.",
   "winNone": "La ronda terminó.",
   "winWords": "Palabras que aprendiste",
   "anotherRound": "Otra ronda",
   "anotherRoundHint": "Quien organiza empieza la siguiente ronda y tu tabla cambia sola.",
-  "backToRoom": "Volver a la sala"
+  "backToRoom": "Volver a la sala",
+  "pointsPanel": "Puntos",
+  "myRank": "Tu lugar: {n}",
+  "finalStandings": "Tabla de puntos final"
 }

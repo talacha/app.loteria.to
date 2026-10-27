@@ -76,7 +76,7 @@
     "pickers": "{x} of {y} have picked",
     "phones": "{count, plural, one {# phone} other {# phones}}",
     "points": "Points",
-    "tiebreak": "tie-breaker only",
+    "tiebreak": "points break ties on the same card",
     "firstPlus": "First correct answer: +{n}",
     "history": "Already called",
     "joinAt": "Join at app.loteria.to",
@@ -93,7 +93,18 @@
     "youPoints": "You · {n} points",
     "squaresLeft": "{n, plural, one {# square left} other {# squares left}}",
     "roomCode": "Room and code",
-    "replay": "Replay the voice"
+    "replay": "Replay the voice",
+    "finalStandings": "Final points table"
   },
-  "resume": "Resume"
+  "resume": "Resume",
+  "grid": {
+    "title": "Board size",
+    "needs": "Needs {n} cards",
+    "help": "3×3 is shorter; 8×8 is very long. Available sizes depend on how many people are in the room."
+  },
+  "defaults": {
+    "spoken": "Spoken language at the start",
+    "ui": "App language at the start",
+    "help": "What each person starts with when they join. Everyone can change it."
+  }
 }

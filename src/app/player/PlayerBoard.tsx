@@ -9,11 +9,15 @@ import {
   Button,
   CardArt,
   FeedbackStrip,
+  Leaderboard,
   Panel,
   Pill,
   ProgressBar,
   Tabla,
   type CellData,
+  rankEntries,
+  useProfile,
+  type LeaderboardEntry,
   type PillTone,
 } from '../ui';
 import WinScreen from './WinScreen';
@@ -35,7 +39,7 @@ export interface PlayerProfile {
 export interface PlayerBoardProps {
   transport: Transport;
   room: { code: string; seat: string; hostVerified: boolean };
-  roster?: { seat: string; name?: string }[];
+  roster?: { seat: string; name?: string; glyph?: string }[];
   profile: PlayerProfile;
   /** Lobby message buffer; when absent the board listens to the transport directly. */
   log?: MessageLog;
@@ -77,13 +81,26 @@ export default function PlayerBoard({
 
   useEffect(() => onMutedChange(setMutedState), []);
 
+  // The gear in the header changes the spoken language mid-game: the next call uses it.
+  const stored = useProfile().spokenLang;
+  const [seenStored, setSeenStored] = useState(stored);
+  if (seenStored !== stored) {
+    setSeenStored(stored);
+    setSpokenLang(stored);
+  }
+
   useEffect(() => {
     const handle = (m: Msg) => {
       switch (m.t) {
         case 'round':
           dispatch({
             type: 'round',
-            round: { roomSeed: m.seed, roundNo: m.roundNo, speedSec: m.speedSec },
+            round: {
+              roomSeed: m.seed,
+              roundNo: m.roundNo,
+              speedSec: m.speedSec,
+              ...(m.gridSize ? { gridSize: m.gridSize } : {}),
+            },
           });
           break;
         case 'assign':
@@ -114,7 +131,7 @@ export default function PlayerBoard({
             });
           break;
         case 'scores':
-          dispatch({ type: 'scores', roundNo: m.roundNo, points: m.points });
+          dispatch({ type: 'scores', roundNo: m.roundNo, points: m.points, crossed: m.crossed });
           break;
         case 'end':
           dispatch({ type: 'end', roundNo: m.roundNo, winners: m.winners, seat: transport.seat });
@@ -215,6 +232,36 @@ export default function PlayerBoard({
   const langName = (l: Lang) => t(`lobby.langs.${l}.name`);
   const points = state.points[transport.seat] ?? state.myPoints;
   const endedOpen = state.ended !== null && !state.ended.dismissed;
+  const total = board.length || 16;
+  const standings: LeaderboardEntry[] = (() => {
+    const mine: LeaderboardEntry = {
+      seat: transport.seat,
+      name: name || t('ui.leaderboard.you'),
+      glyph: profile.glyph || undefined,
+      points,
+      crossed: state.crossed.length,
+    };
+    const others = (roster ?? [])
+      .filter((r) => r.seat !== transport.seat && r.seat !== 'host-local')
+      .map((r) => ({
+        seat: r.seat,
+        name: r.name || '…',
+        glyph: r.glyph,
+        points: state.points[r.seat] ?? 0,
+        crossed: state.crossedBy[r.seat] ?? 0,
+      }));
+    const local = (roster ?? [])
+      .filter((r) => r.seat === 'host-local')
+      .map((r) => ({
+        seat: r.seat,
+        name: r.name || '…',
+        glyph: r.glyph,
+        points: state.points[r.seat] ?? 0,
+        crossed: state.crossedBy[r.seat] ?? 0,
+      }));
+    return [mine, ...others, ...local];
+  })();
+  const myRank = rankEntries(standings).find((r) => r.seat === transport.seat)?.rank ?? 1;
 
   if (endedOpen && state.ended && round && board.length > 0) {
     const names: Record<string, string> = { [transport.seat]: name };
@@ -227,6 +274,8 @@ export default function PlayerBoard({
         wonByMe={state.ended.wonByMe}
         names={names}
         points={{ ...state.points, [transport.seat]: points }}
+        standings={standings}
+        selfSeat={transport.seat}
         spokenLang={spokenLang}
         onAnother={() => dispatch({ type: 'dismissEnded' })}
         onBack={() => {
@@ -449,6 +498,14 @@ export default function PlayerBoard({
               </p>
               <Tabla cells={cells} label={t('player.tablaTitle')} />
             </section>
+
+            <details className={styles.points} data-testid="leaderboard">
+              <summary className={styles.pointsSummary}>
+                <span>{t('player.pointsPanel')}</span>
+                <span className={styles.pointsRank}>{t('player.myRank', { n: myRank })}</span>
+              </summary>
+              <Leaderboard entries={standings} selfSeat={transport.seat} total={total} />
+            </details>
 
             <p className={styles.muted}>
               {t('player.cardsCalled', { count: state.revealed.length + (open ? 1 : 0) })}

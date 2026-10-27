@@ -44,5 +44,12 @@
   "again": "Another round",
   "history": "Already called",
   "offline": "Works offline",
-  "aiVoice": "AI-generated voice · may contain errors"
+  "aiVoice": "AI-generated voice · may contain errors",
+  "leave": "Leave",
+  "leaveTitle": "Leave the game?",
+  "leaveBody": "The game stops here and is not saved.",
+  "keepPlaying": "Keep playing",
+  "finalStandings": "Final points table",
+  "grid": "Board size",
+  "needs": "Needs {n} cards"
 }

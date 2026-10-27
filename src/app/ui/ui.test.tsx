@@ -1,5 +1,5 @@
 import QRCode from 'qrcode';
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import '../i18n';
@@ -12,6 +12,8 @@ import {
   FeedbackStrip,
   HistoryStrip,
   LanguageCard,
+  Leaderboard,
+  rankEntries,
   PapelPicado,
   PaperCard,
   Panel,
@@ -225,5 +227,70 @@ describe('Gallery', () => {
     );
     expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('UI gallery');
     expect(screen.getAllByRole('radio').length).toBe(5);
+  });
+});
+
+describe('Leaderboard', () => {
+  const e = (seat: string, name: string, points: number, crossed: number) => ({
+    seat,
+    name,
+    glyph: '🌽',
+    points,
+    crossed,
+  });
+
+  it('sorts by points desc, then squares desc, then name; ties share a rank', () => {
+    const r = rankEntries([
+      e('a', 'Zoe', 3, 4),
+      e('b', 'Ana', 3, 4),
+      e('c', 'Mia', 3, 6),
+      e('d', 'Leo', 7, 1),
+      e('f', 'Eva', 0, 0),
+    ]);
+    expect(r.map((x) => [x.name, x.rank])).toEqual([
+      ['Leo', 1],
+      ['Mia', 2],
+      ['Ana', 3],
+      ['Zoe', 3],
+      ['Eva', 5],
+    ]);
+  });
+
+  it('renders an accessible table with rank, glyph, name, points, squares and a Tú marker', () => {
+    render(
+      <Leaderboard entries={[e('a', 'Ana', 2, 5), e('b', 'Beto', 6, 9)]} selfSeat="a" total={16} />,
+    );
+    const table = screen.getByRole('table', { name: 'Tabla de puntos' });
+    const rows = within(table).getAllByRole('row').slice(1);
+    expect(rows[0]!.textContent).toMatch(/^1.*Beto.*6.*9\/16/);
+    expect(rows[0]!.getAttribute('data-first')).toBe('true');
+    expect(rows[1]!.textContent).toMatch(/^2.*Ana.*Tú.*2.*5\/16/);
+    expect(rows[1]!.getAttribute('data-first')).toBeNull();
+    expect(within(rows[1]!).getByLabelText('5 de 16 casillas')).toBeTruthy();
+  });
+
+  it('uses the grid total and a scrollable keyboard-reachable region when asked', () => {
+    render(<Leaderboard scroll entries={[e('a', 'Ana', 0, 30)]} total={36} />);
+    expect(screen.getByRole('region', { name: 'Tabla de puntos' }).getAttribute('tabindex')).toBe(
+      '0',
+    );
+    expect(screen.getByText('30/36')).toBeTruthy();
+  });
+});
+
+describe('Tabla grid sizes', () => {
+  const mk = (n: number) =>
+    Array.from({ length: n }, (_, i) => ({ id: `c${i}`, emoji: '🌽', label: '', marked: false }));
+  it.each([3, 4, 5, 8])('renders %i x %i cells', (g) => {
+    render(<Tabla cells={mk(g * g)} />);
+    const ul = screen.getByRole('list');
+    expect(ul.getAttribute('data-grid')).toBe(String(g));
+    expect(ul.style.getPropertyValue('--grid')).toBe(String(g));
+    expect(ul.children).toHaveLength(g * g);
+    cleanup();
+  });
+  it('falls back to 4 columns for a non-square count', () => {
+    render(<Tabla cells={mk(10)} />);
+    expect(screen.getByRole('list').getAttribute('data-grid')).toBe('4');
   });
 });

@@ -6,7 +6,8 @@ import type { CardId, Lang } from './types.ts';
 import { INDIGENOUS_LANGS, LANGS } from './types.ts';
 
 export type { CardId, Category, Lang } from './types.ts';
-export { CATEGORIES, LANGS } from './types.ts';
+export { CATEGORIES, LANGS, CONTENT_LANGS, LANG_PLAYABLE } from './types.ts';
+export type { ContentLang } from './types.ts';
 
 export type { Card } from './schema.ts';
 export type NameStatus = 'draft' | 'reviewed' | 'approved';

@@ -88,9 +88,11 @@ export function crossedAfterCall(tabla: Tabla, calledIds: readonly CardId[]): Ca
   return tabla.cards.filter((c) => called.has(c));
 }
 
-/** §7: all 16 squares crossed. */
+/** §7: all g x g squares crossed (the cartón must be a whole 3x3..8x8). */
 export function isCardComplete(tabla: Tabla, crossed: readonly CardId[]): boolean {
-  if (tabla.cards.length !== 16) return false;
+  const n = tabla.cards.length;
+  const g = Math.round(Math.sqrt(n));
+  if (g * g !== n || g < 3 || g > 8) return false;
   const set = new Set(crossed);
   return tabla.cards.every((c) => set.has(c));
 }

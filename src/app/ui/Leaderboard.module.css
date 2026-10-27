@@ -1,0 +1,80 @@
+.wrap {
+  width: 100%;
+  box-sizing: border-box;
+}
+.scroll {
+  max-height: 22rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-md);
+  color: inherit;
+}
+.table th,
+.table td {
+  padding: var(--space-2) var(--space-2);
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: var(--border-thin);
+  border-color: var(--color-night-line);
+}
+.table thead th {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: inherit;
+}
+.scroll .table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--color-night-raised);
+}
+.table tbody th {
+  font-weight: 800;
+}
+.num {
+  text-align: right !important;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.rank {
+  width: 2.25rem;
+  font-family: var(--font-display);
+}
+.who {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  border-bottom: 0;
+}
+.glyph {
+  flex: none;
+}
+.name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.you {
+  flex: none;
+  padding: 0 var(--space-2);
+  border: var(--border-thin);
+  border-radius: var(--radius-pill);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-size: var(--text-xs);
+  font-weight: 800;
+}
+tr[data-first='true'] > * {
+  background: var(--color-maiz-soft);
+  color: var(--color-ink);
+  font-weight: 800;
+}
+tr[data-self='true'] .name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

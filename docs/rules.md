@@ -16,6 +16,9 @@ Each player chooses two languages, independently, and can change either at any t
 1. **App language** — Español or English — for menus, buttons and messages.
 2. **Spoken language** — Náhuatl, Maya yucateco, Quechua (Cusco-Collao), Español or English — the language the cantor speaks to that player, the language of their three spelling choices, and the language of the words revealed on their cartón.
 
+3. **Room defaults.** When creating the room the organiser picks a default app language and a default spoken language. They are only what each person **starts with** on joining; every player can still change both, and the organiser's choice never overrides a change made later.
+4. **The gear.** Every screen, including the cantor's screen, the player's game and solo play, has a gear button at the top right (labelled "Ajustes de idioma"). It opens the app language and the spoken language. A change applies at once: the text changes immediately and the **next call** is spoken, and its choices and revealed words written, in the new spoken language. The cartón, crossed squares and points are never lost.
+
 Example: a Spanish speaker can keep the app in Español and hear Náhuatl to practise it.
 
 All five spoken languages are always offered. Each player hears and reads the same card in their own spoken language at the same moment.
@@ -28,10 +31,11 @@ All five spoken languages are always offered. Each player hears and reads the sa
 
 ## 4. The cartón
 
-1. Each player gets one **cartón of 4 columns × 4 rows**: 16 different cards chosen at random from the deck, with at most 5 from the same group.
-2. Cartones in the same room are kept different from each other (no two share more than 8 cards).
-3. The cartón shows **pictures only**. A square's word, in the player's spoken language, appears once that card has been called.
-4. The cartón is always visible during the round; nothing covers it.
+1. Each player gets one **cartón of g columns × g rows**, with g from **3 to 8** (default **4 × 4**). The organiser chooses g when creating the room; everyone in the room has the same size. A cartón has g² different cards chosen at random from the deck, with at most ⌈g² × 5 ⁄ 16⌉ from the same group (5 of 16 at 4 × 4); if the deck cannot satisfy that limit it is relaxed.
+2. Cartones in the same room are kept different from each other: no two share more than ⌊g² ⁄ 2⌋ cards (8 of 16 at 4 × 4).
+3. A size is offered only if the deck can deal that many different cartones to the players in the room. The deck is 54 cards today, so 3 × 3 and 4 × 4 always work, 5 × 5 works for up to 8 players, and 6 × 6 to 8 × 8 are shown disabled with "Requiere N cartas" (59, 83 and 108 cards for 2 players; 80, 110 and 138 for 20). If more people join than the chosen size allows, it steps down to the largest that fits.
+4. The cartón shows **pictures only**. A square's word, in the player's spoken language, appears once that card has been called.
+5. The cartón is always visible during the round; nothing covers it. Every size fits a phone screen (cells of at least 44 px at 390 px wide); on large sizes the words of crossed squares are read by screen readers and shown on the ¡Lotería! screen instead of inside each small cell.
 
 ## 5. Turns: calling a card
 
@@ -57,12 +61,12 @@ All five spoken languages are always offered. Each player hears and reads the sa
 2. **Every other player who picks the right spelling earns 1 point.**
 3. A wrong pick, or no pick, earns 0 points.
 4. Points belong to the current round only. There is no ranking across rounds.
-5. A **tabla de puntos** (leaderboard) is visible to everyone during the round and after it: on the cantor's screen, on every phone (a collapsible panel that never covers the cartón) and in solo mode. It lists every player with their rank, picture, name, points and squares crossed off (out of 16), **sorted by points, highest first**, then by squares crossed off, then by name. Players with the same points and squares share a rank. A player sees a "Tú" marker on their own row.
+5. A **tabla de puntos** (leaderboard) is visible to everyone during the round and after it: on the cantor's screen, on every phone (a collapsible panel that never covers the cartón) and in solo mode. It lists every player with their rank, picture, name, points and squares crossed off (out of g²), **sorted by points, highest first**, then by squares crossed off, then by name. Players with the same points and squares share a rank. A player sees a "Tú" marker on their own row.
 6. The board only informs. It never ends the round and never decides who completes the cartón; the points still only break ties among players who complete on the same called card (§9.2).
 
 ## 9. Winning
 
-1. The round **only ends when a player has crossed off all 16 squares** of their cartón (it completes it and calls **¡Lotería!**). There is no other way to end it: no early end by the organiser, no time limit, no points target. The deck has 54 cards and every cartón has 16 of them, so someone always completes before the cards run out. If several players complete, the first to do so ends the round.
+1. The round **only ends when a player has crossed off all g² squares** of their cartón (it completes it and calls **¡Lotería!**). There is no other way to end it: no early end by the organiser, no time limit, no points target. Every cartón is made only of cards from the deck, so by the time the last card has been called every cartón is complete: someone always completes before the cards run out. If several players complete, the first to do so ends the round.
 2. If **more than one player** completes their cartón on the same called card, **the one with the most points wins**. Players with the same points share the win.
 3. Everyone then sees the ¡Lotería! screen with the completed cartón and the **final standings** (the same tabla de puntos, sorted by points, highest first). "Otra ronda" starts a new round in the same room, with new cartones and points back at 0.
 4. Players who did not complete see a friendly message, never a penalty.

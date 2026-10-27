@@ -7,6 +7,7 @@ import {
   closeCall,
   createSolo,
   humanPick,
+  remainingSquares,
   setPaused,
   tick,
   type Difficulty,
@@ -156,3 +157,30 @@ function playOutFrom(s0: SoloState): SoloState {
   for (let g = 0; g < 400 && !s.ended; g++) s = tick(s, 1000);
   return s;
 }
+
+describe('solo grid sizes and the only end of a game', () => {
+  it.each([3, 4, 5])('deals %i x %i cartones and ends only on a full card', (g) => {
+    const s0 = createSolo({
+      seed: `grid-${g}`,
+      cpus: 2,
+      difficulty: 'normal',
+      speedSec: 8,
+      pool,
+      grid: g,
+    });
+    for (const seat of s0.seats) expect(s0.tablas[seat]!.cards).toHaveLength(g * g);
+    expect(remainingSquares(s0, HUMAN)).toBe(g * g);
+    let s = s0;
+    for (let guard = 0; guard < 1000 && !s.ended; guard++) {
+      s = tick(s, 1000);
+      if (!s.ended) {
+        // Not over while nobody has crossed every square.
+        for (const seat of s.seats) expect(remainingSquares(s, seat)).toBeGreaterThan(0);
+      }
+    }
+    expect(s.ended).not.toBeNull();
+    expect(s.ended!.completedOn).toBeLessThan(s.order.length);
+    expect(s.seats.some((seat) => remainingSquares(s, seat) === 0)).toBe(true);
+    expect(s.ended!.winners.every((w) => remainingSquares(s, w) === 0)).toBe(true);
+  });
+});

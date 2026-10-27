@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import QRCode from 'qrcode';
 import type { Lang } from '@engine';
@@ -35,7 +35,7 @@ export function LanguageCard({
       aria-checked={selected}
       disabled={disabled}
       className={styles.langCard}
-      style={{ '--lang-color': `var(--lang-${lang})` } as React.CSSProperties}
+      style={{ '--lang-color': `var(--lang-${lang})` } as CSSProperties}
       onClick={onSelect}
     >
       <span className={styles.langSwatch} aria-hidden="true">
@@ -312,7 +312,7 @@ export function TablaCell({ cell, onToggle }: { cell: CellData; onToggle?: () =>
   );
 }
 
-/** The 4x4 board. Pass `onToggle` to make cells tappable. */
+/** The g x g board (3..8, from the number of cells; 4x4 by default). Pass `onToggle` to make cells tappable. */
 export function Tabla({
   cells,
   onToggle,
@@ -323,8 +323,15 @@ export function Tabla({
   label?: string;
 }) {
   const { t } = useTranslation();
+  const root = Math.round(Math.sqrt(cells.length));
+  const g = root * root === cells.length && root >= 3 && root <= 8 ? root : 4;
   return (
-    <ul className={styles.tabla} aria-label={label ?? t('theme.kit.tabla')}>
+    <ul
+      className={styles.tabla}
+      data-grid={g}
+      style={{ '--grid': g } as CSSProperties}
+      aria-label={label ?? t('theme.kit.tabla')}
+    >
       {cells.map((cell) => (
         <TablaCell
           key={cell.id}

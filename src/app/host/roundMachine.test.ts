@@ -107,7 +107,6 @@ describe('roundMachine', () => {
     expect(run(r, { type: 'win', seat: 'a' })).toBe(r);
     expect(run(fresh(), { type: 'win', seat: 'a' }).winners).toEqual([]);
     expect(run(s, { type: 'resume' }).phase).toBe('running');
-    expect(run(s, { type: 'end' }).phase).toBe('ended');
   });
 
   it('validates paper codes, including wrong seedRef', () => {
@@ -134,7 +133,7 @@ describe('roundMachine', () => {
   });
 
   it('newRound bumps roundNo and reshuffles', () => {
-    const s = run(started(), { type: 'end' }, { type: 'newRound' });
+    const s = run(started(), { type: 'finish', winners: [] }, { type: 'newRound' });
     expect(s.roundNo).toBe(2);
     expect(s.phase).toBe('setup');
     const s2 = run(s, { type: 'start', ids, langs: ['es'] });

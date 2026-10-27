@@ -4,7 +4,7 @@ import { ROOM_MAX_PLAYERS, ROOM_MIN_PLAYERS, roomCode } from '@engine';
 import { createTransport, generateHostKeyPair, getSeat } from '@net';
 import { useTranslation } from 'react-i18next';
 import { useProfile } from '../ui';
-import { readRawProfile } from '../ui/profile';
+import { readRawProfile, storedProfile } from '../ui/profile';
 import type { Msg, Transport } from '@net';
 import type { Lang } from '@engine';
 import { newSeed, normalizePrintSeed } from '@print/options';
@@ -72,6 +72,7 @@ export function lobbyMessage(
   players: RosterPlayer[],
   roundNo?: number,
   hostKey?: string | null,
+  defaults?: { spokenLang: Lang; uiLang: 'es' | 'en' },
 ): Msg {
   return {
     t: 'lobby',
@@ -84,8 +85,17 @@ export function lobbyMessage(
     })),
     ...(roundNo !== undefined ? { roundNo } : {}),
     ...(hostKey ? { hostKey } : {}),
+    ...(defaults ? { defaults } : {}),
   };
 }
+
+export const defaultsOf = (s: {
+  defaultSpokenLang: Lang;
+  defaultUiLang: 'es' | 'en';
+}): { spokenLang: Lang; uiLang: 'es' | 'en' } => ({
+  spokenLang: s.defaultSpokenLang,
+  uiLang: s.defaultUiLang,
+});
 
 /** Room session for the host: code, key, transport, registration, roster. */
 export function useHostRoom() {
@@ -95,7 +105,15 @@ export function useHostRoom() {
   const [code, setCode] = useState(() => roomCode());
   const [seed, setSeed] = useState(() => newSeed());
   const [roundNo, setRoundNo] = useState(1);
-  const [settings, setSettings] = useState<Settings>({ ...DEFAULT_SETTINGS });
+  const [settings, setSettings] = useState<Settings>(() => ({
+    ...DEFAULT_SETTINGS,
+    defaultSpokenLang: storedProfile().spokenLang,
+    defaultUiLang: storedProfile().uiLang,
+  }));
+  const settingsRef = useRef(settings);
+  useEffect(() => {
+    settingsRef.current = settings;
+  });
   const [saved, setSaved] = useState<SavedRound | null>(null);
   const [gameSaved, setGameSaved] = useState<SavedRound | null>(null);
   const [transport, setTransport] = useState<Transport | null>(null);
@@ -132,7 +150,13 @@ export function useHostRoom() {
     // The 21st hello while in the lobby; the game sends its own.
     if (phaseRef.current !== 'lobby') return;
     transportRef.current?.send(
-      lobbyMessage('full', rosterRef.current, undefined, hostKeyRef.current),
+      lobbyMessage(
+        'full',
+        rosterRef.current,
+        undefined,
+        hostKeyRef.current,
+        defaultsOf(settingsRef.current),
+      ),
     );
   }, []);
 
@@ -320,7 +344,13 @@ export function useHostRoom() {
   const inLobby = phase === 'lobby';
   const sendWaiting = useCallback(() => {
     transportRef.current?.send(
-      lobbyMessage('waiting', rosterRef.current, undefined, hostKeyRef.current),
+      lobbyMessage(
+        'waiting',
+        rosterRef.current,
+        undefined,
+        hostKeyRef.current,
+        defaultsOf(settingsRef.current),
+      ),
     );
   }, []);
   useEffect(() => {

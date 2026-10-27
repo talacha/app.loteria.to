@@ -213,3 +213,6 @@
     grid-row: 3 / span 3;
   }
 }
+.scores {
+  padding: var(--space-3);
+}

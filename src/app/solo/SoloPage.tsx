@@ -1,12 +1,20 @@
 import { useCallback, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import type { Lang } from '@engine';
-import { callableLangs, cards, isAvoidedPair } from '@content';
+import { maxGridFor, minDeckFor, MAX_GRID, MIN_GRID, type Lang } from '@engine';
+import { callableLangs, cards, getCard, isAvoidedPair } from '@content';
 import { applyStoredPrefs } from '../theme/prefs';
 import { LanguageSwitch } from '../theme/Preferences';
 import { readProfile } from '../home/profile';
-import { Button, PapelPicado, Panel, Pill } from '../ui';
+import {
+  Button,
+  Leaderboard,
+  useProfile,
+  PapelPicado,
+  Panel,
+  Pill,
+  type LeaderboardEntry,
+} from '../ui';
 import page from '../theme/page.module.css';
 import SoloGame, { type SoloPlayerInfo } from './SoloGame';
 import {
@@ -51,10 +59,18 @@ export default function SoloPage() {
   const [cpus, setCpus] = useState(1);
   const [difficulty, setDifficulty] = useState<Difficulty>('normal');
   const [speedSec, setSpeedSec] = useState<number>(8);
+  const [grid, setGrid] = useState(4);
   const [spoken, setSpoken] = useState<Lang>(() => initialSpoken(options));
   const [game, setGame] = useState<{ state: SoloState; key: number } | null>(null);
   const [done, setDone] = useState<SoloState | null>(null);
   const profile = useMemo(() => readProfile(), []);
+  // The header gear changes the spoken language: follow it, also during a game.
+  const gearLang = useProfile().spokenLang;
+  const [seenGear, setSeenGear] = useState(gearLang);
+  if (seenGear !== gearLang) {
+    setSeenGear(gearLang);
+    if (options.includes(gearLang)) setSpoken(gearLang);
+  }
 
   const players = useMemo<SoloPlayerInfo[]>(
     () => [
@@ -82,21 +98,31 @@ export default function SoloPage() {
       speedSec,
       pool,
       exclude: (a, b) => isAvoidedPair(a, b, [spoken]),
+      grid: Math.min(grid, maxGridFor(pool.length, cpus + 1) || 4),
     });
     setDone(null);
     setGame((g) => ({ state, key: (g?.key ?? 0) + 1 }));
   }
 
   const finish = useCallback((s: SoloState) => setDone(s), []);
+  const avatarOf = (seat: string) => {
+    const id = players.find((p) => p.seat === seat)?.avatar;
+    const c = id ? getCard(id) : undefined;
+    return c?.emoji ?? c?.art;
+  };
   const nameOf = (seat: string) => players.find((p) => p.seat === seat)?.name ?? seat;
 
   if (game && done?.ended) {
     const { winners } = done.ended;
     const youWon = winners.includes(HUMAN);
     const names = winners.map(nameOf).join(', ');
-    const ranking = done.seats
-      .map((seat) => ({ seat, pts: done.pick.points[seat] ?? 0 }))
-      .sort((a, b) => b.pts - a.pts);
+    const standings: LeaderboardEntry[] = done.seats.map((seat) => ({
+      seat,
+      name: nameOf(seat),
+      glyph: avatarOf(seat),
+      points: done.pick.points[seat] ?? 0,
+      crossed: done.crossed[seat]?.length ?? 0,
+    }));
     return (
       <main className={`${page.page} ${styles.end}`} id="main" data-won={youWon}>
         <PapelPicado />
@@ -107,14 +133,12 @@ export default function SoloPage() {
         <p className={styles.result}>{youWon ? t('solo.youWon') : t('solo.youLost')}</p>
         {winners.length > 1 ? <p>{t('solo.tieNote')}</p> : null}
         <Panel as="section" className={styles.scores}>
-          <ol className={styles.rank}>
-            {ranking.map((r) => (
-              <li key={r.seat} data-win={winners.includes(r.seat)}>
-                <span>{nameOf(r.seat)}</span>
-                <span>{t('solo.points', { n: r.pts })}</span>
-              </li>
-            ))}
-          </ol>
+          <Leaderboard
+            entries={standings}
+            selfSeat={HUMAN}
+            total={done.tablas[HUMAN]?.cards.length}
+            label={t('solo.finalStandings')}
+          />
         </Panel>
         <Button onClick={start}>{t('solo.again')}</Button>
         <Button variant="link" onClick={() => setGame(null)}>
@@ -135,6 +159,7 @@ export default function SoloPage() {
         lang={spoken}
         players={players}
         onFinish={finish}
+        onLeave={() => setGame(null)}
       />
     );
   }
@@ -183,6 +208,29 @@ export default function SoloPage() {
               {t(`solo.${d}`)}
             </button>
           ))}
+        </div>
+      </fieldset>
+
+      <fieldset className={styles.group}>
+        <legend>{t('solo.grid')}</legend>
+        <div className={styles.chips} role="radiogroup" aria-label={t('solo.grid')}>
+          {Array.from({ length: MAX_GRID - MIN_GRID + 1 }, (_, k) => MIN_GRID + k).map((g) => {
+            const ok = cards.length >= minDeckFor(g, cpus + 1);
+            return (
+              <button
+                key={g}
+                type="button"
+                role="radio"
+                aria-checked={Math.min(grid, maxGridFor(cards.length, cpus + 1)) === g}
+                aria-disabled={!ok}
+                className={styles.chip}
+                onClick={() => ok && setGrid(g)}
+              >
+                {g}×{g}
+                {ok ? '' : ` · ${t('solo.needs', { n: minDeckFor(g, cpus + 1) })}`}
+              </button>
+            );
+          })}
         </div>
       </fieldset>
 

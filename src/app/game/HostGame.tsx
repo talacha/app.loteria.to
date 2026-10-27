@@ -5,12 +5,14 @@ import { cardName, getCard } from '@content';
 import { isMuted, onMutedChange, setMuted } from '../audio';
 import { MAX_SPEED, MIN_SPEED, SPEED_PRESETS } from '../host/roundMachine';
 import { useGame } from '../host/useGame';
+import { LOCAL_SEAT } from '../host/useHostRoom';
 import type { GameProps } from '../host/useGame';
 import {
   Button,
   CardArt,
   FeedbackStrip,
   HistoryStrip,
+  Leaderboard,
   Panel,
   PaperCard,
   Pill,
@@ -113,10 +115,7 @@ export default function HostGame(props: GameProps) {
     const c = getCard(id);
     return c ? [{ id, emoji: c.art, label: nameOf(id) }] : [];
   });
-  const top = Object.entries(h.points)
-    .filter(([, v]) => v > 0)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5);
+  const gridCells = state.settings.gridSize * state.settings.gridSize;
 
   return (
     <main id="main" className={styles.page}>
@@ -216,6 +215,12 @@ export default function HostGame(props: GameProps) {
               ) : (
                 <p>{t('host.noWinners')}</p>
               )}
+              <Leaderboard
+                entries={h.standings}
+                selfSeat={play ? LOCAL_SEAT : undefined}
+                total={gridCells}
+                label={t('host.game.finalStandings')}
+              />
               <Button variant="primary" onClick={h.newRound}>
                 {t('host.newRound')}
               </Button>
@@ -243,9 +248,6 @@ export default function HostGame(props: GameProps) {
             <div className={styles.row}>
               <Button variant="secondary" fit onClick={h.repeat}>
                 {t('host.repeat')}
-              </Button>
-              <Button variant="secondary" fit onClick={h.endRound}>
-                {t('host.endRound')}
               </Button>
               <Button variant="secondary" fit aria-pressed={muted} onClick={() => setMuted(!muted)}>
                 {muted ? t('host.unmute') : t('host.mute')}
@@ -371,25 +373,23 @@ export default function HostGame(props: GameProps) {
               <span className={styles.sub}>{t('host.game.phones', { count: roster.length })}</span>
             </Panel>
           )}
-          <Panel as="section" aria-labelledby="pts">
-            <div className={styles.panelHead}>
-              <h2 id="pts" className={styles.panelH}>
-                {t('host.game.points')}
-              </h2>
-              <span className={styles.sub}>{t('host.game.tiebreak')}</span>
-            </div>
-            {top.length ? (
-              <ol className={styles.points}>
-                {top.map(([seat, v]) => (
-                  <li key={seat}>
-                    <span>{who(seat)}</span>
-                    <strong>{v}</strong>
-                  </li>
-                ))}
-              </ol>
-            ) : null}
-            <span className={styles.sub}>{t('host.game.firstPlus', { n: 2 })}</span>
-          </Panel>
+          {ended ? null : (
+            <Panel as="section" aria-labelledby="pts">
+              <div className={styles.panelHead}>
+                <h2 id="pts" className={styles.panelH}>
+                  {t('host.game.points')}
+                </h2>
+                <span className={styles.sub}>{t('host.game.tiebreak')}</span>
+              </div>
+              <Leaderboard
+                scroll
+                entries={h.standings}
+                selfSeat={play ? LOCAL_SEAT : undefined}
+                total={gridCells}
+              />
+              <span className={styles.sub}>{t('host.game.firstPlus', { n: 2 })}</span>
+            </Panel>
+          )}
         </aside>
 
         <footer className={styles.history}>

@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { afterEach, describe, expect, it } from 'vitest';
 import i18n from './i18n';
@@ -30,6 +30,29 @@ describe('Shell', () => {
     expect(document.documentElement.lang).toBe('es');
     await i18n.changeLanguage('en');
     expect(document.documentElement.lang).toBe('en');
+    await i18n.changeLanguage('es');
+  });
+});
+
+describe('Shell gear', () => {
+  it('has the language gear (44 px token) that opens UI and spoken language settings', async () => {
+    await i18n.changeLanguage('es');
+    render(
+      <MemoryRouter initialEntries={['/deck']}>
+        <Routes>
+          <Route element={<Shell />}>
+            <Route path="/deck" element={<main id="main">x</main>} />
+          </Route>
+        </Routes>
+      </MemoryRouter>,
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Ajustes de idioma' }));
+    const dialog = screen.getByRole('dialog');
+    expect(within(dialog).getByRole('radiogroup', { name: /Idioma de la app/i })).toBeTruthy();
+    expect(within(dialog).getAllByRole('radiogroup')).toHaveLength(2);
+    fireEvent.click(within(dialog).getAllByRole('radio', { name: /English/ })[0]!);
+    expect(i18n.language).toBe('en');
+    expect(screen.getByRole('button', { name: 'Language settings' })).toBeTruthy();
     await i18n.changeLanguage('es');
   });
 });

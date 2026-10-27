@@ -10,6 +10,15 @@ import {
   tabla,
   tablaCode,
   MAX_TABLA_INDEX,
+  MIN_GRID,
+  MAX_GRID,
+  isCardComplete,
+  maxGridFor,
+  minDeckFor,
+  maxPerCategory,
+  maxShared,
+  normalizeGrid,
+  pickTablaIndex,
   type Category,
 } from './index';
 
@@ -227,5 +236,107 @@ describe('review fixes', () => {
   });
   it('decode rejects non-strings', () => {
     expect(decodeTablaCode(123 as unknown as string).ok).toBe(false);
+  });
+});
+
+describe('grid size (g x g)', () => {
+  const deckOf = (n: number) =>
+    Array.from({ length: n }, (_, i) => ({ id: `d${i}`, category: cats[i % 6] as Category }));
+
+  it('deals g*g unique cards for every g, with the group cap scaled (relaxed when impossible)', () => {
+    for (let g = MIN_GRID; g <= MAX_GRID; g++) {
+      const t = tabla('SEED', 3, deckOf(144), g);
+      expect(t.cards).toHaveLength(g * g);
+      expect(new Set(t.cards).size).toBe(g * g);
+      const per = new Map<string, number>();
+      for (const id of t.cards) per.set(id, 0);
+      const byCat = new Map<number, number>();
+      for (const id of t.cards) {
+        const c = Number(id.slice(1)) % 6;
+        byCat.set(c, (byCat.get(c) ?? 0) + 1);
+      }
+      expect(Math.max(...byCat.values())).toBeLessThanOrEqual(maxPerCategory(g));
+    }
+  });
+  it('4x4 is unchanged by the default argument', () => {
+    expect(tabla('S', 5, cards)).toEqual(tabla('S', 5, cards, 4));
+    expect(maxPerCategory(4)).toBe(5);
+    expect(maxShared(4)).toBe(8);
+  });
+  it('an unsupported grid falls back to 4x4', () => {
+    expect(tabla('S', 5, cards, 9).cards).toHaveLength(16);
+    expect(normalizeGrid(2)).toBe(4);
+    expect(normalizeGrid(8)).toBe(8);
+  });
+  it('isCardComplete works for every g*g', () => {
+    for (let g = MIN_GRID; g <= MAX_GRID; g++) {
+      const t = tabla('S', 1, deckOf(144), g);
+      expect(isCardComplete(t, t.cards)).toBe(true);
+      expect(isCardComplete(t, t.cards.slice(1))).toBe(false);
+    }
+    expect(isCardComplete({ index: 0, cards: ['a', 'b', 'c'] }, ['a', 'b', 'c'])).toBe(false);
+  });
+  it('maxGridFor follows the table', () => {
+    expect(maxGridFor(54, 2)).toBe(5);
+    expect(maxGridFor(54, 20)).toBe(4);
+    expect(maxGridFor(144, 20)).toBe(8);
+    expect(maxGridFor(10, 2)).toBe(0);
+    expect(minDeckFor(4, 20)).toBeLessThanOrEqual(54);
+  });
+  it('dealing succeeds for every (deck, players, g) that maxGridFor allows', () => {
+    fc.assert(
+      fc.property(
+        fc.integer({ min: 20, max: 144 }),
+        fc.integer({ min: 1, max: 20 }),
+        fc.string({ minLength: 1, maxLength: 8 }),
+        (size, players, seed) => {
+          const g = maxGridFor(size, players);
+          if (g === 0) return;
+          const deck = deckOf(size);
+          const taken: number[] = [];
+          for (let k = 0; k < players; k++)
+            taken.push(pickTablaIndex(seed, taken, deck, undefined, g));
+          expect(new Set(taken).size).toBe(players);
+          const sets = taken.map((i) => new Set(tabla(seed, i, deck, g).cards));
+          for (let a = 0; a < players; a++)
+            for (let b = a + 1; b < players; b++) {
+              const shared = [...sets[a]!].filter((c) => sets[b]!.has(c)).length;
+              expect(shared).toBeLessThanOrEqual(maxShared(g));
+            }
+        },
+      ),
+      { numRuns: 25 },
+    );
+  });
+  it('a full card is always reached before the deck runs out (any seed, any g, >= 1 player)', () => {
+    fc.assert(
+      fc.property(
+        fc.string({ minLength: 1, maxLength: 12 }),
+        fc.integer({ min: 1, max: 4 }),
+        fc.integer({ min: MIN_GRID, max: 5 }),
+        (seed, players, g) => {
+          const deck = deckOf(54);
+          const size = deck.length;
+          if (g > maxGridFor(size, players)) return;
+          const order = deckOrder(
+            seed,
+            1,
+            deck.map((c) => c.id),
+          );
+          const taken: number[] = [];
+          for (let k = 0; k < players; k++)
+            taken.push(pickTablaIndex(seed, taken, deck, undefined, g));
+          const crossed = new Set<string>();
+          let first = -1;
+          for (let i = 0; i < order.length && first < 0; i++) {
+            crossed.add(order[i] as string);
+            if (taken.some((x) => isCardComplete(tabla(seed, x, deck, g), [...crossed]))) first = i;
+          }
+          expect(first).toBeGreaterThanOrEqual(g * g - 1);
+          expect(first).toBeLessThanOrEqual(size - 1);
+        },
+      ),
+      { numRuns: 30 },
+    );
   });
 });

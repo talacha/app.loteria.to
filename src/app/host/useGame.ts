@@ -26,7 +26,8 @@ import {
   toSaved,
 } from './roundMachine';
 import type { RoundAction, RoundState, SavedRound, Settings } from './roundMachine';
-import { LOCAL_SEAT, lobbyMessage } from './useHostRoom';
+import type { LeaderboardEntry } from '../ui';
+import { LOCAL_SEAT, defaultsOf, lobbyMessage } from './useHostRoom';
 import type { RosterPlayer } from './useHostRoom';
 
 export interface GameRoom {
@@ -138,7 +139,15 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
 
   const sendLobby = useCallback(
     (status: 'started' | 'full' = 'started') => {
-      send(lobbyMessage(status, players(), stateRef.current.roundNo, roomRef.current.hostKey));
+      send(
+        lobbyMessage(
+          status,
+          players(),
+          stateRef.current.roundNo,
+          roomRef.current.hostKey,
+          defaultsOf(stateRef.current.settings),
+        ),
+      );
     },
     [players, send],
   );
@@ -151,19 +160,49 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       seed: s.roomSeed,
       roundNo: s.roundNo,
       speedSec: s.settings.speedSec,
+      gridSize: s.settings.gridSize,
       ...(roomRef.current.hostKey ? { hostKey: roomRef.current.hostKey } : {}),
     });
   }, [send]);
 
-  const sendScores = useCallback(() => {
-    if (scoresTimer.current) clearTimeout(scoresTimer.current);
-    scoresTimer.current = null;
-    send({ t: 'scores', roundNo: stateRef.current.roundNo, points: { ...pickRef.current.points } });
-  }, [send]);
+  /** Squares crossed per seat, counting the first `closed` calls of the round. */
+  const crossedCounts = useCallback(
+    (closed: number): Record<string, number> => {
+      const s = stateRef.current;
+      const done = new Set(s.order.slice(0, Math.max(0, closed)));
+      const out: Record<string, number> = {};
+      for (const p of players()) {
+        const idx = s.assignments[p.seat];
+        if (idx === undefined) continue;
+        out[p.seat] = tabla(s.roomSeed, idx, deck, s.settings.gridSize).cards.filter((c) =>
+          done.has(c),
+        ).length;
+      }
+      return out;
+    },
+    [players],
+  );
+
+  /** `closed` = calls whose window has ended; a mid-window send counts all but the current call. */
+  const sendScores = useCallback(
+    (closed?: number) => {
+      if (scoresTimer.current) clearTimeout(scoresTimer.current);
+      scoresTimer.current = null;
+      const s = stateRef.current;
+      const n = typeof closed === 'number' ? closed : Math.max(0, s.calledCount - 1);
+      send({
+        t: 'scores',
+        roundNo: s.roundNo,
+        points: { ...pickRef.current.points },
+        crossed: crossedCounts(n),
+      });
+    },
+    [crossedCounts, send],
+  );
 
   const scheduleScores = useCallback(() => {
     if (scoresTimer.current) return;
-    scoresTimer.current = setTimeout(sendScores, SCORES_DEBOUNCE_MS);
+    scoresTimer.current = setTimeout(() => sendScores(), SCORES_DEBOUNCE_MS);
   }, [sendScores]);
 
   const ensureAssigned = useCallback(
@@ -171,7 +210,13 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       const cur = stateRef.current.assignments[seat];
       if (cur !== undefined) return cur;
       const taken = Object.values(stateRef.current.assignments);
-      const index = pickTablaIndex(stateRef.current.roomSeed, taken, deck, randomUnit);
+      const index = pickTablaIndex(
+        stateRef.current.roomSeed,
+        taken,
+        deck,
+        randomUnit,
+        stateRef.current.settings.gridSize,
+      );
       apply({ type: 'assign', seat, index });
       return index;
     },
@@ -260,7 +305,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       for (const p of players()) {
         const idx = s.assignments[p.seat];
         if (idx === undefined) continue;
-        const t = tabla(s.roomSeed, idx, deck);
+        const t = tabla(s.roomSeed, idx, deck, s.settings.gridSize);
         if (
           isCardComplete(
             t,
@@ -279,11 +324,12 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     const s = stateRef.current;
     const i = s.calledCount - 1;
     send({ t: 'callClosed', roundNo: s.roundNo, i });
+    sendScores(s.calledCount);
     const done = completedSeats(s);
     if (done.length === 0) return false;
     finishRound(resolveFullCardWinners(done, pickRef.current.points));
     return true;
-  }, [completedSeats, finishRound, send]);
+  }, [completedSeats, finishRound, send, sendScores]);
 
   const handlePick = useCallback(
     (m: Extract<Msg, { t: 'pick' }>) => {
@@ -515,12 +561,6 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     [apply, sendRound],
   );
 
-  const endRound = useCallback(() => {
-    const ns = apply({ type: 'end' });
-    stopAudio();
-    send({ t: 'end', roundNo: ns.roundNo, winners: ns.winners, reason: 'full-card' });
-  }, [apply, send]);
-
   const newRound = useCallback(() => {
     void clearRound();
     onNewRound?.(stateRef.current.roundNo + 1);
@@ -535,7 +575,9 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
   const i = state.calledCount - 1;
   const closedCount = state.phase === 'ended' ? state.calledCount : Math.max(0, i);
   const localCards: CardId[] =
-    hostPlays && idx !== undefined ? tabla(state.roomSeed, idx, deck).cards : [];
+    hostPlays && idx !== undefined
+      ? tabla(state.roomSeed, idx, deck, state.settings.gridSize).cards
+      : [];
   const closed = new Set(state.order.slice(0, closedCount));
   const localCrossed = localCards.filter((c) => closed.has(c));
   const localChoices = hostPlays ? currentChoices : [];
@@ -553,6 +595,21 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
         pick: localPick,
       }
     : null;
+  const standings: LeaderboardEntry[] = roster.map((p) => {
+    const at = state.assignments[p.seat];
+    return {
+      seat: p.seat,
+      name: p.name,
+      glyph: p.glyph,
+      points: pickState.points[p.seat] ?? 0,
+      crossed:
+        at === undefined
+          ? 0
+          : tabla(state.roomSeed, at, deck, state.settings.gridSize).cards.filter((c) =>
+              closed.has(c),
+            ).length,
+    };
+  });
   const currentLang: Lang | undefined =
     state.calledCount > 0 ? langForCall(state, state.calledCount - 1) : undefined;
 
@@ -566,6 +623,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     called,
     local,
     points: pickState.points,
+    standings,
     pickedCount: pickedSeats.filter((s) => eligible.includes(s)).length,
     eligibleCount: eligible.length,
     phones: roster.length,
@@ -573,7 +631,6 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     repeat,
     togglePause,
     setSpeed,
-    endRound,
     newRound,
   };
 }

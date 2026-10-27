@@ -5,6 +5,8 @@ export interface RoundInfo {
   roomSeed: string;
   roundNo: number;
   speedSec: number;
+  /** Cartón is gridSize x gridSize; 4 when the host did not say. */
+  gridSize?: number;
 }
 
 export interface CurrentCall {
@@ -42,6 +44,8 @@ export interface PlayerState {
   crossed: CardId[];
   /** Points from the host's scores message, per seat. */
   points: Record<string, number>;
+  /** Squares crossed per seat, from the host's scores message. */
+  crossedBy: Record<string, number>;
   /** Points earned from my own pickResults, used until `scores` arrives. */
   myPoints: number;
   ended: { winners: string[]; wonByMe: boolean; dismissed: boolean } | null;
@@ -61,7 +65,12 @@ export type PlayerAction =
       first: boolean;
     }
   | { type: 'callClosed'; roundNo: number; i: number }
-  | { type: 'scores'; roundNo: number; points: Record<string, number> }
+  | {
+      type: 'scores';
+      roundNo: number;
+      points: Record<string, number>;
+      crossed?: Record<string, number>;
+    }
   | { type: 'dismissEnded' }
   | { type: 'end'; roundNo: number; winners: string[]; seat: string };
 
@@ -79,12 +88,13 @@ export const initialPlayerState: PlayerState = {
   revealed: [],
   crossed: [],
   points: {},
+  crossedBy: {},
   myPoints: 0,
   ended: null,
 };
 
-export function makeBoard(seed: string, tablaIndex: number): CardId[] {
-  return tabla(seed, tablaIndex, cards).cards;
+export function makeBoard(seed: string, tablaIndex: number, grid = 4): CardId[] {
+  return tabla(seed, tablaIndex, cards, grid).cards;
 }
 
 const add = (list: CardId[], id: CardId) => (list.includes(id) ? list : [...list, id]);
@@ -93,7 +103,7 @@ const add = (list: CardId[], id: CardId) => (list.includes(id) ? list : [...list
 function withBoard(s: PlayerState): PlayerState {
   if (!s.round || !s.assign || s.assign.roundNo !== s.round.roundNo) return s;
   if (s.board.length > 0) return s;
-  return { ...s, board: makeBoard(s.round.roomSeed, s.assign.tablaIndex) };
+  return { ...s, board: makeBoard(s.round.roomSeed, s.assign.tablaIndex, s.round.gridSize) };
 }
 
 /** Close the call at index i: reveal its word and cross it off if it is on my tabla. */
@@ -107,9 +117,9 @@ function close(s: PlayerState, cardId: CardId, isCurrent: boolean): PlayerState 
   };
 }
 
-/** True when all 16 squares are crossed. */
+/** True when every square is crossed. */
 export function fullCard(s: Pick<PlayerState, 'board' | 'crossed'>): boolean {
-  return s.board.length === 16 && s.board.every((id) => s.crossed.includes(id));
+  return s.board.length >= 9 && s.board.every((id) => s.crossed.includes(id));
 }
 
 export function playerReducer(s: PlayerState, a: PlayerAction): PlayerState {
@@ -117,6 +127,8 @@ export function playerReducer(s: PlayerState, a: PlayerAction): PlayerState {
     case 'round': {
       const same =
         s.round && s.round.roundNo === a.round.roundNo && s.round.roomSeed === a.round.roomSeed;
+      if (same && (s.round?.gridSize ?? 4) !== (a.round.gridSize ?? 4))
+        return withBoard({ ...s, round: a.round, board: [], crossed: [] });
       if (same) return withBoard({ ...s, round: a.round });
       return withBoard({
         ...initialPlayerState,
@@ -183,7 +195,7 @@ export function playerReducer(s: PlayerState, a: PlayerAction): PlayerState {
     }
     case 'scores':
       if (!s.round || a.roundNo !== s.round.roundNo) return s;
-      return { ...s, points: a.points };
+      return { ...s, points: a.points, crossedBy: a.crossed ?? s.crossedBy };
     case 'dismissEnded':
       return s.ended ? { ...s, ended: { ...s.ended, dismissed: true } } : s;
     case 'end':

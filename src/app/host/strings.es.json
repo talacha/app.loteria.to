@@ -77,7 +77,7 @@
     "pickers": "{x} de {y} ya eligieron",
     "phones": "{count, plural, one {# teléfono} other {# teléfonos}}",
     "points": "Puntos",
-    "tiebreak": "solo para desempatar",
+    "tiebreak": "los puntos desempatan al completar a la vez",
     "firstPlus": "Primera respuesta correcta: +{n}",
     "history": "Ya cantadas",
     "joinAt": "Únete en app.loteria.to",
@@ -94,7 +94,18 @@
     "youPoints": "Tú · {n} puntos",
     "squaresLeft": "{n, plural, one {Falta # casilla} other {Faltan # casillas}}",
     "roomCode": "Sala y código",
-    "replay": "Repetir la voz"
+    "replay": "Repetir la voz",
+    "finalStandings": "Tabla de puntos final"
   },
-  "resume": "Reanudar"
+  "resume": "Reanudar",
+  "grid": {
+    "title": "Tamaño de la tabla",
+    "needs": "Requiere {n} cartas",
+    "help": "3×3 es más corta; 8×8 es muy larga. Cambia con el número de personas."
+  },
+  "defaults": {
+    "spoken": "Idioma hablado al empezar",
+    "ui": "Idioma de la app al empezar",
+    "help": "Es lo que cada persona tiene al entrar. Cada quien puede cambiarlo."
+  }
 }

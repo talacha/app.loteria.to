@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import type { Lang } from '@engine';
 import { createTransport, getSeat, type Transport } from '@net';
+import { setUiLang } from '../theme/prefs';
+import { mergeProfile } from '../ui/profile';
 import PlayerGame from '../game/PlayerGame';
 import type { PlayerProfile } from '../player/PlayerBoard';
 import Roster, { type RosterPlayer } from './Roster';
@@ -49,6 +52,8 @@ export default function LobbyWaiting({
   const [playing, setPlaying] = useState(false);
   const [noHost, setNoHost] = useState(false);
   const [full, setFull] = useState(false);
+  /** Spoken language taken from the room's defaults on arrival (the player can change it). */
+  const [roomSpoken, setRoomSpoken] = useState<Lang | null>(null);
   const { name, glyph, pronouns, spokenLang } = profile;
 
   useEffect(() => {
@@ -91,6 +96,22 @@ export default function LobbyWaiting({
             clearTimeout(noHostTimer);
             setNoHost(false);
             setRoster(m.players);
+            if (m.defaults) {
+              // What joiners start with: applied once per room and tab, never again.
+              const key = `loteria:defaults:${code}`;
+              let done = false;
+              try {
+                done = sessionStorage.getItem(key) === '1';
+                if (!done) sessionStorage.setItem(key, '1');
+              } catch {
+                /* storage unavailable: apply once per mount below */
+              }
+              if (!done) {
+                setUiLang(m.defaults.uiLang);
+                mergeProfile({ spokenLang: m.defaults.spokenLang });
+                setRoomSpoken(m.defaults.spokenLang);
+              }
+            }
             const inRoom = m.players.some((p) => p.seat === mine.seat);
             hostKnowsMe = inRoom;
             if (inRoom) {
@@ -177,7 +198,7 @@ export default function LobbyWaiting({
           transport={live.transport}
           room={{ code, seat: live.seat, hostVerified: live.verified }}
           roster={roster}
-          profile={profile}
+          profile={roomSpoken ? { ...profile, spokenLang: roomSpoken } : profile}
           log={log}
           onLeave={leave}
           onBackToLobby={() => setPlaying(false)}

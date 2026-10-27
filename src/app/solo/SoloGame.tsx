@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { CardId, Lang } from '@engine';
 import { cardName, getCard } from '@content';
@@ -8,6 +8,9 @@ import {
   CardArt,
   FeedbackStrip,
   HistoryStrip,
+  Leaderboard,
+  Sheet,
+  type LeaderboardEntry,
   Panel,
   PaperCard,
   Pill,
@@ -20,7 +23,6 @@ import {
   HUMAN,
   SPEEDS_SEC,
   humanPick,
-  isCpu,
   remainingSquares,
   setPaused,
   setSpeed,
@@ -71,15 +73,19 @@ export default function SoloGame({
   lang,
   players,
   onFinish,
+  onLeave,
 }: {
   initial: SoloState;
   lang: Lang;
   players: SoloPlayerInfo[];
   onFinish: (s: SoloState) => void;
+  /** "Salir": leave the game (never ends the round for anyone else; there is no one else). */
+  onLeave: () => void;
 }) {
   const { t } = useTranslation();
   const [s, dispatch] = useReducer(reducer, initial);
   const last = useRef(0);
+  const [leaving, setLeaving] = useState(false);
 
   // Clock: advances only while the game is running (pause stops it).
   useEffect(() => {
@@ -140,6 +146,15 @@ export default function SoloGame({
     };
   }
 
+  const standings: LeaderboardEntry[] = players
+    .filter((p) => s.seats.includes(p.seat))
+    .map((p) => ({
+      seat: p.seat,
+      name: p.name,
+      glyph: emojiOf(p.avatar),
+      points: s.pick.points[p.seat] ?? 0,
+      crossed: s.crossed[p.seat]?.length ?? 0,
+    }));
   const windowMs = s.cfg.speedSec * 1000;
   const total = s.order.length;
   const disabled =
@@ -156,6 +171,16 @@ export default function SoloGame({
           </span>
         </div>
         <div className={styles.controls}>
+          <Button
+            variant="secondary"
+            fit
+            onClick={() => {
+              dispatch({ type: 'pause', paused: true });
+              setLeaving(true);
+            }}
+          >
+            {t('solo.leave')}
+          </Button>
           <Button
             variant="secondary"
             fit
@@ -181,27 +206,12 @@ export default function SoloGame({
         </div>
       </header>
 
-      <ul className={styles.rivals} aria-label={t('solo.rivals')}>
-        {players
-          .filter((p) => isCpu(p.seat))
-          .map((p) => {
-            const left = remainingSquares(s, p.seat);
-            return (
-              <li key={p.seat} className={styles.rival}>
-                <span className={styles.avatar} aria-hidden="true">
-                  <CardArt id={p.avatar} emoji={emojiOf(p.avatar)} className={styles.avatarArt} />
-                </span>
-                <span className={styles.rivalText}>
-                  <span className={styles.rivalName}>{p.name}</span>
-                  <span className={styles.rivalMeta}>
-                    {t('solo.points', { n: s.pick.points[p.seat] ?? 0 })} ·{' '}
-                    {t('solo.squaresLeft', { n: left })}
-                  </span>
-                </span>
-              </li>
-            );
-          })}
-      </ul>
+      <Panel as="section" className={styles.scores} aria-labelledby="solo-pts">
+        <h2 id="solo-pts" className={styles.h2}>
+          {t('ui.leaderboard.title')}
+        </h2>
+        <Leaderboard entries={standings} selfSeat={HUMAN} total={s.tablas[HUMAN]?.cards.length} />
+      </Panel>
 
       <Panel className={styles.callPanel}>
         <PaperCard size="lg" className={styles.callCard}>
@@ -273,6 +283,16 @@ export default function SoloGame({
         <Tabla cells={cells} label={t('solo.board')} />
         <p className={styles.mine}>{t('solo.squaresLeft', { n: remainingSquares(s, HUMAN) })}</p>
       </section>
+
+      <Sheet title={t('solo.leaveTitle')} open={leaving} onClose={() => setLeaving(false)}>
+        <p>{t('solo.leaveBody')}</p>
+        <Button variant="secondary" onClick={() => setLeaving(false)}>
+          {t('solo.keepPlaying')}
+        </Button>
+        <Button variant="primary" onClick={onLeave}>
+          {t('solo.leave')}
+        </Button>
+      </Sheet>
 
       {history.length > 0 ? <HistoryStrip items={history} title={t('solo.history')} /> : null}
     </main>

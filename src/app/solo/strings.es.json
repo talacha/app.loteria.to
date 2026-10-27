@@ -44,5 +44,12 @@
   "again": "Otra ronda",
   "history": "Ya cantadas",
   "offline": "Funciona sin conexión",
-  "aiVoice": "voz generada por IA · puede tener errores"
+  "aiVoice": "voz generada por IA · puede tener errores",
+  "leave": "Salir",
+  "leaveTitle": "¿Salir de la partida?",
+  "leaveBody": "La partida se queda a medias y no se guarda.",
+  "keepPlaying": "Seguir jugando",
+  "finalStandings": "Tabla de puntos final",
+  "grid": "Tamaño de la tabla",
+  "needs": "Requiere {n} cartas"
 }

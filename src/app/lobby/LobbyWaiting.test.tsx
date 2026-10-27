@@ -203,3 +203,29 @@ describe('LobbyWaiting', () => {
     expect(screen.queryByText('Esta sala está llena')).toBeNull();
   });
 });
+
+describe('LobbyWaiting room defaults', () => {
+  it('applies the room default languages once, then leaves the player in charge', async () => {
+    localStorage.clear();
+    await mount();
+    host.send({
+      t: 'lobby',
+      status: 'waiting',
+      players: [],
+      defaults: { spokenLang: 'nah', uiLang: 'en' },
+    });
+    await flush();
+    const stored = () => JSON.parse(localStorage.getItem('loteria:profile') ?? '{}');
+    expect(stored()).toMatchObject({ spokenLang: 'nah', uiLang: 'en' });
+    // The player changes their mind; a later lobby message does not override it.
+    localStorage.setItem('loteria:profile', JSON.stringify({ ...stored(), spokenLang: 'quz' }));
+    host.send({
+      t: 'lobby',
+      status: 'waiting',
+      players: [],
+      defaults: { spokenLang: 'nah', uiLang: 'en' },
+    });
+    await flush();
+    expect(stored().spokenLang).toBe('quz');
+  });
+});

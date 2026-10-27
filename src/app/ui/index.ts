@@ -22,3 +22,7 @@ export { default as LanguageSettings } from './LanguageSettings';
 export { default as Sheet } from './Sheet';
 export { useProfile } from './profile';
 export type { Profile, UiLang } from './profile';
+export { default as Leaderboard } from './Leaderboard';
+export type { LeaderboardProps } from './Leaderboard';
+export { rankEntries } from './rank';
+export type { LeaderboardEntry, RankedEntry } from './rank';

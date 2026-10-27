@@ -35,6 +35,8 @@ export const msgSchema = z.discriminatedUnion('t', [
     seed: z.string().min(1).max(128),
     roundNo,
     speedSec: z.number().finite().min(3).max(60),
+    /** Cartón is gridSize x gridSize, 3..8. Absent (older hosts) means 4. */
+    gridSize: z.number().int().min(3).max(8).optional(),
     hostKey: z.string().min(1).max(128).optional(),
   }),
   z.object({
@@ -81,6 +83,11 @@ export const msgSchema = z.discriminatedUnion('t', [
     points: z
       .record(seat, z.number().int().min(0).max(200))
       .refine((r) => Object.keys(r).length <= 60, 'too many entries'),
+    /** Squares crossed out (0..64, at most gridSize²) per seat, for the leaderboard. Hosts always send it. */
+    crossed: z
+      .record(seat, z.number().int().min(0).max(64))
+      .refine((r) => Object.keys(r).length <= 60, 'too many entries')
+      .optional(),
   }),
   z.object({
     t: z.literal('lobby'),
@@ -91,6 +98,8 @@ export const msgSchema = z.discriminatedUnion('t', [
       .refine((a) => new Set(a.map((p) => p.seat)).size === a.length, 'duplicate seats'),
     roundNo: roundNo.optional(),
     hostKey: z.string().min(1).max(128).optional(),
+    /** Room defaults for what joiners start with; each player can change both. */
+    defaults: z.object({ spokenLang: lang, uiLang: z.enum(['es', 'en']) }).optional(),
   }),
   z.object({
     t: z.literal('hello'),
@@ -115,6 +124,7 @@ export type Msg =
       seed: string;
       roundNo: number;
       speedSec: number;
+      gridSize?: number;
       hostKey?: string;
     }
   | {
@@ -123,6 +133,7 @@ export type Msg =
       players: { seat: string; name: string; glyph: string; pronouns?: string }[];
       roundNo?: number;
       hostKey?: string;
+      defaults?: { spokenLang: Lang; uiLang: 'es' | 'en' };
     }
   | { t: 'assign'; seat: string; tablaIndex: number; roundNo: number }
   | {
@@ -143,7 +154,12 @@ export type Msg =
       first: boolean;
     }
   | { t: 'callClosed'; roundNo: number; i: number }
-  | { t: 'scores'; roundNo: number; points: Record<string, number> }
+  | {
+      t: 'scores';
+      roundNo: number;
+      points: Record<string, number>;
+      crossed?: Record<string, number>;
+    }
   | { t: 'end'; roundNo: number; winners: string[]; reason: 'full-card' }
   | { t: 'hello'; seat: string; name: string; glyph: string; pronouns?: string; labelLang: Lang }
   | { t: 'claim'; seat: string; roundNo: number; tablaIndex: number; marks: CardId[] };

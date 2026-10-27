@@ -1,0 +1,61 @@
+{
+  "_comment": "Router: one engine per language. Revisions are pinned commit shas (null = resolve from the Hub and pin on next run). engine 'needs-recording' means no open TTS exists; native clips in public/audio/recordings/{lang}/ are used. To add an engine, implement it in engines.py and register it in ENGINES.",
+  "asr": {
+    "id": "facebook/mms-1b-all",
+    "revision": "3d33597edbdaaba14a8e858e2c8caa76e3cec0cd"
+  },
+  "languages": {
+    "es": {
+      "engine": "kokoro",
+      "model": "hexgrad/Kokoro-82M",
+      "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "lang_code": "e",
+      "voices": [
+        "ef_dora",
+        "em_alex",
+        "em_santa"
+      ],
+      "asr": "spa"
+    },
+    "en": {
+      "engine": "kokoro",
+      "model": "hexgrad/Kokoro-82M",
+      "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "lang_code": "a",
+      "voices": [
+        "af_heart",
+        "am_michael",
+        "af_bella"
+      ],
+      "asr": "eng"
+    },
+    "nah": {
+      "engine": "mms",
+      "model": "facebook/mms-tts-nhe",
+      "revision": "48cc378b4c7bc869e2282e6170a39f10930f20bf",
+      "asr": "nhe"
+    },
+    "yua": {
+      "engine": "mms",
+      "model": "facebook/mms-tts-yua",
+      "revision": "b2ddc51bcef7894b22dd8ceb2ab8ee977607be10",
+      "asr": "yua"
+    },
+    "quz": {
+      "engine": "mms",
+      "model": "facebook/mms-tts-quz",
+      "revision": "c24fad4c936c65434b53c54239effbd34e5891aa",
+      "asr": "quz"
+    },
+    "cjp": {
+      "engine": "mms",
+      "model": "facebook/mms-tts-cjp",
+      "revision": null,
+      "asr": "cjp"
+    },
+    "bzd": {
+      "engine": "needs-recording",
+      "reason": "No open TTS model exists for Bribri (bzd): not in Meta MMS-TTS, none other found. Needs native recordings in public/audio/recordings/bzd/."
+    }
+  }
+}

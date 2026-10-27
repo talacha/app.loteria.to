@@ -1,6 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import type { CardId, Lang } from '@engine';
-import { Button, PapelPicado, PaperCard, Tabla, type CellData } from '../ui';
+import {
+  Button,
+  Leaderboard,
+  PapelPicado,
+  PaperCard,
+  Tabla,
+  type CellData,
+  type LeaderboardEntry,
+} from '../ui';
 import { emojiOf, wordOf } from './words';
 import styles from './WinScreen.module.css';
 
@@ -14,6 +22,9 @@ export interface WinScreenProps {
   /** seat -> points; decides the text of a tie. */
   points: Record<string, number>;
   spokenLang: Lang;
+  /** Final standings, sorted by points. */
+  standings?: LeaderboardEntry[];
+  selfSeat?: string;
   /** "Otra ronda": wait for the next round. */
   onAnother: () => void;
   /** "Volver a la sala". */
@@ -27,6 +38,8 @@ export default function WinScreen({
   wonByMe,
   names,
   points,
+  standings,
+  selfSeat,
   spokenLang,
   onAnother,
   onBack,
@@ -63,6 +76,20 @@ export default function WinScreen({
         <div className={styles.board}>
           <Tabla cells={cells} label={t('player.tablaTitle')} />
         </div>
+
+        {standings && standings.length > 0 ? (
+          <PaperCard as="section" aria-labelledby="standings" className={styles.words}>
+            <h2 id="standings" className={styles.h2}>
+              {t('player.finalStandings')}
+            </h2>
+            <Leaderboard
+              entries={standings}
+              selfSeat={selfSeat}
+              total={board.length}
+              label={t('player.finalStandings')}
+            />
+          </PaperCard>
+        ) : null}
 
         <PaperCard as="section" aria-labelledby="learned" className={styles.words}>
           <h2 id="learned" className={styles.h2}>

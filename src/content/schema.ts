@@ -6,11 +6,25 @@ const stripVs = (s: string) => s.replace(/️/g, '');
 
 export const nameStatusSchema = z.enum(['draft', 'reviewed', 'approved']);
 
+/** Integrity and provenance of the delivered clip. `file` equals the name's `audio` path. */
+export const clipSchema = z.strictObject({
+  file: z.string().regex(/^\/audio\/[a-z]{2,3}\/[a-z0-9_-]+\.[0-9a-f]{8}\.m4a$/),
+  sha256: z.string().regex(/^[0-9a-f]{64}$/),
+  engine: z.enum(['kokoro', 'mms', 'recording']),
+  model: text.optional(),
+  revision: text.optional(),
+  voice: text.optional(),
+  durationMs: z.number().int().positive(),
+});
+export const audioReasonSchema = z.enum(['needs-recording', 'missing-word']);
+
 export const cardNameSchema = z.strictObject({
   text,
   ipa: text.optional(),
   status: nameStatusSchema,
-  audio: text.optional(),
+  audio: text.nullable().optional(),
+  clip: clipSchema.optional(),
+  audioReason: audioReasonSchema.optional(),
   source: text.optional(),
   kind: z.enum(['attested', 'loanword', 'descriptive', 'neologism']).optional(),
   confidence: z.enum(['high', 'medium', 'low']).optional(),
@@ -22,6 +36,28 @@ export const cardNameSchema = z.strictObject({
   headword: text.optional(),
 });
 
+/**
+ * cjp (Cabecar) and bzd (Bribri): imported from drafts, not playable yet. A missing word is explicit
+ * (`text: null`, `status: 'missing'`); a present word without a clip says why (`audioReason`).
+ */
+export const extNameSchema = cardNameSchema
+  .extend({ text: text.nullable(), status: z.enum(['draft', 'reviewed', 'approved', 'missing']) })
+  .superRefine((n, ctx) => {
+    if (n.text === null) {
+      if (n.status !== 'missing' || n.audio !== null || n.audioReason !== 'missing-word')
+        ctx.addIssue({
+          code: 'custom',
+          message: "missing word needs status 'missing', audio null, audioReason 'missing-word'",
+        });
+    } else if (n.status === 'missing') {
+      ctx.addIssue({ code: 'custom', message: "status 'missing' needs text null" });
+    } else if (!n.audio && n.audioReason !== 'needs-recording') {
+      ctx.addIssue({ code: 'custom', message: "no audio needs audioReason 'needs-recording'" });
+    } else if (n.audio && !n.clip) {
+      ctx.addIssue({ code: 'custom', message: 'audio needs clip metadata' });
+    }
+  });
+
 const namesSchema = z
   .strictObject({
     es: cardNameSchema.optional(),
@@ -29,9 +65,25 @@ const namesSchema = z
     nah: cardNameSchema.optional(),
     yua: cardNameSchema.optional(),
     quz: cardNameSchema.optional(),
+    cjp: extNameSchema.optional(),
+    bzd: extNameSchema.optional(),
   })
   .superRefine((names, ctx) => {
+    for (const lang of ['cjp', 'bzd'] as const)
+      if (!names[lang])
+        ctx.addIssue({
+          code: 'custom',
+          path: [lang],
+          message: `${lang} entry missing (use text null)`,
+        });
     for (const lang of LANGS) {
+      const clip = names[lang]?.clip;
+      if (clip && clip.file !== names[lang]?.audio)
+        ctx.addIssue({
+          code: 'custom',
+          path: [lang, 'clip'],
+          message: 'clip.file must equal audio',
+        });
       const n = names[lang];
       if (lang === 'es' || lang === 'en') {
         if (!n || n.status !== 'approved') {
@@ -60,6 +112,8 @@ const namesSchema = z
         ctx.addIssue({ code: 'custom', path: [lang, 'source'], message: 'source required' });
       if (!n.audio)
         ctx.addIssue({ code: 'custom', path: [lang, 'audio'], message: 'audio required' });
+      if (n.audio && !n.clip)
+        ctx.addIssue({ code: 'custom', path: [lang, 'clip'], message: 'clip metadata required' });
     }
   });
 

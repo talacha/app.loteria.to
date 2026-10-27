@@ -475,7 +475,7 @@
 
 .tabla {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--grid, 4), minmax(0, 1fr));
   gap: 6px;
   padding: var(--space-2);
   background: var(--color-paper);
@@ -787,4 +787,45 @@ button.cell {
   margin: 0;
   color: var(--color-muted-on-night);
   font-size: var(--text-md);
+}
+
+/* Bigger cartones keep cells at 44 px or more on a 390 px screen: tight gaps, no frame padding,
+   icon only (the word stays available to screen readers). */
+.tabla[data-grid='5'] {
+  gap: 4px;
+}
+.tabla[data-grid='6'],
+.tabla[data-grid='7'],
+.tabla[data-grid='8'] {
+  gap: 2px;
+  padding: 2px;
+  border-radius: var(--radius-md);
+}
+.tabla[data-grid='7'] {
+  margin-inline: calc(var(--space-2) * -1);
+}
+.tabla[data-grid='8'] {
+  margin-inline: calc(var(--space-3) * -1);
+}
+.tabla[data-grid='6'] .cell,
+.tabla[data-grid='7'] .cell,
+.tabla[data-grid='8'] .cell {
+  padding: 0;
+  gap: 0;
+  border-radius: var(--radius-xs);
+}
+.tabla[data-grid='6'] .cellLabel,
+.tabla[data-grid='7'] .cellLabel,
+.tabla[data-grid='8'] .cellLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.tabla[data-grid='6'] .cellEmoji,
+.tabla[data-grid='7'] .cellEmoji,
+.tabla[data-grid='8'] .cellEmoji {
+  font-size: var(--text-lg);
 }

@@ -54,6 +54,26 @@
         "headword": "uturunku (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/jaguar.m4a"
+      },
+      "cjp": {
+        "text": "na̱má̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "jaguar (Panthera onca); also generic 'big cat'",
+        "note": "General (unmarked) form. d.n. synonym satálá (entry 5405). SENSITIVE: the jaguar has ritual weight in Cabécar practice; the dictionary lists na_má_ bata (ceremonial helper, 4517) and na_má_ dalí 'enfermedad del tigre', a taboo-linked illness (4518). Plain noun is everyday vocabulary.",
+        "source": "margery1989 entry 4516 (s. cl. al., zool.) 'tigre (genérico)', 'jaguar'",
+        "reviewQuestion": "¿Se usa 'na̱má̱' para el jaguar con niños sin problema, o prefieren 'satálá' (Chirripó)?"
+      },
+      "bzd": {
+        "text": "na̱mù̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "jaguar; also generic 'feline'",
+        "note": "Everyday noun for jaguar (Panthera onca). Synonym dulë́kalöm (variants dulë́kalö, dulë́klöm) per Margery 1996/Flores 2009. Variant spelling nmù̱. Sensitivity: the jaguar figures in Bribri narratives and is associated with a clan (Tùbölwak, per Jara & García 2003); the plain animal noun is ordinary vocabulary, but avoid compounds like na̱mù̱ dalë̀ ('jaguar sickness').",
+        "source": "jaragarcia2013; margery1996; flores2009 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'jaguar'; primary page not verified)",
+        "reviewQuestion": "Is na̱mù̱ the word children would use for the jaguar picture, or dulë́kalöm? Which do you prefer for a game?"
       }
     },
     "verso": {
@@ -118,6 +138,26 @@
         "headword": "q'enti (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/colibri.m4a"
+      },
+      "cjp": {
+        "text": "batsu̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "hummingbird (generic, Trochilidae)",
+        "note": "Southern-dialect form. The northern (d.n.) generic is ma_tsu_ (entry ~4295), but the dictionary also gives ma_tsu_ (d.n., vulg.) 'pene' — avoided for a children's game. batsu_ is also a dog's name in San José Cabécar (SJC). Chirripó speakers may expect ma_tsu_.",
+        "source": "margery1989 entry 301 (d.s.) 'colibrí' genérico",
+        "reviewQuestion": "¿Cómo dicen 'colibrí' en su comunidad: 'batsu̱' o 'ma̱tsu̱'? ¿'ma̱tsu̱' tiene un doble sentido que no conviene para niños?"
+      },
+      "bzd": {
+        "text": "batsù̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "hummingbird (generic)",
+        "note": "Generic for hummingbirds (Trochilidae); also 'small long-billed bird'. Variants bitsù̱, btsù̱. Many species compounds exist; avoid sibö̀batsu̱ (contains the sacred name Sibö̀).",
+        "source": "jaragarcia2003; flores2009; margery1996; dipalicori_animales (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'colibrí'; primary page not verified)",
+        "reviewQuestion": "Is batsù̱ (or bitsù̱/btsù̱) how your community says it?"
       }
     },
     "verso": {
@@ -183,6 +223,23 @@
         "reviewQuestion": "For the Andean llama, do you use a Maya word or just say 'llama'? How do you pronounce it?",
         "source": "Yucatec Maya, unverified draft",
         "audio": "/audio/yua/llama.m4a"
+      },
+      "cjp": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "gloss": "llama (Andean camelid)",
+        "note": "Andean animal with no Cabécar term in the dictionary. The Bible translation borrows Spanish names for foreign animals ('camello', 'oveja', 'cabra'), so a Spanish loan 'llama' is plausible, but it is unattested here; left null rather than guessed.",
+        "reviewQuestion": "¿Dirían simplemente 'llama' (en español) o hay otra forma?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for the Andean llama; the animal is not native to Talamanca. No attested Bribri loan found. Do not substitute another animal.",
+        "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
       }
     },
     "verso": {
@@ -248,6 +305,23 @@
         "headword": "kuntur (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/condor.m4a"
+      },
+      "cjp": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "gloss": "Andean condor",
+        "note": "Not a Costa Rican bird; no entry. The closest native concept is olo 'zopilote' (vulture, Bible.is Mt 24:28) and an entry for 'zopilote rey' (king vulture), but neither is a condor. Left null.",
+        "reviewQuestion": "¿Usarían 'cóndor' prestado del español, o el nombre del zopilote rey?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for the Andean condor. Related but DIFFERENT birds are attested: ölö́bulu / uchí (king vulture, Sarcoramphus papa), ölö́ (vulture, generic), pú̱ (raptor, generic). Using any of these would name a different animal, so left empty.",
+        "reviewQuestion": "Is there a Bribri way to refer to the Andean condor, or would you accept ölö́bulu (king vulture) only if the card art is changed?"
       }
     },
     "verso": {
@@ -314,6 +388,26 @@
         "headword": "pillpintu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/mariposa.m4a"
+      },
+      "cjp": {
+        "text": "kuákua",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "butterfly (generic)",
+        "note": "General form. d.n. variant kuák'a (3950, marked p.u. 'poco usado'). Night moths: kuákua yee (d.n.) 'mariposa nocturna'.",
+        "source": "margery1989 entry 3951 (s. cl. pl., ent.) 'mariposa' (genérico)",
+        "reviewQuestion": "¿Es 'kuákua' la palabra común para mariposa?"
+      },
+      "bzd": {
+        "text": "kua’kua",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "butterfly (generic)",
+        "note": "Generic for butterflies/moths (Lepidoptera). Variants kuàkua, short form kua’. Blue morpho is dulùkuékua. Also shown in the DIPALICORI animals dictionary as kua’kua / kuâkua.",
+        "source": "jaragarcia2013; margery1996; jaragarcia2003; dipalicori_animales (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'mariposa'; primary page not verified)",
+        "reviewQuestion": "Is kua’kua the everyday form, and which tone/spelling do you prefer (kua’kua vs kuàkua)?"
       }
     },
     "verso": {
@@ -379,6 +473,26 @@
         "reviewQuestion": "What do you call a turkey (the farmyard bird, Spanish 'pavo') when speaking Quechua — 'pawu', 'pavo', or another word?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/guajolote.m4a"
+      },
+      "cjp": {
+        "text": "cho̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "turkey (domestic, 'chompipe')",
+        "note": "General form. Short one-syllable word: check it is distinct enough in audio from other cho-/chö- words.",
+        "source": "margery1989 entry 883 (s., ornit.) 'pavo', 'chompipe' (Meleagris gallopavo)",
+        "reviewQuestion": "¿Se dice 'cho̱' para el chompipe/pavo?"
+      },
+      "bzd": {
+        "text": "chò̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "turkey (Meleagris gallopavo), 'chompipe'",
+        "note": "Domestic turkey; Costa Rican Spanish 'chompipe'. Nasal vowel ò̱ (macron below).",
+        "source": "margery1996; rimolo2007 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'chompipe / pavo'; primary page not verified)",
+        "reviewQuestion": "Is chò̱ used for the domestic turkey in your community?"
       }
     },
     "verso": {
@@ -446,6 +560,26 @@
         "reviewQuestion": "Is there a Quechua word you use for a turtle or tortoise, or do you say 'tortuga'? If the loan, how would you spell it?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/tortuga.m4a"
+      },
+      "cjp": {
+        "text": "kuë",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "turtle (generic)",
+        "note": "General form kuë; Chirripó (d.n.) k'uë́ with glottalized k'. Tone mark on the general form not verified on the scan. Note: in the southern dialect kuë also means 'maíz' (entry ~4044) — homonym risk in a game that also has a maize card.",
+        "source": "margery1989 Spanish-index s.v. 'tortuga': kuë (3975), k'uë́ (d.n., 3444)",
+        "reviewQuestion": "¿Dicen 'kuë' o 'k'uë' para tortuga? ¿En su zona 'kuë' también es maíz?"
+      },
+      "bzd": {
+        "text": "kuë̀",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "turtle (generic, order Testudines)",
+        "note": "Generic turtle. Sea turtles have specific names (sö̀ hawksbill, kakò̱ leatherback); freshwater turtle ö̀lëkuë / pó̱kuë. DIPALICORI animals dictionary shows 'sö / ölë kuë' on the turtles page.",
+        "source": "margery1996; flores2009; dipalicori_animales (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'tortuga'; primary page not verified)",
+        "reviewQuestion": "For a generic turtle picture, is kuë̀ right, or would children name a specific kind?"
       }
     },
     "verso": {
@@ -511,6 +645,26 @@
         "headword": "k'ayra (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/rana.m4a"
+      },
+      "cjp": {
+        "text": "bulbí",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "frog (generic)",
+        "note": "General form. Ch. variant yökok (p.u.). Do not confuse with buki/buke 'sapo' (toad, 647; Bible.is Rev 16:13 'buke'); buki also has a vulgar sense ('vulva', 647) — another reason to prefer bulbí.",
+        "source": "margery1989 entry 677 (s. cl. pl., zool.) 'rana' (genérico)",
+        "reviewQuestion": "¿'Bulbí' es la rana (no el sapo)?"
+      },
+      "bzd": {
+        "text": "bukuë’",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "frog / toad (generic, order Anura)",
+        "note": "Generic for frogs and toads. Variants bukë’ (used as the category label in the DIPALICORI animals dictionary) and bkuë’.",
+        "source": "margery1996; flores2009; jaragarcia2003; dipalicori_animales (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'rana'; primary page not verified)",
+        "reviewQuestion": "Which form is used in your variety: bukuë’ or bukë’?"
       }
     },
     "verso": {
@@ -579,6 +733,26 @@
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "avoidWith": ["cueva"],
         "audio": "/audio/quz/serpiente.m4a"
+      },
+      "cjp": {
+        "text": "tkäbe",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "snake (generic)",
+        "note": "Bible spelling (matches MMS-TTS training text); dictionary writes tkabë, d.s. tkebë (6811), SJC chabe (734). Snakes are associated with healers/taboos in Cabécar tradition; neutral as a noun.",
+        "source": "bibleis-cjptjv Mt 10:16, Lk 10:19 'tkäbe'; margery1989 entry 6784 tkabë (generic)",
+        "reviewQuestion": "¿Se escribe 'tkäbe' o 'tkabë'?"
+      },
+      "bzd": {
+        "text": "tkabë̀",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "snake (generic)",
+        "note": "Generic snake. Krohn writes tk for a sound some speakers write tch (DIPALICORI uses tkabë / tchabë). Variant tkbë̀. Ritual-speech synonym tulít — do not use. Note tkabë̀ also means 'rainbow' (see arcoiris), linked to Bribri narratives.",
+        "source": "jaragarcia2013; margery1996; dipalicori_animales (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'serpiente'; primary page not verified)",
+        "reviewQuestion": "Should the game spell this tkabë̀ or tchabë̀ for your community?"
       }
     },
     "verso": {
@@ -644,6 +818,26 @@
         "headword": "sara (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/maiz.m4a"
+      },
+      "cjp": {
+        "text": "ik'uö́",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "maize, corn (Zea mays)",
+        "note": "Northern (Chirripó) form. Southern form kuë (d.s., ~4044) is homonymous with 'turtle'. Maize has ceremonial uses (chicha), but the word is everyday.",
+        "source": "margery1989 entry 1610 (d.n.) 'maíz'",
+        "reviewQuestion": "¿'Ik'uö' es la forma usada en su comunidad para maíz?"
+      },
+      "bzd": {
+        "text": "ikuö̀",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "maize, corn (Zea mays)",
+        "note": "Variants ikuö̀wö / ikuwö̀ (also 'maize grain') and kuwö̀. Many named varieties exist; avoid ritual-speech forms (sékibö etc.).",
+        "source": "margery1996; jaragarcia2013 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'maíz'; primary page not verified)",
+        "reviewQuestion": "Is ikuö̀ or ikuö̀wö the better word for a picture of an ear of corn?"
       }
     },
     "verso": {
@@ -709,6 +903,23 @@
         "reviewQuestion": "The card shows a prickly-pear cactus plant with flat pads. Does 'tuna' name the plant or only the fruit? Is there another word for the plant (e.g. 'waraqu' or similar)?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/nopal.m4a"
+      },
+      "cjp": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "gloss": "nopal cactus (Opuntia)",
+        "note": "Opuntia is not part of the Talamanca/Chirripó environment; no entry. Left null.",
+        "reviewQuestion": "¿Existe un nombre cabécar para este cactus, o se usaría 'nopal'?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for nopal (Opuntia), which is not a Talamanca plant. The only cactus entry is na̱mù̱yibala (Pereskia grandifolia), a different plant. No attested loan.",
+        "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
       }
     },
     "verso": {
@@ -773,6 +984,26 @@
         "headword": "purutu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/frijol.m4a"
+      },
+      "cjp": {
+        "text": "ka̱ní̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "bean (Phaseolus)",
+        "note": "General form; d.n./Uj. k'a_ní_ (3330) with glottalized k'. ka_ní_ kicharaga 'vainica' (green bean pod).",
+        "source": "margery1989 entry 3023 (s., bot.) 'frijol'",
+        "reviewQuestion": "¿'Ka̱ní̱' o 'k'a̱ní̱'?"
+      },
+      "bzd": {
+        "text": "átu",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "bean (Phaseolus vulgaris), plant or grain",
+        "note": "Common bean. Seed: átwö.",
+        "source": "margery1996; sanchez_sf (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'frijol'; primary page not verified)",
+        "reviewQuestion": "Is átu the usual word for beans?"
       }
     },
     "verso": {
@@ -837,6 +1068,26 @@
         "reviewQuestion": "For pineapple, do Quechua speakers say 'piña', or is 'achupalla' or another word used?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/pina.m4a"
+      },
+      "cjp": {
+        "text": "bísh kö́",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "pineapple (Ananas comosus)",
+        "note": "General form, two words as printed. Tone accents (í, ö́) as in the dictionary; MMS vocab has no combining acute so the accent on ö is dropped in synthesis.",
+        "source": "margery1989 entry 477 (s., bot.) 'piña'",
+        "reviewQuestion": "¿Se dice 'bísh kö' para la piña?"
+      },
+      "bzd": {
+        "text": "abáwö",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "pineapple (Ananas comosus)",
+        "note": "Synonyms/variants: alàbawö, a̱mù̱wö, a̱mù̱wöli.",
+        "source": "margery1996; sanchez_sf (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'piña'; primary page not verified)",
+        "reviewQuestion": "Which of abáwö / alàbawö / a̱mù̱wö is used in your community?"
       }
     },
     "verso": {
@@ -902,6 +1153,26 @@
         "headword": "uchu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/chile.m4a"
+      },
+      "cjp": {
+        "text": "shá",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "chili pepper (Capsicum, generic)",
+        "note": "General form. SJC dapa/dapo/dipa; Uj. baka shi 'chile de ganado'. One-syllable word.",
+        "source": "margery1989 entry 5964 (s., bot.) 'chile' (genérico)",
+        "reviewQuestion": "¿'Shá' es el chile?"
+      },
+      "bzd": {
+        "text": "dipa’",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "chili pepper (sweet; also generic hot chili per Chevrier)",
+        "note": "Primary sources gloss dipa’ as 'chile dulce' (Capsicum spp.); Chevrier 2017 also lists it as generic 'chile picante'. Variant dapa’; also sha’. Card shows a red hot chili.",
+        "source": "margery1996; constenla2010; chevrier2017 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'chile'; primary page not verified)",
+        "reviewQuestion": "Does dipa’ cover a hot red chili, or only sweet pepper? Is there a different word for the hot chili?"
       }
     },
     "verso": {
@@ -968,6 +1239,24 @@
         "reviewQuestion": "Do people say 'papa' for potato in Maya, or another word?",
         "source": "Yucatec Maya, unverified draft",
         "audio": "/audio/yua/papa.m4a"
+      },
+      "cjp": {
+        "text": "papa",
+        "status": "draft",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "potato (Spanish loan)",
+        "note": "Potato is not a traditional Cabécar crop. Spanish loan offered on the Bible.is precedent of keeping Spanish nouns for introduced items; not attested in Cabécar sources. Homophone risk: Spanish 'papá'.",
+        "source": "no Cabécar term in margery1989 (only baga kiwö 'papa chiricana', a different tuber, entry 141)",
+        "reviewQuestion": "¿Dicen 'papa' en español para la papa, o hay otra palabra?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for potato (Solanum tuberosum). Generic tu’ means 'tuber / yam' and would name a different food. No attested loan.",
+        "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
       }
     },
     "verso": {
@@ -1034,6 +1323,26 @@
         "headword": "palta (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/aguacate.m4a"
+      },
+      "cjp": {
+        "text": "ja̱mó̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "avocado (Persea americana)",
+        "note": "General form; also jo_mó_ (2356) and d.n. a_mó_ (98). ja_mó_ klö́ = avocado tree.",
+        "source": "margery1989 entry 1928 (s. cl. red., bot.) 'aguacate'",
+        "reviewQuestion": "¿'Ja̱mó̱', 'jo̱mó̱' o 'a̱mó̱'?"
+      },
+      "bzd": {
+        "text": "ja̱mo̱’",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "avocado (Persea americana)",
+        "note": "Variants a̱mo̱’, mo̱’.",
+        "source": "jara2018; chevrier2017 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'aguacate'; primary page not verified)",
+        "reviewQuestion": "Is ja̱mo̱’ or a̱mo̱’ the form used for avocado in your community?"
       }
     },
     "verso": {
@@ -1099,6 +1408,24 @@
         "reviewQuestion": "For tomato, do speakers say 'tumati', 'tomate', or another word? Which spelling would you use?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/tomate.m4a"
+      },
+      "cjp": {
+        "text": "tomate",
+        "status": "draft",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "tomato (Spanish loan)",
+        "note": "Cultivated tomato has no entry. shalbo names a different wild plant, so it is not offered as the card word. Spanish loan, unattested in Cabécar sources.",
+        "source": "no Cabécar term for cultivated tomato in margery1989; wild relative shalbo (d.n., 5985) 'tomate de montaña' (Cyphomandra)",
+        "reviewQuestion": "¿Para el tomate rojo usan 'tomate' o 'shalbo'?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for tomato. No attested loan found.",
+        "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
       }
     },
     "verso": {
@@ -1164,6 +1491,24 @@
         "reviewQuestion": "For sunflower, do speakers say 'hirasul', 'girasol', or a Quechua phrase? Which spelling would you use?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/girasol.m4a"
+      },
+      "cjp": {
+        "text": "juku̱lí̱ wö́",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "sunflower (Helianthus annuus)",
+        "note": "Southern-dialect only; no northern form found. Nasal underlines read from the scan (u, í) — verify.",
+        "source": "margery1989 entry 2413 (d.s.) 'girasol'",
+        "reviewQuestion": "¿Conocen 'juku̱lí̱ wö' como nombre del girasol?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for sunflower. Generic 'flower' is attested (dakuà / mà̱ma̱) but would not identify this card. A phrase with dìwö 'sun' would be an invention, so not proposed.",
+        "reviewQuestion": "Is there a Bribri name for the sunflower, or a Spanish loan in use? Would 'flower' (dakuà / mà̱ma̱) be acceptable?"
       }
     },
     "verso": {
@@ -1233,6 +1578,26 @@
         "headword": "inti (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/sol.m4a"
+      },
+      "cjp": {
+        "text": "ka̱wä",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "sun",
+        "note": "Bible spelling (MMS training text). Dictionary: ká_ wö́ (general), kö́wö́ and k'á_ wö (d.n.). The sun figures in Cabécar cosmology (Sibö's creation narratives) — neutral as a noun but note for reviewers.",
+        "source": "bibleis-cjptjv Mt 24:29, Rev 10:1, Rev 12:1 'ka̱wä'; margery1989 entry 3085 ká_ wö́ 'sol'",
+        "reviewQuestion": "¿'Ka̱wä' o 'ká̱wö'?"
+      },
+      "bzd": {
+        "text": "dìwö",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "sun (also 'day', 'hour')",
+        "note": "Everyday word. Sensitivity: the sun has mythological names (Dalàbulu, Dìwö Akë́köl) and a sun clan (Dìwöwak) — do NOT use those.",
+        "source": "jaragarcia2013 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'sol'; primary page not verified)",
+        "reviewQuestion": "Is dìwö correct for the sun picture?"
       }
     },
     "verso": {
@@ -1301,6 +1666,26 @@
         "headword": "killa (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/luna.m4a"
+      },
+      "cjp": {
+        "text": "tulu",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "moon (also 'month')",
+        "note": "Same in dictionary and Bible. tulu balá = full moon (6730).",
+        "source": "margery1989 entry 6729; bibleis-cjptjv Mt 24:29, Rev 12:1 'tulu'",
+        "reviewQuestion": "¿'Tulu' es correcto?"
+      },
+      "bzd": {
+        "text": "síwö",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "moon",
+        "note": "Variants si’wö and short si’ (Jara & García list si’ among the forms). Choose one per community.",
+        "source": "margery1996; jaragarcia2013; jaragarcia2003 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'luna'; primary page not verified)",
+        "reviewQuestion": "Which form do children use: síwö, si’wö or si’?"
       }
     },
     "verso": {
@@ -1369,6 +1754,26 @@
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "avoidWith": ["cometa", "observatorio"],
         "audio": "/audio/quz/estrella.m4a"
+      },
+      "cjp": {
+        "text": "bekwä",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "star",
+        "note": "Bible spelling chosen for MMS. Dictionary forms are written as two words (béi wö́ / bék wö́); bekwä appears to be the same word written together.",
+        "source": "bibleis-cjptjv Mt 2:2, Mt 24:29, Rev 12:1 'bekwä'; margery1989 entry 312 béi wö́ (d.n.), margery1989 entry 316 bék wö́ (d.s.)",
+        "reviewQuestion": "¿'Bekwä' o 'béi wö'?"
+      },
+      "bzd": {
+        "text": "bë̀kwö",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "star",
+        "note": "Everyday word.",
+        "source": "jaragarcia2013; margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'estrella'; primary page not verified)",
+        "reviewQuestion": "Is bë̀kwö right?"
       }
     },
     "verso": {
@@ -1435,6 +1840,26 @@
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "avoidWith": ["papa"],
         "audio": "/audio/quz/lluvia.m4a"
+      },
+      "cjp": {
+        "text": "ka̱li̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "rain",
+        "note": "Bible spelling; dictionary accents the second syllable. ka_lí_ bulána 'llover'.",
+        "source": "margery1989 entry 2996 kalí_ 'lluvia'; bibleis-cjptjv Mt 7:25,27 'ka̱li̱'",
+        "reviewQuestion": "¿'Ka̱li̱' es la lluvia?"
+      },
+      "bzd": {
+        "text": "kà̱li̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "rain",
+        "note": "Variant kò̱li̱ (dialectal a/o alternation in nasal syllables).",
+        "source": "jara2018; margery1996; constenla1998 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'lluvia'; primary page not verified)",
+        "reviewQuestion": "Which variant is used in your community: kà̱li̱ or kò̱li̱?"
       }
     },
     "verso": {
@@ -1503,6 +1928,26 @@
         "headword": "illapa (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/rayo.m4a"
+      },
+      "cjp": {
+        "text": "kuálklö́",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "lightning bolt",
+        "note": "Northern form. d.s. tala wö́rkua (6435). The Bible renders lightning as 'ka̱ wäju̱r' (Mt 28:3, Lk 10:18), which may be a verb phrase ('it flashes'). Thunder is tala bula (Rev 4:5). Storms/thunder have spiritual associations; neutral as noun.",
+        "source": "margery1989 entry 3960 (d.n.) 'rayo', 'relámpago'",
+        "reviewQuestion": "¿Para el rayo dicen 'kuálklö', 'tala wörkua' o 'ka̱ wäju̱r'?"
+      },
+      "bzd": {
+        "text": "talàwöñor",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "lightning, lightning flash ('relámpago, rayería')",
+        "note": "Single source: personal communication from Alí García Segura recorded in Krohn's dictionary. Thunder is alá. Sensitivity: thunder/lightning are tied to mythological beings (Kikílma̱, Télma̱, Talàchake, the thunder lords) — do NOT use those names; ritual-speech tkë́rme̱ also avoided.",
+        "source": "garcia_com_pers (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'relámpago'; primary page not verified)",
+        "reviewQuestion": "Is talàwöñor the everyday word for a lightning bolt? Variant tlàwöñor?"
       }
     },
     "verso": {
@@ -1571,6 +2016,26 @@
         "headword": "k'uychi (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/arcoiris.m4a"
+      },
+      "cjp": {
+        "text": "shikaba",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "rainbow",
+        "note": "Bible spelling; d.s. shkabä (also 'halo of sun/moon'). In many Chibchan traditions the rainbow is an omen; check whether it carries a taboo for children.",
+        "source": "bibleis-cjptjv Rev 4:3, 10:1 'shikaba'; margery1989 entry 6112 shikabá (d.n.)",
+        "reviewQuestion": "¿'Shikaba' es el arcoíris? ¿Tiene algún significado delicado?"
+      },
+      "bzd": {
+        "text": "dulà",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "rainbow",
+        "note": "Alternatives: tkabë̀ / tkabë̀köl (also 'snake'; Margery) and shkaba’ (Jara & García 2003, mythology dictionary). Sensitivity: in Bribri tradition the rainbow is associated with a serpent; dulà avoids the homonym with 'snake' (also a card). Do not confuse with Dulù (mythological serpent).",
+        "source": "margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'arcoíris'; primary page not verified)",
+        "reviewQuestion": "Which word do children use for the rainbow: dulà, tkabë̀köl or shkaba’? Is any of them sensitive?"
       }
     },
     "verso": {
@@ -1636,6 +2101,26 @@
         "headword": "phuyu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/nube.m4a"
+      },
+      "cjp": {
+        "text": "mo̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cloud",
+        "note": "Same in dictionary and Bible. One-syllable word.",
+        "source": "margery1989 entry 4369 (s. cl. pl.) 'nube'; bibleis-cjptjv Mt 24:30, Rev 10:1 'mo̱'",
+        "reviewQuestion": "¿'Mo̱' es la nube?"
+      },
+      "bzd": {
+        "text": "mò̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cloud (also mist)",
+        "note": "Everyday word; nasal vowel.",
+        "source": "jaragarcia2013; margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'nube'; primary page not verified)",
+        "reviewQuestion": "Is mò̱ right?"
       }
     },
     "verso": {
@@ -1704,6 +2189,26 @@
         "headword": "wayra (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/viento.m4a"
+      },
+      "cjp": {
+        "text": "si̱wa̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "wind, air",
+        "note": "SENSITIVE: si_wá_ also means traditional/sacred knowledge and narratives ('historia', 'leyenda'); using it for wind is normal everyday speech, but reviewers should confirm it is fine on a game card.",
+        "source": "margery1989 entry 5682 si_wá_ 'viento', 'aire', 'historia, leyenda'; bibleis-cjptjv Mt 7:25 'si̱wa̱'",
+        "reviewQuestion": "¿'Si̱wa̱' para el viento en un juego infantil está bien, dado que también significa la historia/sabiduría tradicional?"
+      },
+      "bzd": {
+        "text": "su̱wa̱’",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "wind, air",
+        "note": "Variants si̱wa̱’, su̱a̱’. Sensitivity: the same form also means 'knowledge' and 'sacred history / traditional narration' (Constenla et al. 1998; Jara & García 2003). Reviewer should confirm it is appropriate as a game word for 'wind'.",
+        "source": "jaragarcia2003; constenla1998 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'viento'; primary page not verified)",
+        "reviewQuestion": "Is su̱wa̱’ acceptable for the wind card given its other meaning ('sacred history')? Is there a better everyday word?"
       }
     },
     "verso": {
@@ -1771,6 +2276,24 @@
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "avoidWith": ["estrella", "observatorio"],
         "audio": "/audio/quz/cometa.m4a"
+      },
+      "cjp": {
+        "text": "bég wö́ jolorgé",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "shooting star / meteor (not a comet)",
+        "note": "No word for 'comet' found; this is the southern term for a meteor/shooting star (d.n. equivalent at entry 370, not verified on scan). Bible Mt 24:29 'bekwä jolortémi' = 'stars will fall'. SENSITIVE: the dictionary records fiery streaks in the sky (ja_má_ júr, mit., 1908) as omens of calamity — confirm the shooting-star word is not ominous for children.",
+        "source": "margery1989 entry 317 (d.s.) 'aerolito', 'estrella fugaz'",
+        "reviewQuestion": "¿Hay palabra para 'cometa'? ¿La estrella fugaz se considera mal presagio?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for comet. Not inventing a descriptive phrase.",
+        "reviewQuestion": "Is there a Bribri name for a comet (or 'star with a tail')? Or a Spanish loan in use?"
       }
     },
     "verso": {
@@ -1840,6 +2363,26 @@
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "avoidWith": ["volcan"],
         "audio": "/audio/quz/montana.m4a"
+      },
+      "cjp": {
+        "text": "ka̱tsä",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "mountain, hill",
+        "note": "Bible spelling. Dictionary: ká_ tsö (s. cl. red.) and ká_ bata (generic). Some mountains (e.g. Chirripó peaks) are sacred places; the generic noun is neutral.",
+        "source": "bibleis-cjptjv Mt 5:14, Mt 17:1 'ka̱tsä (bata)'; margery1989 entry 2928 ká_ bata 'cerro, montaña'",
+        "reviewQuestion": "¿'Ka̱tsä' o 'ká̱ bata' para la montaña?"
+      },
+      "bzd": {
+        "text": "ká̱bata",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "mountain, hill",
+        "note": "Variants ká̱bta, kó̱bata, kó̱bta.",
+        "source": "jaragarcia2013 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'montaña'; primary page not verified)",
+        "reviewQuestion": "Which variant is used in your community?"
       }
     },
     "verso": {
@@ -1909,6 +2452,24 @@
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "avoidWith": ["montana"],
         "audio": "/audio/quz/volcan.m4a"
+      },
+      "cjp": {
+        "text": "volcán",
+        "status": "draft",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "volcano (Spanish loan)",
+        "note": "No native term found. Bible Rev 8:8 describes 'something like a great mountain burning' descriptively. Spanish loan, unattested.",
+        "source": "no entry for 'volcán' in margery1989",
+        "reviewQuestion": "¿Cómo llaman a un volcán (p. ej. el Turrialba)?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for volcano (Talamanca has no active volcanoes). Not substituting 'mountain'.",
+        "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
       }
     },
     "verso": {
@@ -1976,6 +2537,26 @@
         "headword": "pukyu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/manantial.m4a"
+      },
+      "cjp": {
+        "text": "díglö tsi̱ní̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "spring, water source",
+        "note": "Northern form (díglö 'water'; Bible writes diklä). d.s. díglö yölí (1142); Ch. bölë. Bible Jas 3:11 uses a verb phrase 'diklä tsikirke̱ ska'. Springs can be spiritually significant places.",
+        "source": "margery1989 entry 1133 (d.n.) 'vertiente', 'manantial', 'ojo de agua'",
+        "reviewQuestion": "¿'Díglö tsi̱ní̱' es el ojo de agua/naciente?"
+      },
+      "bzd": {
+        "text": "tù̱m",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "spring, 'ojo de agua'",
+        "note": "Water spring / source. Appears in place names (e.g. Tùm Ajkö̀ Ki̱, Constenla 2010).",
+        "source": "margery1996; constenla2010 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'manantial'; primary page not verified)",
+        "reviewQuestion": "Is tù̱m the word for a water spring?"
       }
     },
     "verso": {
@@ -2044,6 +2625,26 @@
         "headword": "lamar qocha (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/mar.m4a"
+      },
+      "cjp": {
+        "text": "däyë",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "sea (also 'salt')",
+        "note": "Bible spelling (dictionary dayë). Same word means 'salt'.",
+        "source": "bibleis-cjptjv Acts 27:41, Rev 4:6 'däyë'; margery1989 entry 1040 dayë 'mar', 'sal'",
+        "reviewQuestion": "¿'Däyë' para el mar?"
+      },
+      "bzd": {
+        "text": "dayë̀",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "sea (also 'salt')",
+        "note": "Variants diyë̀, dyë̀. Sensitivity: ritual-speech words for the sea (Dulù, së̀) must NOT be used.",
+        "source": "margery1996; sanchez_sf (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'mar'; primary page not verified)",
+        "reviewQuestion": "Is dayë̀ right for the sea?"
       }
     },
     "verso": {
@@ -2108,6 +2709,24 @@
         "reviewQuestion": "How would you name a sandy desert: 'ch'aki pampa', 'purun', 'purun pampa', or the Spanish word?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/desierto.m4a"
+      },
+      "cjp": {
+        "text": "ka̱ ssi̱lewa̱ pjoo",
+        "status": "draft",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "deserted/wild place (descriptive)",
+        "note": "The Bible's rendering of Spanish 'desierto' (wilderness). Lit. roughly 'empty/abandoned place'; it does not evoke sand dunes. Long phrase for a card.",
+        "source": "bibleis-cjptjv Mt 3:1, Heb 11:38",
+        "reviewQuestion": "¿Hay una palabra más corta para desierto, o se usaría 'desierto' en español?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for desert. Attested 'sand' (stsa̱’ña̱) or 'beach/sandy area' (tsà̱itö) would mean something else.",
+        "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
       }
     },
     "verso": {
@@ -2174,6 +2793,26 @@
         "reviewQuestion": "For the tropical rainforest (many trees, rain, monkeys), would you say 'sach'a sach'a', 'yunka', 'anti', or another word?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/selva.m4a"
+      },
+      "cjp": {
+        "text": "ká̱ ni̱ki̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "forest, jungle",
+        "note": "Northern form; d.s. kal gi_ (2721). ká_ bata 'cerro' also extends to 'monte'.",
+        "source": "margery1989 entry 3026 (d.n.) 'selva', 'bosque', 'monte'",
+        "reviewQuestion": "¿'Ká̱ ni̱ki̱' es la selva/el monte?"
+      },
+      "bzd": {
+        "text": "ka̱ñí̱k",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "forest, jungle; 'monte'",
+        "note": "Variant kñí̱k. Synonym kàlyök ('selva', Margery 1996).",
+        "source": "jara2018; jaragarcia2013; margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'selva'; primary page not verified)",
+        "reviewQuestion": "Is ka̱ñí̱k or kàlyök better for a rainforest picture?"
       }
     },
     "verso": {
@@ -2240,6 +2879,24 @@
         "headword": "qespi (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/cristal.m4a"
+      },
+      "cjp": {
+        "text": "vidrio",
+        "status": "draft",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "glass/crystal (Spanish loan)",
+        "note": "No native word for crystal/gem found. The Bible uses the Spanish loan 'vidrio' where Spanish has 'cristal'. 'jak' = stone.",
+        "source": "bibleis-cjptjv Rev 4:6, 21:11, 22:1 'vidrio' for Spanish 'cristal'",
+        "reviewQuestion": "¿Para un cristal de roca usarían 'vidrio', 'jak' u otra palabra?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for crystal/quartz. SENSITIVITY: the sacred healing stones of Bribri healers (si̱a̱’, and ritual-speech names) are listed under 'piedra' and must NOT be used for a game card. Plain 'stone' ák exists but names a different thing. Wö̀sa̱wa̱k means 'mirror'.",
+        "reviewQuestion": "Is there an everyday (non-sacred) word for a clear crystal or quartz? If the only words are sacred, should this card be skipped in Bribri?"
       }
     },
     "verso": {
@@ -2306,6 +2963,26 @@
         "headword": "wat'a (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/isla.m4a"
+      },
+      "cjp": {
+        "text": "däyë wäbala",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "island (in the sea)",
+        "note": "Bible term; däyë 'sea'. Dictionary only has díglö wöbla (d.s., 1196) 'small river island'.",
+        "source": "bibleis-cjptjv Acts 27:26, 28:1 'däyë wäbala'",
+        "reviewQuestion": "¿'Däyë wäbala' se entiende como isla?"
+      },
+      "bzd": {
+        "text": "data’",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "small river islet; also 'plot of land'",
+        "note": "Attested only for 'small island formed in a riverbed' (variants dara’, dra’, dta’). The card shows a sea island with palms, so this is a meaning mismatch. Note data’ also = 'dewlap' (Sánchez).",
+        "source": "margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'isla'; primary page not verified)",
+        "reviewQuestion": "Can data’ be used for an island in the sea, or is there another word?"
       }
     },
     "verso": {
@@ -2375,6 +3052,25 @@
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "avoidWith": ["serpiente"],
         "audio": "/audio/quz/cueva.m4a"
+      },
+      "cjp": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "gloss": "cave",
+        "note": "No clear noun for 'cave' found. Bible Heb 11:38 'ka̱ wäja̱r' / 'ishäkä wäja̱r' may mean 'holes/caves of the earth' but the gloss is uncertain. Caves can be sacred/burial places in Talamanca tradition. Left null.",
+        "reviewQuestion": "¿Cómo se dice 'cueva'? ¿Tiene alguna connotación sagrada?"
+      },
+      "bzd": {
+        "text": "ká̱uk",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cave (also 'hole')",
+        "note": "Variants kó̱uk; synonym úk / ùk.",
+        "source": "constenla1998; margery1996; garcia_com_pers (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'cueva'; primary page not verified)",
+        "reviewQuestion": "Is ká̱uk or úk used for a cave?"
       }
     },
     "verso": {
@@ -2440,6 +3136,26 @@
         "headword": "manka (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/olla.m4a"
+      },
+      "cjp": {
+        "text": "ká̱ wí̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "clay pot",
+        "note": "Matches the art (clay pot). Generic 'olla' is u_ (7374), a single nasal vowel — too short for a card.",
+        "source": "margery1989 entry 3084 (s. cl. red.) 'olla de barro'",
+        "reviewQuestion": "¿'Ká̱ wí̱' es la olla de barro?"
+      },
+      "bzd": {
+        "text": "ù̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cooking pot",
+        "note": "Differs from ù 'house' (card 'casa') only by nasality (macron below). Good teaching pair, but audio and spelling must keep them distinct; avoid using these two as each other's distractors without review.",
+        "source": "jaragarcia2013; margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'olla'; primary page not verified)",
+        "reviewQuestion": "Is ù̱ used for a clay pot? Do children clearly distinguish ù̱ (pot) from ù (house)?"
       }
     },
     "verso": {
@@ -2506,6 +3222,26 @@
         "headword": "isanka (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/cesto.m4a"
+      },
+      "cjp": {
+        "text": "bójkö́",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "basket",
+        "note": "General form. Other baskets: jokóbölo (d.s.), kok'óbölo (d.n.). Bible uses Spanish 'canasta' (Mt 14:20).",
+        "source": "margery1989 entry 523 (s. cl. red.) 'canasto'; (s. cl. pl.) 'bolso pequeño'",
+        "reviewQuestion": "¿'Bójkö' es el canasto?"
+      },
+      "bzd": {
+        "text": "ajkö́",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "basket",
+        "note": "Variants jkö́, kö́. Also listed as 'ajkö / kö' in the DIPALICORI traditional house dictionary. Other basket word: àba 'canasto' (Margery). Avoid bika’, a ritual basket of healers.",
+        "source": "margery1996; jaragarcia2003; dipalicori_casa (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'canasta'; primary page not verified)",
+        "reviewQuestion": "Which is the everyday basket word: ajkö́ or àba?"
       }
     },
     "verso": {
@@ -2574,6 +3310,26 @@
         "headword": "wankar (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/tambor.m4a"
+      },
+      "cjp": {
+        "text": "sábák",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "drum",
+        "note": "General form; SJC bak (154). Drums accompany ceremonies and chichadas; neutral as a noun.",
+        "source": "margery1989 entry 5300 (s. cl. al.) 'tambor'",
+        "reviewQuestion": "¿'Sábák' para el tambor?"
+      },
+      "bzd": {
+        "text": "sabák",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "drum",
+        "note": "Variant sbák; synonym dulë̀ (Rimolo 2007; also 'traditional chicha-festival song' and 'small bird'). DIPALICORI house dictionary lists 'sabák/dulë'. Possible cultural note: drums accompany traditional dances/songs.",
+        "source": "margery1996; dipalicori_casa (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'tambor'; primary page not verified)",
+        "reviewQuestion": "Is sabák the right word, and is there any ceremonial restriction on the drum?"
       }
     },
     "verso": {
@@ -2639,6 +3395,23 @@
         "headword": "tika (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/adobe.m4a"
+      },
+      "cjp": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "gloss": "adobe brick",
+        "note": "Adobe construction is not traditional in the region; no term. Left null.",
+        "reviewQuestion": "¿Hay forma de decir 'adobe' o se usaría el español?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for adobe brick (not a traditional Bribri building material). dö́ means 'mud, clay' — a different thing.",
+        "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
       }
     },
     "verso": {
@@ -2704,6 +3477,26 @@
         "headword": "q'aytu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/hilo.m4a"
+      },
+      "cjp": {
+        "text": "tulúk kicha",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "thread",
+        "note": "General form (tulúk = needle). Uj. ja_má_ kséi (1910).",
+        "source": "margery1989 entry 6733 (s.) 'hilo'",
+        "reviewQuestion": "¿'Tulúk kicha' es el hilo?"
+      },
+      "bzd": {
+        "text": "ja̱mù̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "cord, thread, string",
+        "note": "Means cord/thread/rope (synonyms stsa’, kichà); also the cabuya plant. Sensitivity: Ja̱mù̱ is also the name of a mythological being (owner of traps) per Jara & García 2003 — the common noun should be fine but confirm. Fine cotton thread: suítöm 'cotton cord' (Jara & García 2008).",
+        "source": "margery1996; chevrier2017 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'hilo'; primary page not verified)",
+        "reviewQuestion": "Is ja̱mù̱ fine for sewing/weaving thread, or is suítöm better?"
       }
     },
     "verso": {
@@ -2771,6 +3564,26 @@
         "headword": "wampu (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/canoa.m4a"
+      },
+      "cjp": {
+        "text": "ko̱no",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "canoe, boat",
+        "note": "Bible spelling; dictionary kö_no_.",
+        "source": "bibleis-cjptjv Mt 13:2, Acts 27:44 'ko̱no'; margery1989 entry 3838 kö_no_ 'bote', 'canoa'",
+        "reviewQuestion": "¿'Ko̱no' o 'kö̱no̱'?"
+      },
+      "bzd": {
+        "text": "ka̱nò̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "canoe, boat",
+        "note": "Variants knò̱, ko̱nò̱. Krohn 2016 (lexical acculturation) also lists it; it may be a borrowing (cf. Spanish canoa). Kept as attested.",
+        "source": "margery1996; krohn2016 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'canoa / bote'; primary page not verified)",
+        "reviewQuestion": "Is ka̱nò̱ a native word or felt to be a loan? Is it the everyday word?"
       }
     },
     "verso": {
@@ -2838,6 +3651,26 @@
         "headword": "chaka (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/puente.m4a"
+      },
+      "cjp": {
+        "text": "ksa",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "bridge (lit. rope, vine)",
+        "note": "Primary meaning is rope/vine; 'bridge' sense marked p.u. (rarely used) — fits a hanging/rope bridge. Nasal/tone marking not verified on the scan; Bible uses ksa̱ for 'sand' (Mt 7:26), so tone/nasality distinguishes homonyms.",
+        "source": "margery1989 entry 3876 (s. cl. al.) 'soga', 'bejuco'; (p.u.) 'puente'",
+        "reviewQuestion": "¿Para un puente dicen 'ksa' o 'puente'?"
+      },
+      "bzd": {
+        "text": "shkótkö",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "low",
+        "gloss": "bridge",
+        "note": "Single source (personal communication). Krohn's Spanish index lists shkë́k for 'puente', but its own Bribri entry for shkë́k means 'standing, upright' — conflicting; chose shkótkö, whose entry explicitly glosses 'puente'.",
+        "source": "garcia_com_pers (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'puente'; primary page not verified)",
+        "reviewQuestion": "What is the word for a bridge (hanging/rope bridge): shkótkö, shkë́k or another?"
       }
     },
     "verso": {
@@ -2903,6 +3736,26 @@
         "reviewQuestion": "For a wax candle, do you say 'wila', 'vela', or something else? Which spelling would you use?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/vela.m4a"
+      },
+      "cjp": {
+        "text": "tsi̱ni",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "candle, lamp, light",
+        "note": "Bible spelling (lamp). General dictionary form tsa_ni_ (7007) 'hule', 'candela', 'luz' — also means rubber/resin.",
+        "source": "bibleis-cjptjv Lk 15:8, Rev 4:5 'tsi̱ni'; margery1989 entry 7127 tsini (d.n.) 'candela', 'luz'",
+        "reviewQuestion": "¿'Tsi̱ni' es la vela/candela?"
+      },
+      "bzd": {
+        "text": "bùlña̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "candle (also 'beeswax')",
+        "note": "Constenla et al. 1998 gloss 'candela'; Margery 1996 'cera' (wax). Alternative akatùwö 'candela, vela' (Chevrier 2017).",
+        "source": "constenla1998; margery1996 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'vela / candela'; primary page not verified)",
+        "reviewQuestion": "Which is used for a candle: bùlña̱ or akatùwö?"
       }
     },
     "verso": {
@@ -2968,6 +3821,24 @@
         "reviewQuestion": "For a hammer, do you say 'martillu' or 'martillo', and is there any native word?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/martillo.m4a"
+      },
+      "cjp": {
+        "text": "martillo",
+        "status": "draft",
+        "kind": "loanword",
+        "confidence": "low",
+        "gloss": "hammer (Spanish loan)",
+        "note": "No native term found (dictionary 'martilla' is an animal, kinkajou). Spanish loan, unattested.",
+        "source": "no entry in margery1989",
+        "reviewQuestion": "¿Usan 'martillo' en español?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for hammer. Verbs for hitting exist (tö́k, ppö́k) but no noun.",
+        "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
       }
     },
     "verso": {
@@ -3035,6 +3906,26 @@
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "avoidWith": ["escuela", "observatorio", "biblioteca"],
         "audio": "/audio/quz/casa.m4a"
+      },
+      "cjp": {
+        "text": "ju",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "house",
+        "note": "Same in dictionary and Bible. Traditional conical house (usulë) is a sacred structure — the generic ju is neutral.",
+        "source": "margery1989 entry 2368 (s. cl. pl.) 'casa' (genérico), 'rancho'; bibleis-cjptjv Mt 7:24-27 'ju'",
+        "reviewQuestion": "¿'Ju' es casa?"
+      },
+      "bzd": {
+        "text": "ù",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "house, home, building",
+        "note": "Title word of the DIPALICORI traditional house dictionary. Combining form wé (as in compounds). Do not use chö́we / wéri (cultured/ritual speech). Minimal pair with ù̱ 'pot' (card 'olla').",
+        "source": "margery1996; jaragarcia2013; dipalicori_casa (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'casa'; primary page not verified)",
+        "reviewQuestion": "Is ù right?"
       }
     },
     "verso": {
@@ -3102,6 +3993,26 @@
         "headword": "chakra (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/milpa.m4a"
+      },
+      "cjp": {
+        "text": "të",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "high",
+        "gloss": "cornfield, milpa",
+        "note": "General form; d.n. të́i (6519) and ik'uö́ të́i (1611).",
+        "source": "margery1989 entry 6516 (s.) 'milpa', 'maizal'",
+        "reviewQuestion": "¿'Të' es la milpa?"
+      },
+      "bzd": {
+        "text": "të̀",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "cultivated field, plot, 'milpa'",
+        "note": "Glossed 'sembradío, labranza, milpa'. A Bribri të̀ is a general cultivated plot, not specifically the Mesoamerican maize–bean–squash milpa.",
+        "source": "constenla2010; jaragarcia2013 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'milpa'; primary page not verified)",
+        "reviewQuestion": "Is të̀ the right word for a planted field?"
       }
     },
     "verso": {
@@ -3167,6 +4078,26 @@
         "reviewQuestion": "For a small neighbourhood shop, would you say 'tinda', 'tienda', or 'qhatu'? Is 'qhatu' only a market?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/tienda.m4a"
+      },
+      "cjp": {
+        "text": "dalí wí",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "shop, store ('pulpería')",
+        "note": "Southern form; no northern form found. Bible uses 'jile watju̱aklä jui' (house of selling, Jn 2:16).",
+        "source": "margery1989 entry 977 (d.s.) 'almacén', 'pulpería'",
+        "reviewQuestion": "¿Cómo dicen 'pulpería/tienda' en su comunidad?"
+      },
+      "bzd": {
+        "text": "dalì wé",
+        "status": "draft",
+        "kind": "descriptive",
+        "confidence": "medium",
+        "gloss": "shop, small store ('pulpería')",
+        "note": "Compound with wé 'house'; dalì = 'cargo, goods'. Listed in Constenla et al. 1998 and in Krohn 2016 (lexical acculturation), i.e. a coined compound, not a loan.",
+        "source": "constenla1998; krohn2016 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'tienda'; primary page not verified)",
+        "reviewQuestion": "Is dalì wé what people say for the local shop?"
       }
     },
     "verso": {
@@ -3233,6 +4164,24 @@
         "reviewQuestion": "For the town square, do you say 'plasa', 'plaza', or 'pampa'? Would you spell it with an initial cluster ('plasa') or another way?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/plaza.m4a"
+      },
+      "cjp": {
+        "text": "sa tapanaklä",
+        "status": "draft",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "gathering place (descriptive)",
+        "note": "Shortened from the Bible's phrase for 'marketplace/plaza' ('where we gather, where things are sold'). The shortening is mine — reviewers must confirm it stands alone.",
+        "source": "bibleis-cjptjv Mt 11:16, Mt 20:3, Acts 17:17 'sa tapanaklä däli watju̱ak shtä ska'",
+        "reviewQuestion": "¿'Sa tapanaklä' se entiende como plaza? ¿O usan 'plaza'?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for town square/plaza. ù apà / ùjkö mean 'house yard, patio' — not a public square.",
+        "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
       }
     },
     "verso": {
@@ -3299,6 +4248,24 @@
         "reviewQuestion": "For a harbour where boats tie up, would you say 'pwirtu', 'puerto', or another word? Would 'puerto' make you think of a mountain pass instead?",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/puerto.m4a"
+      },
+      "cjp": {
+        "text": "ko̱no däkläwa̱",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "harbor (boat landing place)",
+        "note": "Bible term ('where boats arrive'), also used in the place name 'Buenos Puertos'.",
+        "source": "bibleis-cjptjv Acts 27:8,12 'ko̱no däkläwa̱'",
+        "reviewQuestion": "¿'Ko̱no däkläwa̱' se entiende como puerto?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for harbor/port.",
+        "reviewQuestion": "Do children in your community use a Spanish loan for this (how is it pronounced/written in Bribri spelling), or is there a Bribri word or phrase?"
       }
     },
     "verso": {
@@ -3365,6 +4332,24 @@
         "headword": "llaqta (AMLQ 2005 / Cusihuamán 1976 headword form, from memory; page not verified)",
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "audio": "/audio/quz/pueblo.m4a"
+      },
+      "cjp": {
+        "text": "jukläyäkä",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "town, village",
+        "note": "Bible term for town/city. Dictionary d.n. ju k'ö́lö́ yökö (2408) 'pueblo, ranchería'.",
+        "source": "bibleis-cjptjv Mt 5:14, Mt 9:35, Lk 19:30 'jukläyäkä'",
+        "reviewQuestion": "¿'Jukläyäkä' o 'ju k'ölö yökö'?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No generic Bribri entry for village/town found; only place names and ká̱ kibí 'city' (Krohn 2016) and ká̱ 'place, land'. ká̱ kibí would name a city, not a village.",
+        "reviewQuestion": "What word or phrase is used for a village/community? Would ká̱ kibí be wrong here?"
       }
     },
     "verso": {
@@ -3432,6 +4417,26 @@
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "avoidWith": ["casa", "observatorio", "biblioteca"],
         "audio": "/audio/quz/escuela.m4a"
+      },
+      "cjp": {
+        "text": "sä yuäklä jui",
+        "status": "draft",
+        "kind": "descriptive",
+        "confidence": "low",
+        "gloss": "school (descriptive: 'house of learning')",
+        "note": "Bible descriptive rendering of 'escuela'. Modern Cabécar communities with MEP schools probably use the Spanish loan 'escuela'; unverified.",
+        "source": "bibleis-cjptjv Acts 19:9 'Tirano wa̱ sä yuäklä jui' (Spanish 'escuela de Tirano')",
+        "reviewQuestion": "¿Cómo dicen 'escuela' hoy: 'escuela' o 'sä yuäklä jui'?"
+      },
+      "bzd": {
+        "text": "stsàwöwe",
+        "status": "draft",
+        "kind": "attested",
+        "confidence": "medium",
+        "gloss": "school",
+        "note": "Spelling varies: stsàwöwe (Margery), tsa’wöwe (Jara 2018), jtsàwöwe. Descriptive alternative se’ yawók wé 'house where we learn' (Krohn 2016). Compound with wé 'house'.",
+        "source": "margery1996; jara2018 (as indexed in Krohn 2025 online dictionary, ES→BRI entry 'escuela'; primary page not verified)",
+        "reviewQuestion": "Which spelling/pronunciation is used locally: stsàwöwe, tsa’wöwe or jtsàwöwe?"
       }
     },
     "verso": {
@@ -3498,6 +4503,23 @@
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "avoidWith": ["casa", "escuela", "biblioteca", "estrella", "cometa"],
         "audio": "/audio/quz/observatorio.m4a"
+      },
+      "cjp": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "gloss": "astronomical observatory",
+        "note": "No attested term; any phrase would be invented. Left null.",
+        "reviewQuestion": "¿Cómo dirían 'observatorio' (lugar para mirar estrellas)?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for observatory or telescope. Not coining a phrase.",
+        "reviewQuestion": "Is there a way to say 'observatory' (place to look at stars)? Otherwise skip this card in Bribri."
       }
     },
     "verso": {
@@ -3564,6 +4586,23 @@
         "source": "Southern Quechua (Cusco-Collao), unverified draft",
         "avoidWith": ["casa", "escuela", "observatorio"],
         "audio": "/audio/quz/biblioteca.m4a"
+      },
+      "cjp": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "gloss": "library",
+        "note": "No attested term (dictionary has ayë k'uö 'papel, libro' d.n., entry 84, but no 'library'). Left null rather than compose a phrase.",
+        "reviewQuestion": "¿Cómo dirían 'biblioteca'?"
+      },
+      "bzd": {
+        "text": null,
+        "status": "missing",
+        "audio": null,
+        "audioReason": "missing-word",
+        "note": "No Bribri entry for library. Attested parts exist (uyë́jkuö 'book/paper'; X + wé 'house of X' as in dalì wé 'shop', stë̀ wé 'museum'), but no speaker-attested compound for 'library', so none is proposed.",
+        "reviewQuestion": "Would uyë́jkuö wé ('book house') be natural for 'library', or is there an existing word?"
       }
     },
     "verso": {

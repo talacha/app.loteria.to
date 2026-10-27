@@ -143,7 +143,7 @@ describe('automatic caller', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Pausa' }));
     await tick(60_000);
     expect(calls()).toHaveLength(2);
-    fireEvent.click(screen.getByRole('button', { name: 'Reanudar' }));
+    fireEvent.click(screen.getByRole('button', { name: /Reanudar|Seguir/ }));
     await tick(10_000);
     expect(calls()).toHaveLength(3);
   });
@@ -266,14 +266,79 @@ describe('automatic caller', () => {
     expect([...end.winners].sort()).toEqual(['a', 'b']);
   });
 
-  it('end stops the caller', async () => {
+  it('has no way to end the round early, and no end before a full card', async () => {
     await started(['a', 'b']);
-    fireEvent.click(screen.getByRole('button', { name: 'Terminar ronda' }));
+    expect(screen.queryByRole('button', { name: /Terminar/ })).toBeNull();
+    fireEvent.keyDown(window, { key: 'e' });
+    fireEvent.keyDown(window, { key: 'Escape' });
     await flush();
-    expect(sent.some((m) => m.t === 'end')).toBe(true);
-    const n = calls().length;
-    await tick(60_000);
-    expect(calls()).toHaveLength(n);
+    // Pause and resume keep working and never end the round.
+    fireEvent.click(screen.getByRole('button', { name: 'Pausa' }));
+    await flush();
+    fireEvent.click(screen.getByRole('button', { name: /Reanudar|Seguir/ }));
+    await flush();
+    const first = Math.min(completesAt(indexOf('a')), completesAt(indexOf('b')));
+    for (let k = 0; k < first - 1; k++) await tick(10_000);
+    expect(sent.some((m) => m.t === 'end')).toBe(false);
+    await tick(10_000);
+    expect(sent.filter((m) => m.t === 'end')).toHaveLength(1);
+    expect((sent.find((m) => m.t === 'end') as Sent).reason).toBe('full-card');
+  });
+
+  it('sends scores with squares crossed after every closed call, and a final one before end', async () => {
+    await started(['a', 'b']);
+    const idxs = { a: indexOf('a'), b: indexOf('b') };
+    sent.length = 0;
+    await tick(10_000);
+    const sc = sent.filter((m) => m.t === 'scores').pop() as Sent & {
+      crossed: Record<string, number>;
+    };
+    expect(sc.crossed).toBeDefined();
+    const closed = new Set(deckOrder('TESTSEED', 1, ids).slice(0, 1));
+    for (const seat of ['a', 'b'])
+      expect(sc.crossed[seat]).toBe(
+        tabla('TESTSEED', idxs[seat as 'a' | 'b'], deck).cards.filter((c) => closed.has(c)).length,
+      );
+    expect(sent.findIndex((m) => m.t === 'callClosed')).toBeLessThan(
+      sent.findIndex((m) => m.t === 'scores'),
+    );
+  });
+
+  it('the final scores message (all squares crossed) comes just before end', async () => {
+    await started(['a', 'b']);
+    const first = Math.min(completesAt(indexOf('a')), completesAt(indexOf('b')));
+    for (let k = 0; k < first; k++) await tick(10_000);
+    const endAt = sent.findIndex((m) => m.t === 'end');
+    const last = sent
+      .slice(0, endAt)
+      .filter((m) => m.t === 'scores')
+      .pop() as Sent & {
+      crossed: Record<string, number>;
+    };
+    expect(Math.max(...Object.values(last.crossed))).toBe(16);
+  });
+
+  it('shows the whole leaderboard on the cantor screen, and the standings when it ends', async () => {
+    const seats = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+    await started(seats);
+    await pick('b');
+    await pick('a');
+    const table = screen.getByRole('table', { name: 'Tabla de puntos' });
+    const rows = within(table).getAllByRole('row').slice(1);
+    expect(rows).toHaveLength(7);
+    expect(rows[0]!.textContent).toMatch(/^1.*b.*2/);
+    expect(rows[0]!.getAttribute('data-first')).toBe('true');
+    expect(rows[1]!.textContent).toMatch(/^2.*a.*1/);
+    const first = Math.min(...seats.map((x) => completesAt(indexOf(x))));
+    for (let k = 0; k < first; k++) await tick(10_000);
+    const final = screen.getByRole('table', { name: 'Tabla de puntos final' });
+    expect(within(final).getAllByRole('row')).toHaveLength(8);
+    expect(screen.queryByRole('table', { name: 'Tabla de puntos' })).toBeNull();
+  });
+
+  it('the round message carries gridSize (4 by default)', async () => {
+    await started(['a', 'b']);
+    expect(sent.find((m) => m.t === 'round')).toMatchObject({ gridSize: 4 });
   });
 });
 

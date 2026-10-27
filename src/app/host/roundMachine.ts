@@ -15,6 +15,11 @@ export interface Settings {
   captions: boolean;
   /** Host screen mode: false = display only, true = the organiser also plays ("Jugar también"). */
   hostPlays: boolean;
+  /** Cartón is gridSize x gridSize (3..8, default 4). */
+  gridSize: number;
+  /** Room defaults for what joiners start with; each player can still change both. */
+  defaultSpokenLang: Lang;
+  defaultUiLang: 'es' | 'en';
 }
 
 export const SPEED_PRESETS = { calm: 14, normal: 10, fast: 7 } as const;
@@ -28,6 +33,9 @@ export const DEFAULT_SETTINGS: Settings = {
   mode: 'normal',
   captions: true,
   hostPlays: false,
+  gridSize: 4,
+  defaultSpokenLang: 'es',
+  defaultUiLang: 'es',
 };
 
 export interface RoundState {
@@ -79,7 +87,6 @@ export type RoundAction =
   | { type: 'assign'; seat: string; index: number }
   | { type: 'win'; seat: string }
   | { type: 'finish'; winners: string[] }
-  | { type: 'end' }
   | { type: 'newRound' }
   | { type: 'restore'; saved: SavedRound; ids: CardId[] };
 
@@ -154,8 +161,6 @@ export function roundReducer(s: RoundState, a: RoundAction): RoundState {
       if (s.assignments[a.seat] === a.index) return s;
       return { ...s, assignments: { ...s.assignments, [a.seat]: a.index } };
     }
-    case 'end':
-      return s.phase === 'setup' ? s : { ...s, phase: 'ended' };
     case 'newRound':
       return {
         ...s,
@@ -241,7 +246,7 @@ export function validateSeatClaim(
     return { valid: false, missing: [] };
   }
   const r = checkClaim(
-    tabla(s.roomSeed, assigned, deck),
+    tabla(s.roomSeed, assigned, deck, s.settings.gridSize),
     calledCards(s),
     s.settings.pattern,
     claim.marks,
@@ -260,7 +265,7 @@ export function validatePaperCode(s: RoundState, deck: DeckCard[], code: string)
   const d = decodeTablaCode(code);
   if (!d.ok || d.index === undefined || d.seedRef === undefined) return { kind: 'invalid' };
   if (d.seedRef !== seedRef(s.roomSeed)) return { kind: 'otherGame' };
-  const t = tabla(s.roomSeed, d.index, deck);
+  const t = tabla(s.roomSeed, d.index, deck, s.settings.gridSize);
   const called = new Set(calledCards(s));
   const crossed = t.cards.filter((c) => called.has(c));
   return isCardComplete(t, crossed)

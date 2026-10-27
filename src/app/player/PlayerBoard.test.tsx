@@ -333,7 +333,7 @@ describe('PlayerBoard win', () => {
     host.send({ t: 'scores', roundNo: 1, points: { [player.seat]: 9 } });
     await flush();
     expect(screen.getByRole('heading', { name: '¡Lotería!' })).toBeTruthy();
-    expect(screen.getByText(/Ganaste con 9 puntos/)).toBeTruthy();
+    expect(screen.getByText(/Completaste tu tabla con 9 puntos/)).toBeTruthy();
   });
 
   it('words the tie by points', async () => {
@@ -343,7 +343,7 @@ describe('PlayerBoard win', () => {
     host.send({ t: 'end', roundNo: 1, winners: [player.seat, 'rival'], reason: 'full-card' });
     await flush();
     expect(screen.getByRole('status').textContent).toMatch(
-      /Empate: .* comparten la victoria con 7 puntos/,
+      /Empate: .* completaron la tabla en la misma carta, con 7 puntos/,
     );
   });
 
@@ -353,5 +353,112 @@ describe('PlayerBoard win', () => {
     host.send({ t: 'end', roundNo: 1, winners: ['rival'], reason: 'full-card' });
     await flush();
     expect(screen.getByText(/completó la tabla/)).toBeTruthy();
+  });
+});
+
+describe('PlayerBoard leaderboard', () => {
+  const roster = [
+    { seat: 'p1', name: 'Ana', glyph: '🐆' },
+    { seat: 'rival', name: 'Beto', glyph: '🐸' },
+    { seat: 'third', name: 'Carla', glyph: '🦋' },
+  ];
+  async function mountRoster() {
+    player = new LocalTransport({ seat: 'p1' });
+    await player.join(CODE, 'player');
+    render(
+      <PlayerBoard
+        transport={player}
+        room={{ code: CODE, seat: 'p1', hostVerified: false }}
+        profile={profile}
+        roster={roster}
+      />,
+    );
+    await flush(30);
+  }
+  const rows = () =>
+    within(screen.getByTestId('leaderboard'))
+      .getAllByRole('row')
+      .slice(1)
+      .map((r) => r.textContent);
+
+  it('is a collapsible panel after the cartón, sorted by points from scores', async () => {
+    await mountRoster();
+    await start();
+    const panel = screen.getByTestId('leaderboard') as HTMLDetailsElement;
+    expect(panel.open).toBe(false);
+    expect(screen.getByRole('list', { name: 'Tu tabla' }).compareDocumentPosition(panel)).toBe(
+      Node.DOCUMENT_POSITION_FOLLOWING,
+    );
+    host.send({
+      t: 'scores',
+      roundNo: 1,
+      points: { p1: 1, rival: 5, third: 3 },
+      crossed: { p1: 2, rival: 4, third: 3 },
+    });
+    await flush();
+    const r = rows();
+    expect(r[0]).toMatch(/^1.*Beto.*5.*4\/16/);
+    expect(r[1]).toMatch(/^2.*Carla.*3.*3\/16/);
+    expect(r[2]).toMatch(/^3.*Ana.*Tú.*1/);
+    expect(panel.querySelector('summary')!.textContent).toContain('Tu lugar: 3');
+  });
+
+  it('shows the final standings on the end screen for everyone', async () => {
+    await mountRoster();
+    await start();
+    host.send({
+      t: 'scores',
+      roundNo: 1,
+      points: { p1: 2, rival: 9, third: 9 },
+      crossed: { p1: 1, rival: 16, third: 16 },
+    });
+    host.send({ t: 'end', roundNo: 1, winners: ['rival', 'third'], reason: 'full-card' });
+    await flush();
+    const table = screen.getByRole('table', { name: 'Tabla de puntos final' });
+    const body = within(table)
+      .getAllByRole('row')
+      .slice(1)
+      .map((r) => r.textContent);
+    expect(body[0]).toMatch(/^1.*Beto/);
+    expect(body[1]).toMatch(/^1.*Carla/);
+    expect(body[2]).toMatch(/^3.*Ana.*Tú/);
+  });
+
+  it('renders a g x g board from round.gridSize', async () => {
+    await mountRoster();
+    host.send(round({ gridSize: 5 }));
+    host.send({ t: 'assign', seat: player.seat, tablaIndex: 7, roundNo: 1 });
+    await flush();
+    const list = screen.getByRole('list', { name: 'Tu tabla' });
+    expect(list.getAttribute('data-grid')).toBe('5');
+    expect(list.children).toHaveLength(25);
+  });
+
+  it('follows the spoken language changed from the header gear', async () => {
+    await mountRoster();
+    await start();
+    host.send({
+      t: 'call',
+      i: 0,
+      cardId: target,
+      choices: [target, ...offBoard(2)] as [string, string, string],
+      at: 1,
+    });
+    await flush();
+    speak.mockClear();
+    const { mergeProfile } = await import('../ui/profile');
+    await act(async () => {
+      mergeProfile({ spokenLang: 'en' });
+    });
+    expect(screen.getByRole('button', { name: wordOf(target, 'en') })).toBeTruthy();
+    host.send({
+      t: 'call',
+      i: 1,
+      cardId: board[3]!,
+      choices: [board[3]!, ...offBoard(2)] as [string, string, string],
+      at: 2,
+    });
+    await flush();
+    expect(speak).toHaveBeenLastCalledWith(expect.anything(), 'en');
   });
 });
