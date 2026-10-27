@@ -1,0 +1,948 @@
+{
+  "lang": "cjp",
+  "variety": "Cabécar, primarily the northern (Chirripó) dialect as used in the Bible.is New Testament (CJPTJV, the MMS-TTS training text) and Margery's d.n. forms; general (unmarked) dictionary forms preferred; southern (d.s.), Ujarrás (Uj.), San José Cabécar (SJC) and La Estrella (LE) forms used only where no northern/general form was found, and flagged in note. Same conventions as src/content/drafts/cjp.json.",
+  "orthography": "MMS-TTS cjp (Bible.is CJPTJV) orthography: nasal vowels with combining macron below U+0331, ä ë ö for the extra vowels, ñ, j=/h/, sh, ch, tk, ts, k'. Words attested in the Bible are given in Bible spelling; dictionary-only words keep Margery 1989 spelling (his underline for nasality rendered as U+0331; his acute tone marks kept, though the MMS vocab has no combining acute, so tone on ë/ö is dropped in synthesis). Dictionary spellings were read from the scan images, not the OCR layer; the scan lacks entries 4783–4862 (O section) and the Spanish→Cabécar index for A–O. Entry numbers marked ~ were inferred from neighbouring entries. A reviewer should normalise to one standard (MEP/UCR alphabet, González Campos & Obando 2017) before recording.",
+  "sources": [
+    {
+      "id": "margery1989",
+      "title": "Diccionario cabécar-español, español-cabécar",
+      "author": "Enrique Margery Peña",
+      "year": 1989,
+      "url": "https://web.archive.org/web/20240610124624/https://inil.ucr.ac.cr/libros/Diccionario%20Cab%C3%A9car-espa%C3%B1ol.pdf"
+    },
+    {
+      "id": "bibleis-cjptjv",
+      "title": "Cabécar New Testament (CJPTJV) on Bible.is",
+      "author": "Aziel, Marian and Timothy Jones (translators)",
+      "year": 2014,
+      "url": "https://live.bible.is/bible/CJPTJV/MAT/1"
+    },
+    {
+      "id": "mms-tts-cjp",
+      "title": "facebook/mms-tts-cjp model card, vocab.json and tokenizer_config.json (is_uroman=false)",
+      "author": "Meta AI (Pratap et al., Scaling Speech Technology to 1,000+ Languages)",
+      "year": 2023,
+      "url": "https://huggingface.co/facebook/mms-tts-cjp"
+    }
+  ],
+  "cards": {
+    "perro": {
+      "text": "chichi",
+      "gloss": "dog (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 7:6 'chichi' (perros); margery1989 entry 791 chichi 'perro'",
+      "note": "Same in Bible and dictionary. SJC chii (804). In the Bible 'chichi ka̱rbä' (Mt 8:20) means fox, so chichi alone is the dog.",
+      "reviewQuestion": "¿'Chichi' es la palabra común para perro?"
+    },
+    "pez": {
+      "text": "nima",
+      "gloss": "fish (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 7:10, Mt 13:47, Jn 21:9 'nima' (pez, pescado); margery1989 fish names built on nima, e.g. entry 1782 ják nima 'pez chupapiedras'",
+      "note": "Bible spelling, used repeatedly for fish. The bare dictionary headword was not located in the scan, only compounds.",
+      "reviewQuestion": "¿'Nima' es pez/pescado en general?"
+    },
+    "venado": {
+      "text": "mu̱lu̱lbí",
+      "gloss": "white-tailed deer (Odocoileus virginianus)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 4467 (s. cl. al., zool.) 'venado de montaña', 'venado de cola blanca', 'venado'",
+      "note": "General (unmarked) form; nasal underlines read from the scan. Not in the NT.",
+      "reviewQuestion": "¿'Mu̱lu̱lbí' es el venado?"
+    },
+    "mono": {
+      "text": "daké̱",
+      "gloss": "monkey (generic); also howler monkey",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 925 (d.s., s. cl. al.) 'mono' (genérico); //(d.s.) 'mono congo'",
+      "note": "Southern-dialect generic; no northern generic found, only species: jok 'mono carablanca' (2273), sal 'mono colorado' (araña), pshas 'mono tití'. Chirripó speakers may name a species instead.",
+      "reviewQuestion": "¿Hay una palabra general para 'mono' en su comunidad, o dicen 'daké̱' / 'jok'?"
+    },
+    "murcielago": {
+      "text": "dukúr",
+      "gloss": "bat (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry ~1352 (s. cl. pl., zool.) 'murciélago' (genérico)",
+      "note": "General form; variant dakúr (generic, p.46 of scan). Bats can be ill omens in some traditions — check.",
+      "reviewQuestion": "¿'Dukúr' es el murciélago? ¿Tiene algún mal agüero?"
+    },
+    "hormiga": {
+      "text": "ksá wák",
+      "gloss": "ant (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 3888 (s. cl. pl., ent.) 'hormiga' (genérico)",
+      "note": "General form; 3889 ksá wák dolóna 'hormiga negra'. Anthill uses a different stem (tsá wák ju), so no word collision with 'hormiguero'.",
+      "reviewQuestion": "¿'Ksá wák' es la hormiga?"
+    },
+    "abeja": {
+      "text": "búlí ñá̱ wák",
+      "gloss": "bee (generic)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~685 (s., ent.) 'abeja' (genérico)",
+      "note": "General form, read from the scan. Bible Mt 3:4 'bul ñá' = honey, consistent. d.s. mu̱lí̱ 'abeja' // 'colmena' (~4461).",
+      "reviewQuestion": "¿'Búlí ñá̱ wák' es la abeja? ¿Hay una forma más corta?"
+    },
+    "arana": {
+      "text": "sálkló",
+      "gloss": "spider (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 5351 (s. cl. pl.) 'araña' (genérico)",
+      "note": "General form; d.n./SJC sárkló (5391). 5352 sálkló batúbatu = black widow.",
+      "reviewQuestion": "¿'Sálkló' o 'sárkló' para araña?"
+    },
+    "caracol": {
+      "text": "kipé̱",
+      "gloss": "land snail (Euglandina)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry ~3220 (s. cl. red., zool.) 'caracol de tierra' (Euglandina spp.)",
+      "note": "Land snail as the card requires (never the conch trumpet). Sea snail is dúk. Close in sound to kipö 'hamaca' (hammock card) — check audio distinctness.",
+      "reviewQuestion": "¿'Kipé̱' es el caracol de tierra? ¿Se confunde con 'kipö' (hamaca)?"
+    },
+    "cangrejo": {
+      "text": "yuwí",
+      "gloss": "crab (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 8183 (s. cl. pl.) 'cangrejo' (genérico)",
+      "note": "General form; d.s. yawí (7943); sea crab däyë yuwí (d.s.).",
+      "reviewQuestion": "¿'Yuwí' es el cangrejo?"
+    },
+    "armadillo": {
+      "text": "duklö́wö́",
+      "gloss": "nine-banded armadillo (Dasypus novemcinctus)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry ~1346 (d.n., s. cl. al., zool.) 'armadillo', 'armado', 'cusuco'",
+      "note": "Northern form; d.s. tsowí (7169), Uj. tsawí. Mild flag: armadillo skin is listed among pieces in healers' bundles (sat k'uö, ~5410); the animal noun itself is everyday.",
+      "reviewQuestion": "¿'Duklöwö' es el cusuco/armadillo?"
+    },
+    "lagartija": {
+      "text": "kirë́gö",
+      "gloss": "small lizard (Sphaerodactylus)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~3229 (s. cl. al., zool.) 'lagartija'",
+      "note": "General form; variant kirë́kö (3232). ju̱lí̱k also means 'lagartija' but has a second, mythological sense (s., mit.), so it was avoided.",
+      "reviewQuestion": "¿'Kirëgö' es la lagartija común?"
+    },
+    "perico": {
+      "text": "kayö́",
+      "gloss": "parakeet (orange-fronted, Aratinga canicularis)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~2927 (s., ornit.) 'perico frentianaranjado', 'periquito', 'zapoyol'",
+      "note": "General form, names a common parakeet. The generic 'loro' katsö (Uj.) was avoided: near-homonym of the mountain word (ka̱tsä / ká̱ tsö); d.n. katsú is a specific parrot (loro coroniblanco).",
+      "reviewQuestion": "¿'Kayö' sirve para un perico verde en general?"
+    },
+    "raton": {
+      "text": "ko̱ñó̱",
+      "gloss": "mouse, rat (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry ~3846 (s. cl. al., zool.) 'ratón' (genérico); //(s.) 'bíceps'",
+      "note": "General form; nasal marks read from the scan. House mouse: kasirí ko̱ñó̱ (d.s., 2858).",
+      "reviewQuestion": "¿'Ko̱ñó̱' es el ratón?"
+    },
+    "gallina": {
+      "text": "oshkoro",
+      "gloss": "chicken, hen",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 23:37 'oshkoro' (gallina), Lk 11:12; margery1989 entry 64 ishkoro (Ch.) 'gallina' (genérico), jóshkoro (d.s.) 'gallinácea', 'gallina'",
+      "note": "Bible spelling. Strictly 'chicken'; a hen specifically is óshkoro láki (d.s., 4155 'hembra').",
+      "reviewQuestion": "¿'Oshkoro' para la gallina?"
+    },
+    "arbol": {
+      "text": "kal",
+      "gloss": "tree (generic); also 'wood, stick'",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 3:10 'kal' (árbol); margery1989 entry 2699 (s. cl. al.) 'árbol' (genérico), 'palo'",
+      "note": "Same in Bible and dictionary.",
+      "reviewQuestion": "¿'Kal' es el árbol?"
+    },
+    "hoja": {
+      "text": "ka̱kä",
+      "gloss": "leaf (generic); also 'weeds, herbs'",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 2986 ká̱ kö́ (s. cl. pl.) 'hoja' (genérico), //(s.) 'maleza'; bibleis-cjptjv spelling ka̱kä (Mt 6:30, Rev 8:7, where it renders 'hierba'); Rev 22:2 'kal kä' (las hojas del árbol)",
+      "note": "Bible spelling of the dictionary's generic leaf word. Its second sense is 'weeds/grass', so 'pasto' uses tátsí to avoid a collision. Alternative 'kal kä' = tree leaf (Rev 22:2).",
+      "reviewQuestion": "¿'Ka̱kä' se entiende como hoja (no como hierba)? ¿O es mejor 'kal kä'?"
+    },
+    "flor": {
+      "text": "tsitsi wä",
+      "gloss": "flower",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Mt 6:28 'ka̱ ki̱ka tsitsi wä' (los lirios del campo), Jas 1:10 'ka̱ tsitsiwäí' (la flor de la hierba); margery1989 entry 7099 tsitsía (Ch.) 'flor de planta o de arbusto' (genérico)",
+      "note": "Northern/Bible form. General dictionary form: má̱ma̱ wö́ (4234, s. cl. red.) 'flor' (genérico). tsitsía also means 'juguete' in d.n.",
+      "reviewQuestion": "¿Para 'flor' dicen 'tsitsi wä' o 'má̱ma̱ wö'?"
+    },
+    "cacahuate": {
+      "text": null,
+      "gloss": "peanut (Arachis hypogaea)",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989 (searched 'maní', 'cacahuate', Arachis) or Bible.is CJPTJV",
+      "note": "No entry. The dictionary 'manú' is a tree (Minquartia), not peanut. Left null.",
+      "reviewQuestion": "¿Cómo dicen 'maní' (cacahuate)? ¿Se usa el español?"
+    },
+    "raiz": {
+      "text": "ñak kicha",
+      "gloss": "root (of a plant)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Mt 13:6 'ka irä ñak kicha ta' (no tenía raíz); margery1989 entry 3183 kicha, third sense 'raíz' (must be preceded by the plant term), 1533 gicha 'raíz' (genérico)",
+      "note": "Bible phrase. kicha alone is 'rope' (the cuerda card) — the dictionary says the 'root' sense needs a preceding term, which ñak ('base, foot of a plant', cf. Mt 3:10 'kal ñak') supplies.",
+      "reviewQuestion": "¿'Ñak kicha' se entiende como raíz?"
+    },
+    "calabaza": {
+      "text": null,
+      "gloss": "squash, pumpkin (Cucurbita, 'ayote')",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989 (searched 'ayote', 'calabaza', 'zapallo', Cucurbita)",
+      "note": "No squash entry found. Related words name different plants: jär wö 'chayote' (1857), mö / tká̱ 'calabazo, jícaro' (gourd tree and vessel, used for the jícara card). The Spanish A–O index is missing from the scan, so an 'ayote' entry could be missed. Left null.",
+      "reviewQuestion": "¿Cómo dicen 'ayote' (calabaza)?"
+    },
+    "yuca": {
+      "text": "shkö́",
+      "gloss": "cassava (Manihot esculenta)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 6202 (s., bot.) 'yuca'",
+      "note": "General form. SJC alí (39). One syllable.",
+      "reviewQuestion": "¿'Shkö' es la yuca?"
+    },
+    "camote": {
+      "text": "bága kíwö́",
+      "gloss": "sweet potato (Ipomoea batatas)",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1989 entry 141 (Uj., s. cl. red.) 'camote'; //(Uj.) 'papa chiricana'",
+      "note": "Ujarrás only; the same word also names 'papa chiricana' (another tuber). No northern form found.",
+      "reviewQuestion": "¿Cómo dicen 'camote' en su comunidad? ¿'Bága kíwö'?"
+    },
+    "guayaba": {
+      "text": "sho̱lí",
+      "gloss": "guava tree (Psidium guajava)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~6295 (s., dendr.) 'guayabo'",
+      "note": "The entry names the tree (fruit is edible per the entry); no separate fruit form found. Nasal mark read from the scan. SJC shölí / shuno.",
+      "reviewQuestion": "¿'Sho̱lí' sirve para la guayaba (la fruta)?"
+    },
+    "algodon": {
+      "text": "shuké̱",
+      "gloss": "cotton (Gossypium)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry ~6332 (s., bot.) 'algodón'; //(adj.) 'de color blanco intenso'",
+      "note": "General form. SJC sawí yö.",
+      "reviewQuestion": "¿'Shuké̱' es el algodón?"
+    },
+    "huevo": {
+      "text": "oshkoro si̱a",
+      "gloss": "egg (hen's egg)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Lk 11:12 'oshkoro si̱a' (huevo); margery1989 entry ~5637 si̱a̱ 'huevo de ave' (must be preceded by the species, e.g. óshkoro si̱a̱ 'huevo de gallinácea')",
+      "note": "Bible phrase; si̱a̱ cannot stand alone for 'egg'. SENSITIVE: the first sense of the same dictionary entry is the small stones the suquias (healers) carry in a bag for ceremonies; the full phrase 'oshkoro si̱a' avoids that reading but reviewers should confirm.",
+      "reviewQuestion": "¿'Oshkoro si̱a' (huevo de gallina) está bien para la carta? ¿'Si̱a' solo tiene un sentido sagrado?"
+    },
+    "hongo": {
+      "text": "shotorró",
+      "gloss": "mushroom, fungus (generic)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 6252 (d.n., s., bot.) 'hongo' (genérico)",
+      "note": "Northern form; 6251 shotorói needs íshökö ('ground') or kal ('tree') before it; SJC jotorró. No ritual-mushroom sense found in the sources; card shows an edible cap.",
+      "reviewQuestion": "¿'Shotorró' es el hongo?"
+    },
+    "platano": {
+      "text": "chimo̱",
+      "gloss": "banana (generic); fruit of Musaceae",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 835 (s. cl. al., bot.) 'fruto de musácea' (genérico), 'banano' (genérico)",
+      "note": "General form. Plantain (Musa paradisiaca) is tsalá (6928), which also means 'res' (cattle) in family speech. The dictionary also lists a family-speech use of chimo̱ for the pig.",
+      "reviewQuestion": "¿Para el banano dicen 'chimo̱' o 'tsalá'?"
+    },
+    "pasto": {
+      "text": "tátsí",
+      "gloss": "grass, pasture (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 6477 (s.) 'zacate', 'pasto' (genérico)",
+      "note": "General form. The Bible uses ka̱kä for 'hierba' (Mt 6:30), but that word is the leaf card, so tátsí avoids a collision. tala (d.n., p.u.) also 'zacate' but is the thunder word.",
+      "reviewQuestion": "¿'Tátsí' es el zacate/pasto?"
+    },
+    "papaya": {
+      "text": "kichö",
+      "gloss": "papaya (Carica papaya)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry ~3189 (s., bot.) 'papaya'",
+      "note": "General form; d.n. k'ichö (~3377); SJC gochö (1543).",
+      "reviewQuestion": "¿'Kichö' es la papaya?"
+    },
+    "fuego": {
+      "text": "yökö",
+      "gloss": "fire; also 'hearth, campfire'",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 3:10, Rev 8:7, Jn 18:18 'yökö' (fuego); margery1989 entry 8091 yökö 'fuego', 'fogón', 'fogata'",
+      "note": "Same in Bible and dictionary.",
+      "reviewQuestion": "¿'Yökö' es el fuego?"
+    },
+    "humo": {
+      "text": "shka̱le̱i",
+      "gloss": "smoke",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Rev 8:4, Rev 9:2, Rev 14:11, Rev 15:8 'shka̱le̱i' (humo)",
+      "note": "Bible form; Rev 9:2 also has shka̱la̱, so -i may be a suffix. Dictionary 'humo' entries (~6130, ~6206) are legible only in OCR, not verified.",
+      "reviewQuestion": "¿'Shka̱le̱i' o 'shka̱la̱' para el humo?"
+    },
+    "neblina": {
+      "text": "mo̱ a̱r",
+      "gloss": "fog, mist",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~4371 (d.n., s.) 'neblina'",
+      "note": "Northern form; d.s. mo̱ chaka (~4372). Built on mo̱ 'cloud' (nube card), so the two cards share a syllable. Bible Jas 4:14 renders 'neblina' with mo̱ alone.",
+      "reviewQuestion": "¿'Mo̱ a̱r' es la neblina?"
+    },
+    "granizo": {
+      "text": "ka̱li̱ kole",
+      "gloss": "hail",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Rev 16:21 'ka̱li̱ kole' (granizo); Rev 8:7, Rev 11:19 'ka̱li̱ wäkole'",
+      "note": "Bible phrase built on ka̱li̱ 'rain' (lluvia card). A d.s. dictionary entry for 'granizo' (5701) was seen only in OCR, not verified.",
+      "reviewQuestion": "¿'Ka̱li̱ kole' es el granizo?"
+    },
+    "nieve": {
+      "text": "nieve",
+      "gloss": "snow (Spanish loan)",
+      "kind": "loanword",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Mt 28:3 'suruu si̱ nieve käi' (blanco como la nieve), Rev 1:14 'nieve käi'",
+      "note": "Spanish loan used inside the Cabécar text; no native term in margery1989. Snow does not occur in Talamanca.",
+      "reviewQuestion": "¿Dicen 'nieve' en español?"
+    },
+    "hielo": {
+      "text": null,
+      "gloss": "ice",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989 or Bible.is CJPTJV",
+      "note": "No entry and no NT occurrence. Left null.",
+      "reviewQuestion": "¿Cómo dicen 'hielo'?"
+    },
+    "amanecer": {
+      "text": "ka̱ñir dawa̱",
+      "gloss": "dawn, daybreak",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Jn 21:4 'ka̱ñir dawa̱ kja ra' (al amanecer); margery1989 entry ~3844 kó̱ñí̱r dawa (d.s., s.) 'amanecer', 'madrugada'",
+      "note": "Bible spelling of the dictionary noun. Verb 'it dawned': ka̱ñinawa̱ (Acts 27:39).",
+      "reviewQuestion": "¿'Ka̱ñir dawa̱' es el amanecer?"
+    },
+    "noche": {
+      "text": "tuina",
+      "gloss": "night",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Lk 2:8, Jn 3:2, Rev 14:11 'tuina' (noche); margery1989 tuwina (s. cl. pl.) 'noche', //(adj.) 'oscuro(a)' (~6754)",
+      "note": "Bible spelling; dictionary tuwina. Also used adverbially ('at night').",
+      "reviewQuestion": "¿'Tuina' es la noche?"
+    },
+    "cielo": {
+      "text": "ká̱ ktö́",
+      "gloss": "sky, firmament",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 2987 (d.n., s.) 'cielo', 'firmamento'",
+      "note": "Northern form; d.s. ká̱ jöí (2963). SENSITIVE: the Bible's word is ka̱jöir (sky in Mt 16:2-3, but also 'heaven', Mt 3:16, Mt 6:9); the plain dictionary word avoids the religious sense.",
+      "reviewQuestion": "¿'Ká̱ ktö' para el cielo? ¿O dicen 'ka̱jöir'? ¿Alguna tiene sentido religioso?"
+    },
+    "sombra": {
+      "text": "olói",
+      "gloss": "shadow",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1989 Spanish index s.v. 'sombra': olói (4815); entry 4815 is on pages missing from the scan. bibleis-cjptjv Acts 5:15 'ioloi(bä)' (su sombra)",
+      "note": "The entry itself could not be read (scan lacks entries 4783–4862). The Bible uses oloi for 'shadow' (Acts 5:15, Mt 4:16) but 'ka̱ oloi' for 'light' (Mt 4:16, 17:2). SJC diö́köl (1214) also means 'drawing, photo'. SENSITIVE: in many Talamancan traditions the shadow is tied to the soul — check.",
+      "reviewQuestion": "¿'Olói' es la sombra? ¿Tiene un sentido espiritual (alma)?"
+    },
+    "rocio": {
+      "text": "mo̱ diö",
+      "gloss": "dew",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~4374 (s.) 'rocío'",
+      "note": "General form; also mo̱ riö (s.) 'rocío' and ka̱li̱ pöi (d.s.).",
+      "reviewQuestion": "¿'Mo̱ diö' es el rocío?"
+    },
+    "remolino": {
+      "text": "si̱wa̱ wö́shkiri",
+      "gloss": "whirlwind",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1989 entry ~7811 wö́shkiri (s.) 'remolino' (must be preceded by díglö 'agua' or si̱wá (d.s.) ~ si̱má (d.n.) 'viento')",
+      "note": "The dictionary gives wö́shkiri with the rule that it is preceded by 'wind' or 'water'; the full phrase is assembled per that rule (wind in Bible spelling si̱wa̱), not printed as a phrase. With díglö it means a water eddy. SENSITIVE: si̱wa̱ also means traditional knowledge (see viento card); whirlwinds may be read as spirits.",
+      "reviewQuestion": "¿'Si̱wa̱ wöshkiri' se dice para un remolino de viento? ¿Tiene algún sentido delicado?"
+    },
+    "agua": {
+      "text": "diklä",
+      "gloss": "water; also 'river'",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 3:16, Jn 4:6, Jn 2:6 'diklä' (agua); margery1989 díglö / díklö (s.) 'agua', //(s. cl. al.) 'río' (~1098, ~1160)",
+      "note": "Bible spelling (dictionary díglö). WORD COLLISION: the same word is the river (rio card); per selection rule 8 only one of the two can stay.",
+      "reviewQuestion": "¿'Diklä' para el agua? ¿Hay otra palabra para distinguir río?"
+    },
+    "ceniza": {
+      "text": "muli̱tä",
+      "gloss": "ash",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 11:21 'muli̱tä' (ceniza); margery1989 entry ~4466 mu̱lí̱tö (s.) 'ceniza'",
+      "note": "Bible spelling; dictionary mu̱lí̱tö. Embers: mu̱lí̱tö bär ta (d.s.).",
+      "reviewQuestion": "¿'Muli̱tä' es la ceniza?"
+    },
+    "trueno": {
+      "text": "tala",
+      "gloss": "thunder",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Rev 4:5, Rev 11:19 'tala bula…' (truenos); margery1989 entry ~6449 tala (s.) 'trueno'",
+      "note": "SENSITIVE: the next entry is Tala (n.p., mit.) 'el espíritu del trueno'. tala also means 'potrero' and (p.u.) 'zacate' in d.n.",
+      "reviewQuestion": "¿'Tala' para el trueno en un juego infantil está bien, siendo también el nombre del espíritu del trueno?"
+    },
+    "rio": {
+      "text": "diklä",
+      "gloss": "river; also 'water'",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Acts 16:13 'diklä kjäka' (junto al río), Rev 22:1; margery1989 díklö (1160), díglö (1098) 'río' (Spanish index)",
+      "note": "WORD COLLISION with the agua card (same word). Uj. díglö kayege (p.u.) 'río' is rare. Per rule 8 only one of agua/rio can stay.",
+      "reviewQuestion": "¿Cómo distinguen 'río' de 'agua'?"
+    },
+    "lago": {
+      "text": "tipä",
+      "gloss": "lake, lagoon",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Lk 5:1 'Genesaret tipei' (lago de Genesaret), Lk 8:22-23 'tipä'; margery1989 entry 6566 tipö́ (s. cl. red.) 'lago', 'laguna'; //'pozo'",
+      "note": "Bible spelling (dictionary tipö́). The dictionary's second sense 'pozo' is why the pozo card uses a different phrase.",
+      "reviewQuestion": "¿'Tipä' es el lago/laguna?"
+    },
+    "piedra": {
+      "text": "jak",
+      "gloss": "stone",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 7:9, Mt 7:25 'jak' (piedra, roca); margery1989 entry ~1777 ják (s. cl. red.) 'piedra'",
+      "note": "Plain stone; the healers' sacred stones are a different word (si̱a̱). Note jak also 'robo' (homonym).",
+      "reviewQuestion": "¿'Jak' es la piedra?"
+    },
+    "arena": {
+      "text": "ksa̱",
+      "gloss": "sand",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 7:26, Heb 11:12 'ksa̱' (arena); margery1989 entry ~3892 ksá (s.) 'arena'",
+      "note": "Bible spelling. Near-homograph of ksa 'rope, vine, bridge' (puente card) — only nasality/tone differ.",
+      "reviewQuestion": "¿'Ksa̱' (arena) se distingue bien de 'ksa' (soga/puente)?"
+    },
+    "playa": {
+      "text": "däyë kse̱i",
+      "gloss": "beach, seashore",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Acts 21:5 'däyë kse̱i ki̱' (en la playa), Heb 11:12 (orilla del mar)",
+      "note": "Bible phrase ('edge of the sea'); lake shore is tipä kse̱i (Mt 13:2). Dictionary has only SJC forms ak ulaitö (19), tsailitö (6975).",
+      "reviewQuestion": "¿'Däyë kse̱i' se entiende como playa?"
+    },
+    "cascada": {
+      "text": "jáshkuër",
+      "gloss": "waterfall",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1989 entry 1859 (LE., s.) 'cascada', 'catarata', 'caída de agua'",
+      "note": "La Estrella dialect only; no northern form found.",
+      "reviewQuestion": "¿Cómo dicen 'catarata/cascada'? ¿Conocen 'jáshkuër'?"
+    },
+    "charco": {
+      "text": null,
+      "gloss": "puddle",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989 or Bible.is CJPTJV",
+      "note": "No word for 'charco'. Closest are 'poza' words (tipö́, dapä SJC), which name river pools and collide with the lake word. Left null.",
+      "reviewQuestion": "¿Cómo dicen 'charco'?"
+    },
+    "lodo": {
+      "text": "dölí",
+      "gloss": "mud",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry ~1289 (d.n., s.) 'barro', 'lodo'; bibleis-cjptjv Jn 9:6 'dölií wà' (con el lodo)",
+      "note": "Northern form, matches the Bible. General dö̱ (1278) is too short.",
+      "reviewQuestion": "¿'Dölí' es el lodo/barro?"
+    },
+    "barranca": {
+      "text": "ítt'ö",
+      "gloss": "ravine, gully, cliff",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~1693 (d.n., s.) 'barranco', 'hondonada', 'precipicio'",
+      "note": "Northern form; d.n. kä̱yöna 'barranco' // 'derrumbe' also exists.",
+      "reviewQuestion": "¿'Ítt'ö' es la barranca?"
+    },
+    "llano": {
+      "text": "k'á̱ kötö",
+      "gloss": "savanna, open grassland",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1989 entry 3323 (d.n., s.) 'sabana'",
+      "note": "Northern form for savanna, not exactly 'plain'. General sák (5784) 'sabana'; SJC ká̱ jké̱i (2962) 'terreno plano'.",
+      "reviewQuestion": "¿Cómo dicen un 'llano' o terreno plano: 'k'á̱ kötö', 'sák'?"
+    },
+    "pantano": {
+      "text": "dulíébö",
+      "gloss": "swamp, mire",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry ~1386 (s.) 'lodazal', 'pantano'",
+      "note": "General form; d.n. jabö́bö (1742) 'pantanoso'.",
+      "reviewQuestion": "¿'Dulíébö' es el pantano?"
+    },
+    "ola": {
+      "text": "tjuäke̱",
+      "gloss": "wave(s)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Mt 8:24 'tjuäke̱' (las olas), Lk 8:24 'tipä tjuäke̱', Jas 1:6 'däyë tjuäke̱' (la ola del mar); margery1989 entry 6605 t'uö́ (d.n.) 'ola', 'onda'",
+      "note": "Bible spelling; may be a plural/collective form. Sea wave also däyë t'uö (d.n.).",
+      "reviewQuestion": "¿'Tjuäke̱' es la ola?"
+    },
+    "concha": {
+      "text": "pshá",
+      "gloss": "shell (generic)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~5235 (d.n., s.) 'concha' (genérico); //(d.n.) 'small land or sea snail'",
+      "note": "Northern form; second sense overlaps the caracol card. Other: yöksoró 'concha de caracol', ksa (d.s.) 'concha' (homograph of rope).",
+      "reviewQuestion": "¿'Pshá' es la concha?"
+    },
+    "valle": {
+      "text": "ka̱ dochoi",
+      "gloss": "valley, hollow",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "bibleis-cjptjv Lk 3:5 'ka̱ dochoi biköle' (todo valle); cf. Jn 18:1 'diklä dochoi' (torrente); margery1989 díglö dochoi (d.s., 1102) 'quebrada pequeña'",
+      "note": "Bible rendering of 'valle'; dochoi seems to mean a hollow or ravine, so it may overlap 'barranca'. No dictionary entry for 'valle' (index has only a place name).",
+      "reviewQuestion": "¿'Ka̱ dochoi' se entiende como valle?"
+    },
+    "tierra": {
+      "text": "ishäkä",
+      "gloss": "soil, ground, earth",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Jn 9:6 'ishäkä ki̱' (en tierra), Rev 8:7; margery1989 íshökö (d.n., s.) 'tierra', 'suelo' (~1700)",
+      "note": "Bible spelling of the dictionary word. Mild flag: earth is one of the four elements named in a cosmological list (p.351 of scan); the card shows plain soil.",
+      "reviewQuestion": "¿'Ishäkä' para la tierra/suelo?"
+    },
+    "hacha": {
+      "text": "bak",
+      "gloss": "axe",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 3:10 'bak' (el hacha); margery1989 entry 154 bak (s. cl. pl.) 'hacha'",
+      "note": "Homonyms: (d.n.) 'espalda', (SJC) 'tambor'. The tambor card is sábák, which contains bak.",
+      "reviewQuestion": "¿'Bak' es el hacha?"
+    },
+    "red": {
+      "text": "kla",
+      "gloss": "net (fishing)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 4:18, Mt 13:47 'kla' (red); margery1989 entry 3478 kla (SJC) 'red', 'telaraña'",
+      "note": "Bible fishing-net word. SJC also uses kla for spider web, so the telaraña card uses another word.",
+      "reviewQuestion": "¿'Kla' es la red de pescar?"
+    },
+    "cuerda": {
+      "text": "kicha",
+      "gloss": "rope, cord",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 3183 kicha (s. cl. al.) 'soga', 'cuerda', 'mecate'; bibleis-cjptjv Acts 27:40 'ko̱no wäkukäklä kicha' (las amarras del timón)",
+      "note": "General form. Shared by the hilo card ('tulúk kicha') and the raiz card ('ñak kicha'). ksa (3876) is also 'soga' but is the puente card word (Bible Jn 2:15 'ksa' cords).",
+      "reviewQuestion": "¿'Kicha' es la soga/mecate?"
+    },
+    "jicara": {
+      "text": "tká̱",
+      "gloss": "gourd bowl ('guacal'), calabash",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 6803 (s. cl. red.) 'guacal', 'calabazo'",
+      "note": "General form; mö 'calabazo, jícaro' names the gourd tree and vessel. SENSITIVE: gourd bowls serve chicha in ceremonies; card must show an everyday bowl. One syllable.",
+      "reviewQuestion": "¿'Tká̱' es el guacal/jícara? ¿Tiene uso ceremonial que evitar?"
+    },
+    "metate": {
+      "text": "jáj kuö́",
+      "gloss": "metate, grinding stone",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~1776 (d.n., s. cl. pl.) 'metate'",
+      "note": "Northern form.",
+      "reviewQuestion": "¿'Jáj kuö' es la piedra de moler?"
+    },
+    "comal": {
+      "text": null,
+      "gloss": "griddle (comal)",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989 or Bible.is CJPTJV",
+      "note": "No entry for comal or toasting pan. Left null.",
+      "reviewQuestion": "¿Usan comal? ¿Cómo lo llaman?"
+    },
+    "escoba": {
+      "text": "ká̱ sigö",
+      "gloss": "broom",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~3112 (d.s., s. cl. al.) 'escoba'",
+      "note": "Southern only; also ká̱ sigöglö (d.s.). SJC verb ush kalö 'barrer'.",
+      "reviewQuestion": "¿Cómo dicen 'escoba' en su comunidad? ¿'Ká̱ sigö'?"
+    },
+    "aguja": {
+      "text": "tuluk",
+      "gloss": "needle",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 19:24 'tuluk wä' (el ojo de la aguja); margery1989 entry ~6731 tulúk (s. cl. pl.) 'aguja'",
+      "note": "Bible spelling (dictionary tulúk). Also the first word of the hilo card ('tulúk kicha').",
+      "reviewQuestion": "¿'Tuluk' es la aguja?"
+    },
+    "huso": {
+      "text": null,
+      "gloss": "spindle",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989 (searched 'huso', 'malacate', 'hilar')",
+      "note": "No entry. Left null.",
+      "reviewQuestion": "¿Cómo llaman el huso para hilar?"
+    },
+    "banco": {
+      "text": "ñákglö",
+      "gloss": "seat, stool, bench (generic)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 4674 (s. cl. pl.) 'asiento' (genérico), 'silla', 'banqueta'",
+      "note": "General form; d.n. ñäk ata miklö (4667). No ceremonial-stool sense noted in the entry.",
+      "reviewQuestion": "¿'Ñákglö' es el banco/banquito? ¿Hay bancos ceremoniales con otro nombre?"
+    },
+    "sombrero": {
+      "text": "tsá̱ k'uö́",
+      "gloss": "hat, cap",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 6987 (d.n., s. cl. pl.) 'gorro', 'sombrero'",
+      "note": "Northern form; d.n. tsá̱ú̱ kí̱ tkëna (~7029); d.s. ká̱lbá (~3002).",
+      "reviewQuestion": "¿'Tsá̱ k'uö' o 'ká̱lbá' para sombrero?"
+    },
+    "morral": {
+      "text": "däli tsa̱klä",
+      "gloss": "carrying bag",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Lk 10:4 'däli tsa̱klä' (alforja); margery1989 entry ~976 dalí tsáklö (d.n., s. cl. pl.) 'bolso de mano'",
+      "note": "Bible spelling of the dictionary's d.n. word. The cesto card bójkö also means 'bolso pequeño'; dalí is also in the tienda card ('dalí wí').",
+      "reviewQuestion": "¿'Däli tsa̱klä' es el morral/bolso?"
+    },
+    "hamaca": {
+      "text": "kipö",
+      "gloss": "hammock",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry ~3226 (s. cl. al.) 'hamaca'",
+      "note": "General form; SJC gopo (1548). Close in sound to kipé̱ 'land snail' (caracol card).",
+      "reviewQuestion": "¿'Kipö' es la hamaca?"
+    },
+    "coa": {
+      "text": null,
+      "gloss": "digging stick",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989 (searched 'coa', 'espeque', 'macana', 'chuzo')",
+      "note": "No entry. Left null.",
+      "reviewQuestion": "¿Cómo llaman el palo para sembrar (espeque)?"
+    },
+    "petate": {
+      "text": null,
+      "gloss": "sleeping mat",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989 (searched 'petate', 'estera')",
+      "note": "No entry ('tapesco' entries are raised platforms, not mats). Left null.",
+      "reviewQuestion": "¿Usan petate o estera? ¿Cómo lo llaman?"
+    },
+    "camino": {
+      "text": "ña̱la̱",
+      "gloss": "path, road",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 7:13-14, Lk 8:5 'ña̱la̱' (camino); margery1989 entry 4691 ña̱la̱ (s. cl. pl.) 'camino', 'sendero'",
+      "note": "Same in Bible and dictionary.",
+      "reviewQuestion": "¿'Ña̱la̱' es el camino?"
+    },
+    "pozo": {
+      "text": "diklä talanaklä",
+      "gloss": "water well",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Jn 4:6 'Jacob wa̱ diklä talanaklä' (el pozo de Jacob), Jn 4:12",
+      "note": "Bible phrase ('place to draw water'). Dictionary 'pozo' words collide with other cards: tipö́ (lago) and díglö tsi̱ní̱ (d.n., 'pozo, noria' and 'manantial', the manantial card). Card must not show a cenote.",
+      "reviewQuestion": "¿'Diklä talanaklä' se entiende como pozo?"
+    },
+    "nido": {
+      "text": "du ju",
+      "gloss": "bird's nest",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry ~1349 (s. cl. pl.) 'nido de ave'; bibleis-cjptjv Mt 8:20, Lk 9:58 'du … ju' (las aves … nidos)",
+      "note": "Literally 'bird house' (du 'bird', ju 'house', the casa card).",
+      "reviewQuestion": "¿'Du ju' es el nido?"
+    },
+    "colmena": {
+      "text": "búl ñálí ju",
+      "gloss": "beehive",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1989 entry ~692 (d.s., s. cl. red.) 'colmena'",
+      "note": "Southern form; d.s. mu̱lí̱ also 'abeja' // 'colmena'. SJC bulu (695) 'colmena' is avoided: homonym of bulu (696, mit.) 'espíritu'.",
+      "reviewQuestion": "¿Cómo dicen 'colmena' en su comunidad?"
+    },
+    "hormiguero": {
+      "text": "tsá wák ju",
+      "gloss": "anthill, ant nest",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~6964 (s. cl. red.) 'hormiguero'",
+      "note": "General form; d.s. tsá wák ju̱, SJC tsá wá wí. Different stem from the ant word (ksá wák), so no direct collision.",
+      "reviewQuestion": "¿'Tsá wák ju' es el hormiguero?"
+    },
+    "telarana": {
+      "text": "shé̱i",
+      "gloss": "spider web",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1989 entry 6097 (d.s., s. cl. pl.) 'telaraña' (also 'tira de bejuco', 'astilla')",
+      "note": "Southern; primary senses are 'vine strip' and 'splinter'. SJC kla = red (net card).",
+      "reviewQuestion": "¿Cómo dicen 'telaraña'?"
+    },
+    "patio": {
+      "text": "juí tö́",
+      "gloss": "house yard, ground around a house",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 2394 (d.s., s.) 'terreno inmediato que rodea una casa'; //(d.s.) 'patio de una casa'",
+      "note": "Southern form. The Bible's 'ijuitä' (Lk 13:19) renders 'huerto', so patio and huerto may share a word in speech.",
+      "reviewQuestion": "¿'Juí tö' es el patio?"
+    },
+    "huerto": {
+      "text": "kal yäkä wäbala",
+      "gloss": "orchard, garden (descriptive)",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "bibleis-cjptjv Jn 18:1, Jn 19:41 'kal yäkä wäbala' (huerto)",
+      "note": "Bible phrase for 'huerto' (Gethsemane); literally a place of trees/plants, i.e. a grove rather than a vegetable plot. Lk 13:19 uses 'ijuitä' (his garden). No dictionary entry found.",
+      "reviewQuestion": "¿Cómo dicen 'huerta'? ¿'Kal yäkä wäbala' sirve?"
+    },
+    "cerca": {
+      "text": "sérka",
+      "gloss": "wall; fence",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 5480 (d.n., s. cl. pl.) 'muralla', 'pared'; //(d.n.) 'cerca'",
+      "note": "Northern form; possibly an old loan from Spanish 'cerca' — reviewer to judge. Visually confusable with corral.",
+      "reviewQuestion": "¿'Sérka' es la cerca?"
+    },
+    "puerta": {
+      "text": "ju kjä",
+      "gloss": "door (lit. house mouth)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 7:7, Lk 13:25 'ju kjä' (puerta); margery1989 entry 2407 ju k'ö (d.n., s. cl. pl.) 'puerta'",
+      "note": "Bible spelling of the d.n. dictionary form.",
+      "reviewQuestion": "¿'Ju kjä' es la puerta?"
+    },
+    "techo": {
+      "text": "ju tsi̱bata",
+      "gloss": "roof",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Mk 2:4, Lk 5:19 'ju tsi̱bata' (el techo)",
+      "note": "Bible phrase. Dictionary: shpéi (d.n., 6306, after ju), ju k'ö tkële (d.n., 2406), ju bata (d.s.).",
+      "reviewQuestion": "¿'Ju tsi̱bata' es el techo?"
+    },
+    "escalera": {
+      "text": "kal wö́katlë́",
+      "gloss": "ladder",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~2787 (d.s., s. cl. al.) 'escalera'",
+      "note": "Southern; also klö́ gata (d.s., 3528). kal = wood, fitting a notched-log ladder.",
+      "reviewQuestion": "¿Cómo dicen 'escalera' (de palo)?"
+    },
+    "troje": {
+      "text": "däli bläklä jui",
+      "gloss": "storehouse, granary (descriptive)",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "bibleis-cjptjv Lk 12:18 'däli bläklä jui' (graneros); Mt 3:12, Mt 6:26 'ibläklä jui'",
+      "note": "Bible phrase ('house for keeping things'); Jn 2:6 uses 'diklä bläklä jui' for water jars, so the core means 'storage container'. No dictionary entry.",
+      "reviewQuestion": "¿Guardan el maíz en un troje/tapesco? ¿Cómo lo llaman?"
+    },
+    "cocina": {
+      "text": "yökö juí",
+      "gloss": "kitchen (lit. fire house)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~8098 (d.s., s.) 'cocina', 'lugar de la casa destinado a la cocina'",
+      "note": "Southern form.",
+      "reviewQuestion": "¿'Yökö juí' es la cocina?"
+    },
+    "corral": {
+      "text": null,
+      "gloss": "corral, animal pen",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989; Bible.is Jn 10:1 has only a verb phrase ('oveja kjätkeleksa̱', where sheep are enclosed)",
+      "note": "No noun found; the Bible phrase is sheep-specific and clause-like. Left null.",
+      "reviewQuestion": "¿Cómo dicen 'corral'? ¿Se usa el español?"
+    },
+    "gusano": {
+      "text": "chichö́",
+      "gloss": "worm (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry ~810 (d.n., s. cl. al.) 'gusano' (genérico); bibleis-cjptjv Mk 9:48 'chichöñaí' (su gusano)",
+      "note": "Northern form. General í (s. cl. al.) 'gusano' is a single vowel, too short.",
+      "reviewQuestion": "¿'Chichö' es el gusano?"
+    },
+    "zorro": {
+      "text": "chichi ka̱rbä",
+      "gloss": "fox",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Mt 8:20, Lk 9:58 'chichi ka̱rbä' (las zorras)",
+      "note": "Bible term (lit. a kind of wild dog). Dictionary 'zorro' entries are opossums (bakalí 'zorro pelón', 159), a different animal.",
+      "reviewQuestion": "¿'Chichi ka̱rbä' es el zorro (no la zarigüeya)?"
+    },
+    "pato": {
+      "text": "tip'ö́ wák",
+      "gloss": "duck (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 6565 (d.n., s.) 'pato' (genérico)",
+      "note": "Northern form ('lake people'); d.s. duwák (1405), tögölo, toklo.",
+      "reviewQuestion": "¿'Tip'ö wák' es el pato?"
+    },
+    "luciernaga": {
+      "text": "yuyú",
+      "gloss": "firefly",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 8186 (d.n., s. cl. pl., ent.) 'luciérnaga'",
+      "note": "Northern form; d.s. kutu, SJC tkowä, d.s. dowá wák (1310).",
+      "reviewQuestion": "¿'Yuyú' es la luciérnaga?"
+    },
+    "cantaro": {
+      "text": "u̱ yaka wí̱",
+      "gloss": "water jar",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Mk 14:13 'u̱ yaka wí̱' (cántaro de agua), Jn 4:28 'u̱yaka wí̱' (cántaro); margery1989 entry 7374 u̱ 'olla'",
+      "note": "Bible phrase. Close to the olla card (ká̱ wí̱).",
+      "reviewQuestion": "¿'U̱ yaka wí̱' es el cántaro?"
+    },
+    "pelota": {
+      "text": null,
+      "gloss": "rubber ball",
+      "kind": "missing",
+      "confidence": "low",
+      "source": "none found in margery1989 or Bible.is CJPTJV",
+      "note": "No entry. Left null.",
+      "reviewQuestion": "¿Cómo dicen 'bola/pelota'?"
+    },
+    "collar": {
+      "text": "kulí mu̱a̱glö",
+      "gloss": "necklace",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~4042 (d.n., s. cl. al.) 'collar'",
+      "note": "Northern form. SENSITIVE: siwá (SJC, 5631) is the collar the suquia wears in ceremonies — avoided. Others: sówí wö (Uj.), ksöwí wö (d.s.).",
+      "reviewQuestion": "¿'Kulí mu̱a̱glö' es un collar común (no ceremonial)?"
+    },
+    "cuchara": {
+      "text": "wañá̱na",
+      "gloss": "spoon",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry 7452 (d.n., s. cl. pl.) 'cuchara'",
+      "note": "Northern form; 7453 'cucharita'. wá ñá na (d.n., 7493) is 'eating utensil, plate, spoon'.",
+      "reviewQuestion": "¿'Wañá̱na' es la cuchara?"
+    },
+    "remo": {
+      "text": "shapá tke",
+      "gloss": "paddle, oar",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1989 entry 5998 (s. cl. al.) 'remo'",
+      "note": "General form; d.s. ko̱no̱ kalí and other kono- compounds.",
+      "reviewQuestion": "¿'Shapá tke' es el remo?"
+    },
+    "sal": {
+      "text": "däyë",
+      "gloss": "salt; also 'sea'",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "bibleis-cjptjv Mt 5:13 'däyë' (sal); margery1989 entry 1040 dayë 'mar', 'sal'",
+      "note": "WORD COLLISION with the existing mar card (same word); per rule 8 this card cannot coexist with mar.",
+      "reviewQuestion": "¿Hay otra palabra para 'sal' distinta de 'mar'?"
+    },
+    "semilla": {
+      "text": "däli wä",
+      "gloss": "seed (of crops)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "bibleis-cjptjv Lk 8:5 'idäli wä' (su semilla), Lk 8:11 'däli wä' (la semilla)",
+      "note": "Bible phrase (everyday seed). SENSITIVE: the dictionary generic ditsö́ (1235) also means 'clan', and the seed (ditsö) is central to the Talamancan creation narrative (people created from seeds) — avoided for that reason.",
+      "reviewQuestion": "¿'Däli wä' para la semilla? ¿Usar 'ditsö' sería delicado?"
+    },
+    "lena": {
+      "text": "yökö́ táglö",
+      "gloss": "firewood",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1989 entry ~8107 (d.n., s.) 'leña'",
+      "note": "Northern form; LE yökö́ ták; d.s. chakö / chkö láglö (855). Bible Acts 28:3 'yökö batala' (sticks for the fire).",
+      "reviewQuestion": "¿'Yökö táglö' es la leña?"
+    }
+  }
+}
