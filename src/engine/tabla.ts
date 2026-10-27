@@ -1,4 +1,5 @@
 import type { CardId, Category, Tabla } from './types';
+import { MAX_TABLA_INDEX } from './codes';
 import { rngFromString, shuffle } from './rng';
 import { cmp } from './deck';
 
@@ -50,4 +51,41 @@ export function tabla(
   }
   // First pass can overshoot 16 with many categories; trim after shuffling.
   return { index, cards: shuffle(picked, rng).slice(0, TABLA_SIZE) };
+}
+
+export const MAX_SHARED_CARDS = 8;
+const MAX_ATTEMPTS = 300;
+
+/**
+ * Pick a tabla index for a new seat so it shares at most MAX_SHARED_CARDS (rules 4.2) with every
+ * already `taken` index. Bounded search; if none qualifies, returns the least-overlapping candidate.
+ * Deterministic in (seed, taken, cards) unless `rng` is supplied.
+ */
+export function pickTablaIndex(
+  seed: string,
+  taken: number[],
+  cards: { id: CardId; category: Category }[],
+  rng: () => number = rngFromString(`pick|${seed}|${taken.join(',')}`),
+): number {
+  const sets = taken.map((t) => new Set(tabla(seed, t, cards).cards));
+  const used = new Set(taken);
+  let best = -1;
+  let bestWorst = Infinity;
+  for (let n = 0; n < MAX_ATTEMPTS; n++) {
+    const idx = Math.floor(rng() * (MAX_TABLA_INDEX + 1));
+    if (used.has(idx)) continue;
+    const t = tabla(seed, idx, cards).cards;
+    let worst = 0;
+    for (const s of sets) {
+      let k = 0;
+      for (const c of t) if (s.has(c)) k++;
+      if (k > worst) worst = k;
+    }
+    if (worst <= MAX_SHARED_CARDS) return idx;
+    if (worst < bestWorst) {
+      bestWorst = worst;
+      best = idx;
+    }
+  }
+  return best;
 }

@@ -8,6 +8,9 @@ import {
   resolveFullCardWinners,
   soloCpuPick,
   mulberry32,
+  tabla,
+  pickTablaIndex,
+  MAX_SHARED_CARDS,
   choicesFor,
   initialPickState,
   resolveWinners,
@@ -175,6 +178,31 @@ describe('resolveWinners', () => {
           for (const s of w) expect(claims.find((c) => c.seat === s)!.points).toBe(max);
         },
       ),
+    );
+  });
+});
+
+describe('pickTablaIndex', () => {
+  const overlap = (s: string, a: number, b: number) => {
+    const x = new Set(tabla(s, a, pool).cards);
+    return tabla(s, b, pool).cards.filter((c) => x.has(c)).length;
+  };
+  it('20 assignments are distinct, share <= 8 cards, and are deterministic', () => {
+    fc.assert(
+      fc.property(seedArb, (s) => {
+        const run = () => {
+          const taken: number[] = [];
+          for (let k = 0; k < 20; k++) taken.push(pickTablaIndex(s, taken, pool));
+          return taken;
+        };
+        const t = run();
+        expect(t).toEqual(run());
+        expect(new Set(t).size).toBe(20);
+        for (let a = 0; a < 20; a++)
+          for (let b = a + 1; b < 20; b++)
+            expect(overlap(s, t[a]!, t[b]!)).toBeLessThanOrEqual(MAX_SHARED_CARDS);
+      }),
+      { numRuns: 8 },
     );
   });
 });
