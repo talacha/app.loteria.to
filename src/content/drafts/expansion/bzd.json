@@ -1,0 +1,1060 @@
+{
+  "lang": "bzd",
+  "variety": "Bribri of Talamanca, Costa Rica. Same convention as src/content/drafts/bzd.json: headwords follow Krohn's pandialectal dictionary, preferring forms attested in Jara & García Segura (Coroma speech) and Margery (Amubri/Salitre data); dialect variants noted per card. Not checked for Panamanian Bribri.",
+  "orthography": "Bribri practical orthography (Wilson, revised by Constenla; as used by Krohn, UCR and DIPALICORI): nasal vowels marked with a combining macron below (U+0331, the 'underline'), extra vowels ë ö; tone on the stressed syllable: acute = high/rising, grave = falling, circumflex = rising (Amubri); right single quote ’ = glottal stop; tk/tch variation as in the base draft. Strings stored NFC. Forms copied verbatim from Krohn's published XML data; Jara's newer tilde-nasal spelling is NOT used.",
+  "sources": [
+    {
+      "id": "krohn2025",
+      "title": "Diccionario bribri–español español–bribri (online, pandialectal; aggregates the sources below). Read from its published data files diccionario-esp-bri.xml and diccionario.xml, accessed 2026-10-27",
+      "author": "Haakon S. Krohn (Universidad de Costa Rica)",
+      "year": 2025,
+      "url": "http://www.haakonkrohn.com/bribri/"
+    },
+    {
+      "id": "margery1996",
+      "title": "Diccionario fraseológico bribri–español español–bribri (2nd ed.)",
+      "author": "Enrique Margery Peña",
+      "year": 1996
+    },
+    {
+      "id": "jaragarcia2013",
+      "title": "Se' ttö́ bribri ie / Hablemos en bribri",
+      "author": "Carla Victoria Jara Murillo & Alí García Segura",
+      "year": 2013,
+      "url": "https://www.lenguabribri.com/se-ttö-bribri-ie-hablemos-en-bribri"
+    },
+    {
+      "id": "jaragarcia2003",
+      "title": "Diccionario de mitología bribri",
+      "author": "Carla Victoria Jara Murillo & Alí García Segura",
+      "year": 2003,
+      "url": "https://www.lenguabribri.com/diccionario-de-mitología-bribri"
+    },
+    {
+      "id": "jara2018",
+      "title": "Gramática de la lengua bribri",
+      "author": "Carla Victoria Jara Murillo",
+      "year": 2018
+    },
+    {
+      "id": "constenla1998",
+      "title": "Curso básico de bribri",
+      "author": "Adolfo Constenla Umaña, Feliciano Elizondo Figueroa & Francisco Pereira Mora",
+      "year": 1998
+    },
+    {
+      "id": "constenla2010",
+      "title": "Toponimia bribri (Estudios de Lingüística Chibcha 29)",
+      "author": "Adolfo Constenla Umaña",
+      "year": 2010
+    },
+    {
+      "id": "krohn2016",
+      "title": "Aculturación léxica del bribri (Estudios de Lingüística Chibcha 35)",
+      "author": "Haakon S. Krohn",
+      "year": 2016
+    },
+    {
+      "id": "rimolo2007",
+      "title": "Aplicación de los postulados de la teoría clasificatoria etnobiológica de Brent Berlin al universo ornitológico del bribri de Coroma (Estudios de Lingüística Chibcha 26)",
+      "author": "Annamaría Rimolo Bariatti",
+      "year": 2007
+    },
+    {
+      "id": "flores2009",
+      "title": "Los mamíferos en la clasificación etnobiológica de la comunidad de Amubre (Estudios de Lingüística Chibcha 28)",
+      "author": "Sofía Flores Solórzano",
+      "year": 2009
+    },
+    {
+      "id": "chevrier2017",
+      "title": "Analyse de la phonologie du bribri (chibcha) dans une perspective typologique (PhD thesis)",
+      "author": "Natacha Chevrier",
+      "year": 2017
+    },
+    {
+      "id": "chevrier2016",
+      "title": "Work cited in Krohn 2025 as 'Chevrier (2016)' (full reference in Krohn's bibliography; not checked)",
+      "author": "Natacha Chevrier",
+      "year": 2016
+    },
+    {
+      "id": "jara1987",
+      "title": "Work cited in Krohn 2025 as 'Jara (1987)' (house-construction vocabulary; full reference in Krohn's bibliography; not checked)",
+      "author": "Carla Victoria Jara Murillo",
+      "year": 1987
+    },
+    {
+      "id": "jara1993",
+      "title": "Work cited in Krohn 2025 as 'Jara (1993)' (full reference in Krohn's bibliography; not checked)",
+      "author": "Carla Victoria Jara Murillo",
+      "year": 1993
+    },
+    {
+      "id": "jara2013",
+      "title": "Work cited in Krohn 2025 as 'Jara (2013)' (full reference in Krohn's bibliography; not checked)",
+      "author": "Carla Victoria Jara Murillo",
+      "year": 2013
+    },
+    {
+      "id": "jaragarcia2008",
+      "title": "Work cited in Krohn 2025 as 'Jara y García (2008)' (full reference in Krohn's bibliography; not checked)",
+      "author": "Carla Victoria Jara Murillo & Alí García Segura",
+      "year": 2008
+    },
+    {
+      "id": "constenla2015",
+      "title": "Work cited in Krohn 2025 as 'Constenla (2015)' (full reference in Krohn's bibliography; not checked)",
+      "author": "Adolfo Constenla Umaña",
+      "year": 2015
+    },
+    {
+      "id": "constenlapereira1989",
+      "title": "Work cited in Krohn 2025 as 'Constenla y Pereira (1989)' (full reference in Krohn's bibliography; not checked)",
+      "author": "Adolfo Constenla Umaña & Francisco Pereira Mora",
+      "year": 1989
+    },
+    {
+      "id": "margery2017",
+      "title": "Work cited in Krohn 2025 as 'Margery (2017)' (full reference in Krohn's bibliography; not checked)",
+      "author": "Enrique Margery Peña",
+      "year": 2017
+    },
+    {
+      "id": "sanchez_sf",
+      "title": "Diccionarios pictográficos bribri (DIPALICORI), cited by Krohn as Sánchez (s.f. -a … -e)",
+      "author": "Carlos Sánchez Avendaño (coord.)",
+      "url": "https://dipalicori.ucr.ac.cr/recursos-bribri/"
+    },
+    {
+      "id": "garcia_com_pers",
+      "title": "Personal communication recorded in Krohn's dictionary",
+      "author": "Alí García Segura"
+    },
+    {
+      "id": "morales_com_pers",
+      "title": "Personal communication recorded in Krohn's dictionary",
+      "author": "Franklin Morales López"
+    }
+  ],
+  "cards": {
+    "perro": {
+      "text": "chìchi",
+      "gloss": "dog (Canis lupus familiaris)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996 (Krohn 2025 data, ES→BRI 'perro', BRI→ES 'chìchi'; primary pages not verified)",
+      "note": "Single everyday form, no variants listed.",
+      "reviewQuestion": "Is chìchi the word children use for a dog?"
+    },
+    "pez": {
+      "text": "ni̱mà̱",
+      "gloss": "fish (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; flores2009; jaragarcia2013; chevrier2017 (Krohn 2025 data, ES→BRI 'pez'; primary pages not verified)",
+      "note": "Variants ni̱mò̱, na̱mà̱, na̱mò̱ (dialectal a/o alternation in nasal syllables, as in kà̱li̱/kò̱li̱ 'rain').",
+      "reviewQuestion": "Which form is used in your community: ni̱mà̱, ni̱mò̱, na̱mà̱ or na̱mò̱?"
+    },
+    "venado": {
+      "text": "su̱lì̱",
+      "gloss": "deer (family Cervidae)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996; jaragarcia2003; flores2009 (Krohn 2025 data, ES→BRI 'venado'; primary pages not verified)",
+      "note": "White-tailed deer specifically: të̀su̱li̱ (Sánchez s.f., Flores 2009). Old name dakë́k (Margery). Mild sensitivity: appears in the clan name Su̱lì̱tsuwak (Jara & García 2003); the plain animal noun is ordinary vocabulary.",
+      "reviewQuestion": "Is su̱lì̱ the everyday word for a deer, or would children say të̀su̱li̱?"
+    },
+    "mono": {
+      "text": "ö̀k",
+      "gloss": "white-faced capuchin monkey (Cebus capucinus)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "jaragarcia2013; margery1996; flores2009 (Krohn 2025 data, ES→BRI 'mono'; primary pages not verified)",
+      "note": "No everyday generic 'monkey' word: the only generic is the hunters' term stsa’kichawak (Flores 2009). Species words: ö̀k capuchin, wìm howler monkey, sàl spider monkey (sàl also = 'spider', so avoided). ö̀k chosen; art should show a white-faced capuchin. Homonym ö̀k 'tiger heron' (Sánchez s.f.).",
+      "reviewQuestion": "For a generic monkey picture, which word would children use: ö̀k (cariblanco), wìm (congo) or sàl (colorado)?"
+    },
+    "murcielago": {
+      "text": "dakúr",
+      "gloss": "bat (generic, order Chiroptera)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; flores2009; krohn2016 (Krohn 2025 data, ES→BRI 'murciélago'; primary pages not verified)",
+      "note": "Variants dukúr, dkúr. Species compounds built on it (e.g. bàkadakur vampire bat).",
+      "reviewQuestion": "Which form is used: dakúr, dukúr or dkúr?"
+    },
+    "hormiga": {
+      "text": "stsàwak",
+      "gloss": "ant (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; jaragarcia2013 (Krohn 2025 data, ES→BRI 'hormiga'; primary pages not verified)",
+      "note": "Variants jtsàwak, tsáwak, kàlwak (Jara 2004). Many species names (kapalë’ leaf-cutter, alë̀r bullet ant). No anthill word found, so no collision with 'hormiguero'.",
+      "reviewQuestion": "Is stsàwak (or jtsàwak / tsáwak) the general word for ant in your community?"
+    },
+    "abeja": {
+      "text": "bùl",
+      "gloss": "honey bee (Apis mellifera, per Margery)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'abeja', BRI→ES 'bùl'; primary page not verified)",
+      "note": "Single source, glossed for the honey bee; variant bùlwak. A native small yellow stingless bee is kóswak (Jara & García 2003). Homonym bùl 'sorbón', a dance performed at chichadas (Margery) — check it is not felt as a ceremonial word.",
+      "reviewQuestion": "Is bùl the general word for a bee, or is kóswak (stingless bee) better? Is there any ceremonial sense in bùl?"
+    },
+    "arana": {
+      "text": "ók",
+      "gloss": "spider (house spider; generic order Araneae)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996; chevrier2017 (Krohn 2025 data, ES→BRI 'araña'; primary pages not verified)",
+      "note": "Variant ókwak. Alternative generic sàl / sàlwak (Sánchez s.f.) avoided because sàl also = spider monkey. Homonym ók 'tiger heron' (Margery, Rimolo).",
+      "reviewQuestion": "For a spider picture, do children say ók or sàl?"
+    },
+    "caracol": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (searched ES lemma 'caracol' and Bribri definitions for caracol, babosa, molusco, Gastropoda)",
+      "note": "Only marine conchs are attested: dúk 'caracol, cambute' (Strombus sp.) and pulë̀ (small conch). The card is a LAND snail and the deck forbids the conch trumpet, so these name a different thing. ipë’ / kachö̀tak = slug (no shell). Not substituting.",
+      "reviewQuestion": "Is there a word for a land snail with a shell? Would dúk or pulë̀ be used for it?"
+    },
+    "cangrejo": {
+      "text": "yawi’",
+      "gloss": "crab, crustacean (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; flores2009; morales_com_pers (Krohn 2025 data, ES→BRI 'cangrejo'; primary pages not verified)",
+      "note": "Variants yuwi’, ywi’.",
+      "reviewQuestion": "Which form is used: yawi’, yuwi’ or ywi’?"
+    },
+    "armadillo": {
+      "text": "tsawì",
+      "gloss": "armadillo (generic; nine-banded armadillo, cusuco)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996; jaragarcia2003; flores2009; sanchez_sf (Krohn 2025 data, ES→BRI 'armadillo'; primary pages not verified)",
+      "note": "Variants tsuì, tsuwì, tswì; synonym tö́töbe. Naked-tailed armadillo is bulùr.",
+      "reviewQuestion": "Which variant is used: tsawì, tsuwì or tswì?"
+    },
+    "lagartija": {
+      "text": "kirë̀",
+      "gloss": "lizard (generic; also Ameiva festiva)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "flores2009; jaragarcia2003 (Krohn 2025 data, ES→BRI 'lagartija', BRI→ES 'kirë̀'; primary pages not verified)",
+      "note": "Variants karrë̀, krë̀. Homonym kirë̀ 'tail' (Flores 2009).",
+      "reviewQuestion": "Is kirë̀ (or karrë̀ / krë̀) the general word for a small lizard?"
+    },
+    "perico": {
+      "text": "tú̱li̱",
+      "gloss": "parrot (family Psittacidae)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'loro', BRI→ES 'tú̱li̱'; primary page not verified)",
+      "note": "Generic parrot word; ES index also lists yuri’ (Bozzoli 1977a). Small parakeets: ë̀l / kayö́ (Brotogeris, Margery) — kayö́ is also ritual speech for a song improviser, so avoided. Green macaw is apà.",
+      "reviewQuestion": "For a green parrot picture, do children say tú̱li̱, ë̀l, or another word?"
+    },
+    "raton": {
+      "text": "sakuë̀",
+      "gloss": "mouse, rat (generic small rodent)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "flores2009; jaragarcia2013 (Krohn 2025 data, ES→BRI 'ratón'; primary pages not verified)",
+      "note": "Variant skuë̀. House mouse specifically: ùskuë (Flores 2009).",
+      "reviewQuestion": "Is sakuë̀ right, or would children say ùskuë for a house mouse?"
+    },
+    "gallina": {
+      "text": "dakarò",
+      "gloss": "chicken, hen, rooster (Gallus gallus)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jara2018; jaragarcia2013; margery1996; krohn2016; rimolo2007 (Krohn 2025 data, ES→BRI 'gallina'; primary pages not verified)",
+      "note": "Variants dakrò, dkrò, karò, korò, krò, tkrò. Covers hen and rooster; 'hen' specifically dakarò aláki (Margery). Introduced bird with a well-established Bribri name. Myth being Abèbulu 'king of the chicken' is unrelated; avoid.",
+      "reviewQuestion": "Which form is used locally (dakarò, krò, tkrò…)?"
+    },
+    "arbol": {
+      "text": "kàl",
+      "gloss": "tree (generic); also stick, trunk, wood",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996 (Krohn 2025 data, ES→BRI 'árbol'; primary pages not verified)",
+      "note": "Polysemous: palo, tronco, madera, bastón.",
+      "reviewQuestion": "Is kàl right for a picture of one tree?"
+    },
+    "hoja": {
+      "text": "kö̀",
+      "gloss": "leaf",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'hoja', BRI→ES 'kö̀'; primary page not verified)",
+      "note": "Also 'hair', 'feather' (Constenla et al. 1998) and 'centipede'. Jara & García 2003 also list kö̀ as mythological 'little fire worms' — homonym. Inalienable form kö́yök. Single source for 'leaf'.",
+      "reviewQuestion": "Is kö̀ how children name a single leaf?"
+    },
+    "flor": {
+      "text": "dakuà",
+      "gloss": "flower (generic)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; constenla2015 (Krohn 2025 data, ES→BRI 'flor', BRI→ES 'dakuà'; primary pages not verified)",
+      "note": "Synonyms mà̱ma̱ (also 'toy', 'ornament', affectionate 'mum'), mà̱ma̱dukà, mà̱ma̱wö. Same word noted in the base draft under 'girasol'.",
+      "reviewQuestion": "Do children say dakuà or mà̱ma̱ for a flower?"
+    },
+    "cacahuate": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'maní' or 'cacahuate'; Bribri definitions searched for maní/cacahuate)",
+      "note": "No Bribri entry for peanut. No attested loan.",
+      "reviewQuestion": "Is there a Bribri word for peanut (maní), or a Spanish loan in use?"
+    },
+    "raiz": {
+      "text": "wì",
+      "gloss": "root, base of a trunk",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jara2018; margery1996; jaragarcia2013 (Krohn 2025 data, ES→BRI 'raíz', BRI→ES 'wì'; primary pages not verified)",
+      "note": "Other words for root: cha̱lé̱, kichà, wìchle̱. kichà avoided (also = 'rope'). Tree root: kàlkichà.",
+      "reviewQuestion": "Is wì the usual word for a root, or cha̱lé̱?"
+    },
+    "calabaza": {
+      "text": "apì",
+      "gloss": "squash, 'ayote' (Cucurbita moschata, C. pepo)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "chevrier2017; margery1996; jaragarcia2013 (Krohn 2025 data, ES→BRI 'ayote', BRI→ES 'apì'; primary pages not verified)",
+      "note": "Variant pì. Krohn also lists kakö’ 'calabaza' (Margery), whose other sense is 'container for liquids' — likely the bottle gourd, so apì chosen for the edible squash.",
+      "reviewQuestion": "For an edible squash (ayote), is apì right? What is kakö’?"
+    },
+    "yuca": {
+      "text": "ali’",
+      "gloss": "cassava (Manihot esculenta)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996; sanchez_sf (Krohn 2025 data, ES→BRI 'yuca'; primary pages not verified)",
+      "note": "Variant li’. Homograph ali’ is also a verb form of alö́k 'cook'.",
+      "reviewQuestion": "Is ali’ right for cassava?"
+    },
+    "camote": {
+      "text": "alabà",
+      "gloss": "sweet potato (Ipomoea batatas)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; sanchez_sf (Krohn 2025 data, BRI→ES 'alabà'; primary pages not verified)",
+      "note": "No variants listed.",
+      "reviewQuestion": "Is alabà right for sweet potato?"
+    },
+    "guayaba": {
+      "text": "shu̱lé̱",
+      "gloss": "guava tree (Psidium guajava)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, BRI→ES 'shu̱lé̱'; no ES lemma 'guayaba'; primary page not verified)",
+      "note": "Glossed as the tree 'guayabo'; fruit sense assumed, not stated. Not to be confused with shulú (guayabillo, Psidium sartorianum). Single source.",
+      "reviewQuestion": "Is shu̱lé̱ also used for the guava fruit?"
+    },
+    "algodon": {
+      "text": "sawíyök",
+      "gloss": "cotton plant (Gossypium sp.)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'algodón'; primary page not verified)",
+      "note": "Variant suíyök. Cotton as material: sawi’ / sui’ (Margery). The card shows an open boll on a branch, so the plant word is chosen.",
+      "reviewQuestion": "For a cotton boll on the plant, is sawíyök or sawi’ better?"
+    },
+    "huevo": {
+      "text": "dùla",
+      "gloss": "egg",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'huevo'; primary page not verified)",
+      "note": "Single source for 'egg'; dùla also = 'little bird' (Margery) and 'delicacy' (Jara 2012b; Jara & García 2008). Hen's egg specifically: tkròla.",
+      "reviewQuestion": "Is dùla the everyday word for an egg, or tkròla?"
+    },
+    "hongo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (ES lemma 'hongo' only lists bracket fungus; Bribri definitions searched for hongo/seta)",
+      "note": "No generic word for mushroom. Attested only: ski’ / ski’kuö / kàlkukö / shkikukar 'oreja de palo' (bracket fungus on trunks, Polyporus sp.; Margery, Sánchez s.f.). The card is a plain cap mushroom, so these name a different thing. Sacred double: no Bribri ritual sense found, but unchecked.",
+      "reviewQuestion": "Is there a word for a cap mushroom? Could ski’ be used if the card showed a bracket fungus on a log?"
+    },
+    "platano": {
+      "text": "cha̱mù̱",
+      "gloss": "banana (generic, genus Musa)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996 (Krohn 2025 data, ES→BRI 'banano'; primary pages not verified)",
+      "note": "Variants chu̱mù̱, chmù̱. The English card is 'The Banana', so the banana word is chosen; cooking plantain is kalö́m (syn. kalö̀wö, tsalá).",
+      "reviewQuestion": "Should the card be cha̱mù̱ (banana) or kalö́m (plantain)?"
+    },
+    "pasto": {
+      "text": "tàtsi",
+      "gloss": "grass, herb, 'zacate' (generic)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; constenla2015 (Krohn 2025 data, ES→BRI 'zacate', BRI→ES 'tàtsi'; primary pages not verified)",
+      "note": "Variant tàtsikö. Constenla 2015 also uses it for a specific grass (Paspalum conjugatum).",
+      "reviewQuestion": "Is tàtsi the word for grass/pasture?"
+    },
+    "papaya": {
+      "text": "skó̱kichö",
+      "gloss": "papaya (Carica papaya, tree and fruit)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "sanchez_sf (Krohn 2025 data, BRI→ES 'skó̱kichö'; primary page not verified)",
+      "note": "Generic papaya (and wild papaya, Carica peltata): kichö’ (Margery 1996). skó̱kichö is the cultivated species.",
+      "reviewQuestion": "Do children say skó̱kichö or kichö’ for the papaya fruit?"
+    },
+    "fuego": {
+      "text": "bö̀wö",
+      "gloss": "fire; also light, lamp",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; jaragarcia2003; krohn2016 (Krohn 2025 data, ES→BRI 'fuego', BRI→ES 'bö̀wö'; primary pages not verified)",
+      "note": "Also bö’ (Constenla et al. 1998), which also means 'firewood' (reserve card 'leña'); bö̀wö kept for fire to avoid the collision. bö̀wö also = 'light' (Jara & García 2003) and 'lamp' (Krohn 2016).",
+      "reviewQuestion": "For a campfire picture, do children say bö̀wö or bö’?"
+    },
+    "humo": {
+      "text": "shaka̱lá̱",
+      "gloss": "smoke",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; constenla1998 (Krohn 2025 data, ES→BRI 'humo'; primary pages not verified)",
+      "note": "Variants shka̱lá̱, shklá̱.",
+      "reviewQuestion": "Which form is used: shaka̱lá̱, shka̱lá̱ or shklá̱?"
+    },
+    "neblina": {
+      "text": "mò̱",
+      "gloss": "fog, mist; also cloud",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'neblina'; primary page not verified)",
+      "note": "WORD COLLISION: mò̱ is already the name of the existing card 'nube' (cloud). Under deck rule 8 only one can stay in Bribri; this card should be unavailable in Bribri unless a reviewer gives a distinct fog word.",
+      "reviewQuestion": "Is there a word for fog that differs from mò̱ (cloud)?"
+    },
+    "granizo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'granizo'; Bribri definitions searched)",
+      "note": "No Bribri entry for hail.",
+      "reviewQuestion": "Is there a Bribri word for hail?"
+    },
+    "nieve": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'nieve'; Bribri definitions searched)",
+      "note": "No Bribri entry for snow (not part of the Talamanca lowland environment).",
+      "reviewQuestion": "Is there a Bribri word for snow, or a Spanish loan in use?"
+    },
+    "hielo": {
+      "text": "di’wö sí",
+      "gloss": "ice",
+      "kind": "descriptive",
+      "confidence": "low",
+      "source": "krohn2016; morales_com_pers (Krohn 2025 data, ES→BRI 'hielo'; primary pages not verified)",
+      "note": "A modern descriptive form recorded in Krohn's lexical-acculturation study, not a traditional word. Not analysed or translated here.",
+      "reviewQuestion": "Do people actually say di’wö sí for ice? How is it pronounced?"
+    },
+    "amanecer": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (ES lemma 'amanecer' lists verbs only; Bribri definitions searched for amanecer/alba/aurora/madrugada)",
+      "note": "Only verbs are attested: ka̱ñí̱nu̱k (Pacchiarotti 2014) and shkè̱nu̱k (Margery) 'to dawn'. No noun 'dawn'; using a verb form for a picture card is a reviewer decision, not proposed here.",
+      "reviewQuestion": "Can ka̱ñí̱nu̱k or shkè̱nu̱k be used as the name of a 'dawn' picture, or is there a noun?"
+    },
+    "noche": {
+      "text": "na̱ñé̱we",
+      "gloss": "at night (adverb); darkness (noun, Chevrier)",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "jara2018; jaragarcia2013; margery1996; chevrier2017 (Krohn 2025 data, ES→BRI 'noche', BRI→ES 'na̱ñé̱we'; primary pages not verified)",
+      "note": "Mostly attested as an adverb 'de noche' (variant na̱ñè̱e); Margery also 'last night'. Only Chevrier 2017 gives a noun sense 'darkness'. No plain noun 'night' found.",
+      "reviewQuestion": "Is na̱ñé̱we natural as the name of a 'night' picture?"
+    },
+    "cielo": {
+      "text": "ká̱költtö",
+      "gloss": "sky, firmament",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; morales_com_pers (Krohn 2025 data, ES→BRI 'cielo', BRI→ES 'ká̱költtö'; primary pages not verified)",
+      "note": "Variants ká̱kólttö, ká̱ttö, kó̱ttö; ká̱ttö also = 'ravine, slope' (Jara & García 2015; Jara 2018). SENSITIVITY: the sky has a cosmological sense in Bribri tradition (layered world); confirm the everyday word is fine for a game.",
+      "reviewQuestion": "Is ká̱költtö the everyday word for the sky, and is it acceptable in a game?"
+    },
+    "sombra": {
+      "text": "diö́köl",
+      "gloss": "shadow (of people and animals); also reflection, image, picture",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1996; jaragarcia2003 (Krohn 2025 data, ES→BRI 'sombra', BRI→ES 'diö́köl'; primary pages not verified)",
+      "note": "Glossed for shadows of people and animals, while the card shows a tree's shade. SENSITIVITY: Jara & García 2003 also give 'alma de los ojos' (a spiritual sense). àlim 'mala sombra' is an illness term — do not use.",
+      "reviewQuestion": "Is diö́köl used for the shade of a tree, and is it acceptable given its spiritual sense?"
+    },
+    "rocio": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'rocío'; Bribri definitions searched for rocío/sereno)",
+      "note": "No Bribri entry for dew.",
+      "reviewQuestion": "Is there a Bribri word for dew?"
+    },
+    "remolino": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'remolino' or 'torbellino'; Bribri definitions searched)",
+      "note": "No Bribri entry for whirlwind. Not deriving from su̱wa̱’ 'wind' (which also has a sacred-history sense).",
+      "reviewQuestion": "Is there a Bribri word for a whirlwind?"
+    },
+    "agua": {
+      "text": "di’",
+      "gloss": "water; also river",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996 (Krohn 2025 data, ES→BRI 'agua'; primary pages not verified)",
+      "note": "di’ also means 'river'; the river card uses dìkibi to avoid a collision. Ritual-speech dipàkala (García com. pers.) must NOT be used.",
+      "reviewQuestion": "Is di’ right for a drop of water?"
+    },
+    "ceniza": {
+      "text": "ma̱lù̱chaka",
+      "gloss": "ash",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; chevrier2017; jaragarcia2003 (Krohn 2025 data, ES→BRI 'ceniza'; primary pages not verified)",
+      "note": "Variants ma̱lù̱chka, mlù̱shka, mu̱lù̱.",
+      "reviewQuestion": "Which form is used: ma̱lù̱chaka, mlù̱shka or mu̱lù̱?"
+    },
+    "trueno": {
+      "text": "alá",
+      "gloss": "thunder",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; chevrier2017 (Krohn 2025 data, ES→BRI 'trueno'; primary pages not verified)",
+      "note": "Variant lá. Ritual-speech tkë́rme̱ must NOT be used. SENSITIVITY: thunder is tied to mythological beings (see the base draft's 'rayo' note); the plain noun should be fine but confirm.",
+      "reviewQuestion": "Is alá the everyday word for thunder, and acceptable in a game?"
+    },
+    "rio": {
+      "text": "dìkibi",
+      "gloss": "river",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'río', BRI→ES 'dìkibi'; primary page not verified)",
+      "note": "Synonyms di’ (also 'water', the 'agua' card) and di’ula (Jara 1993; Morales com. pers.). dìkibi chosen to avoid colliding with 'agua'. Tributary: ulà.",
+      "reviewQuestion": "Do children say dìkibi or di’ula for a river?"
+    },
+    "lago": {
+      "text": "batsö̀ri",
+      "gloss": "lagoon, lake",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'laguna', BRI→ES 'batsö̀ri'; primary page not verified)",
+      "note": "Variant btsö̀ri. Other 'laguna' words avoided: dapö̀ (also 'pool in a river' and 'palmito') and dö́ (also 'mud', the 'lodo' card).",
+      "reviewQuestion": "Is batsö̀ri used for a lake or lagoon?"
+    },
+    "piedra": {
+      "text": "ák",
+      "gloss": "stone",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996; chevrier2017 (Krohn 2025 data, ES→BRI 'piedra'; primary pages not verified)",
+      "note": "Plain everyday noun; homonym 'kidney'. SENSITIVITY: the sacred healing stones (si̱a̱’, duwàl, dikúswa and ritual names) must NOT be used. Card must show an ordinary grey stone.",
+      "reviewQuestion": "Is ák fine for an ordinary stone in a game?"
+    },
+    "arena": {
+      "text": "stsa̱’ña̱",
+      "gloss": "sand",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; garcia_com_pers (Krohn 2025 data, ES→BRI 'arena'; primary pages not verified)",
+      "note": "Variants stsa̱’, tsa̱’, tsa̱’ña̱, tsá̱ña̱. Beach sand: dayë̀tsa̱ña̱.",
+      "reviewQuestion": "Which form is used: stsa̱’ña̱, tsa̱’ña̱ or stsa̱’?"
+    },
+    "playa": {
+      "text": "dayë̀jkö",
+      "gloss": "beach, coast",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; flores2009 (Krohn 2025 data, ES→BRI 'playa'; primary pages not verified)",
+      "note": "Variant dyë̀jkö. Other 'playa' words: tsà̱itö 'playa, arenal' and ákitö 'river beach' (Margery). dayë̀jkö chosen as the sea beach.",
+      "reviewQuestion": "For a sea beach, do children say dayë̀jkö or tsà̱itö?"
+    },
+    "cascada": {
+      "text": "yö̀lukö",
+      "gloss": "waterfall",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'cascada'; primary page not verified)",
+      "note": "Synonym yö̀l, which also means 'stream or jet of water' (Chevrier 2017). Single source for 'waterfall'.",
+      "reviewQuestion": "Do children say yö̀lukö or yö̀l for a waterfall?"
+    },
+    "charco": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'charco'; Bribri definitions searched for charco/poza)",
+      "note": "No word for a rain puddle. dapö̀ / di’dape mean a pool in a river (poza), a different thing.",
+      "reviewQuestion": "Is there a word for a small rain puddle?"
+    },
+    "lodo": {
+      "text": "dö́",
+      "gloss": "mud, clay; also swamp, lagoon",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jara2018; margery1996; jaragarcia2013; chevrier2017 (Krohn 2025 data, ES→BRI 'barro'; primary pages not verified)",
+      "note": "Variants dö́chaka, dö́chika, dö́chka. Also glossed 'pantano' (Rimolo 2007) — collides with the 'pantano' card.",
+      "reviewQuestion": "Is dö́ right for mud?"
+    },
+    "barranca": {
+      "text": "ká̱böl",
+      "gloss": "ravine, cliff",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "constenla1998 (Krohn 2025 data, ES→BRI 'barranco', BRI→ES 'ká̱böl'; primary page not verified)",
+      "note": "Synonyms àsir (also 'landslide'), balë́ (depression in the ground), dìböl (ravine, river channel), ká̱ttö (also 'sky' — avoided). ká̱böl has only the ravine sense.",
+      "reviewQuestion": "Which word would children use for a ravine: ká̱böl, àsir or dìböl?"
+    },
+    "llano": {
+      "text": "ká̱jkue̱",
+      "gloss": "plain, flat land",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; garcia_com_pers (Krohn 2025 data, ES→BRI 'llanura'; primary pages not verified)",
+      "note": "ajkuè 'small plain' (Constenla 2010, place names). sö̀k 'savanna' (Margery) is a different landscape.",
+      "reviewQuestion": "Is ká̱jkue̱ the word for open flat land?"
+    },
+    "pantano": {
+      "text": "dö́",
+      "gloss": "swamp; also mud",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "rimolo2007; margery1996 (Krohn 2025 data, ES→BRI 'pantano'; primary pages not verified)",
+      "note": "WORD COLLISION: same word as the 'lodo' card. Under deck rule 8 only one can stay in Bribri. Related adjective abòbò 'swampy' (Margery) is not a noun.",
+      "reviewQuestion": "Is there a separate word for a swamp, different from dö́ (mud)?"
+    },
+    "ola": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'ola'; Bribri definitions searched for ola/olas/oleaje/marejada)",
+      "note": "No Bribri entry for a sea wave.",
+      "reviewQuestion": "Is there a Bribri word for a wave of the sea?"
+    },
+    "concha": {
+      "text": "dayë̀pulë",
+      "gloss": "seashell (generic)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "garcia_com_pers (Krohn 2025 data, ES→BRI 'concha'; primary page not verified)",
+      "note": "Single source (personal communication). Variants dayë̀pulë̀, dayë̀plë, diyë̀pulë, diyë̀plë. Built on pulë̀ 'small conch'. Avoid tsiríkö (shells or leaves used by healers, Jara & García 2003).",
+      "reviewQuestion": "Is dayë̀pulë the everyday word for a seashell on the beach?"
+    },
+    "valle": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'valle'; Bribri definitions searched for valle/hondonada/cañada)",
+      "note": "No generic word for valley; only place names and clan names (Su̱lì̱tsuwak).",
+      "reviewQuestion": "Is there a Bribri word for a valley?"
+    },
+    "tierra": {
+      "text": "íyök",
+      "gloss": "earth, soil, land",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jara2018; jaragarcia2013; margery1996 (Krohn 2025 data, ES→BRI 'tierra'; primary pages not verified)",
+      "note": "SENSITIVITY: the ritual-speech form irìria (Constenla 2006) is linked to the mythological girl from whom the earth was made — must NOT be used. íyök is the everyday noun; card shows soil, not the Earth.",
+      "reviewQuestion": "Is íyök fine for a picture of soil?"
+    },
+    "hacha": {
+      "text": "o’",
+      "gloss": "axe",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'hacha'; primary page not verified)",
+      "note": "Single source. Homonym o’ 'shoulder' (Sánchez s.f.).",
+      "reviewQuestion": "Is o’ the word for an axe?"
+    },
+    "red": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (ES lemma 'red' only lists net bags; Bribri definitions searched for red/malla/atarraya/pesca)",
+      "note": "No word for a fishing net. sakú / saku’ / kala’ are net BAGS (used for the 'morral' card). Traditional fishing used traps (a̱lò̱) and river drying (di’ síwè̱), not nets.",
+      "reviewQuestion": "Is there a word for a fishing net (or cast net)?"
+    },
+    "cuerda": {
+      "text": "búsköl",
+      "gloss": "braided rope or cord",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'cuerda (trenzada)', BRI→ES 'búsköl'; primary page not verified)",
+      "note": "Chosen because the general rope words ja̱mù̱, kichà, stsa’ collide: ja̱mù̱ is the existing 'hilo' card and kichà also = 'root'. Card art is a thick coiled rope, which fits 'braided rope'. Alternative dakuë̀ (rope or braided hair).",
+      "reviewQuestion": "For a thick rope, do children say búsköl, stsa’ or ja̱mù̱?"
+    },
+    "jicara": {
+      "text": "tka̱’",
+      "gloss": "calabash bowl, 'guacal' (container for liquids)",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; jaragarcia2013; chevrier2017 (Krohn 2025 data, ES→BRI 'guacal'; primary pages not verified)",
+      "note": "Variants tko̱’; synonym skò̱tke̱ (Chevrier). Small one: datsù. Tree: mè̱. SENSITIVITY: calabash bowls are used to serve ceremonial cacao; the card must show an everyday bowl.",
+      "reviewQuestion": "Is tka̱’ the everyday word for a calabash bowl, and is a game card with it acceptable?"
+    },
+    "metate": {
+      "text": "ákajkue",
+      "gloss": "grinding stone, metate",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'metate'; primary page not verified)",
+      "note": "Single source. Grinding verb wö́k; wooden roller for grinding wàwè (Jara 2018).",
+      "reviewQuestion": "Is ákajkue still used for a grinding stone?"
+    },
+    "comal": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'comal'; Bribri definitions searched for comal/tiesto/budare/plancha)",
+      "note": "No noun for a griddle; only verbs 'toast, roast' (ijkuö̀k, kujkuö̀k).",
+      "reviewQuestion": "Is there a word for a clay or metal griddle?"
+    },
+    "escoba": {
+      "text": "ùshkalö",
+      "gloss": "broom",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "chevrier2016 (Krohn 2025 data, ES→BRI 'escoba'; primary page not verified)",
+      "note": "Single source; variant ùshklö. túskicha is a palm (escoba palm), not the broom.",
+      "reviewQuestion": "Is ùshkalö the word for a broom?"
+    },
+    "aguja": {
+      "text": "dika’",
+      "gloss": "needle; also thorn, syringe",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; chevrier2016 (Krohn 2025 data, ES→BRI 'aguja'; primary pages not verified)",
+      "note": "Variants daka’, dka’. Also 'thorn' (Margery).",
+      "reviewQuestion": "Is dika’ used for a sewing needle?"
+    },
+    "huso": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'huso' or 'malacate'; Bribri definitions searched for huso/hilar/tejer/torcer)",
+      "note": "No Bribri entry for spindle or spinning.",
+      "reviewQuestion": "Is there a word for a spindle used to spin cotton?"
+    },
+    "banco": {
+      "text": "kula’",
+      "gloss": "bench, stool, chair, seat",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996; jara2013 (Krohn 2025 data, ES→BRI 'asiento', BRI→ES 'kula’'; primary pages not verified)",
+      "note": "Everyday seat. SENSITIVITY: kulékala is a special seat used by a first-time mother and her husband (Constenla 2015; García com. pers.) — must NOT be used. The ES 'banco' lemma is the financial institution (i̱nú̱köl wé), not this card.",
+      "reviewQuestion": "Is kula’ the everyday word for a wooden stool, with no ceremonial sense?"
+    },
+    "sombrero": {
+      "text": "tsà̱jkuö",
+      "gloss": "hat, cap",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "constenla1998 (Krohn 2025 data, ES→BRI 'sombrero'; primary page not verified)",
+      "note": "Variant tsà̱kuö. Descriptive synonym wö́kir ajkuö̀ / wö́kirkuö recorded in Krohn 2016 (lexical acculturation).",
+      "reviewQuestion": "Is tsà̱jkuö used for a woven hat?"
+    },
+    "morral": {
+      "text": "saku’",
+      "gloss": "small net bag, 'chácara'",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996 (Krohn 2025 data, ES→BRI 'bolso', BRI→ES 'saku’'; primary pages not verified)",
+      "note": "Variant sku’. Larger net bag sakú (Margery); cabuya backpack bíssku (Margery); small-object net bag kala’.",
+      "reviewQuestion": "For a carry bag, do children say saku’ or bíssku?"
+    },
+    "hamaca": {
+      "text": "kapö̀",
+      "gloss": "hammock",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996; chevrier2017 (Krohn 2025 data, ES→BRI 'hamaca'; primary pages not verified)",
+      "note": "Variants kipö̀, kpö̀. Homonym kapö̀ 'tree fern' (Margery).",
+      "reviewQuestion": "Which form is used: kapö̀, kipö̀ or kpö̀?"
+    },
+    "coa": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'coa' or 'espeque'; Bribri definitions searched for sembrar/espeque/chuzo/macana)",
+      "note": "No noun for a digging/planting stick; only verbs 'to plant' (kuátkök, tkö́k).",
+      "reviewQuestion": "Is there a word for the planting stick (espeque)?"
+    },
+    "petate": {
+      "text": "ùkö",
+      "gloss": "mat (estera)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "jara1987 (Krohn 2025 data, ES→BRI 'estera', BRI→ES 'ùkö'; primary page not verified)",
+      "note": "Single source. Homonym ùkö 'cola de gallo' shrub (Aphelandra scabra), same source.",
+      "reviewQuestion": "Is ùkö the word for a woven sleeping mat?"
+    },
+    "camino": {
+      "text": "ña̱là̱",
+      "gloss": "path, road",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013; margery1996; jaragarcia2003 (Krohn 2025 data, ES→BRI 'camino'; primary pages not verified)",
+      "note": "Variants ñlà̱, ño̱lò̱, ñlò̱.",
+      "reviewQuestion": "Which form is used: ña̱là̱ or ño̱lò̱?"
+    },
+    "pozo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'pozo'; Bribri definitions searched)",
+      "note": "No word for a dug well. 'Pozo' appears only in definitions of mythological beings living in water holes (Alákilirma̱, Ö̀rösili; Jara & García 2003) — sensitive context. tù̱m 'spring' is the existing 'manantial' card.",
+      "reviewQuestion": "Is there a word for a dug water well? Are water holes culturally sensitive?"
+    },
+    "nido": {
+      "text": "dù ù",
+      "gloss": "bird's nest",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'nido', BRI→ES 'dù ù'; primary page not verified)",
+      "note": "Single source; written as two words. Contains ù 'house' (the 'casa' card) — check players can tell them apart.",
+      "reviewQuestion": "Is dù ù how children say bird's nest?"
+    },
+    "colmena": {
+      "text": "bùbul",
+      "gloss": "beehive",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "jaragarcia2003 (Krohn 2025 data, ES→BRI 'colmena'; primary page not verified)",
+      "note": "Single source, from the mythology dictionary; check the word has no ritual sense. Related to bùl 'bee'.",
+      "reviewQuestion": "Is bùbul the everyday word for a beehive, without a mythological sense?"
+    },
+    "hormiguero": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (ES lemma 'hormiguero' only lists anteater and antbirds; Bribri definitions searched)",
+      "note": "No word for an anthill. urrì = anteater, kaë̀yöwö = antbird — different things.",
+      "reviewQuestion": "Is there a word for an anthill or ant nest?"
+    },
+    "telarana": {
+      "text": "sàl ù",
+      "gloss": "spider web",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "garcia_com_pers (Krohn 2025 data, ES→BRI 'telaraña'; primary page not verified)",
+      "note": "Single source (personal communication). Uses sàl 'spider' (which also = spider monkey) + ù 'house'; the 'arana' card uses ók instead — reviewer should check consistency.",
+      "reviewQuestion": "Is sàl ù how people say spider web? Should the spider card then be sàl instead of ók?"
+    },
+    "patio": {
+      "text": "ù apà",
+      "gloss": "yard, surroundings of a house",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; constenla1998 (Krohn 2025 data, ES→BRI 'patio'; primary pages not verified)",
+      "note": "Alternative ùjkö / ùkkö (Jara 2012b) avoided because it is also the 'puerta' card. Base draft already noted ù apà under 'plaza'.",
+      "reviewQuestion": "Is ù apà the usual word for the yard around a house?"
+    },
+    "huerto": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'huerto' or 'huerta'; Bribri definitions searched for huerto/jardín/solar)",
+      "note": "No word for a kitchen garden distinct from të̀ 'cultivated plot', which is the existing 'milpa' card.",
+      "reviewQuestion": "Is there a word for a small garden next to the house, different from të̀?"
+    },
+    "cerca": {
+      "text": "aka̱’",
+      "gloss": "fence; also floor, wall, raised bed",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; jaragarcia2013; jara1987 (Krohn 2025 data, ES→BRI 'cerca'; primary pages not verified)",
+      "note": "Variants ako̱’, ko̱’. 'Fence' sense is from Margery; Jara & García 2013 and Jara 1987 give 'floor', 'wall', 'tapesco/bed'. Polysemous.",
+      "reviewQuestion": "Is aka̱’ understood as a fence when shown on its own?"
+    },
+    "puerta": {
+      "text": "ùjkö",
+      "gloss": "door",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "jara2013; chevrier2017; margery1996 (Krohn 2025 data, ES→BRI 'puerta'; primary pages not verified)",
+      "note": "Variant ùkkö. Jara 2012b also glosses ùjkö as 'patio'; the patio card uses ù apà to avoid the collision.",
+      "reviewQuestion": "Is ùjkö the word for a door?"
+    },
+    "techo": {
+      "text": "ù kibì",
+      "gloss": "roof (part of a building)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "jara1987; morales_com_pers (Krohn 2025 data, ES→BRI 'techo'; primary pages not verified)",
+      "note": "Outer roof: ù tsì̱ (Margery); inner ceiling: ù ttö (Jara 1987). Contains ù 'house'.",
+      "reviewQuestion": "For a thatched roof, do children say ù kibì or ù tsì̱?"
+    },
+    "escalera": {
+      "text": "tí̱ska",
+      "gloss": "ladder, stairs",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "jaragarcia2013 (Krohn 2025 data, ES→BRI 'escalera'; also listed with synonyms from margery1996, sanchez_sf, morales_com_pers; primary pages not verified)",
+      "note": "Synonyms kàlwökichi (Margery; Morales com. pers.) and pi̱ská (Sánchez s.f. -b, DIPALICORI).",
+      "reviewQuestion": "For a notched-log ladder, do children say tí̱ska, pi̱ská or kàlwökichi?"
+    },
+    "troje": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'troje' or 'granero'; Bribri definitions searched for granero/troje/despensa/tapanco)",
+      "note": "No Bribri entry for a granary or storehouse.",
+      "reviewQuestion": "Is there a word for a place where maize is stored?"
+    },
+    "cocina": {
+      "text": "bö́jkö",
+      "gloss": "kitchen",
+      "kind": "attested",
+      "confidence": "high",
+      "source": "margery1996; chevrier2017 (Krohn 2025 data, ES→BRI 'cocina'; primary pages not verified)",
+      "note": "Variant bö́kkö. Synonyms bö̀we (Chevrier 2016) and ù̱lök 'kitchen (part of a house)' (Jara 1987).",
+      "reviewQuestion": "For a kitchen hut, do children say bö́jkö, bö̀we or ù̱lök?"
+    },
+    "corral": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'corral'; Bribri definitions searched for corral/cercado/potrero)",
+      "note": "No word for a livestock corral. kö̀chiwe 'pigsty' (Margery) names a different enclosure.",
+      "reviewQuestion": "Is there a word for an animal pen, or would kö̀chiwe be used?"
+    },
+    "gusano": {
+      "text": "ö́ña̱",
+      "gloss": "worm, grub (generic)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'gusano'; primary page not verified)",
+      "note": "Synonym í̱ (also 'earthquake', avoided). Earthworm: í̱ña̱ (Margery, Flores) or tsi̱mí̱ño̱ (Sánchez s.f.).",
+      "reviewQuestion": "For a worm picture, do children say ö́ña̱, í̱ña̱ or tsi̱mí̱ño̱?"
+    },
+    "zorro": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (ES lemma 'zorro' lists opossums and a skunk only; Bribri definitions searched for coyote/Urocyon)",
+      "note": "In Costa Rican Spanish 'zorro' is the opossum: bikili’ / bakali’ (Didelphidae) — a different animal from a fox. bikili’ also means the interpreter for the high priest (uséköl), a sacred role. No fox word found. Do not substitute.",
+      "reviewQuestion": "Is there a Bribri word for a fox (gray fox)? Or should the card show an opossum (bikili’) instead?"
+    },
+    "pato": {
+      "text": "dawák",
+      "gloss": "wild Muscovy duck (Cairina moschata)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'pato'; primary page not verified)",
+      "note": "Variant duák. Single source; species-specific but the common duck of the region.",
+      "reviewQuestion": "Is dawák used for ducks in general?"
+    },
+    "luciernaga": {
+      "text": "katù",
+      "gloss": "firefly (family Lampyridae)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996; jaragarcia2003 (Krohn 2025 data, ES→BRI 'luciérnaga'; primary pages not verified)",
+      "note": "Variant ktù; synonym tkö̀wö / tkö’wö (Constenla 2010; Margery 2017). Listed in the mythology dictionary: check for a mythological sense.",
+      "reviewQuestion": "Do children say katù or tkö̀wö for a firefly? Any mythological sense?"
+    },
+    "cantaro": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'cántaro' or 'tinaja'; Bribri definitions searched)",
+      "note": "No word for a water jar distinct from ù̱ 'pot' (the existing 'olla' card). The clan name ù̱ni̱wak 'owners of the clay jar' (Jara & García 2003) is sacred/social, not usable.",
+      "reviewQuestion": "Is there a word for a clay water jar different from ù̱?"
+    },
+    "pelota": {
+      "text": "kàlwö",
+      "gloss": "ball; also tree fruit (generic)",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "constenlapereira1989 (Krohn 2025 data, ES→BRI 'pelota', BRI→ES 'kàlwö'; primary page not verified)",
+      "note": "Also 'fruit of a tree' (Margery). The ES index also lists bola (Jara 2013), a Spanish loan.",
+      "reviewQuestion": "Do children say kàlwö or bola for a ball?"
+    },
+    "collar": {
+      "text": "bë́wö",
+      "gloss": "necklace",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "margery1996 (Krohn 2025 data, ES→BRI 'collar', BRI→ES 'bë́wö'; primary page not verified)",
+      "note": "Synonyms kuli’io (Margery), balë̀wö (Chevrier). balë̀ / balë̀wö also mean 'menstruation' (Margery) — avoided. tà̱u̱ is the high priest's necklace — sacred, must NOT be used.",
+      "reviewQuestion": "Is bë́wö the everyday word for a bead necklace?"
+    },
+    "cuchara": {
+      "text": "ulàtsika",
+      "gloss": "spoon; also fork, finger",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "krohn2016 (Krohn 2025 data, ES→BRI 'cuchara'; primary page not verified)",
+      "note": "Recorded in the lexical-acculturation study as an extension of ulàtsika 'finger' (Jara 1993); the same word is given for 'fork'. A card showing a hand-like sense would break the no-body-parts rule; art must show only a spoon.",
+      "reviewQuestion": "Is ulàtsika really used for a spoon, or is a Spanish loan more common?"
+    },
+    "remo": {
+      "text": null,
+      "gloss": null,
+      "kind": "missing",
+      "confidence": "low",
+      "source": "krohn2025 (no ES lemma 'remo'; Bribri definitions searched for remo/remar/canalete)",
+      "note": "No Bribri entry for paddle or oar.",
+      "reviewQuestion": "Is there a word for a canoe paddle?"
+    },
+    "sal": {
+      "text": "dayë̀",
+      "gloss": "salt; also sea",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "margery1996; sanchez_sf (Krohn 2025 data, ES→BRI 'sal'; primary pages not verified)",
+      "note": "WORD COLLISION: dayë̀ is already the existing 'mar' card. Under deck rule 8 only one can stay in Bribri. Variants diyë̀, dyë̀.",
+      "reviewQuestion": "Is there a separate word for salt, different from dayë̀ (sea)?"
+    },
+    "semilla": {
+      "text": "kuö̀wö",
+      "gloss": "seed",
+      "kind": "attested",
+      "confidence": "medium",
+      "source": "jara2018 (Krohn 2025 data, BRI→ES 'kuö̀wö'; primary page not verified)",
+      "note": "SENSITIVITY: the commoner synonym ditsö̀ / ditsö̀wö also means 'clan', 'race' and 'the first Bribris' (Jara & García 2003), the seeds brought by Sibö̀ in Bribri creation narratives — avoided. wö̀ 'fruit, seed' also means 'face' — avoided.",
+      "reviewQuestion": "Is kuö̀wö natural for a seed, or do children say ditsö̀wö? Is ditsö̀ appropriate for a game?"
+    },
+    "lena": {
+      "text": "bö’",
+      "gloss": "firewood; also fire",
+      "kind": "attested",
+      "confidence": "low",
+      "source": "constenla1998 (Krohn 2025 data, ES→BRI 'leña', BRI→ES 'bö’'; primary page not verified)",
+      "note": "Single source, which also glosses bö’ as 'fire'. Close to bö̀wö (the 'fuego' card) — possible confusion.",
+      "reviewQuestion": "Is bö’ understood as firewood (not fire)? Is there another word?"
+    }
+  }
+}
