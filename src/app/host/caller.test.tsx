@@ -60,6 +60,8 @@ const indexOf = (seat: string) =>
 const pick = (seat: string, cardId = lastCall().cardId) =>
   emit({ t: 'pick', seat, roundNo: 1, i: lastCall().i, cardId });
 const ids = cardsAvailableIn(['es']).map((c) => c.id);
+// Full-round tests render up to 144 calls; the 2-core build runner needs more than 5s.
+const FULL_ROUND_TIMEOUT_MS = 30_000;
 /** Number of calls (1-based) after which every card of this tabla has been called. */
 const completesAt = (index: number) => {
   const order = deckOrder('TESTSEED', 1, ids);
@@ -266,73 +268,89 @@ describe('automatic caller', () => {
     expect(results('a')).toHaveLength(0);
   });
 
-  it('the first full tabla after callClosed wins with end{reason: full-card}', async () => {
-    const [x, y] = tiedIndices();
-    // A different pair: y (later) vs a strictly earlier tabla.
-    const early = Array.from({ length: MAX_TABLA_INDEX + 1 }, (_, i) => i).find(
-      (i) => completesAt(i) < completesAt(x),
-    )!;
-    assignIndices([early, y]);
-    await started(['a', 'b']);
-    expect(indexOf('a')).toBe(early);
-    for (let k = 0; k < completesAt(early) - 1; k++) await tick(10_000);
-    expect(sent.some((m) => m.t === 'end')).toBe(false);
-    await tick(10_000); // window of the completing call closes
-    const end = sent.find((m) => m.t === 'end') as Sent;
-    expect(end).toMatchObject({ roundNo: 1, winners: ['a'], reason: 'full-card' });
-    expect(
-      sent.findIndex((m) => m.t === 'callClosed' && m.i === completesAt(early) - 1),
-    ).toBeLessThan(sent.indexOf(end));
-    const n = calls().length;
-    await tick(60_000);
-    expect(calls()).toHaveLength(n);
-  });
+  it(
+    'the first full tabla after callClosed wins with end{reason: full-card}',
+    async () => {
+      const [x, y] = tiedIndices();
+      // A different pair: y (later) vs a strictly earlier tabla.
+      const early = Array.from({ length: MAX_TABLA_INDEX + 1 }, (_, i) => i).find(
+        (i) => completesAt(i) < completesAt(x),
+      )!;
+      assignIndices([early, y]);
+      await started(['a', 'b']);
+      expect(indexOf('a')).toBe(early);
+      for (let k = 0; k < completesAt(early) - 1; k++) await tick(10_000);
+      expect(sent.some((m) => m.t === 'end')).toBe(false);
+      await tick(10_000); // window of the completing call closes
+      const end = sent.find((m) => m.t === 'end') as Sent;
+      expect(end).toMatchObject({ roundNo: 1, winners: ['a'], reason: 'full-card' });
+      expect(
+        sent.findIndex((m) => m.t === 'callClosed' && m.i === completesAt(early) - 1),
+      ).toBeLessThan(sent.indexOf(end));
+      const n = calls().length;
+      await tick(60_000);
+      expect(calls()).toHaveLength(n);
+    },
+    FULL_ROUND_TIMEOUT_MS,
+  );
 
-  it('same-call completions: more points win', async () => {
-    const [x, y] = tiedIndices();
-    assignIndices([x, y]);
-    await started(['a', 'b']);
-    const at = completesAt(x);
-    for (let k = 0; k < at; k++) {
-      await pick('b'); // b is first every call...
-      await pick('a'); // ...a second
-      if (k < at - 1) await tick(10_000);
-    }
-    await pick('a'); // no-op (already scored)
-    await tick(10_000);
-    const end = sent.find((m) => m.t === 'end') as Sent;
-    expect(end.winners).toEqual(['b']);
-    expect(end.reason).toBe('full-card');
-  });
+  it(
+    'same-call completions: more points win',
+    async () => {
+      const [x, y] = tiedIndices();
+      assignIndices([x, y]);
+      await started(['a', 'b']);
+      const at = completesAt(x);
+      for (let k = 0; k < at; k++) {
+        await pick('b'); // b is first every call...
+        await pick('a'); // ...a second
+        if (k < at - 1) await tick(10_000);
+      }
+      await pick('a'); // no-op (already scored)
+      await tick(10_000);
+      const end = sent.find((m) => m.t === 'end') as Sent;
+      expect(end.winners).toEqual(['b']);
+      expect(end.reason).toBe('full-card');
+    },
+    FULL_ROUND_TIMEOUT_MS,
+  );
 
-  it('same-call completions with equal points share the win', async () => {
-    const [x, y] = tiedIndices();
-    assignIndices([x, y]);
-    await started(['a', 'b']);
-    const at = completesAt(x);
-    for (let k = 0; k < at; k++) await tick(10_000);
-    const end = sent.find((m) => m.t === 'end') as Sent & { winners: string[] };
-    expect([...end.winners].sort()).toEqual(['a', 'b']);
-  });
+  it(
+    'same-call completions with equal points share the win',
+    async () => {
+      const [x, y] = tiedIndices();
+      assignIndices([x, y]);
+      await started(['a', 'b']);
+      const at = completesAt(x);
+      for (let k = 0; k < at; k++) await tick(10_000);
+      const end = sent.find((m) => m.t === 'end') as Sent & { winners: string[] };
+      expect([...end.winners].sort()).toEqual(['a', 'b']);
+    },
+    FULL_ROUND_TIMEOUT_MS,
+  );
 
-  it('has no way to end the round early, and no end before a full card', async () => {
-    await started(['a', 'b']);
-    expect(screen.queryByRole('button', { name: /Terminar/ })).toBeNull();
-    fireEvent.keyDown(window, { key: 'e' });
-    fireEvent.keyDown(window, { key: 'Escape' });
-    await flush();
-    // Pause and resume keep working and never end the round.
-    fireEvent.click(screen.getByRole('button', { name: 'Pausa' }));
-    await flush();
-    fireEvent.click(screen.getByRole('button', { name: /Reanudar|Seguir/ }));
-    await flush();
-    const first = Math.min(completesAt(indexOf('a')), completesAt(indexOf('b')));
-    for (let k = 0; k < first - 1; k++) await tick(10_000);
-    expect(sent.some((m) => m.t === 'end')).toBe(false);
-    await tick(10_000);
-    expect(sent.filter((m) => m.t === 'end')).toHaveLength(1);
-    expect((sent.find((m) => m.t === 'end') as Sent).reason).toBe('full-card');
-  });
+  it(
+    'has no way to end the round early, and no end before a full card',
+    async () => {
+      await started(['a', 'b']);
+      expect(screen.queryByRole('button', { name: /Terminar/ })).toBeNull();
+      fireEvent.keyDown(window, { key: 'e' });
+      fireEvent.keyDown(window, { key: 'Escape' });
+      await flush();
+      // Pause and resume keep working and never end the round.
+      fireEvent.click(screen.getByRole('button', { name: 'Pausa' }));
+      await flush();
+      fireEvent.click(screen.getByRole('button', { name: /Reanudar|Seguir/ }));
+      await flush();
+      const first = Math.min(completesAt(indexOf('a')), completesAt(indexOf('b')));
+      for (let k = 0; k < first - 1; k++) await tick(10_000);
+      expect(sent.some((m) => m.t === 'end')).toBe(false);
+      await tick(10_000);
+      expect(sent.filter((m) => m.t === 'end')).toHaveLength(1);
+      expect((sent.find((m) => m.t === 'end') as Sent).reason).toBe('full-card');
+    },
+    FULL_ROUND_TIMEOUT_MS,
+  );
 
   it('sends scores with squares crossed after every closed call, and a final one before end', async () => {
     await started(['a', 'b']);
@@ -353,37 +371,45 @@ describe('automatic caller', () => {
     );
   });
 
-  it('the final scores message (all squares crossed) comes just before end', async () => {
-    await started(['a', 'b']);
-    const first = Math.min(completesAt(indexOf('a')), completesAt(indexOf('b')));
-    for (let k = 0; k < first; k++) await tick(10_000);
-    const endAt = sent.findIndex((m) => m.t === 'end');
-    const last = sent
-      .slice(0, endAt)
-      .filter((m) => m.t === 'scores')
-      .pop() as Sent & {
-      crossed: Record<string, number>;
-    };
-    expect(Math.max(...Object.values(last.crossed))).toBe(16);
-  });
+  it(
+    'the final scores message (all squares crossed) comes just before end',
+    async () => {
+      await started(['a', 'b']);
+      const first = Math.min(completesAt(indexOf('a')), completesAt(indexOf('b')));
+      for (let k = 0; k < first; k++) await tick(10_000);
+      const endAt = sent.findIndex((m) => m.t === 'end');
+      const last = sent
+        .slice(0, endAt)
+        .filter((m) => m.t === 'scores')
+        .pop() as Sent & {
+        crossed: Record<string, number>;
+      };
+      expect(Math.max(...Object.values(last.crossed))).toBe(16);
+    },
+    FULL_ROUND_TIMEOUT_MS,
+  );
 
-  it('shows the whole leaderboard on the cantor screen, and the standings when it ends', async () => {
-    const seats = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
-    await started(seats);
-    await pick('b');
-    await pick('a');
-    const table = screen.getByRole('table', { name: 'Tabla de puntos' });
-    const rows = within(table).getAllByRole('row').slice(1);
-    expect(rows).toHaveLength(7);
-    expect(rows[0]!.textContent).toMatch(/^1.*b.*2/);
-    expect(rows[0]!.getAttribute('data-first')).toBe('true');
-    expect(rows[1]!.textContent).toMatch(/^2.*a.*1/);
-    const first = Math.min(...seats.map((x) => completesAt(indexOf(x))));
-    for (let k = 0; k < first; k++) await tick(10_000);
-    const final = screen.getByRole('table', { name: 'Tabla de puntos final' });
-    expect(within(final).getAllByRole('row')).toHaveLength(8);
-    expect(screen.queryByRole('table', { name: 'Tabla de puntos' })).toBeNull();
-  });
+  it(
+    'shows the whole leaderboard on the cantor screen, and the standings when it ends',
+    async () => {
+      const seats = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+      await started(seats);
+      await pick('b');
+      await pick('a');
+      const table = screen.getByRole('table', { name: 'Tabla de puntos' });
+      const rows = within(table).getAllByRole('row').slice(1);
+      expect(rows).toHaveLength(7);
+      expect(rows[0]!.textContent).toMatch(/^1.*b.*2/);
+      expect(rows[0]!.getAttribute('data-first')).toBe('true');
+      expect(rows[1]!.textContent).toMatch(/^2.*a.*1/);
+      const first = Math.min(...seats.map((x) => completesAt(indexOf(x))));
+      for (let k = 0; k < first; k++) await tick(10_000);
+      const final = screen.getByRole('table', { name: 'Tabla de puntos final' });
+      expect(within(final).getAllByRole('row')).toHaveLength(8);
+      expect(screen.queryByRole('table', { name: 'Tabla de puntos' })).toBeNull();
+    },
+    FULL_ROUND_TIMEOUT_MS,
+  );
 
   it('the round message carries gridSize (4 by default)', async () => {
     await started(['a', 'b']);
@@ -464,30 +490,38 @@ describe('Jugar también (the host screen plays)', () => {
     expect(within(board).getByText(word(id))).toBeTruthy();
   });
 
-  it('local full-card win: more points beat a same-call tie; equal points share', async () => {
-    const [x, y] = tiedIndices();
-    assignIndices([x, y]); // the local seat is assigned first, then 'a'
-    await started(['a'], true);
-    expect(indexOf(LOCAL)).toBe(x);
-    const at = completesAt(x);
-    for (let k = 0; k < at; k++) {
-      await localChoose(call().cardId);
-      await pick('a');
-      if (k < at - 1) await tick(10_000);
-    }
-    await tick(10_000);
-    const end = sent.find((m) => m.t === 'end') as Sent;
-    expect(end).toMatchObject({ winners: [LOCAL], reason: 'full-card' });
-  });
+  it(
+    'local full-card win: more points beat a same-call tie; equal points share',
+    async () => {
+      const [x, y] = tiedIndices();
+      assignIndices([x, y]); // the local seat is assigned first, then 'a'
+      await started(['a'], true);
+      expect(indexOf(LOCAL)).toBe(x);
+      const at = completesAt(x);
+      for (let k = 0; k < at; k++) {
+        await localChoose(call().cardId);
+        await pick('a');
+        if (k < at - 1) await tick(10_000);
+      }
+      await tick(10_000);
+      const end = sent.find((m) => m.t === 'end') as Sent;
+      expect(end).toMatchObject({ winners: [LOCAL], reason: 'full-card' });
+    },
+    FULL_ROUND_TIMEOUT_MS,
+  );
 
-  it('local full-card with equal points shares the win', async () => {
-    const [x, y] = tiedIndices();
-    assignIndices([x, y]);
-    await started(['a'], true);
-    for (let k = 0; k < completesAt(x); k++) await tick(10_000);
-    const end = sent.find((m) => m.t === 'end') as Sent & { winners: string[] };
-    expect([...end.winners].sort()).toEqual(['a', LOCAL]);
-  });
+  it(
+    'local full-card with equal points shares the win',
+    async () => {
+      const [x, y] = tiedIndices();
+      assignIndices([x, y]);
+      await started(['a'], true);
+      for (let k = 0; k < completesAt(x); k++) await tick(10_000);
+      const end = sent.find((m) => m.t === 'end') as Sent & { winners: string[] };
+      expect([...end.winners].sort()).toEqual(['a', LOCAL]);
+    },
+    FULL_ROUND_TIMEOUT_MS,
+  );
 
   it('display-only mode is unchanged: no local seat, no choices, silent host', async () => {
     await started(['a', 'b']);
