@@ -9,8 +9,8 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Updated after the 2026
 
 | Section | P0 | P1 | P2 | Total |
 | --- | --- | --- | --- | --- |
-| Bugs | 0 | 1 | 3 | 4 |
-| Feature requests | 0 | 1 | 4 | 5 |
+| Bugs | 0 | 2 | 3 | 5 |
+| Feature requests | 0 | 2 | 4 | 6 |
 | Tech debt | 1 | 2 | 5 | 8 |
 
 ## Completed
@@ -22,6 +22,12 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Updated after the 2026
 - **2026-10-27 · Public SEO/GEO and crawler guidance:** updated factual summaries for all five public routes, linked deck cards to stable fragments, excluded private and API paths across crawler groups without changing the existing AI crawler allow policy, and documented the implementation in [seo.md](seo.md) and [decision 0025](decisions/0025-public-search-and-ai-discovery.md). No follow-up backlog item remains open.
 
 ## Bugs
+
+### BUG-013 · Solo sizes above 5×5 unavailable in the owner's session — P1
+
+- **Tracking:** [GitHub #2](https://github.com/talacha/app.loteria.to/issues/2).
+- **Status:** Open; do not treat a successful clean-session 8×8 check as resolution. No fix implemented.
+- **Handoff:** [report, hypotheses and acceptance criteria](pending-ui-2026-10-27.md#open-bug-cannot-select-boards-larger-than-55). Investigate persisted spoken-language preferences, capacity messaging and installed-PWA state.
 
 ### BUG-006 · MMS clips for "El Cóndor" and "La Piña" mispronounce ó / ñ — P1
 
@@ -49,14 +55,21 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Updated after the 2026
 
 ## Feature requests
 
+### FEAT-008 · Solo board-first layout and reordered sidebar — P1
+
+- **Tracking:** [GitHub #3](https://github.com/talacha/app.loteria.to/issues/3).
+- **Status:** Documented for later; owner explicitly requested no implementation now.
+- **Scope:** main region = board (3); sidebar = taller called card (1), answers (2), leaderboard (4); called-card history (5) spans the bottom.
+- **Handoff:** [annotated screenshot, component mapping and acceptance criteria](pending-ui-2026-10-27.md#layout-enhancement-from-the-annotated-screenshot).
+
 The owner authorized static asset production and the 144-card expansion on 2026-10-27, superseding the earlier hold. New language publication still requires source verification, community review and recordings.
 
 ### FEAT-001 · Add Cabécar (`cjp`) and Ngäbere (`gym`) — P1
 
 - **Selection:** owner confirmed this pair on 2026-10-27; see [decision 0026](decisions/0026-cabecar-ngabere-expansion.md). This supersedes the earlier Bribri/Cabécar pairing.
 - **TTS ready:** dedicated Meta MMS checkpoints exist for both; model revisions are pinned in `scripts/audio/engines.json`. Both loaded successfully in the local audio runtime. Ngäbere's pinned ASR adapter is also available.
-- **Content pending:** Cabécar's 47 imported words remain drafts; Ngäbere needs sourced vocabulary and community review. See [readiness and sources](language-expansion-cjp-gym.md).
-- **Accept when:** reviewed words and pronunciation cover a valid shared deck, clips pass audio checks, language selectors and printing work, offline assets stay in budget, and public claims describe actual playable coverage. Do not enable draft names or change five-language claims before then.
+- **Content pending:** Cabécar's 47 imported words remain drafts; Ngäbere has 24 sourced candidates. The owner subsequently authorized TTS-only publication without speaker review; see the [latest handoff](pending-ui-2026-10-27.md#other-pending-handoff-cabecar-and-ngabere). Missing vocabulary must not be invented.
+- **Accept when:** sourced words and synthetic clips cover a valid shared deck, selectors and printing work, offline assets stay in budget, and public copy accurately labels synthetic/unreviewed voices and actual coverage. Update the content gate deliberately; neither language is enabled yet.
 
 ### FEAT-002 · Optional gloss in the app language after the reveal — P2
 

@@ -3,6 +3,8 @@
 - **Status:** Accepted
 - **Date:** 2026-10-27
 
+**Later owner update:** the owner authorized proceeding with sourced words and TTS without speaker review. The review prerequisite below is superseded by that instruction; see the [pending implementation handoff](../pending-ui-2026-10-27.md#other-pending-handoff-cabecar-and-ngabere). No native-review claims or invented translations are authorized. Public activation remains pending.
+
 ## Context
 
 The owner selected Cabécar and Ngäbere (Guaymí) from the requested Costa Rican languages after checking dedicated TTS support. Meta provides language-specific MMS checkpoints for both: `facebook/mms-tts-cjp` and `facebook/mms-tts-gym`. A model checkpoint establishes synthesis support, not native-speaker review or coverage of every regional variety.

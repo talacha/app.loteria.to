@@ -69,6 +69,8 @@ const emojiOf = (id: CardId): string => {
   return c?.emoji ?? c?.art ?? '?';
 };
 
+// TODO(FEAT-008 / GitHub #3): board-first main region; sidebar call → choices → scores;
+// history spans the bottom. See docs/pending-ui-2026-10-27.md; implementation deferred.
 export default function SoloGame({
   initial,
   lang,

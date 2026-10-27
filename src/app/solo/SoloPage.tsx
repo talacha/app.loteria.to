@@ -53,6 +53,8 @@ function initialSpoken(options: Lang[]): Lang {
   return options.includes('es') ? 'es' : (options[0] ?? 'es');
 }
 
+// TODO(BUG-013 / GitHub #2): investigate persisted sessions blocked above 5×5.
+// See docs/pending-ui-2026-10-27.md; clean-session 8×8 success does not resolve the report.
 export default function SoloPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();

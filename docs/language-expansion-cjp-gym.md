@@ -1,5 +1,7 @@
 # Cabécar and Ngäbere readiness
 
+**Later owner direction (2026-10-27):** speaker review is no longer a prerequisite; rely on sourced vocabulary and clearly labeled synthetic/unreviewed TTS. See the [current handoff](pending-ui-2026-10-27.md#other-pending-handoff-cabecar-and-ngabere). The audit below preserves the earlier readiness assessment; its speaker-review publication gate is superseded, while missing vocabulary and honest provenance remain relevant. Activation is still pending.
+
 Audit date: 2026-10-27. The selected additions are Cabécar (`cjp`) and Ngäbere (`gym`). Each has a language-specific Meta MMS-TTS checkpoint. That verifies a synthesis route; it does not establish modern spelling, semantic accuracy, local pronunciation or community approval. Public play remains unavailable until those content conditions are met, as required by [ADR 0023](decisions/0023-expanded-catalog-and-language-coverage.md).
 
 ## Content actually available
