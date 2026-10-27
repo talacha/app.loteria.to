@@ -11,11 +11,14 @@
 
 | Artboard | Screen | App owner dir |
 |---|---|---|
-| `Main.dc.html` 1 · Elige tu idioma | language picker before joining (Náhuatl / Español / English, Escucha toggle) | `src/app/join/` |
-| `Lobby.dc.html` 2 · Sala de espera | player lobby: room code tiles, connection pill, roster grid, invite hint | `src/app/join/`, `src/app/lobby/` |
-| `Play.dc.html` 3 · El cantor canta | call panel + "¿Cuál es?" three-choice claim + 4×4 tabla with beans | `src/app/game/` (rules come from `docs/rules.md`) |
-| `Win.dc.html` 4 · ¡Lotería! | celebration | `src/app/game/` |
-| `Caller.dc.html` 5 · Pantalla del cantor | laptop/projector host screen | `src/app/host/`, `src/app/game/HostGame.tsx` |
+| `Main.dc.html` 1 · Tu nombre: crear o unirte | first screen: name, glyph, **Crear una sala** or **Unirme** (code input, Entrar, scan QR) | `src/app/home/` |
+| `Language.dc.html` 2 · Elige tu idioma | call language (Náhuatl, Maya yucateco, Quechua, Español, English), Escucha toggle; both create and join pass through it | `src/app/lobby/LanguagePicker` |
+| `Lobby.dc.html` 3 · Sala de espera | player lobby: room code tiles, connection pill, roster grid, invite hint | `src/app/join/`, `src/app/lobby/` |
+| `Play.dc.html` 4 · Carta cantada | automatic call panel; "¿Cuál es?" three picture choices **only if the card is on your tabla** (else "No está en tu tabla"); feedback (¡Eso! +2 first / ¡Casi!); tabla with corner beans and dimmed art; points chip "· desempate" | `src/app/game/` (rules: `docs/rules.md`) |
+| `Win.dc.html` 5 · ¡Lotería! | celebration with winning line and its words | `src/app/game/` |
+| `Caller.dc.html` 6 · Pantalla de canto | laptop/projector: word in the room's languages (no picture until reveal), QR + code, "x de y ya eligieron", Puntos (desempate), history; **no manual next** (automatic), only Pausa + speed | `src/app/host/`, `src/app/game/HostGame.tsx` |
+
+Language colours for the two added languages: Maya yucateco `#7A4BD6`, Quechua `#C2410C` (both pass 4.5:1 with paper text).
 
 ## Tokens (map into `src/app/theme/tokens.css`; keep existing variable names, add these)
 

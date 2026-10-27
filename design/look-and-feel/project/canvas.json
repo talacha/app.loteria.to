@@ -5,17 +5,18 @@
   "launch": { "view": "canvas" },
   "pages": [],
   "boards": {
-    "Main.dc.html": { "x": 0, "y": 0, "w": 390, "h": 844, "title": "1 · Elige tu idioma", "is_interactive": true, "radius": 28 },
-    "Lobby.dc.html": { "x": 470, "y": 0, "w": 390, "h": 844, "title": "2 · Sala de espera", "radius": 28 },
-    "Play.dc.html": { "x": 940, "y": 0, "w": 390, "h": 844, "title": "3 · El cantor canta: elige la correcta", "is_interactive": true, "radius": 28 },
-    "Win.dc.html": { "x": 1410, "y": 0, "w": 390, "h": 844, "title": "4 · ¡Lotería!", "radius": 28 },
-    "Caller.dc.html": { "x": 0, "y": 964, "w": 1280, "h": 800, "title": "5 · Pantalla del cantor (laptop / proyector)" }
+    "Main.dc.html": { "x": 0, "y": 0, "w": 390, "h": 844, "title": "1 · Tu nombre: crear o unirte", "is_interactive": true, "radius": 28 },
+    "Language.dc.html": { "x": 470, "y": 0, "w": 390, "h": 844, "title": "2 · Elige tu idioma", "is_interactive": true, "radius": 28 },
+    "Lobby.dc.html": { "x": 940, "y": 0, "w": 390, "h": 844, "title": "3 · Sala de espera", "radius": 28 },
+    "Play.dc.html": { "x": 1410, "y": 0, "w": 390, "h": 844, "title": "4 · Carta cantada: elige si está en tu tabla", "is_interactive": true, "radius": 28 },
+    "Win.dc.html": { "x": 1880, "y": 0, "w": 390, "h": 844, "title": "5 · ¡Lotería!", "radius": 28 },
+    "Caller.dc.html": { "x": 0, "y": 964, "w": 1280, "h": 800, "title": "6 · Pantalla de canto automática (laptop / proyector)" }
   },
-  "order": ["Main.dc.html", "Lobby.dc.html", "Play.dc.html", "Win.dc.html", "Caller.dc.html"],
+  "order": ["Main.dc.html", "Language.dc.html", "Lobby.dc.html", "Play.dc.html", "Win.dc.html", "Caller.dc.html"],
   "notes": {
-    "title": { "x": 0, "y": -300, "text": "Feria de noche — a lotería night-fair look", "kind": "title1", "maxW": 1800 },
-    "how": { "x": 1880, "y": 0, "w": 320, "fill": "teal", "text": "Core loop: the automatic cantor calls one card in the player's language. Three picture choices appear; tapping the right one places a bean on the tabla (if it's there). Wrong taps get a gentle ¡Casi! and a second try — never a penalty." },
-    "honesty": { "x": 1880, "y": 460, "w": 320, "fill": "orange", "text": "Nahuatl words are the deck's documented drafts (tonatiuh, metztli, centli…) and always carry the 'palabra en revisión' tag until a native speaker approves them." }
+    "title": { "x": 0, "y": -300, "text": "Feria de noche — a lotería night-fair look", "kind": "title1", "maxW": 2270 },
+    "how": { "x": 2350, "y": 0, "w": 320, "fill": "teal", "text": "Rules (docs/rules.md): the cantor is automatic. Everyone sees the same drawn card. If it's on your tabla you get three picture choices; every correct pick crosses it out, and the first correct pick earns 2 points. Points only break ties. Wrong taps get a gentle ¡Casi! and another try." },
+    "honesty": { "x": 2350, "y": 460, "w": 320, "fill": "orange", "text": "Náhuatl, Maya yucateco and Quechua words are drafts from the deck and always carry the 'palabra en revisión' tag until a native speaker approves them." }
   },
   "designSystems": []
 }

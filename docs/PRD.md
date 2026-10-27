@@ -63,7 +63,7 @@
 AI hints (`HintProvider` with offline tag matcher only), Claude banter, reviewer tool (`/review`), `/admin`, metrics. Provide the interfaces and the offline matcher; leave online providers unimplemented.
 
 ### 3.10 Current focus: session setup and lobby (owner direction, 2026-10-26)
-The build priority is the multiplayer scaffold, not round rules. Turn-by-turn play will be specified later in `docs/rules.md`; until then the round screens are placeholders behind a single game boundary.
+The build priority is the multiplayer scaffold, not round rules. Turn-by-turn play is specified in `docs/rules.md` (automatic caller, three-choice picks, first-correct points as tie-breakers).
 - **Mobile first, works on tablet and laptop.** Every screen is designed at 360 px first, then 768 px (tablet) and 1280 px (laptop). The host can be a phone as well as a projector.
 - **Create:** Home → "Crear sala" → room code, signed host key, lobby.
 - **Share:** QR code, copyable link `/r/{CODE}#k={hostKey}`, Web Share API where available, and the code in large type for typing at `/` → "Unirme".

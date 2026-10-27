@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Elige tu idioma</title>
+<title>¿Cómo te llamas?</title>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -13,9 +13,10 @@
 <style>
 body{margin:0}
 a{color:#FFC233}a:hover{color:#FFE08A}
+input::placeholder{color:#8A86A8}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; background: #1E2142; color: #FFF6E5; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; display: flex; flex-direction: column; padding: 28px 20px 24px; gap: 20px; overflow: hidden">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #1E2142; color: #FFF6E5; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; display: flex; flex-direction: column; padding: 28px 20px 24px; gap: 18px; overflow: hidden">
   <div style="display: flex; align-items: center; justify-content: space-between">
     <div style="display: flex; align-items: center; gap: 10px">
       <img src="/_blob/68822fdae8f9f5cf3b61b04605307e3d" alt="" style="width: 36px; height: 36px">
@@ -24,67 +25,73 @@ a{color:#FFC233}a:hover{color:#FFE08A}
     <span style="font-size: 14px; color: #C9C3E6">Paso 1 de 2</span>
   </div>
 
-  <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px">
-    <h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 36px; line-height: 1.02; letter-spacing: -0.02em">¿En qué idioma te cantamos?</h1>
-    <p style="margin: 0; font-size: 16px; line-height: 1.45; color: #C9C3E6">El cantor dirá cada carta en tu idioma. Puedes cambiarlo en cualquier momento.</p>
+  <h1 style="margin: 4px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; line-height: 1.02; letter-spacing: -0.02em">¿Cómo te llamas?</h1>
+
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <label for="name" style="font-size: 15px; font-weight: 700">Tu nombre en la sala</label>
+    <input id="name" type="text" value="Itzel" maxlength="40" autocomplete="nickname" style="min-height: 56px; box-sizing: border-box; padding: 0 16px; border-radius: 16px; background: #FFF6E5; color: #16182F; border: 3px solid #16182F; box-shadow: 0 5px 0 #0C0D1E; font: inherit; font-size: 20px; font-weight: 700">
+    <span style="font-size: 13px; color: #C9C3E6">Solo lo ven quienes están en tu sala. No se guarda en ningún servidor.</span>
   </div>
 
-  <div role="radiogroup" aria-label="Idioma del juego" style="display: flex; flex-direction: column; gap: 14px">
-    <sc-for list="{{langs}}" as="l" hint-placeholder-count="3">
-      <button type="button" role="radio" aria-checked="{{l.checked}}" onClick="{{l.pick}}" style="{{l.cardStyle}}">
-        <span style="{{l.chipStyle}}">
-          <img src="/_blob/68822fdae8f9f5cf3b61b04605307e3d" alt="" style="width: 44px; height: 44px">
-        </span>
-        <span style="display: flex; flex-direction: column; gap: 2px; flex: 1; text-align: left">
-          <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; color: #16182F">{{l.name}}</span>
-          <span style="font-size: 15px; color: #4A4766">{{l.native}} · «{{l.sample}}»</span>
-          <sc-if value="{{l.draft}}" hint-placeholder-val="{{ false }}">
-            <span style="align-self: flex-start; margin-top: 6px; font-size: 12px; font-weight: 700; color: #16182F; background: #FFE08A; border: 2px solid #16182F; border-radius: 999px; padding: 2px 10px">Palabras en revisión por hablantes</span>
-          </sc-if>
-        </span>
-        <span style="{{l.dotStyle}}">
-          <sc-if value="{{l.selected}}" hint-placeholder-val="{{ false }}">
-            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF6E5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
-          </sc-if>
-        </span>
-      </button>
-    </sc-for>
-  </div>
+  <fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 8px">
+    <legend style="padding: 0; margin-bottom: 8px; font-size: 15px; font-weight: 700">Elige tu dibujo</legend>
+    <div role="radiogroup" aria-label="Tu dibujo" style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px">
+      <sc-for list="{{glyphs}}" as="g" hint-placeholder-count="6">
+        <button type="button" role="radio" aria-checked="{{g.checked}}" aria-label="{{g.label}}" onClick="{{g.pick}}" style="{{g.style}}">
+          <img src="{{g.src}}" alt="" style="width: 34px; height: 34px">
+        </button>
+      </sc-for>
+    </div>
+  </fieldset>
 
-  <label style="display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 4px; font-size: 16px; color: #FFF6E5; cursor: pointer">
-    <input type="checkbox" style="width: 24px; height: 24px; accent-color: #FFC233">
-    <span>Modo escucha: solo el sonido, sin la palabra escrita</span>
-  </label>
+  <div style="margin-top: auto; display: flex; flex-direction: column; gap: 14px">
+    <a href="Language.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 72px; border-radius: 20px; background: #FFC233; color: #16182F; border: 3px solid #16182F; box-shadow: 0 5px 0 #0C0D1E; text-decoration: none">
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px">Crear una sala</span>
+      <span style="font-size: 14px">Tú cantas: los demás se unen con tu código</span>
+    </a>
 
-  <div style="margin-top: auto; display: flex; flex-direction: column; gap: 12px">
-    <a href="Lobby.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 60px; border-radius: 18px; background: #FFC233; color: #16182F; border: 3px solid #16182F; box-shadow: 0 5px 0 #0C0D1E; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; text-decoration: none">Jugar en {{pickedName}}</a>
+    <div style="display: flex; align-items: center; gap: 12px; color: #C9C3E6; font-size: 14px">
+      <span style="flex: 1; height: 2px; background: #45497F"></span>o<span style="flex: 1; height: 2px; background: #45497F"></span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 20px; background: #2A2E58; border: 3px solid #16182F">
+      <label for="code" style="font-size: 15px; font-weight: 700">Unirme a una sala</label>
+      <div style="display: flex; gap: 10px">
+        <input id="code" type="text" inputmode="text" autocapitalize="characters" maxlength="5" placeholder="K7MPQ" style="flex: 1; min-width: 0; min-height: 56px; box-sizing: border-box; padding: 0 14px; border-radius: 14px; background: #FFF6E5; color: #16182F; border: 3px solid #16182F; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase">
+        <a href="Language.dc.html" style="display: flex; align-items: center; justify-content: center; min-width: 96px; min-height: 56px; padding: 0 16px; box-sizing: border-box; border-radius: 14px; background: #FFF6E5; color: #16182F; border: 3px solid #16182F; box-shadow: 0 4px 0 #0C0D1E; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 18px; text-decoration: none">Entrar</a>
+      </div>
+      <a href="Language.dc.html" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 15px; color: #FFC233; text-decoration: none">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3"/><path d="M8 12h8"/></svg>
+        Escanear el código QR
+      </a>
+    </div>
+
     <p style="margin: 0; text-align: center; font-size: 13px; color: #C9C3E6">Sin cuentas, sin dinero. Solo frijolitos.</p>
   </div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
-  constructor(props) { super(props); this.state = { picked: 'nah' }; }
+  constructor(props) { super(props); this.state = { glyph: 'colibri' }; }
   renderVals() {
     const all = [
-      { id: 'nah', name: 'Náhuatl', native: 'Nahuatl', sample: 'tonatiuh', color: '#0E9F7E', draft: true },
-      { id: 'es', name: 'Español', native: 'Spanish', sample: 'El Sol', color: '#E5177E', draft: false },
-      { id: 'en', name: 'English', native: 'Inglés', sample: 'The Sun', color: '#2F6FE4', draft: false }
+      { id: 'colibri', label: 'Colibrí', src: '/_blob/20eb01890006bcef796790c1d86a2892' },
+      { id: 'jaguar', label: 'Jaguar', src: '/_blob/8d3d0f44bf46c1fbac2ba6a6326b8a03' },
+      { id: 'rana', label: 'Rana', src: '/_blob/dbc658a00d19e785d94af6f5f8452518' },
+      { id: 'mariposa', label: 'Mariposa', src: '/_blob/b7ae0c98e9b60e420a87b581057e38ee' },
+      { id: 'nopal', label: 'Nopal', src: '/_blob/b0f4cb5cb0f804544cc1dc879e23517a' },
+      { id: 'tortuga', label: 'Tortuga', src: '/_blob/4ee3fee82e57dc2d92a8f482f1713c54' }
     ];
-    const langs = all.map((l) => {
-      const selected = this.state.picked === l.id;
+    const glyphs = all.map((g) => {
+      const on = this.state.glyph === g.id;
       return {
-        ...l,
-        selected,
-        checked: selected ? 'true' : 'false',
-        pick: () => this.setState({ picked: l.id }),
-        cardStyle: 'display:flex;align-items:center;gap:14px;width:100%;min-height:96px;padding:14px 16px;border-radius:22px;background:#FFF6E5;cursor:pointer;font:inherit;text-align:left;border:3px solid #16182F;' + (selected ? 'box-shadow:0 0 0 4px ' + l.color + ', 0 6px 0 #0C0D1E;transform:translateY(-2px);' : 'box-shadow:0 5px 0 #0C0D1E;'),
-        chipStyle: 'display:flex;align-items:center;justify-content:center;width:60px;height:60px;flex-shrink:0;border-radius:16px;border:3px solid #16182F;background:' + l.color + ';',
-        dotStyle: 'display:flex;align-items:center;justify-content:center;width:30px;height:30px;flex-shrink:0;border-radius:999px;border:3px solid #16182F;background:' + (selected ? l.color : '#FFFFFF') + ';'
+        ...g,
+        checked: on ? 'true' : 'false',
+        pick: () => this.setState({ glyph: g.id }),
+        style: 'display:flex;align-items:center;justify-content:center;aspect-ratio:1;min-height:48px;border-radius:14px;cursor:pointer;border:3px solid #16182F;' + (on ? 'background:#FFC233;box-shadow:0 0 0 3px #FFF6E5;' : 'background:#FFF6E5;box-shadow:0 4px 0 #0C0D1E;')
       };
     });
-    const pickedName = all.find((l) => l.id === this.state.picked).name;
-    return { langs, pickedName };
+    return { glyphs };
   }
 }
 </script>
