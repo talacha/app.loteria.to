@@ -1,152 +1,108 @@
 # PRD: Lotería de los Pueblos (app.loteria.to)
 
-**Status:** v1 build spec. Companion to [ARCHITECTURE.md](ARCHITECTURE.md), which wins on stack questions.
-**One line:** The picture bingo everyone grew up with, called in five languages. A whole classroom, plaza or family table joins from one QR code, and no phone is required to play.
+**Status:** v1.0 baseline, as shipped at https://app.loteria.to (2026-10-27).
+**Owner:** Rob Montero. **Game rules:** [rules.md](rules.md) is the single source of truth for gameplay; this document does not restate them. **Stack:** [ARCHITECTURE.md](ARCHITECTURE.md). **Network contract:** [protocol.md](protocol.md). **Design:** [DESIGN.md](DESIGN.md). **Why things are the way they are:** [decisions/](decisions/README.md). **What's next:** [backlog.md](backlog.md).
 
-## 0. Product pillars (owner direction, 2026-10-26)
+**One line:** The picture lotería everyone grew up with, called aloud in Náhuatl, Maya yucateco, Quechua, Español and English. A room of friends, family or classmates joins from one QR code and plays on their phones.
 
-Every feature should serve at least one of these; when they conflict, earlier wins.
+## 1. Product pillars
 
-1. **Learn new languages by playing.** Matching a heard word to one of three pictures is active listening. Escucha mode teaches by ear; the caller screen shows the same card in every room language; each round ends with "Palabras de tu línea".
-2. **Inclusion, and easy to add more languages.** Five languages at launch (Náhuatl, Maya yucateco, Quechua Cusco-Collao, Español, English); each player picks their own in the same room. A new language is a content change (drafts file → native-speaker review sheet → recordings), not a code change. Honest review status on every Indigenous word. Phones, shared tablets and paper boards all play; no accounts; works offline.
-3. **Friends and family game time.** One QR code gathers the room in under 30 seconds; the automatic caller lets everyone play; every correct pick earns the bean and being first only breaks ties; wrong picks get a gentle "¡Casi!"; no money, prizes or betting — just beans.
+Every feature serves at least one pillar. When they conflict, the earlier one wins.
 
-## 1. Goals and non-goals
+1. **Learn languages by playing.** Each called card is heard in the player's spoken language and must be matched to one of three spellings. Hearing, choosing and seeing the word revealed on the cartón is the language exercise.
+2. **Inclusion, and easy to add languages.** Five spoken languages at launch, chosen per player in the same room, independently of the app language. Adding a language is a content change (names in `src/content/cards.json` plus audio clips), not a code change. No accounts, no app store, any phone with a browser.
+3. **Friends and family game time.** One QR code gathers the room; an automatic cantor means nobody has to "run" the game; wrong picks get a gentle "¡Casi!"; points only break ties; no money, prizes or betting, just frijoles.
 
-**Goals**
-1. A cantor (host) can start a round in under 30 s and a player can hold a tabla in under 30 s from scanning a QR code. No accounts, no app store.
-2. Phones, a shared tablet and printed paper boards all play in the same round.
-3. A single device can run a full round for paper boards with **no network at all** (PWA, precached).
-4. Calls in five languages: Nahuatl (`nah`), Maya (`yua`), Quechua (`quz`), Español (`es`), English (`en`), or a rotating language per card.
-5. Honest about language: no Indigenous-language word or recording is shown as authoritative unless its status is `approved`.
+## 2. Audiences
 
-**Non-goals (v1):** money, prizes, betting, accounts, chat, leaderboards across rounds, AI-generated Indigenous text, synthetic speech for Indigenous languages, native apps.
+| Audience | What they need | How v1.0 serves it |
+| --- | --- | --- |
+| Mixed-language families | Grandparents, parents and kids play together, each in their own language | Per-player spoken language; app language separate (es/en) |
+| Friends at a table or a party | Fast setup, no installs, a big shared screen | QR / link / code join; organiser's screen as the cantor; "Jugar también" so the organiser plays too |
+| Heritage and second-language learners | Hear a word, recognise it, repeat | Spelling picks, replay button, solo mode against the computer |
+| Classrooms and community centres | One screen, many players, sometimes no phones | Online game for phones; printed cartones live in a separate classroom mode (`/print`, see [decision 0009](decisions/0009-printing-is-a-separate-classroom-mode.md)) |
 
-## 2. Users
-- **Classroom / community centre:** one screen calls, kids play on paper or phones.
-- **Mixed-language families:** a grandparent calls in Maya while kids match pictures.
-- **Heritage learners:** *Escucha* mode calls only the word (no caption), learn by ear.
+## 3. v1.0 scope (as shipped)
 
-## 3. Functional requirements
+### 3.1 Rooms and joining
 
-### 3.1 Deck
-- 54 original cards in 6 categories (animals, plants & food, sky, land, handmade/tools, places). No stereotyped human figures; no gendered human roles in copy.
-- Each card: stable `id`, number `n`, category, art, names per language with `status` (`draft` | `reviewed` | `approved`), Spanish/English verse and riddle, tags.
-- Art for v1 is placeholder emoji/SVG. Names shown for `nah`/`yua`/`quz` ship **empty/absent** until reviewed; the UI shows "pending review" and hides that call language (`VITE_HIDE_UNREVIEWED`, default on in production). **Never fabricate Indigenous-language words.**
+- The organiser opens a room from the home page (name + picture first); the room gets a 5-character code from an unambiguous alphabet (no I, L, O, 0, 1). Rooms hold **2–20 players**; a 21st player is told the room is full and offered a new room ([0010](decisions/0010-rooms-2-to-20-overflow-to-new-room.md)).
+- Players join by **QR code, link** (`/r/{CODE}#k={hostKey}`) **or typed code**. Web Share API where available. Shared links show a room-invite preview card (Routing Middleware on `/r/*`).
+- Live roster on every device; the organiser can remove a player. Reload or brief disconnects restore the same cartón, points and languages; late joiners enter the running round with 0 points. Re-crossing cards called before a join or reload is not yet implemented (backlog BUG-013).
 
-### 3.2 Cantor (host)
-- Home → "Ser cantor" creates a room: 5-letter code from an unambiguous alphabet, random seed, QR + URL `https://app.loteria.to/r/{CODE}`.
-- Settings: call language (one of 5, or *rotating*), speed (6–20 s, presets: Calmado / Normal / Rápido), pattern (line, four corners, center square, full board), Escucha mode (audio/word only), captions on/off.
-- Controls: start, pause/resume, next, repeat, end round; keyboard (Space, N, R, L = check paper code, P = pause).
-- Shuffle = `deckOrder(roomSeed, roundNo)`; no card repeats in a round. Screen Wake Lock while running. State saved to IndexedDB after each call so reload resumes.
-- Audio: play recorded clip if present; Spanish/English may fall back to Web Speech; **Indigenous languages never use synthetic speech** (show caption only, with a "no recording yet" note).
-- Claim handling: phone claims arrive over the channel; host validates with `checkClaim`; result broadcast. Paper claims: press `L`, type 6-char code, host validates locally.
+### 3.2 Organiser screen ("pantalla del cantor")
 
-### 3.3 Player (phone / tablet)
-- Join by QR → `/r/{CODE}` → enter name (free text) + pick a glyph (no photos) + optional pronouns + label language → receive a 4×4 tabla (16 cards, ≤5 per category) derived from `tabla(seed, index)`.
-- Mark by tap (bean animation; respects reduced motion). Marks stay on the phone (sessionStorage). Optional **auto-mark** accessibility aid.
-- "¡Lotería!" button sends `claim`. Invalid claim → friendly "¡Casi!" with no penalty and no lockout beyond a 3 s rate limit.
-- Current call shown large with caption (unless Escucha). Listen-only mode. Adjustable text size, high-contrast theme.
+- When creating the room the organiser picks **"Solo pantalla"** (display only) or **"Jugar también"** (the organiser also gets a cartón and spelling choices on the same screen and is scored like everyone else) ([0011](decisions/0011-host-screen-modes.md)).
+- Controls: start (enabled at ≥ 2 players), pause/resume, calling speed (6–20 s per card), repeat the voice, mute/unmute, end the round early, "Otra ronda". Keyboard: Space/P pause, R repeat.
+- The cantor screen is silent by default; phones carry the voices.
 
-### 3.4 Paper play
-- `/print`: choose count, paper size (Letter/A4), label language, large print, ink saver. PDF built in the browser (`pdf-lib`, Web Worker). Each board prints a 6-char Crockford base32 check code (with checksum) encoding seed ref + index.
-- Works fully offline.
+### 3.3 The round
 
-### 3.5 Offline / PWA
-- Service worker precaches shell, content, art, audio of enabled languages (< 10 MB). `/api/*` is network-only. Host plays a full round with no network (paper players).
+- **Automatic cantor**: a voice, never a person, calls each card once in an order no player can predict. Every player sees the picture and hears the name in their own spoken language.
+- **Spelling picks**: three written choices in the player's spoken language, the same three cards for everyone; one retry after "¡Casi!".
+- **Scoring**: first correct pick 2 points, every other correct pick 1, wrong or none 0. Points last one round and only break ties.
+- **Win**: the first full cartón (all 16) calls ¡Lotería!; simultaneous completions go to more points; equal points share.
+- Cartones are 4×4 pictures only; no two cartones in a room share more than 8 cards.
 
-### 3.6 Networking
-- Supabase Realtime broadcast channel `loteria:{code}` + Presence; ≤ 40 players. Messages per ARCHITECTURE §5.3, zod-validated. Host is authority.
-- A `Transport` interface with two implementations: `SupabaseTransport` and `LocalTransport` (BroadcastChannel, same-browser tabs) used for dev, tests and when env vars are absent. The app must run and be e2e-testable with no Supabase credentials.
+Full detail: [rules.md](rules.md) §1–§9. Decision record: [0004](decisions/0004-rules-spelling-picks-points-full-card.md).
 
-### 3.7 i18n / accessibility
-- UI strings in `es` (default) and `en`; catalogs for the call languages hold card names only. i18next with ICU plurals.
-- WCAG 2.2 AA: keyboard operable, visible focus, 44 px targets, `prefers-reduced-motion`, colour is never the only signal, axe-clean in Playwright.
+### 3.4 Languages and audio
 
-### 3.8 Privacy and tone
-- No accounts, no tracking cookies. Players are names + glyphs; pronouns optional. No server stores names, tablas or marks. Optional anonymous counters, with opt-out, are **out of v1** (stub only).
-- Copy lint forbids gendered human roles, "win/prize/bet/money" framing; "beans" not "chips".
+- **App language** (Español, English) and **spoken language** (Náhuatl, Maya yucateco, Quechua Cusco-Collao, Español, English) are separate per-player settings, changeable mid-round without losing progress ([0005](decisions/0005-ui-language-separate-from-spoken-language.md)).
+- All five languages are offered and treated as verified for v1.0 ([0007](decisions/0007-all-five-languages-treated-as-verified.md)); the provenance gap is tracked in the backlog (DEC-001).
+- **Audio**: pre-recorded Meta MMS-TTS clips for all 54 cards × 5 languages (270 clips, `public/audio/{lang}/{id}.m4a`), credited on `/creditos` ([0008](decisions/0008-mms-tts-audio-for-all-languages.md)).
 
-### 3.9 Explicitly deferred (stub behind interface, no implementation)
-AI hints (`HintProvider` with offline tag matcher only), Claude banter, reviewer tool (`/review`), `/admin`, metrics. Provide the interfaces and the offline matcher; leave online providers unimplemented.
+### 3.5 Solo mode
 
-### 3.10 Current focus: session setup and lobby (owner direction, 2026-10-26)
-The build priority is the multiplayer scaffold, not round rules. Turn-by-turn play is specified in `docs/rules.md` (automatic caller, three-choice picks, first-correct points as tie-breakers).
-- **Mobile first, works on tablet and laptop.** Every screen is designed at 360 px first, then 768 px (tablet) and 1280 px (laptop). The host can be a phone as well as a projector.
-- **Create:** Home → "Crear sala" → room code, signed host key, lobby.
-- **Share:** QR code, copyable link `/r/{CODE}#k={hostKey}`, Web Share API where available, and the code in large type for typing at `/` → "Unirme".
-- **Join:** link, QR or typed code → name + glyph (+ optional pronouns) → lobby.
-- **Lobby:** a live roster (glyph + name) on every device via a signed host-only `lobby` message, updated on join/leave; the host sees a count and can start. Names travel only on the room channel and are never stored on a server.
-- **Start:** host taps "Empezar" → host sends `lobby{status:'started'}` + `round` → every device switches to the game screen. Late joiners after start go straight into the game.
-- **Game boundary:** `src/app/game/` exposes `HostGame` and `PlayerGame` components with props `{transport, room, roster}`; everything round-specific lives behind it so `docs/rules.md` can replace it.
+`/solo`: one player against 1+ computer players on one device, no network. Levels Fácil / Normal / Difícil change computer accuracy and reaction time. No language model ([0012](decisions/0012-solo-mode-vs-cpu-no-in-browser-llm.md)).
 
-## 4. Module contracts (binding for parallel work)
+### 3.6 Look, feel and accessibility
 
-All paths are under the repo root. Aliases: `@engine`, `@app`, `@net`, `@ai`, `@content`, `@print`.
+- "Feria de noche" design system; themes **auto, light, dark, high-contrast** from a theme switch in the shell ([0013](decisions/0013-themes-and-design-system-enforcement.md)).
+- Mobile first (390 × 844), then tablet (768) and laptop (1280). WCAG 2.2 AA target: keyboard operable, visible focus ≥ 3:1, 44 px targets, reduced motion respected, state never shown by colour alone.
 
-```ts
-// src/engine/types.ts  (owner: engine agent; others import only)
-export type Lang = 'es' | 'en' | 'nah' | 'yua' | 'quz';
-export type CardId = string;
-export type Category = 'animals' | 'plants_food' | 'sky' | 'land' | 'handmade' | 'places';
-export type PatternId = 'line' | 'corners' | 'center' | 'full';
-export interface Tabla { index: number; cards: CardId[] } // length 16, row-major 4x4
+### 3.7 Public pages, SEO and sharing
 
-// src/engine/index.ts
-export function deckOrder(roomSeed: string, roundNo: number, cardIds: CardId[]): CardId[];
-export function tabla(seed: string, index: number, cards: {id: CardId; category: Category}[]): Tabla;
-export function tablaCode(seed: string, index: number): string;        // 6 chars, Crockford, checksum
-export function decodeTablaCode(code: string): { ok: boolean; seedRef?: number; index?: number };
-export function checkClaim(t: Tabla, called: CardId[], pattern: PatternId, marks?: CardId[]):
-  { valid: boolean; completedPattern?: PatternId; missing?: CardId[] };
-export function roomCode(rng?: () => number): string;                  // 5 chars, no 0/O/1/I/L
-export const PATTERNS: Record<PatternId, number[][]>;                  // winning index sets
+- Prerendered public pages (`/`, `/solo`, `/deck`, `/creditos`, `/print`) with meta, Open Graph and JSON-LD; `robots.txt`, `sitemap.xml`, `llms.txt`; private routes (`/host`, `/r/*`, `/ui`) are `noindex`; a real 404 ([0001](decisions/0001-vite-spa-pwa-on-vercel-prerendered.md)).
+- Installable PWA; shell, content, art and audio precached (6.7 MB of a 10 MB budget).
 
-// src/content/index.ts  (owner: content agent)
-export interface Card { n: number; id: CardId; category: Category; art: string; tags: string[];
-  names: Partial<Record<Lang, { text: string; ipa?: string; status: 'draft'|'reviewed'|'approved'; audio?: string }>>;
-  verso: {es: string; en: string}; riddle: {es: string; en: string} }
-export const cards: Card[];                      // 54, zod-validated at load
-export function callableLangs(opts?: {hideUnreviewed?: boolean}): Lang[];
-export function cardName(c: Card, lang: Lang): { text: string; status: string } | null;
+### 3.8 Platform
 
-// src/net/transport.ts  (owner: net agent)
-export type Msg =
- | {t:'round'; seed:string; roundNo:number; mode:'normal'|'escucha'; pattern:PatternId; callLang:Lang|'rotating'; speedSec:number}
- | {t:'call'; i:number; cardId:CardId; lang:Lang; at:number}
- | {t:'claimResult'; seat:string; valid:boolean; missing?:CardId[]}
- | {t:'end'; winners:string[]}
- | {t:'hello'; seat:string; name:string; glyph:string; pronouns?:string; labelLang:Lang}
- | {t:'claim'; seat:string; tablaIndex:number; marks:CardId[]};
-export interface Transport { join(code:string, role:'host'|'player'): Promise<void>;
-  send(m:Msg): void; onMessage(cb:(m:Msg)=>void): ()=>void; onPresence(cb:(seats:string[])=>void): ()=>void; leave(): void }
-export function createTransport(): Transport;   // Supabase if env set, else Local
+Vercel (static PWA + `api/*` Functions), Supabase Realtime broadcast for rooms with the organiser's device as the only authority and ECDSA-signed host messages, Upstash Redis for the room key registry and rate limits, Supabase Postgres as the only database ([0002](decisions/0002-realtime-broadcast-host-authority-signed-messages.md), [0003](decisions/0003-upstash-and-supabase-postgres-only.md)). Without Supabase credentials the app falls back to a same-browser transport for dev and e2e.
 
-// src/ai/hint.ts
-export interface HintProvider { name:'matcher'; pick(call:{cardId?:string; audioOnly:boolean}, myCards:CardId[]): Promise<{cardId:CardId|null; confidence:number}> }
-```
+## 4. Non-goals (v1.0)
 
-## 5. Milestones and ownership (disjoint file sets)
+- **Money, prizes, betting** or any copy that frames them (rules §9.5).
+- **Accounts**, profiles or server-side storage of names, cartones or marks.
+- **Rankings across rounds**, leaderboards, streaks.
+- **In-browser language model** for solo mode, hints or banter — evaluated and rejected for now ([evaluation](evaluations/solo-mode-slm.md)).
+- **AI-generated Indigenous-language text** of any kind.
+- **Printing in the online game.** Paper cartones are a separate classroom mode, not mixed into an online round.
+- Figures/patterns (line, corners…) as win conditions; manual "next card"; native apps; chat.
 
-| # | Milestone | Owner dir(s) | Depends on |
-|---|---|---|---|
-| M0 | Scaffold: Vite+React+TS strict, pnpm, ESLint/Prettier, Vitest, Playwright config, vite-plugin-pwa, i18next, react-router, aliases, `pnpm check`, `vercel.json`, `.env.example`, `.gitignore`, CI workflow | root config, `src/main.tsx`, `src/app/App.tsx` shell | — |
-| M1 | Engine + property tests | `src/engine/**` | M0 |
-| M2 | Content: 54 cards, art, i18n catalogs, zod schema, validation script | `src/content/**`, `scripts/validate-content.ts` | M0 |
-| M3 | Net: transports, message schemas, tests | `src/net/**` | M0 |
-| M4 | Host UI + audio + persistence | `src/app/host/**`, `src/app/audio/**` | M1–M3 |
-| M5 | Player UI + join flow | `src/app/player/**`, `src/app/join/**` | M1–M3 |
-| M6 | Home, print/PDF, theme, a11y, copy lint | `src/app/home/**`, `src/print/**`, `src/app/theme/**`, `scripts/copy-lint.ts` | M1–M2 |
-| M7 | E2E (host + 2 players over LocalTransport, offline round, axe), integration fixes, README | `e2e/**`, `README.md` | M4–M6 |
+## 5. Success measures
 
-M1–M3 run in parallel; M4–M6 run in parallel; M7 last.
+| Measure | Target | How measured |
+| --- | --- | --- |
+| Time to gather a room | Organiser has a room open in < 30 s; a player holds a cartón < 30 s after scanning | Manual timing on real phones; e2e lobby flow |
+| Round completes for 2–20 players | 0 lost calls, 0 invariant violations | `loadtest/` report (`pass: true`) |
+| Language practice happens | Most players pick on most calls | Anonymous counters (`/api/metrics`, honours DNT/GPC) |
+| Rooms come back | "Otra ronda" used in a majority of rooms | Anonymous counters |
+| Accessibility | axe: no serious violations on home, host, player; contrast ≥ 4.5:1 text, ≥ 3:1 controls in every theme | `pnpm e2e`, `pnpm design-lint` |
+| Weight | Precache < 10 MB; no single precached file > 3 MB | Build output (`sw.js` manifest) |
+| Quality gate | `pnpm check && pnpm build` green on every deploy | Vercel build command ([0014](decisions/0014-deploy-gate-and-rollback.md)) |
 
-## 6. Acceptance criteria
-- `pnpm check` (lint, typecheck, unit tests, content validation, copy lint) passes; `pnpm build` succeeds.
-- Engine properties: same seed ⇒ same deck/tablas; no tabla has duplicates; ≤5 per category; tablaCode round-trips; single-character typo in a code is detected; `checkClaim` has no false positives.
-- Playwright: host + 2 players complete a round over LocalTransport; invalid claim shows "¡Casi!"; round continues offline (`setOffline`); axe finds no serious violations on home, host, player.
-- No unreviewed Indigenous-language string is rendered as a call when `VITE_HIDE_UNREVIEWED` is on.
-- Precache < 10 MB.
+## 6. Constraints
 
-## 7. Open items needing the owner (not blocking the build)
-Domain/DNS and Vercel project for `app.loteria.to`; Supabase project + keys; native-speaker reviewers and recordings; commissioned art; code license. **Deploy is not part of this build run.**
+- **Non-commercial.** Meta MMS-TTS voices are CC-BY-NC 4.0. The app stays free, ad-free and non-commercial while it ships these clips, and credits them on `/creditos`.
+- **Honesty about Indigenous words.** Never invent Náhuatl, Maya or Quechua words; names come only from `src/content/cards.json`. The v1.0 owner call treats all five languages as verified, but the Indigenous names still cite "unverified draft" sources; closing that gap with dictionary citations and native-speaker review is the top open decision (backlog DEC-001). Public copy must not claim more review than has happened.
+- **Accessibility.** WCAG 2.2 AA is a release requirement, not a nice-to-have.
+- **Respectful content.** Cards never show people; copy never uses gendered human roles; copy lint enforces the banned word list.
+- **Privacy.** No accounts, no tracking cookies; player names travel only on the room channel.
+- **Budget.** Free tiers (Vercel Hobby, Supabase Free Realtime, Upstash free) define the load envelope; see the loadtest findings in the backlog.
+
+## 7. Release history
+
+| Version | Date | Notes |
+| --- | --- | --- |
+| v1.0 | 2026-10-27 | Baseline described here. Rules v2 (spelling picks, 2/1 points, full card), host modes, solo, themes, SEO/share previews. Build-day docs archived in `docs/archive/`. |
