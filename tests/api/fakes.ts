@@ -1,5 +1,7 @@
 /** In-memory stand-ins for Upstash Redis, QStash, postgres and Supabase, used by api tests. */
 export const redisStore = new Map<string, string | number>();
+/** Expiry (seconds) passed with `set(..., { ex })`, by key. */
+export const redisTtl = new Map<string, number>();
 export const published: Array<{ url: string; body: unknown }> = [];
 export const sqlCalls: string[] = [];
 export const state = {
@@ -14,6 +16,7 @@ export const state = {
 
 export function resetFakes(): void {
   redisStore.clear();
+  redisTtl.clear();
   published.length = 0;
   sqlCalls.length = 0;
   state.receiverValid = true;
@@ -31,9 +34,14 @@ export function fakeSignature(jti: string): string {
 }
 
 export class FakeRedis {
-  async set(key: string, value: string, opts?: { nx?: boolean }): Promise<'OK' | null> {
+  async set(
+    key: string,
+    value: string,
+    opts?: { nx?: boolean; ex?: number },
+  ): Promise<'OK' | null> {
     if (opts?.nx && redisStore.has(key)) return null;
     redisStore.set(key, value);
+    if (opts?.ex !== undefined) redisTtl.set(key, opts.ex);
     return 'OK';
   }
   async get(key: string): Promise<string | number | null> {

@@ -2,7 +2,12 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { cards } from '@content';
 import { setMuted, speakCall, stopAudio } from './speakCall';
 
-const base = cards[0]!;
+const first = cards[0]!;
+/** The deck now ships recorded clips for every language; these cases test the no-clip fallbacks. */
+const noClips = Object.fromEntries(
+  Object.entries(first.names).map(([l, n]) => [l, { ...n, audio: undefined }]),
+) as typeof first.names;
+const base = { ...first, names: noClips };
 
 afterEach(() => {
   setMuted(false);

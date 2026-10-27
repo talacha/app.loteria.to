@@ -5,6 +5,7 @@ import {
   fakeSignature,
   published,
   redisStore,
+  redisTtl,
   resetFakes,
   sqlCalls,
   state,
@@ -46,6 +47,18 @@ describe('rooms', () => {
     const clash = await h.fetch(post('/api/rooms', { ...body, hostKey: 'B'.repeat(90) }));
     expect(clash.status).toBe(409);
     expect(await read(clash)).toEqual({ error: 'code_taken' });
+  });
+
+  it('reserves a code with the room TTL; a code in use is refused until the reservation expires', async () => {
+    const { default: h } = await import('../../api/rooms/index.js');
+    const { ROOM_TTL_SEC } = await import('../../api/rooms/index.js');
+    const mine = { code: 'KMNP2', hostKey: HOST_KEY };
+    expect((await h.fetch(post('/api/rooms', mine))).status).toBe(201);
+    expect(redisTtl.get('room:KMNP2')).toBe(ROOM_TTL_SEC);
+    const other = { code: 'KMNP2', hostKey: 'C'.repeat(90) };
+    expect((await h.fetch(post('/api/rooms', other))).status).toBe(409);
+    redisStore.delete('room:KMNP2'); // the reservation expired
+    expect((await h.fetch(post('/api/rooms', other))).status).toBe(201);
   });
 
   it('rejects bad codes and out-of-range host keys', async () => {

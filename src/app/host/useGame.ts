@@ -245,17 +245,26 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
   );
 
   /** Seats whose whole tabla has been called (everyone crosses off every called card). */
-  const completedSeats = useCallback((s: RoundState): string[] => {
-    const called = new Set(calledCards(s));
-    const out: string[] = [];
-    for (const p of players()) {
-      const idx = s.assignments[p.seat];
-      if (idx === undefined) continue;
-      const t = tabla(s.roomSeed, idx, deck);
-      if (isCardComplete(t, t.cards.filter((c) => called.has(c)))) out.push(p.seat);
-    }
-    return out;
-  }, [players]);
+  const completedSeats = useCallback(
+    (s: RoundState): string[] => {
+      const called = new Set(calledCards(s));
+      const out: string[] = [];
+      for (const p of players()) {
+        const idx = s.assignments[p.seat];
+        if (idx === undefined) continue;
+        const t = tabla(s.roomSeed, idx, deck);
+        if (
+          isCardComplete(
+            t,
+            t.cards.filter((c) => called.has(c)),
+          )
+        )
+          out.push(p.seat);
+      }
+      return out;
+    },
+    [players],
+  );
 
   /** End of a call window: callClosed, then full-card detection (ties broken by points). */
   const closeCall = useCallback((): boolean => {

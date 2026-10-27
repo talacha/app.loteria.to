@@ -102,7 +102,7 @@ export default function LobbyWaiting({
               // e.g. the host reloaded and lost its roster.
               rehello();
             }
-            if (m.status === 'started' && inRoom) setPlaying(true);
+            if (m.status === 'started') setPlaying(true);
             break;
           }
           case 'round':

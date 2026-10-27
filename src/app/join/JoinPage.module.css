@@ -88,3 +88,7 @@
   background: var(--color-warn-bg);
   border-radius: var(--radius);
 }
+.topBar {
+  display: flex;
+  justify-content: flex-end;
+}

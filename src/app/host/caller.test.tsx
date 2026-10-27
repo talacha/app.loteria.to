@@ -6,7 +6,7 @@ import { MAX_TABLA_INDEX, choicesFor, deckOrder, tabla } from '@engine';
 import '../i18n';
 
 vi.mock('@print/options', async (orig) => ({
-  ...(await orig<typeof import('@print/options')>()),
+  ...(await orig<Record<string, unknown>>()),
   newSeed: () => 'TESTSEED',
 }));
 import type { SavedRound } from './roundMachine';
@@ -220,9 +220,9 @@ describe('automatic caller', () => {
     await tick(10_000); // window of the completing call closes
     const end = sent.find((m) => m.t === 'end') as Sent;
     expect(end).toMatchObject({ roundNo: 1, winners: ['a'], reason: 'full-card' });
-    expect(sent.findIndex((m) => m.t === 'callClosed' && m.i === completesAt(early) - 1)).toBeLessThan(
-      sent.indexOf(end),
-    );
+    expect(
+      sent.findIndex((m) => m.t === 'callClosed' && m.i === completesAt(early) - 1),
+    ).toBeLessThan(sent.indexOf(end));
     const n = calls().length;
     await tick(60_000);
     expect(calls()).toHaveLength(n);

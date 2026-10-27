@@ -120,7 +120,9 @@ describe('room code', () => {
       'fetch',
       vi.fn(async (_url: string, init?: RequestInit) => {
         if (init?.method === 'POST') {
-          return n++ < 2 ? new Response('{}', { status: 409 }) : new Response('{}', { status: 201 });
+          return n++ < 2
+            ? new Response('{}', { status: 409 })
+            : new Response('{}', { status: 201 });
         }
         return new Response('{}', { status: 404 });
       }),

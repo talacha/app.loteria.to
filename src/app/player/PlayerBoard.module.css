@@ -32,6 +32,8 @@
 }
 .barEnd {
   display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 .conn {
   margin: 0;
@@ -48,8 +50,7 @@
   color: var(--color-muted-on-night);
   font-size: var(--text-md);
 }
-.idle,
-.off {
+.idle {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,18 +59,6 @@
   text-align: center;
   padding: var(--space-4);
   color: var(--color-muted-on-night);
-}
-.off {
-  min-height: 10.5rem;
-}
-.offTitle {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: var(--text-xl);
-  color: var(--color-paper);
-}
-.offText {
-  font-size: var(--text-md);
 }
 .choices {
   display: flex;
@@ -104,21 +93,6 @@
   gap: var(--space-2);
   flex-wrap: wrap;
 }
-.claim {
-  background: var(--color-rosa);
-  color: var(--color-paper);
-}
-.settings {
-  border-top: 2px solid var(--color-night-line);
-  padding-top: var(--space-3);
-}
-.settings summary {
-  min-height: var(--size-tap);
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-weight: 700;
-}
 .tools {
   display: flex;
   gap: var(--space-2);
@@ -140,44 +114,6 @@
 .tools button[aria-pressed='true'] {
   background: var(--color-maiz);
 }
-.check {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  min-height: var(--size-tap);
-}
-.check input {
-  width: 1.5rem;
-  height: 1.5rem;
-  accent-color: var(--color-maiz);
-}
-.dialog {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
-  padding: var(--space-6);
-  text-align: center;
-  background: var(--color-night);
-  color: var(--color-paper);
-}
-.dialog h2 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: var(--text-3xl);
-}
-.dialog p {
-  margin: 0;
-  max-width: 24rem;
-}
-.dialog[data-celebrate] {
-  background: var(--color-rosa);
-}
 @media (min-width: 768px) {
   .root {
     padding: var(--space-6) var(--space-6) var(--space-8);
@@ -190,4 +126,106 @@
   .content {
     max-width: 40rem;
   }
+}
+.call {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.picture {
+  display: grid;
+  place-items: center;
+  width: min(100%, 14rem);
+  aspect-ratio: 1;
+}
+.pictureArt {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.callTools {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.tool {
+  display: inline-grid;
+  place-items: center;
+  min-width: var(--size-tap);
+  min-height: var(--size-tap);
+  color: var(--color-ink);
+  background: var(--color-maiz);
+  border: var(--border-thin);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.tool[aria-pressed='true'] {
+  background: var(--color-paper);
+}
+.ai {
+  font-size: var(--text-sm);
+  color: var(--color-muted-on-night);
+}
+.timer {
+  width: 100%;
+}
+.closedWord {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-xl);
+}
+.choice {
+  min-height: calc(var(--size-tap) * 2);
+  padding: var(--space-2);
+  font: inherit;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-md);
+  overflow-wrap: anywhere;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: var(--border-thin);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.choice[data-state='wrong'] {
+  opacity: 0.45;
+  text-decoration: line-through;
+}
+.choice[data-state='correct'] {
+  background: var(--color-maiz);
+}
+.choice:disabled {
+  cursor: default;
+}
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow-y: auto;
+  background: var(--color-night);
+  color: var(--color-paper);
+  padding: var(--space-5) var(--space-4);
+}
+.sheetInner {
+  max-width: 34rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.langList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }

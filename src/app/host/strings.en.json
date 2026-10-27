@@ -76,7 +76,7 @@
     "history": "Already called",
     "joinAt": "Join at app.loteria.to",
     "paperName": "Paper board {n}",
-    "shortcuts": "Shortcuts: Space or P pause, R repeat, L check paper",
+    "shortcuts": "Shortcuts: Space or P pause, R repeat",
     "picture": "Called card",
     "fullCard": "First to complete the whole board"
   },

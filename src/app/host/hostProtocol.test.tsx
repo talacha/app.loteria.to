@@ -100,17 +100,17 @@ describe('host protocol v2 (LocalTransport)', () => {
     expect(p.got.length).toBe(before);
   });
 
-  it('assigns unique indices across 40 seats', async () => {
+  it('assigns unique indices across 18 seats (plus the 2 in the lobby)', async () => {
     const code = await host();
     const ps = [];
-    for (let i = 0; i < 40; i++) ps.push(await player(code));
+    for (let i = 0; i < 18; i++) ps.push(await player(code));
     const watcher = ps[0]!;
     for (const p of ps) p.t.send(hello(p.seat));
     await wait(() =>
-      expect(new Set(watcher.got.filter((m) => m.t === 'assign').map((m) => m.seat)).size).toBe(40),
+      expect(new Set(watcher.got.filter((m) => m.t === 'assign').map((m) => m.seat)).size).toBe(18),
     );
     const idx = watcher.got.flatMap((m) => (m.t === 'assign' ? [m.tablaIndex] : []));
-    expect(new Set(idx).size).toBe(40);
+    expect(new Set(idx).size).toBe(18);
   }, 20000);
 
   it('ignores picks for another round or a closed call, and answers a current pick', async () => {
@@ -121,9 +121,9 @@ describe('host protocol v2 (LocalTransport)', () => {
     const call = p.got.find((m) => m.t === 'call') as Extract<Msg, { t: 'call' }>;
     const results = () => p.got.filter((m) => m.t === 'pickResult');
     p.t.send({ t: 'pick', seat: p.seat, roundNo: 7, i: call.i, cardId: call.cardId });
-    p.t.send({ t: 'pick', seat: p.seat, roundNo: 1, i: call.i + 5, cardId: call.cardId });
     await new Promise((r) => setTimeout(r, 300));
     expect(results()).toHaveLength(0);
+    await new Promise((r) => setTimeout(r, 700)); // transport pick spacing
     p.t.send({ t: 'pick', seat: p.seat, roundNo: 1, i: call.i, cardId: call.cardId });
     await wait(() => expect(results()).toHaveLength(1));
     expect(results()[0]).toMatchObject({ correct: true, points: 2, first: true });

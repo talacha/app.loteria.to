@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { callableLangs } from '@content';
 import { isValidName, sanitizeName } from '@net';
 import type { Lang } from '@engine';
+import i18n from 'i18next';
 import type { PlayerProfile } from '../player/PlayerBoard';
 import LobbyWaiting from '../lobby/LobbyWaiting';
 import LanguagePicker from '../lobby/LanguagePicker';
+import UiLangSwitch from '../player/UiLangSwitch';
+import { isLang, patchLocalProfile, readLocalProfile } from '../player/profile';
 import { normalizeCode, isRoomCode } from './code';
 import styles from './JoinPage.module.css';
 
 import { GLYPHS } from './glyphs';
-
-const STORE_KEY = 'loteria:profile';
 
 function readHashKey(): string | undefined {
   const m = /(?:^#|&)k=([^&]+)/.exec(window.location.hash);
@@ -52,15 +52,14 @@ function loadSession(code: string): Joined | null {
     const p = v?.profile;
     if (!p || typeof p.name !== 'string' || !isValidName(p.name) || typeof p.glyph !== 'string')
       return null;
-    const lang = p.labelLang;
-    if (lang !== 'es' && lang !== 'en' && !callableLangs().includes(lang as Lang)) return null;
+    const lang = p.spokenLang;
+    if (!isLang(lang)) return null;
     return {
       profile: {
         name: p.name,
         glyph: p.glyph,
         pronouns: typeof p.pronouns === 'string' && p.pronouns ? p.pronouns : undefined,
-        labelLang: lang as Lang,
-        listenOnly: p.listenOnly === true ? true : undefined,
+        spokenLang: lang,
       },
       hostKey: typeof v?.hostKey === 'string' ? v.hostKey : undefined,
       fromQr: v?.hostKeyFromQr === true,
@@ -89,21 +88,14 @@ function clearSession(code: string): void {
   }
 }
 
-function loadSaved(): { name: string; glyph: string; labelLang: Lang } {
-  try {
-    const v = JSON.parse(localStorage.getItem(STORE_KEY) ?? '{}') as Record<string, unknown>;
-    const lang = v.labelLang;
-    return {
-      name: typeof v.name === 'string' ? v.name.slice(0, 40) : '',
-      glyph: typeof v.glyph === 'string' && GLYPHS.includes(v.glyph) ? v.glyph : GLYPHS[0]!,
-      labelLang:
-        lang === 'en' || (typeof lang === 'string' && callableLangs().includes(lang as Lang))
-          ? (lang as Lang)
-          : 'es',
-    };
-  } catch {
-    return { name: '', glyph: GLYPHS[0]!, labelLang: 'es' };
-  }
+function loadSaved(): { name: string; glyph: string; spokenLang: Lang } {
+  const v = readLocalProfile();
+  return {
+    name: v.name ?? '',
+    glyph: v.glyph && GLYPHS.includes(v.glyph) ? v.glyph : GLYPHS[0]!,
+    // Default the voice to the menu language until the player picks one.
+    spokenLang: v.spokenLang ?? (i18n.language?.startsWith('en') ? 'en' : 'es'),
+  };
 }
 
 export default function JoinPage() {
@@ -117,11 +109,10 @@ export default function JoinPage() {
   const [name, setName] = useState(saved.name);
   const [glyph, setGlyph] = useState(saved.glyph);
   const [pronouns, setPronouns] = useState('');
-  const [labelLang, setLabelLang] = useState<Lang>(saved.labelLang);
+  const [spokenLang, setSpokenLang] = useState<Lang>(saved.spokenLang);
   const [error, setError] = useState(false);
   const [paperOpen, setPaperOpen] = useState(false);
   const [step, setStep] = useState<'who' | 'lang'>('who');
-  const [escucha, setEscucha] = useState(false);
   const [joined, setJoined] = useState<Joined | null>(() => (validCode ? loadSession(code) : null));
   const hostKeyP = useRef<Promise<string | undefined> | null>(null);
   const fromQr = useRef(false);
@@ -171,19 +162,19 @@ export default function JoinPage() {
     }
     setPronounsError(false);
     setBusy(true);
-    try {
-      localStorage.setItem(STORE_KEY, JSON.stringify({ name: clean, glyph, labelLang }));
-    } catch {
-      /* ignore */
-    }
+    patchLocalProfile({
+      name: clean,
+      glyph,
+      spokenLang,
+      uiLang: i18n.language?.startsWith('en') ? 'en' : 'es',
+    });
     const hostKey = await (hostKeyP.current ?? Promise.resolve(undefined));
     const next: Joined = {
       profile: {
         name: clean,
         glyph,
         pronouns: cleanPronouns || undefined,
-        labelLang,
-        listenOnly: escucha || undefined,
+        spokenLang,
       },
       hostKey,
       fromQr: fromQr.current,
@@ -239,6 +230,10 @@ export default function JoinPage() {
           clearSession(code);
           void navigate('/');
         }}
+        onCreateRoom={() => {
+          clearSession(code);
+          void navigate('/host');
+        }}
       />
     );
   }
@@ -246,10 +241,8 @@ export default function JoinPage() {
   if (step === 'lang') {
     return (
       <LanguagePicker
-        value={labelLang}
-        onChange={setLabelLang}
-        escucha={escucha}
-        onEscuchaChange={setEscucha}
+        value={spokenLang}
+        onChange={setSpokenLang}
         onSubmit={() => void submit()}
         busy={busy}
         onBack={() => setStep('who')}
@@ -259,6 +252,9 @@ export default function JoinPage() {
 
   return (
     <main id="main" className={styles.page}>
+      <div className={styles.topBar}>
+        <UiLangSwitch />
+      </div>
       <h1>{t('join.title')}</h1>
       <p className={styles.code}>
         {t('join.codeLabel')}: <strong>{code}</strong>
