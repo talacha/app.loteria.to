@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { Button, Panel, PaperCard, Pill, QrCard, RoomCodeTiles, RosterTile } from '../ui';
 import styles from './HostLobby.module.css';
 import { MAX_SPEED, MIN_SPEED, SPEED_PRESETS } from './roundMachine';
-import { MAX_PLAYERS } from './useHostRoom';
+import { LOCAL_SEAT, MAX_PLAYERS } from './useHostRoom';
 import type { HostRoom } from './useHostRoom';
 
 /** Polite announcement when someone joins or leaves (the first roster is the baseline). */
@@ -71,6 +71,32 @@ export default function HostLobby({ room }: { room: HostRoom }) {
       </header>
       <p className={styles.lead}>{t('host.lobby.lead')}</p>
 
+      <fieldset className={styles.modes}>
+        <legend className={styles.modesLegend}>{t('host.lobby.modeLegend')}</legend>
+        {([false, true] as const).map((plays) => {
+          const key = plays ? 'play' : 'display';
+          const blocked = plays && room.full && !settings.hostPlays;
+          return (
+            <label
+              key={key}
+              className={styles.mode}
+              data-checked={settings.hostPlays === plays || undefined}
+            >
+              <input
+                type="radio"
+                name="host-mode"
+                className={styles.modeInput}
+                checked={settings.hostPlays === plays}
+                disabled={blocked}
+                onChange={() => room.configure({ hostPlays: plays })}
+              />
+              <span className={styles.modeTitle}>{t(`host.lobby.mode.${key}.title`)}</span>
+              <span className={styles.modeBody}>{t(`host.lobby.mode.${key}.body`)}</span>
+            </label>
+          );
+        })}
+      </fieldset>
+
       {room.connection === 'unverified' || room.connection === 'offline' ? (
         <p className={styles.notice} role="status">
           {room.connection === 'offline' ? t('host.offlineOk') : t('host.unverifiedRoom')}
@@ -130,25 +156,27 @@ export default function HostLobby({ room }: { room: HostRoom }) {
               </ul>
             )}
           </section>
-          {room.roster.length > 0 ? (
+          {room.roster.some((p) => p.seat !== LOCAL_SEAT) ? (
             <details className={styles.settings}>
               <summary>{t('host.lobby.manage')}</summary>
               <ul className={styles.manage}>
-                {room.roster.map((p) => (
-                  <li key={p.seat}>
-                    <span>
-                      {p.glyph} {p.name}
-                    </span>
-                    <button
-                      type="button"
-                      className={styles.btn}
-                      onClick={() => room.removePlayer(p.seat)}
-                      aria-label={t('host.lobby.removeNamed', { name: p.name })}
-                    >
-                      {t('host.lobby.remove')}
-                    </button>
-                  </li>
-                ))}
+                {room.roster
+                  .filter((p) => p.seat !== LOCAL_SEAT)
+                  .map((p) => (
+                    <li key={p.seat}>
+                      <span>
+                        {p.glyph} {p.name}
+                      </span>
+                      <button
+                        type="button"
+                        className={styles.btn}
+                        onClick={() => room.removePlayer(p.seat)}
+                        aria-label={t('host.lobby.removeNamed', { name: p.name })}
+                      >
+                        {t('host.lobby.remove')}
+                      </button>
+                    </li>
+                  ))}
               </ul>
             </details>
           ) : null}

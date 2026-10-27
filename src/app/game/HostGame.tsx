@@ -6,7 +6,20 @@ import { isMuted, onMutedChange, setMuted } from '../audio';
 import { MAX_SPEED, MIN_SPEED, SPEED_PRESETS } from '../host/roundMachine';
 import { useGame } from '../host/useGame';
 import type { GameProps } from '../host/useGame';
-import { Button, CardArt, HistoryStrip, Panel, PaperCard, Pill, ProgressBar, QrCard } from '../ui';
+import {
+  Button,
+  CardArt,
+  FeedbackStrip,
+  HistoryStrip,
+  Panel,
+  PaperCard,
+  Pill,
+  ProgressBar,
+  QrCard,
+  Tabla,
+} from '../ui';
+import type { CellData } from '../ui';
+import { emojiOf, wordOf } from '../player/words';
 import styles from './HostGame.module.css';
 
 function useMuted(): boolean {
@@ -16,12 +29,13 @@ function useMuted(): boolean {
 }
 
 /** The host screen is silent by default: players hear the word in their own language. */
-function useHostSilent(): void {
+function useHostSilent(enabled: boolean): void {
   useEffect(() => {
+    if (!enabled) return;
     const was = isMuted();
     setMuted(true);
     return () => setMuted(was);
-  }, []);
+  }, [enabled]);
 }
 
 function speedLabelKey(sec: number): 'calm' | 'normal' | 'fast' | null {
@@ -38,10 +52,14 @@ export default function HostGame(props: GameProps) {
   const h = useGame(props);
   const { state } = h;
   const { room, roster } = props;
-  useHostSilent();
+  const play = h.local;
   const muted = useMuted();
+  useHostSilent(!play);
   const [speedOpen, setSpeedOpen] = useState(false);
   const [now, setNow] = useState(() => Date.now());
+  const [qrOpen, setQrOpen] = useState(
+    () => typeof window === 'undefined' || !window.matchMedia?.('(max-width: 767px)').matches,
+  );
   const nameOf = (id: string) => {
     const c = getCard(id);
     return c ? (cardName(c, 'es')?.text ?? c.id) : id;
@@ -171,7 +189,7 @@ export default function HostGame(props: GameProps) {
         {h.announcement.text ? t('a11y.called', { card: h.announcement.text }) : ''}
       </div>
 
-      <div className={styles.layout}>
+      <div className={styles.layout} data-play={play ? '' : undefined}>
         <section className={styles.main} aria-labelledby="cur-h">
           <h2 id="cur-h" className={styles.callTitle}>
             <span className={styles.callNo}>{t('host.game.cardNo', { n: state.calledCount })}</span>
@@ -204,7 +222,7 @@ export default function HostGame(props: GameProps) {
             </PaperCard>
           ) : card ? (
             <>
-              <figure className={styles.picture}>
+              <figure className={`${styles.picture} ${play ? styles.compact : ''}`}>
                 <CardArt id={card.id} emoji={card.art} className={styles.pictureArt} />
                 <figcaption className={styles.srOnly}>{t('host.game.picture')}</figcaption>
               </figure>
@@ -234,22 +252,104 @@ export default function HostGame(props: GameProps) {
               </Button>
             </div>
           ) : null}
-          <p className={`${styles.sub} ${styles.hint}`}>{t('host.game.shortcuts')}</p>
-        </section>
-
-        <aside className={styles.side}>
-          <QrCard url={room.joinUrl ?? ''} code={room.code} />
-          <Panel>
+          {play ? (
             <p className={styles.panelTitle} role="status">
               {t('host.game.pickers', { x: h.pickedCount, y: h.eligibleCount })}
             </p>
-            <ProgressBar
-              tone="jade"
-              value={h.eligibleCount ? h.pickedCount / h.eligibleCount : 0}
-              label={t('host.game.pickers', { x: h.pickedCount, y: h.eligibleCount })}
+          ) : null}
+          <p className={`${styles.sub} ${styles.hint}`}>{t('host.game.shortcuts')}</p>
+        </section>
+
+        {play ? (
+          <section className={styles.play} aria-labelledby="play-h">
+            <h2 id="play-h" className={styles.panelH}>
+              {t('host.game.yourBoard')}
+            </h2>
+            <div className={styles.row}>
+              <span className={styles.youPoints} aria-live="polite">
+                {t('host.game.youPoints', { n: play.points })}
+              </span>
+              <span className={styles.sub}>
+                {t('host.game.squaresLeft', { n: play.squaresLeft })}
+              </span>
+            </div>
+            <div className={styles.choices} role="group" aria-label={t('host.game.choices')}>
+              {play.choices.map((id) => {
+                const wrong = play.wrong.includes(id);
+                const right = play.callPoints > 0 && id === h.current?.id;
+                return (
+                  <button
+                    key={id}
+                    type="button"
+                    className={styles.choice}
+                    data-state={right ? 'correct' : wrong ? 'wrong' : 'idle'}
+                    disabled={
+                      !running || ended || play.callPoints > 0 || wrong || play.picksUsed >= 2
+                    }
+                    onClick={() => play.pick(id)}
+                  >
+                    {wordOf(id, room.local?.spokenLang ?? 'es')}
+                  </button>
+                );
+              })}
+            </div>
+            <FeedbackStrip
+              tone={play.callPoints > 0 ? 'ok' : play.wrong.length > 0 ? 'casi' : 'neutral'}
+              title={
+                play.callPoints > 0
+                  ? t(play.callPoints === 2 ? 'host.game.okFirst' : 'host.game.okOther')
+                  : play.wrong.length > 0
+                    ? t('host.game.casi')
+                    : running
+                      ? t('host.game.listen')
+                      : t('host.paused')
+              }
+            >
+              {play.callPoints === 0 && play.wrong.length === 1
+                ? t('host.game.casiText')
+                : undefined}
+            </FeedbackStrip>
+            <Tabla
+              label={t('host.game.yourBoard')}
+              cells={play.cards.map<CellData>((id) => {
+                const marked = play.crossed.includes(id);
+                return {
+                  id,
+                  emoji: emojiOf(id),
+                  label: marked ? wordOf(id, room.local?.spokenLang ?? 'es') : '',
+                  marked,
+                };
+              })}
             />
-            <span className={styles.sub}>{t('host.game.phones', { count: roster.length })}</span>
-          </Panel>
+          </section>
+        ) : null}
+
+        <aside className={styles.side}>
+          {play ? (
+            <details
+              className={styles.qrDetails}
+              open={qrOpen}
+              onToggle={(e) => setQrOpen(e.currentTarget.open)}
+            >
+              <summary className={styles.qrSummary}>{t('host.game.roomCode')}</summary>
+              <QrCard url={room.joinUrl ?? ''} code={room.code} />
+            </details>
+          ) : (
+            <QrCard url={room.joinUrl ?? ''} code={room.code} />
+          )}
+          {play ? null : (
+            <Panel>
+              <p className={styles.panelTitle} role="status">
+                {t('host.game.pickers', { x: h.pickedCount, y: h.eligibleCount })}
+              </p>
+              <ProgressBar
+                tone="jade"
+                value={h.eligibleCount ? h.pickedCount / h.eligibleCount : 0}
+                label={t('host.game.pickers', { x: h.pickedCount, y: h.eligibleCount })}
+              />
+              <span className={styles.sub}>{t('host.game.phones', { count: roster.length })}</span>
+            </Panel>
+          )}
           <Panel as="section" aria-labelledby="pts">
             <div className={styles.panelHead}>
               <h2 id="pts" className={styles.panelH}>

@@ -26,7 +26,7 @@ import {
   toSaved,
 } from './roundMachine';
 import type { RoundAction, RoundState, SavedRound, Settings } from './roundMachine';
-import { lobbyMessage } from './useHostRoom';
+import { LOCAL_SEAT, lobbyMessage } from './useHostRoom';
 import type { RosterPlayer } from './useHostRoom';
 
 export interface GameRoom {
@@ -43,6 +43,8 @@ export interface GameRoom {
   /** Membership/roster accessors from the room (flood control, removals). */
   isMember?: (seat: string) => boolean;
   getRoster?: () => RosterPlayer[];
+  /** Present in "Jugar también": the organiser's own seat, which plays on this screen. */
+  local?: { seat: string; name: string; glyph: string; spokenLang: Lang } | null;
   connection?: 'connecting' | 'online' | 'offline' | 'unverified';
 }
 
@@ -102,6 +104,9 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
   const scoresTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const orderCounter = useRef(0);
   const pickedRef = useRef<Set<string>>(new Set());
+  const [localWrong, setLocalWrong] = useState<{ i: number; ids: CardId[] }>({ i: -1, ids: [] });
+  const hostPlays = !!room.local;
+  const [currentChoices, setCurrentChoices] = useState<CardId[]>([]);
 
   useEffect(() => {
     trRef.current = transport;
@@ -207,12 +212,14 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
       const card = cardId ? getCard(cardId) : undefined;
       if (!card) return;
       const i = s.calledCount - 1;
-      const lang = langForCall(s, i);
+      const choices = choicesForCall(s, i);
+      setCurrentChoices(choices);
+      const lang = roomRef.current.local?.spokenLang ?? langForCall(s, i);
       send({
         t: 'call',
         i,
         cardId: card.id,
-        choices: choicesForCall(s, i),
+        choices,
         at: Date.now(),
       });
       if (!speak) return;
@@ -312,6 +319,26 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     [scheduleScores, send, sendScores],
   );
 
+  /**
+   * The organiser's own pick ("Jugar también"). It is fed through exactly the same scorePick path as
+   * a network pick, in the order it is enqueued, so it gets no head start.
+   */
+  const localPick = useCallback(
+    (cardId: CardId) => {
+      const s = stateRef.current;
+      if (s.phase !== 'running') return;
+      const i = s.calledCount - 1;
+      handlePick({ t: 'pick', seat: LOCAL_SEAT, roundNo: s.roundNo, i, cardId });
+      if (cardId !== s.order[i]) {
+        setLocalWrong((w) => ({
+          i,
+          ids: w.i === i && w.ids.includes(cardId) ? w.ids : [...(w.i === i ? w.ids : []), cardId],
+        }));
+      }
+    },
+    [handlePick],
+  );
+
   const handleMessage = useCallback(
     (m: Msg) => {
       if (m.t === 'hello') {
@@ -370,6 +397,11 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- mount only
   }, []);
+
+  // The organiser's own seat gets a tabla like any other seat.
+  useEffect(() => {
+    if (hostPlays) ensureAssigned(LOCAL_SEAT);
+  }, [hostPlays, ensureAssigned]);
 
   useEffect(
     () => () => {
@@ -498,6 +530,28 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     return id ? getCard(id) : undefined;
   })();
   const called: CardId[] = calledCards(state);
+  const idx = state.assignments[LOCAL_SEAT];
+  const i = state.calledCount - 1;
+  const closedCount = state.phase === 'ended' ? state.calledCount : Math.max(0, i);
+  const localCards: CardId[] =
+    hostPlays && idx !== undefined ? tabla(state.roomSeed, idx, deck).cards : [];
+  const closed = new Set(state.order.slice(0, closedCount));
+  const localCrossed = localCards.filter((c) => closed.has(c));
+  const localChoices = hostPlays ? currentChoices : [];
+  const local = hostPlays
+    ? {
+        cards: localCards,
+        crossed: localCrossed,
+        choices: localChoices,
+        wrong: localWrong.i === i ? localWrong.ids : [],
+        picksUsed: pickState.picks[i]?.[LOCAL_SEAT] ?? 0,
+        callPoints: pickState.scored[i]?.[LOCAL_SEAT] ?? 0,
+        first: pickState.firstByCall[i] === LOCAL_SEAT,
+        points: pickState.points[LOCAL_SEAT] ?? 0,
+        squaresLeft: localCards.length - localCrossed.length,
+        pick: localPick,
+      }
+    : null;
   const currentLang: Lang | undefined =
     state.calledCount > 0 ? langForCall(state, state.calledCount - 1) : undefined;
 
@@ -509,6 +563,7 @@ export function useGame({ transport, room, roster, onNewRound }: GameProps) {
     current,
     currentLang,
     called,
+    local,
     points: pickState.points,
     pickedCount: pickedSeats.filter((s) => eligible.includes(s)).length,
     eligibleCount: eligible.length,

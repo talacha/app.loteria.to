@@ -2,6 +2,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { callableLangs } from '@content';
 import { ROOM_MAX_PLAYERS, ROOM_MIN_PLAYERS, roomCode } from '@engine';
 import { createTransport, generateHostKeyPair, getSeat } from '@net';
+import { useTranslation } from 'react-i18next';
+import { useProfile } from '../ui';
+import { readRawProfile } from '../ui/profile';
 import type { Msg, Transport } from '@net';
 import type { Lang } from '@engine';
 import { newSeed, normalizePrintSeed } from '@print/options';
@@ -27,6 +30,8 @@ export const LOBBY_RESEND_MS = 10_000;
 export const LEAVE_GRACE_MS = 4000;
 const SWEEP_MS = 500;
 const HELLO_LIMIT_MS = 2000;
+/** Seat of the organiser when the host screen also plays ("Jugar también"). Never a network seat. */
+export const LOCAL_SEAT = 'host-local';
 export const MAX_PLAYERS = ROOM_MAX_PLAYERS;
 export const MIN_PLAYERS = ROOM_MIN_PLAYERS;
 
@@ -84,6 +89,8 @@ export function lobbyMessage(
 
 /** Room session for the host: code, key, transport, registration, roster. */
 export function useHostRoom() {
+  const { t } = useTranslation();
+  const profile = useProfile();
   const [phase, setPhase] = useState<HostPhase>('boot');
   const [code, setCode] = useState(() => roomCode());
   const [seed, setSeed] = useState(() => newSeed());
@@ -183,6 +190,7 @@ export function useHostRoom() {
     presenceRef.current = set;
     const now = Date.now();
     for (const p of rosterRef.current) {
+      if (p.seat === LOCAL_SEAT) continue;
       if (set.has(p.seat)) missingRef.current.delete(p.seat);
       else if (!missingRef.current.has(p.seat)) missingRef.current.set(p.seat, now);
     }
@@ -351,6 +359,30 @@ export function useHostRoom() {
     });
   }, []);
 
+  // "Jugar también": the organiser's own seat (name and glyph from the shared profile).
+  const raw = readRawProfile();
+  const localName =
+    typeof raw.name === 'string' && raw.name.trim()
+      ? raw.name.trim().slice(0, 40)
+      : t('host.lobby.you');
+  const localGlyph = typeof raw.glyph === 'string' && raw.glyph ? raw.glyph.slice(0, 16) : '🌽';
+  const spokenLang = profile.spokenLang;
+  const hostPlays = settings.hostPlays;
+  useEffect(() => {
+    const rest = rosterRef.current.filter((p) => p.seat !== LOCAL_SEAT);
+    const mine = rosterRef.current.find((p) => p.seat === LOCAL_SEAT);
+    if (!hostPlays) {
+      if (mine) updateRoster(rest);
+      return;
+    }
+    if (mine && mine.name === localName && mine.glyph === localGlyph) return;
+    updateRoster([{ seat: LOCAL_SEAT, name: localName, glyph: localGlyph }, ...rest]);
+  }, [hostPlays, localName, localGlyph, updateRoster]);
+  const local = useMemo(
+    () => (hostPlays ? { seat: LOCAL_SEAT, name: localName, glyph: localGlyph, spokenLang } : null),
+    [hostPlays, localName, localGlyph, spokenLang],
+  );
+
   const setPrintSeed = useCallback((raw: string): boolean => {
     const s = normalizePrintSeed(raw);
     if (!s) return false;
@@ -378,12 +410,14 @@ export function useHostRoom() {
     setSeed(saved.roomSeed);
     setRoundNo(saved.roundNo);
     setSettings({ ...DEFAULT_SETTINGS, ...saved.settings });
-    const restored: RosterPlayer[] = (saved.roster ?? []).map((p) => ({
-      seat: p.seat,
-      name: p.name,
-      glyph: p.glyph,
-      ...(p.pronouns ? { pronouns: p.pronouns } : {}),
-    }));
+    const restored: RosterPlayer[] = (saved.roster ?? [])
+      .filter((p) => p.seat !== LOCAL_SEAT)
+      .map((p) => ({
+        seat: p.seat,
+        name: p.name,
+        glyph: p.glyph,
+        ...(p.pronouns ? { pronouns: p.pronouns } : {}),
+      }));
     updateRoster(restored);
     // Seats that never come back are dropped once the grace period passes.
     const now = Date.now();
@@ -432,6 +466,7 @@ export function useHostRoom() {
     hostKey,
     connection,
     roster,
+    local,
     canStart: roster.length >= ROOM_MIN_PLAYERS,
     missing: Math.max(0, ROOM_MIN_PLAYERS - roster.length),
     full: roster.length >= ROOM_MAX_PLAYERS,

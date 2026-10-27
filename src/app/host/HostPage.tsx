@@ -54,6 +54,7 @@ export default function HostPage() {
           connection: room.connection,
           joinUrl: room.joinUrl,
           langs: room.langs,
+          local: room.local,
           isMember: room.isMember,
           getRoster: room.getRoster,
         }}

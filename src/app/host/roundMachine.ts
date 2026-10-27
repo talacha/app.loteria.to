@@ -21,6 +21,8 @@ export interface Settings {
   pattern: PatternId;
   mode: Mode;
   captions: boolean;
+  /** Host screen mode: false = display only, true = the organiser also plays ("Jugar también"). */
+  hostPlays: boolean;
 }
 
 export const SPEED_PRESETS = { calm: 14, normal: 10, fast: 7 } as const;
@@ -33,6 +35,7 @@ export const DEFAULT_SETTINGS: Settings = {
   pattern: 'line',
   mode: 'normal',
   captions: true,
+  hostPlays: false,
 };
 
 export interface RoundState {

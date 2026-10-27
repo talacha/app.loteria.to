@@ -122,6 +122,67 @@
   height: 100%;
   object-fit: contain;
 }
+.compact {
+  width: min(100%, 12rem);
+  padding: var(--space-2);
+}
+.play {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.youPoints {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-lg);
+  color: var(--color-maiz);
+}
+.choices {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+}
+.choice {
+  min-height: var(--size-choice);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-xl);
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-hard);
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.choice[data-state='correct'] {
+  background: var(--color-jade-soft);
+  box-shadow: 0 0 0 4px var(--color-jade);
+}
+.choice[data-state='wrong'],
+.choice:disabled {
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.choice[data-state='wrong'] {
+  opacity: 0.45;
+}
+.qrDetails {
+  background: var(--color-night-raised);
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+}
+.qrSummary {
+  display: flex;
+  align-items: center;
+  min-height: var(--size-tap);
+  padding: 0 var(--space-4);
+  font-weight: 700;
+  cursor: pointer;
+}
 .sub {
   font-size: var(--text-sm);
   color: var(--color-muted-on-night);
@@ -243,5 +304,32 @@
 @media (pointer: coarse) {
   .hint {
     display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .layout[data-play] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .layout[data-play] .side,
+  .layout[data-play] .history {
+    grid-column: 1 / -1;
+  }
+  .layout[data-play] .compact {
+    width: min(100%, 20rem);
+  }
+}
+@media (min-width: 1280px) {
+  .layout[data-play] {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 320px;
+    grid-template-rows: auto auto;
+  }
+  .layout[data-play] .side {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .layout[data-play] .history {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
 }

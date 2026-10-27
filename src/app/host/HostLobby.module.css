@@ -241,3 +241,65 @@
   outline: 3px solid var(--color-maiz);
   outline-offset: 2px;
 }
+
+.modes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.modesLegend {
+  padding: 0;
+  margin-bottom: var(--space-2);
+  font-weight: 700;
+}
+.mode {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-height: var(--tap);
+  padding: var(--space-4);
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  background: var(--night-raised);
+  color: var(--paper);
+  cursor: pointer;
+}
+.mode[data-checked] {
+  background: var(--maiz);
+  color: var(--ink);
+  box-shadow: var(--shadow-hard);
+}
+.mode:focus-within {
+  outline: 3px solid var(--maiz);
+  outline-offset: 2px;
+}
+.modeInput {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.modeTitle {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-lg);
+}
+.modeBody {
+  font-size: var(--text-sm);
+}
+@media (min-width: 768px) {
+  .modes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .modesLegend {
+    grid-column: 1 / -1;
+  }
+}

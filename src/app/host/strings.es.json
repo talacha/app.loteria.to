@@ -52,7 +52,19 @@
     "noPhone": "¿Sin teléfono? Imprime tablas",
     "count": "{count, plural, one {# persona} other {# personas}}",
     "missing": "{count, plural, one {Falta # persona} other {Faltan # personas}}",
-    "full": "Sala llena: {count}/{max}"
+    "full": "Sala llena: {count}/{max}",
+    "you": "Quien organiza",
+    "modeLegend": "¿Cómo se usa esta pantalla?",
+    "mode": {
+      "display": {
+        "title": "Solo pantalla",
+        "body": "Esta pantalla canta y muestra la ronda. Juegan los teléfonos."
+      },
+      "play": {
+        "title": "Jugar también",
+        "body": "Esta pantalla también juega: tu tabla y tus opciones aquí mismo."
+      }
+    }
   },
   "title": "Sala de canto",
   "resumeLobbyBody": "Hay una sala abierta en este dispositivo (sala {code}).",
@@ -71,7 +83,18 @@
     "joinAt": "Únete en app.loteria.to",
     "shortcuts": "Atajos: Espacio o P pausa, R repetir",
     "picture": "Carta cantada",
-    "fullCard": "Primera persona en completar toda su tabla"
+    "fullCard": "Primera persona en completar toda su tabla",
+    "yourBoard": "Tu tabla",
+    "choices": "Elige cómo se escribe",
+    "listen": "Escucha y elige",
+    "okFirst": "¡Eso! +2",
+    "okOther": "¡Eso! +1",
+    "casi": "¡Casi!",
+    "casiText": "Prueba otra vez",
+    "youPoints": "Tú · {n} puntos",
+    "squaresLeft": "{n, plural, one {Falta # casilla} other {Faltan # casillas}}",
+    "roomCode": "Sala y código",
+    "replay": "Repetir la voz"
   },
   "resume": "Reanudar"
 }

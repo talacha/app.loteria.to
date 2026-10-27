@@ -179,6 +179,25 @@ describe('host lobby', () => {
   });
 });
 
+describe('host screen mode', () => {
+  it('defaults to display only, and "Jugar también" is saved and restored on Reanudar', async () => {
+    await mount();
+    expect(screen.getByRole('radio', { name: /Solo pantalla/ })).toHaveProperty('checked', true);
+    fireEvent.click(screen.getByRole('radio', { name: /Jugar también/ }));
+    await tick(400);
+    expect(store.round?.settings.hostPlays).toBe(true);
+    cleanup();
+    await mount();
+    fireEvent.click(screen.getByRole('button', { name: 'Reanudar partida' }));
+    await flush();
+    await flush();
+    expect(screen.getByRole('radio', { name: /Jugar también/ })).toHaveProperty('checked', true);
+    // The organiser's seat is back in the roster after resume and counts toward the gate.
+    await emit(hello('s1'));
+    expect(screen.getByRole('button', { name: 'Empezar' })).toHaveProperty('disabled', false);
+  });
+});
+
 describe('roster control', () => {
   it('limits hellos per seat, removes and ignores banned seats, caps at 20', async () => {
     await mount();

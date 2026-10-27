@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { cards, isAvoidedPair } from '@content';
 import { MAX_TABLA_INDEX, choicesFor, deckOrder, tabla } from '@engine';
@@ -94,7 +94,7 @@ function assignIndices(list: number[]) {
 const results = (seat?: string) =>
   sent.filter((m) => m.t === 'pickResult' && (!seat || m.seat === seat));
 
-async function started(seats: string[]) {
+async function started(seats: string[], play = false) {
   render(
     <MemoryRouter>
       <HostPage />
@@ -102,6 +102,7 @@ async function started(seats: string[]) {
   );
   await flush();
   await flush();
+  if (play) fireEvent.click(screen.getByRole('radio', { name: /Jugar también/ }));
   for (const s of seats) await emit(hello(s));
   await tick(400);
   fireEvent.click(screen.getByRole('button', { name: 'Empezar' }));
@@ -109,6 +110,10 @@ async function started(seats: string[]) {
 }
 
 beforeEach(() => {
+  localStorage.setItem(
+    'loteria:profile',
+    JSON.stringify({ name: 'Org', glyph: '🌽', spokenLang: 'es' }),
+  );
   vi.useFakeTimers();
   vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('offline')));
 });
@@ -117,6 +122,7 @@ afterEach(() => {
   sent.length = 0;
   handlers.clear();
   store.round = null;
+  localStorage.clear();
   vi.useRealTimers();
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
@@ -263,5 +269,111 @@ describe('automatic caller', () => {
     const n = calls().length;
     await tick(60_000);
     expect(calls()).toHaveLength(n);
+  });
+});
+
+describe('Jugar también (the host screen plays)', () => {
+  const LOCAL = 'host-local';
+  const choicesGroup = () => screen.getByRole('group', { name: 'Elige cómo se escribe' });
+  const word = (id: string) => cards.find((c) => c.id === id)!.names.es!.text;
+  const localChoose = async (cardId: string) => {
+    fireEvent.click(within(choicesGroup()).getByRole('button', { name: word(cardId) }));
+    await flush();
+  };
+  const call = () => lastCall() as unknown as { cardId: string; choices: string[] };
+
+  it('counts toward the 2-player gate and is broadcast in the lobby with its own tabla', async () => {
+    render(
+      <MemoryRouter>
+        <HostPage />
+      </MemoryRouter>,
+    );
+    await flush();
+    await flush();
+    fireEvent.click(screen.getByRole('radio', { name: /Jugar también/ }));
+    expect(screen.getByRole('button', { name: 'Empezar' })).toHaveProperty('disabled', true);
+    await emit(hello('a'));
+    expect(screen.getByRole('button', { name: 'Empezar' })).toHaveProperty('disabled', false);
+    await tick(400);
+    const lobby = sent.filter((m) => m.t === 'lobby').pop()!;
+    expect((lobby.players as { seat: string; name: string }[]).map((p) => p.seat)).toContain(LOCAL);
+    fireEvent.click(screen.getByRole('button', { name: 'Empezar' }));
+    await flush();
+    expect(sent.some((m) => m.t === 'assign' && m.seat === LOCAL)).toBe(true);
+    expect(screen.getByRole('list', { name: 'Tu tabla' })).toBeTruthy();
+    expect(within(choicesGroup()).getAllByRole('button')).toHaveLength(3);
+  });
+
+  it('a remote pick that arrived first gets the 2 points; the local pick gets 1', async () => {
+    await started(['a'], true);
+    await pick('a');
+    await localChoose(call().cardId);
+    expect(results('a').pop()).toMatchObject({ points: 2, first: true });
+    expect(results(LOCAL).pop()).toMatchObject({ correct: true, points: 1, first: false });
+    await tick(600);
+    expect(sent.filter((m) => m.t === 'scores').pop()!.points).toEqual({ a: 2, [LOCAL]: 1 });
+  });
+
+  it('a local pick that comes first gets the 2 points', async () => {
+    await started(['a'], true);
+    await localChoose(call().cardId);
+    await pick('a');
+    expect(results(LOCAL).pop()).toMatchObject({ points: 2, first: true });
+    expect(results('a').pop()).toMatchObject({ points: 1, first: false });
+  });
+
+  it('allows at most 2 local picks per call', async () => {
+    await started(['a'], true);
+    const [w1, w2] = call().choices.filter((x) => x !== call().cardId);
+    await localChoose(w1!);
+    await localChoose(w2!);
+    for (const b of within(choicesGroup()).getAllByRole('button')) {
+      expect(b).toHaveProperty('disabled', true);
+    }
+    expect(results(LOCAL)).toHaveLength(2);
+  });
+
+  it('crosses the local tabla at callClosed and reveals the word', async () => {
+    await started(['a'], true);
+    const mine = new Set(tabla(seedOf(), indexOf(LOCAL), deck).cards);
+    const k = deckOrder(seedOf(), 1, ids).findIndex((c) => mine.has(c));
+    const id = deckOrder(seedOf(), 1, ids)[k]!;
+    const board = screen.getByRole('list', { name: 'Tu tabla' });
+    for (let n = 0; n < k; n++) await tick(10_000);
+    expect(within(board).queryByText(word(id))).toBeNull(); // still open or not on the board
+    await tick(10_000); // callClosed for call k
+    expect(within(board).getByText(word(id))).toBeTruthy();
+  });
+
+  it('local full-card win: more points beat a same-call tie; equal points share', async () => {
+    const [x, y] = tiedIndices();
+    assignIndices([x, y]); // the local seat is assigned first, then 'a'
+    await started(['a'], true);
+    expect(indexOf(LOCAL)).toBe(x);
+    const at = completesAt(x);
+    for (let k = 0; k < at; k++) {
+      await localChoose(call().cardId);
+      await pick('a');
+      if (k < at - 1) await tick(10_000);
+    }
+    await tick(10_000);
+    const end = sent.find((m) => m.t === 'end') as Sent;
+    expect(end).toMatchObject({ winners: [LOCAL], reason: 'full-card' });
+  });
+
+  it('local full-card with equal points shares the win', async () => {
+    const [x, y] = tiedIndices();
+    assignIndices([x, y]);
+    await started(['a'], true);
+    for (let k = 0; k < completesAt(x); k++) await tick(10_000);
+    const end = sent.find((m) => m.t === 'end') as Sent & { winners: string[] };
+    expect([...end.winners].sort()).toEqual(['a', LOCAL]);
+  });
+
+  it('display-only mode is unchanged: no local seat, no choices, silent host', async () => {
+    await started(['a', 'b']);
+    expect(sent.some((m) => m.t === 'assign' && m.seat === LOCAL)).toBe(false);
+    expect(screen.queryByRole('group', { name: 'Elige cómo se escribe' })).toBeNull();
+    expect(screen.getByRole('button', { name: 'Activar voz' })).toBeTruthy();
   });
 });

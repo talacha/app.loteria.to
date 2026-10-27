@@ -52,7 +52,19 @@
     "noPhone": "No phone? Print boards",
     "count": "{count, plural, one {# player} other {# players}}",
     "missing": "{count, plural, one {# more player needed} other {# more players needed}}",
-    "full": "Room full: {count}/{max}"
+    "full": "Room full: {count}/{max}",
+    "you": "Organiser",
+    "modeLegend": "How will this screen be used?",
+    "mode": {
+      "display": {
+        "title": "Display only",
+        "body": "This screen calls and shows the round. Phones play."
+      },
+      "play": {
+        "title": "Play too",
+        "body": "This screen also plays: your board and your choices right here."
+      }
+    }
   },
   "resumeLobbyBody": "A room is open on this device (room {code}).",
   "game": {
@@ -70,7 +82,18 @@
     "joinAt": "Join at app.loteria.to",
     "shortcuts": "Shortcuts: Space or P pause, R repeat",
     "picture": "Called card",
-    "fullCard": "First to complete the whole board"
+    "fullCard": "First to complete the whole board",
+    "yourBoard": "Your board",
+    "choices": "Pick the spelling",
+    "listen": "Listen and pick",
+    "okFirst": "Yes! +2",
+    "okOther": "Yes! +1",
+    "casi": "Almost!",
+    "casiText": "Try once more",
+    "youPoints": "You · {n} points",
+    "squaresLeft": "{n, plural, one {# square left} other {# squares left}}",
+    "roomCode": "Room and code",
+    "replay": "Replay the voice"
   },
   "resume": "Resume"
 }
