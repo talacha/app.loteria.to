@@ -65,9 +65,14 @@ describe('LocalTransport', () => {
     const p = await make('A1', 'player'); // second player never sees the first's claim
     const atP2 = collect(p);
     player.send(claim(seatOf(player)));
-    await flush();
-    expect(atPlayer.map((m) => m.t)).toEqual(['round', 'call']);
-    expect(atHost.map((m) => m.t)).toEqual(['claim']);
+    // Signing is async (ECDSA); slow build machines need more than a fixed sleep.
+    await vi.waitFor(
+      () => {
+        expect(atPlayer.map((m) => m.t)).toEqual(['round', 'call']);
+        expect(atHost.map((m) => m.t)).toEqual(['claim']);
+      },
+      { timeout: 3000, interval: 20 },
+    );
     expect(atP2.filter((m) => m.t === 'claim')).toEqual([]);
   });
 
