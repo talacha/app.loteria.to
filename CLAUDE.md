@@ -2,7 +2,7 @@
 
 ## Sources of truth
 
-- `docs/PRD.md` — product (pillars in §0). `docs/rules.md` — how a round is played (the PDF game). `docs/reglas.md` — César's rules reference.
+- `docs/PRD.md` — product (pillars in §0). `docs/rules.md` — the game rules. `docs/protocol.md` — the network contract for `src/engine` and `src/net`. `docs/decisions/rules-open-items.md` — open decisions and history. `docs/reglas.md` — César's rules reference.
 - **Design (binding):** `docs/DESIGN.md` + `design/tokens.json` + `docs/design/look-and-feel.pdf`. Claude Design canvas: https://claude.ai/artifact/CanBtUc4RQzxzPZE2BEgWc (read with the Artifact tool `action: "read"`; mirror in `design/look-and-feel/project/`). Only the orchestrator republishes it.
 - `docs/ARCHITECTURE.md`, `docs/PLATFORM.md` — Vite + React PWA, Vercel Functions in `api/`, Supabase, Upstash Redis + QStash.
 
