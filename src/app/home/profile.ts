@@ -1,5 +1,6 @@
 /** Shared with the join flow: localStorage 'loteria:profile' = {name, glyph, pronouns?, labelLang?}. */
-export const PROFILE_KEY = 'loteria:profile';
+import { PROFILE_KEY, mergeProfile } from '../ui/profile';
+export { PROFILE_KEY };
 export const NAME_MAX = 40;
 
 export interface StoredProfile {
@@ -27,10 +28,5 @@ export function readProfile(): Partial<StoredProfile> {
 
 /** Merge into the stored profile so fields written by the join page (pronouns, labelLang) survive. */
 export function saveProfile(patch: Partial<StoredProfile>): void {
-  try {
-    const next = { ...readProfile(), ...patch };
-    localStorage.setItem(PROFILE_KEY, JSON.stringify(next));
-  } catch {
-    /* storage unavailable */
-  }
+  mergeProfile({ ...patch });
 }

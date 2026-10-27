@@ -5,9 +5,6 @@
   "all": "All",
   "filterLabel": "Filter by category",
   "count": "{count, plural, one {# card} other {# cards}}",
-  "draftUnreviewed": "unreviewed draft",
-  "reviewedBadge": "reviewed, no audio",
-  "pendingLangs": "Pending native-speaker review: {langs}.",
   "home": "Home",
   "categories": {
     "animals": "Animals",

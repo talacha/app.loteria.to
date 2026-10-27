@@ -18,3 +18,7 @@ export {
 } from './game';
 export type { CellData, ChoiceState } from './game';
 export { default as CardArt } from './CardArt';
+export { default as LanguageSettings } from './LanguageSettings';
+export { default as Sheet } from './Sheet';
+export { useProfile } from './profile';
+export type { Profile, UiLang } from './profile';

@@ -4,13 +4,13 @@ import { describe, expect, it } from 'vitest';
 const css = readFileSync('src/app/theme/tokens.css', 'utf8');
 const json = JSON.parse(readFileSync('design/tokens.json', 'utf8')) as Record<string, unknown>;
 
-function block(selector: string): Record<string, string> {
-  const start = css.indexOf(selector);
+function block(selector: string, src = css): Record<string, string> {
+  const start = src.indexOf(selector);
   if (start < 0) throw new Error(`missing ${selector}`);
-  const open = css.indexOf('{', start);
-  const close = css.indexOf('\n}', open);
+  const open = src.indexOf('{', start);
+  const close = src.indexOf(src === css ? '\n}' : '\n  }', open);
   const out: Record<string, string> = {};
-  for (const m of css.slice(open + 1, close).matchAll(/--([\w-]+):\s*([^;]+);/g)) {
+  for (const m of src.slice(open + 1, close).matchAll(/--([\w-]+):\s*([^;]+);/g)) {
     out[m[1] as string] = (m[2] as string).trim();
   }
   return out;
@@ -27,11 +27,25 @@ const norm = (s: string) => s.replace(/\s+/g, ' ').trim().toLowerCase();
 
 const base = block(':root {');
 const contrast = { ...base, ...block(":root[data-theme='contrast']") };
+const light = { ...base, ...block(":root[data-theme='light']") };
+const autoLight = {
+  ...base,
+  ...block(
+    ':root:not([data-theme]) {',
+    css.slice(css.indexOf('@media (prefers-color-scheme: light)')),
+  ),
+};
 
 // Flatten design/tokens.json into [cssName, resolved value].
 const flat: Record<string, string> = {};
+const lightJson: Record<string, string> = {};
+for (const [name, def] of Object.entries(
+  (json.theme as { light: Record<string, { $value: string }> }).light,
+)) {
+  if (!name.startsWith('$')) lightJson['color-' + name] = def.$value;
+}
 for (const [group, items] of Object.entries(json)) {
-  if (group.startsWith('$')) continue;
+  if (group.startsWith('$') || group === 'theme') continue;
   for (const [name, def] of Object.entries(items as Record<string, { $value: string }>)) {
     flat[`${group}-${name}`] = def.$value;
   }
@@ -53,6 +67,13 @@ describe('tokens.css matches design/tokens.json', () => {
   it.each(Object.keys(flat))('--%s', (name) => {
     expect(base[name], `--${name} missing from tokens.css`).toBeDefined();
     expect(norm(resolve(base, base[name] as string))).toBe(norm(jsonResolve(flat[name] as string)));
+  });
+});
+
+describe('light theme matches design/tokens.json theme.light', () => {
+  it.each(Object.keys(lightJson))('--%s', (name) => {
+    expect(norm(light[name] as string)).toBe(norm(lightJson[name] as string));
+    expect(norm(autoLight[name] as string)).toBe(norm(lightJson[name] as string));
   });
 });
 
@@ -92,14 +113,52 @@ const PAIRS: [string, string, number][] = [
   ['color-night-dash', 'color-night', 3],
   ['color-maiz', 'color-night', 3],
   ['color-ink', 'color-disabled-on-night', 1],
+  ['color-text', 'color-night', 4.5],
+  ['color-text', 'color-night-raised', 4.5],
+  ['color-accent-text', 'color-night', 4.5],
+  ['color-accent-text', 'color-night-raised', 4.5],
+  ['color-muted-on-paper', 'color-white', 4.5],
+  ['color-paper', 'color-rosa', 4.5],
+];
+// UI parts (ink borders on cards, dashed panel edges and progress track on the grounds).
+const UI_PAIRS: [string, string, number][] = [
+  ['color-ink', 'color-paper', 3],
+  ['color-ink', 'color-white', 3],
+  ['color-ink', 'color-maiz', 3],
+  ['color-night-dash', 'color-night', 3],
+  ['color-night-dash', 'color-night-raised', 3],
 ];
 
 describe('token contrast', () => {
-  for (const [name, t] of Object.entries({ night: base, contrast })) {
+  for (const [name, t] of Object.entries({
+    night: base,
+    light,
+    'auto-light': autoLight,
+    contrast,
+  })) {
     for (const [fg, bg, min] of PAIRS) {
+      // On the light ground maiz is a fill only; text uses color-accent-text.
+      if (
+        name.endsWith('light') &&
+        ['color-maiz', 'color-paper'].includes(fg) &&
+        bg.startsWith('color-night')
+      )
+        continue;
       it(`${name}: ${fg} on ${bg} >= ${min}`, () => {
         expect(ratio(hex(t, fg), hex(t, bg))).toBeGreaterThanOrEqual(min);
       });
     }
+  }
+  for (const [name, t] of Object.entries({ night: base, light, contrast })) {
+    for (const [fg, bg, min] of UI_PAIRS) {
+      it(`${name} UI part: ${fg} on ${bg} >= ${min}`, () => {
+        expect(ratio(hex(t, fg), hex(t, bg))).toBeGreaterThanOrEqual(min);
+      });
+    }
+    it(`${name}: text never equals its ground`, () => {
+      expect(hex(t, 'color-text')).not.toBe(hex(t, 'color-night'));
+      expect(hex(t, 'color-ink')).not.toBe(hex(t, 'color-paper'));
+      expect(hex(t, 'color-muted-on-night')).not.toBe(hex(t, 'color-night'));
+    });
   }
 });

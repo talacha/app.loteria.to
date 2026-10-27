@@ -1,21 +1,11 @@
 import { fireEvent, cleanup, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import { cards } from '@content';
 import i18n from '../i18n';
 import DeckPage from './DeckPage';
 
-afterEach(() => {
-  cleanup();
-  vi.unstubAllEnvs();
-});
-
-const drafts = cards.flatMap((c) =>
-  (['nah', 'yua', 'quz'] as const).flatMap((l) => {
-    const n = c.names[l];
-    return n && n.status === 'draft' ? [{ id: c.id, lang: l, text: n.text }] : [];
-  }),
-);
+afterEach(cleanup);
 
 function setup() {
   return render(
@@ -28,27 +18,20 @@ const native = () => [...document.querySelectorAll('[lang="nah"],[lang="yua"],[l
 const items = () => document.querySelectorAll('ul > li > span[class*="num"]');
 
 describe('DeckPage', () => {
-  it('has real draft names in the content', () => {
-    expect(drafts.length).toBeGreaterThan(0);
-  });
-  it('lists 54 cards, filters by category, hides draft names by default', async () => {
+  it('lists 54 cards with all five names and no review badges, and filters by category', async () => {
     await i18n.changeLanguage('es');
-    vi.stubEnv('VITE_HIDE_UNREVIEWED', 'true');
     setup();
     expect(items().length).toBe(54);
-    expect(screen.queryByText('borrador sin revisar')).toBeNull();
-    expect(native().length).toBe(0);
+    expect(native().length).toBe(54 * 3);
+    expect(screen.queryByText(/borrador|revis/i)).toBeNull();
     fireEvent.click(screen.getByRole('button', { name: 'Animales' }));
     expect(items().length).toBeLessThan(54);
     expect(items().length).toBeGreaterThan(0);
   });
-  it('shows draft names with a badge when unreviewed names are not hidden', async () => {
-    await i18n.changeLanguage('es');
-    vi.stubEnv('VITE_HIDE_UNREVIEWED', 'false');
+  it('shows a native name on each card', () => {
     setup();
-    const first = drafts[0] as (typeof drafts)[number];
-    expect(native().length).toBe(drafts.length);
-    expect(native().some((e) => e.textContent?.includes(first.text))).toBe(true);
-    expect(screen.getAllByText('borrador sin revisar').length).toBe(drafts.length);
+    const first = cards[0]!;
+    const name = first.names.nah?.text ?? '';
+    expect(native().some((e) => e.textContent?.includes(name))).toBe(true);
   });
 });

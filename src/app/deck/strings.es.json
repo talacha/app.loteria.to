@@ -1,8 +1,5 @@
 {
   "filterLabel": "Filtrar por categoría",
   "count": "{count, plural, one {# carta} other {# cartas}}",
-  "draftUnreviewed": "borrador sin revisar",
-  "reviewedBadge": "revisado, sin audio",
-  "pendingLangs": "Pendientes de revisión por hablantes nativos: {langs}.",
   "home": "Inicio"
 }

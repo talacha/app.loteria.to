@@ -102,6 +102,10 @@ export const ALLOWLIST = [
   'no money',
   'ficha técnica',
   'fichas técnicas',
+  // Rules copy on the home page (src/app/home/strings.es.json), approved by the owner.
+  'Todos los jugadores reciben',
+  'El primero en acertar gana',
+  'varios ganadores, el que tenga más puntos gana',
 ];
 
 export interface Hit {

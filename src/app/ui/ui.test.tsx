@@ -203,7 +203,11 @@ describe('game components', () => {
 
 describe('Gallery', () => {
   it('renders every primitive', () => {
-    render(<Gallery />);
+    render(
+      <MemoryRouter>
+        <Gallery />
+      </MemoryRouter>,
+    );
     expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('UI gallery');
     expect(screen.getAllByRole('radio').length).toBe(5);
   });

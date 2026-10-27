@@ -1,4 +1,4 @@
-import { fireEvent, cleanup, render, screen } from '@testing-library/react';
+import { fireEvent, cleanup, render, screen, within } from '@testing-library/react';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router';
 import { afterEach, describe, expect, it } from 'vitest';
 import i18n from '../i18n';
@@ -38,7 +38,10 @@ describe('HomePage', () => {
     expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('¿Cómo te llamas?');
     expect(screen.getByText('Lotería de los Pueblos')).toBeTruthy();
     expect(screen.getByText('El Sol')).toBeTruthy();
-    expect(screen.getAllByText('pendiente de revisión').length).toBeGreaterThanOrEqual(1);
+    expect(screen.queryByText('pendiente de revisión')).toBeNull();
+    expect(screen.getByRole('heading', { name: 'Cómo es una ronda' })).toBeTruthy();
+    expect(screen.getByText('Se completa un cartón')).toBeTruthy();
+    expect(screen.getByRole('link', { name: /Jugar solo/i })).toBeTruthy();
     expect(screen.getByRole('link', { name: /Crear una sala/ })).toBeTruthy();
     expect(screen.getByText('Sin cuentas, sin dinero. Solo frijolitos.')).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Imprimir tablas' }).getAttribute('href')).toBe(
@@ -70,11 +73,26 @@ describe('HomePage', () => {
     fireEvent.submit(input.closest('form') as HTMLFormElement);
     expect(screen.getByTestId('loc').textContent).toBe('/r/K7M2Q');
   });
-  it('switches language and persists it', async () => {
+  it('has separate app-language and spoken-language pickers that persist', async () => {
+    localStorage.setItem('loteria:profile', JSON.stringify({ name: 'Itzel', glyph: '🐸' }));
+    await i18n.changeLanguage('es');
     setup();
-    fireEvent.click(screen.getByRole('button', { name: 'English' }));
+    const ui = screen.getByRole('radiogroup', { name: 'Idioma de la app' });
+    const spoken = screen.getByRole('radiogroup', { name: 'Idioma que escuchas' });
+    fireEvent.click(within(spoken).getByRole('radio', { name: /Maya yucateco/ }));
+    expect(JSON.parse(localStorage.getItem('loteria:profile') ?? '{}')).toMatchObject({
+      name: 'Itzel',
+      spokenLang: 'yua',
+    });
+    expect(i18n.language).toBe('es');
+    fireEvent.click(within(ui).getByRole('radio', { name: /English/ }));
     expect(i18n.language).toBe('en');
-    expect(localStorage.getItem('loteria.lang')).toBe('en');
+    expect(document.documentElement.lang).toBe('en');
+    expect(JSON.parse(localStorage.getItem('loteria:profile') ?? '{}')).toMatchObject({
+      name: 'Itzel',
+      uiLang: 'en',
+      spokenLang: 'yua',
+    });
     await i18n.changeLanguage('es');
   });
 });

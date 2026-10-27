@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './page.module.css';
-import { getTheme, setTheme, setUiLang, type ThemePref, type UiLang } from './prefs';
+import { THEMES, getTheme, setTheme, setUiLang, type ThemePref, type UiLang } from './prefs';
 
 const UI_LANGS: UiLang[] = ['es', 'en'];
-const THEMES: ThemePref[] = ['auto', 'contrast'];
 
 export function LanguageSwitch() {
   const { t, i18n } = useTranslation();
@@ -31,13 +30,14 @@ export function ThemeSwitch() {
   const { t } = useTranslation();
   const [theme, set] = useState<ThemePref>(getTheme);
   return (
-    <div className={styles.row} role="group" aria-label={t('theme.label')}>
+    <div className={styles.row} role="radiogroup" aria-label={t('theme.label')}>
       {THEMES.map((v) => (
         <button
           key={v}
           type="button"
           className={styles.toggle}
-          aria-pressed={theme === v}
+          role="radio"
+          aria-checked={theme === v}
           onClick={() => {
             setTheme(v);
             set(v);

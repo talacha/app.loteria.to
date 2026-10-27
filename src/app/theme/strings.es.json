@@ -1,6 +1,6 @@
 {
   "label": "Tema",
-  "auto": "Automático",
+  "auto": "Auto",
   "contrast": "Alto contraste",
   "kit": {
     "review": {
@@ -23,5 +23,21 @@
     "progress": "Progreso",
     "loading": "Cargando…",
     "tabla": "Tu tabla"
+  },
+  "dark": "Oscuro",
+  "light": "Claro",
+  "settings": {
+    "open": "Ajustes",
+    "title": "Ajustes",
+    "themeOpen": "Tema",
+    "themeTitle": "Tema",
+    "close": "Cerrar",
+    "uiTitle": "Idioma de la app",
+    "uiHelp": "El idioma de los botones y los textos.",
+    "spokenTitle": "Idioma que escuchas",
+    "spokenHelp": "El idioma en el que el cantor dice las cartas.",
+    "sample": "Palabra de muestra",
+    "play": "Escuchar «{word}» en {lang}",
+    "noAudio": "Todavía no hay audio en este idioma."
   }
 }

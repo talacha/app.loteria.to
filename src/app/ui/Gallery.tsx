@@ -1,5 +1,4 @@
 import { useState, type ReactNode } from 'react';
-import { MemoryRouter } from 'react-router';
 import { cards, cardName, getCard, type Card } from '@content';
 import type { Lang } from '@engine';
 import {
@@ -77,7 +76,7 @@ export default function Gallery() {
     ['en', 'English', 'the Jaguar'],
   ];
   return (
-    <MemoryRouter>
+    <>
       <main className={styles.gallery} id="main">
         <h1>UI gallery</h1>
 
@@ -236,6 +235,6 @@ export default function Gallery() {
           />
         </Group>
       </main>
-    </MemoryRouter>
+    </>
   );
 }

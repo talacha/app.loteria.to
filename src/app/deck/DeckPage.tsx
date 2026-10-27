@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { CATEGORIES, cards, callableLangs, cardName, type Category, type Lang } from '@content';
+import { CATEGORIES, cards, cardName, type Category, type Lang } from '@content';
 import CardArt from '../theme/CardArt';
 import page from '../theme/page.module.css';
 import styles from './DeckPage.module.css';
@@ -11,9 +11,7 @@ const NATIVE: Lang[] = ['nah', 'yua', 'quz'];
 export default function DeckPage() {
   const { t } = useTranslation();
   const [category, setCategory] = useState<Category | 'all'>('all');
-  const callable = callableLangs();
   const shown = category === 'all' ? cards : cards.filter((c) => c.category === category);
-  const pending = NATIVE.filter((l) => !callable.includes(l));
 
   return (
     <main className={page.page} id="main">
@@ -23,11 +21,6 @@ export default function DeckPage() {
       <header className={page.section}>
         <h1 className={page.h1}>{t('deck.title')}</h1>
         <p className={page.lead}>{t('deck.intro')}</p>
-        {pending.length > 0 && (
-          <p className={page.notice}>
-            {t('deck.pendingLangs', { langs: pending.map((l) => t(`lang.${l}`)).join(', ') })}
-          </p>
-        )}
       </header>
 
       <div role="group" aria-label={t('deck.filterLabel')} className={styles.filters}>
@@ -77,12 +70,6 @@ export default function DeckPage() {
                       <span className="sr-only">{t(`lang.${lang}`)}: </span>
                       {n.text}
                     </span>
-                    {n.status === 'draft' && (
-                      <span className={page.badge}>{t('deck.draftUnreviewed')}</span>
-                    )}
-                    {n.status === 'reviewed' && (
-                      <span className={page.badge}>{t('deck.reviewedBadge')}</span>
-                    )}
                   </span>
                 );
               })}

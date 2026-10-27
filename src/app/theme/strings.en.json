@@ -1,6 +1,6 @@
 {
   "label": "Theme",
-  "auto": "Automatic",
+  "auto": "Auto",
   "contrast": "High contrast",
   "kit": {
     "review": {
@@ -23,5 +23,21 @@
     "progress": "Progress",
     "loading": "Loading…",
     "tabla": "Your board"
+  },
+  "dark": "Dark",
+  "light": "Light",
+  "settings": {
+    "open": "Settings",
+    "title": "Settings",
+    "themeOpen": "Theme",
+    "themeTitle": "Theme",
+    "close": "Close",
+    "uiTitle": "App language",
+    "uiHelp": "The language of buttons and text.",
+    "spokenTitle": "Language you hear",
+    "spokenHelp": "The language the cantor calls the cards in.",
+    "sample": "Sample word",
+    "play": "Listen to «{word}» in {lang}",
+    "noAudio": "There is no audio in this language yet."
   }
 }

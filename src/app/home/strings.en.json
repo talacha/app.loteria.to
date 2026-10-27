@@ -15,15 +15,15 @@
   "steps": {
     "one": {
       "title": "The room opens",
-      "body": "The cantor creates a room and shares the code or QR. Boards can also be printed."
+      "body": "Every player gets 1 board of 4 columns × 4 rows."
     },
     "two": {
       "title": "A card is called",
-      "body": "Each card comes up once, named in the chosen language, and everyone looks for its picture."
+      "body": "Each card comes up once, named in the chosen language, and everyone must pick the correct written form. The first to answer correctly earns 2× points (they break ties). Everyone who answers correctly gets one point; anyone who misses gets none, but everyone who has the picture on their board gets to mark it, and the correct written form appears."
     },
     "three": {
-      "title": "A pattern is completed",
-      "body": "Whoever completes the pattern says Lotería! and the cantor checks the board, on screen or on paper."
+      "title": "A board is completed",
+      "body": "Whoever completes their board says ¡Lotería! If several people complete theirs, the one with the most points takes the round."
     }
   },
   "inclusionTitle": "Made to include everyone",

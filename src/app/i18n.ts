@@ -32,6 +32,9 @@ function catalog(lng: 'es' | 'en'): Tree {
 
 function storedLang(): 'es' | 'en' {
   try {
+    const raw: unknown = JSON.parse(localStorage.getItem('loteria:profile') ?? 'null');
+    const ui = raw && typeof raw === 'object' ? (raw as { uiLang?: unknown }).uiLang : undefined;
+    if (ui === 'en' || ui === 'es') return ui;
     return localStorage.getItem('loteria.lang') === 'en' ? 'en' : 'es';
   } catch {
     return 'es';

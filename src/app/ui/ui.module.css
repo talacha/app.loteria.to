@@ -53,7 +53,7 @@
   border: 0;
   font: inherit;
   font-size: var(--text-md);
-  color: var(--color-maiz);
+  color: var(--color-accent-text);
   text-decoration: none;
   cursor: pointer;
 }
@@ -88,7 +88,7 @@
 }
 .pill[data-tone='night'] {
   background: var(--color-night-raised);
-  color: var(--color-paper);
+  color: var(--color-text);
 }
 .pill[data-tone='jade'],
 .pill[data-tone='nah'] {
@@ -138,7 +138,7 @@
   border: var(--border-thick);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-hard);
-  color: var(--color-paper);
+  color: var(--color-text);
 }
 .panel[data-variant='dashed'] {
   border: var(--border-dashed);
@@ -358,7 +358,7 @@
 .progress {
   height: var(--space-2);
   border-radius: var(--radius-pill);
-  background: var(--color-night-line);
+  background: var(--color-night-dash);
   overflow: hidden;
 }
 .progressFill {
@@ -648,4 +648,121 @@ button.cell {
   height: 100%;
   font-size: var(--text-3xl);
   line-height: 1;
+}
+
+/* Sheet (settings, theme) */
+.sheetRoot {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.sheetBackdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--color-shadow);
+  opacity: 0.6;
+}
+.sheet {
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  max-height: 90dvh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: var(--space-5);
+  background: var(--color-night);
+  color: var(--color-text);
+  border: var(--border-thick);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+.sheetHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.sheetTitle {
+  margin: 0;
+  font-size: var(--text-xl);
+}
+.sheetClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-tap);
+  height: var(--size-tap);
+  border: var(--border-thin);
+  border-radius: var(--radius-pill);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+/* Language settings */
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.settingsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-3) 0 0;
+  min-width: 0;
+  border: 0;
+  border-top: var(--border-dashed);
+}
+.settingsGroup:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.settingsLegend {
+  padding: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-lg);
+}
+.settingsHelp {
+  margin: 0;
+  color: var(--color-muted-on-night);
+  font-size: var(--text-md);
+}
+.settingsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.langRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.langRow > :first-child {
+  flex: 1;
+  min-width: 0;
+}
+.playBtn {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-tap);
+  height: var(--size-tap);
+  border: var(--border-thin);
+  border-radius: var(--radius-pill);
+  background: var(--color-maiz);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-hard-sm);
+  cursor: pointer;
+}
+.settingsNote {
+  margin: 0;
+  color: var(--color-muted-on-night);
+  font-size: var(--text-md);
 }

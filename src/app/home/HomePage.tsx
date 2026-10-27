@@ -2,10 +2,8 @@ import { useRef, useState, type FormEvent, type MouseEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { LANGS, callableLangs, cardName, getCard, type Lang } from '@content';
-import { LanguageSwitch } from '../theme/Preferences';
-import { ThemeSwitch } from '../theme/Preferences';
 import { applyStoredPrefs } from '../theme/prefs';
-import { Button, CardArt } from '../ui';
+import { Button, CardArt, LanguageSettings } from '../ui';
 import page from '../theme/page.module.css';
 import styles from './HomePage.module.css';
 import { isValidRoomCode, normalizeRoomCode } from './joinCode';
@@ -83,9 +81,6 @@ export default function HomePage() {
               <img src="/favicon.svg" alt="" />
               <span>{t('app.name')}</span>
             </div>
-            <div className={styles.lang}>
-              <LanguageSwitch />
-            </div>
           </div>
 
           <h1 className={styles.title}>{t('home.nameTitle')}</h1>
@@ -139,6 +134,8 @@ export default function HomePage() {
               ))}
             </div>
           </fieldset>
+
+          <LanguageSettings />
 
           <div className={styles.actions}>
             <Button to="/host" className={styles.create} onClick={create}>
@@ -311,7 +308,6 @@ export default function HomePage() {
           </section>
 
           <p>{t('home.privacyLine')}</p>
-          <ThemeSwitch />
         </div>
       </div>
     </main>

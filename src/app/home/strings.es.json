@@ -15,15 +15,15 @@
   "steps": {
     "one": {
       "title": "Se abre la sala",
-      "body": "Quien canta crea una sala y comparte el código o el QR. También puede imprimir tablas."
+      "body": "Todos los jugadores reciben 1 cartón de 4 columnas × 4 filas."
     },
     "two": {
       "title": "Se canta una carta",
-      "body": "Cada carta sale una sola vez, con su nombre en el idioma elegido, y todas las personas buscan su dibujo."
+      "body": "Cada carta sale una sola vez, con su nombre en el idioma elegido, y todas las personas deben elegir la forma escrita correcta. El primero en acertar gana 2× puntos (sirven para desempate). Todos los que aciertan reciben un punto; quien no acierte no recibe puntos, pero todos los que tengan la figura en su cartón logran tacharla y aparece la forma escrita correcta."
     },
     "three": {
-      "title": "Se completa una figura",
-      "body": "Quien completa la figura dice ¡Lotería! y quien canta revisa la tabla, en pantalla o en papel."
+      "title": "Se completa un cartón",
+      "body": "Quien completa su cartón dice ¡Lotería! Si hay varios ganadores, el que tenga más puntos gana."
     }
   },
   "inclusionTitle": "Hecha para incluir a todas las personas",
