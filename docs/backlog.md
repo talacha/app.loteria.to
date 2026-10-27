@@ -162,7 +162,7 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 - **Evidence:** 85 clips each in `public/audio/{nah,yua,quz}` vs 54 cards; 93 files (429,536 bytes) are not referenced by `cards.json` (César's deck, decision 0006). Workbox glob `vite.config.ts:52` precaches them.
 - **Accept when:** orphans deleted (they stay in git history) or moved out of `public/`; `scripts/validate-content.ts` fails on unreferenced clips.
 
-### DEBT-005 · Stray sed backup files — P2
+### DEBT-005 · Stray sed backup files — P2 · ✅ Fixed 2026-10-27 (files deleted)
 
 - **Evidence:** `src/app/deck/DeckPage.module.css-E`, `src/app/home/HomePage.module.css-E` are tracked.
 - **Accept when:** deleted; `*-E` added to `.gitignore`.
@@ -193,7 +193,7 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 - **Evidence:** `index.html` meta `theme-color`; `vite.config.ts:36-37` manifest colours.
 - **Accept when:** theme-color follows the active theme (night / maíz tokens, one `<meta media>` per scheme) and the manifest uses the same values.
 
-### DEBT-011 · Docs and agent guidance point at moved files — P1
+### DEBT-011 · Docs and agent guidance point at moved files — P1 · ✅ Fixed 2026-10-27 (CLAUDE.md rewritten)
 
 - **Why:** Agents follow `CLAUDE.md`; dead pointers send them to archived or missing docs.
 - **Evidence:** `CLAUDE.md` cites `docs/decisions/rules-open-items.md`, `docs/reglas.md`, `docs/PLATFORM.md` (now in `docs/archive/`). `docs/ARCHITECTURE.md` header still says "planning… no application code yet", 40 phones, paper players.
