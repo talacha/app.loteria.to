@@ -82,7 +82,7 @@ afterEach(async () => {
 describe('LobbyWaiting', () => {
   it('shows the code, waiting text and the roster from lobby messages', async () => {
     await mount();
-    expect(screen.getByText(/Esperando a que quien canta empiece/)).toBeTruthy();
+    expect(screen.getByText(/Esperando a quien canta/)).toBeTruthy();
     expect(screen.getByText(/Código de sala: A, B, C, D, E/)).toBeTruthy();
     host.send({
       t: 'lobby',
@@ -112,7 +112,7 @@ describe('LobbyWaiting', () => {
     await flush();
     host.send({ t: 'assign', seat: player!.seat, tablaIndex: 4, roundNo: 1 });
     await flush();
-    expect(screen.queryByText(/Esperando a que quien canta empiece/)).toBeNull();
+    expect(screen.queryByText(/Esperando a quien canta/)).toBeNull();
     expect(screen.getByRole('button', { name: '¡Lotería!' })).toBeTruthy();
   });
 

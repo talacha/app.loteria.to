@@ -53,12 +53,7 @@ export default function Button(props: ButtonProps | LinkProps | AnchorProps) {
   }
   if (props.to !== undefined) {
     return (
-      <Link
-        to={props.to}
-        className={cls}
-        aria-label={props['aria-label']}
-        onClick={props.onClick}
-      >
+      <Link to={props.to} className={cls} aria-label={props['aria-label']} onClick={props.onClick}>
         {inner}
       </Link>
     );

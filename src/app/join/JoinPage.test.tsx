@@ -49,7 +49,7 @@ describe('JoinPage', () => {
       }),
     );
     renderAt('/r/ABCDE');
-    expect(screen.getByText(/Sala de espera/)).toBeTruthy();
+    expect(screen.getByText(/Esperando a quien canta/)).toBeTruthy();
     sessionStorage.clear();
   });
   it('has exactly one #main', () => {

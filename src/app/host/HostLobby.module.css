@@ -32,22 +32,6 @@
 .roundNo {
   font-weight: 700;
 }
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: var(--border-thin);
-  background: var(--paper);
-}
-.online {
-  background: var(--jade);
-}
-.offline {
-  background: var(--chile);
-}
-.unverified {
-  background: var(--maiz);
-}
 .notice {
   background: var(--review);
   color: var(--ink);
@@ -65,27 +49,11 @@
 .share {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
+  align-items: stretch;
+  gap: var(--space-4);
 }
-.qr {
-  display: block;
-  width: min(100%, 22rem, 38dvh);
-  aspect-ratio: 1;
-  height: auto;
-  background: #fff;
-  border-radius: var(--radius-md);
-  border: var(--border-thick);
-  padding: 0;
-  box-shadow: 0 6px 0 var(--shadow-color);
-}
-.url {
-  margin: 0;
-  max-width: 100%;
-  overflow-wrap: anywhere;
-  font-size: var(--text-sm);
-  color: var(--muted-on-night);
-  text-align: center;
+.share > :global(*) {
+  align-self: center;
 }
 .side {
   display: flex;
@@ -105,7 +73,7 @@
   padding: 0 var(--space-4);
   font: inherit;
   font-weight: 600;
-  border-radius: 14px;
+  border-radius: var(--radius-sm);
   border: var(--border-thick);
   cursor: pointer;
   color: var(--paper);
@@ -171,6 +139,29 @@
   color: var(--muted-on-night);
   font-size: var(--text-sm);
 }
+.lead {
+  margin: 0;
+  color: var(--muted-on-night);
+}
+.rosterBox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.rosterH {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-xl);
+}
+.roster {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
 .startBar {
   position: sticky;
   bottom: 0;
@@ -184,21 +175,7 @@
 .hint {
   margin: 0;
   color: var(--muted-on-night);
-  font-size: var(--text-sm);
-  text-align: center;
-}
-.start {
-  min-height: 56px;
-  font: inherit;
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 800;
-  border-radius: var(--radius-md);
-  border: var(--border-thick);
-  background: var(--maiz);
-  color: var(--ink);
-  box-shadow: var(--shadow-hard);
-  cursor: pointer;
+  font-size: var(--text-md);
 }
 .srOnly {
   position: absolute;
@@ -217,9 +194,12 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: start;
   }
-  .start {
+  .startBar > * {
     align-self: center;
-    min-width: 16rem;
+    min-width: 20rem;
+  }
+  .roster {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 @media (min-width: 1280px) {
@@ -252,4 +232,12 @@
 
 .page a {
   color: var(--maiz);
+}
+.page a:focus-visible,
+.page button:focus-visible,
+.page summary:focus-visible,
+.page input:focus-visible,
+.page select:focus-visible {
+  outline: 3px solid var(--color-maiz);
+  outline-offset: 2px;
 }

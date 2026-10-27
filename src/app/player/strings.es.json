@@ -48,7 +48,7 @@
   "winTitle": "¡Lotería!",
   "winSolo": "{name} completó {pattern}",
   "winYou": "Completaste {pattern}",
-  "winTie": "Empate: ganan {names}",
+  "winTie": "Empate: {names} completaron la figura",
   "winNone": "La ronda terminó.",
   "winWordsLine": "Palabras de tu línea",
   "winWordsLearned": "Palabras que aprendiste",

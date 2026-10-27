@@ -7,6 +7,7 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 
 /** Tiny .env parser. Never prints values. Does not override real env. */
 export function loadEnv(file = root + '.env.local'): void {
+  // eslint-disable-next-line no-useless-assignment -- default when the file is missing
   let txt = '';
   try {
     txt = readFileSync(file, 'utf8');

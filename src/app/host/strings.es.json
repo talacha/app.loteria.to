@@ -53,7 +53,10 @@
     "zeroHint": "Aún no hay nadie. Puedes empezar igual para jugar con tablas de papel.",
     "manage": "Quitar a alguien",
     "remove": "Quitar",
-    "removeNamed": "Quitar a {name}"
+    "removeNamed": "Quitar a {name}",
+    "lead": "Quien organiza comparte el código. El cantor (automático) canta cuando toques Empezar.",
+    "roomLabel": "SALA",
+    "noPhone": "¿Sin teléfono? Imprime tablas"
   },
   "title": "Sala de canto",
   "resumeLobbyBody": "Hay una sala abierta en este dispositivo (sala {code}).",
@@ -65,7 +68,7 @@
     "pictureLater": "La imagen se muestra al terminar el canto",
     "time": "Tiempo",
     "seconds": "{s} s",
-    "auto": "Canto automático",
+    "auto": "Cantor automático",
     "pickers": "{x} de {y} ya eligieron",
     "phones": "{count, plural, one {# teléfono} other {# teléfonos}}",
     "points": "Puntos",
@@ -75,5 +78,6 @@
     "joinAt": "Únete en app.loteria.to",
     "paperName": "Tabla de papel {n}",
     "shortcuts": "Atajos: Espacio o P pausa, R repetir, L revisar papel"
-  }
+  },
+  "resume": "Reanudar"
 }

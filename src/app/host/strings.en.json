@@ -53,7 +53,10 @@
     "zeroHint": "Nobody has joined yet. You can still start for paper play.",
     "manage": "Remove someone",
     "remove": "Remove",
-    "removeNamed": "Remove {name}"
+    "removeNamed": "Remove {name}",
+    "lead": "The organiser shares the code. The cantor (automatic) calls once you tap Start.",
+    "roomLabel": "ROOM",
+    "noPhone": "No phone? Print boards"
   },
   "resumeLobbyBody": "A room is open on this device (room {code}).",
   "game": {
@@ -64,7 +67,7 @@
     "pictureLater": "The picture shows when the call ends",
     "time": "Time",
     "seconds": "{s} s",
-    "auto": "Automatic calling",
+    "auto": "Automatic cantor",
     "pickers": "{x} of {y} have picked",
     "phones": "{count, plural, one {# phone} other {# phones}}",
     "points": "Points",
@@ -74,5 +77,6 @@
     "joinAt": "Join at app.loteria.to",
     "paperName": "Paper board {n}",
     "shortcuts": "Shortcuts: Space or P pause, R repeat, L check paper"
-  }
+  },
+  "resume": "Resume"
 }

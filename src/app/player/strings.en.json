@@ -48,7 +48,7 @@
   "winTitle": "¡Lotería!",
   "winSolo": "{name} completed {pattern}",
   "winYou": "You completed {pattern}",
-  "winTie": "Tie: {names} win",
+  "winTie": "Tie: {names} completed the pattern",
   "winNone": "The round is over.",
   "winWordsLine": "Words from your line",
   "winWordsLearned": "Words you learned",

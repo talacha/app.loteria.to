@@ -49,12 +49,6 @@ export const RULES: Rule[] = [
     ],
   },
   {
-    id: 'gendered-cantor-es',
-    lang: 'es',
-    message: 'gendered "el/al/del cantor" as a person (say "quien canta")',
-    words: ['el cantor', 'al cantor', 'del cantor'],
-  },
-  {
     id: 'gendered-pronoun-en',
     lang: 'en',
     message: 'gendered pronoun used generically (use "they" or rephrase)',

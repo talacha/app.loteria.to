@@ -363,6 +363,15 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
                 ))}
               </div>
             )}
+            <p className={styles.muted} role="status" data-testid="feedback">
+              {state.feedback?.kind === 'casi'
+                ? t('player.feedbackCasi')
+                : state.feedback?.kind === 'ok'
+                  ? state.feedback.first
+                    ? t('player.feedbackFirst')
+                    : t('player.feedbackOk')
+                  : ''}
+            </p>
             <p className={styles.muted}>
               {t('player.cardsCalled', { count: state.calledSoFar.length })}
             </p>

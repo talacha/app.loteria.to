@@ -13,7 +13,7 @@ import { generateHostKeys, signMsg } from '../src/net/crypto.ts';
 import { Bot } from './bot.ts';
 import { Wire, cardPool, loadEnv, sleep, stats, supabaseCreds } from './common.ts';
 import { HeadlessHost } from './host-headless.ts';
-import { makeTransport, type Net, type Tx } from './transports.ts';
+import { makeTransport, type Net } from './transports.ts';
 
 loadEnv();
 
@@ -75,7 +75,7 @@ let ooo = 0;
 let picksSent = 0;
 let picksAnswered = 0;
 let latePicks = 0;
-let errors: string[] = [];
+const errors: string[] = [];
 let replayAccepted: boolean | null = null;
 const claimOutcomes: { room: string; winners: string[]; expected: string[]; claims: number; valid: number }[] = [];
 let firstDupMsgs = 0;
@@ -119,6 +119,7 @@ async function runRoom(n: number): Promise<void> {
   const code = roomCode();
   const rw = wire;
   const htx = makeTransport(net, 'host-' + code, rw);
+  // eslint-disable-next-line no-useless-assignment -- overwritten only for the app host
   let hostKey = '';
   let host: HeadlessHost | null = null;
   let appClose: (() => Promise<void>) | null = null;
@@ -129,7 +130,9 @@ async function runRoom(n: number): Promise<void> {
     useCode = a.code;
     hostKey = a.hostKey;
     appClose = a.close;
+    // eslint-disable-next-line no-var -- hoisted on purpose for the app-host branch
     var startApp = a.startRound;
+    // eslint-disable-next-line no-var -- hoisted on purpose for the app-host branch
     var appDone = a.waitEnd;
   } else {
     host = new HeadlessHost({ code, tx: htx, pool, pattern: cfg.pattern, tickMs: cfg.tick, maxCalls: cfg.calls });

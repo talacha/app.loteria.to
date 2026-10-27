@@ -19,6 +19,7 @@ export type Tx = Transport & {
  * deliver() sees every raw inbound frame before policy; rawSend() every signed outbound frame.
  */
 export function makeTransport(net: Net, seat: string, wire: Wire, keep = false): Tx {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- both transports share the Tx surface
   const t: any =
     net.kind === 'supabase'
       ? new SupabaseTransport(net.url as string, net.key as string, { seat })

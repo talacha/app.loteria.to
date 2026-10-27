@@ -121,7 +121,7 @@ describe('PlayerBoard', () => {
     fireEvent.click(screen.getByRole('button', { name: new RegExp(name(others[0])) }));
     await flush();
     expect(received.find((m) => m.t === 'pick')).toMatchObject({ i: 0, cardId: others[0] });
-    expect(screen.queryByText(/Casi/i)).not.toBeNull();
+    expect(screen.queryByText(/¡Casi!/)).not.toBeNull();
     fireEvent.click(screen.getByRole('button', { name: new RegExp(name(target)) }));
     await flush();
     host.send({

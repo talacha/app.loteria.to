@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
-import { LANG_COLORS, cardName, getCard } from '@content';
+import { cardName, getCard } from '@content';
 import type { Lang } from '@engine';
 import { isMuted, onMutedChange, setMuted } from '../audio';
-import CardArt from '../host/CardArt';
 import { MAX_SPEED, MIN_SPEED, SPEED_PRESETS } from '../host/roundMachine';
 import { useGame } from '../host/useGame';
 import type { Game, GameProps } from '../host/useGame';
 import { useModal } from '../host/useModal';
-import { useQr } from '../host/useQr';
+import { Button, HistoryStrip, Panel, PaperCard, Pill, ProgressBar, QrCard, WordCard } from '../ui';
 import styles from './HostGame.module.css';
 
 function useMuted(): boolean {
@@ -33,7 +32,6 @@ export default function HostGame(props: GameProps) {
   const { state } = h;
   const { room, roster } = props;
   const muted = useMuted();
-  const qr = useQr(room.joinUrl ?? '', 360);
   const [paperOpen, setPaperOpen] = useState(false);
   const [speedOpen, setSpeedOpen] = useState(false);
   const [now, setNow] = useState(() => Date.now());
@@ -105,6 +103,10 @@ export default function HostGame(props: GameProps) {
     if (!wordLangs.includes(l)) wordLangs.push(l);
   }
   const revealed = ended ? h.called : h.called.slice(0, -1);
+  const history = [...revealed].reverse().flatMap((id) => {
+    const c = getCard(id);
+    return c ? [{ id, emoji: c.art, label: nameOf(id) }] : [];
+  });
   const top = Object.entries(h.points)
     .filter(([, v]) => v > 0)
     .sort((a, b) => b[1] - a[1])
@@ -121,39 +123,34 @@ export default function HostGame(props: GameProps) {
         </div>
         <div className={styles.controls}>
           {live ? (
-            <button type="button" className={styles.ctl} onClick={h.togglePause}>
+            <Button variant="secondary" fit onClick={h.togglePause}>
               {running ? t('host.pause') : t('host.resume')}
-            </button>
+            </Button>
           ) : null}
-          <button
-            type="button"
-            className={styles.ctl}
+          <Button
+            variant="secondary"
+            fit
             aria-expanded={speedOpen}
             aria-controls="speed-panel"
             onClick={() => setSpeedOpen((o) => !o)}
           >
             {speedText}
-          </button>
-          <span className={styles.pill}>
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <circle cx="12" cy="12" r="6" />
-            </svg>
-            {t('host.game.auto')}
-          </span>
+          </Button>
+          <Pill tone="jade">{t('host.game.auto')}</Pill>
         </div>
         {speedOpen ? (
-          <div id="speed-panel" className={styles.speedPanel}>
+          <Panel id="speed-panel" className={styles.speedPanel}>
             <div className={styles.row}>
               {(['calm', 'normal', 'fast'] as const).map((k) => (
-                <button
+                <Button
                   key={k}
-                  type="button"
-                  className={styles.ctl}
+                  variant="secondary"
+                  fit
                   aria-pressed={state.settings.speedSec === SPEED_PRESETS[k]}
                   onClick={() => h.setSpeed(SPEED_PRESETS[k])}
                 >
                   {t(`host.speeds.${k}`)} · {t('host.game.seconds', { s: SPEED_PRESETS[k] })}
-                </button>
+                </Button>
               ))}
             </div>
             <label className={styles.sliderLabel}>
@@ -168,7 +165,7 @@ export default function HostGame(props: GameProps) {
                 onChange={(e) => h.setSpeed(Number(e.target.value))}
               />
             </label>
-          </div>
+          </Panel>
         ) : null}
       </header>
 
@@ -196,7 +193,7 @@ export default function HostGame(props: GameProps) {
           </h2>
 
           {ended ? (
-            <div className={styles.endPanel}>
+            <PaperCard size="lg" className={styles.endPanel}>
               <p className={styles.endTitle}>
                 {state.winners.length ? t('host.celebrate') : t('host.ended')}
               </p>
@@ -213,10 +210,10 @@ export default function HostGame(props: GameProps) {
               ) : (
                 <p>{t('host.noWinners')}</p>
               )}
-              <button type="button" className={styles.primary} onClick={h.newRound}>
+              <Button variant="primary" onClick={h.newRound}>
                 {t('host.newRound')}
-              </button>
-            </div>
+              </Button>
+            </PaperCard>
           ) : card ? (
             <>
               <ul className={styles.words} aria-label={t('host.game.wordsLabel')}>
@@ -224,16 +221,14 @@ export default function HostGame(props: GameProps) {
                   const n = cardName(card, l);
                   if (!n) return null;
                   return (
-                    <li key={l} className={styles.word}>
-                      <span className={styles.langPill} style={{ background: LANG_COLORS[l] }}>
-                        {t(`lang.${l}`)}
-                      </span>
-                      <span className={styles.wordText}>{n.text}</span>
-                      {n.status !== 'approved' ? (
-                        <span className={styles.review}>{t('host.game.review')}</span>
-                      ) : (
-                        <span className={styles.sub}>{t('host.game.pictureLater')}</span>
-                      )}
+                    <li key={l} className={styles.wordItem}>
+                      <WordCard
+                        word={n.text}
+                        langName={t(`lang.${l}`)}
+                        tone={l}
+                        review={n.status !== 'approved' ? 'word' : undefined}
+                        verse={n.status === 'approved' ? t('host.game.pictureLater') : undefined}
+                      />
                     </li>
                   );
                 })}
@@ -241,9 +236,9 @@ export default function HostGame(props: GameProps) {
               {h.noAudio ? <p className={styles.notice}>{t('host.noRecordingYet')}</p> : null}
               <div className={styles.timer}>
                 <span className={styles.timerLabel}>{t('host.game.time')}</span>
-                <span className={styles.bar} aria-hidden="true">
-                  <span className={styles.barFill} style={{ width: `${pct}%` }} />
-                </span>
+                <div className={styles.timerBar}>
+                  <ProgressBar value={pct / 100} label={t('host.game.time')} />
+                </div>
                 <span className={styles.timerNum} role="timer" aria-live="off">
                   {running ? t('host.game.seconds', { s: remainingSec }) : t('host.paused')}
                 </span>
@@ -253,23 +248,23 @@ export default function HostGame(props: GameProps) {
 
           {!ended ? (
             <div className={styles.row}>
-              <button type="button" className={styles.ctl} onClick={h.repeat}>
+              <Button variant="secondary" fit onClick={h.repeat}>
                 {t('host.repeat')}
-              </button>
-              <button type="button" className={styles.ctl} onClick={() => setPaperOpen(true)}>
+              </Button>
+              <Button variant="secondary" fit onClick={() => setPaperOpen(true)}>
                 {t('host.checkPaper')}
-              </button>
-              <button type="button" className={styles.ctl} onClick={h.endRound}>
+              </Button>
+              <Button variant="secondary" fit onClick={h.endRound}>
                 {t('host.endRound')}
-              </button>
-              <button
-                type="button"
-                className={styles.ctl}
+              </Button>
+              <Button
+                variant="secondary"
+                fit
                 aria-pressed={muted}
                 onClick={() => setMuted(!muted)}
               >
                 {muted ? t('host.unmute') : t('host.mute')}
-              </button>
+              </Button>
             </div>
           ) : null}
           <p className={`${styles.sub} ${styles.hint}`}>{t('host.game.shortcuts')}</p>
@@ -285,30 +280,19 @@ export default function HostGame(props: GameProps) {
         </section>
 
         <aside className={styles.side}>
-          <div className={styles.qrCard}>
-            {qr ? (
-              <img className={styles.qr} src={qr} alt={t('host.scanQr')} width={168} height={168} />
-            ) : null}
-            <span className={styles.sub}>{t('host.game.joinAt')}</span>
-            <span className={styles.code} aria-label={room.code.split('').join(' ')}>
-              {room.code}
-            </span>
-          </div>
-          <div className={styles.panel}>
-            <span className={styles.panelTitle}>
+          <QrCard url={room.joinUrl ?? ''} code={room.code} />
+          <Panel>
+            <p className={styles.panelTitle} role="status">
               {t('host.game.pickers', { x: h.pickedCount, y: h.eligibleCount })}
-            </span>
-            <span className={styles.bar} aria-hidden="true">
-              <span
-                className={styles.barJade}
-                style={{
-                  width: `${h.eligibleCount ? (h.pickedCount / h.eligibleCount) * 100 : 0}%`,
-                }}
-              />
-            </span>
+            </p>
+            <ProgressBar
+              tone="jade"
+              value={h.eligibleCount ? h.pickedCount / h.eligibleCount : 0}
+              label={t('host.game.pickers', { x: h.pickedCount, y: h.eligibleCount })}
+            />
             <span className={styles.sub}>{t('host.game.phones', { count: roster.length })}</span>
-          </div>
-          <section className={styles.panel} aria-labelledby="pts">
+          </Panel>
+          <Panel as="section" aria-labelledby="pts">
             <div className={styles.panelHead}>
               <h2 id="pts" className={styles.panelH}>
                 {t('host.game.points')}
@@ -326,21 +310,11 @@ export default function HostGame(props: GameProps) {
               </ol>
             ) : null}
             <span className={styles.sub}>{t('host.game.firstPlus', { n: 2 })}</span>
-          </section>
+          </Panel>
         </aside>
 
         <footer className={styles.history}>
-          <span className={styles.histLabel}>{t('host.game.history')}</span>
-          <ol className={styles.strip} aria-label={t('host.history')}>
-            {[...revealed].reverse().map((id) => {
-              const c = getCard(id);
-              return (
-                <li key={id} className={styles.chip}>
-                  {c ? <CardArt card={c} alt={nameOf(id)} className={styles.chipArt} /> : null}
-                </li>
-              );
-            })}
-          </ol>
+          <HistoryStrip items={history} title={t('host.game.history')} />
         </footer>
       </div>
 
@@ -422,12 +396,12 @@ function PaperDialog(props: {
             />
           </label>
           <div className={styles.row}>
-            <button type="submit" className={styles.primary}>
+            <Button type="submit" variant="primary" fit>
               {t('host.check')}
-            </button>
-            <button type="button" className={styles.ctl} onClick={props.onClose}>
+            </Button>
+            <Button variant="secondary" fit onClick={props.onClose}>
               {t('host.close')}
-            </button>
+            </Button>
           </div>
         </form>
         <PaperResult h={props.h} nameOf={props.nameOf} />
