@@ -1,89 +1,148 @@
-# Design guide: "Feria de noche"
+# Design system: "Feria de noche"
 
-**Binding for every agent and every UI change.** A lotería night fair: printed cards with thick ink borders on an indigo night, flat festival colours, hard drop shadows.
+Describes the v1.0 baseline: what the code does today. Values live in `design/tokens.json`; this file explains them and the rules around them. Where this file and the code disagree, the code (and its tests) win; fix this file.
 
-## 1. Sources (in order)
+## 1. Principles
 
-1. **`docs/design/look-and-feel.pdf`** — the approved screens. When this guide and the PDF disagree, the PDF wins; fix this guide.
-2. **`design/tokens.json`** — every colour, size, radius, border, shadow and font. The only place values are defined.
-3. **Claude Design canvas** https://claude.ai/artifact/CanBtUc4RQzxzPZE2BEgWc (read with the Artifact tool, `action: "read"`), mirrored in `design/look-and-feel/project/*.dc.html`. Only the orchestrator republishes it.
-4. Behaviour (what a tap does, who wins) comes from **`docs/rules.md`** (the PDF game: automatic cantor, three picture choices when the card is on your tabla). `docs/reglas.md` is César's rules reference. Never from this guide.
+- **Feria de noche.** A lotería night fair: printed cards with thick ink borders on an indigo night, flat festival colours, hard drop shadows, no gradients, no blur.
+- **Mobile first.** Design width 390 x 844, single column, primary action at the bottom, no horizontal scroll at 360 px. Tablet >= 768: two columns where a screen has a primary and a secondary area. Laptop/projector >= 1280: the cantor screen.
+- **Honesty about language.** Every dictionary, draft or AI-voice word shows a review tag (`ReviewTag`). Never hide it to save space. Language is always shown with its name, never by colour alone.
+- **No money framing.** Beans ("frijolitos"), never chips or prizes. Nobody "wins": they complete a figure. Enforced by copy-lint.
+- Targets >= 44 px (`--size-tap`), primary buttons 60 px, choice tiles >= 96 px. One primary action per screen.
 
-## 2. Tokens and enforcement
+## 2. Sources of truth and enforcement
 
-- `design/tokens.json` → `src/app/theme/tokens.css` defines each token as a CSS variable: `--color-<name>`, `--lang-<code>`, `--font-<name>`, `--text-<step>`, `--space-<step>`, `--radius-<name>`, `--border-<name>`, `--shadow-<name>`, `--size-<name>`, `--motion-<name>`. A test fails if `tokens.css` and `tokens.json` drift.
-- **In component CSS you may only use tokens.** `pnpm design-lint` (part of `pnpm check`) fails on: raw hex/rgb/hsl colours, `font-family` literals, raw `border-radius` px values, `box-shadow` that isn't a token, and colour keywords other than `transparent`/`currentColor`/`inherit`. Only `tokens.css` and `design/**` may contain raw values.
-- **Build screens from `src/app/ui/` primitives** (§5). Don't re-create a button, pill, panel or tile locally; extend the primitive instead.
-- Legacy `--color-*` names that predate this guide are aliases kept only until every screen is migrated.
+Order: 1) `design/tokens.json` (values), 2) `src/app/theme/tokens.css` (CSS variables), 3) the approved PDF `docs/design/look-and-feel.pdf` and the Claude Design canvas (screens), 4) behaviour from `docs/rules.md`.
 
-## 3. Foundations
+| Check                                            | What it enforces                                                                                                                                                                                                                                                                                                                                                                                                                                             | Run                         |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| `src/app/theme/tokens.test.ts`                   | Every `tokens.json` token exists in `:root` with the same resolved value; every `theme.light` key matches both `[data-theme='light']` and the `prefers-color-scheme: light` block; contrast floors (section 3) in night, light, auto-light and contrast.                                                                                                                                                                                                      | `pnpm test`                 |
+| `scripts/design-lint.ts` (`pnpm design-lint`)    | Scans `src/app/**/*.css` and `style={{}}` literals in `*.tsx` (not `tokens.css`, not tests). Rules: `raw-color` (hex, rgb(a), hsl(a), hwb, lab, lch, oklab, oklch), `named-color` (CSS colour keywords in colour properties; `transparent`, `currentColor`, `inherit` are fine), `font-family` (literals and `font` shorthand without `var()`), `radius` (raw lengths; `0` and `50%` allowed), `shadow` (only `var(--shadow-*)`, `none`, or zero-blur offset/ring in a token colour), `theme-text-on-ground`. | `pnpm design-lint`          |
+| `theme-text-on-ground` (inside design-lint)      | `color: var(--paper)`, `--color-paper`, `--muted-on-night`, `--color-maiz` are dark-only. Unless the same rule paints a coloured fill (maiz, rosa, cielo, jade, maya, quechua, ink, paper, chile, bean, shadow, `--lang-*`) the text sits on the ground and must use `--color-text`, `--color-muted-on-night` or `--color-accent-text`.                                                                                                                         | `pnpm design-lint`          |
+| `scripts/copy-lint.ts` (`pnpm copy-lint`)        | Lints every string in `src/content/i18n/*.json`, `src/app/**/strings.*.json`, `src/print/strings.*.json`, `cards.json`. Rules: `gendered-role-es` (jugador/a, ganador/a, niño/a, alumno/a, maestro/a and plurals), `gendered-pronoun-en` (he, she, him, his...), `winning-es` (gana, ganar, ganó...), `winning-en` (win, won, winner...), `framing` (premio, prize, apuesta, bet, chips and similar money/betting words). A fixed-phrase `ALLOWLIST` exempts innocent uses; keys named `pronoun*` are skipped. | `pnpm copy-lint`            |
+| `src/app/ui/ui.test.tsx`, `pnpm lint`, `pnpm check` | Component behaviour; ESLint + Prettier; `check` runs the full gate including design-lint.                                                                                                                                                                                                                                                                                                                                                            | `pnpm test`, `pnpm check`   |
 
-| | Rule |
-|---|---|
-| Ground | `--color-night` everywhere; panels on it use `--color-night-raised`. |
-| Surfaces | Cards are `--color-paper` with `--border-thick` and `--shadow-hard`; text on them is `--color-ink`. |
-| Text on night | `--color-paper`; secondary `--color-muted-on-night`. Never grey-on-night below 4.5:1. |
-| Type | Display: Bricolage Grotesque 800, tight tracking (−0.02em) for titles, words, codes, buttons. UI: Atkinson Hyperlegible 400/700 for everything else. Self-hosted in `public/fonts/`. |
-| Scale (phone) | hero 64 · code 40 · word 38 · 3xl 36 · 2xl 30 · xl 22 · lg 18 · base 16 · md 15 · sm 13 · xs 11 (minimum). |
-| Spacing | 4 · 8 · 12 · 16 · 20 · 24 · 32. Screen padding 20 px phone (16 on dense game screens), 32 px laptop. |
-| Shape | Radius: cells 12, inputs/strips 16, tiles/board 20, cards 24, pills 999. Borders always ink: 3 px on cards/buttons/tiles, 2 px on pills, tags, tabla cells. |
-| Depth | Only hard shadows (`0 5px 0` shadow colour). No blur shadows, no gradients. Pressed or disabled = shadow removed + `--motion-press`. Selected = `--motion-lift` + a 4 px coloured ring in the language/state colour. |
-| Icons | Inline stroke SVG, 2–2.5 px, round caps; decorative ones `aria-hidden`. No emoji in UI chrome. |
-| Card art | Flat SVG at `public/art/<cardId>.svg`: 120 viewBox, ink stroke 5, festival palette, no text, no human figures. `chile` red is art-only. |
-| Language colour | nah jade · yua maya · quz quechua · es rosa · en cielo. **Always paired with the language name** (never colour alone). |
-| Review honesty | Any dictionary/AI-voice or draft word shows the review tag (§5 `ReviewTag`). Never hide it to save space. |
+In component CSS use tokens only. Build screens from `src/app/ui/`; extend a primitive instead of recreating a button, pill or panel locally.
 
-## 4. Layout and breakpoints
+## 3. Themes
 
-- **Mobile first at 390 × 844.** Single column, primary action pinned at the bottom of the viewport, no horizontal scroll at 360 px.
-- **Tablet ≥ 768:** two columns where a screen has a primary and a secondary area (lobby: code + roster; host: QR + roster/settings).
-- **Laptop/projector ≥ 1280:** the caller screen (PDF p.5): main column + 340 px side column, header row with controls, history strip at the bottom.
-- Targets ≥ 44 px (`--size-tap`); primary buttons 60 px (`--size-button`); choice tiles ≥ 96 px.
+Four preferences (`ThemePref` in `src/app/theme/prefs.ts`): `auto` (default), `dark`, `light`, `contrast`.
 
-## 5. Components (`src/app/ui/`)
+- **Selection:** `<html data-theme>`. Absent = auto: dark `:root` tokens, overridden by `@media (prefers-color-scheme: light) { :root:not([data-theme]) {...} }`. `dark` sets `data-theme="dark"` (no overrides). `light` and `contrast` have their own `:root[data-theme=...]` blocks.
+- **Persistence:** `localStorage['loteria:theme']` (legacy `loteria.theme` is read as fallback); an inline script in `index.html` applies it before first paint. Storage errors are swallowed (preference lasts for the visit). UI switch: `ThemeSwitch` in `src/app/theme/Preferences.tsx` (radiogroup). `PlayerBoard` temporarily forces `contrast` when the player turns on its high-contrast board option and restores the previous theme on exit.
+- **Tokens that change:**
+  - Light: `night #F6E9CC`, `night-raised #FFFFFF`, `night-line #CDBF9E`, `night-dash #6E6AA6`, `shadow #16182F`, `muted-on-night #4A4766`, `text #16182F`, `accent-text #8A5A00`, `disabled-on-night #DDD3BA`, `focus #8A5A00`. Paper cards, ink, maiz and language colours do not change.
+  - Contrast (CSS only, not in tokens.json): `night/night-raised #000`, `night-line/night-dash #FFF`, `paper #FFF`, `ink #000`, `shadow #FFF`, `muted-on-night #FFF`, `muted-on-paper #000`, `text #FFF`, `accent-text/focus #FFC233`, `jade-soft #FFF`, `disabled-on-night #000`.
+- **Floors measured by `tokens.test.ts`** (night, light, auto-light, contrast): text pairs >= 4.5 (paper/text/muted on night and night-raised, ink on paper/white/maiz/maiz-soft/jade-soft/jade, muted-on-paper on paper/white, accent-text on both grounds, paper on maya/quechua/cielo/rosa); large display text >= 3 (ink and paper on rosa are asserted at 3 and also 4.5 for paper on rosa); UI parts >= 3 (ink border on paper/white/maiz; night-dash on night and night-raised). **Boundaries and focus:** `night-dash` >= 3 on night and night-raised in every theme; `focus` >= 3 on night and night-raised; on paper/white either the focus ring or the ink halo >= 3. On the light ground maiz and paper are never text on a ground (use `text`/`accent-text`).
 
-| Component | Anatomy (from the PDF) | States |
-|---|---|---|
-| `Button` variant `primary` | maiz fill, ink text 21–22 px display 800, `--border-thick`, `--radius-lg`, `--shadow-hard`, full width on phone, min-height 60 | hover darker shadow; pressed/disabled = press offset, no shadow; `aria-busy` while waiting |
-| `Button` variant `secondary` | paper fill, ink text, same border/shadow, min-height 56 | as primary |
-| `Button` variant `link` | maiz text on night, 15–16 px, min-height 44, optional leading icon | underline on hover |
-| `Pill` | 2 px ink border, pill radius, 13–16 px bold; tones: `jade` (Conectado / Náhuatl), `lang-*`, `paper`, `night` | — |
-| `ReviewTag` | maiz-soft fill, 2 px ink border, pill, 11–14 px bold ink: "palabra en revisión" / "Palabras en revisión por hablantes" / "voz generada por IA · puede tener errores" (D1) | always visible |
-| `Panel` | night-raised fill, 3 px ink border, radius 22–24, hard shadow; variant `dashed` (neutral hint: 2 px dashed night-dash, no shadow) | — |
-| `PaperCard` | paper fill, ink text, 3 px border, radius 24, hard shadow (lg for hero) | — |
-| `LanguageCard` (PDF p.1) | PaperCard row: 60 px coloured square with sun art, name (display 22), native + sample «word», optional ReviewTag, 30 px radio dot | selected: 4 px ring in language colour + lift + filled dot with check |
-| `RoomCodeTiles` (p.2) | five maiz tiles, ink border, radius 12, display 800 40 px, gap 6; label "SALA" (14 px caps muted-on-paper) | — |
-| `RosterTile` (p.2) | 2-col grid; paper tile, 3 px border, radius 16; 44 px white glyph well; name bold 16 + language/"tabla de papel" 12 | self tile maiz fill + "Tú ·" prefix |
-| `CallPanel` (p.3) | Panel row: 64 px maiz round speaker button with soft halo rings, "EL CANTOR CANTA" 13 px caps muted, word display 800 38 px, ReviewTag, timer bar (night-line track, maiz fill) | Escucha: word replaced by "Escucha…" |
-| `ChoiceTile` (p.3) | square paper tile, 3 px border, radius 20, art 70 px, picture only | correct: jade-soft fill + 4 px jade ring + jade check badge; wrong: disabled-on-night fill, 45% opacity, pressed; disabled |
-| `FeedbackStrip` (p.3) | radius 16, min-height 52; title display 18 + text 14 | neutral: dashed night-raised; ok: jade fill paper text "¡Eso!"; casi: maiz fill ink text "¡Casi!" (never red) |
-| `Tabla` + `TablaCell` (p.3) | paper board, 3 px border, radius 20, padding 8, gap 6, hard shadow; cells white, 2 px border, radius 12, art 52–56 px, label 10–11 px bold (name in player's language) | marked: bean (22×15 oval, bean colours, corner, rotated) + art at 55% opacity; winning line: maiz cell fill |
-| `PapelPicado` (p.4) | top band of 6 flag shapes (maiz, jade, cielo, paper, maiz, jade) | — |
-| `QrCard` (p.5) | PaperCard with white QR square (3 px border, radius 12), "Únete en app.loteria.to", code display 800 38 px tracked 0.12em | — |
-| `WordCard` (p.5) | tall PaperCard, 4 px border, radius 28, Pill (language) top, word display 800 50–64 px nowrap, ReviewTag or verse footer | — |
-| `HistoryStrip` (p.5) | "Ya cantadas" + 64 px paper tiles with art 48 px | — |
-| `ProgressBar` | night-line track, radius pill, fill maiz (time) or jade (progress) | — |
+## 4. Tokens
 
-## 6. Screens (PDF pages)
+All are CSS custom properties named `--<group>-<name>` in `tokens.css` (`:root`, dark values).
 
-| Screen | PDF | Must have |
-|---|---|---|
-| 1 · Name + create/join | canvas `Main.dc.html` | logo row, "¿Cómo te llamas?", name input, glyph picker, primary "Crear una sala", "o", join panel (code input + Entrar + scan QR), link "¿Sin teléfono? Imprime tablas de papel", footer "Sin cuentas, sin dinero. Solo frijolitos." |
-| 2 · Elige tu idioma | p.1 | header "Paso n de m", title "¿En qué idioma te cantamos?", LanguageCards (all callable languages), Escucha checkbox, primary "Jugar en {idioma}", footer line |
-| 3 · Sala de espera | p.2 | "Salir de la sala" link, "Conectado" pill, RoomCodeTiles card with "Jugarás en {idioma}" + ReviewTag, title, Roster count + RosterTiles, dashed invite hint (QR, code, paper option) |
-| 4 · Carta cantada | p.3 | header (code, "Carta n de 54", language pill), CallPanel, play area, FeedbackStrip, Tabla. Play-area behaviour follows `docs/reglas.md` |
-| 5 · ¡Lotería! | p.4 | rosa ground, PapelPicado, hero "¡Lotería!" with ink text-shadow, "{nombre} completó {figura}", tilted winning Tabla, "Palabras de tu línea" PaperCard with ReviewTag, primary "Otra ronda", link "Volver a la sala" |
-| 6 · Pantalla del cantor | p.5 | header (logo, Pausa, speed, automatic pill), "Carta n de 54", one WordCard per room language, timer, side column QrCard + progress Panel (+ tie-break points if the rules use them), HistoryStrip |
+**Colour** (`--color-*`): night `#1E2142` ground; night-raised `#2A2E58` panels; night-line `#45497F` dividers/progress track; night-dash `#8581BD` dashed hint outline; ink `#16182F` every border and text on paper; paper `#FFF6E5` cards, text on night; white `#FFFFFF` tabla cells, glyph wells, QR ground; shadow `#0C0D1E`; muted-on-night `#C9C3E6` (>= 7:1); muted-on-paper `#4A4766` (>= 7:1); maiz `#FFC233` primary action, self tile, winning cells; maiz-soft `#FFE08A` review tag; rosa `#D0126B` Español and the ¡Lotería! ground; jade `#0E9F7E` Náhuatl, correct, connected; jade-soft `#C9F2E4` correct tile; cielo `#2A64D6` English (PDF had `#2F6FE4`, darkened so paper text reaches 5.0:1); maya `#7A4BD6`; quechua `#C2410C`; chile `#E2412B` card art only, never UI state; bean `#6B2F23`, bean-dark `#4A1F16`, bean-light `#8A4A3A`; disabled-on-night `#3A3E6A` wrong/dimmed tile.
 
-## 7. Writing
+**Semantic text and focus:** `--color-text` = paper (ink on light); `--color-accent-text` = maiz (`#8A5A00` on light); `--color-focus` = maiz (`#8A5A00` on light). Global rule: `:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; box-shadow: 0 0 0 5px var(--color-ink) }`.
 
-Spanish first, English second. Warm and short. "Frijolitos", never chips/fichas. No money, prize or betting words. **"El cantor" is the app's automatic voice**; the person who creates the room is "quien organiza" / "the organiser". No gendered human roles. Every Indigenous word shows its review state.
+**Language** (`--lang-*`): nah = jade, yua = maya, quz = quechua, es = rosa, en = cielo.
 
-## 8. Accessibility (non-negotiable)
+| Group          | Tokens                                                                                                                                                                                                  |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--font-*`     | display `'Bricolage Grotesque', 'Atkinson Hyperlegible', system-ui, sans-serif` (600/800); ui `'Atkinson Hyperlegible', system-ui, sans-serif` (400/700)                                                  |
+| `--text-*`     | xs 11 (never smaller) · sm 13 · md 15 · base 16 · lg 18 · xl 22 · 2xl 30 · 3xl 36 · word 38 · code 40 · hero 64 (px)                                                                                   |
+| `--space-*`    | 1 4 · 2 8 · 3 12 · 4 16 · 5 20 · 6 24 · 8 32 (px)                                                                                                                                                       |
+| `--radius-*`   | xs 10 · sm 12 · md 16 · lg 20 · xl 24 · pill 999 (px)                                                                                                                                                   |
+| `--border-*`   | thick `3px solid ink` (cards, buttons, tiles, panels) · thin `2px solid ink` (pills, tags, cells) · dashed `2px dashed night-dash` (neutral hint panels)                                                |
+| `--shadow-*`   | hard `0 5px 0 shadow` · hard-sm `0 4px 0` · hard-lg `0 6px 0` (hero cards)                                                                                                                              |
+| `--size-*`     | tap 44 · button 60 · choice 96 · phone 390 · tablet 768 · laptop 1280 (px)                                                                                                                              |
+| `--motion-*`   | press `translateY(3px)` (pressed/disabled: shadow removed + offset) · lift `translateY(-2px)` (selected)                                                                                                |
 
-Text ≥ 4.5:1 (UI parts ≥ 3:1), verified by `tokens.test.ts`. Real `<button>`, `<a>`, `<label>`. Language and state never by colour alone. Focus visible (3 px maiz outline). `prefers-reduced-motion` respected. Live regions announce calls. One `#main` per screen.
+`tokens.css` also holds values not in `tokens.json`: `--border-w: 3px`, `--text-call: clamp(3rem, 12vw, 9rem)` (called word on the host screen), and a block of **deprecated aliases** (`--night`, `--paper`, `--ink`, `--maiz`, `--jade`, `--tap`, `--shadow`, `--color-bg`, `--color-surface`, `--color-accent`, `--color-border`, `--lang-maya`, `--lang-quechua`, ...) kept until all screens use the canonical names. Do not use aliases in new code. `prefers-reduced-motion: reduce` clamps all animation/transition durations to 0.01ms. `.sr-only` and `.skip-link` live in `tokens.css`.
 
-## 9. Do / don't
+## 5. Typography
 
-- Do: thick ink borders, hard shadows, flat colour, generous type, one primary action per screen.
-- Don't: gradients, blur shadows, emoji in chrome, red for errors ("¡Casi!" is maiz), new colours or fonts outside `tokens.json`, hiding review tags.
+Bricolage Grotesque (variable, weights 600-800, tracking -0.02em on `h1-h3`) for titles, words, codes and buttons. Atkinson Hyperlegible 400/700 for everything else. Both self-hosted in `public/fonts/` as `woff2`, split into `latin` and `latin-ext` subsets with `unicode-range` and `font-display: swap`: `bricolage-grotesque-var-{latin,latin-ext}.woff2`, `atkinson-hyperlegible-{400,700}-{latin,latin-ext}.woff2` (licences in `public/fonts/LICENSES.md`). `index.html` preloads `bricolage-grotesque-var-latin.woff2` and `atkinson-hyperlegible-400-latin.woff2` (`crossorigin`). `NotoSans-Regular.ttf` in that folder is for generated assets, not the web UI. No other fonts.
+
+## 6. Components (`src/app/ui/`, exported from `index.ts`)
+
+| Component | Purpose / key props | States and a11y |
+| --- | --- | --- |
+| `Button` | `variant` primary (maiz, 60 px) / secondary (paper) / link (accent text, 44 px); `icon` (decorative), `fit`, `loading`; renders `<button>`, router `<Link>` when `to`, or `<a download>` when `href` | `disabled`/`loading` = pressed look, no shadow; `loading` sets `aria-busy` and shows a spinner; default `type="button"` |
+| `Pill` | `tone` paper, night, jade, nah, yua, quz, es, en; `dot` | Always carries text (language name) |
+| `ReviewTag` | `variant` word, words, ai ("palabra en revisión", plural, "voz generada por IA") | Always visible |
+| `Panel` | `variant` default/dashed, `as`, `id`, `aria-labelledby` | Dashed = neutral hint, no shadow |
+| `PaperCard` | `size` md/lg, `as` | Ink text on paper |
+| `ProgressBar` | `value` 0-1, `tone` maiz/jade, `label` | `role="progressbar"` with aria-valuenow |
+| `PapelPicado` | decorative flag band (win/cantor screens) | `aria-hidden` |
+| `LanguageCard` | `lang`, `name`, `native`, `sample`, `review`, `selected`, `onSelect`, `disabled` | `role="radio"` + `aria-checked`; wrap in `role="radiogroup"`; selected = 4 px language ring + lift + check; name always shown |
+| `LanguageSettings` | UI language (es/en) and spoken-language radiogroups with a play-sample button; reads/writes `useProfile` | Both groups labelled; `role="status"` note |
+| `RoomCodeTiles` | `code`, `label` (maiz glyph tiles) | `role="img"` with spaced code label |
+| `RosterTile` | `name`, `glyph`, `detail`, `self` | Self = maiz fill |
+| `CallPanel` | `word`, `listening`, `review`, `progress`, `onReplay` | Word in `aria-live="polite"`; replay button labelled; listening replaces the word |
+| `ChoiceTile` | `id`, `emoji` (fallback), `label`, `state` idle/correct/wrong, `disabled`, `onChoose` | `aria-label` appends state; correct = check badge, wrong = cross badge + dimmed (not colour-only) |
+| `FeedbackStrip` | `tone` neutral/ok/casi, `title` | `role="status"`; "¡Casi!" is maiz, never red |
+| `Tabla` / `TablaCell` | `cells: CellData[]` (`id`, `emoji`, `label`, `marked`, `winning`), `onToggle`, `label` | Cells are buttons with `aria-pressed` when interactive; bean marker; winning = maiz fill; board `<ul>` labelled |
+| `QrCard` | `url`, `code`, `caption`; QR with `QR_QUIET = 4` module quiet zone on white | QR `role="img"` labelled with the URL |
+| `WordCard` | `word`, `langName`, `tone`, `review`, `verse` | Language pill + review tag |
+| `HistoryStrip` | `items`, `title` ("Ya cantadas") | Tiles have `sr-only` labels |
+| `CardArt` | `id`, `emoji`, `className` | `<img src=/art/id.svg alt="" loading=lazy>`; falls back to the emoji on load error; decorative |
+| `Sheet` | modal bottom sheet `title`, `open`, `onClose` | `role="dialog" aria-modal`; focus to close button; Escape/backdrop close; focus returns to opener |
+| `useProfile` | `{ uiLang, spokenLang, update }` persisted in `localStorage['loteria:profile']` | n/a |
+
+`Gallery` (`/ui`) renders every primitive and state for visual review, in the current theme.
+
+## 7. Screens
+
+PDF page / canvas board numbers follow `design/look-and-feel/project/canvas.json`.
+
+| Route | Screen (code) | Reference |
+| --- | --- | --- |
+| `/` | `HomePage`: logo, "¿Cómo te llamas?", glyph picker, Crear una sala, join code + scan, print link, footer | PDF screen 1, board `Main.dc.html` |
+| (in game flow) | Language: `LanguagePicker` / `LanguageCard`s, Escucha option, "Jugar en {idioma}" | PDF p.1, `Language.dc.html` |
+| `/r/:code` | `JoinPage` + `LobbyWaiting`, `Roster` (waiting room, code tiles, roster, invite hint) | PDF p.2, `Lobby.dc.html` |
+| `/host` | `HostPage` + `HostLobby`: QR + code + roster; screen use mode "Display only" / "Play too"; then `HostGame` (cantor screen: WordCard per language, timer, QrCard, progress, HistoryStrip) | PDF p.5, `Caller.dc.html` |
+| `/r/:code` in game | `PlayerGame`/`PlayerBoard`: CallPanel, three ChoiceTiles, FeedbackStrip, Tabla, `SettingsSheet` | PDF p.3, `Play.dc.html` |
+| (round end) | `WinScreen`: rosa ground, PapelPicado, "¡Lotería!", winning Tabla, "Otra ronda" | PDF p.4, `Win.dc.html` |
+| `/solo` | `SoloPage`/`SoloGame`: one-person play against the automatic cantor | no PDF page; same primitives |
+| `/deck` | `DeckPage`: browse cards and words | no PDF page |
+| `/print` | `PrintPage`: printable paper boards for classrooms (printed palette, not themed) | no PDF page |
+| `/creditos` | `CreditsPage` | none |
+| `/ui` | `Gallery` | dev review |
+| `*` | `NotFound` (real 404) | none |
+
+**Intentional differences from the PDF:** `cielo` is `#2A64D6` (PDF `#2F6FE4`); light and high-contrast themes and the visible focus ring do not exist in the PDF; card pictures use the SVG set with an emoji fallback; the host screen adds the display/play mode choice; the PDF mentions tie-break points only if the rules use them. The PDF could not be re-read for this revision (no PDF renderer in the environment); page numbers come from the previous guide and canvas board titles.
+
+## 8. Iconography and card art
+
+- UI icons: inline stroke SVG, 2-2.5 px, round caps, decorative ones `aria-hidden`. No emoji in UI chrome (emoji appear only as the `CardArt` fallback and in the tabla).
+- Card art: `public/art/<cardId>.svg`, `viewBox 0 0 120 120`, flat fills in the festival palette, ink `#16182F` stroke 5 with round joins and caps, no text, no human figures. `chile` red is art-only. Sixteen files today (aguacate, chile, colibri, estrella, frijol, jaguar, luna, maiz, mariposa, montana, nopal, nube, rana, sol, tomate, tortuga); `design/look-and-feel/art/` mirrors them.
+- **Add a card:** add the card to `src/content/cards.json` (with its `art` emoji fallback) and strings, draw `public/art/<id>.svg` to the rules above, copy it to `design/look-and-feel/art/`, run `pnpm test` (content tests) and `pnpm copy-lint`, and check it at `/ui` and `/deck`.
+
+## 9. Share images
+
+`public/og/default.png` and `public/og/invite.png` (1200 x 630) are rendered from `design/og/og.html` (`?variant=default|invite`; invite shows a different set of marked cells). Regenerate with `pnpm og:render` (Playwright Chromium, `scripts/render-og.mjs`) and commit the PNGs. The page meta and JSON-LD that reference them live in `src/app/seo/`. See `design/README.md`.
+
+## 10. Writing and tone
+
+Spanish first, English second; warm and short. "Frijolitos", never chips/fichas. Banned (copy-lint): gendered human roles in Spanish (jugador/a, ganador/a, niño/a, alumno/a, maestro/a), generic he/she in English, winning framing ("gana", "win"; say "completar la figura" / "complete the pattern"), and prize/bet/money words. **"El cantor" is the app's automatic voice**; the person who creates the room is "quien organiza" / "the organiser". Neutral phrases: "quien juega", "persona", "las infancias". Every Indigenous word shows its review state.
+
+## 11. Accessibility checklist (WCAG 2.2 AA)
+
+- [ ] Text >= 4.5:1, large text >= 3, UI parts and focus >= 3 in all four themes (`pnpm test`, tokens.test.ts).
+- [ ] Focus visible on every control (3 px ring plus ink halo); no `outline: none` without replacement.
+- [ ] Targets >= 44 px (24 px minimum by WCAG; we hold 44).
+- [ ] Language and state never by colour alone (name text, check/cross badges, review tags).
+- [ ] Real `<button>`, `<a>`, `<label>`; one `#main` per screen; skip link present.
+- [ ] Live regions announce calls (`CallPanel` `aria-live`, `FeedbackStrip` `role="status"`).
+- [ ] `prefers-reduced-motion` respected; no flashing.
+- [ ] Dialogs trap and restore focus (`Sheet`); Escape closes.
+- [ ] 360 px wide, 200% zoom and text-spacing checks: no clipping or horizontal scroll.
+- [ ] Tools: `pnpm test`, `pnpm design-lint`, `pnpm copy-lint`, keyboard-only pass, VoiceOver/TalkBack pass, browser devtools contrast and forced-colours emulation.
+
+## 12. How to change the design
+
+1. Edit `design/tokens.json` first (for light overrides use `theme.light`; high contrast is CSS-only).
+2. Mirror in `src/app/theme/tokens.css` (`:root`, and both light blocks: `[data-theme='light']` and the `prefers-color-scheme: light` block).
+3. `pnpm test` (parity + contrast) then `pnpm design-lint` and `pnpm copy-lint`; fix findings in components, never by loosening a rule without discussion.
+4. Update the canvas mirror in `design/look-and-feel/project/*.dc.html` (and `canvas.json`) and this file. Only the orchestrator republishes the canvas artifact https://claude.ai/artifact/CanBtUc4RQzxzPZE2BEgWc.
+5. Regenerate share images with `pnpm og:render` if branding or palette changed.
+6. Add or change a primitive in `src/app/ui/`, show it in `Gallery`, add it to section 6.
