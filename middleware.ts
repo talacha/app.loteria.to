@@ -4,12 +4,9 @@
 
 export const config = { matcher: '/r/:path*' };
 
-const SITE = 'https://app.loteria.to';
+import { SITE, SITE_NAME, routeSeo } from './src/app/seo/meta.ts';
+
 const CODE_RE = /^[A-HJ-NP-Z2-9]{5}$/;
-const DESC =
-  'Toca para unirte desde tu teléfono y elige en qué idioma escuchar las cartas: náhuatl, maya, quechua, español o inglés.';
-const IMAGE = `${SITE}/og/invite.png`;
-const IMAGE_ALT = 'Invitación a una sala de Lotería de los Pueblos.';
 
 function esc(s: string): string {
   return s
@@ -20,27 +17,28 @@ function esc(s: string): string {
 }
 
 function inviteHead(code: string | null): string {
-  const title = code ? `¡Te invitaron a la Lotería! · Sala ${code}` : '¡Te invitaron a la Lotería!';
+  const seo = routeSeo(code ? `/r/${code}` : '/r/invalid', 'es');
+  const title = seo.title ?? SITE_NAME;
   const tags = [
     `<title>${esc(title)}</title>`,
-    `<meta name="description" content="${esc(DESC)}" />`,
+    `<meta name="description" content="${esc(seo.description)}" />`,
     `<meta name="robots" content="noindex,nofollow" />`,
     `<meta property="og:type" content="website" />`,
     `<meta property="og:site_name" content="Lotería de los Pueblos" />`,
     `<meta property="og:locale" content="es_MX" />`,
-    `<meta property="og:locale:alternate" content="en_US" />`,
     ...(code ? [`<meta property="og:url" content="${SITE}/r/${code}" />`] : []),
     `<meta property="og:title" content="${esc(title)}" />`,
-    `<meta property="og:description" content="${esc(DESC)}" />`,
-    `<meta property="og:image" content="${IMAGE}" />`,
+    `<meta property="og:description" content="${esc(seo.description)}" />`,
+    `<meta property="og:image" content="${seo.image}" />`,
+    `<meta property="og:image:type" content="image/png" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="${esc(IMAGE_ALT)}" />`,
+    `<meta property="og:image:alt" content="${esc(seo.imageAlt)}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${esc(title)}" />`,
-    `<meta name="twitter:description" content="${esc(DESC)}" />`,
-    `<meta name="twitter:image" content="${IMAGE}" />`,
-    `<meta name="twitter:image:alt" content="${esc(IMAGE_ALT)}" />`,
+    `<meta name="twitter:description" content="${esc(seo.description)}" />`,
+    `<meta name="twitter:image" content="${seo.image}" />`,
+    `<meta name="twitter:image:alt" content="${esc(seo.imageAlt)}" />`,
   ];
   return tags.join('\n    ');
 }
@@ -50,7 +48,7 @@ function stripGeneric(html: string): string {
   return html
     .replace(/<title>[\s\S]*?<\/title>\s*/i, '')
     .replace(
-      /<meta\s+(?:name|property)="(?:description|robots|og:[^"]*|twitter:[^"]*)"[^>]*>\s*/gi,
+      /<meta\s+(?:name|property)="(?:description|keywords|robots|og:[^"]*|twitter:[^"]*)"[^>]*>\s*/gi,
       '',
     )
     .replace(/<link\s+rel="(?:canonical|alternate)"[^>]*>\s*/gi, '');

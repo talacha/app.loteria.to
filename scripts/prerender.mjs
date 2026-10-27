@@ -10,6 +10,7 @@ import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { aliases } from '../vite.aliases.ts';
+import { PUBLIC_PATHS } from '../src/app/seo/meta.ts';
 
 // Node 26 exposes a global localStorage that warns on access without --localstorage-file; the app's
 // storage reads are try/catch-guarded, so SSR just sees it as unavailable.
@@ -23,7 +24,7 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist');
 const ssrOut = join(root, 'node_modules/.cache/prerender-ssr');
 const SITE = 'https://app.loteria.to';
-const ROUTES = ['/', '/deck', '/creditos', '/solo', '/print'];
+const ROUTES = PUBLIC_PATHS;
 const NOT_FOUND_PROBE = '/__no-such-page__';
 
 if (!existsSync(join(dist, 'index.html')))
@@ -104,13 +105,19 @@ try {
 } catch {
   /* not a git checkout (Vercel builds may lack history) */
 }
-lastmod ||= new Date().toISOString().slice(0, 10);
+// Do not invent a modification date when the deployment lacks Git history.
+const cards = JSON.parse(readFileSync(join(root, 'src/content/cards.json'), 'utf8'));
+const deckImages = cards
+  .map(
+    (card) => `    <image:image><image:loc>${SITE}/cards/${card.id}.webp</image:loc></image:image>`,
+  )
+  .join('\n');
 const urls = ROUTES.map(
   (r) =>
-    `  <url>\n    <loc>${SITE}${r}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${r === '/' ? 'weekly' : 'monthly'}</changefreq>\n    <priority>${r === '/' ? '1.0' : '0.6'}</priority>\n  </url>`,
+    `  <url>\n    <loc>${SITE}${r}</loc>\n${lastmod ? `    <lastmod>${lastmod}</lastmod>\n` : ''}${r === '/deck' ? deckImages + '\n' : ''}  </url>`,
 ).join('\n');
 writeFileSync(
   join(dist, 'sitemap.xml'),
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n</urlset>\n`,
 );
 console.log('wrote dist/sitemap.xml');

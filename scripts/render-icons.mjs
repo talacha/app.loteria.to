@@ -1,33 +1,42 @@
-// Renders PNG app icons from public/favicon.svg's design (red tile, cream "L").
+// All app icons derive from the same vector mark in public/favicon.svg.
 // Usage: node scripts/render-icons.mjs
 import { chromium } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
-const RED = '#b3261e';
-const CREAM = '#fff8ec';
-
-// scale 1 = same proportions as favicon.svg; maskable keeps the glyph inside the 80% safe zone.
-function svg({ rounded, scale }) {
-  const rx = rounded ? 12 : 0;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
-<rect width="64" height="64" rx="${rx}" fill="${RED}"/>
-<text x="32" y="${32 + 12 * scale}" font-size="${34 * scale}" text-anchor="middle" fill="${CREAM}" font-family="sans-serif" font-weight="700">L</text></svg>`;
-}
-
+const source = readFileSync(`${root}public/favicon.svg`, 'utf8');
 const jobs = [
-  { file: 'apple-touch-icon.png', size: 180, rounded: false, scale: 1 },
-  { file: 'icon-192.png', size: 192, rounded: true, scale: 1 },
-  { file: 'icon-512.png', size: 512, rounded: true, scale: 1 },
-  { file: 'icon-maskable-512.png', size: 512, rounded: false, scale: 0.78 },
+  { file: 'favicon-32.png', size: 32 },
+  { file: 'favicon-48.png', size: 48 },
+  { file: 'apple-touch-icon.png', size: 180, square: true },
+  { file: 'icon-192.png', size: 192 },
+  { file: 'icon-512.png', size: 512 },
+  { file: 'icon-maskable-512.png', size: 512, square: true, maskable: true },
 ];
-
 const browser = await chromium.launch();
-for (const j of jobs) {
-  const page = await browser.newPage({ viewport: { width: j.size, height: j.size } });
-  await page.setContent(`<style>html,body{margin:0;background:transparent}</style>${svg(j)}`);
-  await page.screenshot({ path: `${root}public/${j.file}`, omitBackground: true });
-  await page.close();
-  console.log(`public/${j.file}`);
+try {
+  for (const job of jobs) {
+    let svg = source;
+    if (job.square) svg = svg.replace('rx="13"', 'rx="0"');
+    // The emblem fits in the central 80%-diameter maskable safe circle.
+    if (job.maskable) {
+      svg = svg.replace(
+        '<g id="emblem"',
+        '<g transform="translate(32 32) scale(.8) translate(-32 -32)" id="emblem"',
+      );
+    }
+    const page = await browser.newPage({
+      viewport: { width: job.size, height: job.size },
+      deviceScaleFactor: 1,
+    });
+    await page.setContent(
+      `<style>html,body{margin:0;background:transparent}svg{display:block;width:100vw;height:100vh}</style>${svg}`,
+    );
+    await page.screenshot({ path: `${root}public/${job.file}`, omitBackground: true });
+    await page.close();
+    console.log(`public/${job.file}`);
+  }
+} finally {
+  await browser.close();
 }
-await browser.close();

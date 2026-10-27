@@ -38,7 +38,7 @@ const config = {
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
+      includeAssets: ['favicon.svg', 'favicon-48.png', 'apple-touch-icon.png'],
       manifest: {
         name: 'Lotería de los Pueblos',
         short_name: 'Lotería',
@@ -65,6 +65,8 @@ const config = {
         // Full game works offline after installation. Printing caches on first connected use.
         globPatterns: ['**/*.{js,css,html,svg,png,webp,jpg,json,webm,m4a,woff2,ttf}'],
         globIgnores: [
+          // Social preview crawlers fetch these online; game installation does not need them.
+          '**/og/**',
           '**/assets/worker-*.js',
           '**/assets/build-*.js',
           '**/fonts/NotoSans-Regular.ttf',

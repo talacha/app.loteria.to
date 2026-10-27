@@ -45,7 +45,7 @@ export default function DeckPage() {
           const es = cardName(card, 'es');
           const en = cardName(card, 'en');
           return (
-            <li key={card.id} className={styles.card}>
+            <li key={card.id} id={`card-${card.id}`} className={styles.card}>
               <span className={styles.num}>{t('deck.cardNumber', { n: card.n })}</span>
               <CardArt
                 id={card.id}

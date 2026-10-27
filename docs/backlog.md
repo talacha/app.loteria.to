@@ -13,6 +13,10 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Updated after the 2026
 | Feature requests | 0 | 1 | 4 | 5 |
 | Tech debt | 1 | 2 | 5 | 8 |
 
+## Completed
+
+- **2026-10-27 · Public SEO/GEO and crawler guidance:** updated factual summaries for all five public routes, linked deck cards to stable fragments, excluded private and API paths across crawler groups without changing the existing AI crawler allow policy, and documented the implementation in [seo.md](seo.md) and [decision 0025](decisions/0025-public-search-and-ai-discovery.md). No follow-up backlog item remains open.
+
 ## Bugs
 
 ### BUG-006 · MMS clips for "El Cóndor" and "La Piña" mispronounce ó / ñ — P1

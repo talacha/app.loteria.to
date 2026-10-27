@@ -27,10 +27,11 @@ describe('Shell', () => {
     expect(screen.getByRole('link', { name: 'Saltar al contenido' }).getAttribute('href')).toBe(
       '#main',
     );
-    expect(document.title).toBe('Las 144 cartas · Lotería de los Pueblos');
+    expect(document.title).toBe('144 cartas de lotería · Lotería de los Pueblos');
     expect(document.documentElement.lang).toBe('es');
     await i18n.changeLanguage('en');
     expect(document.documentElement.lang).toBe('en');
+    expect(document.title).toBe('144 lotería cards · Lotería de los Pueblos');
     await i18n.changeLanguage('es');
   });
 });

@@ -27,3 +27,4 @@ Lightweight ADRs for Lotería de los Pueblos. One file per decision: `NNNN-short
 | [0022](0022-durable-signed-frame-sequences.md) | Durable signed host-frame sequences and explicit legacy recovery | Accepted |
 | [0023](0023-expanded-catalog-and-language-coverage.md) | 144-card catalog and language-safe room decks | Accepted |
 | [0024](0024-painted-paper-brand.md) | Painted ribbon identity and rugged paper background | Accepted |
+| [0025](0025-public-search-and-ai-discovery.md) | Public search and AI discovery | Accepted |
