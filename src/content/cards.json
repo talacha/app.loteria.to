@@ -1,1527 +1,2174 @@
-[
+{
+ "version": 1,
+ "variants": {
+  "nah": "nhe (Huasteca oriental)",
+  "yua": "yua (maya yucateco)",
+  "quz": "quz (quechua de Cusco)"
+ },
+ "cards": [
   {
-    "n": 1,
-    "id": "jaguar",
-    "category": "animals",
-    "art": "🐆",
-    "emoji": "🐆",
-    "tags": ["cat", "spots", "forest", "night", "hunter"],
-    "names": {
-      "es": {
-        "text": "El Jaguar",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Jaguar",
-        "status": "approved"
-      },
-      "nah": {
-        "text": "ocelotl",
-        "status": "draft",
-        "source": "Classical/Central Nahuatl, unverified draft"
-      },
-      "yua": {
-        "text": "balam",
-        "status": "draft",
-        "source": "Yucatec Maya, unverified draft"
-      }
+   "n": 1,
+   "id": "cangrejo",
+   "category": "animals",
+   "art": "🦀",
+   "names": {
+    "es": {
+     "text": "el cangrejo",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Manchas de luz entre la selva,\nel jaguar camina sin hacer ruido.",
-      "en": "Spots of light among the trees,\nthe jaguar walks without a sound."
+    "en": {
+     "text": "the crab",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy gato grande de la selva y llevo la noche pintada en la piel.",
-      "en": "I am the big cat of the jungle, and I wear the night painted on my coat."
+    "nah": {
+     "text": "atecuicitli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/atecuicitli",
+     "confidence": "weak",
+     "audio": "/audio/nah/cangrejo.m4a",
+     "variant": "classical",
+     "note": "Molina 1571 (classical), no Huasteca entry found; Molina also tecuicitli = cangrejo. NO true crab in Huasteca sources: IDIEZ has cozolin (crawfish, https://nahuatl.wired-humanities.org/content/cozolin), xilin (Spanish def says camaron; one other IDIEZ entry glosses it as small cangrejo, https://nahuatl.wired-humanities.org/content/xilin), Wiktionary nhe achakalin (shrimp). Karttunen acamaya = crayfish, crab (classical-only). Decide: classical atecuicitli (true crab) vs Huasteca xilin/cozolin (crayfish)."
+    },
+    "yua": {
+     "text": "bab",
+     "status": "draft",
+     "source": "https://en.wiktionary.org/wiki/bab#Yucatec_Maya",
+     "confidence": "weak",
+     "audio": "/audio/yua/cangrejo.m4a",
+     "note": "UNA sola fuente: en.wiktionary (entrada marcada {{yua-noun|?}}) que cita Montgomery 2004 p.51 (Hippocrene, diccionario popular). NO está en UADY (Maya-ES ni ES-Maya), ni en Aulex, ni en es.wiktionary, ni en Glosbe. No pude corroborar. Ojo: en es.wiktionary 'bab' glosa 'racimo de frutas; verter' y en en.wiktionary 'baab' = 'piece' (homófonos aparentes). Verificar con hablante/Cordemex antes de usar."
+    },
+    "quz": {
+     "text": "apanquray",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/cangrejo.m4a",
+     "note": "Minedu index 'Cangrejo: Apanquray'; entry 'Apanquray. (s) ... kawsaq. Cangrejo.' with example 'En la costa, cerca al mar se come caldo de cangrejo'; spelled with final -y three times in the PDF (index, entry, example). runasimi.de (Qusqu/Qosqo/TY cols) has 'apanqura' (Qosqo 'apanqora'): cangrejo de río; cangrejo; ástaco. CAUTION: Wiktionary (en) 'apanqura' glosses TARANTULA/large spider AND crayfish (polysemy in some dialects); Minedu uses 'apasanqa' for tarantula. Unverified: RAE TDHLE (apancora, from Quechua apancoray) -- only seen in a search snippet, page returned 403."
     }
+   }
   },
   {
-    "n": 2,
-    "id": "colibri",
-    "category": "animals",
-    "art": "🐦",
-    "emoji": "🐦",
-    "tags": ["bird", "tiny", "flower", "wings", "fast"],
-    "names": {
-      "es": {
-        "text": "El Colibrí",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Hummingbird",
-        "status": "approved"
-      },
-      "nah": {
-        "text": "huitzitzilin",
-        "status": "draft",
-        "source": "Classical/Central Nahuatl, unverified draft"
-      },
-      "yua": {
-        "text": "ts'unu'un",
-        "status": "draft",
-        "source": "Yucatec Maya, unverified draft"
-      }
+   "n": 2,
+   "id": "tortuga",
+   "category": "animals",
+   "art": "🐢",
+   "names": {
+    "es": {
+     "text": "la tortuga",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Pequeño como un suspiro,\nbebe flores y no se detiene.",
-      "en": "Small as a sigh,\nit sips from flowers and never rests."
+    "en": {
+     "text": "the turtle",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Mis alas zumban tan rápido que casi no se ven; me paro en el aire para beber néctar.",
-      "en": "My wings hum so fast you can hardly see them; I hover in the air to sip nectar."
+    "nah": {
+     "text": "ayotl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/ayotl",
+     "confidence": "sourced",
+     "audio": "/audio/nah/tortuga.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss turtle (distinct from ayohtli = squash); Wiktionary nhe ayotl = turtle"
     },
-    "confusableWith": ["condor", "guajolote"]
-  },
-  {
-    "n": 3,
-    "id": "llama",
-    "category": "animals",
-    "art": "🦙",
-    "emoji": "🦙",
-    "tags": ["andes", "wool", "mountain", "pack", "soft"],
-    "names": {
-      "es": {
-        "text": "La Llama",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Llama",
-        "status": "approved"
-      },
-      "quz": {
-        "text": "llama",
-        "status": "draft",
-        "source": "Southern Quechua (Cusco-Collao), unverified draft",
-        "ipa": "ˈʎama"
-      }
+    "yua": {
+     "text": "áak",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/a_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/tortuga.m4a",
+     "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
     },
-    "verso": {
-      "es": "Camina por la sierra alta\ncon su lana como nube.",
-      "en": "It walks the high ridges\nwith wool like a cloud."
-    },
-    "riddle": {
-      "es": "Vivo en los Andes, cargo con paciencia y mi lana abriga a todos.",
-      "en": "I live in the Andes, I carry loads with patience, and my wool keeps everyone warm."
+    "quz": {
+     "text": "charapa",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/tortuga.m4a",
+     "note": "Minedu index: 'Tortuga de río, charapa' (Amazonian river turtle; no native Cusco word for turtle/tortoise found). Folk name in Minedu text: 'rumi hamp'atu'. Same in runasimi (Qusqu column)."
     }
+   }
   },
   {
-    "n": 4,
-    "id": "condor",
-    "category": "animals",
-    "art": "🦅",
-    "emoji": "🦅",
-    "tags": ["bird", "andes", "wings", "soar", "mountain"],
-    "names": {
-      "es": {
-        "text": "El Cóndor",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Condor",
-        "status": "approved"
-      }
+   "n": 3,
+   "id": "mariposa",
+   "category": "animals",
+   "art": "🦋",
+   "names": {
+    "es": {
+     "text": "la mariposa",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Sus alas abren el cielo\ny el viento lo lleva alto.",
-      "en": "Its wings open up the sky\nand the wind carries it high."
+    "en": {
+     "text": "the butterfly",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy de las aves voladoras más grandes; planeo sobre las cumbres sin aletear.",
-      "en": "I am one of the largest flying birds; I glide over the peaks without flapping."
+    "nah": {
+     "text": "papalotl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/papalotl-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/mariposa.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss butterfly"
     },
-    "confusableWith": ["colibri", "guajolote"]
-  },
-  {
-    "n": 5,
-    "id": "mariposa",
-    "category": "animals",
-    "art": "🦋",
-    "emoji": "🦋",
-    "tags": ["insect", "wings", "migration", "color", "flower"],
-    "names": {
-      "es": {
-        "text": "La Mariposa",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Butterfly",
-        "status": "approved"
-      }
+    "yua": {
+     "text": "péepem",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/p_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/mariposa.m4a",
+     "note": "variante péepen (ES-Maya de UADY lista ambas) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
     },
-    "verso": {
-      "es": "Viaja lejos, ligera y naranja,\ny vuelve cuando florece el campo.",
-      "en": "It travels far, light and orange,\nand returns when the fields bloom."
-    },
-    "riddle": {
-      "es": "De oruga me hice alas de colores y cruzo países volando.",
-      "en": "I was a caterpillar once; now I have colored wings and fly across countries."
+    "quz": {
+     "text": "pillpintu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/mariposa.m4a",
+     "note": "Minedu entry: 'Pillpintu ... Mariposa'. runasimi Qusqu: pillpintu (Qosqo: pillpinto)."
     }
+   }
   },
   {
-    "n": 6,
-    "id": "guajolote",
-    "category": "animals",
-    "art": "🦃",
-    "emoji": "🦃",
-    "tags": ["bird", "farm", "feathers", "fiesta", "tail"],
-    "names": {
-      "es": {
-        "text": "El Guajolote",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Turkey",
-        "status": "approved"
-      }
+   "n": 4,
+   "id": "abeja",
+   "category": "animals",
+   "art": "🐝",
+   "names": {
+    "es": {
+     "text": "la abeja",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Abre su cola como abanico\ny presume con su glugluteo.",
-      "en": "It fans its tail wide\nand shows off with its gobble."
+    "en": {
+     "text": "the bee",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Tengo plumas de gala y hago glugluglú; vengo de estas tierras.",
-      "en": "I wear fancy feathers, I go gobble-gobble, and my ancestors come from these lands."
+    "nah": {
+     "text": "neuctzin",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/neuctzin",
+     "confidence": "sourced",
+     "audio": "/audio/nah/abeja.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss bee; Wiktionary nhe also lists zayoltzi (bee, unreferenced)"
     },
-    "confusableWith": ["colibri", "condor"]
-  },
-  {
-    "n": 7,
-    "id": "tortuga",
-    "category": "animals",
-    "art": "🐢",
-    "emoji": "🐢",
-    "tags": ["reptile", "shell", "slow", "water", "patient"],
-    "names": {
-      "es": {
-        "text": "La Tortuga",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Turtle",
-        "status": "approved"
-      }
+    "yua": {
+     "text": "kaab",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/k_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/abeja.m4a",
+     "note": "homónimo: kaab = abeja, miel y tierra/mundo (UADY lista las tres). Alternativa ES-Maya: yik’el kaab | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
     },
-    "verso": {
-      "es": "Despacito, despacito,\nllega lejos con su casa a cuestas.",
-      "en": "Slowly, slowly,\nit goes far with its home on its back."
-    },
-    "riddle": {
-      "es": "Cargo mi casa en la espalda y avanzo sin prisa.",
-      "en": "I carry my house on my back and go without hurry."
+    "quz": {
+     "text": "wanquyru",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/abeja.m4a",
+     "note": "Minedu entry 'Wanquyru ... Abeja' (index 'Abeja: Wanquyru'). runasimi.de instead lists 'misk'i ch'uspi' (honey fly), 'lachiwa', 'mapa mama' for Cusco; wanquyru is NOT in runasimi.de (single-source: Minedu)."
     }
+   }
   },
   {
-    "n": 8,
-    "id": "rana",
-    "category": "animals",
-    "art": "🐸",
-    "emoji": "🐸",
-    "tags": ["amphibian", "pond", "jump", "rain", "green"],
-    "names": {
-      "es": {
-        "text": "La Rana",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Frog",
-        "status": "approved"
-      }
+   "n": 5,
+   "id": "venado",
+   "category": "animals",
+   "art": "🦌",
+   "names": {
+    "es": {
+     "text": "el venado",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Salta, salta, croac, croac,\ncanta cuando llega la lluvia.",
-      "en": "Jump, jump, ribbit, ribbit,\nit sings when the rain arrives."
+    "en": {
+     "text": "the deer",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy verde y saltarina; en el charco canto después de la tormenta.",
-      "en": "I am green and jumpy; by the puddle I sing after the storm."
+    "nah": {
+     "text": "mazatl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/mazatl-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/venado.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss deer"
+    },
+    "yua": {
+     "text": "kéej",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/k_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/venado.m4a",
+     "note": "UADY: yuuk = venado pequeño | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "taruka",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/venado.m4a",
+     "note": "Minedu entry 'Taruka ... Venado'. runasimi also lists luychu (venado andino)."
     }
+   }
   },
   {
-    "n": 9,
-    "id": "serpiente",
-    "category": "animals",
-    "art": "🐍",
-    "emoji": "🐍",
-    "tags": ["reptile", "scales", "slither", "ground", "long"],
-    "names": {
-      "es": {
-        "text": "La Serpiente",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Snake",
-        "status": "approved"
-      }
+   "n": 6,
+   "id": "aguila",
+   "category": "animals",
+   "art": "🦅",
+   "names": {
+    "es": {
+     "text": "el águila",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Sin patas va por el suelo,\ndeslizándose entre las piedras.",
-      "en": "With no legs it travels the ground,\nsliding between the stones."
+    "en": {
+     "text": "the eagle",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "No tengo patas pero avanzo; cambio de piel cuando crezco.",
-      "en": "I have no legs but I move; I shed my skin when I grow."
+    "nah": {
+     "text": "cuauhtli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/cuauhtli-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/aguila.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss eagle, hawk (IDIEZ does not separate eagle from hawk)"
+    },
+    "yua": {
+     "text": "kóot",
+     "status": "draft",
+     "source": "https://es.wiktionary.org/wiki/kóot",
+     "confidence": "sourced",
+     "audio": "/audio/yua/aguila.m4a",
+     "note": "Entrada de es.wiktionary que cita Gómez Navarrete 2009 p.29 y Cordemex p.338 (KOT); la glosa citada es 'águila roja'. No aparece en UADY. Corroboración débil: en.wiktionary 'kóot (eagle)' y Aulex 'águila: kóot'. No vi las fuentes impresas directamente."
+    },
+    "quz": {
+     "text": "anka",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/aguila.m4a",
+     "note": "Minedu entry 'Anka ... Águila'; runasimi Qusqu: anka."
     }
+   }
   },
   {
-    "n": 10,
-    "id": "maiz",
-    "category": "plants_food",
-    "art": "🌽",
-    "emoji": "🌽",
-    "tags": ["corn", "crop", "tortilla", "milpa", "golden"],
-    "names": {
-      "es": {
-        "text": "El Maíz",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Maize",
-        "status": "approved"
-      },
-      "nah": {
-        "text": "centli",
-        "status": "draft",
-        "source": "Classical/Central Nahuatl, unverified draft"
-      },
-      "yua": {
-        "text": "ixi'im",
-        "status": "draft",
-        "source": "Yucatec Maya, unverified draft"
-      },
-      "quz": {
-        "text": "sara",
-        "status": "draft",
-        "source": "Southern Quechua (Cusco-Collao), unverified draft"
-      }
+   "n": 7,
+   "id": "rana",
+   "category": "animals",
+   "art": "🐸",
+   "names": {
+    "es": {
+     "text": "la rana",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Granitos de oro en su vaina,\ndel campo a la mesa.",
-      "en": "Little golden grains in their husk,\nfrom the field to the table."
+    "en": {
+     "text": "the frog",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "De mí se hacen tortillas y tamales; tengo barba de seda y mil granos.",
-      "en": "Tortillas and tamales are made from me; I have silky hair and a thousand kernels."
+    "nah": {
+     "text": "pechpechin",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/pechpechin",
+     "confidence": "sourced",
+     "audio": "/audio/nah/rana.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss frog"
+    },
+    "yua": {
+     "text": "muuch",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/m_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/rana.m4a",
+     "note": "UADY: 'sapo, rana' | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "k'ayra",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/rana.m4a",
+     "note": "Minedu index 'Rana: K'ayra' (entry says K'ayra resembles hamp'atu/toad). runasimi Qusqu: k'ayra (Telmatobius, water frog); hamp'atu = sapo/toad."
     }
+   }
   },
   {
-    "n": 11,
-    "id": "nopal",
-    "category": "plants_food",
-    "art": "🌵",
-    "emoji": "🌵",
-    "tags": ["cactus", "desert", "paddle", "spines", "fruit"],
-    "names": {
-      "es": {
-        "text": "El Nopal",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Nopal",
-        "status": "approved"
-      },
-      "nah": {
-        "text": "nopalli",
-        "status": "draft",
-        "source": "Classical/Central Nahuatl, unverified draft"
-      }
+   "n": 8,
+   "id": "perro",
+   "category": "animals",
+   "art": "🐕",
+   "names": {
+    "es": {
+     "text": "el perro",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Raquetas verdes con espinas,\ny tunas dulces al final.",
-      "en": "Green paddles with prickly spines,\nand sweet fruit at the end."
+    "en": {
+     "text": "the dog",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy cactus de hojas anchas; con cuidado me comen, y mi fruto es la tuna.",
-      "en": "I am a cactus with wide pads; carefully, I am eaten, and my fruit is the prickly pear."
+    "nah": {
+     "text": "chichi",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/chichi-2",
+     "confidence": "sourced",
+     "audio": "/audio/nah/perro.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss dog"
+    },
+    "yua": {
+     "text": "peek'",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/p_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/perro.m4a",
+     "note": "UADY: macho xiibil peek’, hembra ch’upul peek’ | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "allqu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/perro.m4a",
+     "note": "Minedu entry 'Allqu ... perro'. runasimi Qusqu variants: alqu, alq'u, allqu (Qosqo: allqo)."
     }
+   }
   },
   {
-    "n": 12,
-    "id": "frijol",
-    "category": "plants_food",
-    "art": "🌱",
-    "emoji": "🌱",
-    "tags": ["bean", "crop", "pod", "protein", "milpa", "sprout"],
-    "names": {
-      "es": {
-        "text": "El Frijol",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Bean",
-        "status": "approved"
-      },
-      "nah": {
-        "text": "etl",
-        "status": "draft",
-        "source": "Classical/Central Nahuatl, unverified draft"
-      },
-      "yua": {
-        "text": "bu'ul",
-        "status": "draft",
-        "source": "Yucatec Maya, unverified draft"
-      }
+   "n": 9,
+   "id": "serpiente",
+   "category": "animals",
+   "art": "🐍",
+   "names": {
+    "es": {
+     "text": "la serpiente",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Trepa por la caña del maíz\ny llena la olla de calor.",
-      "en": "It climbs up the maize stalk\nand fills the pot with warmth."
+    "en": {
+     "text": "the snake",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Vivo en una vaina y me cocino en la olla; con el maíz y la calabaza hago equipo.",
-      "en": "I live in a pod and cook in the pot; with maize and squash I make a team."
+    "nah": {
+     "text": "coatl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/coatl-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/serpiente.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss snake; Wiktionary nhe spells kowatl"
+    },
+    "yua": {
+     "text": "kaan",
+     "status": "draft",
+     "source": "https://web.archive.org/web/20201124075518/http://www.mayas.uady.mx/diccionario/s_esp.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/serpiente.m4a",
+     "note": "UADY ES-Maya: serpiente/culebra = kaan (la letra k de Maya-ES no lista KAAN). Corrobora en.wiktionary kaan (cita Beltrán 1746, Montgomery 2004) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "amaru",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/serpiente.m4a",
+     "note": "Minedu index 'Serpiente: Amaru, miyuyuq mach'aqway' (amaru = large/mythic serpent; mach'aqway = culebra). runasimi Qusqu: amaru, mach'aqway."
     }
+   }
   },
   {
-    "n": 13,
-    "id": "pina",
-    "category": "plants_food",
-    "art": "🍍",
-    "emoji": "🍍",
-    "tags": ["fruit", "sweet", "tropical", "spiky", "crop"],
-    "names": {
-      "es": {
-        "text": "La Piña",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Pineapple",
-        "status": "approved"
-      }
+   "n": 10,
+   "id": "pez",
+   "category": "animals",
+   "art": "🐟",
+   "names": {
+    "es": {
+     "text": "el pez",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Corona de hojas verdes,\ndulce corazón dorado.",
-      "en": "A crown of green leaves,\na sweet golden heart."
+    "en": {
+     "text": "the fish",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Tengo corona de hojas y piel con picos; por dentro soy dulce y jugosa.",
-      "en": "I wear a crown of leaves and have a spiky skin; inside I am sweet and juicy."
+    "nah": {
+     "text": "michin",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/michin-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/pez.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss fish; Wiktionary nhe has michi (fish)"
+    },
+    "yua": {
+     "text": "kay",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/k_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/pez.m4a",
+     "note": "UADY: 'pez, pescado' | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "challwa",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/pez.m4a",
+     "note": "Minedu entry 'Challwa ... Pez, pescado'."
     }
+   }
   },
   {
-    "n": 14,
-    "id": "chile",
-    "category": "plants_food",
-    "art": "🌶️",
-    "emoji": "🌶️",
-    "tags": ["spicy", "pepper", "red", "salsa", "crop"],
-    "names": {
-      "es": {
-        "text": "El Chile",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Chili",
-        "status": "approved"
-      },
-      "nah": {
-        "text": "chilli",
-        "status": "draft",
-        "source": "Classical/Central Nahuatl, unverified draft"
-      }
+   "n": 11,
+   "id": "buho",
+   "category": "animals",
+   "art": "🦉",
+   "names": {
+    "es": {
+     "text": "el búho",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Rojo, verde, picoso,\nhace llorar y hace sonreír.",
-      "en": "Red, green, and fiery,\nit makes you cry and makes you smile."
+    "en": {
+     "text": "the owl",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy pequeño y pico; en la salsa me conoces por el calor.",
-      "en": "I am small and hot; in the salsa you know me by the heat."
+    "nah": {
+     "text": "tecolotl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/tecolotl",
+     "confidence": "sourced",
+     "audio": "/audio/nah/buho.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss owl"
+    },
+    "yua": {
+     "text": "tunkuruchu",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/t_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/buho.m4a",
+     "note": "UADY ES-Maya: búho = tunkuruchu, kulte’ (kulte’ = 'buhito chillador'). es.wiktionary tiene variante tunkuluchuj (cita GN 2009). Para lechuza: xooch’ (es.wiktionary, débil) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "tuku",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/buho.m4a",
+     "note": "Minedu entry 'Tuku ... Búho'. runasimi also lists 'huku' (lechuza/búho)."
     }
+   }
   },
   {
-    "n": 15,
-    "id": "papa",
-    "category": "plants_food",
-    "art": "🥔",
-    "emoji": "🥔",
-    "tags": ["andes", "tuber", "underground", "crop", "harvest"],
-    "names": {
-      "es": {
-        "text": "La Papa",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Potato",
-        "status": "approved"
-      },
-      "quz": {
-        "text": "papa",
-        "status": "draft",
-        "source": "Southern Quechua (Cusco-Collao), unverified draft",
-        "ipa": "ˈpapa"
-      }
+   "n": 12,
+   "id": "murcielago",
+   "category": "animals",
+   "art": "🦇",
+   "names": {
+    "es": {
+     "text": "el murciélago",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Crece bajo la tierra fría\ny sale en mil formas y colores.",
-      "en": "It grows beneath the cold soil\nand comes in a thousand shapes and colors."
+    "en": {
+     "text": "the bat",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Nací en los Andes y vivo escondida bajo la tierra; hay de muchos colores.",
-      "en": "I was born in the Andes and I hide underground; I come in many colors."
+    "nah": {
+     "text": "tzotzo",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/tzotzo",
+     "confidence": "sourced",
+     "audio": "/audio/nah/murcielago.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss bat; also Wiktionary nhe tzotzo (bat)"
+    },
+    "yua": {
+     "text": "soots'",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/s_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/murcielago.m4a",
+     "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "masu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/murcielago.m4a",
+     "note": "Minedu entry 'Masu ... Murciélago' ('masu huk'ucha' in runasimi Qusqu)."
     }
+   }
   },
   {
-    "n": 16,
-    "id": "aguacate",
-    "category": "plants_food",
-    "art": "🥑",
-    "emoji": "🥑",
-    "tags": ["fruit", "green", "tree", "creamy", "guacamole"],
-    "names": {
-      "es": {
-        "text": "El Aguacate",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Avocado",
-        "status": "approved"
-      },
-      "nah": {
-        "text": "ahuacatl",
-        "status": "draft",
-        "source": "Classical/Central Nahuatl, unverified draft"
-      }
+   "n": 13,
+   "id": "arana",
+   "category": "animals",
+   "art": "🕷️",
+   "names": {
+    "es": {
+     "text": "la araña",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Verde por fuera, cremoso por dentro,\ncon un hueso grande de corazón.",
-      "en": "Green outside, creamy inside,\nwith a big pit for a heart."
+    "en": {
+     "text": "the spider",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Mi pulpa es suave y verde y me untan en el pan; guardo un hueso grande.",
-      "en": "My flesh is soft and green and spread on bread; I keep a big pit."
+    "nah": {
+     "text": "tocatl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/tocatl-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/arana.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss spider; Wiktionary nhe spells tokatl"
+    },
+    "yua": {
+     "text": "am",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/a_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/arana.m4a",
+     "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "apasanqa",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/arana.m4a",
+     "note": "Minedu index 'Araña grande, tarántula: Apasanqa'; Minedu example sentence uses diminutive 'apasanqachata' for 'una araña muerta' (generic spider). No generic headword 'araña' in Minedu. Alternatives attested for Cusco in runasimi.de: kusi kusi (araña pequeña/común), qhampu (araña grande), uru."
     }
+   }
   },
   {
-    "n": 17,
-    "id": "tomate",
-    "category": "plants_food",
-    "art": "🍅",
-    "emoji": "🍅",
-    "tags": ["fruit", "red", "salsa", "vine", "round"],
-    "names": {
-      "es": {
-        "text": "El Tomate",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Tomato",
-        "status": "approved"
-      },
-      "nah": {
-        "text": "tomatl",
-        "status": "draft",
-        "source": "Classical/Central Nahuatl, unverified draft"
-      }
+   "n": 14,
+   "id": "raton",
+   "category": "animals",
+   "art": "🐁",
+   "names": {
+    "es": {
+     "text": "el ratón",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Redondo, rojo y jugoso,\nmaduró al sol de la huerta.",
-      "en": "Round, red, and juicy,\nit ripened in the garden sun."
+    "en": {
+     "text": "the mouse",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy rojo y jugoso y pongo color a la salsa.",
-      "en": "I am red and juicy and I give color to the salsa."
+    "nah": {
+     "text": "quimichin",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/quimichin-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/raton.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss mouse"
+    },
+    "yua": {
+     "text": "ch'o'",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/ch_glotal_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/raton.m4a",
+     "note": "UADY: 'ratón, rata' | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "huk'ucha",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/raton.m4a",
+     "note": "Minedu entry 'Huk'ucha ... Ratón' (index spelling 'Huk'ucha'; runasimi Qusqu also lists 'ukucha')."
     }
+   }
   },
   {
-    "n": 18,
-    "id": "girasol",
-    "category": "plants_food",
-    "art": "🌻",
-    "emoji": "🌻",
-    "tags": ["flower", "yellow", "seeds", "sun", "tall"],
-    "names": {
-      "es": {
-        "text": "El Girasol",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Sunflower",
-        "status": "approved"
-      }
+   "n": 15,
+   "id": "hormiga",
+   "category": "animals",
+   "art": "🐜",
+   "names": {
+    "es": {
+     "text": "la hormiga",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Sigue la luz todo el día\ncon su cara de oro.",
-      "en": "It follows the light all day\nwith its golden face."
+    "en": {
+     "text": "the ant",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Mi cara dorada sigue la luz todo el día y mis pipas son un tesoro para los pájaros.",
-      "en": "My golden face follows the light all day, and my seeds are a treasure for the birds."
+    "nah": {
+     "text": "axcanelin",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/axcanelin",
+     "confidence": "sourced",
+     "audio": "/audio/nah/hormiga.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss ant in general; Wiktionary nhe axcaneli/tzicatl (ant); IDIEZ tzicatl = large red biting ant"
+    },
+    "yua": {
+     "text": "síinik",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/s_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/hormiga.m4a",
+     "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "sisi",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/hormiga.m4a",
+     "note": "Minedu entry 'Sisi ... hormiga' (entry text in PDF; index 'Hormiga: Sisi'). runasimi Qusqu column also has 'sisi' = hormiga (plus añayllu, sik'imira)."
     }
+   }
   },
   {
-    "n": 19,
-    "id": "sol",
-    "category": "sky",
-    "art": "☀️",
-    "emoji": "☀️",
-    "tags": ["star", "day", "light", "warm", "sky"],
-    "names": {
-      "es": {
-        "text": "El Sol",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Sun",
-        "status": "approved"
-      },
-      "nah": {
-        "text": "tonatiuh",
-        "status": "draft",
-        "source": "Classical/Central Nahuatl, unverified draft"
-      },
-      "yua": {
-        "text": "k'iin",
-        "status": "draft",
-        "source": "Yucatec Maya, unverified draft"
-      },
-      "quz": {
-        "text": "inti",
-        "status": "draft",
-        "source": "Southern Quechua (Cusco-Collao), unverified draft"
-      }
+   "n": 16,
+   "id": "pajaro",
+   "category": "animals",
+   "art": "🐦",
+   "names": {
+    "es": {
+     "text": "el pájaro",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Sale por el este despacito\ny pinta de oro la mañana.",
-      "en": "It rises slowly in the east\nand paints the morning gold."
+    "en": {
+     "text": "the bird",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Cada día salgo y me escondo; sin mí no habría día ni calor.",
-      "en": "Every day I rise and hide; without me there would be no day and no warmth."
+    "nah": {
+     "text": "tototl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/tototl-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/pajaro.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss bird; Wiktionary nhe tototl (bird)"
     },
-    "confusableWith": ["estrella"]
-  },
-  {
-    "n": 20,
-    "id": "luna",
-    "category": "sky",
-    "art": "🌙",
-    "emoji": "🌙",
-    "tags": ["night", "sky", "crescent", "tide", "glow"],
-    "names": {
-      "es": {
-        "text": "La Luna",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Moon",
-        "status": "approved"
-      },
-      "nah": {
-        "text": "metztli",
-        "status": "draft",
-        "source": "Classical/Central Nahuatl, unverified draft"
-      },
-      "yua": {
-        "text": "uj",
-        "status": "draft",
-        "source": "Yucatec Maya, unverified draft"
-      },
-      "quz": {
-        "text": "killa",
-        "status": "draft",
-        "source": "Southern Quechua (Cusco-Collao), unverified draft"
-      }
+    "yua": {
+     "text": "ch'íich'",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/ch_glotal_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/pajaro.m4a",
+     "note": "UADY: 'pájaro, ave pequeña' (ES-Maya: ave/pájaro = ch’íich’). Mismo grafema ch’íich’ en UADY es también verbo 'espulgar' (homónimo) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
     },
-    "verso": {
-      "es": "Cambia de forma cada noche\ny platea el camino.",
-      "en": "It changes shape every night\nand silvers the path."
-    },
-    "riddle": {
-      "es": "Soy redonda, luego una uña; alumbro la noche sin ser lámpara.",
-      "en": "I am round, then a fingernail; I light the night without being a lamp."
+    "quz": {
+     "text": "pisqu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/pajaro.m4a",
+     "note": "Minedu entry 'Pisqu ... Ave, pájaro'."
     }
+   }
   },
   {
-    "n": 21,
-    "id": "estrella",
-    "category": "sky",
-    "art": "⭐",
-    "emoji": "⭐",
-    "tags": ["night", "sky", "twinkle", "light", "far"],
-    "names": {
-      "es": {
-        "text": "La Estrella",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Star",
-        "status": "approved"
-      }
+   "n": 17,
+   "id": "lagartija",
+   "category": "animals",
+   "art": "🦎",
+   "names": {
+    "es": {
+     "text": "la lagartija",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Un puntito que titila\nen la noche, muy lejos.",
-      "en": "A tiny dot that twinkles\nin the night, very far away."
+    "en": {
+     "text": "the lizard",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Brillo de noche en el cielo oscuro y parezco un puntito, pero soy una enorme bola de fuego.",
-      "en": "I shine at night in the dark sky and look like a tiny dot, but I am an enormous ball of fire."
+    "nah": {
+     "text": "topitzin",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/topitzin",
+     "confidence": "sourced",
+     "audio": "/audio/nah/lagartija.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss lizard; Wiktionary nhe topitzi ((small) lizard)"
     },
-    "confusableWith": ["sol"]
-  },
-  {
-    "n": 22,
-    "id": "lluvia",
-    "category": "sky",
-    "art": "🌧️",
-    "emoji": "🌧️",
-    "tags": ["water", "cloud", "drops", "storm", "crops"],
-    "names": {
-      "es": {
-        "text": "La Lluvia",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Rain",
-        "status": "approved"
-      }
+    "yua": {
+     "text": "meerech",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/m_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/lagartija.m4a",
+     "note": "UADY: meerech 'lagartija'; meemech 'variedad de lagartija' (ES-Maya lista ambas). juuj = iguana | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
     },
-    "verso": {
-      "es": "Gota a gota cae del cielo\ny despierta la semilla.",
-      "en": "Drop by drop it falls from the sky\nand wakes the seed."
-    },
-    "riddle": {
-      "es": "Caigo en gotitas desde las nubes y hago crecer las milpas.",
-      "en": "I fall in little drops from the clouds and help the milpas grow."
+    "quz": {
+     "text": "qaraywa",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/lagartija.m4a",
+     "note": "Minedu entry 'Qaraywa ... Lagartija'; runasimi Qusqu: qaraywa."
     }
+   }
   },
   {
-    "n": 23,
-    "id": "rayo",
-    "category": "sky",
-    "art": "⚡",
-    "emoji": "⚡",
-    "tags": ["storm", "flash", "thunder", "sky", "fast"],
-    "names": {
-      "es": {
-        "text": "El Rayo",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Lightning",
-        "status": "approved"
-      }
+   "n": 18,
+   "id": "maiz",
+   "category": "plants_food",
+   "art": "🌽",
+   "names": {
+    "es": {
+     "text": "el maíz",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Un destello en la tormenta,\nluego el trueno responde.",
-      "en": "A flash in the storm,\nthen the thunder answers."
+    "en": {
+     "text": "the corn",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy una línea de luz en la tormenta; primero me ves y luego me oyes.",
-      "en": "I am a line of light in the storm; first you see me, then you hear me."
+    "nah": {
+     "text": "cintli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/cintli",
+     "confidence": "sourced",
+     "audio": "/audio/nah/maiz.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; IDIEZ gloss: corn (dry, not fresh); Wiktionary nhe cintli = corncob; elotl = fresh ear. Classical tlaolli = shelled maize"
+    },
+    "yua": {
+     "text": "ixi'im",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/i_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/maiz.m4a",
+     "note": "UADY: ixi’im 'maíz'; mazorca = nal | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "sara",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/maiz.m4a",
+     "note": "Minedu entry 'Sara ... maíz'; runasimi Qusqu: sara."
     }
+   }
   },
   {
-    "n": 24,
-    "id": "arcoiris",
-    "category": "sky",
-    "art": "🌈",
-    "emoji": "🌈",
-    "tags": ["colors", "rain", "sky", "arc", "light"],
-    "names": {
-      "es": {
-        "text": "El Arcoíris",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Rainbow",
-        "status": "approved"
-      }
+   "n": 19,
+   "id": "chile",
+   "category": "plants_food",
+   "art": "🌶️",
+   "names": {
+    "es": {
+     "text": "el chile",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Después de la lluvia y el sol,\nsiete colores hacen un puente.",
-      "en": "After the rain and the sun,\nseven colors make a bridge."
+    "en": {
+     "text": "the chili",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Salgo cuando llueve y brilla el sol; tengo muchos colores en un arco.",
-      "en": "I appear when it rains and the sun shines; I have many colors in an arch."
+    "nah": {
+     "text": "chilli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/chilli",
+     "confidence": "sourced",
+     "audio": "/audio/nah/chile.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss chilli pepper"
+    },
+    "yua": {
+     "text": "iik",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/i_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/chile.m4a",
+     "note": "Sin glotal. Ojo: iik’ (con glotal) = viento; pronunciación distinta | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "uchu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/chile.m4a",
+     "note": "Minedu entry 'Uchu ... Ají' (Minedu gives 'ají', not 'chile'; same plant/concept). runasimi: uchu = ají; chili; chile."
     }
+   }
   },
   {
-    "n": 25,
-    "id": "nube",
-    "category": "sky",
-    "art": "☁️",
-    "emoji": "☁️",
-    "tags": ["sky", "white", "rain", "float", "soft"],
-    "names": {
-      "es": {
-        "text": "La Nube",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Cloud",
-        "status": "approved"
-      }
+   "n": 20,
+   "id": "flor",
+   "category": "plants_food",
+   "art": "🌸",
+   "names": {
+    "es": {
+     "text": "la flor",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Blanda y blanca navega\npor el mar de arriba.",
-      "en": "Soft and white, it sails\nacross the sea above."
+    "en": {
+     "text": "the flower",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Floto en el cielo como algodón y guardo agua para la lluvia.",
-      "en": "I float in the sky like cotton and keep water for the rain."
+    "nah": {
+     "text": "xochitl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/xochitl-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/flor.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss flower"
+    },
+    "yua": {
+     "text": "lool",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/l_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/flor.m4a",
+     "note": "UADY: lool = flor de corola; alternativa nikte’ (flor de pétalo / flor de mayo) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "t'ika",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/flor.m4a",
+     "note": "Minedu index 'Flor: T'ika, wayta, sisa' (three synonyms)."
     }
+   }
   },
   {
-    "n": 26,
-    "id": "viento",
-    "category": "sky",
-    "art": "💨",
-    "emoji": "💨",
-    "tags": ["air", "breeze", "leaves", "invisible", "storm"],
-    "names": {
-      "es": {
-        "text": "El Viento",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Wind",
-        "status": "approved"
-      }
+   "n": 21,
+   "id": "hongo",
+   "category": "plants_food",
+   "art": "🍄",
+   "names": {
+    "es": {
+     "text": "el hongo",
+     "status": "approved"
     },
-    "verso": {
-      "es": "No se ve pero se siente,\nmueve hojas y plumas.",
-      "en": "You cannot see it but you feel it,\nit moves leaves and feathers."
+    "en": {
+     "text": "the mushroom",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "No tengo cuerpo pero muevo todo; sopla y me escucharás silbar.",
-      "en": "I have no body yet I move everything; listen and you will hear me whistle."
+    "nah": {
+     "text": "nanacatl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/nanacatl",
+     "confidence": "weak",
+     "audio": "/audio/nah/hongo.m4a",
+     "variant": "classical",
+     "note": "Molina 1571 (classical), no Huasteca entry found; Molina: hongo. Not found in IDIEZ (searched hongo, mushroom, nanacatl)"
+    },
+    "yua": {
+     "text": "kuuxum",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/k_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/hongo.m4a",
+     "note": "UADY glosa 'moho, hongo, verdín' (es.wiktionary: champiñón) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "k'allampa",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/hongo.m4a",
+     "note": "Minedu index 'Hongo comestible: K'allampa, quncha'. runasimi Qusqu: kallampa."
     }
+   }
   },
   {
-    "n": 27,
-    "id": "cometa",
-    "category": "sky",
-    "art": "☄️",
-    "emoji": "☄️",
-    "tags": ["sky", "tail", "night", "ice", "space"],
-    "names": {
-      "es": {
-        "text": "El Cometa",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Comet",
-        "status": "approved"
-      }
+   "n": 22,
+   "id": "aguacate",
+   "category": "plants_food",
+   "art": "🥑",
+   "names": {
+    "es": {
+     "text": "el aguacate",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Con su cola de luz\nvisita el cielo y se va.",
-      "en": "With its tail of light\nit visits the sky and leaves."
+    "en": {
+     "text": "the avocado",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy bola de hielo y polvo con larga cola brillante; vengo de lejos y no me quedo.",
-      "en": "I am a ball of ice and dust with a long glowing tail; I come from far and do not stay."
+    "nah": {
+     "text": "ahuacatl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/ahuacatl-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/aguacate.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss avocado fruit; Wiktionary nhe spells awakatl"
+    },
+    "yua": {
+     "text": "oom",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/o_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/aguacate.m4a",
+     "note": "UADY ES-Maya: aguacate = oom, oon (ambas variantes) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "paltay",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/aguacate.m4a",
+     "note": "Minedu index 'Palta, aguacate: Paltay'; entry 'Paltay. Hatun sach'api uriq misk'i ruru. Palta.' runasimi Qusqu: palta; paltay. 'palta' itself is of Quechua origin, not a Spanish loan."
     }
+   }
   },
   {
-    "n": 28,
-    "id": "montana",
-    "category": "land",
-    "art": "🏔️",
-    "emoji": "🏔️",
-    "tags": ["high", "peak", "snow", "rock", "andes"],
-    "names": {
-      "es": {
-        "text": "La Montaña",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Mountain",
-        "status": "approved"
-      },
-      "nah": {
-        "text": "tepetl",
-        "status": "draft",
-        "source": "Classical/Central Nahuatl, unverified draft"
-      }
+   "n": 23,
+   "id": "semilla",
+   "category": "plants_food",
+   "art": "🌱",
+   "names": {
+    "es": {
+     "text": "la semilla",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Alta y callada, se pone\nun sombrero de nieve.",
-      "en": "Tall and quiet, it puts on\na hat of snow."
+    "en": {
+     "text": "the seed",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy muy grande y muy alta; de mis laderas bajan los ríos.",
-      "en": "I am very big and very tall; rivers run down my slopes."
+    "nah": {
+     "text": "xinachtli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/xinachtli-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/semilla.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss 1. seed 2. breeding farm animal; Wiktionary nhe iyol = seed"
     },
-    "confusableWith": ["volcan"]
-  },
-  {
-    "n": 29,
-    "id": "volcan",
-    "category": "land",
-    "art": "🌋",
-    "emoji": "🌋",
-    "tags": ["mountain", "smoke", "lava", "fire", "rock"],
-    "names": {
-      "es": {
-        "text": "El Volcán",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Volcano",
-        "status": "approved"
-      }
+    "yua": {
+     "text": "neek'",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/n_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/semilla.m4a",
+     "note": "UADY: 'pepita, semilla, hueso de fruta'; semilla de maíz = i’inaj | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
     },
-    "verso": {
-      "es": "Duerme con humo en la cima\ny a veces despierta con fuerza.",
-      "en": "It sleeps with smoke on top\nand sometimes wakes up with force."
-    },
-    "riddle": {
-      "es": "Tengo un hueco en la cima y guardo fuego por dentro; a veces echo humo y ceniza.",
-      "en": "I have a hollow top and keep fire inside; sometimes I puff out smoke and ash."
-    },
-    "confusableWith": ["montana"]
-  },
-  {
-    "n": 30,
-    "id": "manantial",
-    "category": "land",
-    "art": "💧",
-    "emoji": "💧",
-    "tags": ["water", "spring", "fresh", "ground", "drink"],
-    "names": {
-      "es": {
-        "text": "El Manantial",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Spring",
-        "status": "approved"
-      }
-    },
-    "verso": {
-      "es": "Brota limpia de la tierra,\ny así nace un río.",
-      "en": "It bubbles up clean from the ground,\nand that is how a river begins."
-    },
-    "riddle": {
-      "es": "Salgo de la tierra como agua fresca y de mí nace un río.",
-      "en": "I come out of the ground as fresh water, and a river is born from me."
+    "quz": {
+     "text": "muhu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/semilla.m4a",
+     "note": "Minedu entry 'Muhu ... Semilla, semen'; runasimi Qusqu: muhu, muqu."
     }
+   }
   },
   {
-    "n": 31,
-    "id": "mar",
-    "category": "land",
-    "art": "🌊",
-    "emoji": "🌊",
-    "tags": ["water", "waves", "salt", "shore", "fish"],
-    "names": {
-      "es": {
-        "text": "El Mar",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Sea",
-        "status": "approved"
-      }
+   "n": 24,
+   "id": "hoja",
+   "category": "plants_food",
+   "art": "🍃",
+   "names": {
+    "es": {
+     "text": "la hoja",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Olas que vienen y van,\nsal y espuma en la orilla.",
-      "en": "Waves that come and go,\nsalt and foam on the shore."
+    "en": {
+     "text": "the leaf",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy azul, salado y muy grande; mis olas llegan hasta la arena.",
-      "en": "I am blue, salty, and very big; my waves reach the sand."
+    "nah": {
+     "text": "izhuatl",
+     "status": "draft",
+     "source": "https://en.wiktionary.org/wiki/izhuatl",
+     "confidence": "sourced",
+     "audio": "/audio/nah/hoja.m4a",
+     "note": "Wiktionary, Eastern Huasteca Nahuatl section; gloss leaf; not found as IDIEZ headword in the online dictionary"
+    },
+    "yua": {
+     "text": "le'",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/l_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/hoja.m4a",
+     "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "rapi",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/hoja.m4a",
+     "note": "Minedu entry 'Rapi ... Hoja' (index 'Hoja: Rapi')."
     }
+   }
   },
   {
-    "n": 32,
-    "id": "desierto",
-    "category": "land",
-    "art": "🏜️",
-    "emoji": "🏜️",
-    "tags": ["sand", "dry", "cactus", "sun", "dunes"],
-    "names": {
-      "es": {
-        "text": "El Desierto",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Desert",
-        "status": "approved"
-      }
+   "n": 25,
+   "id": "arbol",
+   "category": "plants_food",
+   "art": "🌳",
+   "names": {
+    "es": {
+     "text": "el árbol",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Mucho sol y poca agua,\npero la vida encuentra su camino.",
-      "en": "Lots of sun and little water,\nbut life finds its way."
+    "en": {
+     "text": "the tree",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Tengo arena y poca lluvia; mis plantas guardan agua en su panza.",
-      "en": "I have sand and little rain; my plants store water in their bellies."
+    "nah": {
+     "text": "cuahuitl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/cuahuitl",
+     "confidence": "sourced",
+     "audio": "/audio/nah/arbol.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss 1. tree 2. cane 3. firewood; Wiktionary nhe spells kuawitl (tree, wood)"
+    },
+    "yua": {
+     "text": "che'",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/ch_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/arbol.m4a",
+     "note": "UADY: 'árbol, madera, palo' | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "sach'a",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/arbol.m4a",
+     "note": "Minedu index 'Árbol: Sach'a' (also 'Árbol frutal: Mallki'). Note sach'a can also mean forest/bush."
     }
+   }
   },
   {
-    "n": 33,
-    "id": "selva",
-    "category": "land",
-    "art": "🌴",
-    "emoji": "🌴",
-    "tags": ["trees", "green", "rain", "birds", "humid"],
-    "names": {
-      "es": {
-        "text": "La Selva",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Jungle",
-        "status": "approved"
-      }
+   "n": 26,
+   "id": "frijol",
+   "category": "plants_food",
+   "art": "🫘",
+   "names": {
+    "es": {
+     "text": "el frijol",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Verde sobre verde, cantos y sombra,\nmil vidas entre las hojas.",
-      "en": "Green on green, songs and shade,\na thousand lives among the leaves."
+    "en": {
+     "text": "the bean",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Hay muchos árboles, lluvia y monos; mi techo es de hojas.",
-      "en": "There are many trees, rain, and monkeys; my roof is made of leaves."
+    "nah": {
+     "text": "etl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/etl-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/frijol.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss bean"
+    },
+    "yua": {
+     "text": "bu'ul",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/b_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/frijol.m4a",
+     "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "purutu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/frijol.m4a",
+     "note": "Minedu entry 'Purutu ... Frijol, poroto'."
     }
+   }
   },
   {
-    "n": 34,
-    "id": "cristal",
-    "category": "land",
-    "art": "💎",
-    "emoji": "💎",
-    "tags": ["rock", "shiny", "mineral", "cave", "clear"],
-    "names": {
-      "es": {
-        "text": "El Cristal",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Crystal",
-        "status": "approved"
-      }
+   "n": 27,
+   "id": "sol",
+   "category": "sky",
+   "art": "☀️",
+   "names": {
+    "es": {
+     "text": "el sol",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Duerme en la roca oscura\ny brilla cuando lo alcanza la luz.",
-      "en": "It sleeps in the dark rock\nand sparkles when light reaches it."
+    "en": {
+     "text": "the sun",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Nazco dentro de las rocas y brillo con la luz; soy duro y transparente.",
-      "en": "I grow inside rocks and sparkle in the light; I am hard and clear."
+    "nah": {
+     "text": "tonatiuh",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/tonatiuh-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/sol.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss 1. sun 2. day; Wiktionary nhe spells tonatih (sun)"
+    },
+    "yua": {
+     "text": "k'iin",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/k_glotal_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/sol.m4a",
+     "note": "UADY: 'día, sol, tiempo, época' | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "inti",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/sol.m4a",
+     "note": "Minedu entry 'Inti ... Sol'."
     }
+   }
   },
   {
-    "n": 35,
-    "id": "isla",
-    "category": "land",
-    "art": "🏝️",
-    "emoji": "🏝️",
-    "tags": ["sea", "sand", "palm", "shore", "small"],
-    "names": {
-      "es": {
-        "text": "La Isla",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Island",
-        "status": "approved"
-      }
+   "n": 28,
+   "id": "luna",
+   "category": "sky",
+   "art": "🌙",
+   "names": {
+    "es": {
+     "text": "la luna",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Un pedacito de tierra\ncon agua por todos lados.",
-      "en": "A little piece of land\nwith water on every side."
+    "en": {
+     "text": "the moon",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Estoy rodeada de agua por todos lados; algunas tienen palmeras.",
-      "en": "I am surrounded by water on all sides; some of us have palm trees."
+    "nah": {
+     "text": "metztli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/metztli",
+     "confidence": "sourced",
+     "audio": "/audio/nah/luna.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss 1. moon 2. month; Wiktionary nhe metztli (moon, month, leg)"
+    },
+    "yua": {
+     "text": "uj",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/u_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/luna.m4a",
+     "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "killa",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/luna.m4a",
+     "note": "Minedu index 'Luna, mes: Killa'."
     }
+   }
   },
   {
-    "n": 36,
-    "id": "cueva",
-    "category": "land",
-    "art": "🕳️",
-    "emoji": "🕳️",
-    "tags": ["dark", "rock", "echo", "underground", "bats"],
-    "names": {
-      "es": {
-        "text": "La Cueva",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Cave",
-        "status": "approved"
-      }
+   "n": 29,
+   "id": "estrella",
+   "category": "sky",
+   "art": "⭐",
+   "names": {
+    "es": {
+     "text": "la estrella",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Oscura y fresca, guarda ecos\ny murciélagos que duermen.",
-      "en": "Dark and cool, it keeps echoes\nand sleeping bats."
+    "en": {
+     "text": "the star",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Entra sin miedo: soy un hueco en la montaña donde el eco juega.",
-      "en": "Step in without fear: I am a hollow in the mountain where echoes play."
+    "nah": {
+     "text": "citlalin",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/citlalin-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/estrella.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss star; Wiktionary nhe spells sitlalli (star)"
+    },
+    "yua": {
+     "text": "eek'",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/e_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/estrella.m4a",
+     "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "quyllur",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/estrella.m4a",
+     "note": "Minedu entry 'Quyllur ... Estrella'. (Qosqo 5-vowel spelling in runasimi: qoyllur; also ch'aska.)"
     }
+   }
   },
   {
-    "n": 37,
-    "id": "olla",
-    "category": "handmade",
-    "art": "🏺",
-    "emoji": "🏺",
-    "tags": ["clay", "pot", "cooking", "kitchen", "pottery"],
-    "names": {
-      "es": {
-        "text": "La Olla",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Clay Pot",
-        "status": "approved"
-      }
+   "n": 30,
+   "id": "nube",
+   "category": "sky",
+   "art": "☁️",
+   "names": {
+    "es": {
+     "text": "la nube",
+     "status": "approved"
     },
-    "verso": {
-      "es": "De barro y manos hecha,\nhierve el caldo con paciencia.",
-      "en": "Made of clay and hands,\nit simmers the broth with patience."
+    "en": {
+     "text": "the cloud",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy de barro y estoy en la lumbre; en mí se cocinan los frijoles.",
-      "en": "I am made of clay and sit by the fire; beans cook inside me."
+    "nah": {
+     "text": "mixtli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/mixtli",
+     "confidence": "sourced",
+     "audio": "/audio/nah/nube.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss cloud; Wiktionary nhe mistli is glossed Cat (the animal) - check, do not use mistli for cloud"
+    },
+    "yua": {
+     "text": "múuyal",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/m_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/nube.m4a",
+     "note": "variante múunyal (UADY ES-Maya) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "phuyu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/nube.m4a",
+     "note": "Minedu entry 'Phuyu' (index 'Nube: Phuyu')."
     }
+   }
   },
   {
-    "n": 38,
-    "id": "cesto",
-    "category": "handmade",
-    "art": "🧺",
-    "emoji": "🧺",
-    "tags": ["weaving", "fibers", "carry", "market", "reeds"],
-    "names": {
-      "es": {
-        "text": "El Cesto",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Basket",
-        "status": "approved"
-      }
+   "n": 31,
+   "id": "lluvia",
+   "category": "sky",
+   "art": "🌧️",
+   "names": {
+    "es": {
+     "text": "la lluvia",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Trenzado con fibras y tiempo,\nlleva el mercado en brazos.",
-      "en": "Woven from fibers and time,\nit carries the market in its arms."
+    "en": {
+     "text": "the rain",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Estoy tejido de fibras; llevo frutas y no me rompo.",
-      "en": "I am woven from fibers; I carry fruit and do not break."
+    "nah": {
+     "text": "quiahuitl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/quiahuitl",
+     "confidence": "weak",
+     "audio": "/audio/nah/lluvia.m4a",
+     "variant": "classical",
+     "note": "Molina 1571 (classical), no Huasteca entry found; Molina: pluvia o aguacero. IDIEZ has only verbs (tlaahuetzi = to rain, https://nahuatl.wired-humanities.org/searchview-idiez with query rain) and no noun found"
+    },
+    "yua": {
+     "text": "cháak",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/ch_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/lluvia.m4a",
+     "note": "También nombre del dios de la lluvia. Alternativa ja’ = agua/lluvia (en.wiktionary) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "para",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/lluvia.m4a",
+     "note": "Minedu entry 'Para ... Lluvia, aguacero'."
     }
+   }
   },
   {
-    "n": 39,
-    "id": "tambor",
-    "category": "handmade",
-    "art": "🥁",
-    "emoji": "🥁",
-    "tags": ["music", "beat", "rhythm", "skin", "festival"],
-    "names": {
-      "es": {
-        "text": "El Tambor",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Drum",
-        "status": "approved"
-      }
+   "n": 32,
+   "id": "arcoiris",
+   "category": "sky",
+   "art": "🌈",
+   "names": {
+    "es": {
+     "text": "el arcoíris",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Pum, pum, pum, late fuerte\ny el baile se pone en marcha.",
-      "en": "Boom, boom, boom, it beats strong\nand the dance gets going."
+    "en": {
+     "text": "the rainbow",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Me tocan con las manos o palitos y suena pum pum.",
-      "en": "They play me with hands or sticks and I go boom boom."
+    "nah": {
+     "text": "cuacemalotl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/cuacemalotl2",
+     "confidence": "sourced",
+     "audio": "/audio/nah/arcoiris.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss rainbow (the 2 in the slug is a homograph index). Classical cozamalotl / ayauhcozamalotl (Molina)"
+    },
+    "yua": {
+     "text": "chéel",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/ch_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/arcoiris.m4a",
+     "note": "UADY: 'arco iris' | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "k'uychi",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/arcoiris.m4a",
+     "note": "Minedu index 'Arco Iris: K'uychi'; runasimi Qusqu: k'uychi."
     }
+   }
   },
   {
-    "n": 40,
-    "id": "adobe",
-    "category": "handmade",
-    "art": "🧱",
-    "emoji": "🧱",
-    "tags": ["clay", "brick", "build", "earth", "wall"],
-    "names": {
-      "es": {
-        "text": "El Adobe",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Adobe Brick",
-        "status": "approved"
-      }
+   "n": 33,
+   "id": "viento",
+   "category": "sky",
+   "art": "💨",
+   "names": {
+    "es": {
+     "text": "el viento",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Barro y paja bajo el sol\nlevantan paredes firmes.",
-      "en": "Mud and straw under the sun\nraise strong walls."
+    "en": {
+     "text": "the wind",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Me hago con barro y paja y me secan al sol; con mis iguales se levanta una pared.",
-      "en": "I am made of mud and straw and dried in the sun; with others like me a wall is built."
+    "nah": {
+     "text": "ehecatl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/ehecatl-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/viento.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss 1. air, wind; Wiktionary nhe ahakatl/ahacatl (wind)"
+    },
+    "yua": {
+     "text": "iik'",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/i_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/viento.m4a",
+     "note": "UADY: 'aire, viento; aliento; espíritu' | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "wayra",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/viento.m4a",
+     "note": "No headword in the Minedu text I extracted. Minedu parallel texts give wayra = viento: 'Wayrapas Intipas unupas runapas ... kallpayuqmi kanchik' = 'El viento, el sol, el agua y las personas tenemos fuerza'; 'unu phawan, wayra phukun' = 'el agua corre, el viento sopla'; entry Phukuy: 'Soplar el viento'. Corroborated: runasimi Qusqu/Qosqo/TY 'wayra' (viento; aire) and Wiktionary 'wayra' (wind, air)."
     }
+   }
   },
   {
-    "n": 41,
-    "id": "hilo",
-    "category": "handmade",
-    "art": "🧵",
-    "emoji": "🧵",
-    "tags": ["weaving", "textile", "color", "spin", "loom"],
-    "names": {
-      "es": {
-        "text": "El Hilo",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Thread",
-        "status": "approved"
-      }
+   "n": 34,
+   "id": "noche",
+   "category": "sky",
+   "art": "🌃",
+   "names": {
+    "es": {
+     "text": "la noche",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Del algodón y la lana\nnace el hilo, y del hilo el telar.",
-      "en": "From cotton and wool\nthe thread is born, and from the thread the loom."
+    "en": {
+     "text": "the night",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy largo y fino y paso por la aguja; con mis compañeros se hace la tela.",
-      "en": "I am long and thin and go through the needle; with my fellow threads cloth is made."
+    "nah": {
+     "text": "yohualli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/yohualli",
+     "confidence": "sourced",
+     "audio": "/audio/nah/noche.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss 1. night; Wiktionary nhe tlayohua (night)"
+    },
+    "yua": {
+     "text": "áak'ab",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/a_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/noche.m4a",
+     "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "tuta",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/noche.m4a",
+     "note": "Minedu entry 'Tuta ... Noche'."
     }
+   }
   },
   {
-    "n": 42,
-    "id": "canoa",
-    "category": "handmade",
-    "art": "🛶",
-    "emoji": "🛶",
-    "tags": ["boat", "river", "paddle", "wood", "lake"],
-    "names": {
-      "es": {
-        "text": "La Canoa",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Canoe",
-        "status": "approved"
-      }
+   "n": 35,
+   "id": "cielo",
+   "category": "sky",
+   "art": "🌌",
+   "names": {
+    "es": {
+     "text": "el cielo",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Un tronco que se volvió barca\ny flota en el agua quieta.",
-      "en": "A trunk that became a boat\nand floats on still water."
+    "en": {
+     "text": "the sky",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Floto sin ruedas y avanzo con remos sobre el lago.",
-      "en": "I float without wheels and move with paddles across the lake."
+    "nah": {
+     "text": "elhuicatl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/elhuicatl",
+     "confidence": "sourced",
+     "audio": "/audio/nah/cielo.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss 1. sky, space 2. heaven; Wiktionary nhe ilwikatl (sky), elhuicactli (the sky)"
+    },
+    "yua": {
+     "text": "ka'an",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/k_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/cielo.m4a",
+     "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "hanaq pacha",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/cielo.m4a",
+     "note": "Minedu entry 'Hanaq ... Arriba, cielo' and example 'Hanaq pachamanta paraqa hamun' = 'La lluvia viene del cielo'; also 'Hanaq pacha' vs 'kay pacha' (this world) / 'ukhu pacha'. runasimi Qusqu: 'hanaq pacha' = cielo; mundo de arriba (religious/cosmological sense; 'hanaq' alone in Minedu = arriba, cielo)."
     }
+   }
   },
   {
-    "n": 43,
-    "id": "puente",
-    "category": "handmade",
-    "art": "🌉",
-    "emoji": "🌉",
-    "tags": ["river", "cross", "rope", "path", "connect"],
-    "names": {
-      "es": {
-        "text": "El Puente",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Bridge",
-        "status": "approved"
-      }
+   "n": 36,
+   "id": "montana",
+   "category": "land",
+   "art": "⛰️",
+   "names": {
+    "es": {
+     "text": "el cerro",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Une una orilla con otra\ny nadie se queda aislado.",
-      "en": "It joins one bank to another\nand no one is left alone."
+    "en": {
+     "text": "the mountain",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Cruzo ríos y barrancas sin mojarme; las orillas se dan la mano en mí.",
-      "en": "I cross rivers and ravines without getting wet; the banks shake hands over me."
+    "nah": {
+     "text": "tepetl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/tepetl-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/montana.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss hill, mountain; Wiktionary nhe tepetl (mountain)"
+    },
+    "yua": {
+     "text": "wiits",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/w_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/montana.m4a",
+     "note": "UADY: 'cerro, montaña, sierra'. Para 'cerro' UADY ES-Maya lista pu’uk, wiits, múul | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "urqu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/montana.m4a",
+     "note": "Minedu index 'Cerro: Urqu' (concept in list is 'el cerro'). runasimi: urqu / urq'u (Qosqo orq'o); also sach'a in some glosses (= forest)."
     }
+   }
   },
   {
-    "n": 44,
-    "id": "vela",
-    "category": "handmade",
-    "art": "🕯️",
-    "emoji": "🕯️",
-    "tags": ["light", "wax", "flame", "wick", "night"],
-    "names": {
-      "es": {
-        "text": "La Vela",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Candle",
-        "status": "approved"
-      }
+   "n": 37,
+   "id": "piedra",
+   "category": "land",
+   "art": "🪨",
+   "names": {
+    "es": {
+     "text": "la piedra",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Una llamita pequeña\nalumbra todo el cuarto.",
-      "en": "A tiny flame\nlights up the whole room."
+    "en": {
+     "text": "the stone",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy de cera, tengo un pabilo y doy luz mientras me derrito.",
-      "en": "I am made of wax, I have a wick, and I give light while I melt."
+    "nah": {
+     "text": "tetl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/tetl-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/piedra.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss rock; Wiktionary nhe tetl (rock)"
+    },
+    "yua": {
+     "text": "tuunich",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/t_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/piedra.m4a",
+     "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "rumi",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/piedra.m4a",
+     "note": "Minedu entry 'Rumi ... Piedra'."
     }
+   }
   },
   {
-    "n": 45,
-    "id": "martillo",
-    "category": "handmade",
-    "art": "🔨",
-    "emoji": "🔨",
-    "tags": ["tool", "build", "nail", "strike", "wood"],
-    "names": {
-      "es": {
-        "text": "El Martillo",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Hammer",
-        "status": "approved"
-      }
+   "n": 38,
+   "id": "agua",
+   "category": "land",
+   "art": "💧",
+   "names": {
+    "es": {
+     "text": "el agua",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Toc, toc, toc, golpea firme\ny el clavo se hunde en la madera.",
-      "en": "Tap, tap, tap, it strikes firm\nand the nail sinks into the wood."
+    "en": {
+     "text": "the water",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Tengo mango y cabeza dura; golpeo clavos para armar cosas.",
-      "en": "I have a handle and a hard head; I hit nails to build things."
+    "nah": {
+     "text": "atl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/atl",
+     "confidence": "sourced",
+     "audio": "/audio/nah/agua.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss water"
+    },
+    "yua": {
+     "text": "ja'",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/j_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/agua.m4a",
+     "note": "Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "unu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/agua.m4a",
+     "note": "Minedu entry 'Unu. (s). Mayupipas quchapipas hich'akuq upyana. Yaku. Agua.' (unu, with yaku as synonym). runasimi: unu (Qusqu), yaku."
     }
+   }
   },
   {
-    "n": 46,
-    "id": "casa",
-    "category": "places",
-    "art": "🏠",
-    "emoji": "🏠",
-    "tags": ["home", "roof", "family", "shelter", "door"],
-    "names": {
-      "es": {
-        "text": "La Casa",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The House",
-        "status": "approved"
-      }
+   "n": 39,
+   "id": "fuego",
+   "category": "land",
+   "art": "🔥",
+   "names": {
+    "es": {
+     "text": "el fuego",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Techo, puerta y ventana,\naquí siempre hay un lugar.",
-      "en": "Roof, door, and window,\nthere is always a place here."
+    "en": {
+     "text": "the fire",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Tengo techo y paredes; adentro se duerme y se comparte.",
-      "en": "I have a roof and walls; inside we sleep and share."
+    "nah": {
+     "text": "tlitl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/tlitl",
+     "confidence": "sourced",
+     "audio": "/audio/nah/fuego.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss fire (not tletl, which is classical-only in this dictionary)"
     },
-    "confusableWith": ["pueblo"]
-  },
-  {
-    "n": 47,
-    "id": "milpa",
-    "category": "places",
-    "art": "🌾",
-    "emoji": "🌾",
-    "tags": ["field", "maize", "squash", "beans", "farm"],
-    "names": {
-      "es": {
-        "text": "La Milpa",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Milpa",
-        "status": "approved"
-      }
+    "yua": {
+     "text": "k'áak'",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/k_glotal_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/fuego.m4a",
+     "note": "UADY: 'fuego, lumbre, fogón, hoguera' | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
     },
-    "verso": {
-      "es": "Maíz, frijol y calabaza\ncrecen juntos y se ayudan.",
-      "en": "Maize, beans, and squash\ngrow together and help each other."
-    },
-    "riddle": {
-      "es": "Soy un campo donde tres cultivos crecen juntos: maíz, frijol y calabaza.",
-      "en": "I am a field where three crops grow together: maize, bean, and squash."
+    "quz": {
+     "text": "nina",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/fuego.m4a",
+     "note": "Minedu entry 'Nina' (index 'Fuego: Nina')."
     }
+   }
   },
   {
-    "n": 48,
-    "id": "tienda",
-    "category": "places",
-    "art": "🏪",
-    "emoji": "🏪",
-    "tags": ["shop", "food", "buy", "trade", "neighborhood"],
-    "names": {
-      "es": {
-        "text": "La Tienda",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Shop",
-        "status": "approved"
-      }
+   "n": 40,
+   "id": "mar",
+   "category": "land",
+   "art": "🌊",
+   "names": {
+    "es": {
+     "text": "el mar",
+     "status": "approved"
     },
-    "verso": {
-      "es": "En la esquina abre su puerta\ny hay de todo un poquito.",
-      "en": "On the corner it opens its door\nand has a little of everything."
+    "en": {
+     "text": "the sea",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Estoy en la esquina del barrio y vendo pan, fruta y otras cosas.",
-      "en": "I am on the neighborhood corner and sell bread, fruit and other things."
+    "nah": {
+     "text": "hueyi atl",
+     "status": "draft",
+     "source": "https://en.wiktionary.org/wiki/hueyi_atl",
+     "confidence": "sourced",
+     "audio": "/audio/nah/mar.m4a",
+     "note": "Wiktionary, Eastern Huasteca Nahuatl section; gloss sea, ocean (two words); Wiktionary nhe also weyiatl (sea). IDIEZ huēyi = large expanse of water"
+    },
+    "yua": {
+     "text": "k'áak'náab",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/k_glotal_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/mar.m4a",
+     "note": "UADY: 'mar, océano' | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "mama qucha",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/mar.m4a",
+     "note": "Minedu index 'Mar, océano: Lamar, mama qucha'. runasimi Qusqu: mama qucha; la mar (loan from Spanish 'la mar'); hatun qucha (also = big lake)."
     }
+   }
   },
   {
-    "n": 49,
-    "id": "plaza",
-    "category": "places",
-    "art": "⛲",
-    "emoji": "⛲",
-    "tags": ["square", "fountain", "meeting", "town", "center"],
-    "names": {
-      "es": {
-        "text": "La Plaza",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Plaza",
-        "status": "approved"
-      }
+   "n": 41,
+   "id": "arena",
+   "category": "land",
+   "art": "🏖️",
+   "names": {
+    "es": {
+     "text": "la arena",
+     "status": "approved"
     },
-    "verso": {
-      "es": "En el centro del pueblo,\nse juntan juegos y charlas.",
-      "en": "In the middle of town,\ngames and chats gather."
+    "en": {
+     "text": "the sand",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Soy un espacio abierto al centro del pueblo; tengo una fuente y bancas.",
-      "en": "I am an open space in the middle of town; I have a fountain and benches."
+    "nah": {
+     "text": "xalli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/xalli-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/arena.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss sand"
+    },
+    "yua": {
+     "text": "sam",
+     "status": "draft",
+     "source": "https://es.wiktionary.org/wiki/sam",
+     "confidence": "weak",
+     "audio": "/audio/yua/arena.m4a",
+     "note": "es.wiktionary 'sam' = arena, sin cita. Aulex da 'sa’am' (otra grafía). UADY NO da palabra simple, solo la frase descriptiva 'u lu’umil k’áa’náab' (tierra del mar). Conflicto de grafía; verificar."
+    },
+    "quz": {
+     "text": "aqu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/arena.m4a",
+     "note": "Minedu index 'Arena: Aqu, t'iyu'; entry 'Aqu' (sand/gravel in rivers and soils)."
     }
+   }
   },
   {
-    "n": 50,
-    "id": "puerto",
-    "category": "places",
-    "art": "⚓",
-    "emoji": "⚓",
-    "tags": ["boats", "sea", "dock", "anchor", "travel"],
-    "names": {
-      "es": {
-        "text": "El Puerto",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Harbor",
-        "status": "approved"
-      }
+   "n": 42,
+   "id": "casa",
+   "category": "places",
+   "art": "🏠",
+   "names": {
+    "es": {
+     "text": "la casa",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Aquí descansan las barcas\ny el mar toca la puerta.",
-      "en": "Here the boats rest\nand the sea knocks at the door."
+    "en": {
+     "text": "the house",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Las barcas llegan a mí a descansar y se amarran con ancla y cuerda.",
-      "en": "Boats come to me to rest and tie up with anchor and rope."
+    "nah": {
+     "text": "calli",
+     "status": "draft",
+     "source": "https://en.wiktionary.org/wiki/calli",
+     "confidence": "sourced",
+     "audio": "/audio/nah/casa.m4a",
+     "note": "Wiktionary, Eastern Huasteca Nahuatl section; gloss house; Wiktionary nhe also kalli. No IDIEZ headword found for calli in the online dictionary"
+    },
+    "yua": {
+     "text": "naj",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/n_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/casa.m4a",
+     "note": "UADY: naj, taanaj, otoch | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "wasi",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/casa.m4a",
+     "note": "Minedu entry 'Wasi ... Casa'."
     }
+   }
   },
   {
-    "n": 51,
-    "id": "pueblo",
-    "category": "places",
-    "art": "🏘️",
-    "emoji": "🏘️",
-    "tags": ["community", "houses", "neighbors", "fiesta", "town"],
-    "names": {
-      "es": {
-        "text": "El Pueblo",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Village",
-        "status": "approved"
-      }
+   "n": 43,
+   "id": "camino",
+   "category": "places",
+   "art": "🛣️",
+   "names": {
+    "es": {
+     "text": "el camino",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Casas vecinas, voces amigas,\ntodos se conocen.",
-      "en": "Neighboring houses, friendly voices,\neveryone knows each other."
+    "en": {
+     "text": "the road",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Somos muchas casas juntas y nos ayudamos entre vecinos.",
-      "en": "We are many houses together and neighbors help one another."
+    "nah": {
+     "text": "ohtli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/ohtli",
+     "confidence": "sourced",
+     "audio": "/audio/nah/camino.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss road, path"
     },
-    "confusableWith": ["casa"]
-  },
-  {
-    "n": 52,
-    "id": "escuela",
-    "category": "places",
-    "art": "🏫",
-    "emoji": "🏫",
-    "tags": ["learn", "books", "class", "friends", "play"],
-    "names": {
-      "es": {
-        "text": "La Escuela",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The School",
-        "status": "approved"
-      }
+    "yua": {
+     "text": "bej",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/b_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/camino.m4a",
+     "note": "UADY: bej 'camino, sendero'; también beel | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
     },
-    "verso": {
-      "es": "Se aprende y se juega,\ncada día algo nuevo.",
-      "en": "We learn and we play,\nsomething new each day."
-    },
-    "riddle": {
-      "es": "Aquí se aprende a leer y a jugar; hay timbre y recreo.",
-      "en": "Here you learn to read and to play; there is a bell and recess."
+    "quz": {
+     "text": "ñan",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/camino.m4a",
+     "note": "Minedu index 'Camino, vía: Ñan'."
     }
+   }
   },
   {
-    "n": 53,
-    "id": "observatorio",
-    "category": "places",
-    "art": "🔭",
-    "emoji": "🔭",
-    "tags": ["stars", "telescope", "sky", "night", "science"],
-    "names": {
-      "es": {
-        "text": "El Observatorio",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Observatory",
-        "status": "approved"
-      }
+   "n": 44,
+   "id": "pueblo",
+   "category": "places",
+   "art": "🏘️",
+   "names": {
+    "es": {
+     "text": "el pueblo",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Un techo que se abre al cielo\npara contar estrellas.",
-      "en": "A roof that opens to the sky\nto count the stars."
+    "en": {
+     "text": "the town",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Tengo un telescopio y una cúpula; desde aquí se mira el cielo.",
-      "en": "I have a telescope and a dome; from here we watch the sky."
+    "nah": {
+     "text": "altepetl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/altepetl",
+     "confidence": "sourced",
+     "audio": "/audio/nah/pueblo.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; IDIEZ gloss city or large town; alt chinanco = town, village (https://nahuatl.wired-humanities.org/content/chinanco)"
+    },
+    "yua": {
+     "text": "kaaj",
+     "status": "draft",
+     "source": "https://web.archive.org/web/20201124075518/http://www.mayas.uady.mx/diccionario/p_esp.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/pueblo.m4a",
+     "note": "UADY ES-Maya: PUEBLO = kaaj | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "llaqta",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/pueblo.m4a",
+     "note": "Minedu index 'Pueblo: Llaqta'; runasimi Qusqu: llaqta."
     }
+   }
   },
   {
-    "n": 54,
-    "id": "biblioteca",
-    "category": "places",
-    "art": "📚",
-    "emoji": "📚",
-    "tags": ["books", "quiet", "stories", "read", "shelves"],
-    "names": {
-      "es": {
-        "text": "La Biblioteca",
-        "status": "approved"
-      },
-      "en": {
-        "text": "The Library",
-        "status": "approved"
-      }
+   "n": 45,
+   "id": "mercado",
+   "category": "places",
+   "art": "🛒",
+   "names": {
+    "es": {
+     "text": "el mercado",
+     "status": "approved"
     },
-    "verso": {
-      "es": "Mil historias en fila,\nesperando una mano que las abra.",
-      "en": "A thousand stories in a row,\nwaiting for a hand to open them."
+    "en": {
+     "text": "the market",
+     "status": "approved"
     },
-    "riddle": {
-      "es": "Tengo estantes llenos de cuentos; se habla bajito y se llevan libros prestados.",
-      "en": "I have shelves full of stories; we speak softly and borrow books."
+    "nah": {
+     "text": "tianquiz",
+     "status": "draft",
+     "source": "https://en.wiktionary.org/wiki/tianquiz",
+     "confidence": "sourced",
+     "audio": "/audio/nah/mercado.m4a",
+     "note": "Wiktionary, Eastern Huasteca Nahuatl section; gloss market, plaza; classical tianquiztli. Not found as IDIEZ headword"
+    },
+    "yua": {
+     "text": "k'íiwik",
+     "status": "draft",
+     "source": "https://web.archive.org/web/20201124075518/http://www.mayas.uady.mx/diccionario/m_esp.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/mercado.m4a",
+     "note": "UADY ES-Maya: MERCADO = k’íiwik | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "qhatu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/mercado.m4a",
+     "note": "Minedu entry 'Qhatu ... Plaza, mercadillo' (index 'Mercadillo, (día de) plaza: Qhatu'). runasimi Qusqu: qhatu = mercado."
     }
+   }
+  },
+  {
+   "n": 46,
+   "id": "cueva",
+   "category": "places",
+   "art": "🕳️",
+   "names": {
+    "es": {
+     "text": "la cueva",
+     "status": "approved"
+    },
+    "en": {
+     "text": "the cave",
+     "status": "approved"
+    },
+    "nah": {
+     "text": "oztoctli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/oztoctli",
+     "confidence": "sourced",
+     "audio": "/audio/nah/cueva.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss cave; Wiktionary nhe ostotl (cave)"
+    },
+    "yua": {
+     "text": "áaktun",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/a_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/cueva.m4a",
+     "note": "UADY: 'caverna, cueva' | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "mach'ay",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/cueva.m4a",
+     "note": "Minedu entry 'Mach'ay ... Caverna, cueva' (index also 'chinkana')."
+    }
+   }
+  },
+  {
+   "n": 47,
+   "id": "olla",
+   "category": "handmade",
+   "art": "🏺",
+   "names": {
+    "es": {
+     "text": "la olla",
+     "status": "approved"
+    },
+    "en": {
+     "text": "the clay pot",
+     "status": "approved"
+    },
+    "nah": {
+     "text": "comitl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/comitl-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/olla.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; IDIEZ gloss clay jug for keeping water; Wiktionary nhe comitl = pot, pan"
+    },
+    "yua": {
+     "text": "kuum",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/k_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/olla.m4a",
+     "note": "UADY: 'olla'; káat = apaste/olla de barro | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "manka",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/olla.m4a",
+     "note": "Minedu entry 'Manka ... (olla)'; index 'Olla: Manka'."
+    }
+   }
+  },
+  {
+   "n": 48,
+   "id": "canasta",
+   "category": "handmade",
+   "art": "🧺",
+   "names": {
+    "es": {
+     "text": "la canasta",
+     "status": "approved"
+    },
+    "en": {
+     "text": "the basket",
+     "status": "approved"
+    },
+    "nah": {
+     "text": "chiquihuitl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/chiquihuitl",
+     "confidence": "sourced",
+     "audio": "/audio/nah/canasta.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss basket"
+    },
+    "yua": {
+     "text": "xaak",
+     "status": "draft",
+     "source": "https://web.archive.org/web/20201124075518/http://www.mayas.uady.mx/diccionario/c_esp.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/canasta.m4a",
+     "note": "UADY ES-Maya: CANASTA = xaak, xúuxak; xúux = canasta grande de bejucos (Maya-ES) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "isanka",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/canasta.m4a",
+     "note": "Minedu entry 'Isanka ... Canasta grande sin asa'. Other runasimi Cusco words: p'uktu, aysana."
+    }
+   }
+  },
+  {
+   "n": 49,
+   "id": "tambor",
+   "category": "handmade",
+   "art": "🪘",
+   "names": {
+    "es": {
+     "text": "el tambor",
+     "status": "approved"
+    },
+    "en": {
+     "text": "the drum",
+     "status": "approved"
+    },
+    "nah": {
+     "text": "huehuetl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/huehuetl",
+     "confidence": "weak",
+     "audio": "/audio/nah/tambor.m4a",
+     "variant": "classical",
+     "note": "Molina 1571 (classical), no Huasteca entry found; Molina: atabal (upright indigenous drum); Spanish loan tambor also attested in colonial Nahuatl. No Huasteca drum noun found in IDIEZ"
+    },
+    "yua": {
+     "text": "tunk'ul",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/t_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/tambor.m4a",
+     "note": "UADY: 'tambor horizontal hecho de tronco ahuecado' (el tunkul) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "tinya",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/tambor.m4a",
+     "note": "Minedu index 'Tambor: Tinya'; entry gloss 'Kaha. Tamborín'. Big drum/bombo = wank'ar (Minedu index 'Tambor grande, bombo')."
+    }
+   }
+  },
+  {
+   "n": 50,
+   "id": "flauta",
+   "category": "handmade",
+   "art": "🪈",
+   "names": {
+    "es": {
+     "text": "la flauta",
+     "status": "approved"
+    },
+    "en": {
+     "text": "the flute",
+     "status": "approved"
+    },
+    "nah": {
+     "text": "tlapitzalli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/tlapitzalli-0",
+     "confidence": "sourced",
+     "audio": "/audio/nah/flauta.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; IDIEZ gloss: a whistle or wind instrument (not specifically a flute); Molina: flauta, cheremia"
+    },
+    "yua": {
+     "text": "piitoo",
+     "status": "draft",
+     "source": "https://es.glosbe.com/es/yua/flauta",
+     "confidence": "weak",
+     "audio": "/audio/yua/flauta.m4a",
+     "note": "Préstamo del español (pito). Glosbe, Aulex y es.wiktionary (tabla de traducciones) coinciden en piitoo; Aulex también da chuul. UADY no lista flauta (solo 'siit' = carrizo con el que se hacen flautas). Fuentes débiles."
+    },
+    "quz": {
+     "text": "pinkullu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/flauta.m4a",
+     "note": "Minedu entry 'Pinkullu ... Flauta, quena' (Minedu index also 'Flauta de pan, zampoña: Antara, siku'). runasimi Qusqu lists qina/qena for quena and pinkuyllu (ocarina)."
+    }
+   }
+  },
+  {
+   "n": 51,
+   "id": "hilo",
+   "category": "handmade",
+   "art": "🧵",
+   "names": {
+    "es": {
+     "text": "el hilo",
+     "status": "approved"
+    },
+    "en": {
+     "text": "the thread",
+     "status": "approved"
+    },
+    "nah": {
+     "text": "icpatl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/icpatl",
+     "confidence": "sourced",
+     "audio": "/audio/nah/hilo.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss thread or yarn; alt iloh = thread (https://nahuatl.wired-humanities.org/content/iloh)"
+    },
+    "yua": {
+     "text": "k'uuch",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/k_glotal_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/hilo.m4a",
+     "note": "UADY glosa 'pabilo, hilo o hilera'. Ambiguo para 'hilo de coser'; no hay entrada ES-Maya para hilo | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "q'aytu",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/hilo.m4a",
+     "note": "No dedicated headword extracted, but Minedu translates it as hilo repeatedly: 'Kurur. Q'aytu k'umpachasqa uma. Ovillo de hilo'; 'Khiwiy ... Q'aytu kururay. Ovillar hilo'; 'Rakhu q'aytuwanqa yawriwanmi siranchik' = 'Para coser con hilo grueso...'. runasimi Qusqu: q'aytu = hilo."
+    }
+   }
+  },
+  {
+   "n": 52,
+   "id": "cuerda",
+   "category": "handmade",
+   "art": "🪢",
+   "names": {
+    "es": {
+     "text": "la cuerda",
+     "status": "approved"
+    },
+    "en": {
+     "text": "the rope",
+     "status": "approved"
+    },
+    "nah": {
+     "text": "mecatl",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/mecatl-1",
+     "confidence": "sourced",
+     "audio": "/audio/nah/cuerda.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss rope, cord; Wiktionary nhe mecatl (rope, cord)"
+    },
+    "yua": {
+     "text": "suum",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/s_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/cuerda.m4a",
+     "note": "UADY: 'soga, reata, cuerda' (cuerda y soga comparten palabra) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "waskha",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/cuerda.m4a",
+     "note": "Minedu entry 'Waskha ... Soga' (soga = rope; Minedu gives no separate 'cuerda'). runasimi Qusqu: waska/waskha = soga; cuerda. Alternatives: phala, q'iswa (soga de paja)."
+    }
+   }
+  },
+  {
+   "n": 53,
+   "id": "aguja",
+   "category": "handmade",
+   "art": "🪡",
+   "names": {
+    "es": {
+     "text": "la aguja",
+     "status": "approved"
+    },
+    "en": {
+     "text": "the needle",
+     "status": "approved"
+    },
+    "nah": {
+     "text": "acoxah",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/acoxah",
+     "confidence": "sourced",
+     "audio": "/audio/nah/aguja.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; gloss needle"
+    },
+    "yua": {
+     "text": "púuts'",
+     "status": "draft",
+     "source": "https://web.archive.org/web/2020/http://www.mayas.uady.mx/diccionario/p_maya.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/aguja.m4a",
+     "note": "UADY: púuts’ aguja; kayche’ = aguja para urdir hamaca | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "yawri",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/aguja.m4a",
+     "note": "Minedu entry 'Yawri ... Aguja de arriero' (large packing needle); same entry's example contrasts 'yawri' (thick thread) vs 'yawrichawan' (thin thread, 'aguja común'). runasimi Qusqu: yawri = aguja grande; agujón. Generic alt in runasimi (not Cusco-attested there): sirana."
+    }
+   }
+  },
+  {
+   "n": 54,
+   "id": "sandalia",
+   "category": "handmade",
+   "art": "🩴",
+   "names": {
+    "es": {
+     "text": "la sandalia",
+     "status": "approved"
+    },
+    "en": {
+     "text": "the sandal",
+     "status": "approved"
+    },
+    "nah": {
+     "text": "tecactli",
+     "status": "draft",
+     "source": "https://nahuatl.wired-humanities.org/content/tecactli",
+     "confidence": "sourced",
+     "audio": "/audio/nah/sandalia.m4a",
+     "note": "IDIEZ (Sullivan & Olko 2016, Chicontepec, Veracruz) via Online Nahuatl Dictionary; IDIEZ gloss sandal, shoe; Wiktionary nhe tecactli = sandal, huarache"
+    },
+    "yua": {
+     "text": "xanab",
+     "status": "draft",
+     "source": "https://web.archive.org/web/20201124075518/http://www.mayas.uady.mx/diccionario/s_esp.html",
+     "confidence": "sourced",
+     "audio": "/audio/yua/sandalia.m4a",
+     "note": "UADY ES-Maya: SANDALIA = xanab (también 'zapato, calzado'). en.wiktionary xanab: shoe, sandal (5 referencias impresas) | Fuente: UADY web dictionary (Bastarrachea et al. 1992), vía Wayback; ortografía moderna, apóstrofo U+2019, entrada en mayúsculas en la fuente"
+    },
+    "quz": {
+     "text": "usuta",
+     "status": "draft",
+     "source": "http://web.archive.org/web/2011/http://portal.perueduca.edu.pe/Docentes/xtras/pdf/dicc_cusco.pdf",
+     "confidence": "sourced",
+     "audio": "/audio/quz/sandalia.m4a",
+     "note": "Minedu entry 'Usuta ... Llanki. Sandalia, ojota' (Minedu spelling 'usuta'; runasimi Qusqu spells 'usut'a', with ejective). Also llanki/lanq'i."
+    }
+   }
   }
-]
+ ]
+}
