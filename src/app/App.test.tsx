@@ -10,6 +10,7 @@ describe('router shell', () => {
       '/print',
       '/deck',
       '/creditos',
+      '/ui',
     ]);
   });
 });

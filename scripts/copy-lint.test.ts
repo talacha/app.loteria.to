@@ -38,11 +38,8 @@ describe('copy-lint matcher', () => {
       findHits('Quien canta; quien juega usa frijoles. Beans, not better bets? '),
     ).toHaveLength(1);
     expect(findHits('La cantora y quien canta revisan la tabla')).toEqual([]);
-    expect(words('Pregunta al cantor y al  Cantor del cantor')).toEqual([
-      'al cantor',
-      'al  cantor',
-      'del cantor',
-    ]);
+    // "el cantor" is the app's automatic voice, not a person: allowed.
+    expect(findHits('Pregunta al cantor y al  Cantor del cantor', 'es')).toEqual([]);
     expect(findHits('The cantor calls', 'en')).toEqual([]);
     expect(findHits('Ser cantor', 'es')).toEqual([]);
     expect(findHits('Se juega con frijoles. Las infancias y las personas mayores.')).toEqual([]);
