@@ -35,7 +35,11 @@ describe('HomePage', () => {
   it('shows title, nine sample cards, pending badges and three actions', async () => {
     await i18n.changeLanguage('es');
     setup();
-    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('¿Cómo te llamas?');
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toMatch(
+      /^Lotería de los Pueblos — /,
+    );
+    expect(screen.getByRole('heading', { name: '¿Cómo te llamas?' })).toBeTruthy();
+    expect(screen.getByText('¿Es gratis?')).toBeTruthy();
     expect(screen.getByText('Lotería de los Pueblos')).toBeTruthy();
     expect(screen.getByText('El Sol')).toBeTruthy();
     expect(screen.queryByText('pendiente de revisión')).toBeNull();

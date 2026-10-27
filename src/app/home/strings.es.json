@@ -61,5 +61,28 @@
   "moreTitle": "Sobre el juego",
   "logoAlt": "",
   "printLink": "Imprimir tablas",
-  "deckLink": "Cartas"
+  "deckLink": "Cartas",
+  "h1": "Lotería de los Pueblos — la lotería cantada en náhuatl, maya, quechua, español e inglés",
+  "lede": "Una lotería de imágenes para jugar en familia o en el aula: una voz canta cada carta y tú eliges cómo se escribe. Se juega desde el teléfono con un código QR, o con papel y frijoles. Es gratis y no necesita cuentas.",
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": {
+      "how": {
+        "q": "¿Cómo se juega?",
+        "a": "Una persona crea la sala y las demás entran con el código o el QR. Cada persona recibe un cartón de 4 × 4 con dibujos. Una voz canta una carta a la vez; cada quien elige la escritura correcta entre tres opciones y tacha la figura si la tiene. Quien completa su cartón dice ¡Lotería!"
+      },
+      "langs": {
+        "q": "¿Qué idiomas tiene?",
+        "a": "Las cartas se cantan en náhuatl, maya yucateco, quechua (Cusco-Collao), español e inglés. Cada persona elige el idioma que escucha y el idioma de la app (español o inglés), y puede cambiarlos en cualquier momento."
+      },
+      "free": {
+        "q": "¿Es gratis?",
+        "a": "Sí. Es gratis, sin cuentas y sin anuncios. Tu nombre y tus marcas se quedan en tu dispositivo. Las voces sintéticas usan Meta MMS-TTS (licencia CC BY-NC 4.0), por eso el uso es no comercial."
+      },
+      "who": {
+        "q": "¿Para quién es?",
+        "a": "Para familias con varios idiomas, aulas y centros comunitarios, y para quien aprende una lengua heredada. Hasta 20 personas juegan en una sala, y también se puede jugar solo contra la computadora o imprimir cartones para jugar con papel."
+      }
+    }
+  }
 }

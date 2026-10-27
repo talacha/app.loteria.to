@@ -1,0 +1,44 @@
+User-agent: *
+Allow: /
+Disallow: /host
+Disallow: /r/
+Disallow: /ui
+Disallow: /api/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /host
+Disallow: /r/
+Disallow: /ui
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /host
+Disallow: /r/
+Disallow: /ui
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /host
+Disallow: /r/
+Disallow: /ui
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /host
+Disallow: /r/
+Disallow: /ui
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /host
+Disallow: /r/
+Disallow: /ui
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /host
+Disallow: /r/
+Disallow: /ui
+
+Sitemap: https://app.loteria.to/sitemap.xml

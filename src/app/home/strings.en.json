@@ -61,5 +61,28 @@
   "moreTitle": "About the game",
   "logoAlt": "",
   "printLink": "Print boards",
-  "deckLink": "Cards"
+  "deckLink": "Cards",
+  "h1": "Lotería de los Pueblos — lotería called in Nahuatl, Maya, Quechua, Spanish and English",
+  "lede": "A picture lotería to play with family or in the classroom: a voice calls each card and you pick how it is spelled. Play from your phone with a QR code, or with paper and beans. It is free and needs no accounts.",
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": {
+      "how": {
+        "q": "How do you play?",
+        "a": "One person creates a room and everyone else joins with the code or the QR. Each player gets a 4 × 4 board of pictures. A voice calls one card at a time; each player picks the right spelling out of three and crosses the picture off if they have it. Whoever completes their board calls ¡Lotería!."
+      },
+      "langs": {
+        "q": "Which languages does it have?",
+        "a": "Cards are called in Nahuatl, Yucatec Maya, Quechua (Cusco-Collao), Spanish and English. Each player chooses the language they hear and the app language (Spanish or English), and can change them at any time."
+      },
+      "free": {
+        "q": "Is it free?",
+        "a": "Yes. It is free, with no accounts and no ads. Your name and marks stay on your device. The synthetic voices use Meta MMS-TTS (CC BY-NC 4.0), so use is non-commercial."
+      },
+      "who": {
+        "q": "Who is it for?",
+        "a": "For multilingual families, classrooms and community centres, and anyone learning a heritage language. Up to 20 people play in one room, and you can also play solo against the computer or print boards to play on paper."
+      }
+    }
+  }
 }

@@ -24,17 +24,28 @@ const config = {
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg'],
+      includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
         name: 'Lotería de los Pueblos',
         short_name: 'Lotería',
-        description: 'Lotería in five languages. Play with phones or paper.',
+        description:
+          'La lotería de imágenes, cantada en náhuatl, maya yucateco, quechua, español e inglés. Juega con teléfonos o con papel.',
         lang: 'es',
         start_url: '/',
         display: 'standalone',
         background_color: '#fff8ec',
         theme_color: '#b3261e',
-        icons: [{ src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' }],
+        icons: [
+          { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+          { src: 'icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+          { src: 'icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          {
+            src: 'icon-maskable-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
+        ],
       },
       workbox: {
         // Precache shell, content, art and audio (budget: < 10 MB total).

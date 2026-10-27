@@ -5,7 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#b3261e" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Lotería de los Pueblos</title>
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      rel="preload"
+      href="/fonts/bricolage-grotesque-var-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/atkinson-hyperlegible-400-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <title>Lotería de los Pueblos — la lotería en cinco idiomas</title>
+    <meta
+      name="description"
+      content="La lotería de imágenes, cantada en náhuatl, maya yucateco, quechua, español e inglés. Juega en familia desde tu teléfono con un código QR. Gratis, sin cuentas."
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://app.loteria.to/" />
+    <link rel="alternate" hreflang="es" href="https://app.loteria.to/" />
+    <link rel="alternate" hreflang="en" href="https://app.loteria.to/" />
+    <link rel="alternate" hreflang="x-default" href="https://app.loteria.to/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lotería de los Pueblos" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:url" content="https://app.loteria.to/" />
+    <meta property="og:title" content="Lotería de los Pueblos — la lotería en cinco idiomas" />
+    <meta
+      property="og:description"
+      content="La lotería de imágenes, cantada en náhuatl, maya yucateco, quechua, español e inglés. Juega en familia desde tu teléfono con un código QR. Gratis, sin cuentas."
+    />
+    <meta property="og:image" content="https://app.loteria.to/og/default.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Lotería de los Pueblos: un cartón de lotería con dibujos y los cinco idiomas: náhuatl, maya yucateco, quechua, español e inglés."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lotería de los Pueblos — la lotería en cinco idiomas" />
+    <meta
+      name="twitter:description"
+      content="La lotería de imágenes, cantada en náhuatl, maya yucateco, quechua, español e inglés. Juega en familia desde tu teléfono con un código QR. Gratis, sin cuentas."
+    />
+    <meta name="twitter:image" content="https://app.loteria.to/og/default.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Lotería de los Pueblos: un cartón de lotería con dibujos y los cinco idiomas: náhuatl, maya yucateco, quechua, español e inglés."
+    />
   </head>
   <body>
     <div id="root"></div>
@@ -13,6 +65,10 @@
       try {
         var t = localStorage.getItem('loteria:theme');
         if (t && t !== 'auto') document.documentElement.dataset.theme = t;
+        // A prerendered page only paints for its own route (the service worker may serve another).
+        var r = document.getElementById('root');
+        var p = location.pathname.replace(/\/+$/, '') || '/';
+        if (r && r.dataset.route && r.dataset.route !== p) r.innerHTML = '';
       } catch (e) {}
     </script>
     <script type="module" src="/src/main.tsx"></script>

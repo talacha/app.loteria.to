@@ -5,6 +5,7 @@ import PrintPage from './print/PrintPage';
 import DeckPage from './deck/DeckPage';
 import CreditsPage from './credits/CreditsPage';
 import SoloPage from './solo/SoloPage';
+import NotFound from './NotFound';
 import Gallery from './ui/Gallery';
 
 export const routes = [
@@ -16,4 +17,5 @@ export const routes = [
   { path: '/deck', element: <DeckPage /> },
   { path: '/creditos', element: <CreditsPage /> },
   { path: '/ui', element: <Gallery /> },
+  { path: '*', element: <NotFound /> },
 ];

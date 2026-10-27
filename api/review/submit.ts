@@ -5,7 +5,7 @@ import { clientIp, enforce, HttpError, json, origin, parseBody, route } from '..
 import { publishJob } from '../_lib/qstash.js';
 import { verifyToken } from '../_lib/token.js';
 import { LangSchema } from './auth.js';
-import { CARD_IDS } from './cards.js';
+import { CARD_IDS } from '../_lib/cardIds.js';
 
 const Body = z.object({
   lang: LangSchema,

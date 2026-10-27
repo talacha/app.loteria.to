@@ -12,6 +12,7 @@ describe('router shell', () => {
       '/deck',
       '/creditos',
       '/ui',
+      '*',
     ]);
   });
 });

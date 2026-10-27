@@ -6,6 +6,7 @@ import { applyStoredPrefs } from '../theme/prefs';
 import { Button, CardArt, LanguageSettings } from '../ui';
 import page from '../theme/page.module.css';
 import styles from './HomePage.module.css';
+import { FAQ_KEYS } from '../seo/meta';
 import { isValidRoomCode, normalizeRoomCode } from './joinCode';
 import { NAME_MAX, readProfile, saveProfile } from './profile';
 
@@ -83,7 +84,10 @@ export default function HomePage() {
             </div>
           </div>
 
-          <h1 className={styles.title}>{t('home.nameTitle')}</h1>
+          <h1 className={styles.product}>{t('home.h1')}</h1>
+          <p className={styles.lede}>{t('home.lede')}</p>
+
+          <h2 className={styles.title}>{t('home.nameTitle')}</h2>
 
           <div className={styles.field}>
             <label htmlFor="home-name">{t('home.nameLabel')}</label>
@@ -298,6 +302,20 @@ export default function HomePage() {
                 <li key={k}>{t(`home.audience.${k}`)}</li>
               ))}
             </ul>
+          </section>
+
+          <section className={page.section} aria-labelledby="home-faq">
+            <h2 className={page.h2} id="home-faq">
+              {t('home.faq.title')}
+            </h2>
+            <dl className={styles.faq}>
+              {FAQ_KEYS.map((k) => (
+                <div key={k}>
+                  <dt>{t(`home.faq.items.${k}.q`)}</dt>
+                  <dd>{t(`home.faq.items.${k}.a`)}</dd>
+                </div>
+              ))}
+            </dl>
           </section>
 
           <section className={page.section} aria-labelledby="home-dev">

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ThemeSwitch } from './theme/Preferences';
 import { applyStoredPrefs } from './theme/prefs';
 import { LanguageSettings, Sheet } from './ui';
+import { FAQ_KEYS, applyHead } from './seo';
 import styles from './Shell.module.css';
 
 /** Catalog key (in ns `ui`) for the page title of a route. */
@@ -12,9 +13,11 @@ export function titleKey(pathname: string): string {
   if (pathname.startsWith('/host')) return 'host.title';
   if (pathname.startsWith('/r/')) return 'join.title';
   if (pathname.startsWith('/print')) return 'print.title';
+  if (pathname.startsWith('/solo')) return 'solo.title';
   if (pathname.startsWith('/deck')) return 'deck.title';
   if (pathname.startsWith('/creditos')) return 'credits.title';
-  return 'app.name';
+  if (pathname.startsWith('/ui')) return 'app.name';
+  return 'notfound.title';
 }
 
 function focusMain(): void {
@@ -25,7 +28,7 @@ function focusMain(): void {
 }
 
 export default function Shell() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { pathname } = useLocation();
   const first = useRef(true);
   const [sheet, setSheet] = useState<'theme' | 'settings' | null>(null);
@@ -37,8 +40,17 @@ export default function Shell() {
 
   useEffect(() => {
     const page = t(titleKey(pathname));
-    document.title = pathname === '/' ? page : `${page} · ${t('app.name')}`;
-  }, [pathname, t]);
+    const faq = FAQ_KEYS.map((k) => ({
+      q: t(`home.faq.items.${k}.q`),
+      a: t(`home.faq.items.${k}.a`),
+    }));
+    applyHead(
+      pathname,
+      i18n.language?.startsWith('en') ? 'en' : 'es',
+      pathname === '/' ? page : `${page} · ${t('app.name')}`,
+      faq,
+    );
+  }, [pathname, t, i18n.language]);
 
   useEffect(() => {
     if (first.current) {

@@ -5,29 +5,44 @@
   "buildCommand": "pnpm check && pnpm build",
   "outputDirectory": "dist",
   "rewrites": [
-    {
-      "source": "/((?!api/|assets/|audio/|art/|.*\\..*).*)",
-      "destination": "/index.html"
-    }
+    { "source": "/host", "destination": "/app.html" },
+    { "source": "/r/:code", "destination": "/app.html" },
+    { "source": "/ui", "destination": "/app.html" }
   ],
   "headers": [
     {
       "source": "/sw.js",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
-        }
-      ]
+      "headers": [{ "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }]
     },
     {
       "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/art/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/og/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }
       ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/host",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
+      "source": "/r/(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
+      "source": "/ui",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     }
   ]
 }
