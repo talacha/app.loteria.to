@@ -17,6 +17,7 @@ export default defineConfig({
             'src/net/**/*.test.ts',
             'src/ai/**/*.test.ts',
             'scripts/**/*.test.ts',
+            'tests/api/**/*.test.ts',
           ],
         },
       },

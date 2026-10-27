@@ -31,7 +31,7 @@ export class Session {
   async start(code: string, role: Role, opts?: JoinOptions, fixedSeat?: string): Promise<void> {
     this.role = role;
     this.seat = fixedSeat ?? getSeat(code, role);
-    this.keys = role === 'host' ? await generateHostKeys() : null;
+    this.keys = role === 'host' ? await generateHostKeys(opts?.keyPair) : null;
     this.pinned = role === 'player' ? (opts?.hostKey ?? null) : null;
     this.verified = role === 'player' && !!opts?.hostKey;
     this.lastClaim.clear();
@@ -49,7 +49,7 @@ export class Session {
     if (!m) throw new Error('invalid message');
     if (HOST_ONLY.has(m.t)) {
       if (!this.keys) throw new Error('only the host may send ' + m.t);
-      if (m.t === 'round') m = { ...m, hostKey: this.keys.pub };
+      if (m.t === 'round' || m.t === 'lobby') m = { ...m, hostKey: this.keys.pub };
       return { role: this.role, from: this.seat, m, sig: await signMsg(this.keys.priv, m) };
     }
     return { role: this.role, from: this.seat, m };
@@ -74,7 +74,7 @@ export class Session {
       if (this.role === 'host' || f.role !== 'host' || typeof f.sig !== 'string') return null;
       let key = this.pinned;
       if (!key) {
-        if (m.t !== 'round' || !m.hostKey) return null;
+        if ((m.t !== 'round' && m.t !== 'lobby') || !m.hostKey) return null;
         key = m.hostKey;
       }
       if (!(await verifyMsg(key, f.sig, m))) return null;

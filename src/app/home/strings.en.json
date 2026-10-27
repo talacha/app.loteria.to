@@ -1,0 +1,46 @@
+{
+  "tagline": "The picture bingo everyone grew up with, called in five languages. A whole room plays from one QR code, and no phone is required.",
+  "actions": "Get started",
+  "joinLabel": "Room code",
+  "joinInvalid": "The code has 5 letters or numbers (no I, L, O, 0 or 1).",
+  "joinSubmit": "Join a room",
+  "joinHelp": "Type the 5-character code shown on the cantor's screen.",
+  "languagesTitle": "Five languages",
+  "languagesIntro": "Cards are called in these languages. Names in Indigenous languages are only called once native speakers have reviewed them.",
+  "pendingBadge": "pending review",
+  "readyBadge": "ready to call",
+  "sampleTitle": "A taste of the deck",
+  "sampleAll": "See all 54 cards",
+  "howTitle": "How a round works",
+  "steps": {
+    "one": {
+      "title": "The room opens",
+      "body": "The cantor creates a room and shares the code or QR. Boards can also be printed."
+    },
+    "two": {
+      "title": "A card is called",
+      "body": "Each card comes up once, named in the chosen language, and everyone looks for its picture."
+    },
+    "three": {
+      "title": "A pattern is completed",
+      "body": "Whoever completes the pattern says Lotería! and the cantor checks the board, on screen or on paper."
+    }
+  },
+  "inclusionTitle": "Made to include everyone",
+  "inclusion": {
+    "paper": "Play with paper only: the cantor uses one screen and no phone is needed.",
+    "access": "Adjustable text size, high contrast, Listen mode and full keyboard support.",
+    "private": "No accounts. Your name and marks stay on your device.",
+    "offline": "Works offline after the first visit."
+  },
+  "audienceTitle": "Who it's for",
+  "audience": {
+    "classroom": "Classrooms and community centres: one screen calls, and everyone plays on paper or on a phone.",
+    "family": "Multilingual families: grandparents call in their own language while the young ones find the pictures.",
+    "heritage": "People learning a heritage language: Listen mode calls just the word, to learn by ear."
+  },
+  "devTitle": "In development",
+  "devNotice": "This is an early version. Illustrations are placeholder emoji, and the Nahuatl, Maya and Quechua names are waiting for native-speaker review. We never present an unreviewed word as correct.",
+  "privacyLine": "No accounts or tracking cookies. What you type never leaves your device.",
+  "creditsLink": "Credits and licences"
+}

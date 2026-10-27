@@ -1,0 +1,15 @@
+{
+  "seedTitle": "Código de esta impresión",
+  "seedNote": "Anota este código para el cantor. Con él se revisan las tablas de papel.",
+  "seedNew": "Crear otro código",
+  "seedCopy": "Copiar código",
+  "countHelp": "De 1 a 200 tablas.",
+  "progress": "Creando tabla {done} de {total}",
+  "ready": "Tu PDF está listo.",
+  "home": "Inicio",
+  "largeHelp": "Una tabla por página, con letra más grande.",
+  "inkHelp": "Sin colores de fondo y con líneas finas.",
+  "cancel": "Cancelar",
+  "progressLabel": "Avance de la creación del PDF",
+  "degraded": "El PDF se creó con una tipografía básica porque no se pudo cargar la normal. Algunas letras de los nombres pueden faltar."
+}

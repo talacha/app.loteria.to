@@ -1,0 +1,5 @@
+{
+  "extends": "../../api/tsconfig.json",
+  "compilerOptions": { "types": ["node"] },
+  "include": ["./**/*.ts", "../../api/**/*.ts"]
+}

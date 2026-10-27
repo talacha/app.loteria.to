@@ -1,9 +1,11 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { generateHostKeyPair } from './crypto.ts';
 import { LocalTransport } from './local.ts';
+import { getSeat } from './transport.ts';
 import type { Msg } from './messages.ts';
 import type { JoinOptions, Role } from './transport.ts';
 
-const claim = (seat: string): Msg => ({ t: 'claim', seat, tablaIndex: 1, marks: [] });
+const claim = (seat: string): Msg => ({ t: 'claim', seat, roundNo: 1, tablaIndex: 1, marks: [] });
 const call: Msg = { t: 'call', i: 0, cardId: 'gallo', lang: 'es', at: 1 };
 const round: Msg = {
   t: 'round',
@@ -209,5 +211,103 @@ describe('LocalTransport', () => {
     await t.leave();
     expect(vi.getTimerCount()).toBe(0);
     expect(seen.at(-1)).toEqual([]);
+  });
+});
+
+describe('v2 additions', () => {
+  it('verifies signed assign and drops a forged one', async () => {
+    const host = await make('C1', 'host');
+    const player = await make('C1', 'player');
+    const got = collect(player);
+    host.send(round);
+    host.send({ t: 'assign', seat: 'x', tablaIndex: 7, roundNo: 1 });
+    await flush();
+    const r = raw('C1');
+    r.postMessage({
+      k: 'msg',
+      frame: {
+        role: 'host',
+        from: 'h',
+        m: { t: 'assign', seat: 'x', tablaIndex: 8, roundNo: 1 },
+        sig: 'AAAA',
+      },
+    });
+    await flush();
+    const assigns = got.filter((m) => m.t === 'assign');
+    expect(assigns).toEqual([{ t: 'assign', seat: 'x', tablaIndex: 7, roundNo: 1 }]);
+  });
+
+  it('uses an injected seat as from and exposes it', async () => {
+    const host = await make('C2', 'host');
+    const atHost = collect(host);
+    const p = new LocalTransport({ seat: 'injected' });
+    open.push(p);
+    await p.join('C2', 'player');
+    expect(p.seat).toBe('injected');
+    p.send(claim('injected'));
+    p.send(claim('other'));
+    await flush();
+    expect(atHost.map((m) => (m as { seat: string }).seat)).toEqual(['injected']);
+  });
+
+  it('getSeat is stable when sessionStorage throws', () => {
+    const boom = {
+      getItem: () => {
+        throw new Error('x');
+      },
+      setItem: () => {
+        throw new Error('x');
+      },
+    };
+    vi.stubGlobal('sessionStorage', boom);
+    try {
+      expect(getSeat('ZZZZZ', 'player')).toBe(getSeat('ZZZZZ', 'player'));
+    } finally {
+      vi.unstubAllGlobals();
+    }
+  });
+
+  it('an injected key pair yields the same hostPublicKey', async () => {
+    const kp = await generateHostKeyPair();
+    const a = new LocalTransport();
+    const b = new LocalTransport();
+    open.push(a, b);
+    await a.join('C3', 'host', { keyPair: kp });
+    await b.join('C4', 'host', { keyPair: kp });
+    expect(await a.hostPublicKey()).toBe(await b.hostPublicKey());
+  });
+
+  it('delivers signed lobby and drops a forged one', async () => {
+    const host = await make('C5', 'host');
+    const player = await make('C5', 'player');
+    const got = collect(player);
+    host.send(round);
+    host.send({ t: 'lobby', status: 'waiting', players: [{ seat: 'a', name: 'Ana', glyph: '*' }] });
+    await flush();
+    raw('C5').postMessage({
+      k: 'msg',
+      frame: {
+        role: 'host',
+        from: 'h',
+        m: { t: 'lobby', status: 'started', players: [] },
+        sig: 'AAAA',
+      },
+    });
+    await flush();
+    expect(got.filter((m) => m.t === 'lobby')).toHaveLength(1);
+  });
+
+  it('TOFU pins the host key from a lobby', async () => {
+    const a = await make('C6', 'host');
+    const b = await make('C6', 'host');
+    const player = await make('C6', 'player');
+    const got = collect(player);
+    const lobby: Msg = { t: 'lobby', status: 'waiting', players: [] };
+    a.send(lobby);
+    await flush();
+    a.send(round);
+    b.send(lobby);
+    await flush();
+    expect(got.map((m) => m.t)).toEqual(['lobby', 'round']);
   });
 });

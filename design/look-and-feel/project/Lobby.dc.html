@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Sala de espera</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#FFC233}a:hover{color:#FFE08A}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #1E2142; color: #FFF6E5; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; display: flex; flex-direction: column; padding: 28px 20px 24px; gap: 18px; overflow: hidden">
+  <div style="display: flex; align-items: center; justify-content: space-between">
+    <a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 15px; text-decoration: none; color: #C9C3E6">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+      Salir de la sala
+    </a>
+    <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #FFF6E5; background: #0E9F7E; border: 2px solid #16182F; border-radius: 999px; padding: 6px 12px; font-weight: 700">
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="#FFF6E5"><circle cx="12" cy="12" r="6"/></svg>
+      Conectado
+    </span>
+  </div>
+
+  <div style="background: #FFF6E5; color: #16182F; border: 3px solid #16182F; border-radius: 24px; box-shadow: 0 6px 0 #0C0D1E; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 10px">
+    <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #4A4766">Sala</span>
+    <div style="display: flex; gap: 6px" aria-label="Código de sala K 7 M P Q">
+      <span style="flex: 1; text-align: center; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; background: #FFC233; border: 3px solid #16182F; border-radius: 12px; padding: 4px 0">K</span>
+      <span style="flex: 1; text-align: center; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; background: #FFC233; border: 3px solid #16182F; border-radius: 12px; padding: 4px 0">7</span>
+      <span style="flex: 1; text-align: center; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; background: #FFC233; border: 3px solid #16182F; border-radius: 12px; padding: 4px 0">M</span>
+      <span style="flex: 1; text-align: center; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; background: #FFC233; border: 3px solid #16182F; border-radius: 12px; padding: 4px 0">P</span>
+      <span style="flex: 1; text-align: center; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; background: #FFC233; border: 3px solid #16182F; border-radius: 12px; padding: 4px 0">Q</span>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px">
+      <span style="font-size: 15px">Jugarás en <strong>Náhuatl</strong></span>
+      <span style="font-size: 12px; font-weight: 700; background: #FFE08A; border: 2px solid #16182F; border-radius: 999px; padding: 2px 10px">en revisión</span>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 4px">
+    <h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.05; letter-spacing: -0.02em">Esperando al cantor…</h1>
+    <p style="margin: 0; font-size: 16px; color: #C9C3E6">La partida empieza cuando el cantor toque «Empezar».</p>
+  </div>
+
+  <section aria-labelledby="who" style="display: flex; flex-direction: column; gap: 12px; flex: 1; min-height: 0">
+    <h2 id="who" style="margin: 0; font-size: 16px; font-weight: 700; color: #FFF6E5">6 personas en la sala</h2>
+    <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <sc-for list="{{people}}" as="p" hint-placeholder-count="6">
+        <li style="{{p.style}}">
+          <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; border-radius: 12px; background: #FFFFFF; border: 2px solid #16182F">
+            <img src="{{p.icon}}" alt="" style="width: 34px; height: 34px">
+          </span>
+          <span style="display: flex; flex-direction: column; min-width: 0">
+            <span style="font-weight: 700; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{p.name}}</span>
+            <span style="font-size: 12px; color: #4A4766">{{p.note}}</span>
+          </span>
+        </li>
+      </sc-for>
+    </ul>
+  </section>
+
+  <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 18px; background: #2A2E58; border: 2px dashed #6E6AA6">
+    <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFC233" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4"/></svg>
+    <span style="font-size: 14px; line-height: 1.35; color: #E6E1FF">¿Alguien más quiere jugar? Que escanee el código QR del cantor o escriba <strong>K7MPQ</strong> en loteria.to</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const base = 'display:flex;align-items:center;gap:10px;padding:10px;border-radius:16px;border:3px solid #16182F;color:#16182F;';
+    const people = [
+      { name: 'Tú · Itzel', note: 'Náhuatl', icon: '/_blob/20eb01890006bcef796790c1d86a2892', me: true },
+      { name: 'Abuela Chayo', note: 'Español', icon: '/_blob/b0f4cb5cb0f804544cc1dc879e23517a' },
+      { name: 'Mateo', note: 'English', icon: '/_blob/8d3d0f44bf46c1fbac2ba6a6326b8a03' },
+      { name: 'Sofi', note: 'Español', icon: '/_blob/b7ae0c98e9b60e420a87b581057e38ee' },
+      { name: 'Tío Beto', note: 'Náhuatl', icon: '/_blob/dbc658a00d19e785d94af6f5f8452518' },
+      { name: 'Grupo 3B', note: 'tabla de papel', icon: '/_blob/4ee3fee82e57dc2d92a8f482f1713c54' }
+    ].map((p) => ({ ...p, style: base + (p.me ? 'background:#FFC233;' : 'background:#FFF6E5;') }));
+    return { people };
+  }
+}
+</script>
+</body>
+</html>

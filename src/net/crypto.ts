@@ -37,8 +37,13 @@ export interface HostKeys {
   pub: string;
 }
 
-export async function generateHostKeys(): Promise<HostKeys> {
-  const kp = await globalThis.crypto.subtle.generateKey(ALGO, false, ['sign', 'verify']);
+/** ECDSA P-256 pair; the private key is non-extractable but structured-cloneable (IndexedDB). */
+export function generateHostKeyPair(): Promise<CryptoKeyPair> {
+  return globalThis.crypto.subtle.generateKey(ALGO, false, ['sign', 'verify']);
+}
+
+export async function generateHostKeys(kp?: CryptoKeyPair): Promise<HostKeys> {
+  kp ??= await generateHostKeyPair();
   const raw = new Uint8Array(await globalThis.crypto.subtle.exportKey('raw', kp.publicKey));
   return { priv: kp.privateKey, pub: b64u(raw) };
 }

@@ -30,11 +30,25 @@ function catalog(lng: 'es' | 'en'): Tree {
   return tree;
 }
 
+function storedLang(): 'es' | 'en' {
+  try {
+    return localStorage.getItem('loteria.lang') === 'en' ? 'en' : 'es';
+  } catch {
+    return 'es';
+  }
+}
+
+function syncHtmlLang(lng: string | undefined): void {
+  if (typeof document !== 'undefined') {
+    document.documentElement.lang = lng?.startsWith('en') ? 'en' : 'es';
+  }
+}
+
 void i18n
   .use(ICU)
   .use(initReactI18next)
   .init({
-    lng: 'es',
+    lng: storedLang(),
     fallbackLng: 'es',
     supportedLngs: ['es', 'en'],
     ns: [UI_NAMESPACE],
@@ -45,5 +59,8 @@ void i18n
     },
     interpolation: { escapeValue: false },
   });
+
+syncHtmlLang(i18n.language);
+i18n.on('languageChanged', syncHtmlLang);
 
 export default i18n;

@@ -1,0 +1,17 @@
+{
+  "count": "{count, plural, =0 {Nadie en la sala todavía} one {# persona en la sala} other {# personas en la sala}}",
+  "max": "Máximo {max}",
+  "you": "(tú)",
+  "empty": "Aquí aparecerán las personas que se unan.",
+  "joined": "{name} entró a la sala",
+  "left": "{name} salió de la sala",
+  "roster": "Personas en la sala",
+  "roomCode": "Código de sala",
+  "roomCodeSpoken": "Código de sala: {letters}",
+  "copy": "Copiar código",
+  "copied": "Código copiado",
+  "waiting": "Esperando a que el cantor empiece…",
+  "title": "Sala de espera",
+  "verified": "Sala verificada",
+  "unverified": "Sala sin verificar"
+}

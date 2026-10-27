@@ -1,0 +1,46 @@
+{
+  "tagline": "El bingo de imágenes con el que todos crecimos, cantado en cinco idiomas. Una sala entera juega desde un solo código QR, y no hace falta ningún teléfono.",
+  "actions": "Empezar",
+  "joinLabel": "Código de la sala",
+  "joinInvalid": "El código tiene 5 letras o números (sin I, L, O, 0 ni 1).",
+  "joinSubmit": "Unirme a una sala",
+  "joinHelp": "Escribe el código de 5 caracteres que ves en la pantalla del cantor.",
+  "languagesTitle": "Cinco idiomas",
+  "languagesIntro": "Las cartas se cantan en estos idiomas. Los nombres en lenguas originarias solo se cantan cuando hablantes nativos los revisan.",
+  "pendingBadge": "pendiente de revisión",
+  "readyBadge": "listo para cantar",
+  "sampleTitle": "Una muestra de la baraja",
+  "sampleAll": "Ver las 54 cartas",
+  "howTitle": "Cómo es una ronda",
+  "steps": {
+    "one": {
+      "title": "Se abre la sala",
+      "body": "El cantor crea una sala y comparte el código o el QR. También puede imprimir tablas."
+    },
+    "two": {
+      "title": "Se canta una carta",
+      "body": "Cada carta sale una sola vez, con su nombre en el idioma elegido, y todas las personas buscan su dibujo."
+    },
+    "three": {
+      "title": "Se completa una figura",
+      "body": "Quien completa la figura dice ¡Lotería! y el cantor revisa la tabla, en pantalla o en papel."
+    }
+  },
+  "inclusionTitle": "Hecha para incluir a todas las personas",
+  "inclusion": {
+    "paper": "Se puede jugar solo con papel: el cantor usa una pantalla y no hace falta ningún teléfono.",
+    "access": "Letra ajustable, alto contraste, modo Escucha y teclado completo.",
+    "private": "Sin cuentas. Tu nombre y tus marcas se quedan en tu dispositivo.",
+    "offline": "Funciona sin conexión después de la primera visita."
+  },
+  "audienceTitle": "Para quién es",
+  "audience": {
+    "classroom": "Aulas y centros comunitarios: una pantalla canta y cada persona juega en papel o en su teléfono.",
+    "family": "Familias con varios idiomas: abuelas y abuelos cantan en su lengua mientras las infancias buscan los dibujos.",
+    "heritage": "Quien aprende una lengua heredada: el modo Escucha canta solo la palabra, para aprender de oído."
+  },
+  "devTitle": "En desarrollo",
+  "devNotice": "Esta es una versión temprana. Las ilustraciones son emojis provisionales y los nombres en náhuatl, maya y quechua esperan la revisión de hablantes nativos. Nunca mostramos como correcta una palabra que nadie ha revisado.",
+  "privacyLine": "Sin cuentas ni cookies de seguimiento. Lo que escribes no sale de tu dispositivo.",
+  "creditsLink": "Créditos y licencias"
+}

@@ -1,0 +1,15 @@
+{
+  "sheetTitle": "Cantor sheet",
+  "seedLabel": "Print seed",
+  "seedHelp": "Write this code down. The cantor types it when opening the room so these boards can be checked.",
+  "boards": "Boards printed: {n} (each with a 6-character check code)",
+  "steps": [
+    "Hand out the boards and beans to mark the cards.",
+    "In the app, choose Ser cantor and enter this print seed.",
+    "Call the cards. Whoever completes a pattern says: Lotería!",
+    "To check a paper board, press L and type the 6-character code at its foot."
+  ],
+  "qr": "To join from a phone",
+  "seed": "Seed",
+  "board": "board {k} of {n}"
+}

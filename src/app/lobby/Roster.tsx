@@ -1,0 +1,69 @@
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import styles from './Roster.module.css';
+
+export interface RosterPlayer {
+  seat: string;
+  name: string;
+  glyph: string;
+  pronouns?: string;
+}
+
+export interface RosterProps {
+  players: RosterPlayer[];
+  /** Marks this seat with "(tú)". */
+  selfSeat?: string;
+  /** Shown as a capacity hint. */
+  max?: number;
+}
+
+export default function Roster({ players, selfSeat, max }: RosterProps) {
+  const { t } = useTranslation();
+  const [prev, setPrev] = useState(players);
+  const [announce, setAnnounce] = useState('');
+
+  // Derive the live announcement while rendering (no effect needed).
+  if (prev !== players) {
+    const before = new Map(prev.map((p) => [p.seat, p]));
+    const after = new Map(players.map((p) => [p.seat, p]));
+    const msgs: string[] = [];
+    for (const p of players)
+      if (!before.has(p.seat) && p.seat !== selfSeat)
+        msgs.push(t('lobby.joined', { name: p.name }));
+    for (const p of prev) if (!after.has(p.seat)) msgs.push(t('lobby.left', { name: p.name }));
+    setPrev(players);
+    if (msgs.length) setAnnounce(msgs.join('. '));
+  }
+
+  return (
+    <section className={styles.roster} aria-labelledby="roster-count">
+      <h2 id="roster-count" className={styles.count}>
+        {t('lobby.count', { count: players.length })}
+        {max ? <span className={styles.max}> · {t('lobby.max', { max })}</span> : null}
+      </h2>
+      <p className={styles.live} role="status" aria-live="polite">
+        {announce}
+      </p>
+      {players.length === 0 ? (
+        <p className={styles.empty}>{t('lobby.empty')}</p>
+      ) : (
+        <ul className={styles.list} aria-label={t('lobby.roster')}>
+          {players.map((p) => (
+            <li key={p.seat} className={styles.item} data-self={p.seat === selfSeat}>
+              <span className={styles.glyph} aria-hidden="true">
+                {p.glyph}
+              </span>
+              <span className={styles.who}>
+                <span className={styles.name}>
+                  {p.name}
+                  {p.seat === selfSeat && <span className={styles.you}> {t('lobby.you')}</span>}
+                </span>
+                {p.pronouns && <small className={styles.pronouns}>{p.pronouns}</small>}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}

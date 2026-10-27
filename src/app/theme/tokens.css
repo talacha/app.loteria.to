@@ -42,6 +42,8 @@
     --color-ink-muted: #c9b6a3;
     --color-border: #4a3626;
     --color-warn-bg: #4a3a10;
+    --color-accent: #ff8a80;
+    --color-accent-ink: #2a1a10;
     --color-focus: #8fb6ff;
     color-scheme: dark;
   }
@@ -54,6 +56,7 @@
   --color-ink-muted: #ffffff;
   --color-accent: #ffd400;
   --color-accent-ink: #000000;
+  --color-warn-bg: #000000;
   --color-border: #ffffff;
   --color-focus: #ffd400;
 }
@@ -78,4 +81,32 @@ body {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Shared helpers (added by M6). Existing variables above stay stable. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-2);
+  top: -100px;
+  z-index: 100;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius);
+}
+.skip-link:focus {
+  top: var(--space-2);
 }

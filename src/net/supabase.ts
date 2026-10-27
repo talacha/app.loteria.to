@@ -1,6 +1,7 @@
 import type { RealtimeChannel, SupabaseClient } from '@supabase/supabase-js';
 import { BaseTransport } from './base.ts';
 import type { Frame } from './session.ts';
+import type { TransportOptions } from './transport.ts';
 
 export class SupabaseTransport extends BaseTransport {
   private client: SupabaseClient | null = null;
@@ -9,9 +10,9 @@ export class SupabaseTransport extends BaseTransport {
   constructor(
     private readonly url: string,
     private readonly anonKey: string,
-    fixedSeat?: string,
+    opts?: TransportOptions | string,
   ) {
-    super(fixedSeat);
+    super(opts);
   }
 
   protected async connect(code: string, gen: number): Promise<void> {

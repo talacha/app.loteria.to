@@ -1,0 +1,90 @@
+.page {
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: var(--space-4);
+  color: var(--color-ink);
+}
+.code {
+  color: var(--color-ink-muted);
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-weight: 600;
+}
+.field input,
+.field select {
+  min-height: var(--tap);
+  font: inherit;
+  padding: 0 var(--space-3);
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.fieldset legend {
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  padding: 0;
+}
+.glyphs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(var(--tap), 1fr));
+  gap: var(--space-2);
+}
+.glyph {
+  min-height: var(--tap);
+  min-width: var(--tap);
+  aspect-ratio: 1;
+  font-size: 1.75rem;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.glyph[data-selected='true'] {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent);
+}
+.error {
+  margin: 0;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+.submit {
+  min-height: 3.25rem;
+  font: inherit;
+  font-weight: 800;
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.link {
+  margin-top: var(--space-4);
+  min-height: var(--tap);
+  background: none;
+  border: 0;
+  font: inherit;
+  color: var(--color-cielo);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.paper {
+  margin: 0;
+  padding: var(--space-3);
+  background: var(--color-warn-bg);
+  border-radius: var(--radius);
+}

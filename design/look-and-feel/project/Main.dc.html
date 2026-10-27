@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Elige tu idioma</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#FFC233}a:hover{color:#FFE08A}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #1E2142; color: #FFF6E5; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; display: flex; flex-direction: column; padding: 28px 20px 24px; gap: 20px; overflow: hidden">
+  <div style="display: flex; align-items: center; justify-content: space-between">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <img src="/_blob/68822fdae8f9f5cf3b61b04605307e3d" alt="" style="width: 36px; height: 36px">
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: -0.01em">Lotería de los Pueblos</span>
+    </div>
+    <span style="font-size: 14px; color: #C9C3E6">Paso 1 de 2</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px">
+    <h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 36px; line-height: 1.02; letter-spacing: -0.02em">¿En qué idioma te cantamos?</h1>
+    <p style="margin: 0; font-size: 16px; line-height: 1.45; color: #C9C3E6">El cantor dirá cada carta en tu idioma. Puedes cambiarlo en cualquier momento.</p>
+  </div>
+
+  <div role="radiogroup" aria-label="Idioma del juego" style="display: flex; flex-direction: column; gap: 14px">
+    <sc-for list="{{langs}}" as="l" hint-placeholder-count="3">
+      <button type="button" role="radio" aria-checked="{{l.checked}}" onClick="{{l.pick}}" style="{{l.cardStyle}}">
+        <span style="{{l.chipStyle}}">
+          <img src="/_blob/68822fdae8f9f5cf3b61b04605307e3d" alt="" style="width: 44px; height: 44px">
+        </span>
+        <span style="display: flex; flex-direction: column; gap: 2px; flex: 1; text-align: left">
+          <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; color: #16182F">{{l.name}}</span>
+          <span style="font-size: 15px; color: #4A4766">{{l.native}} · «{{l.sample}}»</span>
+          <sc-if value="{{l.draft}}" hint-placeholder-val="{{ false }}">
+            <span style="align-self: flex-start; margin-top: 6px; font-size: 12px; font-weight: 700; color: #16182F; background: #FFE08A; border: 2px solid #16182F; border-radius: 999px; padding: 2px 10px">Palabras en revisión por hablantes</span>
+          </sc-if>
+        </span>
+        <span style="{{l.dotStyle}}">
+          <sc-if value="{{l.selected}}" hint-placeholder-val="{{ false }}">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF6E5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+          </sc-if>
+        </span>
+      </button>
+    </sc-for>
+  </div>
+
+  <label style="display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 4px; font-size: 16px; color: #FFF6E5; cursor: pointer">
+    <input type="checkbox" style="width: 24px; height: 24px; accent-color: #FFC233">
+    <span>Modo escucha: solo el sonido, sin la palabra escrita</span>
+  </label>
+
+  <div style="margin-top: auto; display: flex; flex-direction: column; gap: 12px">
+    <a href="Lobby.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 60px; border-radius: 18px; background: #FFC233; color: #16182F; border: 3px solid #16182F; box-shadow: 0 5px 0 #0C0D1E; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; text-decoration: none">Jugar en {{pickedName}}</a>
+    <p style="margin: 0; text-align: center; font-size: 13px; color: #C9C3E6">Sin cuentas, sin dinero. Solo frijolitos.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { picked: 'nah' }; }
+  renderVals() {
+    const all = [
+      { id: 'nah', name: 'Náhuatl', native: 'Nahuatl', sample: 'tonatiuh', color: '#0E9F7E', draft: true },
+      { id: 'es', name: 'Español', native: 'Spanish', sample: 'El Sol', color: '#E5177E', draft: false },
+      { id: 'en', name: 'English', native: 'Inglés', sample: 'The Sun', color: '#2F6FE4', draft: false }
+    ];
+    const langs = all.map((l) => {
+      const selected = this.state.picked === l.id;
+      return {
+        ...l,
+        selected,
+        checked: selected ? 'true' : 'false',
+        pick: () => this.setState({ picked: l.id }),
+        cardStyle: 'display:flex;align-items:center;gap:14px;width:100%;min-height:96px;padding:14px 16px;border-radius:22px;background:#FFF6E5;cursor:pointer;font:inherit;text-align:left;border:3px solid #16182F;' + (selected ? 'box-shadow:0 0 0 4px ' + l.color + ', 0 6px 0 #0C0D1E;transform:translateY(-2px);' : 'box-shadow:0 5px 0 #0C0D1E;'),
+        chipStyle: 'display:flex;align-items:center;justify-content:center;width:60px;height:60px;flex-shrink:0;border-radius:16px;border:3px solid #16182F;background:' + l.color + ';',
+        dotStyle: 'display:flex;align-items:center;justify-content:center;width:30px;height:30px;flex-shrink:0;border-radius:999px;border:3px solid #16182F;background:' + (selected ? l.color : '#FFFFFF') + ';'
+      };
+    });
+    const pickedName = all.find((l) => l.id === this.state.picked).name;
+    return { langs, pickedName };
+  }
+}
+</script>
+</body>
+</html>

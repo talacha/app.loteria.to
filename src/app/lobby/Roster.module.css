@@ -1,0 +1,76 @@
+.roster {
+  color: var(--color-ink);
+}
+.count {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-lg);
+}
+.max,
+.empty,
+.pronouns {
+  color: var(--color-ink-muted);
+}
+.max {
+  font-size: var(--text-sm);
+  font-weight: 400;
+}
+.live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.item[data-self='true'] {
+  border-color: var(--color-jade);
+}
+.glyph {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+.who {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.name {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.you {
+  font-weight: 400;
+  color: var(--color-ink-muted);
+}
+.pronouns {
+  font-size: var(--text-sm);
+}
+@media (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1280px) {
+  .list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

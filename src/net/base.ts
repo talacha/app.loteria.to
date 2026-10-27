@@ -1,6 +1,6 @@
 import type { Msg } from './messages.ts';
 import { Session, type Frame } from './session.ts';
-import type { JoinOptions, Role, Transport } from './transport.ts';
+import type { JoinOptions, Role, Transport, TransportOptions } from './transport.ts';
 
 const MAX_QUEUE = 100;
 
@@ -15,7 +15,15 @@ export abstract class BaseTransport implements Transport {
   private presCbs = new Set<(s: string[]) => void>();
   private errCbs = new Set<(e: unknown) => void>();
 
-  constructor(private readonly fixedSeat?: string) {}
+  private readonly fixedSeat?: string;
+
+  constructor(opts?: TransportOptions | string) {
+    this.fixedSeat = typeof opts === 'string' ? opts : opts?.seat;
+  }
+
+  get seat(): string {
+    return this.session.seat;
+  }
 
   protected abstract connect(code: string, gen: number): Promise<void>;
   protected abstract disconnect(): Promise<void>;

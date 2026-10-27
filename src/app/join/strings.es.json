@@ -1,0 +1,12 @@
+{
+  "pronounsPlaceholder": "por ejemplo, ella, él, elle",
+  "connecting": "Entrando a la sala…",
+  "paperLink": "Tengo una tabla de papel",
+  "paperExplain": "Si juegas con una tabla impresa, no necesitas entrar aquí. Cuando creas que completaste la figura, dile el código de 6 letras de tu tabla a quien canta: esa persona lo revisa en su pantalla.",
+  "paperClose": "Entendido",
+  "codeInvalidRoom": "Este enlace no tiene un código de sala válido.",
+  "joinFailed": "No pudimos entrar a la sala. Intenta de nuevo.",
+  "glyphs": "Figuras",
+  "pronounsInvalid": "Los pronombres admiten hasta 30 caracteres, sin símbolos raros.",
+  "codeRetry": "Probar con este código"
+}

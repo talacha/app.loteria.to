@@ -1,0 +1,17 @@
+{
+  "count": "{count, plural, =0 {Nobody in the room yet} one {# person in the room} other {# people in the room}}",
+  "max": "Up to {max}",
+  "you": "(you)",
+  "empty": "People who join will appear here.",
+  "joined": "{name} joined the room",
+  "left": "{name} left the room",
+  "roster": "People in the room",
+  "roomCode": "Room code",
+  "roomCodeSpoken": "Room code: {letters}",
+  "copy": "Copy code",
+  "copied": "Code copied",
+  "waiting": "Waiting for the cantor to start…",
+  "title": "Waiting room",
+  "verified": "Verified room",
+  "unverified": "Unverified room"
+}

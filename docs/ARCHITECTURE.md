@@ -17,7 +17,7 @@ No version numbers are pinned in this document. Versions are chosen when LT-001 
 
 ## 1. Shape of the system in one paragraph
 
-A single TypeScript codebase builds a static **progressive web app** (Vite + React) and a handful of **Vercel serverless functions** under `api/`. The browser does almost all the work: it shuffles the deck, derives every tabla from a seed, checks claims, plays recorded audio and prints PDFs. A **host device** (the cantor) is the authority for a round. Phones join a **Supabase Realtime broadcast channel** to receive calls and send claims; there is no game server and no game database. The serverless functions exist only for things that need a secret (AI calls, review passcode, metrics ingestion). If the network disappears, the host keeps calling from its precached assets and paper players keep playing.
+A single TypeScript codebase builds a static **progressive web app** (Vite + React) and a handful of **Vercel serverless functions** under `api/`. The browser does almost all the work: it shuffles the deck, derives every tabla from a seed, checks claims, plays recorded audio and prints PDFs. A **host device** (the cantor) is the authority for a round. Phones join a **Supabase Realtime broadcast channel** to receive calls and send claims; there is no game server and no game database. The serverless functions exist only for things that need a secret or durable state (AI calls, review passcode, metrics ingestion, the room host-key registry, async jobs). The platform is **Supabase** (Realtime, Postgres and Storage), **Upstash Redis** (rate limits, room keys, job idempotency) and **Upstash QStash** (async jobs and schedules); see `docs/PLATFORM.md`. There is no Neon. If the network disappears, the host keeps calling from its precached assets and paper players keep playing.
 
 ## 2. Language and tooling
 
@@ -52,17 +52,21 @@ flowchart LR
     Pista["/api/pista<br/>hint, Jev Choice"]
     Cantor["/api/cantor<br/>banter, Claude"]
     Metrics["/api/metrics<br/>anonymous counters"]
-    ReviewAuth["/api/review-auth<br/>reviewer passcode"]
+    ReviewAuth["/api/review/*<br/>reviewer passcode, submit"]
+    Rooms["/api/rooms<br/>host key registry"]
+    Jobs["/api/jobs/*<br/>QStash webhooks"]
   end
 
   subgraph Supabase["Supabase"]
     RT["Realtime broadcast channel<br/>loteria:{code} + Presence"]
-    Storage["Storage bucket audio-pending<br/>+ table review_submissions"]
+    Storage["Storage bucket audio-pending"]
+    PG["Postgres<br/>review_*, metric_*, job_runs"]
   end
 
   Jev["Jev API"]
   Claude["Claude API<br/>(Anthropic)"]
-  Upstash["Upstash<br/>rate limit"]
+  Upstash["Upstash Redis<br/>rate limit, room keys"]
+  QStash["Upstash QStash<br/>jobs, schedules"]
 
   Host -- "round, call, claimResult, end" --> RT
   RT -- "fan-out" --> Phones
@@ -79,9 +83,17 @@ flowchart LR
   Pista --> Jev
   Cantor --> Claude
   Pista --> Upstash
+  Rooms --> Upstash
+  Host -- "register ECDSA public key" --> Rooms
+  Phones -- "fetch host key" --> Rooms
+  Metrics --> PG
+  ReviewAuth --> PG
+  ReviewAuth --> QStash
+  QStash --> Jobs
+  Jobs --> PG
 
   Reviewer["Native-speaker reviewer<br/>/review route"] --> ReviewAuth
-  Reviewer -- "approved names + recordings" --> Storage
+  Reviewer -- "signed upload URL" --> Storage
 ```
 
 **Offline path:** every arrow that crosses into Vercel functions, Supabase, Jev or Claude is optional at play time. With no network the host uses only its own precached `Static` copy, and paper tablas are the players. See section 6.
@@ -203,7 +215,7 @@ The room code is 5 letters from an unambiguous alphabet (LT-030).
 
 Presence tracks seats. **Marks stay on the phone**; only claims travel. The host is the only device that decides a claim. Message types live in `src/net/` and are validated with zod on receipt (Proposed).
 
-**Open:** Realtime broadcast does not authenticate who is "the host". Anyone with the room code could publish a fake `call` or `claimResult`. For classroom use this is probably acceptable, but decide in LT-030 whether to accept it, sign host messages with a per-round key shown only on the host, or use Supabase private channels with a short-lived token from a Vercel function.
+**Decided:** host messages are authenticated with ECDSA (P-256). The host generates a key pair per round, signs `round`, `call`, `claimResult` and `end`, and registers the public key (`hostKey`, base64url) with `POST /api/rooms`, which sets `room:{code}` in Redis with `NX` and a 4 h TTL (409 if the code is taken). Phones fetch it once with `GET /api/rooms/{code}` and drop unsigned or badly signed host messages. If the registry is unreachable, rooms still work unauthenticated (classroom trust).
 
 ### 5.4 Local persistence
 
@@ -219,9 +231,10 @@ Presence tracks seats. **Marks stay on the phone**; only claims travel. The host
 
 | Data | Where | Label |
 |---|---|---|
-| Review submissions and pending recordings | Supabase table `review_submissions` + Storage bucket `audio-pending` | Planned (LT-022) |
-| Anonymous counters (`round_start`, `card_matched`, `claim`, `round_end`, `print`) | Received by `/api/metrics`; storage backend **Open** (a Supabase table is the obvious choice, since Supabase is already in the stack) | Planned / Open |
-| Hint rate-limit counters | Upstash Redis | Planned (LT-044) |
+| Review submissions, decisions and pending recordings | Supabase Postgres (`review_submissions`, `review_decisions`, `reviewers`, `content_releases`) + Storage bucket `audio-pending`, written only by Functions with the service role | Planned (LT-022) |
+| Anonymous counters (`round_start`, `card_matched`, `claim`, `round_end`, `print`) | Received by `/api/metrics`, stored in Supabase Postgres `metric_events`, rolled up daily into `metric_daily` (raw kept 30 days) | Decided |
+| Hint and API rate-limit counters, room host keys (`room:{code}`, 4 h), job idempotency keys | Upstash Redis | Planned (LT-044) |
+| Job audit trail | Supabase Postgres `job_runs` | Decided |
 
 No accounts, no player names, no tabla contents and no marks are stored on any server.
 
@@ -246,14 +259,17 @@ All functions are TypeScript, validate input with zod, keep keys server-side, an
 |---|---|---|---|---|
 | `/api/pista` | Picks which of a player's 16 cards matches the call (or "none"), with a confidence; also serves the host's pacing `Choice` | Jev `Choice`; Upstash rate limit 60/min per room | Offline tag matcher (hint), threshold rule (pacing). Client timeout 800 ms | LT-044, LT-045 |
 | `/api/cantor` | A fresh 2-line verse or one-sentence cultural note, Spanish or English only | Claude via `@anthropic-ai/sdk`, structured output, cached system prompt with the approved-names glossary | The bundled, reviewed verse. Any term outside the glossary is rejected | LT-046 |
-| `/api/metrics` | Accepts anonymous counter batches | Metrics store (Open) | Client queue keeps events until next flush; opt-out stops them | LT-005 |
-| `/api/review-auth` | Checks the reviewer passcode | — | Review tool unavailable; play unaffected | LT-022 |
+| `/api/metrics` | Accepts anonymous counter batches | Supabase Postgres | Client queue keeps events until next flush; opt-out stops them | LT-005 |
+| `/api/rooms`, `/api/rooms/{code}` | Host public-key registry for signed host messages | Upstash Redis (10/min per IP) | Rooms run unauthenticated | LT-030 |
+| `/api/review/auth`, `submit`, `uploaded` | Reviewer passcode to short-lived HMAC token; submissions; signed Storage upload URLs | Postgres, Storage (service role), Redis, QStash | Review tool unavailable; play unaffected | LT-022 |
+| `/api/jobs/*` | QStash webhooks: `transcode-recording`, `notify-reviewers`, `rollup-metrics`, `publish-content-release` | Postgres, Redis idempotency | Jobs wait or retry; play unaffected | LT-022 |
+| `/api/health` | Reports redis, qstash and db status | all | n/a | LT-001 |
 
 Jev never receives audio: in Escucha mode the client sends the card's tags instead (LT-044). Model choice, effort and SDK usage for `/api/cantor` and the content-drafting script are specified in LT-021 and LT-046.
 
 **Open:** the Jev API client. Its package, auth scheme and `Choice` request shape are not documented in the project yet; the "Jev spike" shared with Tianguis (TG-041) should settle them and record them in `docs/jev.md`.
 
-**Proposed:** Edge vs Node runtime. Default to the Node runtime for all four functions (the Anthropic SDK and zod work there with no caveats), and revisit only if cold starts break the 800 ms hint budget.
+**Proposed:** Edge vs Node runtime. Default to the Node runtime for all functions (the Anthropic SDK and zod work there with no caveats), and revisit only if cold starts break the 800 ms hint budget.
 
 ## 8. Deployment on Vercel Hobby
 
@@ -280,12 +296,13 @@ Jev never receives audio: in Escucha mode the client sends the card's tags inste
 | Why not peer-to-peer | 40 WebRTC peers per room doesn't scale; broadcast does | Decided (north star) |
 | Scale target | 40 clients per room, p95 call fan-out < 500 ms, measured in LT-035 and written to `docs/scale.md` | Planned |
 | Free-tier budget | 200 concurrent connections and 2M messages a month (per roadmap); one 40-player round ≈ 54 + 40 messages | Planned (roadmap risk table) |
-| Storage + table | `audio-pending` bucket and `review_submissions` table for the reviewer tool | Planned (LT-022) |
+| Postgres | Single system of record (no Neon); pooled `POSTGRES_URL` with `prepare: false`; RLS on, no anon policies; migrations in `supabase/migrations/` | Decided |
+| Storage | Private `audio-pending` bucket; reviewers upload to signed URLs issued by `/api/review/submit` | Decided |
 | Network fallback | Some school networks block WebSockets; the QR screen offers "no network? print tablas" | Planned (roadmap) |
 
 **Open:** free Supabase projects can be paused after a period of inactivity. Confirm the current policy and decide whether a scheduled keep-alive or a paid plan is needed before the classroom pilot (LT-062).
 
-**Open:** whether reviewers upload straight from the browser with the anon key (then Row Level Security and Storage policies must allow insert-only into `audio-pending` and `review_submissions`) or through a Vercel function using the service-role key. The function route keeps the policy surface smaller. Decide in LT-022.
+**Decided:** all review and metrics writes go through Vercel Functions with the service-role key; the browser never holds database or Storage credentials beyond a one-shot signed upload URL.
 
 ## 10. Environment variables and secrets
 
@@ -298,10 +315,13 @@ Names marked Proposed are placeholders until the task that introduces them.
 | `VITE_HIDE_UNREVIEWED` | yes (build flag) | Call-language picker | Planned (LT-024) |
 | `ANTHROPIC_API_KEY` | **no** | `/api/cantor`, `scripts/draft-versos.ts` | Planned (LT-021, LT-046) |
 | `JEV_API_KEY` | **no** | `/api/pista` | Planned (LT-044) |
-| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | **no** | `/api/pista` rate limit | Read in `api/_lib/redis.ts`; names match Upstash's REST credentials |
-| `REVIEW_CODE` | **no** | `/api/review-auth` | Planned (LT-022) |
+| `KV_REST_API_URL`, `KV_REST_API_TOKEN` (or `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`) | **no** | Rate limits, room keys, job idempotency | Read in `api/_lib/redis.ts`; either naming accepted |
+| `QSTASH_TOKEN`, `QSTASH_CURRENT_SIGNING_KEY`, `QSTASH_NEXT_SIGNING_KEY` | **no** | Publishing and verifying jobs | Read in `api/_lib/qstash.ts` |
+| `POSTGRES_URL`, `POSTGRES_URL_NON_POOLING` | **no** | Supabase Postgres (pooled for Functions, direct for migrations) | From the Vercel Supabase integration |
+| `SUPABASE_URL` | **no** | Storage signed URLs | From the integration |
+| `REVIEW_CODE` | **no** | `/api/review/*` | Planned (LT-022) |
 | `ADMIN_CODE` | **no** | `/admin` dashboard | Proposed name (LT-063) |
-| `SUPABASE_SERVICE_ROLE_KEY` | **no** | Review uploads / metrics writes, only if done server-side | Proposed (see Open in section 9) |
+| `SUPABASE_SERVICE_ROLE_KEY` | **no** | Storage signed URLs from Functions | Decided |
 
 Rules (Proposed): anything prefixed `VITE_` is compiled into the public bundle, so no secret ever gets that prefix. Secrets live in Vercel project settings (and GitHub Actions secrets only where a script needs them), never in the repo. Commit a `.env.example` listing names with empty values.
 
@@ -377,10 +397,11 @@ interface HintProvider {
 | Service | Used for | Required to play? |
 |---|---|---|
 | Vercel (Hobby) | Hosting, preview deploys, functions | Only for the first visit (install) |
-| Supabase | Realtime rooms; review uploads | Only for phone players |
+| Supabase | Realtime rooms; Postgres; review uploads (Storage) | Only for phone players |
 | Jev | Hint and pacing | No |
 | Anthropic (Claude) | Banter, content drafting | No |
-| Upstash | Rate limiting `/api/pista` | No |
+| Upstash Redis | Rate limiting, room host-key registry, job idempotency | No |
+| Upstash QStash | Async jobs and schedules | No |
 | GitHub Actions | CI | No |
 
 ## 13. Open questions, collected
@@ -390,10 +411,10 @@ interface HintProvider {
 | 1 | Monorepo shared with Tianguis, or a standalone repo? | Before LT-001 |
 | 2 | Is `loteria.to` owned, and is Hobby's non-commercial term fine for the pilot? | LT-001 / before LT-062 |
 | 3 | How does a 6-char tabla code carry a seed reference, index and checksum? | LT-012 |
-| 4 | Do host messages need authenticity (signed messages or private channels)? | LT-030 |
+| 4 | ~~Do host messages need authenticity?~~ Decided: ECDSA-signed host messages plus the `/api/rooms` key registry | LT-030 |
 | 5 | Does iOS Safari play the planned `.webm` Opus audio, or is a second format needed? | LT-022 / LT-025 |
-| 6 | Reviewer uploads: browser + RLS, or through a Vercel function? | LT-022 |
-| 7 | Where `/api/metrics` stores counters | LT-005 |
+| 6 | ~~Reviewer uploads: browser + RLS, or through a function?~~ Decided: through functions with the service role | LT-022 |
+| 7 | ~~Where `/api/metrics` stores counters~~ Decided: Supabase Postgres | LT-005 |
 | 8 | Jev client package, auth and `Choice` request shape | Jev spike (TG-041) / LT-044 |
 | 9 | Supabase free-tier inactivity pausing before the pilot | Before LT-062 |
 | 10 | Exact review status values (`draft` / `reviewed` / `approved`) | LT-010 / LT-024 |

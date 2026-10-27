@@ -38,7 +38,7 @@ const config = {
       },
       workbox: {
         // Precache shell, content, art and audio (budget: < 10 MB total).
-        globPatterns: ['**/*.{js,css,html,svg,png,webp,jpg,json,webm,m4a,woff2}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,webp,jpg,json,webm,m4a,woff2,ttf}'],
         maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
         navigateFallback: '/index.html',
         navigateFallbackDenylist: [/^\/api\//],

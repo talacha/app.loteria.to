@@ -10,6 +10,7 @@ export default tseslint.config(
     ignores: [
       'dist',
       '.agents',
+      'design',
       'dev-dist',
       'node_modules',
       'playwright-report',

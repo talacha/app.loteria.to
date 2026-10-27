@@ -1,0 +1,21 @@
+{
+  "title": "The 54 cards",
+  "intro": "Original cards inspired by the nature, crafts and places of Mesoamerica and the Andes.",
+  "category": "Category",
+  "all": "All",
+  "filterLabel": "Filter by category",
+  "count": "{count, plural, one {# card} other {# cards}}",
+  "draftUnreviewed": "unreviewed draft",
+  "reviewedBadge": "reviewed, no audio",
+  "pendingLangs": "Pending native-speaker review: {langs}.",
+  "home": "Home",
+  "categories": {
+    "animals": "Animals",
+    "plants_food": "Plants and food",
+    "sky": "Sky",
+    "land": "Land",
+    "handmade": "Handmade",
+    "places": "Places"
+  },
+  "cardNumber": "Card {n}"
+}

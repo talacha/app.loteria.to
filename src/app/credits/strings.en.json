@@ -1,0 +1,15 @@
+{
+  "title": "Credits",
+  "artTitle": "Illustrations",
+  "namesTitle": "Names and verses",
+  "softwareTitle": "Open-source software",
+  "contributorsTitle": "Contributors",
+  "noContributors": "No names on this list yet. If you help review words, you will appear here with your permission.",
+  "licenseTitle": "Licences",
+  "licenseFont": "The Noto Sans typeface used in the PDFs is distributed under the SIL Open Font License 1.1.",
+  "licenseEmoji": "Emoji are drawn by your device's emoji font; they are not bundled with this app.",
+  "licenseSoftware": "The open-source software below is used under its own licences.",
+  "licenseContent": "Spanish and English verses, riddles and names were written by the project team. Words in Indigenous languages remain the property of their communities.",
+  "license": "Licence: {license}",
+  "home": "Home"
+}
