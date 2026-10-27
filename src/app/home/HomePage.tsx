@@ -1,11 +1,11 @@
-import { useRef, useState, type FormEvent } from 'react';
+import { useRef, useState, type FormEvent, type MouseEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { LANGS, callableLangs, cardName, getCard, type Lang } from '@content';
 import { LanguageSwitch } from '../theme/Preferences';
 import { ThemeSwitch } from '../theme/Preferences';
 import { applyStoredPrefs } from '../theme/prefs';
-import CardArt from '../theme/CardArt';
+import { Button, CardArt } from '../ui';
 import page from '../theme/page.module.css';
 import styles from './HomePage.module.css';
 import { isValidRoomCode, normalizeRoomCode } from './joinCode';
@@ -53,14 +53,14 @@ export default function HomePage() {
     saveProfile({ name: nextName.trim().slice(0, NAME_MAX), glyph: nextGlyph });
   }
 
-  function create() {
+  function create(e: MouseEvent) {
     if (!name.trim()) {
+      e.preventDefault();
       setNameMissing(true);
       nameRef.current?.focus();
       return;
     }
     persist();
-    void navigate('/host');
   }
 
   function join(e: FormEvent) {
@@ -141,10 +141,10 @@ export default function HomePage() {
           </fieldset>
 
           <div className={styles.actions}>
-            <button type="button" className={styles.create} onClick={create}>
+            <Button to="/host" className={styles.create} onClick={create}>
               <strong>{t('home.createCta')}</strong>
               <span>{t('home.createHint')}</span>
-            </button>
+            </Button>
 
             <div className={styles.divider} aria-hidden="true">
               {t('home.or')}
@@ -171,9 +171,9 @@ export default function HomePage() {
                     setInvalid(false);
                   }}
                 />
-                <button type="submit" className={styles.enter}>
+                <Button type="submit" variant="secondary" fit className={styles.enter}>
                   {t('home.enter')}
-                </button>
+                </Button>
               </div>
               <p id="join-help" className={styles.hint}>
                 {t('home.joinHelp')}

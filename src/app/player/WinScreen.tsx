@@ -30,7 +30,8 @@ export default function WinScreen({
 }: WinScreenProps) {
   const { t } = useTranslation();
   const line = wonByMe
-    ? (PATTERNS[pattern].find((set) => set.every((i) => crossed.includes(board[i] as CardId))) ?? [])
+    ? (PATTERNS[pattern].find((set) => set.every((i) => crossed.includes(board[i] as CardId))) ??
+      [])
     : [];
   const lineIds = line.map((i) => board[i] as CardId);
   const wordIds = wonByMe ? lineIds : crossed.slice(0, 8);

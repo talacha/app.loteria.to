@@ -4,6 +4,7 @@ import JoinPage from './join/JoinPage';
 import PrintPage from './print/PrintPage';
 import DeckPage from './deck/DeckPage';
 import CreditsPage from './credits/CreditsPage';
+import Gallery from './ui/Gallery';
 
 export const routes = [
   { path: '/', element: <HomePage /> },
@@ -12,4 +13,5 @@ export const routes = [
   { path: '/print', element: <PrintPage /> },
   { path: '/deck', element: <DeckPage /> },
   { path: '/creditos', element: <CreditsPage /> },
+  { path: '/ui', element: <Gallery /> },
 ];

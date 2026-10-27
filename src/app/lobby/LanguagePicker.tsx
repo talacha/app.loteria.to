@@ -84,7 +84,13 @@ export default function LanguagePicker({
       </label>
 
       <div className={styles.footer}>
-        <button type="button" className={styles.cta} onClick={onSubmit} disabled={busy} aria-busy={busy}>
+        <button
+          type="button"
+          className={styles.cta}
+          onClick={onSubmit}
+          disabled={busy}
+          aria-busy={busy}
+        >
           {t('lobby.cta', { lang: name(value) })}
         </button>
         <p className={styles.fine}>{t('lobby.noCosts')}</p>

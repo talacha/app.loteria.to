@@ -3,6 +3,7 @@ import {
   playerReducer as r,
   initialPlayerState as init,
   canClaim,
+  completedSet,
   makeBoard,
   CLAIM_COOLDOWN_MS,
   type RoundInfo,
@@ -14,9 +15,13 @@ const round: RoundInfo = {
   pattern: 'line',
   mode: 'normal',
   callLang: 'es',
+  speedSec: 8,
 };
 const board = makeBoard('s', 5);
 const [a, b, c] = board as [string, string, string];
+const chs = (x: string): [string, string, string] => [x, 'd1', 'd2'];
+const call = (cardId: string, i: number) =>
+  ({ type: 'call', cardId, choices: chs(cardId), lang: 'es', i, now: 1000 }) as const;
 const started = () =>
   r(r(init, { type: 'round', round }), { type: 'assign', tablaIndex: 5, roundNo: 1 });
 
@@ -41,34 +46,79 @@ describe('playerReducer', () => {
     s = r(s, { type: 'round', round, called: [a, 'zz'] });
     s = r(s, { type: 'assign', tablaIndex: 5, roundNo: 1 });
     expect(s.calledSoFar).toEqual([a, 'zz']);
-    expect(s.marks).toEqual([a]);
+    expect(s.crossed).toEqual([a]);
   });
   it('records calls without duplicates and ignores calls before a round', () => {
-    expect(r(init, { type: 'call', cardId: a, lang: 'es', i: 0 })).toBe(init);
+    expect(r(init, call(a, 0))).toBe(init);
     let s = started();
-    s = r(s, { type: 'call', cardId: a, lang: 'es', i: 0 });
-    s = r(s, { type: 'call', cardId: a, lang: 'es', i: 0 });
+    s = r(s, call(a, 0));
+    s = r(s, call(a, 0));
     expect(s.calledSoFar).toEqual([a]);
   });
-  it('toggles marks only for cards on the board', () => {
+  it('crosses a card only on a correct pickResult for a card on the board', () => {
+    let s = r(started(), call(a, 0));
+    s = r(s, { type: 'pick', cardId: a });
+    expect(s.pickPending).toBe(true);
+    s = r(s, { type: 'pickResult', roundNo: 1, i: 0, correct: true, first: true });
+    expect(s.crossed).toEqual([a]);
+    expect(s.feedback).toEqual({ kind: 'ok', first: true });
+    expect(s.pickPending).toBe(false);
+  });
+  it('a wrong pick gives casi, is not repeated, and can be retried with another', () => {
+    let s = r(started(), call(a, 0));
+    s = r(s, { type: 'pick', cardId: 'd1' });
+    expect(s.feedback).toEqual({ kind: 'casi' });
+    expect(s.wrong).toEqual(['d1']);
+    expect(r(s, { type: 'pick', cardId: 'd1' })).toBe(s);
+    s = r(s, { type: 'pick', cardId: a });
+    s = r(s, { type: 'pickResult', roundNo: 1, i: 0, correct: true, first: false });
+    expect(s.crossed).toEqual([a]);
+    expect(s.feedback).toEqual({ kind: 'ok', first: false });
+  });
+  it('ignores picks when the called card is not on my tabla', () => {
+    const off = 'not-on-board';
+    let s = r(started(), call(off, 0));
+    expect(r(s, { type: 'pick', cardId: off })).toBe(s);
+    s = r(s, { type: 'pickResult', roundNo: 1, i: 0, correct: true, first: true });
+    expect(s.crossed).toEqual([]);
+  });
+  it('ignores picks after the window expired and pickResult of another round', () => {
+    let s = r(started(), call(a, 0));
+    const stale = r(s, { type: 'pickResult', roundNo: 9, i: 0, correct: true, first: true });
+    expect(stale).toBe(s);
+    s = r(s, { type: 'expire', i: 0 });
+    expect(r(s, { type: 'pick', cardId: a })).toBe(s);
+  });
+  it('a late pickResult crosses the card of its own call index', () => {
+    let s = r(started(), call(a, 0));
+    s = r(s, call(b, 1));
+    s = r(s, { type: 'pickResult', roundNo: 1, i: 0, correct: true, first: false });
+    expect(s.crossed).toEqual([a]);
+    expect(s.feedback).toBeNull();
+  });
+  it('stores scores for the current round only', () => {
     let s = started();
-    s = r(s, { type: 'toggleMark', cardId: a });
-    s = r(s, { type: 'toggleMark', cardId: 'zzz' });
-    expect(s.marks).toEqual([a]);
-    s = r(s, { type: 'toggleMark', cardId: a });
-    expect(s.marks).toEqual([]);
+    s = r(s, { type: 'scores', roundNo: 1, points: { me: 2 } });
+    expect(s.points).toEqual({ me: 2 });
+    expect(r(s, { type: 'scores', roundNo: 7, points: { me: 9 } })).toBe(s);
   });
   it('auto-marks called cards on the board, including past ones', () => {
     let s = started();
-    s = r(s, { type: 'call', cardId: b, lang: 'es', i: 0 });
+    s = r(s, call(b, 0));
     s = r(s, { type: 'setAutoMark', on: true });
-    expect(s.marks).toEqual([b]);
-    s = r(s, { type: 'call', cardId: 'x', lang: 'es', i: 1 });
-    s = r(s, { type: 'call', cardId: c, lang: 'es', i: 2 });
-    expect(s.marks).toEqual([b, c]);
+    expect(s.crossed).toEqual([]); // the open call is not crossed yet
+    s = r(s, call('x', 1));
+    expect(s.crossed).toEqual([b]);
+    s = r(s, call(c, 2));
+    s = r(s, call('y', 3));
+    expect(s.crossed).toEqual([b, c]);
   });
   it('rate-limits claims and tracks the pending reply', () => {
-    let s = started();
+    // Cross a full row so the pattern is complete.
+    let s = r(init, { type: 'round', round, crossed: board.slice(0, 4) });
+    s = r(s, { type: 'assign', tablaIndex: 5, roundNo: 1 });
+    expect(completedSet(s)).toEqual([0, 1, 2, 3]);
+    expect(canClaim(r(started(), { type: 'claim', now: 1 }), 1e12)).toBe(false);
     s = r(s, { type: 'claim', now: 1000 });
     expect(s.claimUntil).toBe(1000 + CLAIM_COOLDOWN_MS);
     expect(s.claimPending).toBe(true);
@@ -98,21 +148,21 @@ describe('playerReducer', () => {
   });
   it('same round re-broadcast keeps state; a new round resets it', () => {
     let s = started();
-    s = r(s, { type: 'call', cardId: a, lang: 'es', i: 0 });
-    s = r(s, { type: 'toggleMark', cardId: a });
+    s = r(s, call(a, 0));
+    s = r(s, { type: 'pickResult', roundNo: 1, i: 0, correct: true, first: true });
     const again = r(s, { type: 'round', round: { ...round, pattern: 'full' }, called: [b] });
-    expect(again.marks).toEqual([a]);
+    expect(again.crossed).toEqual([a]);
     expect(again.calledSoFar).toEqual([b, a]);
     expect(again.round?.pattern).toBe('full');
     const next = r(s, { type: 'round', round: { ...round, roundNo: 2 } });
-    expect(next.marks).toEqual([]);
+    expect(next.crossed).toEqual([]);
     expect(next.board).toEqual([]);
     expect(next.calledSoFar).toEqual([]);
     expect(next.ended).toBeNull();
   });
   it('restores persisted marks that are on the board', () => {
-    let s = r(init, { type: 'round', round, marks: [a, 'zz'] });
+    let s = r(init, { type: 'round', round, crossed: [a, 'zz'] });
     s = r(s, { type: 'assign', tablaIndex: 5, roundNo: 1 });
-    expect(s.marks).toEqual([a]);
+    expect(s.crossed).toEqual([a]);
   });
 });

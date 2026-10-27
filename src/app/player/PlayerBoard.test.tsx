@@ -74,29 +74,68 @@ describe('PlayerBoard', () => {
     expect(screen.getByText(/Preparando tu tabla/)).toBeTruthy();
     await assign(7, 1);
     expect(screen.queryByText(/Preparando tu tabla/)).toBeNull();
-    expect(screen.getAllByRole('button', { pressed: false }).length).toBeGreaterThanOrEqual(16);
+    expect(screen.getAllByRole('listitem').length).toBeGreaterThanOrEqual(16);
   });
 
-  it('claims with its own seat, index and round, and disables during cooldown', async () => {
+  it('only enables the claim when my crossed set completes the pattern, then claims', async () => {
+    const board = makeBoard(SEED, 7);
+    sessionStorage.setItem(`loteria:marks:${CODE}:${SEED}:1`, JSON.stringify(board.slice(0, 3)));
     await mount();
     host.send(round());
     await assign(7, 1);
     const btn = screen.getByRole('button', { name: '¡Lotería!' }) as HTMLButtonElement;
-    fireEvent.click(btn);
+    expect(btn.disabled).toBe(true);
+    cleanup();
+    await player.leave();
+    sessionStorage.setItem(`loteria:marks:${CODE}:${SEED}:1`, JSON.stringify(board.slice(0, 4)));
+    await mount();
+    host.send(round());
+    await assign(7, 1);
+    const ok = screen.getByRole('button', { name: '¡Lotería!' }) as HTMLButtonElement;
+    expect(ok.disabled).toBe(false);
+    fireEvent.click(ok);
     await flush();
     const claim = received.find((m) => m.t === 'claim');
     expect(claim).toMatchObject({ seat: player!.seat, tablaIndex: 7, roundNo: 1 });
-    expect(btn.disabled).toBe(true);
+    expect((claim as Extract<Msg, { t: 'claim' }>).marks).toEqual(board.slice(0, 4));
+    expect(ok.disabled).toBe(true);
   });
 
-  it('builds history and auto-marks from round.called', async () => {
+  it('crosses out only after a correct pickResult, and sends picks', async () => {
     await mount();
     const board = makeBoard(SEED, 7);
-    host.send(round({ called: [board[0]!, board[5]!] }));
+    host.send(round());
     await assign(7, 1);
-    fireEvent.click(screen.getByLabelText(/Marcar automáticamente/));
-    expect(screen.getByText(/2 cartas cantadas/)).toBeTruthy();
-    expect(screen.getAllByRole('button', { pressed: true })).toHaveLength(2);
+    const target = board[2]!;
+    const others = board.filter((x) => x !== target).slice(0, 2) as [string, string];
+    host.send({
+      t: 'call',
+      i: 0,
+      cardId: target,
+      choices: [others[0], target, others[1]],
+      lang: 'es',
+      at: 0,
+    });
+    await flush();
+    const name = (id: string) => getCard(id)!.names.es!.text;
+    fireEvent.click(screen.getByRole('button', { name: new RegExp(name(others[0])) }));
+    await flush();
+    expect(received.find((m) => m.t === 'pick')).toMatchObject({ i: 0, cardId: others[0] });
+    expect(screen.queryByText(/Casi/i)).not.toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: new RegExp(name(target)) }));
+    await flush();
+    host.send({
+      t: 'pickResult',
+      roundNo: 1,
+      i: 0,
+      seat: player!.seat,
+      correct: true,
+      first: true,
+    });
+    await flush();
+    expect(JSON.parse(sessionStorage.getItem(`loteria:marks:${CODE}:${SEED}:1`)!)).toEqual([
+      target,
+    ]);
   });
 
   it('hides the called card name and emoji in Escucha mode', async () => {
@@ -104,7 +143,14 @@ describe('PlayerBoard', () => {
     const board = makeBoard(SEED, 7);
     host.send(round({ mode: 'escucha' }));
     await assign(7, 1);
-    host.send({ t: 'call', i: 0, cardId: board[2]!, lang: 'es', at: 0 });
+    host.send({
+      t: 'call',
+      i: 0,
+      cardId: board[2]!,
+      choices: [board[2]!, board[3]!, board[4]!],
+      lang: 'es',
+      at: 0,
+    });
     await flush();
     const call = screen.getByTestId('call');
     expect(call.textContent).toContain('Escucha');

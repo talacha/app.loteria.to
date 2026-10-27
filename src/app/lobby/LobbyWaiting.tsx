@@ -222,9 +222,7 @@ export default function LobbyWaiting({
         <div className={styles.codeCard}>
           <RoomCode code={code} />
           <div className={styles.youPlay}>
-            <span>
-              {t('lobby.youPlay', { lang: langName })}
-            </span>
+            <span>{t('lobby.youPlay', { lang: langName })}</span>
             {review && <span className={styles.review}>{t('lobby.reviewShort')}</span>}
           </div>
         </div>

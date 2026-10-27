@@ -59,9 +59,7 @@ export default function Roster({ players, selfSeat, max }: RosterProps) {
                 {p.glyph}
               </span>
               <span className={styles.who}>
-                <span className={styles.name}>
-                  {p.name}
-                </span>
+                <span className={styles.name}>{p.name}</span>
                 {(p.pronouns || p.seat === selfSeat) && (
                   <small className={styles.pronouns}>
                     {p.seat === selfSeat && <span className={styles.you}>{t('lobby.you')}</span>}

@@ -22,6 +22,7 @@ export interface PlayerBoardProps {
   profile: PlayerProfile;
   /** Lobby message buffer; when absent the board listens to the transport directly. */
   log?: MessageLog;
+  onLeave?: () => void;
 }
 
 const TEXT_SCALES = [100, 115, 130, 150];
@@ -104,9 +105,10 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
               pattern: m.pattern,
               mode: m.mode,
               callLang: m.callLang,
+              speedSec: m.speedSec,
             },
             called: m.called,
-            marks: loadMarks(code, m.seed, m.roundNo),
+            crossed: loadMarks(code, m.seed, m.roundNo),
           });
           break;
         case 'assign':
@@ -114,8 +116,28 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
             dispatch({ type: 'assign', tablaIndex: m.tablaIndex, roundNo: m.roundNo });
           break;
         case 'call':
-          dispatch({ type: 'call', cardId: m.cardId, lang: m.lang, i: m.i });
+          dispatch({
+            type: 'call',
+            cardId: m.cardId,
+            choices: m.choices,
+            lang: m.lang,
+            i: m.i,
+            now: Date.now(),
+          });
           setHint(null);
+          break;
+        case 'pickResult':
+          if (m.seat === transport.seat)
+            dispatch({
+              type: 'pickResult',
+              roundNo: m.roundNo,
+              i: m.i,
+              correct: m.correct,
+              first: m.first,
+            });
+          break;
+        case 'scores':
+          dispatch({ type: 'scores', roundNo: m.roundNo, points: m.points });
           break;
         case 'claimResult':
           if (m.seat === transport.seat)
@@ -157,12 +179,12 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
     try {
       sessionStorage.setItem(
         marksKey(code, state.round.roomSeed, state.round.roundNo),
-        JSON.stringify(state.marks),
+        JSON.stringify(state.crossed),
       );
     } catch {
       /* ignore */
     }
-  }, [code, state.round, state.board, state.marks]);
+  }, [code, state.round, state.board, state.crossed]);
 
   // Re-enable the claim button when the cooldown ends.
   useEffect(() => {
@@ -212,9 +234,22 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
       seat: tr.seat,
       roundNo: state.round.roundNo,
       tablaIndex: idx,
-      marks: state.marks,
+      marks: state.crossed,
     });
   }, [state, transport]);
+
+  const pick = (cardId: CardId) => {
+    const c = state.current;
+    if (!c || !state.round) return;
+    dispatch({ type: 'pick', cardId });
+    transport.send({
+      t: 'pick',
+      seat: transport.seat,
+      roundNo: state.round.roundNo,
+      i: c.i,
+      cardId,
+    });
+  };
 
   const curId = state.current?.cardId;
   const audioOnly = state.round?.mode === 'escucha';
@@ -313,28 +348,36 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
                 <p className={styles.muted}>{t('player.currentCall')}…</p>
               )}
             </div>
+            {current && !state.currentExpired && board.includes(current.cardId) && (
+              <div role="group" aria-label={t('player.whichOne')} className={styles.row}>
+                {current.choices.map((id) => (
+                  <button
+                    key={id}
+                    type="button"
+                    className={styles.secondary}
+                    disabled={state.crossed.includes(current.cardId) || state.wrong.includes(id)}
+                    onClick={() => pick(id)}
+                  >
+                    <span aria-hidden="true">{emoji(id)}</span> {label(id, labelLang)}
+                  </button>
+                ))}
+              </div>
+            )}
             <p className={styles.muted}>
               {t('player.cardsCalled', { count: state.calledSoFar.length })}
             </p>
 
             <ul className={styles.grid} aria-label={t('player.title')}>
               {board.map((id) => {
-                const marked = state.marks.includes(id);
+                const marked = state.crossed.includes(id);
                 const cardLabel = label(id, labelLang);
                 return (
                   <li key={id}>
-                    <button
-                      type="button"
+                    <div
                       className={styles.cell}
                       data-marked={marked}
                       data-hint={hint?.cardId === id}
-                      aria-pressed={marked}
-                      aria-label={
-                        marked
-                          ? t('player.unmarkCard', { card: cardLabel })
-                          : t('player.markCard', { card: cardLabel })
-                      }
-                      onClick={() => dispatch({ type: 'toggleMark', cardId: id })}
+                      aria-label={cardLabel}
                     >
                       <span className={styles.cellEmoji} aria-hidden="true">
                         {emoji(id)}
@@ -345,7 +388,7 @@ export default function PlayerBoard({ transport, room, roster, profile, log }: P
                           ●
                         </span>
                       )}
-                    </button>
+                    </div>
                   </li>
                 );
               })}

@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from 'react';
 import { Link } from 'react-router';
 import styles from './ui.module.css';
 
@@ -23,6 +23,7 @@ type LinkProps = Common & {
   to: string;
   className?: string;
   'aria-label'?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
   href?: undefined;
 };
 type AnchorProps = Common & { href: string; download?: string; className?: string; to?: undefined };
@@ -52,7 +53,12 @@ export default function Button(props: ButtonProps | LinkProps | AnchorProps) {
   }
   if (props.to !== undefined) {
     return (
-      <Link to={props.to} className={cls} aria-label={props['aria-label']}>
+      <Link
+        to={props.to}
+        className={cls}
+        aria-label={props['aria-label']}
+        onClick={props.onClick}
+      >
         {inner}
       </Link>
     );
