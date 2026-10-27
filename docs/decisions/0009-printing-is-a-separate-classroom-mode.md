@@ -5,7 +5,7 @@
 
 ## Context
 
-The first PRD mixed phones, a shared tablet and printed paper boards in one round, with 6-character check codes for paper claims. César's request 5 removed paper from the online game. A "print my cartón" option was tried and cancelled.
+The first PRD mixed phones, a shared tablet and printed paper boards in one round, with 6-character check codes for paper claims. Paper was then removed from the online game. A "print my cartón" option was tried and cancelled.
 
 ## Decision
 

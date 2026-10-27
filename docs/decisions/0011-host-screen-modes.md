@@ -15,4 +15,4 @@ The organiser's device is the cantor screen. On a projector it should only displ
 ## Consequences
 
 - Two people can play with one phone and one laptop.
-- The local seat's picks have no network latency, so the organiser has an edge for the 2-point "first" (part of backlog DEC-002).
+- The local seat's picks have no network latency, so the organiser has an edge for the 2-point "first" (see [0019](0019-first-pick-is-arrival-order.md)).

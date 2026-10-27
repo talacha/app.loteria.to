@@ -5,7 +5,7 @@
 
 ## Context
 
-A Spanish speaker practising Náhuatl needs menus they understand and a cantor in the language they are learning. César proposed two content languages ("Escucho" / "Entiendo").
+A Spanish speaker practising Náhuatl needs menus they understand and a cantor in the language they are learning. One alternative was two content languages ("Escucho" / "Entiendo"); it was not adopted.
 
 ## Decision
 

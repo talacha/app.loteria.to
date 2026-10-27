@@ -1,7 +1,7 @@
 # PRD: Lotería de los Pueblos (app.loteria.to)
 
 **Status:** v1.0 baseline, as shipped at https://app.loteria.to (2026-10-27).
-**Owner:** Rob Montero. **Game rules:** [rules.md](rules.md) is the single source of truth for gameplay; this document does not restate them. **Stack:** [ARCHITECTURE.md](ARCHITECTURE.md). **Network contract:** [protocol.md](protocol.md). **Design:** [DESIGN.md](DESIGN.md). **Why things are the way they are:** [decisions/](decisions/README.md). **What's next:** [backlog.md](backlog.md).
+**Game rules:** [rules.md](rules.md) is the single source of truth for gameplay; this document does not restate them. **Stack:** [ARCHITECTURE.md](ARCHITECTURE.md). **Network contract:** [protocol.md](protocol.md). **Design:** [DESIGN.md](DESIGN.md). **Why things are the way they are:** [decisions/](decisions/README.md). **What's next:** [backlog.md](backlog.md).
 
 **One line:** The picture lotería everyone grew up with, called aloud in Náhuatl, Maya yucateco, Quechua, Español and English. A room of friends, family or classmates joins from one QR code and plays on their phones.
 
@@ -49,7 +49,7 @@ Full detail: [rules.md](rules.md) §1–§9. Decision record: [0004](decisions/0
 ### 3.4 Languages and audio
 
 - **App language** (Español, English) and **spoken language** (Náhuatl, Maya yucateco, Quechua Cusco-Collao, Español, English) are separate per-player settings, changeable mid-round without losing progress ([0005](decisions/0005-ui-language-separate-from-spoken-language.md)).
-- All five languages are offered and treated as verified for v1.0 ([0007](decisions/0007-all-five-languages-treated-as-verified.md)); the provenance gap is tracked in the backlog (DEC-001).
+- All five languages are offered and treated as verified for v1.0 ([0007](decisions/0007-all-five-languages-treated-as-verified.md)); the provenance gap is tracked in the backlog (DEBT-014).
 - **Audio**: pre-recorded Meta MMS-TTS clips for all 54 cards × 5 languages (270 clips, `public/audio/{lang}/{id}.m4a`), credited on `/creditos` ([0008](decisions/0008-mms-tts-audio-for-all-languages.md)).
 
 ### 3.5 Solo mode
@@ -95,7 +95,7 @@ Vercel (static PWA + `api/*` Functions), Supabase Realtime broadcast for rooms w
 ## 6. Constraints
 
 - **Non-commercial.** Meta MMS-TTS voices are CC-BY-NC 4.0. The app stays free, ad-free and non-commercial while it ships these clips, and credits them on `/creditos`.
-- **Honesty about Indigenous words.** Never invent Náhuatl, Maya or Quechua words; names come only from `src/content/cards.json`. The v1.0 owner call treats all five languages as verified, but the Indigenous names still cite "unverified draft" sources; closing that gap with dictionary citations and native-speaker review is the top open decision (backlog DEC-001). Public copy must not claim more review than has happened.
+- **Honesty about Indigenous words.** Never invent Náhuatl, Maya or Quechua words; names come only from `src/content/cards.json`. v1.0 treats all five languages as verified, but the Indigenous names still cite "unverified draft" sources; closing that gap with dictionary citations and native-speaker review is the top backlog item (DEBT-014). Public copy must not claim more review than has happened.
 - **Accessibility.** WCAG 2.2 AA is a release requirement, not a nice-to-have.
 - **Respectful content.** Cards never show people; copy never uses gendered human roles; copy lint enforces the banned word list.
 - **Privacy.** No accounts, no tracking cookies; player names travel only on the room channel.
@@ -105,4 +105,4 @@ Vercel (static PWA + `api/*` Functions), Supabase Realtime broadcast for rooms w
 
 | Version | Date | Notes |
 | --- | --- | --- |
-| v1.0 | 2026-10-27 | Baseline described here. Rules v2 (spelling picks, 2/1 points, full card), host modes, solo, themes, SEO/share previews. Build-day docs archived in `docs/archive/`. |
+| v1.0 | 2026-10-27 | Baseline described here. Rules v2 (spelling picks, 2/1 points, full card), host modes, solo, themes, SEO/share previews. |

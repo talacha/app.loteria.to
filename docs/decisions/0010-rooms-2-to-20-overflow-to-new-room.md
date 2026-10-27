@@ -5,7 +5,7 @@
 
 ## Context
 
-The first PRD said up to 40 players per room; César's rules said not to build a "room full" message. Every pick result is broadcast to every phone, and Supabase Free Realtime limits messages per second. Cartones must stay distinct (no two share more than 8 cards).
+The first PRD said up to 40 players per room; An earlier draft said not to build a "room full" message. Every pick result is broadcast to every phone, and Supabase Free Realtime limits messages per second. Cartones must stay distinct (no two share more than 8 cards).
 
 ## Decision
 

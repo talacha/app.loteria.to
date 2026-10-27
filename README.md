@@ -50,16 +50,15 @@ vercel env pull .env.local
 
 ## Docs
 
-| Doc                                          | What                                                                                            |
-| -------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| [docs/PRD.md](docs/PRD.md)                   | Product: pillars, scope, non-goals.                                                             |
-| [docs/rules.md](docs/rules.md)               | The game rules (source of truth for play).                                                      |
-| [docs/DESIGN.md](docs/DESIGN.md)             | Design system (binding), with `design/tokens.json` and `docs/design/look-and-feel.pdf`.         |
-| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | System, modules, offline, build, env, security, tests.                                          |
-| [docs/protocol.md](docs/protocol.md)         | Network messages and round lifecycle, generated from `src/net`.                                 |
-| [docs/decisions/](docs/decisions/)           | Decision records.                                                                               |
-| [docs/backlog.md](docs/backlog.md)           | What is next.                                                                                   |
-| [docs/archive/](docs/archive/)               | Historical build-day notes (`PLATFORM.md`, `reglas.md`, catalogue, review sheets). Not current. |
+| Doc                                          | What                                                                                    |
+| -------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [docs/PRD.md](docs/PRD.md)                   | Product: pillars, scope, non-goals.                                                     |
+| [docs/rules.md](docs/rules.md)               | The game rules (source of truth for play).                                              |
+| [docs/DESIGN.md](docs/DESIGN.md)             | Design system (binding), with `design/tokens.json` and `docs/design/look-and-feel.pdf`. |
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | System, modules, offline, build, env, security, tests.                                  |
+| [docs/protocol.md](docs/protocol.md)         | Network messages and round lifecycle, generated from `src/net`.                         |
+| [docs/decisions/](docs/decisions/)           | Decision records.                                                                       |
+| [docs/backlog.md](docs/backlog.md)           | What is next.                                                                           |
 
 ## Credits and licences
 

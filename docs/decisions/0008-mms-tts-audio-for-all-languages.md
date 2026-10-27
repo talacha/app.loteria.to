@@ -5,7 +5,7 @@
 
 ## Context
 
-Rules require every card to be voiced in every language. There are no native-speaker recordings yet. César proposed MMS for Indigenous languages and the browser's voice for es/en.
+Rules require every card to be voiced in every language. There are no native-speaker recordings yet. Meta MMS-TTS covers the Indigenous languages; the browser's voice was considered for es/en.
 
 ## Decision
 
@@ -17,5 +17,5 @@ Rules require every card to be voiced in every language. There are no native-spe
 
 - CC-BY-NC 4.0 makes the product **non-commercial** while these clips ship.
 - MMS mispronounces some words (e.g. Spanish ó/ñ in cóndor, piña; backlog BUG-006); clips must be regenerated whenever a word changes.
-- The Náhuatl voice model is Huasteca oriental (`nhe`) while our spellings are labelled Classical/Central (backlog DEC-006).
+- The Náhuatl voice model is Huasteca oriental (`nhe`) while our spellings are labelled Classical/Central ([0020](0020-nahuatl-variant-and-voice.md)).
 - Native recordings can replace clips one by one later.

@@ -5,7 +5,7 @@
 
 ## Context
 
-With 16 of 54 cards per cartón, random deals can produce near-identical cartones, which makes ties likely and rounds dull. César's rule R-06 capped overlap at 8.
+With 16 of 54 cards per cartón, random deals can produce near-identical cartones, which makes ties likely and rounds dull. The rule caps overlap at 8.
 
 ## Decision
 

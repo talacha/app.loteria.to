@@ -3,7 +3,7 @@
 Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked against the code on 2026-10-27; items already fixed were dropped. Game rules: [rules.md](rules.md). Decisions: [decisions/](decisions/README.md).
 
 **Priority:** P0 = broken or blocks shipping safely; P1 = next up, visible to players or a rule/claim we don't meet; P2 = when convenient.
-**IDs** are stable; don't reuse them. Close an item by deleting it in the commit that fixes it (or by a decision record for DEC items).
+**IDs** are stable; don't reuse them. Close an item by deleting it in the commit that fixes it.
 
 ## Summary
 
@@ -11,8 +11,7 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 | --- | --- | --- | --- | --- |
 | Bugs | 1 | 9 | 5 | 15 |
 | Feature requests | 0 | 1 | 4 | 5 |
-| Tech debt | 0 | 3 | 10 | 13 |
-| Open decisions | 1 | 3 | 4 | 8 |
+| Tech debt | 1 | 4 | 12 | 17 |
 
 ## Bugs
 
@@ -22,7 +21,7 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 - **Evidence:** `e2e/helpers.ts:24-26` clicks `a[href="/host"]` with an empty name; `src/app/home/HomePage.tsx:55-61` cancels navigation and shows "Escribe tu nombre". `e2e/helpers.ts:10` (`RX.next`) is used at `e2e/lobby.spec.ts:53` and `e2e/offline.spec.ts:8`, but rules §5.1 removed manual "next" (`src/app/host/caller.test.tsx:139` asserts it is absent). `RX.hostCta` ("ser cantor") is also stale.
 - **Accept when:** `createRoom` fills `#home-name`, picks the host mode and lands on `/host`; lobby/offline specs assert the automatic cantor (e.g. a call appears within `speedSec`) instead of a next button; `pnpm e2e` passes on phone, tablet and laptop.
 
-### BUG-002 · Copy lint does not ban "bingo" (César B-2) — P1
+### BUG-002 · Copy lint does not ban "bingo" — P1
 
 - **Why:** Rules §9.5 bans "bingo"; the lint that enforces §9.5 doesn't know the word, which is how BUG-004 shipped.
 - **Evidence:** `scripts/copy-lint.ts:72-89` (`framing` rule) has no `bingo`.
@@ -34,25 +33,25 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 - **Evidence:** `scripts/copy-lint.ts:105-107`; `src/app/home/strings.es.json` `steps.one.body`, `steps.two.body`, `steps.three.body`; `strings.en.json` `steps.three.body`.
 - **Accept when:** the three allowlist entries are removed and the home steps say e.g. "Cada persona recibe…", "Quien acierta primero suma 2 puntos…", "Si varias personas completan, desempatan los puntos"; `pnpm copy-lint` passes with no allowlist entries for banned words.
 
-### BUG-004 · Home, SEO and manifest copy describe the v0 product: "bingo", paper in the same round, "no phone needed", Escucha mode, "pending review" (César B-1) — P1
+### BUG-004 · Home, SEO and manifest copy describe the v0 product: "bingo", paper in the same round, "no phone needed", Escucha mode, "pending review" — P1
 
 - **Why:** First thing visitors and search engines read; it promises features that don't exist and contradicts decisions 0007 and 0009.
 - **Evidence:** `src/app/home/strings.es.json` / `.en.json`: `tagline` ("El bingo de imágenes… no hace falta ningún teléfono"), `lede` ("o con papel y frijoles"), `inclusion.paper`, `inclusion.access` ("modo Escucha"), `audience.classroom` ("en papel"), `audience.heritage` ("modo Escucha"), `faq.items.who.a` ("imprimir cartones"), `languagesIntro` + `pendingBadge` + `devNotice` ("esperan la revisión de hablantes nativos", "emojis provisionales"); rendered at `HomePage.tsx:231-326`. `vite.config.ts:32` manifest description "Juega con teléfonos o con papel". `src/app/seo/meta.ts` description for `/` (check alongside).
-- **Accept when:** `grep -rni bingo src public index.html` is empty; tagline reads "La lotería de imágenes con la que todos crecimos, cantada en cinco idiomas." / "The picture lotería everyone grew up with, called in five languages."; home mentions paper only as a link to the classroom mode; no "Escucha" or "pendiente de revisión"; the dev notice matches DEC-001's outcome; prerendered `/` and `llms.txt` agree.
+- **Accept when:** `grep -rni bingo src public index.html` is empty; tagline reads "La lotería de imágenes con la que todos crecimos, cantada en cinco idiomas." / "The picture lotería everyone grew up with, called in five languages."; home mentions paper only as a link to the classroom mode; no "Escucha" or "pendiente de revisión"; the dev notice matches DEBT-014's outcome; prerendered `/` and `llms.txt` agree.
 
 ### BUG-005 · Credits claim dictionary sources "cited on each card" — P1
 
 - **Why:** Constraint "honesty about Indigenous words". Every Indigenous `source` in `cards.json` says "…, unverified draft"; the credits state the opposite.
 - **Evidence:** `src/content/credits.json:11-12`; `src/content/cards.json` `names.{nah,yua,quz}.source` (162 × "unverified draft").
-- **Accept when:** credits describe the current provenance truthfully (drafts from named references, pending verification) until DEC-001 lands; a content test fails if credits claim citations while any `source` contains "unverified".
+- **Accept when:** credits describe the current provenance truthfully (drafts from named references, pending verification) until DEBT-014 lands; a content test fails if credits claim citations while any `source` contains "unverified".
 
 ### BUG-006 · MMS clips for "El Cóndor" and "La Piña" mispronounce ó / ñ — P1
 
 - **Why:** The voice is the lesson; a wrong Spanish pronunciation teaches the wrong word.
-- **Evidence:** `public/audio/es/condor.m4a`, `public/audio/es/pina.m4a` (owner listening test); generator `scripts/generate-audio.py`.
+- **Evidence:** `public/audio/es/condor.m4a`, `public/audio/es/pina.m4a` (listening test); generator `scripts/generate-audio.py`.
 - **Accept when:** both clips are regenerated (e.g. with respelled input text) and approved by a Spanish speaker; the generator records any respelling per card so future regenerations keep it; sweep the other 52 es clips and all en clips for the same issue.
 
-### BUG-007 · "Terminar ronda" sends `end{reason:'full-card'}` (César D-10) — P1
+### BUG-007 · "Terminar ronda" sends `end{reason:'full-card'}` — P1
 
 - **Why:** Rules §1.4 lets the organiser end early, but the wire says a full cartón happened; players may see a ¡Lotería! screen with no completed cartón.
 - **Evidence:** `src/app/host/useGame.ts:518-521`; `src/net/messages.ts:59,147` allow only `'full-card'`.
@@ -101,29 +100,29 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 
 ### BUG-015 · Loadtest crashes after the rules v2 protocol change — P1
 
-- **Why:** The loadtest is our only concurrency and quota evidence (DEBT-002, DEBT-003, DEC-003).
+- **Why:** The loadtest is our only concurrency and quota evidence (DEBT-002, DEBT-003).
 - **Evidence:** `loadtest/bot.ts:99` reads `m.pattern` from `round`, which no longer has patterns; the bot still models v1 claims.
 - **Accept when:** bots follow protocol.md (assign → tabla, pick within the call window, callClosed, end); `pnpm tsx loadtest/run.ts` with 20 players × 3 rooms exits 0 and writes a report.
 
 ## Feature requests
 
-### FEAT-001 · Add Bribri (`bzd`) and Cabécar (`cjp`) — P1 (research in progress)
+### FEAT-001 · Add Bribri (`bzd`) and Cabécar (`cjp`) — P1
 
-- **Why:** Pillar 2: adding a language should be a content change. Two Costa Rican Chibchan languages are being researched.
-- **Evidence:** drafts planned at `src/content/drafts/{bzd,cjp}.json` (not in the tree yet); `facebook/mms-tts-cjp` exists for Cabécar; there is no MMS model for Bribri. `Lang` union in `src/content/types.ts`; `LANG_COLORS` in `src/content/index.ts`.
-- **Open owner decisions:** Bribri audio (no MMS voice: text-only call, native recordings, or wait); word status and labels for languages with less-documented spelling; "cinco idiomas" branding in copy, SEO and OG images.
-- **Accept when:** the decisions above are recorded; drafts have a source per word; adding the languages touches only content, audio, i18n labels and one token per language colour; all rules in §2 hold for 7 languages.
+- **Why:** Pillar 2: adding a language should be a content change. Two Costa Rican Chibchan languages.
+- **Evidence:** drafts at `src/content/drafts/{bzd,cjp}.json`; `facebook/mms-tts-cjp` exists for Cabécar; there is no MMS model for Bribri. `Lang` union in `src/content/types.ts`; `LANG_COLORS` in `src/content/index.ts`.
+- **Scope notes:** Bribri has no MMS voice, so its audio needs native recordings or a text-only call; copy, SEO and OG images that say "cinco idiomas" change to seven.
+- **Accept when:** Bribri audio is resolved and a decision record written; drafts have a source per word; adding the languages touches only content, audio, i18n labels and one token per language colour; all rules in §2 hold for 7 languages.
 
 ### FEAT-002 · Optional gloss in the app language after the reveal — P2
 
-- **Why:** Suggested resolution of César's "Escucho / Entiendo" (D-6); helps learners connect a Náhuatl word to its meaning.
-- **Evidence:** `docs/archive/rules-open-items.md` D-6; `cards.json` already holds `gloss`.
+- **Why:** Helps learners connect a Náhuatl word to its meaning.
+- **Evidence:** decision 0005; `cards.json` already holds `gloss`.
 - **Accept when:** a per-player toggle shows the es/en name under the revealed word; off by default; never shown before the call closes.
 
 ### FEAT-003 · Figures as an organiser option — P2
 
-- **Why:** César's eight figures plus "Sorpresa" (D-2) were deferred, not rejected.
-- **Evidence:** decision 0004; `docs/archive/reglas.md` R-16, R-17.
+- **Why:** Eight figures plus a "Sorpresa" figure were deferred, not rejected.
+- **Evidence:** decision 0004.
 - **Accept when:** the organiser can choose full card (default) or a figure before the round; host detects the figure; rules.md and protocol.md updated first.
 
 ### FEAT-004 · Classroom mode for paper cartones — P2
@@ -159,7 +158,7 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 
 ### DEBT-004 · 93 orphan clips in `public/audio` (0.43 MB precached) — P2
 
-- **Evidence:** 85 clips each in `public/audio/{nah,yua,quz}` vs 54 cards; 93 files (429,536 bytes) are not referenced by `cards.json` (César's deck, decision 0006). Workbox glob `vite.config.ts:52` precaches them.
+- **Evidence:** 85 clips each in `public/audio/{nah,yua,quz}` vs 54 cards; 93 files (429,536 bytes) are not referenced by `cards.json` (decision 0006). Workbox glob `vite.config.ts:52` precaches them.
 - **Accept when:** orphans deleted (they stay in git history) or moved out of `public/`; `scripts/validate-content.ts` fails on unreferenced clips.
 
 ### DEBT-005 · Stray sed backup files — P2 · ✅ Fixed 2026-10-27 (files deleted)
@@ -171,7 +170,7 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 
 - **Why:** BUG-001 went unnoticed because only CI runs Playwright and nothing blocks a deploy on it.
 - **Evidence:** `vercel.json` `buildCommand`; `.github/workflows/ci.yml`.
-- **Accept when:** branch protection requires the CI job, or the orchestrator's clean-worktree verification includes `pnpm e2e` (decision 0014 updated).
+- **Accept when:** branch protection requires the CI job, or the clean-worktree verification includes `pnpm e2e` (decision 0014 updated).
 
 ### DEBT-007 · High-contrast theme values only in `tokens.css`, not in `design/tokens.json` — P2
 
@@ -195,8 +194,8 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 
 ### DEBT-011 · Docs and agent guidance point at moved files — P1 · ✅ Fixed 2026-10-27 (CLAUDE.md rewritten)
 
-- **Why:** Agents follow `CLAUDE.md`; dead pointers send them to archived or missing docs.
-- **Evidence:** `CLAUDE.md` cites `docs/decisions/rules-open-items.md`, `docs/reglas.md`, `docs/PLATFORM.md` (now in `docs/archive/`). `docs/ARCHITECTURE.md` header still says "planning… no application code yet", 40 phones, paper players.
+- **Why:** Agents follow `CLAUDE.md`; dead pointers send them to missing docs.
+- **Evidence:** `CLAUDE.md` and `docs/ARCHITECTURE.md` were rewritten against the code.
 - **Accept when:** `CLAUDE.md` points to PRD, rules, protocol, decisions/ and backlog; no doc links to a missing path (add a link check to `pnpm check`).
 
 ### DEBT-012 · Stale lint messages and test helpers from rules v1 — P2
@@ -208,53 +207,27 @@ Triaged work on top of the v1.0 baseline ([PRD](PRD.md)). Every item was checked
 
 - **Why:** Rules §9.1 has the host detect a full cartón at `callClosed`; the `claim` schema and its session rate limit are dead code, and players cannot tap ¡Lotería!. Dead protocol surface confuses agents and the loadtest (BUG-015).
 - **Evidence:** `claim` in `src/net/messages.ts:104,149` and `src/net/session.ts:94`; no sender in `src/app/player/` or `src/app/game/PlayerGame.tsx`.
-- **Accept when:** owner picks one: remove `claim` from schema, host and protocol.md; or wire a ¡Lotería! tap that the host validates (3 s cooldown, "¡Casi!" on invalid) and add it to rules.md.
+- **Accept when:** `claim` is removed from the schema, session rate limit, host and protocol.md (rules §9.1: the host detects a full cartón; players do not claim).
 
-## Open decisions (need an owner)
+### DEBT-014 · Indigenous word sourcing: every Náhuatl, Maya and Quechua name needs a dictionary source — P0
 
-### DEC-001 · Indigenous word sourcing vs "verified" (César D-1, B-3) — P0, owner: Rob + César
+- **Why:** Decision 0007 ships all five languages as verified, but all 162 Indigenous names say "unverified draft" and several notes say "from memory; page not checked". This is the product's biggest honesty risk.
+- **Evidence:** `src/content/cards.json` `names.{nah,yua,quz}.source`/`headword`; earlier sourced research is in git history (`git show 8c96117:src/content/cards.json`, 23 shared ids = 69 words).
+- **Accept when:** each Indigenous word is replaced or confirmed against a dictionary, with a URL or full reference with page in `source`; clips are regenerated for changed words; `validate-content` fails on "unverified".
 
-- **Why:** Decision 0007 ships all five languages as verified, but all 162 Náhuatl, Maya and Quechua names say "unverified draft", several notes say "from memory; page not checked". This is the product's biggest honesty risk.
-- **Evidence:** `src/content/cards.json` `names.{nah,yua,quz}.source`/`headword`; César's sourced research in `docs/archive/catalogo.md` and `git show 8c96117:src/content/cards.json` (23 shared ids = 69 words).
-- **Options:** A. César's deck (sourced, but 31 ids without art). B. Keep our deck; replace each word with a dictionary-sourced one plus URL, regenerate those clips (César's recommendation). C. Keep as is and label words as drafts in the UI.
-- **Accept when:** a decision record is written; for B, every Indigenous `source` is a URL or full reference with page, and `validate-content` fails on "unverified".
+### DEBT-015 · `status` in `cards.json` no longer records review — P2
 
-### DEC-002 · Fairness of "first" over Wi-Fi (César D-3) — P1, owner: Rob
-
-- **Why:** The 2-point "first" is arrival order at the host; ~300 ms Wi-Fi jitter and the organiser's local seat (decision 0011) decide it more than skill.
-- **Evidence:** `src/engine/scoring.ts:35-40` ("First is decided by the order picks are fed in").
-- **Options:** A. Picks within ~300 ms of the first correct pick also count as first. B. Strict arrival order (today). C. Use client time-since-call, clamped.
-- **Accept when:** decision recorded; rules §8 and `scorePick` updated with tests for the window.
-
-### DEC-003 · Room size: PRD 40 vs rules 20 (César D-9) — P2, owner: Rob
-
-- **Why:** Rules and code say 20; early planning and `ARCHITECTURE.md` still say 40. Raising it depends on DEBT-003.
-- **Evidence:** `src/engine/scoring.ts:7` `ROOM_MAX_PLAYERS = 20`; decision 0010; `docs/ARCHITECTURE.md` diagram ("Up to 40 phones").
-- **Accept when:** 20 confirmed as v1 and 40 recorded as a post-DEBT-003 goal, or a decision to raise it with loadtest evidence.
-
-### DEC-004 · Signed commits (César D-13) — P1, owner: Rob
-
-- See [decision 0015](decisions/0015-signed-commits.md). **Accept when:** option A or B chosen and, for B, branch protection requires signed commits on `main`.
-
-### DEC-005 · What "approved" means in `cards.json` — P2, owner: Rob
-
-- **Why:** After decision 0007, `status` no longer records native-speaker review; `VITE_HIDE_UNREVIEWED` and `callableLangs()` gate on a value that is always `approved`.
+- **Why:** After decision 0007 every name is `approved`; `VITE_HIDE_UNREVIEWED` and `callableLangs()` gate on a value that never varies.
 - **Evidence:** `src/content/index.ts:22-38`; `src/content/schema.ts`.
-- **Accept when:** status values are redefined (e.g. `draft` / `sourced` / `native-reviewed`) or the gate is removed; UI copy matches.
+- **Accept when:** status values are redefined (`draft` / `sourced` / `native-reviewed`) without hiding any language, or the gate is removed; UI copy matches.
 
-### DEC-006 · Náhuatl variant: Classical/Central spellings with a Huasteca (`nhe`) voice — P2, owner: Rob + César
+### DEBT-016 · Náhuatl credits and label do not name the voice variant — P2
 
-- **Why:** César's D2 chose Huasteca oriental (`nhe`) with modern spelling; our deck labels words "Classical/Central Nahuatl" (Molina, Karttunen) and voices them with `mms-tts-nhe`.
-- **Evidence:** `cards.json` `names.nah.source`; `scripts/generate-audio.py:20`; `src/content/credits.json:33`.
-- **Accept when:** one variant chosen; words, credits, the language label and the voice agree.
+- **Why:** Decision 0020: spellings are Classical/Central, the voice is Huasteca (`nhe`).
+- **Evidence:** `cards.json` `names.nah.source`; `scripts/generate-audio.py:20`; `src/content/credits.json`.
+- **Accept when:** credits and the language label state both the spelling variant and the voice model.
 
-### DEC-007 · Practice mode "Practicar de oído" (hide the picture) — P2, owner: Rob
-
-- **Why:** Agreed in the rules consolidation as a per-player toggle (archive §9.1 decision 5), but not in rules.md v1.0 or the code, and home copy still advertises "modo Escucha" (BUG-004).
-- **Evidence:** `docs/archive/rules-open-items.md` §9.1 row 5; no toggle in `src/app/player/`.
-- **Accept when:** either added to rules.md and built (per-player, off by default, cartón never hidden) or dropped and the copy removed.
-
-### DEC-008 · Content licence and code licence — P1, owner: Rob
+### DEBT-017 · Content licence and code licence — P1
 
 - **Why:** MMS clips are CC-BY-NC 4.0; the repo has no LICENSE, so reuse terms for code, art and words are undefined.
 - **Evidence:** no `LICENSE` at repo root; `public/fonts/LICENSES.md` only covers fonts; `src/content/credits.json`.

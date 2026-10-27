@@ -5,7 +5,7 @@
 
 ## Context
 
-Learners need to practise without gathering a room. The owner asked whether a small language model in the browser could power solo play ([evaluation](../evaluations/solo-mode-slm.md)).
+Learners need to practise without gathering a room. The question was whether a small language model in the browser could power solo play ([evaluation](../evaluations/solo-mode-slm.md)).
 
 ## Decision
 

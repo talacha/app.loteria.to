@@ -1,6 +1,6 @@
 # Evaluation: a small language model in the browser for solo mode
 
-**Date:** 2026-10-26 · **Ask (owner):** "Evaluate embedding a small language model in the browser for solo mode." · **Context:** PRD §0 (pillars), §1 non-goals ("AI-generated Indigenous text"), §3.5 (precache < 10 MB, offline), §3.9 (AI hints and banter deferred); rules.md §1.3 (solo mode against a CPU player).
+**Date:** 2026-10-26 · **Question:** "Evaluate embedding a small language model in the browser for solo mode." · **Context:** PRD §0 (pillars), §1 non-goals ("AI-generated Indigenous text"), §3.5 (precache < 10 MB, offline), §3.9 (AI hints and banter deferred); rules.md §1.3 (solo mode against a CPU player).
 
 ## Bottom line
 

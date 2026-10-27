@@ -1,6 +1,6 @@
 # Architecture
 
-This document describes the system as it stands in v1.0, checked against the code. It replaces the older planning version and `docs/archive/PLATFORM.md`. The network contract is in [protocol.md](protocol.md) and the game rules are in [rules.md](rules.md). Anything marked _unverified_ could not be confirmed from the repo.
+This document describes the system as it stands in v1.0, checked against the code. The network contract is in [protocol.md](protocol.md) and the game rules are in [rules.md](rules.md). Anything marked _unverified_ could not be confirmed from the repo.
 
 ## 1. Shape of the system
 

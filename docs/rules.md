@@ -5,7 +5,7 @@
 1. A game is played in a **room**. The person who creates it is the **organiser**; the room gets a code that is not in use by any other room.
 2. Players join with the room code (typed, by link or by QR code), a name (1–24 characters; duplicates allowed) and a picture of their choice.
 3. A round can start with **at least 2 players**. A room holds **at most 20 players**; a 21st player is offered a new room instead.
-4. The organiser's screen is the **cantor's screen**: it calls the cards and shows the round. When creating the room, the organiser chooses whether that screen **only displays** the game or **also plays**: with "Jugar también", the organiser gets their own cartón and spelling choices on the same screen and plays by the same rules as everyone else (they count toward the 2-player minimum and their picks are scored in the same order as all others). The organiser can start the round, pause, resume, change the calling speed and end the round early.
+4. The organiser's screen is the **cantor's screen**: it calls the cards and shows the round. When creating the room, the organiser chooses whether that screen **only displays** the game or **also plays**: with "Jugar también", the organiser gets their own cartón and spelling choices on the same screen and plays by the same rules as everyone else (they count toward the 2-player minimum and their picks are scored in the same order as all others). The organiser can start the round, pause, resume and change the calling speed. **Nobody can end a round early:** the round goes on until all 16 squares of one player's cartón are crossed off (§9). A player may leave the room; that does not end the round for the others.
 5. A player who joins after the round has started gets a cartón with every card already called crossed off, and starts with 0 points.
 6. A player who reloads or briefly disconnects gets back the same cartón, crossed squares, points and languages.
 
@@ -56,13 +56,15 @@ All five spoken languages are always offered. Each player hears and reads the sa
 1. For each called card, the **first player to pick the right spelling earns 2 points**.
 2. **Every other player who picks the right spelling earns 1 point.**
 3. A wrong pick, or no pick, earns 0 points.
-4. Points belong to the current round only and are used **only to break ties**. There is no ranking across rounds.
+4. Points belong to the current round only. There is no ranking across rounds.
+5. A **tabla de puntos** (leaderboard) is visible to everyone during the round and after it: on the cantor's screen, on every phone (a collapsible panel that never covers the cartón) and in solo mode. It lists every player with their rank, picture, name, points and squares crossed off (out of 16), **sorted by points, highest first**, then by squares crossed off, then by name. Players with the same points and squares share a rank. A player sees a "Tú" marker on their own row.
+6. The board only informs. It never ends the round and never decides who completes the cartón; the points still only break ties among players who complete on the same called card (§9.2).
 
 ## 9. Winning
 
-1. The **first player to cross off all 16 squares** of their cartón completes it and calls **¡Lotería!**.
+1. The round **only ends when a player has crossed off all 16 squares** of their cartón (it completes it and calls **¡Lotería!**). There is no other way to end it: no early end by the organiser, no time limit, no points target. The deck has 54 cards and every cartón has 16 of them, so someone always completes before the cards run out. If several players complete, the first to do so ends the round.
 2. If **more than one player** completes their cartón on the same called card, **the one with the most points wins**. Players with the same points share the win.
-3. Everyone then sees the ¡Lotería! screen with the completed cartón. "Otra ronda" starts a new round in the same room, with new cartones and points back at 0.
+3. Everyone then sees the ¡Lotería! screen with the completed cartón and the **final standings** (the same tabla de puntos, sorted by points, highest first). "Otra ronda" starts a new round in the same room, with new cartones and points back at 0.
 4. Players who did not complete see a friendly message, never a penalty.
 5. Screens never use words for prizes, betting, money or winning (ganar, premio, apuesta, dinero, fichas, bingo, win, prize, bet, money, chips). The game says "¡Lotería!", "completaste" and "frijoles".
 

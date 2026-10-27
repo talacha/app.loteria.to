@@ -10,8 +10,7 @@
 | `docs/ARCHITECTURE.md`, `docs/protocol.md` | System as built; network messages                                                                                                                                                                            |
 | `docs/audio.md`                            | Audio pipeline (preflight generation, engine router, cache)                                                                                                                                                  |
 | `docs/decisions/`                          | Why things are the way they are (ADRs)                                                                                                                                                                       |
-| `docs/backlog.md`                          | Bugs, features, tech debt, open decisions — **work from here**                                                                                                                                               |
-| `docs/archive/`                            | History only; never a source of truth                                                                                                                                                                        |
+| `docs/backlog.md`                          | Bugs, features, tech debt — **work from here**                                                                                                                                                               |
 
 ## Rules for every agent
 

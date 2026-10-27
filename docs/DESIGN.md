@@ -143,6 +143,6 @@ Spanish first, English second; warm and short. "Frijolitos", never chips/fichas.
 1. Edit `design/tokens.json` first (for light overrides use `theme.light`; high contrast is CSS-only).
 2. Mirror in `src/app/theme/tokens.css` (`:root`, and both light blocks: `[data-theme='light']` and the `prefers-color-scheme: light` block).
 3. `pnpm test` (parity + contrast) then `pnpm design-lint` and `pnpm copy-lint`; fix findings in components, never by loosening a rule without discussion.
-4. Update the canvas mirror in `design/look-and-feel/project/*.dc.html` (and `canvas.json`) and this file. Only the orchestrator republishes the canvas artifact https://claude.ai/artifact/CanBtUc4RQzxzPZE2BEgWc.
+4. Update the canvas mirror in `design/look-and-feel/project/*.dc.html` (and `canvas.json`) and this file. The canvas artifact is republished separately: https://claude.ai/artifact/CanBtUc4RQzxzPZE2BEgWc.
 5. Regenerate share images with `pnpm og:render` if branding or palette changed.
 6. Add or change a primitive in `src/app/ui/`, show it in `Gallery`, add it to section 6.
